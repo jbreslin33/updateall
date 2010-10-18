@@ -19,3 +19,7 @@ cd questionfactory
 hg pull
 hg update
 cd ..
+cd updateall
+hg pull
+hg update
+cd ..
