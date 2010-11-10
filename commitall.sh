@@ -22,5 +22,5 @@ cd ..
 cd updateall
 hg commit -u jbreslin33
 hg push
-cd ..
+
 

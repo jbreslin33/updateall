@@ -9,3 +9,4 @@ hg clone https://baseapplication.googlecode.com/hg/ ogretuts
 hg clone https://baseapplication.googlecode.com/hg/ questionfactory 
 hg clone https://baseapplication.googlecode.com/hg/ updateall 
 hg clone https://baseapplication.googlecode.com/hg/ visomathtxtgame 
+cd updateall

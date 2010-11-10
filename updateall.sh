@@ -22,4 +22,4 @@ cd ..
 cd updateall
 hg pull
 hg update
-cd ..
+
