@@ -10,6 +10,9 @@ cd ..
 cd breslinmathracer
 hg pull
 hg update
+cd breslinnetwork
+hg pull
+hg update
 cd ..
 cd charactercontrollers
 hg pull
