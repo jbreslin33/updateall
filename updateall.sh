@@ -10,6 +10,7 @@ cd ..
 cd breslinmathracer
 hg pull
 hg update
+cd ..
 cd breslinnetwork
 hg pull
 hg update
