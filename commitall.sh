@@ -15,6 +15,10 @@ cd breslinnetwork
 hg commit -u jbreslin33
 hg push
 cd ..
+cd breslinclient
+hg commit -u jbreslin33
+hg push
+cd ..
 cd charactercontrollers
 hg commit -u jbreslin33
 hg push

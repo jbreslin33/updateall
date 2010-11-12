@@ -15,6 +15,10 @@ cd breslinnetwork
 hg pull
 hg update
 cd ..
+cd breslinclient
+hg pull
+hg update
+cd ..
 cd charactercontrollers
 hg pull
 hg update
