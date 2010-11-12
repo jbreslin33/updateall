@@ -27,8 +27,13 @@ cd questionfactory
 hg commit -u jbreslin33
 hg push
 cd ..
+cd breslinlistenserver
+hg commit -u jbreslin33
+hg push
+cd ..
 cd updateall
 hg commit -u jbreslin33
 hg push
+
 
 

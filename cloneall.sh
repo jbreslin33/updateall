@@ -9,4 +9,6 @@ hg clone https://mathproblems.googlecode.com/hg/ mathproblems
 hg clone https://questionfactory.googlecode.com/hg/ questionfactory 
 hg clone https://updateall.googlecode.com/hg/ updateall 
 hg clone https://visomathtxtgame.googlecode.com/hg/ visomathtxtgame 
+hg clone https://breslinlistenserver.googlecode.com/hg breslinlistenserver
+
 cd updateall
