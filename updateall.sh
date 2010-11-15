@@ -39,12 +39,27 @@ hg pull
 hg update
 
 cd ..
+cd breslinmessagehandler
+hg pull
+hg update
+
+cd ..
 cd breslinnetwork
 hg pull
 hg update
 
 cd ..
 cd breslinserver
+hg pull
+hg update
+
+cd ..
+cd breslinquestiongameclient
+hg pull
+hg update
+
+cd ..
+cd breslinquestiongameserver
 hg pull
 hg update
 
@@ -58,10 +73,6 @@ cd questionfactory
 hg pull
 hg update
 
-cd ..
-cd breslinlistenserver
-hg pull
-hg update
 
 cd ..
 cd updateall

@@ -39,12 +39,27 @@ hg commit -u jbreslin33
 hg push
 
 cd ..
+cd breslinmessagehandler
+hg commit -u jbreslin33
+hg push
+
+cd ..
 cd breslinnetwork
 hg commit -u jbreslin33
 hg push
 
 cd ..
 cd breslinserver
+hg commit -u jbreslin33
+hg push
+
+cd ..
+cd breslinquestiongameclient
+hg commit -u jbreslin33
+hg push
+
+cd .. 
+cd breslinquestiongameserver
 hg commit -u jbreslin33
 hg push
 
