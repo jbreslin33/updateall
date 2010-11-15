@@ -49,16 +49,6 @@ hg commit -u jbreslin33
 hg push
 
 cd ..
-cd breslinserver
-hg commit -u jbreslin33
-hg push
-
-cd ..
-cd breslintalker
-hg commit -u jbreslin33
-hg push
-
-cd ..
 cd breslinquestiongameclient
 hg commit -u jbreslin33
 hg push
@@ -69,12 +59,32 @@ hg commit -u jbreslin33
 hg push
 
 cd ..
+cd breslinserver
+hg commit -u jbreslin33
+hg push
+
+cd ..
+cd breslintalker
+hg commit -u jbreslin33
+hg push
+
+cd ..
 cd charactercontrollers
 hg commit -u jbreslin33
 hg push
 
 cd ..
+cd mathproblems
+hg commit -u jbreslin33
+hg push
+
+cd ..
 cd questionfactory
+hg commit -u jbreslin33
+hg push
+
+cd ..
+cd visomathtxtgame 
 hg commit -u jbreslin33
 hg push
 

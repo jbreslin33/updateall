@@ -49,17 +49,6 @@ hg pull
 hg update
 
 cd ..
-cd breslinserver
-hg pull
-hg update
-
-
-cd ..
-cd breslintalker
-hg pull
-hg update
-
-cd ..
 cd breslinquestiongameclient
 hg pull
 hg update
@@ -70,7 +59,22 @@ hg pull
 hg update
 
 cd ..
+cd breslinserver
+hg pull
+hg update
+
+cd ..
+cd breslintalker
+hg pull
+hg update
+
+cd ..
 cd charactercontrollers
+hg pull
+hg update
+
+cd ..
+cd mathproblems
 hg pull
 hg update
 
@@ -79,6 +83,10 @@ cd questionfactory
 hg pull
 hg update
 
+cd ..
+cd visomathtxtgame
+hg pull
+hg update
 
 cd ..
 cd updateall
