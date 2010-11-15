@@ -34,7 +34,7 @@ hg pull
 hg update
 
 cd ..
-cd breslinmathtxtserver
+cd breslinmathracertxtserver
 hg pull
 hg update
 
