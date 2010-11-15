@@ -53,6 +53,12 @@ cd breslinserver
 hg pull
 hg update
 
+
+cd ..
+cd breslintalker
+hg pull
+hg update
+
 cd ..
 cd breslinquestiongameclient
 hg pull

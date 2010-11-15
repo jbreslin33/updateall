@@ -12,7 +12,7 @@ hg clone https://breslinmathracertxtserver.googlecode.com/hg breslinmathracertxt
 hg clone https://breslinmessagehandler.googlecode.com/hg breslinmessagehandler
 hg clone https://breslinnetwork.googlecode.com/hg/ breslinnetwork 
 hg clone https://breslinserver.googlecode.com/hg breslinserver
-
+hg clone https://breslintalker.googlecode.com/hg/ breslintalker 
 hg clone https://breslinquestiongameclient.google.com/hg breslinquestiongameclient
 hg clone https://breslinquestiongameserver.google.com/hg breslinquestiongameserver
 

@@ -54,6 +54,11 @@ hg commit -u jbreslin33
 hg push
 
 cd ..
+cd breslintalker
+hg commit -u jbreslin33
+hg push
+
+cd ..
 cd breslinquestiongameclient
 hg commit -u jbreslin33
 hg push
