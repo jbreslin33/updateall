@@ -9,6 +9,11 @@ hg commit -u jbreslin33
 hg push
 
 cd ..
+cd breslingame
+hg commit -u jbreslin33
+hg push
+
+cd ..
 cd breslingameserver
 hg commit -u jbreslin33
 hg push

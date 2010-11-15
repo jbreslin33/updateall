@@ -8,6 +8,12 @@ cd breslinclient
 hg pull
 hg update
 
+
+cd ..
+cd breslingame
+hg pull
+hg update
+
 cd ..
 cd breslingameserver
 hg pull

@@ -15,6 +15,12 @@ cmake ../../breslinlistenserver
 make
 
 cd ..
+mkdir breslingame
+cd breslingame
+cmake ../../breslingame
+make
+
+cd ..
 mkdir breslingameserver
 cd breslingameserver
 cmake ../../breslingameserver

@@ -1,6 +1,8 @@
 cd ..
 hg clone https://baseapplication.googlecode.com/hg/ baseapplication 
 hg clone https://breslinclient.googlecode.com/hg/ breslinclient
+
+hg clone https://breslingame.googlecode.com/hg/ breslingame
 hg clone https://breslingameserver.googlecode.com/hg/ breslingameserver
 hg clone https://breslininput.googlecode.com/hg/ breslininput
 hg clone https://breslinlistenserver.googlecode.com/hg/ breslinlistenserver
