@@ -2,12 +2,13 @@ cd /home/jbreslin/sandbox/
 mkdir build
 cd build
 
-cd ..
+
 mkdir breslinclient
 cd breslinclient
 cmake ../../breslinclient
 make
 
+cd ..
 mkdir breslinlistenserver
 cd breslinlistenserver
 cmake ../../breslinlistenserver
