@@ -1,4 +1,4 @@
-cd /home/jbreslin/sandbox/ 
+cd ..
 mkdir build
 cd build
 
