@@ -1,19 +1,39 @@
+<!DOCTYPE html> 
+ 
 <html>
  
 <head>
  
+	<meta name="viewport" content="user-scalable=no, width=device-width" />
+ 
+	<link rel="stylesheet" href="jquery.mobile-1.0b1.min.css" />
+ 
 	<script src = "jquery.js"></script>
+	<script src="jquery.mobile-1.0b1.min.js"></script>
 	<script src = "game.js"></script>
  
 </head>
  
 <body>
  
-<div id = "number"></div>
-<div id = "higher">higher</div>
-<div id = "lower">lower</div>
-<div id = "comment"></div>
+<div data-role="page">
  
-</body>	
+	<div data-role="header">
+		<h1>Page Title</h1>
+	</div>
+ 
+	<div data-role="content">	
+		<div id = "number"></div>
+		<div id = "higher">higher</div>
+		<div id = "lower">lower</div>
+		<div id = "comment"></div>		
+	</div>
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div>
+</div>
+ 
+</body>
  
 </html>
