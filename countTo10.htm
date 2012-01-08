@@ -37,12 +37,14 @@ function checkAnswer()
  
      count++;
      correctAnswer++;
+var offset = Math.floor(Math.random() *3);
+offset = count - offset;
      
 	document.getElementById("demo").innerHTML=count;
-     document.getElementById("button1").innerHTML=count + 1;
-     document.getElementById("button2").innerHTML=count + 2;
-     document.getElementById("button3").innerHTML=count + 3;
-     document.getElementById("button4").innerHTML=count + 4;
+     document.getElementById("button1").innerHTML=offset + 1;
+     document.getElementById("button2").innerHTML=offset + 2;
+     document.getElementById("button3").innerHTML=offset + 3;
+     document.getElementById("button4").innerHTML=offset + 4;
   }
   else
   {
@@ -54,7 +56,7 @@ function checkAnswer()
 </head>
 <body>
 
-<h1 id="header1" >My First Web Page</h1>
+<h1 id="header1" >Count to 10</h1>
 <p id="demo">0</p>
 
 <button type="button" id="button1" onclick="submitAnswer(1)">1</button>
