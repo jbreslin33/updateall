@@ -37,19 +37,30 @@ function checkAnswer()
      document.getElementById("feedback").innerHTML="correct";
      count++;
      correctAnswer++;
-var offset = Math.floor(Math.random() *3);
+var offset = Math.floor(Math.random() *2);
 offset = count - offset;
      
 	document.getElementById("counter").innerHTML=count;
-     document.getElementById("button1").innerHTML=offset + 1;
-     document.getElementById("button2").innerHTML=offset + 2;
-     document.getElementById("button3").innerHTML=offset + 3;
-     document.getElementById("button4").innerHTML=offset + 4;
+     document.getElementById("button1").innerHTML=offset;
+     document.getElementById("button2").innerHTML=offset + 1;
+     document.getElementById("button3").innerHTML=offset + 2;
+     document.getElementById("button4").innerHTML=offset + 3;
   }
   else
   {
-     document.getElementById("feedback").innerHTML="wrong";
-  }
+     
+
+document.getElementById("feedback").innerHTML="wrong";
+	count = 0;
+	correctAnswer = 1;
+  
+     
+	document.getElementById("counter").innerHTML=count;
+     document.getElementById("button1").innerHTML=count;
+     document.getElementById("button2").innerHTML=count + 1;
+     document.getElementById("button3").innerHTML=count + 2;
+     document.getElementById("button4").innerHTML=count + 3;
+	}
 }
 </script>
 
