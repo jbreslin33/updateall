@@ -1,21 +1,67 @@
 <html>
 <head>
-<script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-  $("button").click(function(){
-    $("p").hide();
-  });
-});
+
+var count = 0;
+var correctAnswer = 1;
+var answer = 0;
+
+function submitAnswer(a)
+{
+  if (a == 1)
+  {
+    answer = document.getElementById("button1").innerHTML;
+  }
+  else if (a == 2)
+  {
+    answer = document.getElementById("button2").innerHTML;
+  }
+
+  else if (a == 3)
+  {
+    answer = document.getElementById("button3").innerHTML;
+  }
+  else if (a == 4)
+  {
+    answer = document.getElementById("button4").innerHTML;
+  }
+  checkAnswer();
+}
+
+
+function checkAnswer()
+{
+  if (answer == correctAnswer)
+  {
+     document.getElementById("header1").innerHTML="correct";
+ 
+     count++;
+     correctAnswer++;
+     
+	document.getElementById("demo").innerHTML=count;
+     document.getElementById("button1").innerHTML=count + 1;
+     document.getElementById("button2").innerHTML=count + 2;
+     document.getElementById("button3").innerHTML=count + 3;
+     document.getElementById("button4").innerHTML=count + 4;
+  }
+  else
+  {
+     document.getElementById("header1").innerHTML="wrong";
+  }
+}
 </script>
+
 </head>
-
 <body>
-<h2>This is a heading</h2>
-<p>This is a paragraph.</p>
-<p>This is another paragraph.</p>
-<button>Click me</button>
+
+<h1 id="header1" >My First Web Page</h1>
+<p id="demo">0</p>
+
+<button type="button" id="button1" onclick="submitAnswer(1)">1</button>
+
+<button type="button" id="button2" onclick="submitAnswer(2)">2</button>
+<button type="button" id="button3" onclick="submitAnswer(3)">3</button>
+<button type="button" id="button4" onclick="submitAnswer(4)">4</button>
+
 </body>
-</html>
-
-
+</html> 
