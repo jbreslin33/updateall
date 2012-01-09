@@ -8,19 +8,24 @@
 	
 	<?php
 
- $db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
+ 	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
 	
- $query = "select *";
-   $query .= " from users;";
-   $dbResult = pg_query($query);
+ 	$query = "select *";
+   	$query .= " from users ";
+	$query .= "where username = '";
+	$query .= $_POST["username"];
+	//$query .= "v2000";	
+$query .= "';"; 
+   	$dbResult = pg_query($query);
 
-   if (!$dbResult) {
-     die("Database error...");
-   }
+   	if (!$dbResult)
+ 	{
+     		die("Database error...");
+   	}
 
-   $num = pg_num_rows($dbResult);
-$username      = pg_Result ($dbResult, $i, 'username');
-echo $username;
+   	$num = pg_num_rows($dbResult);
+	$username      = pg_Result ($dbResult, $i, 'username');
+	echo $username;
 
 
 	// Check if username and password are correct
