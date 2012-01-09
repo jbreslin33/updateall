@@ -8,8 +8,26 @@
 	
 	<?php
 
+ $db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
+	
+ $query = "select *";
+   $query .= " from users;";
+   $dbResult = pg_query($query);
+
+   if (!$dbResult) {
+     die("Database error...");
+   }
+
+   $num = pg_num_rows($dbResult);
+$username      = pg_Result ($dbResult, $i, 'username');
+echo $username;
+
+
 	// Check if username and password are correct
 	if ($_POST["username"] == "php" && $_POST["password"] == "php") {
+
+	
+
 	 
 	// If correct, we set the session to YES
 	  session_start();
