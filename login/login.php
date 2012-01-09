@@ -22,6 +22,8 @@
 
 	$dbResult = pg_query($query);
 
+
+
    	if (!$dbResult)
  	{
      		die("Database error...");
@@ -33,8 +35,9 @@
 
 
 	// Check if username and password are correct
-	if ($_POST["username"] == "php" && $_POST["password"] == "php") {
-
+//	if ($_POST["username"] == "php" && $_POST["password"] == "php") {
+	if ($num > 0)
+	{
 	
 
 	 
