@@ -22,24 +22,17 @@
 
 	$dbResult = pg_query($query);
 
-
-
    	if (!$dbResult)
  	{
      		die("Database error...");
    	}
 
    	$num = pg_num_rows($dbResult);
-	$username      = pg_Result ($dbResult, $i, 'username');
-	echo $username;
-
+//	$username      = pg_Result ($dbResult, $i, 'username');
 
 	// Check if username and password are correct
-//	if ($_POST["username"] == "php" && $_POST["password"] == "php") {
 	if ($num > 0)
 	{
-	
-
 	 
 	// If correct, we set the session to YES
 	  session_start();
