@@ -44,7 +44,7 @@
 	{
 	  	session_start();
 	  	$_SESSION ["Login"] = "NO";
-		header("Location: form.php");
+		header("Location: login_form.php");
 	}
 
 	?>
