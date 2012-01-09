@@ -68,6 +68,26 @@ document.getElementById("feedback").innerHTML="wrong";
 <body>
 
 <h1 id="header1" >Count to 10</h1>
+
+ </tr>
+
+   <!-- Retrieve records from database -->
+   <?php
+
+   $db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
+   $query = "select *";
+   $query .= " from users;";
+   $dbResult = pg_query($query);
+
+   if (!$dbResult) {
+     die("Database error...");
+   }
+
+   $num = pg_num_rows($dbResult);
+$username      = pg_Result ($dbResult, $i, 'username');
+echo $username;
+?>
+
 <p id="counter">0</p>
 
 <button type="button" id="button1" onclick="submitAnswer(1)">1</button>
