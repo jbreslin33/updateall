@@ -14,9 +14,13 @@
    	$query .= " from users ";
 	$query .= "where username = '";
 	$query .= $_POST["username"];
-	//$query .= "v2000";	
-$query .= "';"; 
-   	$dbResult = pg_query($query);
+	$query .= "' "; 
+   	$query .= "and ";
+	$query .= "password = '";		
+	$query .= $_POST["password"];
+	$query .= "';";      	
+
+	$dbResult = pg_query($query);
 
    	if (!$dbResult)
  	{
