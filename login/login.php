@@ -38,7 +38,7 @@
 	{
 		session_start();
 	  	$_SESSION["Login"] = "YES";
-          	header("Location: ../countTo10.php");
+          	header("Location: ../math/counting/count.php");
 	}
 	else
 	{
