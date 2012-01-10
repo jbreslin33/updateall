@@ -10,6 +10,8 @@
 
 	//user id
 	$id = 0;
+	$game_id = 0;
+	$game_url = "";
 
 	//db connection
  	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
@@ -26,25 +28,57 @@
 	$query .= "';";      	
 
 	//get db restult
-	$dbResult = pg_query($query);
+	$dbResult_user = pg_query($query);
 
 	//check for db error
-   	if (!$dbResult)
+   	if (!$dbResult_user)
  	{
      		die("Database error...");
    	}
 
 	//get numer of rows
-   	$num = pg_num_rows($dbResult);
+   	$num = pg_num_rows($dbResult_user);
 
 	//get user id and store it in session var
 	
 	$i = 0;
 	while ($i < $num)
 	{	
-		$id = pg_Result ($dbResult, $i, 'id');
+		$game_id = pg_Result ($dbResult_user, $i, 'math_game_id');
 		$i++;
 	}
+
+
+	//game stuff
+
+	//query string 	
+ 	$query = "select *";
+   	$query .= " from math_games ";
+	$query .= "where id = '";
+	$query .= $game_id;
+	$query .= "';"; 
+
+	//get db restult
+	$dbResult_game = pg_query($query);
+
+	//check for db error
+   	if (!$dbResult_game)
+ 	{
+     		die("Database error...");
+   	}
+
+	//get numer of rows
+   	$num = pg_num_rows($dbResult_game);
+
+	//get user id and store it in session var
+	
+	$i = 0;
+	while ($i < $num)
+	{	
+		$game_url = pg_Result ($dbResult_game, $i, 'url');
+		$i++;
+	}
+
 
 	// if there is a row then the username and password pair exists
 	if ($num > 0)
@@ -60,7 +94,8 @@
 		
 		//send to game 1 for now but i need to interject here and send
 		//user to his game_id		
-		header("Location: ../math/counting/count.php");
+		//header("Location: ../math/counting/count.php");
+		header("Location: $game_url");
 	}
 	else
 	{
