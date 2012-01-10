@@ -43,14 +43,14 @@
 	if ($num > 0)
 	{
 		//game stuff
-		$game_id = pg_Result ($dbResult_user, 0, 'math_game_id');
+		$math_game_level = pg_Result ($dbResult_user, 0, 'math_game_level');
 
 		//query string 	
- 		$query = "select *";
-   		$query .= " from math_games ";
-		$query .= "where id = '";
-		$query .= $game_id;
-		$query .= "';"; 
+ 		$query = "select url ";
+   		$query .= "from math_games ";
+		$query .= "where level > ";
+		$query .= $math_game_level;
+		$query .= " ORDER BY level;"; 
 
 		//get db restult
 		$dbResult_game = pg_query($query);
@@ -73,9 +73,7 @@
 		//set user id to be used later			
 		$_SESSION["id"] = $id;  	
 		
-		//send to game 1 for now but i need to interject here and send
-		//user to his game_id		
-		//header("Location: ../math/counting/count.php");
+		//send user to his game_url		
 		header("Location: $game_url");
 	}
 	else
