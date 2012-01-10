@@ -67,10 +67,17 @@
           
 		//set user id to be used later			
 		$_SESSION["id"] = $id;  	
-		
+	
+		//set math_game_level
+		$_SESSION["math_game_level"] = $math_game_level; 
+
+		//set math url
+		$_SESSION["url"] = $url;
+	
 		//send user to his game_url		
 		header("Location: $game_url");
-	}
+
+		}
 	else
 	{
 	  	//start new session	
