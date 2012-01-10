@@ -11,7 +11,29 @@
 
 <?php
 
+       	//db connection
+        $db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
 
+	//query string - get the row for the game to be played on this page
+        $query = "select * ";
+        $query .= "from math_games ";
+        $query .= "where level = ";
+        $query .= $_SESSION["math_game_level"];
+        $query .= ";";
+
+	//get db restult
+        $dbResult = pg_query($query);
+
+        //check for db error
+        if (!$dbResult)
+        {
+                die("Database error...");
+        }
+
+	//get user id and store it in session var
+        $name = pg_Result ($dbResult, 0, 'name');
+        $start_number = pg_Result ($dbResult, 0, 'start_number');
+        $end_number = pg_Result ($dbResult, 0, 'end_number');
 ?>
 
 
@@ -77,10 +99,11 @@ function checkAnswer()
 
 </head>
 <body>
-
-<h1 id="header1" >Count to 10</h1>
-
- </tr>
+<h1 = id="header1"> 
+<?php
+echo "$name"; 
+?>
+ </h1>
 
 <p id="counter">0</p>
 
