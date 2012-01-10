@@ -41,7 +41,11 @@
 <head>
 <script type="text/javascript">
 
-var count = 0;
+<?php
+echo "var count = $start_number; "; 
+echo "var endNumber = $end_number; ";
+?>
+
 var correctAnswer = 1;
 var answer = 0;
 
@@ -82,6 +86,11 @@ function checkAnswer()
      		document.getElementById("button2").innerHTML=offset + 1;
      		document.getElementById("button3").innerHTML=offset + 2;
      		document.getElementById("button4").innerHTML=offset + 3;
+
+		if (count == endNumber)
+		{
+     			document.getElementById("feedback").innerHTML="YOU WIN!!!";
+		}
   	}
   	else
   	{
