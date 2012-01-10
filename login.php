@@ -77,7 +77,7 @@
 		pg_close();
 		
 		//send user to his game_url		
-		header("Location: $game_url");
+		header("Location: game.php");
 
 	}
 	else
