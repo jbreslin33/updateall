@@ -74,10 +74,12 @@
 		//set math url
 		$_SESSION["url"] = $url;
 	
+		pg_close();
+		
 		//send user to his game_url		
 		header("Location: $game_url");
 
-		}
+	}
 	else
 	{
 	  	//start new session	
@@ -86,12 +88,13 @@
 		//set login cookie to no	
 		$_SESSION ["Login"] = "NO";
 		
+		pg_close();
+		
 		//send user to login as we don't care what level they are at until they login succesfully
 		header("Location: login_form.php");
 	}
 
 
-pg_close();
 	?>
 
 	</body>
