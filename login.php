@@ -8,11 +8,6 @@
 	
 	<?php
 
-	//user id
-	$id = 0;
-	$game_id = 0;
-	$game_url = "";
-
 	//db connection
  	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
 
