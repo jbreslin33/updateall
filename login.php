@@ -39,50 +39,31 @@
 	//get numer of rows
    	$num = pg_num_rows($dbResult_user);
 
-	//get user id and store it in session var
-	
-	$i = 0;
-	while ($i < $num)
-	{	
-		$game_id = pg_Result ($dbResult_user, $i, 'math_game_id');
-		$i++;
-	}
-
-
-	//game stuff
-
-	//query string 	
- 	$query = "select *";
-   	$query .= " from math_games ";
-	$query .= "where id = '";
-	$query .= $game_id;
-	$query .= "';"; 
-
-	//get db restult
-	$dbResult_game = pg_query($query);
-
-	//check for db error
-   	if (!$dbResult_game)
- 	{
-     		die("Database error...");
-   	}
-
-	//get numer of rows
-   	$num = pg_num_rows($dbResult_game);
-
-	//get user id and store it in session var
-	
-	$i = 0;
-	while ($i < $num)
-	{	
-		$game_url = pg_Result ($dbResult_game, $i, 'url');
-		$i++;
-	}
-
-
 	// if there is a row then the username and password pair exists
 	if ($num > 0)
 	{
+		//game stuff
+		$game_id = pg_Result ($dbResult_user, 0, 'math_game_id');
+
+		//query string 	
+ 		$query = "select *";
+   		$query .= " from math_games ";
+		$query .= "where id = '";
+		$query .= $game_id;
+		$query .= "';"; 
+
+		//get db restult
+		$dbResult_game = pg_query($query);
+
+		//check for db error
+   		if (!$dbResult_game)
+ 		{
+     			die("Database error...");
+   		}
+
+		//get user id and store it in session var
+		$game_url = pg_Result ($dbResult_game, 0, 'url');
+
 		//start new session	
 		session_start();
 		
@@ -109,6 +90,8 @@
 		header("Location: login_form.php");
 	}
 
+
+pg_close();
 	?>
 
 	</body>
