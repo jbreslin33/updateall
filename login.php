@@ -12,7 +12,7 @@
  	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
 
 	//query string 	
- 	$query = "select *";
+ 	$query = "select id";
    	$query .= " from users ";
 	$query .= "where username = '";
 	$query .= $_POST["username"];
@@ -23,79 +23,48 @@
 	$query .= "';";      	
 
 	//get db restult
-	$dbResult_user = pg_query($query);
+	$dbResult = pg_query($query);
 
 	//check for db error
-   	if (!$dbResult_user)
+   	if (!$dbResult)
  	{
      		die("Database error...");
    	}
 
 	//get numer of rows
-   	$num = pg_num_rows($dbResult_user);
-
+   	$num = pg_num_rows($dbResult);
+	
+	//close db connection as we have the only var we needed - the id
+	pg_close();
+	
+	//start new session	
+	session_start();
+	
 	// if there is a row then the username and password pair exists
 	if ($num > 0)
 	{
-		//game stuff
-		$math_game_level = pg_Result ($dbResult_user, 0, 'math_game_level');
-
-		//query string 	
- 		$query = "select url ";
-   		$query .= "from math_games ";
-		$query .= "where level > ";
-		$query .= $math_game_level;
-		$query .= " ORDER BY level;"; 
-
-		//get db restult
-		$dbResult_game = pg_query($query);
-
-		//check for db error
-   		if (!$dbResult_game)
- 		{
-     			die("Database error...");
-   		}
-
-		//get user id and store it in session var
-		$game_url = pg_Result ($dbResult_game, 0, 'url');
-
-		//start new session	
-		session_start();
+		//get the id from user table	
+		$id = pg_Result($dbResult, 0, 'id');
 		
 		//set login var to yes	
 	  	$_SESSION["Login"] = "YES";
           
 		//set user id to be used later			
 		$_SESSION["id"] = $id;  	
-	
-		//set math_game_level
-		$_SESSION["math_game_level"] = $math_game_level; 
 
-		//set math url
-		$_SESSION["url"] = $url;
-	
-		pg_close();
-		
 		//send user to his game_url		
 		header("Location: game.php");
-
 	}
 	else
 	{
-	  	//start new session	
-		session_start();
-	  	
 		//set login cookie to no	
 		$_SESSION ["Login"] = "NO";
 		
-		pg_close();
-		
-		//send user to login as we don't care what level they are at until they login succesfully
+		//send user back to login form
 		header("Location: login_form.php");
 	}
 
-
-	?>
+?>
 
 	</body>
 	</html>
