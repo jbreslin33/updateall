@@ -11,7 +11,7 @@ if ($_SESSION["Login"] != "YES")
 	header("Location: login_form.php");
 }
 //db connection
-$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
+$conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") or die('Could not connect: ' . pg_last_error());
 
 $id = $_SESSION["id"];
 
@@ -26,19 +26,20 @@ $query .= ";";
 echo "<h1> Query: $query </h1>";
 
 //get db restult
-$dbResult = pg_query($query);
-
-
-//check for db error
-if (!$dbResult)
-{
-       die("Database error math_game_level...");
-}
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //get numer of rows
-$num = pg_num_rows($dbResult);
+$num = pg_num_rows($result);
 
-//echo "<h1>  Number of Rows: $num </h1>";
+echo "<h1>  Number of Rows: $num </h1>";
+
+// if there is a row then id exists it better be unique!
+if ($num > 0)
+{
+	//$math_game_level = pg_result_seek($result, 0);
+	$row = pg_fetch_row($result);	
+	echo "<h1> math_game_level: $row[0] </h1>";
+}
 
 ?>
 
