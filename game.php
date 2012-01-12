@@ -1,3 +1,7 @@
+
+<html>
+<body>
+
 <?php
 session_start();
 
@@ -6,21 +10,21 @@ if ($_SESSION["Login"] != "YES")
 {
 	header("Location: login_form.php");
 }
-$theid = $_SESSION["id"];
 
+$id = $_SESSION["id"];
+
+//query string
+$query = "select math_game_level ";
+$query .= "from users ";
+$query .= "where id = ";
+$query .= $id;
+
+$query .= ";";
+
+echo "<h1> Query: $query </h1>";
 ?>
 
-<html>
-<body>
 
-<?php include("math_game_level.php"); ?>
 
-<?php include("math_game_url.php"); ?>
-
-//send user to his game url
-header("Location: $url");
-
-</html>
 </body>
-
-?>
+</html>

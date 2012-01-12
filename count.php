@@ -1,4 +1,6 @@
 <?php
+	start_session();
+
         // If the user is not logged in send him/her to the login form
         if ($_SESSION["Login"] != "YES")
 	{
