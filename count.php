@@ -128,19 +128,21 @@ function checkAnswer()
 </script>
 
 <h1 = id="header1">
+<?php
+echo "$name";
+?>
  </h1>
 
 <p id="counter">0</p>
 
+<!-- Create Buttons (could this be done in db?) -->
 <button type="button" id="button1" onclick="submitAnswer(1)">1</button>
-
 <button type="button" id="button2" onclick="submitAnswer(2)">2</button>
 <button type="button" id="button3" onclick="submitAnswer(3)">3</button>
 <button type="button" id="button4" onclick="submitAnswer(4)">4</button>
+
+<!-- Feedback -->
 <p id="feedback"></p>
-
-
-
 
 </body>
 </html> 
