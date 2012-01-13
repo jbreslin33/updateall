@@ -32,17 +32,16 @@ $num = pg_num_rows($result);
 
 echo "<h1>  Number of Rows: $num </h1>";
 
-$math_game_level = 0;
-
 // if there is a row then id exists it better be unique!
 if ($num > 0)
 {
 	$row = pg_fetch_row($result);
-	$math_game_level = $row[0];	
-	$_SESSION["math_game_level"] = $math_game_level;
+	$_SESSION["math_game_level"] = $row[0];	
 }
 
-echo "<h1> math_game_level: $math_game_level </h1>";
+echo "<h1> math_game_level:";
+echo $_SESSION["math_game_level"];
+echo "</h1>";
 
 //--------------------------url----------------------
 echo "<h1> URL Section </h1>";
@@ -51,7 +50,7 @@ echo "<h1> URL Section </h1>";
 $query = "select url ";
 $query .= "from math_games ";
 $query .= "where level = ";
-$query .= $math_game_level;
+$query .= $_SESSION["math_game_level"];
 $query .= ";";
 
 //get db restult for url
@@ -73,7 +72,7 @@ if ($num > 0)
 
 echo "<h1> url: $url </h1>";
 
-header("Location: $url");
+//header("Location: $url");
 ?>
 
 
