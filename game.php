@@ -42,6 +42,7 @@ if ($num > 0)
 {
 	$row = pg_fetch_row($result);
 	$math_game_level = $row[0];	
+	$_SESSION["math_game_level"] = $math_game_level;
 }
 
 echo "<h1> math_game_level: $math_game_level </h1>";
