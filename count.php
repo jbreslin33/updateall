@@ -5,12 +5,9 @@
 
 <?php
 
+//grab session variable math_game_level that was stored when we queried users table in login.php
 $math_game_level = $_SESSION["math_game_level"];
 
-//db connection
-$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
-
-//get game parameters...
 //db connection
 $conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") 
 or die('Could not connect: ' . pg_last_error());
