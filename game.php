@@ -69,6 +69,7 @@ if ($num > 0)
 	echo $_SESSION["url"];
 	echo "</h1>";
 
+	//header("Location: $_SESSION[\"url\"]");
 	header("Location: $row[0]");
 }
 
