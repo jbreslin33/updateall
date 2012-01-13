@@ -13,16 +13,13 @@ if ($_SESSION["Login"] != "YES")
 //db connection
 $conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") or die('Could not connect: ' . pg_last_error());
 
-$id = $_SESSION["id"];
-
 //------math game level-----------------------------------------------
 
 //query string
 $query = "select math_game_level ";
 $query .= "from users ";
 $query .= "where id = ";
-$query .= $id;
-
+$query .= $_SESSION["id"];
 $query .= ";";
 
 echo "<h1> Query: $query </h1>";
