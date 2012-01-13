@@ -2,14 +2,10 @@
 <html>
 <body>
 
-<?php
-session_start();
+<?php include("check_login.php"); ?>
 
-// If the user is not logged in send him/her to the login form
-if ($_SESSION["Login"] != "YES")
-{
-	header("Location: login_form.php");
-}
+<?php
+
 //db connection
 $conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") or die('Could not connect: ' . pg_last_error());
 
