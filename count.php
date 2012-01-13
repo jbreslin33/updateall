@@ -40,6 +40,22 @@ $num = pg_num_rows($result);
 
 echo "<h1>  Number of Rows: $num </h1>";
 
+$name = "";
+$start_number = 0;
+$end_number = 0; 
+
+// if there is a row then id exists it better be unique!
+if ($num > 0)
+{
+        $row = pg_fetch_row($result);
+        $name = $row[0];
+	$start_number = $row[1];
+	$end_number = $row[2];
+}
+
+echo "<h1> name: $name </h1>";
+echo "<h1> start_number: $start_number </h1>";
+echo "<h1> end_number: $end_number </h1>"; 
 
 //get user id and store it in session var
 //$name = pg_Result ($dbResult, 0, 'name');
