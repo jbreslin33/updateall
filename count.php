@@ -57,10 +57,7 @@ echo "<h1> name: $name </h1>";
 echo "<h1> start_number: $start_number </h1>";
 echo "<h1> end_number: $end_number </h1>"; 
 
-//get user id and store it in session var
-//$name = pg_Result ($dbResult, 0, 'name');
-//$start_number = pg_Result ($dbResult, 0, 'start_number');
-//$end_number = pg_Result ($dbResult, 0, 'end_number');
+
 
 
 ?>
