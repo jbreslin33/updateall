@@ -94,7 +94,7 @@ function checkAnswer()
                 var offset = Math.floor(Math.random() *2);
                 offset = count - offset;
 
-                document.getElementById("counter").innerHTML=count;
+                document.getElementById("question").innerHTML=count;
                 document.getElementById("button1").innerHTML=offset;
                 document.getElementById("button2").innerHTML=offset + 1;
                 document.getElementById("button3").innerHTML=offset + 2;
@@ -110,7 +110,7 @@ function checkAnswer()
                 document.getElementById("feedback").innerHTML="wrong";
                 count = 0;
                 correctAnswer = 1;
-                document.getElementById("counter").innerHTML=count;
+                document.getElementById("question").innerHTML=count;
                 document.getElementById("button1").innerHTML=count;
                 document.getElementById("button2").innerHTML=count + 1;
                 document.getElementById("button3").innerHTML=count + 2;
@@ -120,13 +120,15 @@ function checkAnswer()
 
 </script>
 
-<h1 = id="header1">
+<!-- Game Name -->
+<h1 = id="game_name">
 <?php
 echo "$name";
 ?>
- </h1>
+</h1>
 
-<p id="counter">0</p>
+<!-- question --> 
+<p id="question">0</p>
 
 <!-- Create Buttons (could this be done in db?) -->
 <button type="button" id="button1" onclick="submitAnswer(1)">1</button>
