@@ -74,6 +74,8 @@ if ($num > 0)
 }
 
 echo "<h1> url: $url </h1>";
+
+header("Location: $url");
 ?>
 
 
