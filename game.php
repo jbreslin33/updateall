@@ -58,21 +58,20 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //get numer of rows 
 $num = pg_num_rows($result);
-
 echo "<h1>  Number of Rows: $num </h1>";
-
-$url = "";
 
 // if there is a row then id exists it better be unique!
 if ($num > 0)
 {
 	$row = pg_fetch_row($result);
-	$url = $row[0];
+	$_SESSION["url"] = $row[0];
+	echo "<h1> url: ";
+	echo $_SESSION["url"];
+	echo "</h1>";
+
+	header("Location: $url");
 }
 
-echo "<h1> url: $url </h1>";
-
-//header("Location: $url");
 ?>
 
 
