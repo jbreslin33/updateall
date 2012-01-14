@@ -85,11 +85,12 @@ function checkAnswer()
 
                 document.getElementById("question").innerHTML=count;
 		
-		setButton(offset);
+		setButtons(offset);
                 	
 		if (count == endNumber)
                 {
                         document.getElementById("feedback").innerHTML="YOU WIN!!!";
+			window.location = "http://www.google.com/"					
                 }
         }
         else
