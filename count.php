@@ -84,12 +84,10 @@ function checkAnswer()
                 offset = count - offset;
 
                 document.getElementById("question").innerHTML=count;
-                document.getElementById("button1").innerHTML=offset;
-                document.getElementById("button2").innerHTML=offset + 1;
-                document.getElementById("button3").innerHTML=offset + 2;
-                document.getElementById("button4").innerHTML=offset + 3;
-
-                if (count == endNumber)
+		
+		setButton(offset);
+                	
+		if (count == endNumber)
                 {
                         document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 }
@@ -100,11 +98,17 @@ function checkAnswer()
                 count = 0;
                 correctAnswer = 1;
                 document.getElementById("question").innerHTML=count;
-                document.getElementById("button1").innerHTML=count;
-                document.getElementById("button2").innerHTML=count + 1;
-                document.getElementById("button3").innerHTML=count + 2;
-                document.getElementById("button4").innerHTML=count + 3;
+       
+		setButtons(count);         
         }
+}
+
+function setButtons(offset)
+{
+	document.getElementById("button1").innerHTML=offset;
+        document.getElementById("button2").innerHTML=offset + 1;
+	document.getElementById("button3").innerHTML=offset + 2;
+        document.getElementById("button4").innerHTML=offset + 3;
 }
 
 </script>
