@@ -1,71 +1,32 @@
-<html>
+<?php include("check_login.php"); ?>
 
-	<head>
-	<title>Login</title>
+<?php
 
-	</head>
-	<body>
-	
-	<?php
+//db connection
+$conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") or die('Could not connect: ' . pg_last_error());
 
-	//db connection
- 	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
+//------math game level-----------------------------------------------
 
-	//query string 	
- 	$query = "select id";
-   	$query .= " from users ";
-	$query .= "where username = '";
-	$query .= $_POST["username"];
-	$query .= "' "; 
-   	$query .= "and ";
-	$query .= "password = '";		
-	$query .= $_POST["password"];
-	$query .= "';";      	
+$math_game_level = $_SESSION["math_game_level"];
+$math_game_level = $math_game_level + 100;
 
-	//get db restult
-	$dbResult = pg_query($query);
+//query string
+//$query = "select math_game_level ";
+//$query .= "from users ";
+//$query .= "where id = ";
+//$query .= $_SESSION["id"];
+//$query .= ";";
+//update users set math_game_level = 200 where id = 3;
+$query = "update users set math_game_level = ";
+$query .= $math_game_level;
+$query .= " where id = ";
+$query .= $_SESSION["id"];
+$query .= ";"; 
 
-	//check for db error
-   	if (!$dbResult)
- 	{
-     		die("Database error...");
-   	}
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-	//get numer of rows
-   	$num = pg_num_rows($dbResult);
-	
-	//close db connection as we have the only var we needed - the id
-	pg_close();
-	
-	//start new session	
-	session_start();
-	
-	// if there is a row then the username and password pair exists
-	if ($num > 0)
-	{
-		//get the id from user table	
-		$id = pg_Result($dbResult, 0, 'id');
-		
-		//set login var to yes	
-	  	$_SESSION["Login"] = "YES";
-          
-		//set user id to be used later			
-		$_SESSION["id"] = $id;  	
-
-		//send user to his game_url		
-		header("Location: game.php");
-	}
-	else
-	{
-		//set login cookie to no	
-		$_SESSION ["Login"] = "NO";
-		
-		//send user back to login form
-		header("Location: login_form.php");
-	}
+header("Location: game.php");
 
 ?>
-
-	</body>
-	</html>
 

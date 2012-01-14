@@ -93,7 +93,7 @@ function checkAnswer()
 			
 			
 
-			window.location = "http://www.google.com/"					
+			window.location = "goto_next_math_level.php"					
 
 
                 }
