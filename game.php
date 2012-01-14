@@ -40,9 +40,7 @@ echo "</h1>";
 echo "<h1> URL Section </h1>";
 //sql query 
 //query string
-$query = "select url ";
-$query .= "from math_games ";
-$query .= "where level = ";
+$query = "select url from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
