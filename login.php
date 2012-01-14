@@ -5,9 +5,7 @@
 	$conn = dbConnect();
 	
 	//query string 	
- 	$query = "select id";
-   	$query .= " from users ";
-	$query .= "where username = '";
+ 	$query = "select id from users where username = '";
 	$query .= $_POST["username"];
 	$query .= "' "; 
    	$query .= "and ";
