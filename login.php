@@ -5,12 +5,15 @@
 
 	</head>
 	<body>
-	
-	<?php
+
+
+<?php include("db_connect.php"); ?>
+
+<?php
 
 	//db connection
- 	$db = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat");
-
+	$conn = dbConnect();
+	
 	//query string 	
  	$query = "select id";
    	$query .= " from users ";
