@@ -27,12 +27,6 @@
 	//get db result
 	$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-	//check for db error
-   	if (!$result)
- 	{
-     		die("Database error...");
-   	}
-
 	//get numer of rows
    	$num = pg_num_rows($result);
 	
