@@ -90,7 +90,12 @@ function checkAnswer()
 		if (count == endNumber)
                 {
                         document.getElementById("feedback").innerHTML="YOU WIN!!!";
+			
+			
+
 			window.location = "http://www.google.com/"					
+
+
                 }
         }
         else
