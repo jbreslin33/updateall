@@ -1,15 +1,6 @@
-<html>
-
-	<head>
-	<title>Login</title>
-
-	</head>
-	<body>
-
 <?php include("db_connect.php"); ?>
 
 <?php
-
 	//db connection
 	$conn = dbConnect();
 	
@@ -60,6 +51,4 @@
 		header("Location: login_form.php");
 	}
 ?>
-	</body>
-	</html>
 
