@@ -45,11 +45,12 @@ echo "<script type=\"text/javascript\">";
 echo "var count = $start_number; ";
 echo "var endNumber = $end_number; ";
 
+$correctAnswer = $start_number + 1;
+echo "var correctAnswer = $correctAnswer;"
+
 ?>
 
-var correctAnswer = 1;
 var answer = 0;
-
 
 function submitAnswer(a)
 {
@@ -101,9 +102,14 @@ function checkAnswer()
         else
         {
                 document.getElementById("feedback").innerHTML="wrong";
-                count = 0;
-                correctAnswer = 1;
-                document.getElementById("question").innerHTML=count;
+		<?php 
+		echo "count = $start_number;";                
+                
+		$correctAnswer = $start_number + 1;
+		echo "correctAnswer = $correctAnswer;";
+		?>	
+                
+		document.getElementById("question").innerHTML=count;
        
 		setButtons(count);         
         }
@@ -127,13 +133,21 @@ echo "$name";
 </h1>
 
 <!-- question --> 
-<p id="question">0</p>
+
+<p id="question"> <?php echo "$start_number"; ?>  </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-<button type="button" id="button1" onclick="submitAnswer(1)">1</button>
-<button type="button" id="button2" onclick="submitAnswer(2)">2</button>
-<button type="button" id="button3" onclick="submitAnswer(3)">3</button>
-<button type="button" id="button4" onclick="submitAnswer(4)">4</button>
+<?php
+$b1 = $start_number + 1;
+$b2 = $start_number + 2;
+$b3 = $start_number + 3;
+$b4 = $start_number + 4;
+?>
+
+<button type="button" id="button1" onclick="submitAnswer(1)"> <?php echo "$b1"; ?> </button>
+<button type="button" id="button2" onclick="submitAnswer(2)"> <?php echo "$b2"; ?> </button>
+<button type="button" id="button3" onclick="submitAnswer(3)"> <?php echo "$b3"; ?> </button>
+<button type="button" id="button4" onclick="submitAnswer(4)"> <?php echo "$b4"; ?> </button>
 
 <!-- Feedback -->
 <p id="feedback"></p>
