@@ -1,4 +1,3 @@
-
 <html>
 <body>
 
@@ -12,9 +11,7 @@ $conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibes
 //------math game level-----------------------------------------------
 
 //query string
-$query = "select math_game_level ";
-$query .= "from users ";
-$query .= "where id = ";
+$query = "select math_game_level from users where id = ";
 $query .= $_SESSION["id"];
 $query .= ";";
 
