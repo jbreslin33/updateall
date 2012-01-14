@@ -6,7 +6,6 @@
 	</head>
 	<body>
 
-
 <?php include("db_connect.php"); ?>
 
 <?php
@@ -25,17 +24,17 @@
 	$query .= $_POST["password"];
 	$query .= "';";      	
 
-	//get db restult
-	$dbResult = pg_query($query);
+	//get db result
+	$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 	//check for db error
-   	if (!$dbResult)
+   	if (!$result)
  	{
      		die("Database error...");
    	}
 
 	//get numer of rows
-   	$num = pg_num_rows($dbResult);
+   	$num = pg_num_rows($result);
 	
 	//close db connection as we have the only var we needed - the id
 	pg_close();
@@ -47,7 +46,7 @@
 	if ($num > 0)
 	{
 		//get the id from user table	
-		$id = pg_Result($dbResult, 0, 'id');
+		$id = pg_Result($result, 0, 'id');
 		
 		//set login var to yes	
 	  	$_SESSION["Login"] = "YES";
@@ -66,9 +65,7 @@
 		//send user back to login form
 		header("Location: login_form.php");
 	}
-
 ?>
-
 	</body>
 	</html>
 

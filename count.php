@@ -10,10 +10,7 @@
 $math_game_level = $_SESSION["math_game_level"];
 
 //db connection
-//$conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") 
-//or die('Could not connect: ' . pg_last_error());
 $conn = dbConnect();
-
 
 //query
 $query = "select name, start_number, end_number ";
