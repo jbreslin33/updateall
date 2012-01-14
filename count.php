@@ -41,6 +41,8 @@ if ($num > 0)
 
 echo "<script type=\"text/javascript\">";
 
+
+
 //set javascript vars from db result set
 echo "var count = $start_number; ";
 echo "var endNumber = $end_number; ";
@@ -51,7 +53,7 @@ echo "var correctAnswer = $correctAnswer;"
 ?>
 
 var answer = 0;
-
+var question_string = count;
 function submitAnswer(a)
 {
         if (a == 1)
@@ -83,20 +85,17 @@ function checkAnswer()
                 correctAnswer++;
                 var offset = Math.floor(Math.random() *2);
                 offset = count - offset;
-
-                document.getElementById("question").innerHTML=count;
+		
+		question_string = question_string + ' ' + count;
+	
+		document.getElementById("question").innerHTML=question_string;
 		
 		setButtons(offset);
                 	
 		if (count == endNumber)
                 {
                         document.getElementById("feedback").innerHTML="YOU WIN!!!";
-			
-			
-
 			window.location = "goto_next_math_level.php"					
-
-
                 }
         }
         else
@@ -110,6 +109,7 @@ function checkAnswer()
 		?>	
                 
 		document.getElementById("question").innerHTML=count;
+		question_string = count;	
        
 		setButtons(count);         
         }
