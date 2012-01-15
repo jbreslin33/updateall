@@ -82,14 +82,8 @@ function checkAnswer()
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
-		<?php 
-		echo "count = $start_number;";                
-                
-		$correctAnswer = $start_number + 1;
-		echo "correctAnswer = $correctAnswer;";
-		?>	
-                
-		question_string = count;	
+
+		resetVariables();	
 		document.getElementById("question").innerHTML=count;
        
 		setButtons(count);         
@@ -98,8 +92,14 @@ function checkAnswer()
 
 function resetVariables()
 {
-	
+	<?php 
+	echo "count = $start_number;";                
+	$correctAnswer = $start_number + 1;
+	echo "correctAnswer = $correctAnswer;";
+	?>	
+	question_string = count;	
 }
+
 <!-- set buttons inner html -->
 function setButtons(offset)
 {
@@ -125,6 +125,9 @@ function setButtons(offset)
 
 <!-- call setButtons to initialize their innerhtml --> 
 <script type="text/javascript"> setButtons(count); </script>
+
+<!-- initialize variables for start of new game or reset
+<script type="text/javascript"> resetVariables(); </script>
 
 <!-- create feedback -->
 <p id="feedback"></p>
