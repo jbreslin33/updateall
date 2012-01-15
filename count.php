@@ -59,10 +59,8 @@ function checkGuess()
         {
                 document.getElementById("feedback").innerHTML="Correct!";
 		
-		count++;              	
+		count++;  //add to count            	
   
-		newAnswer();		
-		newQuestion();
         	checkForEndOfGame();        	
         }
         else
@@ -70,9 +68,9 @@ function checkGuess()
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
 		resetVariables();	
-		newAnswer();
-		newQuestion();
         }
+	newAnswer(); 		
+	newQuestion();
 }
 
 function checkForEndOfGame()
