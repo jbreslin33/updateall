@@ -64,6 +64,7 @@ function checkAnswer()
                 document.getElementById("feedback").innerHTML="Correct!";
                 count++;
                 correctAnswer++;
+
                 var offset = Math.floor(Math.random() *2);
                 offset = count - offset;
 		
