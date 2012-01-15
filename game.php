@@ -2,11 +2,12 @@
 <body>
 
 <?php include("check_login.php"); ?>
+<?php include("db_connect.php"); ?>
 
 <?php
 
 //db connection
-$conn = pg_connect("host=localhost dbname=abcandyou user=postgres password=mibesfat") or die('Could not connect: ' . pg_last_error());
+$conn = dbConnect();
 
 //------math game level-----------------------------------------------
 
