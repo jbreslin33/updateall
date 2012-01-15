@@ -45,7 +45,7 @@ if ($num > 0)
 var question = ""; //use to ask actuall question
 var guess = 0; // the users guess to question
 var count = 0; //this aids in asking the next question
-var answer = 0;
+var answer = 0; //this is the correct answer to use for comparison to guess
 
 function submitGuess(button_id)
 {
@@ -58,7 +58,9 @@ function checkGuess()
         if (guess == answer)
         {
                 document.getElementById("feedback").innerHTML="Correct!";
-                
+		
+		count++;              	
+  
 		newAnswer();		
 		newQuestion();
         	checkForEndOfGame();        	
@@ -68,7 +70,6 @@ function checkGuess()
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
 		resetVariables();	
-
 		newAnswer();
 		newQuestion();
         }
@@ -85,17 +86,19 @@ function checkForEndOfGame()
 
 function newQuestion()
 {
-	count++;
+	//set buttons	
 	var offset = Math.floor(Math.random() *2);
         offset = count - offset;
+	setButtons(offset);
+
+	//set question	
 	question = question + ' ' + count;
 	document.getElementById("question").innerHTML=question;
-	setButtons(offset);
 }
 
 function newAnswer()
 {
-	answer++;
+	answer = count + 1;
 }
 
 function resetVariables()
@@ -105,7 +108,7 @@ function resetVariables()
 	echo "count = $startNumber;";	
 	?>	
 	guess = 0;		
-	answer = count + 1;	
+	answer = 0;	
 }
 
 <!-- set buttons inner html -->
