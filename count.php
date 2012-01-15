@@ -60,12 +60,7 @@ function checkGuess()
                 
 		newQuestion();
 		newAnswer();		
-                	
-		if (question == <?php echo "$endNumber"; ?> )
-                {
-                        document.getElementById("feedback").innerHTML="YOU WIN!!!";
-			window.location = "goto_next_math_level.php"					
-                }
+        	checkForEndOfGame();        	
         }
         else
         {
@@ -75,6 +70,15 @@ function checkGuess()
 		document.getElementById("question").innerHTML=question;
        
 		setButtons(question);         
+        }
+}
+
+function checkForEndOfGame()
+{
+	if (question == <?php echo "$endNumber"; ?> )
+        {
+        	document.getElementById("feedback").innerHTML="YOU WIN!!!";
+		window.location = "goto_next_math_level.php"					
         }
 }
 
