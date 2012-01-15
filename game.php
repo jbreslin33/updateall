@@ -1,6 +1,3 @@
-<html>
-<body>
-
 <?php include("check_login.php"); ?>
 <?php include("db_connect.php"); ?>
 
@@ -30,6 +27,7 @@ if ($num > 0)
 }
 
 //--------------------------url----------------------
+
 //query string
 $query = "select url from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
@@ -52,8 +50,3 @@ if ($num > 0)
 }
 
 ?>
-
-
-
-</body>
-</html>
