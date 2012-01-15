@@ -28,8 +28,11 @@ $num = pg_num_rows($result);
 // if there is a row then id exists it better be unique!
 if ($num > 0)
 {
+	//get row
         $row = pg_fetch_row($result);
-        $name = $row[0];
+       	
+	//fill php vars from db 
+	$name = $row[0];
 	$start_number = $row[1];
 	$end_number = $row[2];
 }
@@ -47,6 +50,7 @@ echo "var correctAnswer = $correctAnswer;"
 
 var answer = 0;
 var question_string = count;
+
 function submitAnswer(a)
 {
         if (a == 1)
