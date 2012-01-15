@@ -89,13 +89,17 @@ function checkAnswer()
 		echo "correctAnswer = $correctAnswer;";
 		?>	
                 
-		document.getElementById("question").innerHTML=count;
 		question_string = count;	
+		document.getElementById("question").innerHTML=count;
        
 		setButtons(count);         
         }
 }
 
+function resetVariables()
+{
+	
+}
 <!-- set buttons inner html -->
 function setButtons(offset)
 {
