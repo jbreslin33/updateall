@@ -6,16 +6,11 @@
 
 <?php
 
-//grab session variable math_game_level that was stored when we queried users table in login.php
-$math_game_level = $_SESSION["math_game_level"];
-
 //db connection
 $conn = dbConnect();
 
 //query
-$query = "select name, start_number, end_number ";
-$query .= "from math_games ";
-$query .= "where level = ";
+$query = "select name, start_number, end_number from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -40,8 +35,6 @@ if ($num > 0)
 }
 
 echo "<script type=\"text/javascript\">";
-
-
 
 //set javascript vars from db result set
 echo "var count = $start_number; ";

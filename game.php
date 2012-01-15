@@ -29,6 +29,7 @@ else
 {
 	header("Location: login_form.php");
 }
+
 //--------------------------url----------------------
 
 //query string
