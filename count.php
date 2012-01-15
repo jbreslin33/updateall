@@ -76,7 +76,7 @@ function checkGuess()
 
 function checkForEndOfGame()
 {
-	if (question == <?php echo "$endNumber"; ?> )
+	if (count == <?php echo "$endNumber"; ?> )
         {
         	document.getElementById("feedback").innerHTML="YOU WIN!!!";
 		window.location = "goto_next_math_level.php"					
