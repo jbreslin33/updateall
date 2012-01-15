@@ -61,7 +61,7 @@ function checkAnswer()
 {
         if (answer == correctAnswer)
         {
-                document.getElementById("feedback").innerHTML="correct";
+                document.getElementById("feedback").innerHTML="Correct!";
                 count++;
                 correctAnswer++;
                 var offset = Math.floor(Math.random() *2);
@@ -81,7 +81,7 @@ function checkAnswer()
         }
         else
         {
-                document.getElementById("feedback").innerHTML="wrong";
+                document.getElementById("feedback").innerHTML="Wrong! Try again.";
 		<?php 
 		echo "count = $start_number;";                
                 
