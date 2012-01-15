@@ -96,6 +96,7 @@ function checkAnswer()
         }
 }
 
+<!-- set buttons inner html -->
 function setButtons(offset)
 {
 	document.getElementById("button1").innerHTML=offset;
@@ -106,14 +107,10 @@ function setButtons(offset)
 
 </script>
 
-<!-- Game Name -->
-<h1 = id="game_name">
-<?php
-echo "$name";
-?>
-</h1>
+<!-- creat and set game name -->
+<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
-<!-- question --> 
+<!-- create and set question --> 
 <p id="question"> <?php echo "$start_number"; ?>  </p>
 
 <!-- Create Buttons (could this be done in db?) -->
@@ -122,11 +119,10 @@ echo "$name";
 <button type="button" id="button3" onclick="submitAnswer(this.id)"> </button>
 <button type="button" id="button4" onclick="submitAnswer(this.id)"> </button>
 
-<script type="text/javascript">
-setButtons(count);
-</script>
+<!-- call setButtons to initialize their innerhtml --> 
+<script type="text/javascript"> setButtons(count); </script>
 
-<!-- Feedback -->
+<!-- create feedback -->
 <p id="feedback"></p>
 
 </body>
