@@ -88,8 +88,6 @@ function checkAnswer()
 		?>	
                	
 		setQuestion(0); 
-		question_string = count;	
-       
 		setButtons(count);         
         }
 }
@@ -113,6 +111,7 @@ function setQuestion(b)
 	else (b == 0)
 	{
 		document.getElementById("question").innerHTML=count;
+		question_string = count;	
 	}
 }
 
