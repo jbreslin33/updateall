@@ -25,7 +25,10 @@ if ($num > 0)
 	$row = pg_fetch_row($result);
 	$_SESSION["math_game_level"] = $row[0];	
 }
-
+else
+{
+	header("Location: login_form.php");
+}
 //--------------------------url----------------------
 
 //query string
@@ -45,8 +48,11 @@ if ($num > 0)
 	$row = pg_fetch_row($result);
 	$_SESSION["url"] = $row[0];
 
-	//header("Location: $_SESSION[\"url\"]");
 	header("Location: $row[0]");
+}
+else
+{
+	header("Location: login_form.php");
 }
 
 ?>
