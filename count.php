@@ -51,25 +51,9 @@ echo "var correctAnswer = $correctAnswer;"
 var answer = 0;
 var question_string = count;
 
-function submitAnswer(a)
+function submitAnswer(button_id)
 {
-        if (a == 1)
-        {
-                answer = document.getElementById("button1").innerHTML;
-        }
-        else if (a == 2)
-        {
-                answer = document.getElementById("button2").innerHTML;
-        }
-
-        else if (a == 3)
-        {
-                answer = document.getElementById("button3").innerHTML;
-        }
-        else if (a == 4)
-        {
-                answer = document.getElementById("button4").innerHTML;
-        }
+        answer = document.getElementById(button_id).innerHTML;
         checkAnswer();
 }
 
@@ -141,10 +125,10 @@ $b3 = $start_number + 3;
 $b4 = $start_number + 4;
 ?>
 
-<button type="button" id="button1" onclick="submitAnswer(1)"> <?php echo "$b1"; ?> </button>
-<button type="button" id="button2" onclick="submitAnswer(2)"> <?php echo "$b2"; ?> </button>
-<button type="button" id="button3" onclick="submitAnswer(3)"> <?php echo "$b3"; ?> </button>
-<button type="button" id="button4" onclick="submitAnswer(4)"> <?php echo "$b4"; ?> </button>
+<button type="button" id="button1" onclick="submitAnswer(this.id)"> <?php echo "$b1"; ?> </button>
+<button type="button" id="button2" onclick="submitAnswer(this.id)"> <?php echo "$b2"; ?> </button>
+<button type="button" id="button3" onclick="submitAnswer(this.id)"> <?php echo "$b3"; ?> </button>
+<button type="button" id="button4" onclick="submitAnswer(this.id)"> <?php echo "$b4"; ?> </button>
 
 <!-- Feedback -->
 <p id="feedback"></p>
