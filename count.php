@@ -120,8 +120,8 @@ function setQuestion(b)
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
-<!-- create and set question --> 
-<p id="question"> <?php echo "$start_number"; ?>  </p>
+<!-- create question --> 
+<p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) -->
 <button type="button" id="button1" onclick="submitAnswer(this.id)"> </button>
