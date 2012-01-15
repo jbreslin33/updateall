@@ -69,8 +69,8 @@ function checkGuess()
 
 		resetVariables();	
         }
-	newAnswer(); 		
 	newQuestion();
+	newAnswer(); 		
 }
 
 function checkForEndOfGame()
@@ -136,11 +136,11 @@ function setButtons(offset)
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> resetVariables(); </script>
 
-<!-- newAnswer --> 
-<script type="text/javascript"> newAnswer(); </script>
-
 <!-- newQuestion --> 
 <script type="text/javascript"> newQuestion(); </script>
+
+<!-- newAnswer --> 
+<script type="text/javascript"> newAnswer(); </script>
 
 <!-- call setButtons to initialize their innerhtml --> 
 <script type="text/javascript"> setButtons( <?php echo "$startNumber"; ?> ); </script>
