@@ -57,17 +57,9 @@ function checkGuess()
         if (guess == answer)
         {
                 document.getElementById("feedback").innerHTML="Correct!";
-                question++;
-                answer++;
                 
-		var offset = Math.floor(Math.random() *2);
-                offset = question - offset;
-		
-		questionString = questionString + ' ' + question;
-	
-		document.getElementById("question").innerHTML=questionString;
-		
-		setButtons(offset);
+		newQuestion();
+		newAnswer();		
                 	
 		if (question == <?php echo "$endNumber"; ?> )
                 {
@@ -84,6 +76,21 @@ function checkGuess()
        
 		setButtons(question);         
         }
+}
+
+function newQuestion()
+{
+	question++;
+	var offset = Math.floor(Math.random() *2);
+        offset = question - offset;
+	questionString = questionString + ' ' + question;
+	document.getElementById("question").innerHTML=questionString;
+	setButtons(offset);
+}
+
+function newAnswer()
+{
+	answer++;
 }
 
 function resetVariables()
