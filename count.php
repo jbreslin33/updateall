@@ -107,7 +107,7 @@ function resetVariables()
 	?>	
 	answer = question + 1;	
 	guess = 0;		
-	questionString = question;	
+	questionString = "";	
 
 }
 
