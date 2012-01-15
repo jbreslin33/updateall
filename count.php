@@ -114,21 +114,17 @@ echo "$name";
 </h1>
 
 <!-- question --> 
-
 <p id="question"> <?php echo "$start_number"; ?>  </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-<?php
-$b1 = $start_number + 1;
-$b2 = $start_number + 2;
-$b3 = $start_number + 3;
-$b4 = $start_number + 4;
-?>
+<button type="button" id="button1" onclick="submitAnswer(this.id)"> </button>
+<button type="button" id="button2" onclick="submitAnswer(this.id)"> </button>
+<button type="button" id="button3" onclick="submitAnswer(this.id)"> </button>
+<button type="button" id="button4" onclick="submitAnswer(this.id)"> </button>
 
-<button type="button" id="button1" onclick="submitAnswer(this.id)"> <?php echo "$b1"; ?> </button>
-<button type="button" id="button2" onclick="submitAnswer(this.id)"> <?php echo "$b2"; ?> </button>
-<button type="button" id="button3" onclick="submitAnswer(this.id)"> <?php echo "$b3"; ?> </button>
-<button type="button" id="button4" onclick="submitAnswer(this.id)"> <?php echo "$b4"; ?> </button>
+<script type="text/javascript">
+setButtons(count);
+</script>
 
 <!-- Feedback -->
 <p id="feedback"></p>
