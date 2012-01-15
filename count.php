@@ -67,10 +67,7 @@ function checkAnswer()
                 var offset = Math.floor(Math.random() *2);
                 offset = count - offset;
 		
-		question_string = question_string + ' ' + count;
-	
-		document.getElementById("question").innerHTML=question_string;
-		
+		setQuestion(1);	
 		setButtons(offset);
                 	
 		if (count == endNumber)
@@ -82,14 +79,14 @@ function checkAnswer()
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
+		
 		<?php 
 		echo "count = $start_number;";                
-                
 		$correctAnswer = $start_number + 1;
 		echo "correctAnswer = $correctAnswer;";
 		?>	
-                
-		document.getElementById("question").innerHTML=count;
+               	
+		setQuestion(0); 
 		question_string = count;	
        
 		setButtons(count);         
@@ -103,6 +100,19 @@ function setButtons(offset)
         document.getElementById("button2").innerHTML=offset + 1;
 	document.getElementById("button3").innerHTML=offset + 2;
         document.getElementById("button4").innerHTML=offset + 3;
+}
+
+function setQuestion(b)
+{
+	if (b == 1)
+	{
+		question_string = question_string + ' ' + count;
+		document.getElementById("question").innerHTML=question_string;
+	}
+	else (b == 0)
+	{
+		document.getElementById("question").innerHTML=count;
+	}
 }
 
 </script>
@@ -121,6 +131,7 @@ function setButtons(offset)
 
 <!-- call setButtons to initialize their innerhtml --> 
 <script type="text/javascript"> setButtons(count); </script>
+<script type="text/javascript"> setQuestion(); </script>
 
 <!-- create feedback -->
 <p id="feedback"></p>
