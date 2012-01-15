@@ -42,9 +42,10 @@ if ($num > 0)
 <script type="text/javascript">
 
 //set javascript vars from db result set
-var question = 0;
-var guess = 0;
-var questionString = 0;
+var question = ""; //use to ask actuall question
+var guess = 0; // the users guess to question
+var count = 0; //this aids in asking the next question
+var answer = 0;
 
 function submitGuess(button_id)
 {
@@ -58,8 +59,8 @@ function checkGuess()
         {
                 document.getElementById("feedback").innerHTML="Correct!";
                 
-		newQuestion();
 		newAnswer();		
+		newQuestion();
         	checkForEndOfGame();        	
         }
         else
@@ -68,11 +69,8 @@ function checkGuess()
 
 		resetVariables();	
 
-		newQuestion();
 		newAnswer();
-
-       
-		setButtons(question);         
+		newQuestion();
         }
 }
 
@@ -87,11 +85,11 @@ function checkForEndOfGame()
 
 function newQuestion()
 {
-	question++;
+	count++;
 	var offset = Math.floor(Math.random() *2);
-        offset = question - offset;
-	questionString = questionString + ' ' + question;
-	document.getElementById("question").innerHTML=questionString;
+        offset = count - offset;
+	question = question + ' ' + count;
+	document.getElementById("question").innerHTML=question;
 	setButtons(offset);
 }
 
@@ -102,13 +100,12 @@ function newAnswer()
 
 function resetVariables()
 {
-	<?php 
-	echo "question 	= $startNumber;";
+	question = "";	
+	<?php
+	echo "count = $startNumber;";	
 	?>	
-	answer = question + 1;	
 	guess = 0;		
-	questionString = "";	
-
+	answer = count + 1;	
 }
 
 <!-- set buttons inner html -->
@@ -126,7 +123,7 @@ function setButtons(offset)
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
 <!-- create and set question --> 
-<p id="question"> <?php echo "$startNumber"; ?>  </p>
+<p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) -->
 <button type="button" id="button1" onclick="submitGuess(this.id)"> </button>
@@ -134,8 +131,15 @@ function setButtons(offset)
 <button type="button" id="button3" onclick="submitGuess(this.id)"> </button>
 <button type="button" id="button4" onclick="submitGuess(this.id)"> </button>
 
+
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> resetVariables(); </script>
+
+<!-- newAnswer --> 
+<script type="text/javascript"> newAnswer(); </script>
+
+<!-- newQuestion --> 
+<script type="text/javascript"> newQuestion(); </script>
 
 <!-- call setButtons to initialize their innerhtml --> 
 <script type="text/javascript"> setButtons( <?php echo "$startNumber"; ?> ); </script>
