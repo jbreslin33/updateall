@@ -67,7 +67,10 @@ function checkGuess()
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
 		resetVariables();	
-		document.getElementById("question").innerHTML=question;
+
+		newQuestion();
+		newAnswer();
+
        
 		setButtons(question);         
         }
