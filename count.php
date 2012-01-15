@@ -19,8 +19,8 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //game variables to fill from db
 $name = "";
-$start_number = 0;
-$end_number = 0; 
+$startNumber = 0;
+$endNumber = 0; 
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -33,47 +33,43 @@ if ($num > 0)
        	
 	//fill php vars from db 
 	$name = $row[0];
-	$start_number = $row[1];
-	$end_number = $row[2];
+	$startNumber = $row[1];
+	$endNumber = $row[2];
 }
-
-echo "<script type=\"text/javascript\">";
-
-//set javascript vars from db result set
-echo "var count = $start_number; ";
-echo "var endNumber = $end_number; ";
-
-$correctAnswer = $start_number + 1;
-echo "var correctAnswer = $correctAnswer;"
 
 ?>
 
-var answer = 0;
-var question_string = count;
+<script type="text/javascript">
 
-function submitAnswer(button_id)
+//set javascript vars from db result set
+var question = 0;
+var guess = 0;
+var questionString = 0;
+
+function submitGuess(button_id)
 {
-        answer = document.getElementById(button_id).innerHTML;
-        checkAnswer();
+        guess = document.getElementById(button_id).innerHTML;
+        checkGuess();
 }
 
-function checkAnswer()
+function checkGuess()
 {
-        if (answer == correctAnswer)
+        if (guess == answer)
         {
                 document.getElementById("feedback").innerHTML="Correct!";
-                count++;
-                correctAnswer++;
-                var offset = Math.floor(Math.random() *2);
-                offset = count - offset;
+                question++;
+                answer++;
+                
+		var offset = Math.floor(Math.random() *2);
+                offset = question - offset;
 		
-		question_string = question_string + ' ' + count;
+		questionString = questionString + ' ' + question;
 	
-		document.getElementById("question").innerHTML=question_string;
+		document.getElementById("question").innerHTML=questionString;
 		
 		setButtons(offset);
                 	
-		if (count == endNumber)
+		if (question == <?php echo "$endNumber"; ?> )
                 {
                         document.getElementById("feedback").innerHTML="YOU WIN!!!";
 			window.location = "goto_next_math_level.php"					
@@ -84,20 +80,21 @@ function checkAnswer()
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
 		resetVariables();	
-		document.getElementById("question").innerHTML=count;
+		document.getElementById("question").innerHTML=question;
        
-		setButtons(count);         
+		setButtons(question);         
         }
 }
 
 function resetVariables()
 {
 	<?php 
-	echo "count = $start_number;";                
-	$correctAnswer = $start_number + 1;
-	echo "correctAnswer = $correctAnswer;";
+	echo "question 	= $startNumber;";
 	?>	
-	question_string = count;	
+	answer = question + 1;	
+	guess = 0;		
+	questionString = question;	
+
 }
 
 <!-- set buttons inner html -->
@@ -115,19 +112,20 @@ function setButtons(offset)
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
 <!-- create and set question --> 
-<p id="question"> <?php echo "$start_number"; ?>  </p>
+<p id="question"> <?php echo "$startNumber"; ?>  </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-<button type="button" id="button1" onclick="submitAnswer(this.id)"> </button>
-<button type="button" id="button2" onclick="submitAnswer(this.id)"> </button>
-<button type="button" id="button3" onclick="submitAnswer(this.id)"> </button>
-<button type="button" id="button4" onclick="submitAnswer(this.id)"> </button>
+<button type="button" id="button1" onclick="submitGuess(this.id)"> </button>
+<button type="button" id="button2" onclick="submitGuess(this.id)"> </button>
+<button type="button" id="button3" onclick="submitGuess(this.id)"> </button>
+<button type="button" id="button4" onclick="submitGuess(this.id)"> </button>
+
+<!-- initialize variables for start of new game or reset --> 
+<script type="text/javascript"> resetVariables(); </script>
 
 <!-- call setButtons to initialize their innerhtml --> 
-<script type="text/javascript"> setButtons(count); </script>
+<script type="text/javascript"> setButtons( <?php echo "$startNumber"; ?> ); </script>
 
-<!-- initialize variables for start of new game or reset
-<script type="text/javascript"> resetVariables(); </script>
 
 <!-- create feedback -->
 <p id="feedback"></p>
