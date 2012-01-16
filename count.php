@@ -58,10 +58,12 @@ function checkGuess()
 {
         if (guess == answer)
         {
-                document.getElementById("feedback").innerHTML="Correct!";
-		
 		count++;  //add to count            	
  		score++; 
+              	
+		var f = "Correct!" + ' ' + "Score:" + ' ' + score + ' ' + "";   
+		document.getElementById("feedback").innerHTML=f;
+		
         	checkForEndOfGame();        	
         }
         else
