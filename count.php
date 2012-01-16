@@ -153,17 +153,10 @@ function setButtons(offset)
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 
 
-//for ($i=1; $i<$number_of_buttons; $i++)
-//{
-$a=1;
-for ($a=1; $a < $numberOfButtons + 1; $a++)
+$i=1;
+for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-
-echo "<button type=\"button\" id=\"button$a\" onclick=\"submitGuess(this.id)\"> </button> ";
-//echo "<button type=\"button\" id=\"button2\" onclick=\"submitGuess(this.id)\"> </button> ";
-//echo "<button type=\"button\" id=\"button3\" onclick=\"submitGuess(this.id)\"> </button> ";
-//echo "<button type=\"button\" id=\"button4\" onclick=\"submitGuess(this.id)\"> </button> ";
-
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"submitGuess(this.id)\"> </button> ";
 }
 
 ?>
