@@ -138,7 +138,7 @@ function checkForEndOfGame()
 function newQuestion()
 {
 	//set question	
-	question = question + ' ' + count;
+	question = question + ' ' + answers[count];
 	document.getElementById("question").innerHTML=question;
 }
 
