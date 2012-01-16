@@ -10,7 +10,7 @@
 $conn = dbConnect();
 
 //query
-$query = "select name, start_number, score_needed, count_by from math_games where level = ";
+$query = "select name, start_number, score_needed, count_by, number_of_buttons from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -22,6 +22,7 @@ $name = "";
 $startNumber = 0;
 $scoreNeeded = 0; 
 $countBy = 0;
+$numberOfButtons = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -37,6 +38,7 @@ if ($num > 0)
 	$startNumber = $row[1];
 	$scoreNeeded = $row[2];
 	$countBy = $row[3];
+	$numberOfButtons = $row[4];
 }
 
 ?>
@@ -50,6 +52,7 @@ var count = 0; //this aids in asking the next question
 var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
 var countBy = 0;
+var numberOfButtons = 0;
 
 function submitGuess(button_id)
 {
@@ -126,6 +129,7 @@ function resetVariables()
 	score = 0;
 	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
 	<?php echo "countBy = $countBy;"; ?>		
+	<?php echo "numberOfButtons = $numberOfButtons;"; ?>
 }
 
 <!-- set buttons inner html -->
@@ -150,7 +154,6 @@ function setButtons(offset)
 <button type="button" id="button2" onclick="submitGuess(this.id)"> </button>
 <button type="button" id="button3" onclick="submitGuess(this.id)"> </button>
 <button type="button" id="button4" onclick="submitGuess(this.id)"> </button>
-
 
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> resetVariables(); </script>
