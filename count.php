@@ -61,8 +61,7 @@ function checkGuess()
 		count++;  //add to count            	
  		score++; 
               	
-		var f = "Correct!";  
-		document.getElementById("feedback").innerHTML=f;
+		document.getElementById("feedback").innerHTML="Correct!";
 		
         	checkForEndOfGame();        	
         }
@@ -73,16 +72,17 @@ function checkGuess()
 		resetVariables();	
         }
 	
+	printScore();	
 
-	var s = "Score: " + score;
-	document.getElementById("score").innerHTML=s;
-	
-	s = "Score Needed: " + scoreNeeded;
-	document.getElementById("scoreNeeded").innerHTML=s;
-	
 	newQuestion();
 	newAnswer(); 	
 	setChoices();	
+}
+
+function printScore()
+{
+	document.getElementById("score").innerHTML="Score: " + score;
+	document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
 }
 
 function checkForEndOfGame()
@@ -163,13 +163,16 @@ function setButtons(offset)
 
 
 <!-- create feedback -->
-<p id="feedback"></p>
+<p id="feedback">"Have Fun!"</p>
 
 <!-- create score -->
 <p id="score"></p>
 
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
+
+<!-- call printScore --> 
+<script type="text/javascript"> printScore(); </script>
 
 </body>
 </html> 
