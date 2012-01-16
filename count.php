@@ -61,7 +61,7 @@ function checkGuess()
 		count++;  //add to count            	
  		score++; 
               	
-		var f = "Correct!" + ' ' + "Score:" + ' ' + score + ' ' + "";   
+		var f = "Correct!" + ' ' + "Score:" + ' ' + score + ' ' + " " + "Score Needed: " + ' ' + scoreNeeded;  
 		document.getElementById("feedback").innerHTML=f;
 		
         	checkForEndOfGame();        	
@@ -110,12 +110,12 @@ function newAnswer()
 function resetVariables()
 {
 	question = "";	
-	<?php
-	echo "count = $startNumber;";	
-	?>	
+	<?php echo "count = $startNumber;"; ?>
 	guess = 0;		
 	answer = 0;
-	score = 0;	
+	score = 0;
+	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
+		
 }
 
 <!-- set buttons inner html -->
