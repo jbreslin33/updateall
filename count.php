@@ -149,11 +149,24 @@ function setButtons(offset)
 <!-- create and set question --> 
 <p id="question"> </p>
 
-<!-- Create Buttons (could this be done in db?) -->
-<button type="button" id="button1" onclick="submitGuess(this.id)"> </button>
-<button type="button" id="button2" onclick="submitGuess(this.id)"> </button>
-<button type="button" id="button3" onclick="submitGuess(this.id)"> </button>
-<button type="button" id="button4" onclick="submitGuess(this.id)"> </button>
+
+<!-- Create Buttons (could this be done in db?) --> 
+<?php 
+
+//for ($i=1; $i<$number_of_buttons; $i++)
+//{
+$a=1;
+for ($a=1; $a < $numberOfButtons + 1; $a++)
+{
+
+echo "<button type=\"button\" id=\"button$a\" onclick=\"submitGuess(this.id)\"> </button> ";
+//echo "<button type=\"button\" id=\"button2\" onclick=\"submitGuess(this.id)\"> </button> ";
+//echo "<button type=\"button\" id=\"button3\" onclick=\"submitGuess(this.id)\"> </button> ";
+//echo "<button type=\"button\" id=\"button4\" onclick=\"submitGuess(this.id)\"> </button> ";
+
+}
+
+?>
 
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> resetVariables(); </script>
