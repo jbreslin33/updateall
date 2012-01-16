@@ -10,7 +10,7 @@
 $conn = dbConnect();
 
 //query
-$query = "select name, start_number, end_number from math_games where level = ";
+$query = "select name, start_number, score_needed from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -20,7 +20,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 //game variables to fill from db
 $name = "";
 $startNumber = 0;
-$endNumber = 0; 
+$scoreNeeded = 0; 
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -34,7 +34,7 @@ if ($num > 0)
 	//fill php vars from db 
 	$name = $row[0];
 	$startNumber = $row[1];
-	$endNumber = $row[2];
+	$scoreNeeded = $row[2];
 }
 
 ?>
@@ -46,6 +46,7 @@ var question = ""; //use to ask actuall question
 var guess = 0; // the users guess to question
 var count = 0; //this aids in asking the next question
 var answer = 0; //this is the correct answer to use for comparison to guess
+var score = 0;
 
 function submitGuess(button_id)
 {
@@ -57,10 +58,11 @@ function checkGuess()
 {
         if (guess == answer)
         {
-                document.getElementById("feedback").innerHTML="Correct!";
-		
 		count++;  //add to count            	
-  
+ 		score++; 
+              	
+		document.getElementById("feedback").innerHTML="Correct!";
+		
         	checkForEndOfGame();        	
         }
         else
@@ -69,15 +71,23 @@ function checkGuess()
 
 		resetVariables();	
         }
-		
+	
+	printScore();	
+
 	newQuestion();
 	newAnswer(); 	
 	setChoices();	
 }
 
+function printScore()
+{
+	document.getElementById("score").innerHTML="Score: " + score;
+	document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
+}
+
 function checkForEndOfGame()
 {
-	if (count == <?php echo "$endNumber"; ?> )
+	if (score == <?php echo "$scoreNeeded"; ?> )
         {
         	document.getElementById("feedback").innerHTML="YOU WIN!!!";
 		window.location = "goto_next_math_level.php"					
@@ -107,11 +117,12 @@ function newAnswer()
 function resetVariables()
 {
 	question = "";	
-	<?php
-	echo "count = $startNumber;";	
-	?>	
+	<?php echo "count = $startNumber;"; ?>
 	guess = 0;		
-	answer = 0;	
+	answer = 0;
+	score = 0;
+	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
+		
 }
 
 <!-- set buttons inner html -->
@@ -152,7 +163,16 @@ function setButtons(offset)
 
 
 <!-- create feedback -->
-<p id="feedback"></p>
+<p id="feedback">"Have Fun!"</p>
+
+<!-- create score -->
+<p id="score"></p>
+
+<!-- create scoreNeeded -->
+<p id="scoreNeeded"></p>
+
+<!-- call printScore --> 
+<script type="text/javascript"> printScore(); </script>
 
 </body>
 </html> 
