@@ -110,7 +110,7 @@ function newQuestion()
 function setChoices()
 {
 	//set buttons	
-	var offset = Math.floor(Math.random() *2);
+	var offset = Math.floor(Math.random() *4);
         offset = answer - offset;
 	setButtons(offset);
 }
