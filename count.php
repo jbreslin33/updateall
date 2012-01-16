@@ -69,8 +69,10 @@ function checkGuess()
 
 		resetVariables();	
         }
+		
 	newQuestion();
-	newAnswer(); 		
+	newAnswer(); 	
+	setChoices();	
 }
 
 function checkForEndOfGame()
@@ -84,14 +86,17 @@ function checkForEndOfGame()
 
 function newQuestion()
 {
+	//set question	
+	question = question + ' ' + count;
+	document.getElementById("question").innerHTML=question;
+}
+
+function setChoices()
+{
 	//set buttons	
 	var offset = Math.floor(Math.random() *2);
         offset = count - offset;
 	setButtons(offset);
-
-	//set question	
-	question = question + ' ' + count;
-	document.getElementById("question").innerHTML=question;
 }
 
 function newAnswer()
@@ -142,8 +147,8 @@ function setButtons(offset)
 <!-- newAnswer --> 
 <script type="text/javascript"> newAnswer(); </script>
 
-<!-- call setButtons to initialize their innerhtml --> 
-<script type="text/javascript"> setButtons( <?php echo "$startNumber"; ?> ); </script>
+<!-- call setChoices to initialize their innerhtml --> 
+<script type="text/javascript"> setChoices(); </script>
 
 
 <!-- create feedback -->
