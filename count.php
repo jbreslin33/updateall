@@ -10,7 +10,7 @@
 $conn = dbConnect();
 
 //query
-$query = "select name, start_number, score_needed from math_games where level = ";
+$query = "select name, start_number, score_needed, count_by from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -21,6 +21,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 $name = "";
 $startNumber = 0;
 $scoreNeeded = 0; 
+$countBy = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -35,6 +36,7 @@ if ($num > 0)
 	$name = $row[0];
 	$startNumber = $row[1];
 	$scoreNeeded = $row[2];
+	$countBy = $row[3];
 }
 
 ?>
@@ -47,6 +49,7 @@ var guess = 0; // the users guess to question
 var count = 0; //this aids in asking the next question
 var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
+var countBy = 0;
 
 function submitGuess(button_id)
 {
@@ -58,7 +61,7 @@ function checkGuess()
 {
         if (guess == answer)
         {
-		count++;  //add to count            	
+		count = count + countBy;  //add to count            	
  		score++; 
               	
 		document.getElementById("feedback").innerHTML="Correct!";
@@ -105,13 +108,13 @@ function setChoices()
 {
 	//set buttons	
 	var offset = Math.floor(Math.random() *2);
-        offset = count - offset;
+        offset = answer - offset;
 	setButtons(offset);
 }
 
 function newAnswer()
 {
-	answer = count + 1;
+	answer = count + countBy;
 }
 
 function resetVariables()
@@ -122,7 +125,7 @@ function resetVariables()
 	answer = 0;
 	score = 0;
 	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
-		
+	<?php echo "countBy = $countBy;"; ?>		
 }
 
 <!-- set buttons inner html -->
