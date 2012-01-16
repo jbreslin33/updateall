@@ -61,7 +61,7 @@ function checkGuess()
 		count++;  //add to count            	
  		score++; 
               	
-		var f = "Correct!" + ' ' + "Score:" + ' ' + score + ' ' + " " + "Score Needed: " + ' ' + scoreNeeded;  
+		var f = "Correct!";  
 		document.getElementById("feedback").innerHTML=f;
 		
         	checkForEndOfGame();        	
@@ -72,7 +72,14 @@ function checkGuess()
 
 		resetVariables();	
         }
-		
+	
+
+	var s = "Score: " + score;
+	document.getElementById("score").innerHTML=s;
+	
+	s = "Score Needed: " + scoreNeeded;
+	document.getElementById("scoreNeeded").innerHTML=s;
+	
 	newQuestion();
 	newAnswer(); 	
 	setChoices();	
@@ -157,6 +164,12 @@ function setButtons(offset)
 
 <!-- create feedback -->
 <p id="feedback"></p>
+
+<!-- create score -->
+<p id="score"></p>
+
+<!-- create scoreNeeded -->
+<p id="scoreNeeded"></p>
 
 </body>
 </html> 
