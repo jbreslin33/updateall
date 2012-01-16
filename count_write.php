@@ -53,6 +53,41 @@ var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
 var countBy = 0;
 var numberOfButtons = 0;
+var answers = new Array();
+answers[0] = "0";
+answers[1] = "1";
+answers[2] = "2";
+answers[3] = "3";
+answers[4] = "4";
+answers[5] = "5";
+answers[6] = "6";
+answers[7] = "7";
+answers[8] = "8";
+answers[9] = "9";
+answers[10] = "1";
+answers[11] = "0";
+answers[12] = "1";
+answers[13] = "1";
+answers[14] = "1";
+answers[15] = "2";
+answers[16] = "1";
+answers[17] = "3";
+answers[18] = "1";
+answers[19] = "4";
+answers[20] = "1";
+answers[21] = "5";
+answers[22] = "1";
+answers[23] = "6";
+answers[24] = "1";
+answers[25] = "7";
+answers[26] = "1";
+answers[27] = "8";
+answers[28] = "1";
+answers[29] = "9";
+answers[30] = "2";
+answers[31] = "0";
+
+
 
 function submitGuess(button_id)
 {
@@ -112,12 +147,12 @@ function setChoices()
 	//set buttons	
 	var offset = Math.floor(Math.random() *4);
         offset = answer - offset;
-	setButtons(offset);
+	setButtons(0);
 }
 
 function newAnswer()
 {
-	answer = count + countBy;
+	answer = answers[count + countBy];
 }
 
 function resetVariables()
@@ -150,7 +185,7 @@ function setButtons(offset)
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
-<!-- create and set question --> 
+<!-- create and set question -->
 <p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) --> 
