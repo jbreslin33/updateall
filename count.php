@@ -141,9 +141,6 @@ function setButtons(offset)
 	{
 		$j = $i - 1;	
 		echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
-       		//document.getElementById("button2").innerHTML=offset + 1;
-		//document.getElementById("button3").innerHTML=offset + 2;
-        	//document.getElementById("button4").innerHTML=offset + 3;
 	}
 	?>	
 }
@@ -155,7 +152,6 @@ function setButtons(offset)
 
 <!-- create and set question --> 
 <p id="question"> </p>
-
 
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 
