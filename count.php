@@ -135,10 +135,17 @@ function resetVariables()
 <!-- set buttons inner html -->
 function setButtons(offset)
 {
-	document.getElementById("button1").innerHTML=offset;
-        document.getElementById("button2").innerHTML=offset + 1;
-	document.getElementById("button3").innerHTML=offset + 2;
-        document.getElementById("button4").innerHTML=offset + 3;
+	<?php	
+	$i=1;
+	for ($i=1; $i < $numberOfButtons + 1; $i++)
+	{
+		$j = $i - 1;	
+		echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
+       		//document.getElementById("button2").innerHTML=offset + 1;
+		//document.getElementById("button3").innerHTML=offset + 2;
+        	//document.getElementById("button4").innerHTML=offset + 3;
+	}
+	?>	
 }
 
 </script>
