@@ -159,7 +159,7 @@ function newQuestion()
 	//set question	
 	if (answers[count] == "SPACE")	
 	{		
-		question = question + ' ' + "";
+		question = question + '...' + "";
 	}	
 	else
 	{	
