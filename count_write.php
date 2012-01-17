@@ -86,7 +86,26 @@ answers[28] = "SPACE";
 answers[29] = "1";
 answers[30] = "3";
 answers[31] = "SPACE";
-
+answers[32] = "1";
+answers[33] = "4";
+answers[34] = "SPACE";
+answers[35] = "1";
+answers[36] = "5";
+answers[37] = "SPACE";
+answers[38] = "1";
+answers[39] = "6";
+answers[40] = "SPACE";
+answers[41] = "1";
+answers[42] = "7";
+answers[43] = "SPACE";
+answers[44] = "1";
+answers[45] = "8";
+answers[46] = "SPACE";
+answers[47] = "1";
+answers[48] = "9";
+answers[49] = "SPACE";
+answers[50] = "2";
+answers[51] = "0";
 
 
 function submitGuess(button_id)
