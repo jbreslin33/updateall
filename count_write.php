@@ -53,60 +53,40 @@ var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
 var countBy = 0;
 var numberOfButtons = 0;
+var makeSpace = "FALSE";
 var answers = new Array();
 answers[0] = "0";
-answers[1] = "SPACE";
-answers[2] = "1";
-answers[3] = "SPACE";
-answers[4] = "2";
-answers[5] = "SPACE";
-answers[6] = "3";
-answers[7] = "SPACE";
-answers[8] = "4";
-answers[9] = "SPACE";
-answers[10] = "5";
-answers[11] = "SPACE";
-answers[12] = "6";
-answers[13] = "SPACE";
-answers[14] = "7";
-answers[15] = "SPACE";
-answers[16] = "8";
-answers[17] = "SPACE";
-answers[18] = "9";
-answers[19] = "SPACE";
+answers[1] = "1";
+answers[2] = "2";
+answers[3] = "3";
+answers[4] = "4";
+answers[5] = "5";
+answers[6] = "6";
+answers[7] = "7";
+answers[8] = "8";
+answers[9] = "9";
+answers[10] = "1";
+answers[11] = "0";
+answers[12] = "1";
+answers[13] = "1";
+answers[14] = "1";
+answers[15] = "2";
+answers[16] = "1";
+answers[17] = "3";
+answers[18] = "1";
+answers[19] = "4";
 answers[20] = "1";
-answers[21] = "0";
-answers[22] = "SPACE";
-answers[23] = "1";
+answers[21] = "5";
+answers[22] = "1";
+answers[23] = "6";
 answers[24] = "1";
-answers[25] = "SPACE";
+answers[25] = "7";
 answers[26] = "1";
-answers[27] = "2";
-answers[28] = "SPACE";
-answers[29] = "1";
-answers[30] = "3";
-answers[31] = "SPACE";
-answers[32] = "1";
-answers[33] = "4";
-answers[34] = "SPACE";
-answers[35] = "1";
-answers[36] = "5";
-answers[37] = "SPACE";
-answers[38] = "1";
-answers[39] = "6";
-answers[40] = "SPACE";
-answers[41] = "1";
-answers[42] = "7";
-answers[43] = "SPACE";
-answers[44] = "1";
-answers[45] = "8";
-answers[46] = "SPACE";
-answers[47] = "1";
-answers[48] = "9";
-answers[49] = "SPACE";
-answers[50] = "2";
-answers[51] = "0";
-
+answers[27] = "8";
+answers[28] = "1";
+answers[29] = "9";
+answers[30] = "2";
+answers[31] = "0";
 
 function submitGuess(button_id)
 {
@@ -157,15 +137,16 @@ function checkForEndOfGame()
 function newQuestion()
 {
 	//set question	
-	if (answers[count] == "SPACE")	
-	{		
-		question = question + '...' + "";
-	}	
-	else
+	
+	if (count < 10 || count == 10 || count == 12 || count == 14 || count == 16 || count == 18 || count == 20
+	 || count == 22 || count == 24 || count == 26 || count == 28 || count == 30)
 	{	
-		question = question + '' +  answers[count];
+		question = question + ' ' +  answers[count];
 	}
-
+	else
+	{
+		question = question + '' +  answers[count];
+	}	
 	document.getElementById("question").innerHTML=question;
 }
 
