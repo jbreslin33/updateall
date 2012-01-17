@@ -55,37 +55,37 @@ var countBy = 0;
 var numberOfButtons = 0;
 var answers = new Array();
 answers[0] = "0";
-answers[1] = "1";
-answers[2] = "2";
-answers[3] = "3";
-answers[4] = "4";
-answers[5] = "5";
-answers[6] = "6";
-answers[7] = "7";
-answers[8] = "8";
-answers[9] = "9";
-answers[10] = "1";
-answers[11] = "0";
-answers[12] = "1";
-answers[13] = "1";
-answers[14] = "1";
-answers[15] = "2";
-answers[16] = "1";
-answers[17] = "3";
-answers[18] = "1";
-answers[19] = "4";
+answers[1] = "SPACE";
+answers[2] = "1";
+answers[3] = "SPACE";
+answers[4] = "2";
+answers[5] = "SPACE";
+answers[6] = "3";
+answers[7] = "SPACE";
+answers[8] = "4";
+answers[9] = "SPACE";
+answers[10] = "5";
+answers[11] = "SPACE";
+answers[12] = "6";
+answers[13] = "SPACE";
+answers[14] = "7";
+answers[15] = "SPACE";
+answers[16] = "8";
+answers[17] = "SPACE";
+answers[18] = "9";
+answers[19] = "SPACE";
 answers[20] = "1";
-answers[21] = "5";
-answers[22] = "1";
-answers[23] = "6";
+answers[21] = "SPACE";
+answers[22] = "0";
+answers[23] = "SPACE";
 answers[24] = "1";
-answers[25] = "7";
+answers[25] = "SPACE";
 answers[26] = "1";
-answers[27] = "8";
+answers[27] = "SPACE";
 answers[28] = "1";
-answers[29] = "9";
+answers[29] = "SPACE";
 answers[30] = "2";
-answers[31] = "0";
+answers[31] = "SPACE";
 
 
 
@@ -138,7 +138,15 @@ function checkForEndOfGame()
 function newQuestion()
 {
 	//set question	
-	question = question + ' ' + answers[count];
+	if (answers[count] == "SPACE")	
+	{		
+		question = question + ' ' + answers[count];
+	}	
+	else
+	{	
+		question = question + '' +  answers[count];
+	}
+
 	document.getElementById("question").innerHTML=question;
 }
 
