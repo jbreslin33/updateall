@@ -53,7 +53,6 @@ var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
 var countBy = 0;
 var numberOfButtons = 0;
-var makeSpace = "FALSE";
 var answers = new Array();
 answers[0] = "0";
 answers[1] = "1";
