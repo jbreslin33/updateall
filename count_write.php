@@ -75,16 +75,16 @@ answers[17] = "SPACE";
 answers[18] = "9";
 answers[19] = "SPACE";
 answers[20] = "1";
-answers[21] = "SPACE";
-answers[22] = "0";
-answers[23] = "SPACE";
+answers[21] = "0";
+answers[22] = "SPACE";
+answers[23] = "1";
 answers[24] = "1";
 answers[25] = "SPACE";
 answers[26] = "1";
-answers[27] = "SPACE";
-answers[28] = "1";
-answers[29] = "SPACE";
-answers[30] = "2";
+answers[27] = "2";
+answers[28] = "SPACE";
+answers[29] = "1";
+answers[30] = "3";
 answers[31] = "SPACE";
 
 
@@ -140,7 +140,7 @@ function newQuestion()
 	//set question	
 	if (answers[count] == "SPACE")	
 	{		
-		question = question + ' ' + answers[count];
+		question = question + ' ' + "";
 	}	
 	else
 	{	
