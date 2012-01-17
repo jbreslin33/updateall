@@ -172,11 +172,14 @@ function setButtons(offset)
 {
 	<?php	
 	$i=1;
-	for ($i=1; $i < $numberOfButtons + 1; $i++)
+	for ($i=1; $i < $numberOfButtons; $i++)
 	{
 		$j = $i - 1;	
 		echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
 	}
+
+		
+	echo "document.getElementById(\"button$i\").innerHTML=\"SPACE\";";
 	?>	
 }
 
