@@ -18,7 +18,7 @@
 
 	<p><b> OR SIGN UP: </p></b>
 	
-	<form method="post" action="sign_up.php">
+	<form method="post" action="signup.php">
 
 	<p>Username: <input type="text" name="username" /></p>
 	<p>Password: <input type="text" name="password" /></p>
