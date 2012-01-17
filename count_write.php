@@ -165,7 +165,7 @@ function newAnswer()
 
 function resetVariables()
 {
-	question = "";	
+	question = "0 ";	
 	<?php echo "count = $startNumber;"; ?>
 	guess = 0;		
 	answer = 0;
