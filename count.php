@@ -43,43 +43,7 @@ if ($num > 0)
 
 ?>
 
-<script type="text/javascript">
-
-//set javascript vars from db result set
-var question = ""; //use to ask actuall question
-var guess = 0; // the users guess to question
-var count = 0; //this aids in asking the next question
-var answer = 0; //this is the correct answer to use for comparison to guess
-var score = 0;
-var countBy = 0;
-var numberOfButtons = 0;
-
-function resetVariables()
-{
-	question = "";	
-	<?php echo "count = $startNumber;"; ?>
-	guess = 0;		
-	answer = 0;
-	score = 0;
-	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
-	<?php echo "countBy = $countBy;"; ?>		
-	<?php echo "numberOfButtons = $numberOfButtons;"; ?>
-}
-
-<!-- set buttons inner html -->
-function setButtons(offset)
-{
-	<?php	
-	$i=1;
-	for ($i=1; $i < $numberOfButtons + 1; $i++)
-	{
-		$j = $i - 1;	
-		echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
-	}
-	?>	
-}
-
-</script>
+<?php include("check_guess.php"); ?>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -98,7 +62,6 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 
 ?>
 
-<script type="text/javascript" src="check_guess.js"></script>
 
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> resetVariables(); </script>
