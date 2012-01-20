@@ -1,5 +1,16 @@
 <script type="text/javascript">
 
+<?php echo "var agame = new game($startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?>
+ 
+
+function game(startNumber,scoreNeeded,countBy,numberOfButtons)
+{
+this.startNumber = startNumber;
+this.scoreNeeded = scoreNeeded;
+this.countBy = countBy;
+this.numberOfButtons = numberOfButtons;
+
+}
 
 
 //set javascript vars from db result set
@@ -10,6 +21,8 @@ var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
 var countBy = 0;
 var numberOfButtons = 0;
+
+
 
 function resetVariables()
 {
