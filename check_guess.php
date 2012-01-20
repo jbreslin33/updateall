@@ -5,6 +5,7 @@
 
 function game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
+
 this.startNumber = startNumber;
 this.scoreNeeded = scoreNeeded;
 this.countBy = countBy;
@@ -19,28 +20,23 @@ var guess = 0; // the users guess to question
 var count = 0; //this aids in asking the next question
 var answer = 0; //this is the correct answer to use for comparison to guess
 var score = 0;
-var countBy = 0;
-var numberOfButtons = 0;
-
-
 
 function resetVariables()
 {
         question = "";
-        <?php echo "count = $startNumber;"; ?>
-        guess = 0;
+       	count = agame.startNumber; 
+
+	guess = 0;
         answer = 0;
         score = 0;
-        <?php echo "scoreNeeded = $scoreNeeded;"; ?>
-        <?php echo "countBy = $countBy;"; ?>
-        <?php echo "numberOfButtons = $numberOfButtons;"; ?>
 }
 
 <!-- set buttons inner html -->
 function setButtons(offset)
 {
-        <?php
-        $i=1;
+       	 
+	<?php
+	$i=1;
         for ($i=1; $i < $numberOfButtons + 1; $i++)
         {
                 $j = $i - 1;
@@ -54,7 +50,7 @@ function checkGuess()
 {
         if (guess == answer)
         {
-                count = count + countBy;  //add to count
+                count = count + agame.countBy;  //add to count
                 score++;
 
                 document.getElementById("feedback").innerHTML="Correct!";
@@ -83,7 +79,7 @@ function submitGuess(button_id)
 function printScore()
 {
         document.getElementById("score").innerHTML="Score: " + score;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + agame.scoreNeeded;
 }
 
 function checkForEndOfGame()
@@ -112,6 +108,6 @@ function setChoices()
 
 function newAnswer()
 {
-        answer = count + countBy;
+        answer = count + agame.countBy;
 }
 </script>
