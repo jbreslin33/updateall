@@ -31,21 +31,18 @@ function resetVariables()
         score = 0;
 }
 
-<!-- set buttons inner html -->
 function setButtons(offset)
 {
-       	 
-	<?php
-	$i=1;
-        for ($i=1; $i < $numberOfButtons + 1; $i++)
-        {
-                $j = $i - 1;
-                echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
-        }
-        ?>
+	i=1;
+	for (i=1; i < agame.numberOfButtons + 1; i++)
+	{
+	
+		j = i - 1;
+		var but = "button" + '' + i;
+		document.getElementById(but).innerHTML=offset + j;
+	}
+
 }
-
-
 function checkGuess()
 {
         if (guess == answer)
