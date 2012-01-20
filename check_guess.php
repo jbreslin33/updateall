@@ -36,13 +36,11 @@ function setButtons(offset)
 	i=1;
 	for (i=1; i < agame.numberOfButtons + 1; i++)
 	{
-	
 		j = i - 1;
-		var but = "button" + '' + i;
-		document.getElementById(but).innerHTML=offset + j;
+		document.getElementById("button" + i).innerHTML=offset + j;
 	}
-
 }
+
 function checkGuess()
 {
         if (guess == answer)
