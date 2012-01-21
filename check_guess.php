@@ -31,6 +31,21 @@ this.newAnswer=newAnswer;
 }
 
 
+function printScore()
+{
+        document.getElementById("score").innerHTML="Score: " + this.score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
+}
+
+function checkForEndOfGame()
+{
+        if (this.score == <?php echo "$scoreNeeded"; ?> )
+        {
+                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                window.location = "goto_next_math_level.php"
+        }
+}
+
 function resetVariables()
 {
         this.question = "";
@@ -39,16 +54,6 @@ function resetVariables()
 	this.guess = 0;
         this.answer = 0;
         this.score = 0;
-}
-
-function setButtons(offset)
-{
-	i=1;
-	for (i=1; i < this.numberOfButtons + 1; i++)
-	{
-		j = i - 1;
-		document.getElementById("button" + i).innerHTML=offset + j;
-	}
 }
 
 function checkGuess()
@@ -75,26 +80,18 @@ function checkGuess()
         this.newAnswer();
         this.setChoices();
 }
+
 function submitGuess(button_id)
 {
         this.guess = document.getElementById(button_id).innerHTML;
         this.checkGuess();
 }
 
-function printScore()
-{
-        document.getElementById("score").innerHTML="Score: " + this.score;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
-}
 
-function checkForEndOfGame()
-{
-        if (this.score == <?php echo "$scoreNeeded"; ?> )
-        {
-                document.getElementById("feedback").innerHTML="YOU WIN!!!";
-                window.location = "goto_next_math_level.php"
-        }
-}
+
+
+//overide
+
 
 function newQuestion()
 {
@@ -115,4 +112,17 @@ function newAnswer()
 {
         this.answer = this.count + this.countBy;
 }
+
+
+function setButtons(offset)
+{
+	i=1;
+	for (i=1; i < this.numberOfButtons + 1; i++)
+	{
+		j = i - 1;
+		document.getElementById("button" + i).innerHTML=offset + j;
+	}
+}
+
+
 </script>
