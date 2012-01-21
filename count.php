@@ -57,23 +57,23 @@ if ($num > 0)
 $i=1;
 for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"submitGuess(this.id)\"> </button> ";
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"agame.submitGuess(this.id)\"> </button> ";
 }
 
 ?>
 
 
 <!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> resetVariables(); </script>
+<script type="text/javascript"> agame.resetVariables(); </script>
 
 <!-- newQuestion --> 
-<script type="text/javascript"> newQuestion(); </script>
+<script type="text/javascript"> agame.newQuestion(); </script>
 
 <!-- newAnswer --> 
-<script type="text/javascript"> newAnswer(); </script>
+<script type="text/javascript"> agame.newAnswer(); </script>
 
 <!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> setChoices(); </script>
+<script type="text/javascript"> agame.setChoices(); </script>
 
 
 <!-- create feedback -->
@@ -86,7 +86,7 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 <p id="scoreNeeded"></p>
 
 <!-- call printScore --> 
-<script type="text/javascript"> printScore(); </script>
+<script type="text/javascript"> agame.printScore(); </script>
 
 
 

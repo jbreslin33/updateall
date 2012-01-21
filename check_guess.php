@@ -33,18 +33,18 @@ this.newAnswer=newAnswer;
 
 function resetVariables()
 {
-        question = "";
-       	count = agame.startNumber; 
+        this.question = "";
+       	this.count = this.startNumber; 
 
-	guess = 0;
-        answer = 0;
-        score = 0;
+	this.guess = 0;
+        this.answer = 0;
+        this.score = 0;
 }
 
 function setButtons(offset)
 {
 	i=1;
-	for (i=1; i < agame.numberOfButtons + 1; i++)
+	for (i=1; i < this.numberOfButtons + 1; i++)
 	{
 		j = i - 1;
 		document.getElementById("button" + i).innerHTML=offset + j;
@@ -53,43 +53,43 @@ function setButtons(offset)
 
 function checkGuess()
 {
-        if (guess == answer)
+        if (this.guess == this.answer)
         {
-                count = count + agame.countBy;  //add to count
-                score++;
+                this.count = this.count + this.countBy;  //add to count
+                this.score++;
 
                 document.getElementById("feedback").innerHTML="Correct!";
 
-                checkForEndOfGame();
+                this.checkForEndOfGame();
         }
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
-                resetVariables();
+                this.resetVariables();
         }
 
-        printScore();
+        this.printScore();
 
-        newQuestion();
-        newAnswer();
-        setChoices();
+        this.newQuestion();
+        this.newAnswer();
+        this.setChoices();
 }
 function submitGuess(button_id)
 {
-        guess = document.getElementById(button_id).innerHTML;
-        checkGuess();
+        this.guess = document.getElementById(button_id).innerHTML;
+        this.checkGuess();
 }
 
 function printScore()
 {
-        document.getElementById("score").innerHTML="Score: " + score;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + agame.scoreNeeded;
+        document.getElementById("score").innerHTML="Score: " + this.score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
 }
 
 function checkForEndOfGame()
 {
-        if (score == <?php echo "$scoreNeeded"; ?> )
+        if (this.score == <?php echo "$scoreNeeded"; ?> )
         {
                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 window.location = "goto_next_math_level.php"
@@ -99,20 +99,20 @@ function checkForEndOfGame()
 function newQuestion()
 {
         //set question
-        question = question + ' ' + count;
-        document.getElementById("question").innerHTML=question;
+        this.question = this.question + ' ' + this.count;
+        document.getElementById("question").innerHTML=this.question;
 }
 
 function setChoices()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
-        offset = answer - offset;
-        setButtons(offset);
+        offset = this.answer - offset;
+        this.setButtons(offset);
 }
 
 function newAnswer()
 {
-        answer = count + agame.countBy;
+        this.answer = this.count + this.countBy;
 }
 </script>
