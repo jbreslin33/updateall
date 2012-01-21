@@ -1,59 +1,128 @@
-<?php include("check_login.php"); ?>
-<?php include("db_connect.php"); ?>
+<script type="text/javascript">
 
-<?php
+<?php echo "var agame = new game($startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?>
+ 
 
-//db connection
-$conn = dbConnect();
-
-//------math game level-----------------------------------------------
-
-//query string
-$query = "select math_game_level from users where id = ";
-$query .= $_SESSION["id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$num = pg_num_rows($result);
-
-// if there is a row then id exists it better be unique!
-if ($num > 0)
+function game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
-	$row = pg_fetch_row($result);
-	$_SESSION["math_game_level"] = $row[0];	
-}
-else
-{
-	header("Location: login_form.php");
-}
 
-//--------------------------url----------------------
+//vars
+this.startNumber = startNumber;
+this.scoreNeeded = scoreNeeded;
+this.countBy = countBy;
+this.numberOfButtons = numberOfButtons;
+this.question="";
+this.guess=0;
+this.count=0;
+this.answer=0;
+this.score=0;
 
-//query string
-$query = "select url from math_games where level = ";
-$query .= $_SESSION["math_game_level"];
-$query .= ";";
+//class functions
+this.resetVariables=resetVariables;
+this.setButtons=setButtons;
+this.checkGuess=checkGuess;
+this.submitGuess=submitGuess;
+this.printScore=printScore;
+this.checkForEndOfGame=checkForEndOfGame;
+this.newQuestion=newQuestion;
+this.setChoices=setChoices;
+this.newAnswer=newAnswer;
 
-//get db restult for url
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows 
-$num = pg_num_rows($result);
-
-// if there is a row then id exists it better be unique!
-if ($num > 0)
-{
-	$row = pg_fetch_row($result);
-	$_SESSION["url"] = $row[0];
-
-	header("Location: $row[0]");
-}
-else
-{
-	header("Location: login_form.php");
 }
 
-?>
+
+function printScore()
+{
+        document.getElementById("score").innerHTML="Score: " + this.score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
+}
+
+function checkForEndOfGame()
+{
+        if (this.score == <?php echo "$scoreNeeded"; ?> )
+        {
+                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                window.location = "goto_next_math_level.php"
+        }
+}
+
+function resetVariables()
+{
+        this.question = "";
+       	this.count = this.startNumber; 
+
+	this.guess = 0;
+        this.answer = 0;
+        this.score = 0;
+}
+
+function checkGuess()
+{
+        if (this.guess == this.answer)
+        {
+                this.count = this.count + this.countBy;  //add to count
+                this.score++;
+
+                document.getElementById("feedback").innerHTML="Correct!";
+
+                this.checkForEndOfGame();
+        }
+        else
+        {
+                document.getElementById("feedback").innerHTML="Wrong! Try again.";
+
+                this.resetVariables();
+        }
+
+        this.printScore();
+
+        this.newQuestion();
+        this.newAnswer();
+        this.setChoices();
+}
+
+function submitGuess(button_id)
+{
+        this.guess = document.getElementById(button_id).innerHTML;
+        this.checkGuess();
+}
+
+
+
+
+//overide
+
+
+function newQuestion()
+{
+        //set question
+        this.question = this.question + ' ' + this.count;
+        document.getElementById("question").innerHTML=this.question;
+}
+
+function setChoices()
+{
+        //set buttons
+        var offset = Math.floor(Math.random() *4);
+        offset = this.answer - offset;
+        this.setButtons(offset);
+}
+
+function newAnswer()
+{
+        this.answer = this.count + this.countBy;
+}
+
+
+function setButtons(offset)
+{
+	i=1;
+	for (i=1; i < this.numberOfButtons + 1; i++)
+	{
+		j = i - 1;
+		document.getElementById("button" + i).innerHTML=offset + j;
+	}
+}
+
+
+</script>

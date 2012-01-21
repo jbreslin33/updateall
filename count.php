@@ -43,7 +43,7 @@ if ($num > 0)
 
 ?>
 
-<?php include("check_guess.php"); ?>
+<?php include("game.php"); ?>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
