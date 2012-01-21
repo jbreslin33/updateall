@@ -6,20 +6,30 @@
 function game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 
+//vars
 this.startNumber = startNumber;
 this.scoreNeeded = scoreNeeded;
 this.countBy = countBy;
 this.numberOfButtons = numberOfButtons;
+this.question="";
+this.guess=0;
+this.count=0;
+this.answer=0;
+this.score=0;
+
+//class functions
+this.resetVariables=resetVariables;
+this.setButtons=setButtons;
+this.checkGuess=checkGuess;
+this.submitGuess=submitGuess;
+this.printScore=printScore;
+this.checkForEndOfGame=checkForEndOfGame;
+this.newQuestion=newQuestion;
+this.setChoices=setChoices;
+this.newAnswer=newAnswer;
 
 }
 
-
-//set javascript vars from db result set
-var question = ""; //use to ask actuall question
-var guess = 0; // the users guess to question
-var count = 0; //this aids in asking the next question
-var answer = 0; //this is the correct answer to use for comparison to guess
-var score = 0;
 
 function resetVariables()
 {
