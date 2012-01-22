@@ -26,6 +26,15 @@ this.newAnswer=newAnswer;
 
 }
 
+
+function gameCount()
+{
+
+}
+
+gameCount.prototype = new game(<?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons"; ?> );
+
+
 game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
