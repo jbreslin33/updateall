@@ -23,6 +23,8 @@ this.score=0;
 
 function gameCount()
 {
+this.answers = new Array();
+
 
 }
 
