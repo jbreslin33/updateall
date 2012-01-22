@@ -22,7 +22,7 @@ this.resetVariables=resetVariables;
 this.setButtons=setButtons;
 this.checkGuess=checkGuess;
 this.submitGuess=submitGuess;
-this.printScore=printScore;
+//this.printScore=printScore;
 this.checkForEndOfGame=checkForEndOfGame;
 this.newQuestion=newQuestion;
 this.setChoices=setChoices;
@@ -30,8 +30,9 @@ this.newAnswer=newAnswer;
 
 }
 
+//Car.prototype.displaySpecs = function ()
 
-function printScore()
+game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
