@@ -26,8 +26,6 @@ this.newAnswer=newAnswer;
 
 }
 
-//Car.prototype.displaySpecs = function ()
-
 game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
@@ -35,7 +33,6 @@ game.prototype.printScore = function()
 }
 
 game.prototype.checkForEndOfGame = function()
-//function checkForEndOfGame()
 {
         if (this.score == <?php echo "$scoreNeeded"; ?> )
         {
@@ -44,7 +41,6 @@ game.prototype.checkForEndOfGame = function()
         }
 }
 game.prototype.resetVariables = function()
-//function resetVariables()
 {
         this.question = "";
        	this.count = this.startNumber; 
@@ -55,7 +51,6 @@ game.prototype.resetVariables = function()
 }
 
 game.prototype.checkGuess = function()
-//function checkGuess()
 {
         if (this.guess == this.answer)
         {
@@ -90,8 +85,6 @@ function submitGuess(button_id)
 
 
 //overide
-
-
 function newQuestion()
 {
         //set question
