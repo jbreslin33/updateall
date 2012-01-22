@@ -18,12 +18,8 @@ this.answer=0;
 this.score=0;
 
 //class functions
-this.resetVariables=resetVariables;
 this.setButtons=setButtons;
-this.checkGuess=checkGuess;
 this.submitGuess=submitGuess;
-//this.printScore=printScore;
-this.checkForEndOfGame=checkForEndOfGame;
 this.newQuestion=newQuestion;
 this.setChoices=setChoices;
 this.newAnswer=newAnswer;
@@ -38,7 +34,8 @@ game.prototype.printScore = function()
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
 }
 
-function checkForEndOfGame()
+game.prototype.checkForEndOfGame = function()
+//function checkForEndOfGame()
 {
         if (this.score == <?php echo "$scoreNeeded"; ?> )
         {
@@ -46,8 +43,8 @@ function checkForEndOfGame()
                 window.location = "goto_next_math_level.php"
         }
 }
-
-function resetVariables()
+game.prototype.resetVariables = function()
+//function resetVariables()
 {
         this.question = "";
        	this.count = this.startNumber; 
@@ -57,7 +54,8 @@ function resetVariables()
         this.score = 0;
 }
 
-function checkGuess()
+game.prototype.checkGuess = function()
+//function checkGuess()
 {
         if (this.guess == this.answer)
         {
