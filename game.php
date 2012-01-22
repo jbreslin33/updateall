@@ -19,7 +19,6 @@ this.score=0;
 
 //class functions
 this.setButtons=setButtons;
-//this.submitGuess=submitGuess;
 this.newQuestion=newQuestion;
 this.setChoices=setChoices;
 this.newAnswer=newAnswer;
