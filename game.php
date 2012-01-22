@@ -19,7 +19,7 @@ this.score=0;
 
 //class functions
 this.setButtons=setButtons;
-this.submitGuess=submitGuess;
+//this.submitGuess=submitGuess;
 this.newQuestion=newQuestion;
 this.setChoices=setChoices;
 this.newAnswer=newAnswer;
@@ -84,13 +84,12 @@ game.prototype.checkGuess = function()
         this.setChoices();
 }
 
-function submitGuess(button_id)
+game.prototype.submitGuess = function(button_id)
+//function submitGuess(button_id)
 {
         this.guess = document.getElementById(button_id).innerHTML;
         this.checkGuess();
 }
-
-
 
 
 //overide
