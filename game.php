@@ -17,11 +17,6 @@ this.count=0;
 this.answer=0;
 this.score=0;
 
-//class functions
-this.setButtons=setButtons;
-this.newQuestion=newQuestion;
-this.setChoices=setChoices;
-this.newAnswer=newAnswer;
 
 }
 
@@ -84,22 +79,20 @@ game.prototype.checkGuess = function()
 }
 
 game.prototype.submitGuess = function(button_id)
-//function submitGuess(button_id)
 {
         this.guess = document.getElementById(button_id).innerHTML;
         this.checkGuess();
 }
 
-
 //overide
-function newQuestion()
+game.prototype.newQuestion = function()
 {
         //set question
         this.question = this.question + ' ' + this.count;
         document.getElementById("question").innerHTML=this.question;
 }
 
-function setChoices()
+game.prototype.setChoices = function()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
@@ -107,13 +100,12 @@ function setChoices()
         this.setButtons(offset);
 }
 
-function newAnswer()
+game.prototype.newAnswer = function()
 {
         this.answer = this.count + this.countBy;
 }
 
-
-function setButtons(offset)
+game.prototype.setButtons = function(offset)
 {
 	i=1;
 	for (i=1; i < this.numberOfButtons + 1; i++)
@@ -122,6 +114,7 @@ function setButtons(offset)
 		document.getElementById("button" + i).innerHTML=offset + j;
 	}
 }
+
 
 
 </script>
