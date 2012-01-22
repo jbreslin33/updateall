@@ -43,7 +43,11 @@ if ($num > 0)
 
 ?>
 
+<!-- base game class, this should be extended --> 
 <?php include("game.php"); ?>
+
+<!-- right now i am creating game but i believe i should be creating gameCount --> 
+<script type="text/javascript">  var agame = new game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>

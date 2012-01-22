@@ -1,8 +1,5 @@
 <script type="text/javascript">
 
-<?php echo "var agame = new game($startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?>
- 
-
 function game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 
@@ -17,19 +14,7 @@ this.count=0;
 this.answer=0;
 this.score=0;
 
-
 }
-
-
-function gameCount()
-{
-this.answers = new Array();
-
-
-}
-
-gameCount.prototype = new game(<?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons"; ?> );
-
 
 game.prototype.printScore = function()
 {
@@ -45,6 +30,7 @@ game.prototype.checkForEndOfGame = function()
                 window.location = "goto_next_math_level.php"
         }
 }
+
 game.prototype.resetVariables = function()
 {
         this.question = "";
@@ -116,7 +102,5 @@ game.prototype.setButtons = function(offset)
 		document.getElementById("button" + i).innerHTML=offset + j;
 	}
 }
-
-
 
 </script>
