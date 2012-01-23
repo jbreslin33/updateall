@@ -84,4 +84,46 @@ game.prototype.checkGuess = function()
 }
 
 
+//overide
+game.prototype.newQuestion = function()
+{
+        //set question
+       	//this.question = this.question + ' ' + this.count;
+        //document.getElementById("question").innerHTML=this.question;
+}
+
+game.prototype.setChoices = function()
+{
+        //set buttons
+        //var offset = Math.floor(Math.random() *4);
+        //offset = this.answer - offset;
+        //this.setButtons(offset);
+}
+
+game.prototype.newAnswer = function()
+{
+        //this.answer = this.count + this.countBy;
+}
+
+game.prototype.setButtons = function(offset)
+{
+        //i=1;
+        //for (i=1; i < this.numberOfButtons + 1; i++)
+        //{
+        //        j = i - 1;
+        //        document.getElementById("button" + i).innerHTML=offset + j;
+        //}
+}
+
+game.prototype.submitGuess = function(button_id)
+{
+        //this.guess = document.getElementById(button_id).innerHTML;
+
+        //this.checkGuess();
+        //this.printScore();
+        //this.newQuestion();
+        //this.newAnswer();
+        //this.setChoices();
+}
+
 </script>
