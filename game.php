@@ -22,7 +22,7 @@ KevLinDev.extend = function(subClass, baseClass) {
 }
 
 
-function game(startNumber,scoreNeeded,countBy,numberOfButtons)
+function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 
 //vars
@@ -38,13 +38,13 @@ this.score=0;
 
 }
 
-game.prototype.printScore = function()
+Game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
 }
 
-game.prototype.checkForEndOfGame = function()
+Game.prototype.checkForEndOfGame = function()
 {
         if (this.score == <?php echo "$scoreNeeded"; ?> )
         {
@@ -53,7 +53,7 @@ game.prototype.checkForEndOfGame = function()
         }
 }
 
-game.prototype.resetVariables = function()
+Game.prototype.resetVariables = function()
 {
         this.question = "";
        	this.count = this.startNumber; 
@@ -63,7 +63,7 @@ game.prototype.resetVariables = function()
         this.score = 0;
 }
 
-game.prototype.checkGuess = function()
+Game.prototype.checkGuess = function()
 {
         if (this.guess == this.answer)
         {
@@ -85,14 +85,14 @@ game.prototype.checkGuess = function()
 
 
 //overide
-game.prototype.newQuestion = function()
+Game.prototype.newQuestion = function()
 {
         //set question
        	//this.question = this.question + ' ' + this.count;
         //document.getElementById("question").innerHTML=this.question;
 }
 
-game.prototype.setChoices = function()
+Game.prototype.setChoices = function()
 {
         //set buttons
         //var offset = Math.floor(Math.random() *4);
@@ -100,12 +100,12 @@ game.prototype.setChoices = function()
         //this.setButtons(offset);
 }
 
-game.prototype.newAnswer = function()
+Game.prototype.newAnswer = function()
 {
         //this.answer = this.count + this.countBy;
 }
 
-game.prototype.setButtons = function(offset)
+Game.prototype.setButtons = function(offset)
 {
         //i=1;
         //for (i=1; i < this.numberOfButtons + 1; i++)
@@ -115,7 +115,7 @@ game.prototype.setButtons = function(offset)
         //}
 }
 
-game.prototype.submitGuess = function(button_id)
+Game.prototype.submitGuess = function(button_id)
 {
         //this.guess = document.getElementById(button_id).innerHTML;
 

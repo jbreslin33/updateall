@@ -50,7 +50,7 @@ if ($num > 0)
 <?php include("game_count.php"); ?>
 
 <!-- creating gameCount which is child of game --> 
-<script type="text/javascript">  var agameCount = new gameCount( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<script type="text/javascript">  var gameCount = new GameCount( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -64,22 +64,22 @@ if ($num > 0)
 $i=1;
 for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"agameCount.submitGuess(this.id)\"> </button> ";
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"gameCount.submitGuess(this.id)\"> </button> ";
 }
 
 ?>
 
 <!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> agameCount.resetVariables(); </script>
+<script type="text/javascript"> gameCount.resetVariables(); </script>
 
 <!-- newQuestion --> 
-<script type="text/javascript"> agameCount.newQuestion(); </script>
+<script type="text/javascript"> gameCount.newQuestion(); </script>
 
 <!-- newAnswer --> 
-<script type="text/javascript"> agameCount.newAnswer(); </script>
+<script type="text/javascript"> gameCount.newAnswer(); </script>
 
 <!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> agameCount.setChoices(); </script>
+<script type="text/javascript"> gameCount.setChoices(); </script>
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
@@ -91,7 +91,7 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 <p id="scoreNeeded"></p>
 
 <!-- call printScore --> 
-<script type="text/javascript"> agameCount.printScore(); </script>
+<script type="text/javascript"> gameCount.printScore(); </script>
 
 </body>
 </html> 

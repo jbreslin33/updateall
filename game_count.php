@@ -1,25 +1,24 @@
 <script type="text/javascript">
 
-function gameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
+function GameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
-	gameCount.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
+	GameCount.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
 
 }
 
-// subclass Person
-//KevLinDev.extend(Employee, Person);
-KevLinDev.extend(gameCount,game);
+// subclass 
+KevLinDev.extend(GameCount,Game);
 
 
 //overide
-gameCount.prototype.newQuestion = function()
+GameCount.prototype.newQuestion = function()
 {
         //set question
         this.question = this.question + ' ' + this.count;
         document.getElementById("question").innerHTML=this.question;
 }
 
-gameCount.prototype.setChoices = function()
+GameCount.prototype.setChoices = function()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
@@ -27,12 +26,12 @@ gameCount.prototype.setChoices = function()
         this.setButtons(offset);
 }
 
-gameCount.prototype.newAnswer = function()
+GameCount.prototype.newAnswer = function()
 {
         this.answer = this.count + this.countBy;
 }
 
-gameCount.prototype.setButtons = function(offset)
+GameCount.prototype.setButtons = function(offset)
 {
 	i=1;
 	for (i=1; i < this.numberOfButtons + 1; i++)
@@ -42,7 +41,7 @@ gameCount.prototype.setButtons = function(offset)
 	}
 }
 
-gameCount.prototype.submitGuess = function(button_id)
+GameCount.prototype.submitGuess = function(button_id)
 {
         this.guess = document.getElementById(button_id).innerHTML;
         
