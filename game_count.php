@@ -7,7 +7,7 @@ function GameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
 }
 
 // subclass 
-KevLinDev.extend(GameCount,Game);
+KInherit.extend(GameCount,Game);
 
 
 //overide

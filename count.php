@@ -43,6 +43,10 @@ if ($num > 0)
 
 ?>
 
+<!-- inheritance class -->
+<script type="text/javascript" src="kinherit.js"></script>
+
+
 <!-- base game class, this should be extended --> 
 <?php include("game.php"); ?>
 
