@@ -1,5 +1,27 @@
 <script type="text/javascript">
 
+// namespace placeholder
+KevLinDev = {};
+
+/**
+ * A function used to extend one class with another
+ * 
+ * @param {Object} subClass
+ * 		The inheriting class, or subclass
+ * @param {Object} baseClass
+ * 		The class from which to inherit
+ */
+KevLinDev.extend = function(subClass, baseClass) {
+   function inheritance() {}
+   inheritance.prototype = baseClass.prototype;
+
+   subClass.prototype = new inheritance();
+   subClass.prototype.constructor = subClass;
+   subClass.baseConstructor = baseClass;
+   subClass.superClass = baseClass.prototype;
+}
+
+
 function game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 
@@ -59,48 +81,7 @@ game.prototype.checkGuess = function()
                 this.resetVariables();
         }
 
-        this.printScore();
-
-        this.newQuestion();
-        this.newAnswer();
-        this.setChoices();
 }
 
-game.prototype.submitGuess = function(button_id)
-{
-        this.guess = document.getElementById(button_id).innerHTML;
-        this.checkGuess();
-}
-
-//overide
-game.prototype.newQuestion = function()
-{
-        //set question
-        this.question = this.question + ' ' + this.count;
-        document.getElementById("question").innerHTML=this.question;
-}
-
-game.prototype.setChoices = function()
-{
-        //set buttons
-        var offset = Math.floor(Math.random() *4);
-        offset = this.answer - offset;
-        this.setButtons(offset);
-}
-
-game.prototype.newAnswer = function()
-{
-        this.answer = this.count + this.countBy;
-}
-
-game.prototype.setButtons = function(offset)
-{
-	i=1;
-	for (i=1; i < this.numberOfButtons + 1; i++)
-	{
-		j = i - 1;
-		document.getElementById("button" + i).innerHTML=offset + j;
-	}
-}
 
 </script>
