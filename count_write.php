@@ -43,154 +43,17 @@ if ($num > 0)
 
 ?>
 
-<script type="text/javascript">
+<!-- inheritance class -->
+<script type="text/javascript" src="kinherit.js"></script>
 
-//set javascript vars from db result set
-var question = ""; //use to ask actuall question
-var guess = 0; // the users guess to question
-var count = 0; //this aids in asking the next question
-var answer = 0; //this is the correct answer to use for comparison to guess
-var score = 0;
-var countBy = 0;
-var numberOfButtons = 0;
-var answers = new Array();
-answers[0] = "0";
-answers[1] = "1";
-answers[2] = "2";
-answers[3] = "3";
-answers[4] = "4";
-answers[5] = "5";
-answers[6] = "6";
-answers[7] = "7";
-answers[8] = "8";
-answers[9] = "9";
-answers[10] = "1";
-answers[11] = "0";
-answers[12] = "1";
-answers[13] = "1";
-answers[14] = "1";
-answers[15] = "2";
-answers[16] = "1";
-answers[17] = "3";
-answers[18] = "1";
-answers[19] = "4";
-answers[20] = "1";
-answers[21] = "5";
-answers[22] = "1";
-answers[23] = "6";
-answers[24] = "1";
-answers[25] = "7";
-answers[26] = "1";
-answers[27] = "8";
-answers[28] = "1";
-answers[29] = "9";
-answers[30] = "2";
-answers[31] = "0";
+<!-- base game class, this should be extended -->
+<?php include("game.php"); ?>
 
-function submitGuess(button_id)
-{
-        guess = document.getElementById(button_id).innerHTML;
-        checkGuess();
-}
+<!-- sub class of game for counting -->
+<?php include("game_count_write.php"); ?>
 
-function checkGuess()
-{
-        if (guess == answer)
-        {
-		count = count + countBy;  //add to count            	
- 		score++; 
-              	
-		document.getElementById("feedback").innerHTML="Correct!";
-		
-        	checkForEndOfGame();        	
-        }
-        else
-        {
-                document.getElementById("feedback").innerHTML="Wrong! Try again.";
-
-		resetVariables();	
-        }
-	
-	printScore();	
-
-	newQuestion();
-	newAnswer(); 	
-	setChoices();	
-}
-
-function printScore()
-{
-	document.getElementById("score").innerHTML="Score: " + score;
-	document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
-}
-
-function checkForEndOfGame()
-{
-	if (score == <?php echo "$scoreNeeded"; ?> )
-        {
-        	document.getElementById("feedback").innerHTML="YOU WIN!!!";
-		window.location = "goto_next_math_level.php"					
-        }
-}
-
-function newQuestion()
-{
-	//set question	
-	
-	if (count < 10 || count == 10 || count == 12 || count == 14 || count == 16 || count == 18 || count == 20
-	 || count == 22 || count == 24 || count == 26 || count == 28 || count == 30)
-	{	
-		question = question + ' ' +  answers[count];
-	}
-	else
-	{
-		question = question + '' +  answers[count];
-	}	
-	document.getElementById("question").innerHTML=question;
-}
-
-function setChoices()
-{
-	//set buttons	
-	var offset = Math.floor(Math.random() *4);
-        offset = answer - offset;
-	setButtons(0);
-}
-
-function newAnswer()
-{
-	answer = answers[count + countBy];
-}
-
-function resetVariables()
-{
-	question = "0 ";	
-	<?php echo "count = $startNumber;"; ?>
-	guess = 0;		
-	answer = 0;
-	score = 0;
-	<?php echo "scoreNeeded = $scoreNeeded;"; ?>
-	<?php echo "countBy = $countBy;"; ?>		
-	<?php echo "numberOfButtons = $numberOfButtons;"; ?>
-}
-
-<!-- set buttons inner html -->
-function setButtons(offset)
-{
-	<?php	
-	$i=1;
-	for ($i=1; $i < $numberOfButtons; $i++)
-	{
-		$j = $i - 1;	
-		echo "document.getElementById(\"button$i\").innerHTML=offset + $j;";
-	}
-
-		
-	echo "document.getElementById(\"button$i\").innerHTML=\"SPACE\";";
-	?>	
-}
-
-</script>
+<!-- creating gameCount which is child of game -->
+<script type="text/javascript">  var gameCountWrite = new GameCountWrite( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -204,22 +67,22 @@ function setButtons(offset)
 $i=1;
 for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"submitGuess(this.id)\"> </button> ";
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"gameCountWrite.submitGuess(this.id)\"> </button> ";
 }
 
 ?>
 
 <!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> resetVariables(); </script>
+<script type="text/javascript"> gameCountWrite.resetVariables(); </script>
 
 <!-- newQuestion --> 
-<script type="text/javascript"> newQuestion(); </script>
+<script type="text/javascript"> gameCountWrite.newQuestion(); </script>
 
 <!-- newAnswer --> 
-<script type="text/javascript"> newAnswer(); </script>
+<script type="text/javascript"> gameCountWrite.newAnswer(); </script>
 
 <!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> setChoices(); </script>
+<script type="text/javascript"> gameCountWrite.setChoices(); </script>
 
 
 <!-- create feedback -->
@@ -232,7 +95,7 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 <p id="scoreNeeded"></p>
 
 <!-- call printScore --> 
-<script type="text/javascript"> printScore(); </script>
+<script type="text/javascript"> gameCountWrite.printScore(); </script>
 
 </body>
 </html> 
