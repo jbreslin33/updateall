@@ -46,7 +46,6 @@ if ($num > 0)
 <!-- inheritance class -->
 <script type="text/javascript" src="kinherit.js"></script>
 
-
 <!-- base game class, this should be extended --> 
 <?php include("game.php"); ?>
 
@@ -78,7 +77,7 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 
 
 <!-- create buttons using javascript --> 
-<script type="text/javascript"> gameCount.createButtons(); </script>
+<script type="text/javascript"> gameCount.createImages(); </script>
 
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> gameCount.resetVariables(); </script>
