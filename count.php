@@ -62,6 +62,8 @@ if ($num > 0)
 <!-- create and set question --> 
 <p id="question"> </p>
 
+<div id="buttoncontent"> </div>
+
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 
 
@@ -72,6 +74,11 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 }
 
 ?>
+
+
+
+<!-- create buttons using javascript --> 
+<script type="text/javascript"> gameCount.createButtons(); </script>
 
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> gameCount.resetVariables(); </script>

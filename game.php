@@ -16,6 +16,18 @@ this.score=0;
 
 }
 
+Game.prototype.createButtons = function()
+{
+	var buttonnode= document.createElement('input');
+	buttonnode.setAttribute('type','button');
+	buttonnode.setAttribute('name','sal');
+	buttonnode.setAttribute('value','sal');
+
+	document.getElementById("buttoncontent").appendChild(buttonnode);
+	//New Part here
+	//buttonnode.onClick = Hi;
+}
+
 Game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
