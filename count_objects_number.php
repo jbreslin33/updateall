@@ -46,7 +46,7 @@ if ($num > 0)
 <?php include("game_count_write.php"); ?>
 
 <!-- creating gameCount which is child of game -->
-<script type="text/javascript">  var gameCountWrite = new GameCountWrite( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<script type="text/javascript">  var game = new GameCountWrite( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -60,7 +60,7 @@ if ($num > 0)
 $i=1;
 for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"gameCountWrite.submitGuess(this.id)\"> </button> ";
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"game.submitGuess(this.id)\"> </button> ";
 }
 
 ?>
