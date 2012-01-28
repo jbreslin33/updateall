@@ -1,13 +1,6 @@
-<html>
-<body>
-
-<?php include("check_login.php"); ?>
-<?php include("db_connect.php"); ?>
-
 <?php
 
-//db connection
-$conn = dbConnect();
+include("top.php"); 
 
 //query
 $query = "select name, start_number, score_needed, count_by, number_of_buttons from math_games where level = ";
@@ -72,30 +65,6 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 
 ?>
 
-<!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> gameCountWrite.resetVariables(); </script>
+<!-- lower.php --> 
+<?php include("lower.php"); ?>
 
-<!-- newQuestion --> 
-<script type="text/javascript"> gameCountWrite.newQuestion(); </script>
-
-<!-- newAnswer --> 
-<script type="text/javascript"> gameCountWrite.newAnswer(); </script>
-
-<!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> gameCountWrite.setChoices(); </script>
-
-
-<!-- create feedback -->
-<p id="feedback">"Have Fun!"</p>
-
-<!-- create score -->
-<p id="score"></p>
-
-<!-- create scoreNeeded -->
-<p id="scoreNeeded"></p>
-
-<!-- call printScore --> 
-<script type="text/javascript"> gameCountWrite.printScore(); </script>
-
-</body>
-</html> 
