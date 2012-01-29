@@ -35,7 +35,6 @@ GameCountObjectNumber.prototype.newQuestion = function()
 //new functions
 GameCountObjectNumber.prototype.createImages = function()
 {
-	
 	var offset = Math.floor(Math.random() *10);
 	offset++;	
 	var i = 0;	
@@ -43,8 +42,7 @@ GameCountObjectNumber.prototype.createImages = function()
 	{
 		var img = new Image();   // Create new img element  
 		img.src = 'redball.gif'; // Set source path	
-//		img.id = 'image1';	
-document.getElementById("image_div").appendChild(img);	
+		document.getElementById("image_div").appendChild(img);	
 	}
 }
 
@@ -54,9 +52,6 @@ GameCountObjectNumber.prototype.removeImages = function()
 	while (document.getElementById("image_div").hasChildNodes()) 	
 	{
 		document.getElementById("image_div").removeChild(document.getElementById("image_div").firstChild);	
-		//alert("children still exist");
 	}
-	//alert("no more children");
-
 }
 </script>
