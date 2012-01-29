@@ -13,8 +13,8 @@ GameCountObjectNumber.prototype.createImages = function()
 {
 	var img = new Image();   // Create new img element  
 	img.src = 'redball.gif'; // Set source path	
-	document.body.appendChild(img)//append to body	
-
+	//document.body.appendChild(img)//append to body	
+	document.getElementById("image_div").appendChild(img);	
 }
 
 </script>
