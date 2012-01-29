@@ -60,9 +60,6 @@ if ($num > 0)
 <!-- create div for image placement -->
 <div id="image_div"> </div>
 
-<!-- create images function -->
-<script type="text/javascript"> game.createImages(); </script>
-
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 
 
