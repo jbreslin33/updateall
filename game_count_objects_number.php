@@ -2,7 +2,6 @@
 
 function GameCountObjectNumber(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
-	
 	GameCountObjectNumber.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
 }
 
@@ -12,11 +11,9 @@ KInherit.extend(GameCountObjectNumber, GameCountWrite);
 //over rides
 GameCountObjectNumber.prototype.newQuestion = function()
 {
-
         //set question
 	this.question = Math.floor(Math.random() *10);
 	this.question++;
-	
 	
 	this.removeImages();
 	this.createImages();	
@@ -30,16 +27,16 @@ GameCountObjectNumber.prototype.createImages = function()
 	{
 		var img = new Image();   // Create new img element  
 		img.src = 'redball.gif'; // Set source path	
-		document.getElementById("image_div").appendChild(img);	
+		document.getElementById("question").appendChild(img);	
 	}
 }
 
 
 GameCountObjectNumber.prototype.removeImages = function()
 {
-	while (document.getElementById("image_div").hasChildNodes()) 	
+	while (document.getElementById("question").hasChildNodes()) 	
 	{
-		document.getElementById("image_div").removeChild(document.getElementById("image_div").firstChild);	
+		document.getElementById("question").removeChild(document.getElementById("question").firstChild);	
 	}
 }
 </script>

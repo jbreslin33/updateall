@@ -57,9 +57,6 @@ if ($num > 0)
 <!-- create and set question -->
 <p id="question"> </p>
 
-<!-- create div for image placement -->
-<div id="image_div"> </div>
-
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 
 
