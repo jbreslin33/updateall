@@ -116,5 +116,13 @@ Game.prototype.submitGuess = function(button_id)
         this.setChoices();
 }
 
+Game.prototype.init = function()
+{
+	this.resetVariables();
+	this.newQuestion();
+	this.newAnswer();
+	this.setChoices();
+	this.printScore();
+}
 
 </script>

@@ -36,30 +36,11 @@ if ($num > 0)
 
 ?>
 
-<!-- class for counting games -->
+<!-- class for game -->
 <?php include("game_count.php"); ?>
 
-<!-- creating game which is child of game --> 
+<!-- creating game --> 
 <script type="text/javascript">  var game = new Game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
-
-<!-- creat and set game name -->
-<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
-
-<!-- create and set question --> 
-<p id="question"> </p>
-
-<div id="buttoncontent"> </div>
-
-<!-- Create Buttons (could this be done in db?) --> 
-<?php 
-
-$i=1;
-for ($i=1; $i < $numberOfButtons + 1; $i++)
-{
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"game.submitGuess(this.id)\"> </button> ";
-}
-
-?>
 
 <!-- lower.php -->
 <?php include("lower.php"); ?>

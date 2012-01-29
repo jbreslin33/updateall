@@ -1,15 +1,21 @@
-<!-- initialize variables for start of new game or reset -->
-<script type="text/javascript"> game.resetVariables(); </script>
+<!-- creat and set game name -->
+<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
-<!-- newQuestion -->
-<script type="text/javascript"> game.newQuestion(); </script>
+<!-- create and set question -->
+<p id="question"> </p>
 
-<!-- newAnswer -->
-<script type="text/javascript"> game.newAnswer(); </script>
+<div id="buttoncontent"> </div>
 
-<!-- call setChoices to initialize their innerhtml -->
-<script type="text/javascript"> game.setChoices(); </script>
+<!-- Create Buttons (could this be done in db?) -->
+<?php
 
+$i=1;
+for ($i=1; $i < $numberOfButtons + 1; $i++)
+{
+        echo "<button type=\"button\" id=\"button$i\" onclick=\"game.submitGuess(this.id)\"> </button> ";
+}
+
+?>
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
@@ -20,8 +26,7 @@
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
 
-<!-- call printScore -->
-<script type="text/javascript"> game.printScore(); </script>
+<script type="text/javascript"> game.init(); </script>
 
 </body>
 </html>
