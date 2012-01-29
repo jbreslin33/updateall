@@ -45,14 +45,23 @@ if ($num > 0)
 <!-- sub class of game for counting -->
 <?php include("game_count_write.php"); ?>
 
+<!-- sub class -->
+<?php include("game_count_objects_number.php"); ?>
+
 <!-- creating gameCount which is child of game -->
-<script type="text/javascript">  var game = new GameCountWrite( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<script type="text/javascript">  var game = new GameCountObjectNumber( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
 <!-- create and set question -->
 <p id="question"> </p>
+
+<!-- create div for image placement -->
+<div id="image_div"> </div>
+
+<!-- create images function -->
+<script type="text/javascript"> game.createImages(); </script>
 
 <!-- Create Buttons (could this be done in db?) --> 
 <?php 

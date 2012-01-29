@@ -9,6 +9,11 @@ function GameCountObjectNumber(startNumber,scoreNeeded,countBy,numberOfButtons)
 // subclass 
 KInherit.extend(GameCountObjectNumber, GameCountWrite);
 
+GameCountObjectNumber.prototype.createImages = function()
+{
+	
 
+
+}
 
 </script>
