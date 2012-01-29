@@ -16,29 +16,6 @@ this.score=0;
 
 }
 
-Game.prototype.createImages = function()
-{
-      	ball = document.createElement("img");
-     	ball.src = "redball.gif" 
-	
-	document.getElementById("buttoncontent").appendChild(ball);
-}
-
-Game.prototype.createButtons = function()
-{
-	//var buttonnode= document.createElement('input');
-	//buttonnode.setAttribute('type','button');
-	//buttonnode.setAttribute('name','sal');
-	//buttonnode.setAttribute('value','sal');
-
-      	ball = document.createElement("img");
-     	ball.src = "redball.gif" 
-
-	document.getElementById("buttoncontent").appendChild(ball);
-	//New Part here
-	//buttonnode.onClick = Hi;
-}
-
 Game.prototype.printScore = function()
 {
         document.getElementById("score").innerHTML="Score: " + this.score;
