@@ -32,6 +32,7 @@ Game.prototype.checkForEndOfGame = function()
 
 Game.prototype.resetVariables = function()
 {
+//	alert("reset");
         this.question = "";
        	this.count = this.startNumber; 
 

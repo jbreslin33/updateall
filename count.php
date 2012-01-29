@@ -43,17 +43,11 @@ if ($num > 0)
 
 ?>
 
-<!-- inheritance class -->
-<script type="text/javascript" src="kinherit.js"></script>
-
-<!-- base game class, this should be extended --> 
-<?php include("game.php"); ?>
-
-<!-- sub class of game for counting -->
+<!-- class for counting games -->
 <?php include("game_count.php"); ?>
 
-<!-- creating gameCount which is child of game --> 
-<script type="text/javascript">  var gameCount = new GameCount( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<!-- creating game which is child of game --> 
+<script type="text/javascript">  var game = new Game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -69,22 +63,22 @@ if ($num > 0)
 $i=1;
 for ($i=1; $i < $numberOfButtons + 1; $i++)
 {
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"gameCount.submitGuess(this.id)\"> </button> ";
+	echo "<button type=\"button\" id=\"button$i\" onclick=\"game.submitGuess(this.id)\"> </button> ";
 }
 
 ?>
 
 <!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> gameCount.resetVariables(); </script>
+<script type="text/javascript"> game.resetVariables(); </script>
 
 <!-- newQuestion --> 
-<script type="text/javascript"> gameCount.newQuestion(); </script>
+<script type="text/javascript"> game.newQuestion(); </script>
 
 <!-- newAnswer --> 
-<script type="text/javascript"> gameCount.newAnswer(); </script>
+<script type="text/javascript"> game.newAnswer(); </script>
 
 <!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> gameCount.setChoices(); </script>
+<script type="text/javascript"> game.setChoices(); </script>
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
@@ -96,7 +90,7 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 <p id="scoreNeeded"></p>
 
 <!-- call printScore --> 
-<script type="text/javascript"> gameCount.printScore(); </script>
+<script type="text/javascript"> game.printScore(); </script>
 
 </body>
 </html> 

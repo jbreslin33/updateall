@@ -1,8 +1,16 @@
 <script type="text/javascript">
 
-function GameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
+function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
-	GameCount.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
+	//score
+	this.score=0;
+	this.scoreNeeded = scoreNeeded;
+
+	//game
+	this.numberOfButtons = numberOfButtons;
+	this.question="";
+	this.guess=0;
+	this.answer=0;
 
 	//count
 	this.countBy = countBy;
@@ -10,20 +18,40 @@ function GameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
 	this.startNumber = startNumber;
 }
 
-// subclass 
-KInherit.extend(GameCount,Game);
 
-//from game
-GameCount.prototype.resetVariables = function()
+//Score
+Game.prototype.printScore = function()
 {
-        //Game.resetVariables();
-//this.base().resetVariables();
-GameCount.superClass.resetVariables();
+        document.getElementById("score").innerHTML="Score: " + this.score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
+}
 
+Game.prototype.checkForEndOfGame = function()
+{
+        if (this.score == <?php echo "$scoreNeeded"; ?> )
+        {
+                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                window.location = "goto_next_math_level.php"
+        }
+}
+
+//reset
+Game.prototype.resetVariables = function()
+{
+	//score
+	this.score = 0;
+
+	//game
+        this.question = "";
+        this.guess = 0;
+        this.answer = 0;
+
+	//count
         this.count = this.startNumber;
 }
 
-GameCount.prototype.checkGuess = function()
+//check guess
+Game.prototype.checkGuess = function()
 {
         if (this.guess == this.answer)
         {
@@ -42,17 +70,16 @@ GameCount.prototype.checkGuess = function()
         }
 }
 
-
-
-//overide
-GameCount.prototype.newQuestion = function()
+//questions
+Game.prototype.newQuestion = function()
 {
         //set question
         this.question = this.question + ' ' + this.count;
         document.getElementById("question").innerHTML=this.question;
 }
 
-GameCount.prototype.setChoices = function()
+//set choices
+Game.prototype.setChoices = function()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
@@ -60,12 +87,14 @@ GameCount.prototype.setChoices = function()
         this.setButtons(offset);
 }
 
-GameCount.prototype.newAnswer = function()
+//new answer
+Game.prototype.newAnswer = function()
 {
         this.answer = this.count + this.countBy;
 }
 
-GameCount.prototype.setButtons = function(offset)
+//set buttons
+Game.prototype.setButtons = function(offset)
 {
 	i=1;
 	for (i=1; i < this.numberOfButtons + 1; i++)
@@ -75,7 +104,8 @@ GameCount.prototype.setButtons = function(offset)
 	}
 }
 
-GameCount.prototype.submitGuess = function(button_id)
+//submit guess
+Game.prototype.submitGuess = function(button_id)
 {
         this.guess = document.getElementById(button_id).innerHTML;
         
