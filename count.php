@@ -74,11 +74,6 @@ for ($i=1; $i < $numberOfButtons + 1; $i++)
 
 ?>
 
-
-
-<!-- create buttons using javascript --> 
-<script type="text/javascript"> gameCount.createImages(); </script>
-
 <!-- initialize variables for start of new game or reset --> 
 <script type="text/javascript"> gameCount.resetVariables(); </script>
 

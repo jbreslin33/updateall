@@ -4,10 +4,44 @@ function GameCount(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 	GameCount.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
 
+	//count
+	this.countBy = countBy;
+	this.count=0;
+	this.startNumber = startNumber;
 }
 
 // subclass 
 KInherit.extend(GameCount,Game);
+
+//from game
+GameCount.prototype.resetVariables = function()
+{
+        //Game.resetVariables();
+//this.base().resetVariables();
+GameCount.superClass.resetVariables();
+
+        this.count = this.startNumber;
+}
+
+GameCount.prototype.checkGuess = function()
+{
+        if (this.guess == this.answer)
+        {
+                this.count = this.count + this.countBy;  //add to count
+                this.score++;
+
+                document.getElementById("feedback").innerHTML="Correct!";
+
+                this.checkForEndOfGame();
+        }
+        else
+        {
+                document.getElementById("feedback").innerHTML="Wrong! Try again.";
+
+                this.resetVariables();
+        }
+}
+
 
 
 //overide

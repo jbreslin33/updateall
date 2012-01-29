@@ -4,15 +4,14 @@ function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 
 //vars
-this.startNumber = startNumber;
+this.score=0;
 this.scoreNeeded = scoreNeeded;
-this.countBy = countBy;
+
+//game
 this.numberOfButtons = numberOfButtons;
 this.question="";
 this.guess=0;
-this.count=0;
 this.answer=0;
-this.score=0;
 
 }
 
@@ -39,25 +38,6 @@ Game.prototype.resetVariables = function()
 	this.guess = 0;
         this.answer = 0;
         this.score = 0;
-}
-
-Game.prototype.checkGuess = function()
-{
-        if (this.guess == this.answer)
-        {
-                this.count = this.count + this.countBy;  //add to count
-                this.score++;
-
-                document.getElementById("feedback").innerHTML="Correct!";
-
-                this.checkForEndOfGame();
-        }
-        else
-        {
-                document.getElementById("feedback").innerHTML="Wrong! Try again.";
-
-                this.resetVariables();
-        }
 }
 
 

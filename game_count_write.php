@@ -3,7 +3,15 @@
 function GameCountWrite(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 	
+	
 	GameCountWrite.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
+	
+        //count
+        this.countBy = countBy;
+        this.count=0;
+        this.startNumber = startNumber;
+
+	//GameCount
 	this.answers = new Array();
 	this.answers[0] = "0";
 	this.answers[1] = "1";
@@ -37,10 +45,42 @@ function GameCountWrite(startNumber,scoreNeeded,countBy,numberOfButtons)
 	this.answers[29] = "9";
 	this.answers[30] = "2";
 	this.answers[31] = "0";
+
 }
 
 // subclass 
 KInherit.extend(GameCountWrite,Game);
+
+
+//from game
+GameCountWrite.prototype.resetVariables = function()
+{
+	Game.resetVariables();
+
+        this.count = this.startNumber;
+}
+
+GameCountWrite.prototype.checkGuess = function()
+{
+        if (this.guess == this.answer)
+        {
+                this.count = this.count + this.countBy;  //add to count
+                this.score++;
+
+                document.getElementById("feedback").innerHTML="Correct!";
+
+                this.checkForEndOfGame();
+        }
+        else
+        {
+                document.getElementById("feedback").innerHTML="Wrong! Try again.";
+
+                this.resetVariables();
+        }
+}
+
+
+
 
 
 //overide
