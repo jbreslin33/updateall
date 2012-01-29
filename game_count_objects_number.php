@@ -14,31 +14,19 @@ GameCountObjectNumber.prototype.newQuestion = function()
 {
 
         //set question
-
-        if (this.count < 10 || this.count == 10 || this.count == 12 || this.count == 14 || this.count == 16 || this.count == 18 || this.count == 20
-         || this.count == 22 || this.count == 24 || this.count == 26 || this.count == 28 || this.count == 30)
-        {
-                this.question = this.question + ' ' +  this.answers[this.count];
-        }
-        else
-        {
-                this.question = this.question + '' +  this.answers[this.count];
-        }
-        document.getElementById("question").innerHTML=this.question;
-
-	//var objectsToCount = Math.floor(Math.random() *4);		
+	this.question = Math.floor(Math.random() *10);
+	this.question++;
+	
+	
 	this.removeImages();
 	this.createImages();	
-	
 }
 
 //new functions
 GameCountObjectNumber.prototype.createImages = function()
 {
-	var offset = Math.floor(Math.random() *10);
-	offset++;	
 	var i = 0;	
-	for (i=0; i < offset; i++)
+	for (i=0; i < this.question; i++)
 	{
 		var img = new Image();   // Create new img element  
 		img.src = 'redball.gif'; // Set source path	
