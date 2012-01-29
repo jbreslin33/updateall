@@ -58,50 +58,7 @@ Game.prototype.checkGuess = function()
 
                 this.resetVariables();
         }
-
 }
 
-
-//overide
-Game.prototype.newQuestion = function()
-{
-        //set question
-       	//this.question = this.question + ' ' + this.count;
-        //document.getElementById("question").innerHTML=this.question;
-}
-
-Game.prototype.setChoices = function()
-{
-        //set buttons
-        //var offset = Math.floor(Math.random() *4);
-        //offset = this.answer - offset;
-        //this.setButtons(offset);
-}
-
-Game.prototype.newAnswer = function()
-{
-        //this.answer = this.count + this.countBy;
-}
-
-Game.prototype.setButtons = function(offset)
-{
-        //i=1;
-        //for (i=1; i < this.numberOfButtons + 1; i++)
-        //{
-        //        j = i - 1;
-        //        document.getElementById("button" + i).innerHTML=offset + j;
-        //}
-}
-
-Game.prototype.submitGuess = function(button_id)
-{
-        //this.guess = document.getElementById(button_id).innerHTML;
-
-        //this.checkGuess();
-        //this.printScore();
-        //this.newQuestion();
-        //this.newAnswer();
-        //this.setChoices();
-}
 
 </script>
