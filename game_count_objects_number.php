@@ -111,8 +111,8 @@ Game.prototype.newQuestion = function()
         //set question
         this.question = Math.floor(Math.random() *10);
         this.question++;
-
-        this.removeImages();
+        
+	this.removeImages();
         this.createImages();
 }
 
@@ -126,7 +126,7 @@ Game.prototype.setChoices = function()
 
 Game.prototype.newAnswer = function()
 {
-   this.answer = this.answers[this.count + this.countBy];
+   this.answer = this.question;
 
 }
 
