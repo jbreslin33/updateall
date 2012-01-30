@@ -110,15 +110,17 @@ Game.prototype.submitGuess = function(button_id)
         this.guess = document.getElementById(button_id).innerHTML;
         
 	this.checkGuess();
-        this.printScore();
-        this.newQuestion();
+        
+	this.newQuestion();
         this.newAnswer();
         this.setChoices();
+        this.printScore();
 }
 
 Game.prototype.init = function()
 {
 	this.resetVariables();
+	
 	this.newQuestion();
 	this.newAnswer();
 	this.setChoices();
