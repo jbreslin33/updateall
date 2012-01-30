@@ -11,47 +11,6 @@ function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
         this.question="";
         this.guess=0;
         this.answer=0;
-
-        //count
-        this.countBy = countBy;
-        this.count=0;
-        this.startNumber = startNumber;
-
-	//Write
-	this.answers = new Array();
-	this.answers[0] = "0";
-	this.answers[1] = "1";
-	this.answers[2] = "2";
-	this.answers[3] = "3";
-	this.answers[4] = "4";
-	this.answers[5] = "5";
-	this.answers[6] = "6";
-	this.answers[7] = "7";
-	this.answers[8] = "8";
-	this.answers[9] = "9";
-	this.answers[10] = "1";
-	this.answers[11] = "0";
-	this.answers[12] = "1";
-	this.answers[13] = "1";
-	this.answers[14] = "1";
-	this.answers[15] = "2";
-	this.answers[16] = "1";
-	this.answers[17] = "3";
-	this.answers[18] = "1";
-	this.answers[19] = "4";
-	this.answers[20] = "1";
-	this.answers[21] = "5";
-	this.answers[22] = "1";
-	this.answers[23] = "6";
-	this.answers[24] = "1";
-	this.answers[25] = "7";
-	this.answers[26] = "1";
-	this.answers[27] = "8";
-	this.answers[28] = "1";
-	this.answers[29] = "9";
-	this.answers[30] = "2";
-	this.answers[31] = "0";
-
 }
 
 //Score
@@ -80,16 +39,12 @@ Game.prototype.resetVariables = function()
         this.question = "";
         this.guess = 0;
         this.answer = 0;
-
-        //count
-        this.count = this.startNumber;
 }
 
 Game.prototype.checkGuess = function()
 {
         if (this.guess == this.answer)
         {
-                this.count = this.count + this.countBy;  //add to count
                 this.score++;
 
                 document.getElementById("feedback").innerHTML="Correct!";
@@ -170,7 +125,6 @@ Game.prototype.createImages = function()
                 document.getElementById("question").appendChild(img);
         }
 }
-
 
 Game.prototype.removeImages = function()
 {
