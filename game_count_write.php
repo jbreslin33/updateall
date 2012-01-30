@@ -1,17 +1,23 @@
 <script type="text/javascript">
 
-function GameCountWrite(startNumber,scoreNeeded,countBy,numberOfButtons)
+function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
-	
-	
-	GameCountWrite.baseConstructor.call(this,startNumber,scoreNeeded,countBy,numberOfButtons);
-	
+	//score
+        this.score=0;
+        this.scoreNeeded = scoreNeeded;
+
+        //game
+        this.numberOfButtons = numberOfButtons;
+        this.question="";
+        this.guess=0;
+        this.answer=0;
+
         //count
         this.countBy = countBy;
         this.count=0;
         this.startNumber = startNumber;
 
-	//GameCount
+	//Write
 	this.answers = new Array();
 	this.answers[0] = "0";
 	this.answers[1] = "1";
@@ -48,19 +54,38 @@ function GameCountWrite(startNumber,scoreNeeded,countBy,numberOfButtons)
 
 }
 
-// subclass 
-KInherit.extend(GameCountWrite,Game);
-
-
-//from game
-GameCountWrite.prototype.resetVariables = function()
+//Score
+Game.prototype.printScore = function()
 {
-	Game.resetVariables();
+        document.getElementById("score").innerHTML="Score: " + this.score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
+}
 
+Game.prototype.checkForEndOfGame = function()
+{
+        if (this.score == <?php echo "$scoreNeeded"; ?> )
+        {
+                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                window.location = "goto_next_math_level.php"
+        }
+}
+
+//reset
+Game.prototype.resetVariables = function()
+{
+        //score
+        this.score = 0;
+
+        //game
+        this.question = "";
+        this.guess = 0;
+        this.answer = 0;
+
+        //count
         this.count = this.startNumber;
 }
 
-GameCountWrite.prototype.checkGuess = function()
+Game.prototype.checkGuess = function()
 {
         if (this.guess == this.answer)
         {
@@ -80,11 +105,8 @@ GameCountWrite.prototype.checkGuess = function()
 }
 
 
-
-
-
 //overide
-GameCountWrite.prototype.newQuestion = function()
+Game.prototype.newQuestion = function()
 {
         
 	//set question
@@ -101,7 +123,7 @@ GameCountWrite.prototype.newQuestion = function()
         document.getElementById("question").innerHTML=this.question;
 }
 
-GameCountWrite.prototype.setChoices = function()
+Game.prototype.setChoices = function()
 {
  	//set buttons
         var offset = Math.floor(Math.random() *4);
@@ -109,13 +131,13 @@ GameCountWrite.prototype.setChoices = function()
         this.setButtons(0);
 }
 
-GameCountWrite.prototype.newAnswer = function()
+Game.prototype.newAnswer = function()
 {
    this.answer = this.answers[this.count + this.countBy];
 
 }
 
-GameCountWrite.prototype.setButtons = function(offset)
+Game.prototype.setButtons = function(offset)
 {
 	i=1;
 	for (i=1; i < this.numberOfButtons + 1; i++)
@@ -125,7 +147,7 @@ GameCountWrite.prototype.setButtons = function(offset)
 	}
 }
 
-GameCountWrite.prototype.submitGuess = function(button_id)
+Game.prototype.submitGuess = function(button_id)
 {
 	this.guess = document.getElementById(button_id).innerHTML;
         this.checkGuess();
@@ -135,5 +157,14 @@ GameCountWrite.prototype.submitGuess = function(button_id)
         this.setChoices();
 }
 
+Game.prototype.init = function()
+{
+        this.resetVariables();
+        
+        this.newQuestion();
+        this.newAnswer();
+        this.setChoices();
+        this.printScore();
+}
 
 </script>

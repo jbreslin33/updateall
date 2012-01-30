@@ -1,13 +1,6 @@
-<html>
-<body>
-
-<?php include("check_login.php"); ?>
-<?php include("db_connect.php"); ?>
-
 <?php
 
-//db connection
-$conn = dbConnect();
+include("top.php");
 
 //query
 $query = "select name, start_number, score_needed, count_by, number_of_buttons from math_games where level = ";
@@ -43,59 +36,11 @@ if ($num > 0)
 
 ?>
 
-<!-- inheritance class -->
-<script type="text/javascript" src="kinherit.js"></script>
-
-<!-- base game class, this should be extended -->
-<?php include("game.php"); ?>
-
-<!-- sub class of game for counting -->
+<!-- class for game -->
 <?php include("game_count_write.php"); ?>
 
-<!-- creating gameCount which is child of game -->
-<script type="text/javascript">  var gameCountWrite = new GameCountWrite( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<!-- creating game --> 
+<script type="text/javascript">  var game = new Game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
-<!-- creat and set game name -->
-<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
-
-<!-- create and set question -->
-<p id="question"> </p>
-
-<!-- Create Buttons (could this be done in db?) --> 
-<?php 
-
-$i=1;
-for ($i=1; $i < $numberOfButtons + 1; $i++)
-{
-	echo "<button type=\"button\" id=\"button$i\" onclick=\"gameCountWrite.submitGuess(this.id)\"> </button> ";
-}
-
-?>
-
-<!-- initialize variables for start of new game or reset --> 
-<script type="text/javascript"> gameCountWrite.resetVariables(); </script>
-
-<!-- newQuestion --> 
-<script type="text/javascript"> gameCountWrite.newQuestion(); </script>
-
-<!-- newAnswer --> 
-<script type="text/javascript"> gameCountWrite.newAnswer(); </script>
-
-<!-- call setChoices to initialize their innerhtml --> 
-<script type="text/javascript"> gameCountWrite.setChoices(); </script>
-
-
-<!-- create feedback -->
-<p id="feedback">"Have Fun!"</p>
-
-<!-- create score -->
-<p id="score"></p>
-
-<!-- create scoreNeeded -->
-<p id="scoreNeeded"></p>
-
-<!-- call printScore --> 
-<script type="text/javascript"> gameCountWrite.printScore(); </script>
-
-</body>
-</html> 
+<!-- lower.php -->
+<?php include("lower.php"); ?>
