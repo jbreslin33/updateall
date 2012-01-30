@@ -91,6 +91,27 @@ Game.prototype.setButtons = function(offset)
 		j = i - 1;
 		document.getElementById("button" + i).innerHTML=offset + j;
 	}
+	document.getElementById("button1").innerHTML="Zero";
+	document.getElementById("button2").innerHTML="One";
+	document.getElementById("button3").innerHTML="Two";
+	document.getElementById("button4").innerHTML="Three";
+	document.getElementById("button5").innerHTML="Four";
+	document.getElementById("button6").innerHTML="Five";
+	document.getElementById("button7").innerHTML="Six";
+	document.getElementById("button8").innerHTML="Seven";
+	document.getElementById("button9").innerHTML="Eight";
+	document.getElementById("button10").innerHTML="Nine";
+	document.getElementById("button11").innerHTML="Ten";
+	document.getElementById("button12").innerHTML="Eleven";
+	document.getElementById("button13").innerHTML="Twelve";
+	document.getElementById("button14").innerHTML="Thirteen";
+	document.getElementById("button15").innerHTML="Fourteen";
+	document.getElementById("button16").innerHTML="Fifteen";
+	document.getElementById("button17").innerHTML="Sixteen";
+	document.getElementById("button18").innerHTML="Seventeen";
+	document.getElementById("button19").innerHTML="Eighteen";
+	document.getElementById("button20").innerHTML="Nineteen";
+	document.getElementById("button21").innerHTML="Twenty";
 }
 
 //submit guess
