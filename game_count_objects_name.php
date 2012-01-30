@@ -110,21 +110,50 @@ Game.prototype.setButtons = function(offset)
 	document.getElementById("button6").value="5";
 	
 
-document.getElementById("button7").innerHTML="Six";
+	document.getElementById("button7").innerHTML="Six";
+	document.getElementById("button7").value="6";
+	
 	document.getElementById("button8").innerHTML="Seven";
+	document.getElementById("button8").value="7";
+	
 	document.getElementById("button9").innerHTML="Eight";
+	document.getElementById("button9").value="8";
+	
 	document.getElementById("button10").innerHTML="Nine";
+	document.getElementById("button10").value="9";
+	
 	document.getElementById("button11").innerHTML="Ten";
+	document.getElementById("button11").value="10";
+	
 	document.getElementById("button12").innerHTML="Eleven";
+	document.getElementById("button12").value="11";
+	
 	document.getElementById("button13").innerHTML="Twelve";
+	document.getElementById("button13").value="12";
+	
 	document.getElementById("button14").innerHTML="Thirteen";
+	document.getElementById("button14").value="13";
+	
 	document.getElementById("button15").innerHTML="Fourteen";
+	document.getElementById("button15").value="14";
+	
 	document.getElementById("button16").innerHTML="Fifteen";
+	document.getElementById("button16").value="15";
+	
 	document.getElementById("button17").innerHTML="Sixteen";
+	document.getElementById("button17").value="16";
+	
 	document.getElementById("button18").innerHTML="Seventeen";
+	document.getElementById("button18").value="17";
+	
 	document.getElementById("button19").innerHTML="Eighteen";
+	document.getElementById("button19").value="18";
+	
 	document.getElementById("button20").innerHTML="Nineteen";
+	document.getElementById("button20").value="19";
+	
 	document.getElementById("button21").innerHTML="Twenty";
+	document.getElementById("button21").value="20";
 }
 
 //submit guess
