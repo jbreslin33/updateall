@@ -61,7 +61,7 @@ Game.prototype.checkGuess = function()
 Game.prototype.newQuestion = function()
 {
         //set question
-        this.question = Math.floor(Math.random() *10);
+        this.question = Math.floor(Math.random() *4);
         this.question++;
        
 	//images 
@@ -92,12 +92,25 @@ Game.prototype.setButtons = function(offset)
 		document.getElementById("button" + i).innerHTML=offset + j;
 	}
 	document.getElementById("button1").innerHTML="Zero";
+	document.getElementById("button1").value="0";
+	
 	document.getElementById("button2").innerHTML="One";
+	document.getElementById("button2").value="1";
+	
 	document.getElementById("button3").innerHTML="Two";
+	document.getElementById("button3").value="2";
+	
 	document.getElementById("button4").innerHTML="Three";
+	document.getElementById("button4").value="3";
+	
 	document.getElementById("button5").innerHTML="Four";
+	document.getElementById("button5").value="4";
+	
 	document.getElementById("button6").innerHTML="Five";
-	document.getElementById("button7").innerHTML="Six";
+	document.getElementById("button6").value="5";
+	
+
+document.getElementById("button7").innerHTML="Six";
 	document.getElementById("button8").innerHTML="Seven";
 	document.getElementById("button9").innerHTML="Eight";
 	document.getElementById("button10").innerHTML="Nine";
@@ -117,7 +130,8 @@ Game.prototype.setButtons = function(offset)
 //submit guess
 Game.prototype.submitGuess = function(button_id)
 {
-	this.guess = document.getElementById(button_id).innerHTML;
+	//this.guess = document.getElementById(button_id).innerHTML;
+	this.guess = document.getElementById(button_id).value;
         this.checkGuess();
         this.printScore();
         this.newQuestion();
