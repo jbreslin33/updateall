@@ -41,20 +41,18 @@ Game.prototype.resetVariables = function()
         this.answer = 0;
 }
 
+//check guess
 Game.prototype.checkGuess = function()
 {
         if (this.guess == this.answer)
         {
                 this.score++;
-
                 document.getElementById("feedback").innerHTML="Correct!";
-
                 this.checkForEndOfGame();
         }
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
-
                 this.resetVariables();
         }
 }
@@ -66,25 +64,27 @@ Game.prototype.newQuestion = function()
         //set question
         this.question = Math.floor(Math.random() *10);
         this.question++;
-        
+       
+	//images 
 	this.removeImages();
         this.createImages();
 }
 
+//set choices
 Game.prototype.setChoices = function()
 {
  	//set buttons
-        var offset = Math.floor(Math.random() *4);
-        offset = this.answer - offset;
         this.setButtons(0);
 }
 
+// new answer
 Game.prototype.newAnswer = function()
 {
    this.answer = this.question;
 
 }
 
+//set buttons
 Game.prototype.setButtons = function(offset)
 {
 	i=1;
@@ -95,6 +95,7 @@ Game.prototype.setButtons = function(offset)
 	}
 }
 
+//submit guess
 Game.prototype.submitGuess = function(button_id)
 {
 	this.guess = document.getElementById(button_id).innerHTML;
@@ -105,6 +106,7 @@ Game.prototype.submitGuess = function(button_id)
         this.setChoices();
 }
 
+//init
 Game.prototype.init = function()
 {
         this.resetVariables();
@@ -115,6 +117,7 @@ Game.prototype.init = function()
         this.printScore();
 }
 
+//create images
 Game.prototype.createImages = function()
 {
         var i = 0;
@@ -126,6 +129,7 @@ Game.prototype.createImages = function()
         }
 }
 
+//remove images
 Game.prototype.removeImages = function()
 {
         while (document.getElementById("question").hasChildNodes())

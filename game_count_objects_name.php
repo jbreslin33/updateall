@@ -20,6 +20,7 @@ Game.prototype.printScore = function()
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
 }
 
+//check for endgame
 Game.prototype.checkForEndOfGame = function()
 {
         if (this.score == <?php echo "$scoreNeeded"; ?> )
@@ -46,19 +47,15 @@ Game.prototype.checkGuess = function()
         if (this.guess == this.answer)
         {
                 this.score++;
-
                 document.getElementById("feedback").innerHTML="Correct!";
-
                 this.checkForEndOfGame();
         }
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
-
                 this.resetVariables();
         }
 }
-
 
 //new question
 Game.prototype.newQuestion = function()
@@ -66,25 +63,26 @@ Game.prototype.newQuestion = function()
         //set question
         this.question = Math.floor(Math.random() *10);
         this.question++;
-        
+       
+	//images 
 	this.removeImages();
         this.createImages();
 }
 
+//set choices
 Game.prototype.setChoices = function()
 {
  	//set buttons
-        var offset = Math.floor(Math.random() *4);
-        offset = this.answer - offset;
         this.setButtons(0);
 }
 
+//new answer
 Game.prototype.newAnswer = function()
 {
-   this.answer = this.question;
-
+	this.answer = this.question;
 }
 
+//set buttons
 Game.prototype.setButtons = function(offset)
 {
 	i=1;
@@ -95,6 +93,7 @@ Game.prototype.setButtons = function(offset)
 	}
 }
 
+//submit guess
 Game.prototype.submitGuess = function(button_id)
 {
 	this.guess = document.getElementById(button_id).innerHTML;
@@ -105,6 +104,7 @@ Game.prototype.submitGuess = function(button_id)
         this.setChoices();
 }
 
+//images
 Game.prototype.init = function()
 {
         this.resetVariables();
@@ -115,6 +115,7 @@ Game.prototype.init = function()
         this.printScore();
 }
 
+//create images
 Game.prototype.createImages = function()
 {
         var i = 0;
@@ -126,6 +127,7 @@ Game.prototype.createImages = function()
         }
 }
 
+//remove images
 Game.prototype.removeImages = function()
 {
         while (document.getElementById("question").hasChildNodes())
