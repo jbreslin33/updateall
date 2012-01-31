@@ -61,8 +61,8 @@ Game.prototype.checkGuess = function()
 Game.prototype.newQuestion = function()
 {
         //set question
-        this.question = Math.floor(Math.random() *4);
-        this.question++;
+        this.question = Math.floor(Math.random() *21);
+        //this.question++;
        
 	//images 
 	this.removeImages();
@@ -109,7 +109,6 @@ Game.prototype.setButtons = function(offset)
 	document.getElementById("button6").innerHTML="Five";
 	document.getElementById("button6").value="5";
 	
-
 	document.getElementById("button7").innerHTML="Six";
 	document.getElementById("button7").value="6";
 	
