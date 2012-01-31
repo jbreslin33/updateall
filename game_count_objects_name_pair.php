@@ -1,3 +1,5 @@
+<script type="text/javascript" src="jquery.js"></script>
+
 <script type="text/javascript">
 
 function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
