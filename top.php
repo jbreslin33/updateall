@@ -1,4 +1,11 @@
 <html>
+
+
+<link type="text/css" href="jquery-ui.css" rel="Stylesheet" />	
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery-ui.js"></script>
+
+
 <body>
 
 <?php
