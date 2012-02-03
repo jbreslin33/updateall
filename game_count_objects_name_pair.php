@@ -93,10 +93,10 @@ Game.prototype.setButtons = function(offset)
 		j = i - 1;
 		document.getElementById("button" + i).innerHTML=offset + j;
 	}
-	document.getElementById("button1").innerHTML="ZeroDog";
+	document.getElementById("button1").innerHTML="Zero";
 	document.getElementById("button1").value="0";
 	
-	document.getElementById("button2").innerHTML="OneDog";
+	document.getElementById("button2").innerHTML="One";
 	document.getElementById("button2").value="1";
 	
 	document.getElementById("button3").innerHTML="Two";
