@@ -17,15 +17,16 @@ include("middle.php");
 	#draggable { width: 150px; height: 150px; padding: 0.5em; }
 	</style>
 	<script type="text/javascript">
+$('#date').datepicker();
+
 	$(function() {
 		$( "#draggable" ).draggable();
 	});
 	</script>
 
 
-
 <div class="demo">
-
+<input type="text" name="date" id="date" />
 <div id="draggable" class="ui-widget-content">
 	<p>Drag me around</p>
 </div>
