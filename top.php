@@ -1,9 +1,8 @@
 <html>
 
-
-<link type="text/css" href="jquery-ui.css" rel="Stylesheet" />	
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="jquery-ui.js"></script>
+<link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />	
+<script type="text/javascript" src="jquery-1.7.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
 
 
 <body>
