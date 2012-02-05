@@ -13,22 +13,35 @@ include("middle.php");
 <!-- creating game --> 
 <script type="text/javascript">  var game = new Game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
 
+<!-- drag stuff -->
 <style>
-	#draggable { width: 150px; height: 150px; padding: 0.5em; }
+	#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+	#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
 	</style>
-	<script type="text/javascript">
-$('#date').datepicker();
-
+	<script>
 	$(function() {
 		$( "#draggable" ).draggable();
+		$( "#droppable" ).droppable({
+			drop: function( event, ui ) {
+				$( this )
+					.addClass( "ui-state-highlight" )
+					.find( "p" )
+						.html( "Dropped!" );
+			}
+		});
 	});
 	</script>
 
 
+
 <div class="demo">
-<input type="text" name="date" id="date" />
+	
 <div id="draggable" class="ui-widget-content">
-	<p>Drag me around</p>
+	<p>Drag me to my target</p>
+</div>
+
+<div id="droppable" class="ui-widget-header">
+	<p>Drop here</p>
 </div>
 
 </div><!-- End demo -->
@@ -36,8 +49,9 @@ $('#date').datepicker();
 
 
 <div style="display: none;" class="demo-description">
-<p>Enable draggable functionality on any DOM element. Move the draggable object by clicking on it with the mouse and dragging it anywhere within the viewport.</p>
+<p>Enable any DOM element to be droppable, a target for draggable elements.</p>
 </div><!-- End demo-description -->
+<!-- end drag stuff -->
 
 
 <!-- lower.php -->
