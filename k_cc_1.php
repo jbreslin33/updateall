@@ -1,5 +1,6 @@
 <html>
 
+<!-- jquery and jqueryui -->
 <link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />	
 <script type="text/javascript" src="jquery-1.7.js"></script>
 <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
@@ -189,8 +190,6 @@ Game.prototype.init = function()
 
 <!-- create and set question -->
 <p id="question"> </p>
-
-<div id="buttoncontent"> </div>
 
 <!-- Create Buttons (could this be done in db?) -->
 <?php
