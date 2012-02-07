@@ -178,6 +178,14 @@ Game.prototype.init = function()
 	this.printScore();
 }
 
+Game.prototype.createButtons = function()
+{
+
+
+
+}
+
+
 </script>
 
 <!-- end class for game -->
