@@ -87,15 +87,10 @@ Game.prototype.newAnswer = function()
 //set buttons
 Game.prototype.setButtons = function(offset)
 {
-	i=1;
-	for (i=1; i < this.numberOfButtons + 1; i++)
-	{
-		j = i - 1;
-		document.getElementById("button" + i).innerHTML=offset + j;
-	}
 	document.getElementById("button1").innerHTML="Zero";
 	document.getElementById("button1").value="0";
-	
+	document.getElementById("button1").class="drag_button";
+		
 	document.getElementById("button2").innerHTML="One";
 	document.getElementById("button2").value="1";
 	
@@ -188,7 +183,7 @@ Game.prototype.createImages = function()
         {
                 var img = new Image();   // Create new img element
                 img.src = 'redball.gif'; // Set source path
-                document.getElementById("question").appendChild(img);
+		document.getElementById("question").appendChild(img);
         }
 }
 

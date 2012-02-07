@@ -15,12 +15,14 @@ include("middle.php");
 
 <!-- drag stuff -->
 <style>
-	#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-	#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+	.ui-widget-content { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+	.ui-widget-header { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
 	</style>
 	<script>
 	$(function() {
-		$( "#draggable" ).draggable();
+		$( ".ui-widget-content" ).draggable();
+		$( ".ball_draggable" ).draggable();
+		
 		$( "#droppable" ).droppable({
 			drop: function( event, ui ) {
 				$( this )
@@ -31,8 +33,6 @@ include("middle.php");
 		});
 	});
 	</script>
-
-
 
 <div class="demo">
 	
@@ -46,13 +46,10 @@ include("middle.php");
 
 </div><!-- End demo -->
 
-
-
 <div style="display: none;" class="demo-description">
 <p>Enable any DOM element to be droppable, a target for draggable elements.</p>
 </div><!-- End demo-description -->
 <!-- end drag stuff -->
-
 
 <!-- lower.php -->
 <?php include("lower.php"); ?>
