@@ -173,6 +173,7 @@ Game.prototype.init = function()
 	this.resetVariables();
 	
 	this.newQuestion();
+	this.createImages('redball.gif',"question");
 	this.newAnswer();
 	this.setChoices();
 	this.printScore();
@@ -184,6 +185,16 @@ Game.prototype.createButtons = function()
 
 
 }
+
+
+//create images
+Game.prototype.createImages = function(imagesrc,appendTo)
+{
+	var img = new Image();   // Create new img element
+       	img.src = imagesrc; // Set source path
+        document.getElementById(appendTo).appendChild(img);
+}
+
 
 
 </script>
