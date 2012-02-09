@@ -147,12 +147,34 @@ Game.prototype.newAnswer = function()
 //set buttons
 Game.prototype.setButtons = function(offset)
 {
-	i=1;
-	for (i=1; i < this.numberOfButtons + 1; i++)
-	{
-		j = i - 1;
-		document.getElementById("button" + i).innerHTML=offset + j;
-	}
+	document.getElementById("buttonMoveLeft").innerHTML="left";
+	document.getElementById("buttonMoveRight").innerHTML="right";
+	document.getElementById("buttonMoveUp").innerHTML="up";
+	document.getElementById("buttonMoveDown").innerHTML="down";
+}
+
+
+Game.prototype.moveLeft = function()
+{
+	alert('moveLeft');
+}
+
+Game.prototype.moveRight = function()
+{
+
+	alert('moveRight');
+}
+
+Game.prototype.moveUp = function()
+{
+
+	alert('moveUp');
+}
+
+Game.prototype.moveDown = function()
+{
+
+	alert('moveDown');
 }
 
 //submit guess
@@ -195,8 +217,6 @@ Game.prototype.createImages = function(imagesrc,appendTo)
         document.getElementById(appendTo).appendChild(img);
 }
 
-
-
 </script>
 
 <!-- end class for game -->
@@ -211,15 +231,10 @@ Game.prototype.createImages = function(imagesrc,appendTo)
 <p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-<?php
-
-$i=1;
-for ($i=1; $i < $numberOfButtons + 1; $i++)
-{
-        echo "<button type=\"button\" id=\"button$i\" onclick=\"game.submitGuess(this.id)\"> </button> ";
-}
-
-?>
+        <button type="button" id="buttonMoveLeft" onclick="game.moveLeft(this.id)"> </button> 
+        <button type="button" id="buttonMoveRight" onclick="game.moveRight(this.id)"> </button> 
+        <button type="button" id="buttonMoveUp" onclick="game.moveUp(this.id)"> </button>
+        <button type="button" id="buttonMoveDown" onclick="game.moveDown(this.id)"> </button> 
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
