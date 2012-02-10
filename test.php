@@ -9,7 +9,7 @@ var x = 5; //Starting Location - left
 var y = 5; //Starting Location - top
 var dest_x = 300;  //Ending Location - left
 var dest_y = 300;  //Ending Location - top
-var interval = .1; //Move 10px every initialization
+var interval = 1; //Move 10px every initialization
 
 function moveImage() {
 	//Keep on moving the image till the target is achieved
@@ -23,7 +23,7 @@ function moveImage() {
 	if ((x+interval < dest_x) && (y+interval < dest_y)) {
 		//Keep on calling this function every 100 microsecond 
 		//	till the target location is reached
-		window.setTimeout('moveImage()',1);
+		window.setTimeout('moveImage()',16);
 	}
 }
 </script>

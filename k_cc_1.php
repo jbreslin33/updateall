@@ -170,6 +170,30 @@ function moveLeft()
 
 var userWidth = window.screen.width;
 
+
+var x = 5; //Starting Location - left
+var y = 5; //Starting Location - top
+var dest_x = 300;  //Ending Location - left
+var dest_y = 300;  //Ending Location - top
+var interval = 1; //Move 10px every initialization
+
+function moveDown() {
+        //Keep on moving the image till the target is achieved
+        if(x<dest_x) x = x + interval;
+        if(y<dest_y) y = y + interval;
+
+        //Move the image to the new location
+        document.getElementById("redball1").style.top  = y+'px';
+        document.getElementById("redball1").style.left = x+'px';
+
+        if ((x+interval < dest_x) && (y+interval < dest_y)) {
+                //Keep on calling this function every 100 microsecond
+                //      till the target location is reached
+                window.setTimeout('moveDown()',16);
+        }
+}
+
+
 function moveRight()
 {
 	document.getElementById("redball1").style.top = '400' + 'px';
@@ -180,12 +204,6 @@ function moveUp()
 {
 
 	alert('moveUp');
-}
-
-function moveDown()
-{
-
-	alert('moveDown');
 }
 
 //submit guess
