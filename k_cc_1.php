@@ -60,6 +60,9 @@ var answer = 0;
 var countBy = 0;
 var count = 0;
 var startNumber = 0;
+var xpos = 0;
+var ypos = 0; 
+
 
 
 function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
