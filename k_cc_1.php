@@ -160,6 +160,7 @@ function setButtons(offset)
 	document.getElementById("buttonMoveRight").innerHTML="right";
 	document.getElementById("buttonMoveUp").innerHTML="up";
 	document.getElementById("buttonMoveDown").innerHTML="down";
+	document.getElementById("buttonMoveStop").innerHTML="stop";
 }
 
 
@@ -177,7 +178,14 @@ var dest_x = 300;  //Ending Location - left
 var dest_y = 300;  //Ending Location - top
 var interval = 1; //Move 10px every initialization
 
-function moveDown() {
+function move()
+{
+        //Move the image to the new location
+        document.getElementById("redball1").style.top  = y+'px';
+        document.getElementById("redball1").style.left = x+'px';
+}
+
+function moveDown333() {
         //Keep on moving the image till the target is achieved
         if(x<dest_x) x = x + interval;
         if(y<dest_y) y = y + interval;
@@ -193,6 +201,12 @@ function moveDown() {
         }
 }
 
+function moveDown()
+{
+	x = 1;
+        y = parseInt(document.getElementById("redball1").style.left = x+'px');
+}
+
 
 function moveRight()
 {
@@ -204,6 +218,11 @@ function moveUp()
 {
 
 	alert('moveUp');
+}
+
+function moveStop()
+{
+
 }
 
 //submit guess
@@ -267,6 +286,7 @@ function createImages(imagesrc,appendTo)
         <button type="button" id="buttonMoveRight" onclick="moveRight(this.id)"> </button> 
         <button type="button" id="buttonMoveUp" onclick="moveUp(this.id)"> </button>
         <button type="button" id="buttonMoveDown" onclick="moveDown(this.id)"> </button> 
+        <button type="button" id="buttonMoveStop" onclick="moveStop(this.id)"> </button> 
 
 <!-- create images -->
 <style>
