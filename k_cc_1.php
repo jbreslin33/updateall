@@ -51,35 +51,41 @@ if ($num > 0)
 <!-- class for game -->
 <script type="text/javascript">
 
+var score = 0;
+var scoreNeeded = 0;
+var numberOfQuestions = 0;
+var question = 0;
+var guess = 0;
+var answer = 0;
+var countBy = 0;
+var count = 0;
+var startNumber = 0;
+
+
 function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 	//score
-	this.score=0;
-	this.scoreNeeded = scoreNeeded;
+	scoreNeeded = scoreNeeded;
 
 	//game
-	this.numberOfButtons = numberOfButtons;
-	this.question="";
-	this.guess=0;
-	this.answer=0;
+	numberOfButtons = numberOfButtons;
 
 	//count
-	this.countBy = countBy;
-	this.count=0;
-	this.startNumber = startNumber;
+	countBy = countBy;
+	startNumber = startNumber;
 }
 
 
 //Score
-Game.prototype.printScore = function()
+function printScore()
 {
-        document.getElementById("score").innerHTML="Score: " + this.score;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.scoreNeeded;
+        document.getElementById("score").innerHTML="Score: " + score;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
 }
 
-Game.prototype.checkForEndOfGame = function()
+function checkForEndOfGame()
 {
-        if (this.score == <?php echo "$scoreNeeded"; ?> )
+        if (score == <?php echo "$scoreNeeded"; ?> )
         {
                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 window.location = "goto_next_math_level.php"
@@ -87,65 +93,65 @@ Game.prototype.checkForEndOfGame = function()
 }
 
 //reset
-Game.prototype.resetVariables = function()
+function resetVariables()
 {
 	//score
-	this.score = 0;
+	score = 0;
 
 	//game
-        this.question = "";
-        this.guess = 0;
-        this.answer = 0;
+        question = "";
+        guess = 0;
+        answer = 0;
 
 	//count
-        this.count = this.startNumber;
+        count = startNumber;
 }
 
 //check guess
-Game.prototype.checkGuess = function()
+function checkGuess()
 {
-        if (this.guess == this.answer)
+        if (guess == answer)
         {
-                this.count = this.count + this.countBy;  //add to count
-                this.score++;
+                count = count + countBy;  //add to count
+                score++;
 
                 document.getElementById("feedback").innerHTML="Correct!";
 
-                this.checkForEndOfGame();
+                checkForEndOfGame();
         }
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
 
-                this.resetVariables();
+                resetVariables();
         }
 }
 
 //questions
-Game.prototype.newQuestion = function()
+function newQuestion()
 {
         //set question
-        this.question = this.question + ' ' + this.count;
-        document.getElementById("question").innerHTML=this.question;
+        question = question + ' ' + count;
+        document.getElementById("question").innerHTML=question;
 }
 
 //set choices
-Game.prototype.setChoices = function()
+function setChoices()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
-        offset = this.answer - offset;
-        this.setButtons(offset);
+        offset = answer - offset;
+        setButtons(offset);
 }
 
 //new answer
-Game.prototype.newAnswer = function()
+function newAnswer()
 {
-        this.answer = this.count + this.countBy;
+        answer = count + countBy;
 }
 
 //set buttons
-Game.prototype.setButtons = function(offset)
+function setButtons(offset)
 {
 	document.getElementById("buttonMoveLeft").innerHTML="left";
 	document.getElementById("buttonMoveRight").innerHTML="right";
@@ -154,71 +160,56 @@ Game.prototype.setButtons = function(offset)
 }
 
 
-Game.prototype.moveLeft = function()
+function moveLeft()
 {
 	alert('moveLeft');
 }
 
 var userWidth = window.screen.width;
 
-Game.prototype.moveRight = function()
+function moveRight()
 {
-
-	//	alert('moveRight');
-	var pp = document.getElementById("redball1");
-	var lft = parseInt(pp.style.left);
-	var tim = setTimeout("this.moveRightAgain()",20);  // 20 controls the speed
-	lft = lft+5;  // move by 5 pixels
-	pp.style.left = lft+"px";
-	if (lft > userWidth + 10) 
-	{  // left edge of image past the right edge of screen
-		pp.style.left = -200;  // back to the left
-		clearTimeout(tim);
-	}
+	document.getElementById("redball1").style.top = '400' + 'px';
+	document.getElementById("redball1").style.left = '400px';
 }
 
-Game.prototype.moveRightAgain = function()
-{
-	this.moveRight();
-}	
-
-Game.prototype.moveUp = function()
+function moveUp()
 {
 
 	alert('moveUp');
 }
 
-Game.prototype.moveDown = function()
+function moveDown()
 {
 
 	alert('moveDown');
 }
 
 //submit guess
-Game.prototype.submitGuess = function(button_id)
+function submitGuess(button_id)
 {
-        this.guess = document.getElementById(button_id).innerHTML;
+        guess = document.getElementById(button_id).innerHTML;
         
-	this.checkGuess();
+	checkGuess();
         
-	this.newQuestion();
-        this.newAnswer();
-        this.setChoices();
-        this.printScore();
+	newQuestion();
+        newAnswer();
+        setChoices();
+        printScore();
 }
 
-Game.prototype.init = function()
+function init()
 {
-	this.resetVariables();
+	resetVariables();
 	
-	this.newQuestion();
-	this.createImages('redball.gif',"question");
-	this.newAnswer();
-	this.setChoices();
-	this.printScore();
+	newQuestion();
+	createImages('redball.gif',"question");
+	newAnswer();
+	setChoices();
+	printScore();
 }
 
-Game.prototype.createButtons = function()
+function createButtons()
 {
 
 
@@ -227,13 +218,14 @@ Game.prototype.createButtons = function()
 
 
 //create images
-Game.prototype.createImages = function(imagesrc,appendTo)
+function createImages(imagesrc,appendTo)
 {
-	var img = new Image();   // Create new img element
-       	img.src = imagesrc; // Set source path
-	img.id = "redball1";
-        document.getElementById(appendTo).appendChild(img);
-
+	//var img = new Image();   // Create new img element
+       	//img.src = imagesrc; // Set source path
+	//img.id = "redball1";
+        //document.getElementById(appendTo).appendChild(img);
+	//img.style= "position:absolute;";
+	
 }
 
 </script>
@@ -250,10 +242,17 @@ Game.prototype.createImages = function(imagesrc,appendTo)
 <p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-        <button type="button" id="buttonMoveLeft" onclick="game.moveLeft(this.id)"> </button> 
-        <button type="button" id="buttonMoveRight" onclick="game.moveRight(this.id)"> </button> 
-        <button type="button" id="buttonMoveUp" onclick="game.moveUp(this.id)"> </button>
-        <button type="button" id="buttonMoveDown" onclick="game.moveDown(this.id)"> </button> 
+        <button type="button" id="buttonMoveLeft" onclick="moveLeft(this.id)"> </button> 
+        <button type="button" id="buttonMoveRight" onclick="moveRight(this.id)"> </button> 
+        <button type="button" id="buttonMoveUp" onclick="moveUp(this.id)"> </button>
+        <button type="button" id="buttonMoveDown" onclick="moveDown(this.id)"> </button> 
+
+<!-- create images -->
+<style>
+DIV.movable { position:absolute; }
+</style>
+<div id="redball1" class="movable"><img src="redball.gif" /></div>
+
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
@@ -264,7 +263,7 @@ Game.prototype.createImages = function(imagesrc,appendTo)
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
 
-<script type="text/javascript"> game.init(); </script>
+<script type="text/javascript"> init(); </script>
 
 </body>
 </html>
