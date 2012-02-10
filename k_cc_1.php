@@ -159,11 +159,28 @@ Game.prototype.moveLeft = function()
 	alert('moveLeft');
 }
 
+var userWidth = window.screen.width;
+
 Game.prototype.moveRight = function()
 {
 
-	alert('moveRight');
+	//	alert('moveRight');
+	var pp = document.getElementById("redball1");
+	var lft = parseInt(pp.style.left);
+	var tim = setTimeout("this.moveRightAgain()",20);  // 20 controls the speed
+	lft = lft+5;  // move by 5 pixels
+	pp.style.left = lft+"px";
+	if (lft > userWidth + 10) 
+	{  // left edge of image past the right edge of screen
+		pp.style.left = -200;  // back to the left
+		clearTimeout(tim);
+	}
 }
+
+Game.prototype.moveRightAgain = function()
+{
+	this.moveRight();
+}	
 
 Game.prototype.moveUp = function()
 {
@@ -214,7 +231,9 @@ Game.prototype.createImages = function(imagesrc,appendTo)
 {
 	var img = new Image();   // Create new img element
        	img.src = imagesrc; // Set source path
+	img.id = "redball1";
         document.getElementById(appendTo).appendChild(img);
+
 }
 
 </script>
