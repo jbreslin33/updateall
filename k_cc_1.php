@@ -204,7 +204,7 @@ function moveDown333() {
 function moveDown()
 {
 	x = 1;
-        y = parseInt(document.getElementById("redball1").style.left = x+'px');
+        y = parseInt(document.getElementById("redball1").style.left);
 }
 
 
