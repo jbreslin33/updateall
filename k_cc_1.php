@@ -15,7 +15,7 @@ include("db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -28,6 +28,7 @@ $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
 $endNumber = 0;
+$tickLength = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -44,6 +45,7 @@ if ($num > 0)
         $countBy = $row[2];
         $startNumber = $row[3];
 	$endNumber = $row[4];
+	$tickLength = $row[5];
 }
 
 ?>
@@ -60,8 +62,9 @@ var mGuess = 0;
 var mAnswer = 0;
 var mCountBy = 0;
 var mCount = 0;
+var mTickLength = 0;
 
-function Game(scoreNeeded, countBy, startNumber, endNumber)
+function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
 	//score
 	mScoreNeeded = scoreNeeded;
@@ -70,6 +73,9 @@ function Game(scoreNeeded, countBy, startNumber, endNumber)
 	mCountBy = countBy;
 	mStartNumber = startNumber;
 	mEndNumber = endNumber;	
+
+	//ticks
+	mTickLength = tickLength;
 }
 
 
@@ -164,10 +170,6 @@ var positionY = 0; //Starting Location - top
 var velocityX = 0;
 var velocityY = 0;
 
-var dest_x = 300;  //Ending Location - left
-var dest_y = 300;  //Ending Location - top
-var interval = 1; //Move 10px every initialization
-
 function move()
 {
 	positionX = positionX + velocityX;
@@ -177,7 +179,7 @@ function move()
 
 	document.getElementById("redball1").style.left = positionX+'px';
         document.getElementById("redball1").style.top  = positionY+'px';
-        window.setTimeout('move()',16);
+        window.setTimeout('move()',mTickLength);
 }
 
 function checkBounds()
@@ -288,14 +290,6 @@ function init()
 	printScore();
 }
 
-function createButtons()
-{
-
-
-
-}
-
-
 //create images
 function createImages(imagesrc,appendTo)
 {
@@ -318,7 +312,7 @@ function createImages(imagesrc,appendTo)
 <!-- end class for game -->
 
 <!-- creating game -->
-<script type="text/javascript">  var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber);"; ?> </script>
+<script type="text/javascript">  var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
