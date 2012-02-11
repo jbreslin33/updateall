@@ -45,16 +45,18 @@ if ($num > 0)
         $countBy = $row[3];
         $numberOfButtons = $row[4];
 }
-echo "<script type=\"text/javascript\">";
-echo "var mStartNumber = $startNumber;";
-echo "var mScoreNeeded = $scoreNeeded;";
-echo "</script>";
+//echo "<script type=\"text/javascript\">";
+//echo "var mStartNumber = $startNumber;";
+//echo "var mScoreNeeded = $scoreNeeded;";
+//echo "</script>";
 
 ?>
 
 <!-- class for game -->
 <script type="text/javascript">
 
+var mStartNumber = 0;
+var mScoreNeeded = 0;
 var score = 0;
 var numberOfQuestions = 0;
 var question = 0;
