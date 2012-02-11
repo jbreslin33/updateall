@@ -185,7 +185,26 @@ function move()
       
 	positionX = positionX + velocityX;
 	positionY = positionY + velocityY;
- 
+
+	if (positionX < 0)
+	{
+		positionX = 0; 
+	} 
+	if (positionX > 600)
+	{
+		positionX = 600; 
+	} 
+	if (positionY < 0)
+	{
+		positionY = 0; 
+	} 
+	if (positionY > 600)
+	{
+		positionY = 600; 
+	} 
+	
+
+
 	document.getElementById("redball1").style.left = positionX+'px';
         document.getElementById("redball1").style.top  = positionY+'px';
         window.setTimeout('move()',16);
@@ -263,6 +282,10 @@ function moveKey(e)
 		if (keynum == 107)
 		{
 			moveDown();	
+		}	
+		if (keynum == 32)
+		{
+			moveStop();	
 		}	
 	}
 }
