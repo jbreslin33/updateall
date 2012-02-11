@@ -64,13 +64,6 @@ var mCountBy = 0;
 var mCount = 0;
 var mTickLength = 0;
 
-//player position and velocity
-var mPositionX = 0; //Starting Location - left
-var mPositionY = 0; //Starting Location - top
-
-var mVelocityX = 0;
-var mVelocityY = 0;
-
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
 	//score
@@ -174,10 +167,13 @@ function setButtons(offset)
 
 function move()
 {
-	mPositionX = mPositionX + mVelocityX;
-	mPositionY = mPositionY + mVelocityY;
+	var x = 0;
+	var y = 0;
 
-	checkBounds();
+ 	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
+        document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
+
+	//checkBounds();
 
 	render();
 
@@ -186,58 +182,55 @@ function move()
 
 function render()
 {
-	document.getElementById("redball1").style.left = mPositionX+'px';
-        document.getElementById("redball1").style.top  = mPositionY+'px';
+	var x = 0;
+	var y = 0;
+
+	//move player	
+       	x = document.getElementById("redball1").mPositionX - 25;
+     	y = document.getElementById("redball1").mPositionY - 25;
+	document.getElementById("redball1").style.left = x+'px';
+        document.getElementById("redball1").style.top  = y+'px';
+
+	//move numbers
+	for (i=mStartNumber;i<=mEndNumber;i++)
+	{
+        	x = document.getElementById('number' + i).mPositionX - 25;
+              	y = document.getElementById('number' + i).mPositionY - 25;
+	
+		document.getElementById('number' + i).style.left = x+'px';
+        	document.getElementById('number' + i).style.top  = y+'px';
+	}
 }
 
-function checkBounds()
-{
-	if (mPositionX < 0)
-	{
-		mPositionX = 0; 
-	} 
-	if (mPositionX > 600)
-	{
-		mPositionX = 600; 
-	} 
-	if (mPositionY < 0)
-	{
-		mPositionY = 0; 
-	} 
-	if (mPositionY > 600)
-	{
-		mPositionY = 600; 
-	} 
-}
 
 function moveLeft()
 {
-	mVelocityX = -1;
-        mVelocityY = 0;
+	document.getElementById("redball1").mVelocityX = -1;
+        document.getElementById("redball1").mVelocityY = 0;
 }
 
 function moveRight()
 {
-	mVelocityX = 1;
-        mVelocityY = 0;
+	document.getElementById("redball1").mVelocityX = 1;
+        document.getElementById("redball1").mVelocityY = 0;
 }
 
 function moveUp()
 {
-       	mVelocityX = 0;
-	mVelocityY = -1;
+       	document.getElementById("redball1").mVelocityX = 0;
+	document.getElementById("redball1").mVelocityY = -1;
 }
 
 function moveDown()
 {
-        mVelocityX = 0;
-	mVelocityY = 1;
+        document.getElementById("redball1").mVelocityX = 0;
+	document.getElementById("redball1").mVelocityY = 1;
 }
 
 function moveStop()
 {
-        mVelocityX = 0;
-        mVelocityY = 0;
+        document.getElementById("redball1").mVelocityX = 0;
+        document.getElementById("redball1").mVelocityY = 0;
 }
 var keynum;
 
@@ -301,16 +294,26 @@ function init()
 //create images
 function createImages(imagesrc,appendTo)
 {
+	document.getElementById("redball1").mPositionX = 0;
+       	document.getElementById("redball1").mPositionY = 0;
+
+	document.getElementById("redball1").mVelocityX = 0;
+       	document.getElementById("redball1").mVelocityY = 0;
+	
 	var i = 0;
 	var offset = 60;
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
 		document.getElementById('image' + i).src  = i + ".png";
-		var x = 0;
-		var y = 0;
-			
-		document.getElementById('number' + i).style.left = offset+'px';
-        	document.getElementById('number' + i).style.top  = offset+'px';
+		
+		document.getElementById('number' + i).mPositionX = offset;
+        	document.getElementById('number' + i).mPositionY = offset;
+
+		document.getElementById('number' + i).mVelocityX = 0;
+        	document.getElementById('number' + i).mVelocityY = 0;
+		
+		render();
+	
 		offset = offset + 60;
 	}  
 }
