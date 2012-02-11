@@ -58,16 +58,11 @@ if ($num > 0)
 var mStartNumber = 0;
 var mScoreNeeded = 0;
 var score = 0;
-var numberOfQuestions = 0;
 var question = 0;
 var guess = 0;
 var answer = 0;
 var countBy = 0;
 var count = 0;
-var xpos = 0;
-var ypos = 0; 
-
-
 
 function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
