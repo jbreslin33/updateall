@@ -65,11 +65,11 @@ var mCount = 0;
 var mTickLength = 0;
 
 //player position and velocity
-var positionX = 0; //Starting Location - left
-var positionY = 0; //Starting Location - top
+var mPositionX = 0; //Starting Location - left
+var mPositionY = 0; //Starting Location - top
 
-var velocityX = 0;
-var velocityY = 0;
+var mVelocityX = 0;
+var mVelocityY = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
@@ -174,8 +174,8 @@ function setButtons(offset)
 
 function move()
 {
-	positionX = positionX + velocityX;
-	positionY = positionY + velocityY;
+	mPositionX = mPositionX + mVelocityX;
+	mPositionY = mPositionY + mVelocityY;
 
 	checkBounds();
 
@@ -186,58 +186,58 @@ function move()
 
 function render()
 {
-	document.getElementById("redball1").style.left = positionX+'px';
-        document.getElementById("redball1").style.top  = positionY+'px';
+	document.getElementById("redball1").style.left = mPositionX+'px';
+        document.getElementById("redball1").style.top  = mPositionY+'px';
 }
 
 function checkBounds()
 {
-	if (positionX < 0)
+	if (mPositionX < 0)
 	{
-		positionX = 0; 
+		mPositionX = 0; 
 	} 
-	if (positionX > 600)
+	if (mPositionX > 600)
 	{
-		positionX = 600; 
+		mPositionX = 600; 
 	} 
-	if (positionY < 0)
+	if (mPositionY < 0)
 	{
-		positionY = 0; 
+		mPositionY = 0; 
 	} 
-	if (positionY > 600)
+	if (mPositionY > 600)
 	{
-		positionY = 600; 
+		mPositionY = 600; 
 	} 
 }
 
 function moveLeft()
 {
-	velocityX = -1;
-        velocityY = 0;
+	mVelocityX = -1;
+        mVelocityY = 0;
 }
 
 function moveRight()
 {
-	velocityX = 1;
-        velocityY = 0;
+	mVelocityX = 1;
+        mVelocityY = 0;
 }
 
 function moveUp()
 {
-       	velocityX = 0;
-	velocityY = -1;
+       	mVelocityX = 0;
+	mVelocityY = -1;
 }
 
 function moveDown()
 {
-        velocityX = 0;
-	velocityY = 1;
+        mVelocityX = 0;
+	mVelocityY = 1;
 }
 
 function moveStop()
 {
-        velocityX = 0;
-        velocityY = 0;
+        mVelocityX = 0;
+        mVelocityY = 0;
 }
 var keynum;
 
