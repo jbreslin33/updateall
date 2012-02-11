@@ -45,6 +45,10 @@ if ($num > 0)
         $countBy = $row[3];
         $numberOfButtons = $row[4];
 }
+echo "<script type=\"text/javascript\">";
+echo "var startNumber = $startNumber;";
+echo "var scoreNeeded = $scoreNeeded;";
+echo "</script>";
 
 ?>
 
@@ -52,14 +56,12 @@ if ($num > 0)
 <script type="text/javascript">
 
 var score = 0;
-var scoreNeeded = 0;
 var numberOfQuestions = 0;
 var question = 0;
 var guess = 0;
 var answer = 0;
 var countBy = 0;
 var count = 0;
-var startNumber = 0;
 var xpos = 0;
 var ypos = 0; 
 
@@ -335,9 +337,9 @@ function createImages(imagesrc,appendTo)
 	document.getElementById("number1").style.left = nx+'px';
         document.getElementById("number1").style.top  = ny+'px';
 
-	var i=0;
+	var i = startNumber;
 	var offset = 60;
-	for (i=0;i<=10;i++)
+	for (i=startNumber;i<=scoreNeeded;i++)
 	{
 		document.getElementById('image' + i).src  = i + ".png";
 		var x = 0;
