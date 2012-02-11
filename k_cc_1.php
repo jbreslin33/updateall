@@ -64,6 +64,13 @@ var mCountBy = 0;
 var mCount = 0;
 var mTickLength = 0;
 
+//player position and velocity
+var positionX = 0; //Starting Location - left
+var positionY = 0; //Starting Location - top
+
+var velocityX = 0;
+var velocityY = 0;
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
 	//score
@@ -164,11 +171,6 @@ function setButtons(offset)
 }
 
 
-var positionX = 0; //Starting Location - left
-var positionY = 0; //Starting Location - top
-
-var velocityX = 0;
-var velocityY = 0;
 
 function move()
 {
@@ -177,9 +179,15 @@ function move()
 
 	checkBounds();
 
+	render();
+
+        window.setTimeout('move()',mTickLength);
+}
+
+function render()
+{
 	document.getElementById("redball1").style.left = positionX+'px';
         document.getElementById("redball1").style.top  = positionY+'px';
-        window.setTimeout('move()',mTickLength);
 }
 
 function checkBounds()
