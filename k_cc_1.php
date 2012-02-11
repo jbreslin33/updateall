@@ -380,7 +380,7 @@ DIV.movable { position:absolute; }
 
 <?php
 
-	for ($i=0; $i<=10; $i++)
+	for ($i=$startNumber; $i<=$scoreNeeded; $i++)
 	{
 		echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
 	}
