@@ -329,7 +329,11 @@ function createImages(imagesrc,appendTo)
 	//img.id = "redball1";
         //document.getElementById(appendTo).appendChild(img);
 	//img.style= "position:absolute;";
-	
+
+	var nx = 300;
+	var ny = 300;
+	document.getElementById("number1").style.left = nx+'px';
+        document.getElementById("number1").style.top  = ny+'px';
 }
 
 </script>
@@ -357,6 +361,7 @@ function createImages(imagesrc,appendTo)
 DIV.movable { position:absolute; }
 </style>
 <div id="redball1" class="movable"><img src="redball.gif" /></div>
+<div id="number1" class="movable"><img src="1.png" /></div>
 
 
 <!-- create feedback -->
