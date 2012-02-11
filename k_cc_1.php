@@ -236,6 +236,36 @@ function moveStop()
         velocityX = 0;
         velocityY = 0;
 }
+var keynum;
+
+function moveKey(e)
+{
+	if(window.event) // IE8 and earlier
+	{
+		//	keynum = e.keyCode;
+		//	alert('keypressedddd');
+	}
+	else if(e.which) // IE9/Firefox/Chrome/Opera/Safari
+	{
+		keynum = e.which;
+		if (keynum == 106)
+		{
+			moveLeft();	
+		}	
+		if (keynum == 108)
+		{
+			moveRight();	
+		}	
+		if (keynum == 105)
+		{
+			moveUp();	
+		}	
+		if (keynum == 107)
+		{
+			moveDown();	
+		}	
+	}
+}
 
 //submit guess
 function submitGuess(button_id)
@@ -319,6 +349,11 @@ DIV.movable { position:absolute; }
 <script type="text/javascript"> init(); </script>
 
 <script type="text/javascript"> move(); </script>
+
+<form>
+Type some text (numbers not allowed):
+<input type="text" onkeypress="return moveKey(event)" />
+</form>
 
 </body>
 </html>
