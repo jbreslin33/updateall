@@ -310,6 +310,8 @@ function createImages(imagesrc,appendTo)
 	
 }
 
+document.onkeypress=moveKey
+
 </script>
 
 <!-- end class for game -->
@@ -350,10 +352,6 @@ DIV.movable { position:absolute; }
 
 <script type="text/javascript"> move(); </script>
 
-<form>
-Type some text (numbers not allowed):
-<input type="text" onkeypress="return moveKey(event)" />
-</form>
 
 </body>
 </html>
