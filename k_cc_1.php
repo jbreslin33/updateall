@@ -15,7 +15,7 @@ include("db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, start_number, score_needed, count_by, number_of_buttons from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -24,10 +24,10 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //game variables to fill from db
 $name = "";
-$startNumber = 0;
 $scoreNeeded = 0;
 $countBy = 0;
-$numberOfButtons = 0;
+$startNumber = 0;
+$endNumber = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -40,10 +40,10 @@ if ($num > 0)
 
         //fill php vars from db
         $name = $row[0];
-        $startNumber = $row[1];
-        $scoreNeeded = $row[2];
-        $countBy = $row[3];
-        $numberOfButtons = $row[4];
+        $scoreNeeded = $row[1];
+        $countBy = $row[2];
+        $startNumber = $row[3];
+	$endNumber = $row[4];
 }
 
 ?>
@@ -52,6 +52,7 @@ if ($num > 0)
 <script type="text/javascript">
 
 var mStartNumber = 0;
+var mEndNumber = 0;
 var mScoreNeeded = 0;
 var score = 0;
 var question = 0;
@@ -60,17 +61,15 @@ var answer = 0;
 var countBy = 0;
 var count = 0;
 
-function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
+function Game(scoreNeeded, countBy, startNumber, endNumber)
 {
 	//score
 	mScoreNeeded = scoreNeeded;
 
-	//game
-	numberOfButtons = numberOfButtons;
-
 	//count
 	countBy = countBy;
 	mStartNumber = startNumber;
+	mEndNumber = endNumber;	
 }
 
 
@@ -332,7 +331,7 @@ function createImages(imagesrc,appendTo)
 
 	var i = mStartNumber;
 	var offset = 60;
-	for (i=mStartNumber;i<=mScoreNeeded;i++)
+	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
 		document.getElementById('image' + i).src  = i + ".png";
 		var x = 0;
@@ -349,7 +348,7 @@ function createImages(imagesrc,appendTo)
 <!-- end class for game -->
 
 <!-- creating game -->
-<script type="text/javascript">  var game = new Game( <?php echo "$startNumber,$scoreNeeded,$countBy,$numberOfButtons);"; ?> </script>
+<script type="text/javascript">  var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber);"; ?> </script>
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
