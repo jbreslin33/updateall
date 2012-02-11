@@ -158,9 +158,6 @@ function setButtons(offset)
 }
 
 
-var userWidth = window.screen.width;
-
-
 var positionX = 0; //Starting Location - left
 var positionY = 0; //Starting Location - top
 
@@ -201,22 +198,6 @@ function checkBounds()
 	{
 		positionY = 600; 
 	} 
-}
-
-function moveDown333() {
-        //Keep on moving the image till the target is achieved
-        if(x<dest_x) x = x + interval;
-        if(y<dest_y) y = y + interval;
-
-        //Move the image to the new location
-        document.getElementById("redball1").style.left = x+'px';
-        document.getElementById("redball1").style.top  = y+'px';
-
-        if ((x+interval < dest_x) && (y+interval < dest_y)) {
-                //Keep on calling this function every 100 microsecond
-                //      till the target location is reached
-                window.setTimeout('moveDown()',16);
-        }
 }
 
 function moveLeft()
@@ -318,18 +299,7 @@ function createButtons()
 //create images
 function createImages(imagesrc,appendTo)
 {
-	//var img = new Image();   // Create new img element
-       	//img.src = imagesrc; // Set source path
-	//img.id = "redball1";
-        //document.getElementById(appendTo).appendChild(img);
-	//img.style= "position:absolute;";
-
-	var nx = 300;
-	var ny = 300;
-	document.getElementById("number1").style.left = nx+'px';
-        document.getElementById("number1").style.top  = ny+'px';
-
-	var i = mStartNumber;
+	var i = 0;
 	var offset = 60;
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
