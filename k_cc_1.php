@@ -164,16 +164,15 @@ function setButtons(offset)
 }
 
 
-function moveLeft()
-{
-	alert('moveLeft');
-}
-
 var userWidth = window.screen.width;
 
 
-var x = 5; //Starting Location - left
-var y = 5; //Starting Location - top
+var positionX = 0; //Starting Location - left
+var positionY = 0; //Starting Location - top
+
+var velocityX = 0;
+var velocityY = 0;
+
 var dest_x = 300;  //Ending Location - left
 var dest_y = 300;  //Ending Location - top
 var interval = 1; //Move 10px every initialization
@@ -181,8 +180,15 @@ var interval = 1; //Move 10px every initialization
 function move()
 {
         //Move the image to the new location
-        document.getElementById("redball1").style.top  = y+'px';
-        document.getElementById("redball1").style.left = x+'px';
+	//var tempx = document.getElementById("redball1").style.left + x;
+	//var tempy = document.getElementById("redball1").style.top + y;
+      
+	positionX = positionX + velocityX;
+	positionY = positionY + velocityY;
+ 
+	document.getElementById("redball1").style.left = positionX+'px';
+        document.getElementById("redball1").style.top  = positionY+'px';
+        window.setTimeout('move()',16);
 }
 
 function moveDown333() {
@@ -191,8 +197,8 @@ function moveDown333() {
         if(y<dest_y) y = y + interval;
 
         //Move the image to the new location
-        document.getElementById("redball1").style.top  = y+'px';
         document.getElementById("redball1").style.left = x+'px';
+        document.getElementById("redball1").style.top  = y+'px';
 
         if ((x+interval < dest_x) && (y+interval < dest_y)) {
                 //Keep on calling this function every 100 microsecond
@@ -201,28 +207,34 @@ function moveDown333() {
         }
 }
 
-function moveDown()
+function moveLeft()
 {
-	x = 1;
-        y = parseInt(document.getElementById("redball1").style.left);
+	velocityX = -1;
+        velocityY = 0;
 }
-
 
 function moveRight()
 {
-	document.getElementById("redball1").style.top = '400' + 'px';
-	document.getElementById("redball1").style.left = '400px';
+	velocityX = 1;
+        velocityY = 0;
 }
 
 function moveUp()
 {
+       	velocityX = 0;
+	velocityY = -1;
+}
 
-	alert('moveUp');
+function moveDown()
+{
+        velocityX = 0;
+	velocityY = 1;
 }
 
 function moveStop()
 {
-
+        velocityX = 0;
+        velocityY = 0;
 }
 
 //submit guess
@@ -305,6 +317,8 @@ DIV.movable { position:absolute; }
 <p id="scoreNeeded"></p>
 
 <script type="text/javascript"> init(); </script>
+
+<script type="text/javascript"> move(); </script>
 
 </body>
 </html>
