@@ -179,13 +179,18 @@ var interval = 1; //Move 10px every initialization
 
 function move()
 {
-        //Move the image to the new location
-	//var tempx = document.getElementById("redball1").style.left + x;
-	//var tempy = document.getElementById("redball1").style.top + y;
-      
 	positionX = positionX + velocityX;
 	positionY = positionY + velocityY;
 
+	checkBounds();
+
+	document.getElementById("redball1").style.left = positionX+'px';
+        document.getElementById("redball1").style.top  = positionY+'px';
+        window.setTimeout('move()',16);
+}
+
+function checkBounds()
+{
 	if (positionX < 0)
 	{
 		positionX = 0; 
@@ -202,12 +207,6 @@ function move()
 	{
 		positionY = 600; 
 	} 
-	
-
-
-	document.getElementById("redball1").style.left = positionX+'px';
-        document.getElementById("redball1").style.top  = positionY+'px';
-        window.setTimeout('move()',16);
 }
 
 function moveDown333() {
