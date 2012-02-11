@@ -334,6 +334,32 @@ function createImages(imagesrc,appendTo)
 	var ny = 300;
 	document.getElementById("number1").style.left = nx+'px';
         document.getElementById("number1").style.top  = ny+'px';
+
+	var i=0;
+	var offset = 60;
+	for (i=0;i<=10;i++)
+	{
+		document.getElementById('image' + i).src  = i + ".png";
+		var x = 0;
+		var y = 0;
+			
+		document.getElementById('number' + i).style.left = offset+'px';
+        	document.getElementById('number' + i).style.top  = offset+'px';
+		offset = offset + 60;
+	}  
+	
+
+	//document.getElementById("image0").src  = "0.png";
+	//document.getElementById("image1").src  = "1.png";
+	//document.getElementById("image2").src  = "2.png";
+	//document.getElementById("image3").src  = "3.png";
+	//document.getElementById("image4").src  = "4.png";
+	//document.getElementById("image5").src  = "5.png";
+	//document.getElementById("image6").src  = "6.png";
+	//document.getElementById("image7").src  = "7.png";
+	//document.getElementById("image8").src  = "8.png";
+	//document.getElementById("image9").src  = "9.png";
+	//document.getElementById("image10").src = "10.png";
 }
 
 </script>
@@ -360,8 +386,20 @@ function createImages(imagesrc,appendTo)
 <style>
 DIV.movable { position:absolute; }
 </style>
+
 <div id="redball1" class="movable"><img src="redball.gif" /></div>
-<div id="number1" class="movable"><img src="1.png" /></div>
+
+<div id="number0" class="movable"><img id="image0" /></div>
+<div id="number1" class="movable"><img id="image1" /></div>
+<div id="number2" class="movable"><img id="image2" /></div>
+<div id="number3" class="movable"><img id="image3" /></div>
+<div id="number4" class="movable"><img id="image4" /></div>
+<div id="number5" class="movable"><img id="image5" /></div>
+<div id="number6" class="movable"><img id="image6" /></div>
+<div id="number7" class="movable"><img id="image7" /></div>
+<div id="number8" class="movable"><img id="image8" /></div>
+<div id="number9" class="movable"><img id="image9" /></div>
+<div id="number10" class="movable"><img id="image10" /></div>
 
 
 <!-- create feedback -->
