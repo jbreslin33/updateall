@@ -46,8 +46,8 @@ if ($num > 0)
         $numberOfButtons = $row[4];
 }
 echo "<script type=\"text/javascript\">";
-echo "var startNumber = $startNumber;";
-echo "var scoreNeeded = $scoreNeeded;";
+echo "var mStartNumber = $startNumber;";
+echo "var mScoreNeeded = $scoreNeeded;";
 echo "</script>";
 
 ?>
@@ -70,14 +70,14 @@ var ypos = 0;
 function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 {
 	//score
-	scoreNeeded = scoreNeeded;
+	mScoreNeeded = scoreNeeded;
 
 	//game
 	numberOfButtons = numberOfButtons;
 
 	//count
 	countBy = countBy;
-	startNumber = startNumber;
+	mStartNumber = startNumber;
 }
 
 
@@ -109,7 +109,7 @@ function resetVariables()
         answer = 0;
 
 	//count
-        count = startNumber;
+        count = mStartNumber;
 }
 
 //check guess
@@ -337,9 +337,9 @@ function createImages(imagesrc,appendTo)
 	document.getElementById("number1").style.left = nx+'px';
         document.getElementById("number1").style.top  = ny+'px';
 
-	var i = startNumber;
+	var i = mStartNumber;
 	var offset = 60;
-	for (i=startNumber;i<=scoreNeeded;i++)
+	for (i=mStartNumber;i<=mScoreNeeded;i++)
 	{
 		document.getElementById('image' + i).src  = i + ".png";
 		var x = 0;
