@@ -54,12 +54,12 @@ if ($num > 0)
 var mStartNumber = 0;
 var mEndNumber = 0;
 var mScoreNeeded = 0;
-var score = 0;
-var question = 0;
-var guess = 0;
-var answer = 0;
-var countBy = 0;
-var count = 0;
+var mScore = 0;
+var mQuestion = 0;
+var mGuess = 0;
+var mAnswer = 0;
+var mCountBy = 0;
+var mCount = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber)
 {
@@ -67,7 +67,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber)
 	mScoreNeeded = scoreNeeded;
 
 	//count
-	countBy = countBy;
+	mCountBy = countBy;
 	mStartNumber = startNumber;
 	mEndNumber = endNumber;	
 }
@@ -76,13 +76,13 @@ function Game(scoreNeeded, countBy, startNumber, endNumber)
 //Score
 function printScore()
 {
-        document.getElementById("score").innerHTML="Score: " + score;
+        document.getElementById("score").innerHTML="Score: " + mScore;
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mScoreNeeded;
 }
 
 function checkForEndOfGame()
 {
-        if (score == <?php echo "$scoreNeeded"; ?> )
+        if (mScore == <?php echo "$scoreNeeded"; ?> )
         {
                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 window.location = "goto_next_math_level.php"
@@ -93,24 +93,24 @@ function checkForEndOfGame()
 function resetVariables()
 {
 	//score
-	score = 0;
+	mScore = 0;
 
 	//game
-        question = "";
-        guess = 0;
-        answer = 0;
+        mQuestion = "";
+        mGuess = 0;
+        mAnswer = 0;
 
 	//count
-        count = mStartNumber;
+        mCount = mStartNumber;
 }
 
 //check guess
 function checkGuess()
 {
-        if (guess == answer)
+        if (mGuess == mAnswer)
         {
-                count = count + countBy;  //add to count
-                score++;
+                mCount = mCount + mCountBy;  //add to count
+                mScore++;
 
                 document.getElementById("feedback").innerHTML="Correct!";
 
@@ -128,8 +128,8 @@ function checkGuess()
 function newQuestion()
 {
         //set question
-        question = question + ' ' + count;
-        document.getElementById("question").innerHTML=question;
+        mQuestion = mQuestion + ' ' + mCount;
+        document.getElementById("question").innerHTML=mQuestion;
 }
 
 //set choices
@@ -137,14 +137,14 @@ function setChoices()
 {
         //set buttons
         var offset = Math.floor(Math.random() *4);
-        offset = answer - offset;
+        offset = mAnswer - offset;
         setButtons(offset);
 }
 
 //new answer
 function newAnswer()
 {
-        answer = count + countBy;
+        mAnswer = mCount + mCountBy;
 }
 
 //set buttons
@@ -286,7 +286,7 @@ function moveKey(e)
 //submit guess
 function submitGuess(button_id)
 {
-        guess = document.getElementById(button_id).innerHTML;
+        mGuess = document.getElementById(button_id).innerHTML;
         
 	checkGuess();
         
