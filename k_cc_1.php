@@ -310,8 +310,6 @@ function createImages(imagesrc,appendTo)
 	
 }
 
-document.onkeypress=moveKey
-
 </script>
 
 <!-- end class for game -->
@@ -352,6 +350,7 @@ DIV.movable { position:absolute; }
 
 <script type="text/javascript"> move(); </script>
 
+<script type="text/javascript"> document.onkeypress=moveKey </script>
 
 </body>
 </html>
