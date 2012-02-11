@@ -45,10 +45,6 @@ if ($num > 0)
         $countBy = $row[3];
         $numberOfButtons = $row[4];
 }
-//echo "<script type=\"text/javascript\">";
-//echo "var mStartNumber = $startNumber;";
-//echo "var mScoreNeeded = $scoreNeeded;";
-//echo "</script>";
 
 ?>
 
@@ -82,7 +78,7 @@ function Game(startNumber,scoreNeeded,countBy,numberOfButtons)
 function printScore()
 {
         document.getElementById("score").innerHTML="Score: " + score;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + scoreNeeded;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mScoreNeeded;
 }
 
 function checkForEndOfGame()
