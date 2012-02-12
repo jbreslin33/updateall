@@ -366,10 +366,14 @@ DIV.movable { position:absolute; }
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
 
-<script type="text/javascript"> init(); </script>
 
 <script type="text/javascript"> 
-
+$(document).ready(function(){
+ // $("button").click(function(){
+    //$(".test").hide();
+	init();
+//  });
+});
 </script>
 
 <script type="text/javascript"> document.onkeypress=moveKey </script>
