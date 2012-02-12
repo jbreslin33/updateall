@@ -318,12 +318,17 @@ function init()
 //set images
 function setImages()
 {
+	
+	//avatar
 	document.getElementById("redball1").mPositionX = 0;
        	document.getElementById("redball1").mPositionY = 0;
 
 	document.getElementById("redball1").mVelocityX = 0;
        	document.getElementById("redball1").mVelocityY = 0;
-	
+
+	document.getElementById("redball1").mCollidable = true;
+
+	//numbers	
 	var i = 0;
 	var offset = 60;
 	for (i=mStartNumber;i<=mEndNumber;i++)
@@ -336,10 +341,12 @@ function setImages()
 		document.getElementById('number' + i).mVelocityX = 0;
         	document.getElementById('number' + i).mVelocityY = 0;
 		
-		render();
+        	document.getElementById('number' + i).mCollidable = true;
+		
 	
 		offset = offset + 60;
 	}  
+	render();
 }
 
 </script>
