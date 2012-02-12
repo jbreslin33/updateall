@@ -167,15 +167,16 @@ function setButtons(offset)
 
 function move()
 {
-
-//	$(".movable").mPositionX += $(".movable").mVelocityX;
-//	$(".movable").mPositionY += $(".movable").mVelocityY;
-
  	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
 
+     	//move numbers
+        for (i=mStartNumber;i<=mEndNumber;i++)
+        {
+        	document.getElementById('number' + i).mPositionX += document.getElementById('number' + i).mVelocityX;
+        	document.getElementById('number' + i).mPositionY += document.getElementById('number' + i).mVelocityY;
+	}
 	//checkBounds();
-
 	render();
 
         window.setTimeout('move()',mTickLength);
