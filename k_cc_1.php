@@ -203,34 +203,34 @@ function render()
 }
 
 
-function moveLeft()
+function moveLeft(thing)
 {
-	document.getElementById("redball1").mVelocityX = -1;
-        document.getElementById("redball1").mVelocityY = 0;
+	thing.mVelocityX = -1;
+        thing.mVelocityY = 0;
 }
 
-function moveRight()
+function moveRight(thing)
 {
-	document.getElementById("redball1").mVelocityX = 1;
-        document.getElementById("redball1").mVelocityY = 0;
+	thing.mVelocityX = 1;
+        thing.mVelocityY = 0;
 }
 
-function moveUp()
+function moveUp(thing)
 {
-       	document.getElementById("redball1").mVelocityX = 0;
-	document.getElementById("redball1").mVelocityY = -1;
+       	thing.mVelocityX = 0;
+	thing.mVelocityY = -1;
 }
 
-function moveDown()
+function moveDown(thing)
 {
-        document.getElementById("redball1").mVelocityX = 0;
-	document.getElementById("redball1").mVelocityY = 1;
+        thing.mVelocityX = 0;
+	thing.mVelocityY = 1;
 }
 
-function moveStop()
+function moveStop(thing)
 {
-        document.getElementById("redball1").mVelocityX = 0;
-        document.getElementById("redball1").mVelocityY = 0;
+        thing.mVelocityX = 0;
+        thing.mVelocityY = 0;
 }
 var keynum;
 
@@ -246,23 +246,23 @@ function moveKey(e)
 		keynum = e.which;
 		if (keynum == 106)
 		{
-			moveLeft();	
+			moveLeft(document.getElementById("redball1"));	
 		}	
 		if (keynum == 108)
 		{
-			moveRight();	
+			moveRight(document.getElementById("redball1"));	
 		}	
 		if (keynum == 105)
 		{
-			moveUp();	
+			moveUp(document.getElementById("redball1"));	
 		}	
 		if (keynum == 107)
 		{
-			moveDown();	
+			moveDown(document.getElementById("redball1"));	
 		}	
 		if (keynum == 32)
 		{
-			moveStop();	
+			moveStop(document.getElementById("redball1"));	
 		}	
 	}
 }
