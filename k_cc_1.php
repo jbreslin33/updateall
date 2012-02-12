@@ -167,8 +167,9 @@ function setButtons(offset)
 
 function move()
 {
-	var x = 0;
-	var y = 0;
+
+//	$(".movable").mPositionX += $(".movable").mVelocityX;
+//	$(".movable").mPositionY += $(".movable").mVelocityY;
 
  	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
@@ -289,6 +290,7 @@ function init()
 	newAnswer();
 	setChoices();
 	printScore();
+	move();
 }
 
 //create images
@@ -366,7 +368,9 @@ DIV.movable { position:absolute; }
 
 <script type="text/javascript"> init(); </script>
 
-<script type="text/javascript"> move(); </script>
+<script type="text/javascript"> 
+
+</script>
 
 <script type="text/javascript"> document.onkeypress=moveKey </script>
 
