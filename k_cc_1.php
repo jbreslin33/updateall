@@ -308,15 +308,15 @@ function init()
 	resetVariables();
 	
 	newQuestion();
-	createImages('redball.gif',"question");
+	setImages();
 	newAnswer();
 	setChoices();
 	printScore();
 	move();
 }
 
-//create images
-function createImages(imagesrc,appendTo)
+//set images
+function setImages()
 {
 	document.getElementById("redball1").mPositionX = 0;
        	document.getElementById("redball1").mPositionY = 0;
