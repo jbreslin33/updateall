@@ -167,16 +167,18 @@ function setButtons(offset)
 
 function move()
 {
+	//move avatar
  	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
+     	
+	checkBounds(document.getElementById("redball1"));	
 
-     	//move numbers
+	//move numbers
         for (i=mStartNumber;i<=mEndNumber;i++)
         {
         	document.getElementById('number' + i).mPositionX += document.getElementById('number' + i).mVelocityX;
         	document.getElementById('number' + i).mPositionY += document.getElementById('number' + i).mVelocityY;
 	}
-	//checkBounds();
 	render();
 
         window.setTimeout('move()',mTickLength);
@@ -187,7 +189,7 @@ function render()
 	var x = 0;
 	var y = 0;
 
-	//move player	
+	//move avatar	
        	x = document.getElementById("redball1").mPositionX - 25;
      	y = document.getElementById("redball1").mPositionY - 25;
 	document.getElementById("redball1").style.left = x+'px';
@@ -204,6 +206,25 @@ function render()
 	}
 }
 
+function checkBounds(thing)
+{
+        if (thing.mPositionX < 0)
+        {
+                thing.mPositionX = 0;
+        }
+        if (thing.mPositionX > 600)
+        {
+                thing.mPositionX = 600;
+        }
+        if (thing.mPositionY < 0)
+        {
+                thing.mPositionY = 0;
+        }
+        if (thing.mPositionY > 600)
+        {
+                thing.mPositionY = 600;
+        }
+}
 
 function moveLeft(thing)
 {
