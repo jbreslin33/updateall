@@ -59,9 +59,9 @@ var mScoreNeeded = 0;
 var mScore = 0;
 var mQuestion = 0;
 var mGuess = 0;
-var mAnswer = 0;
+var mAnswer = -1;
 var mCountBy = 0;
-var mCount = 0;
+var mCount = -1;
 var mTickLength = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
@@ -104,10 +104,10 @@ function resetVariables()
 	//game
         mQuestion = "";
         mGuess = 0;
-        mAnswer = 0;
+        mAnswer = -1;
 
 	//count
-        mCount = mStartNumber;
+        mCount = mStartNumber - 1;
 	
 	//move avatar to start
 	document.getElementById("redball1").mPositionX = 0;
@@ -153,15 +153,6 @@ function newQuestion()
         document.getElementById("question").innerHTML=mQuestion;
 }
 
-//set choices
-function setChoices()
-{
-        //set buttons
-        var offset = Math.floor(Math.random() *4);
-        offset = mAnswer - offset;
-        setButtons(offset);
-}
-
 //new answer
 function newAnswer()
 {
@@ -169,7 +160,7 @@ function newAnswer()
 }
 
 //set buttons
-function setButtons(offset)
+function setButtons()
 {
 	document.getElementById("buttonMoveLeft").innerHTML="left";
 	document.getElementById("buttonMoveRight").innerHTML="right";
@@ -269,10 +260,20 @@ function moveLeft(thing)
         thing.mVelocityY = 0;
 }
 
+function moveLeftButton()
+{
+	moveLeft(document.getElementById("redball1"));
+}
+
 function moveRight(thing)
 {
 	thing.mVelocityX = 1;
         thing.mVelocityY = 0;
+}
+
+function moveRightButton()
+{
+	moveRight(document.getElementById("redball1"));
 }
 
 function moveUp(thing)
@@ -281,10 +282,20 @@ function moveUp(thing)
 	thing.mVelocityY = -1;
 }
 
+function moveUpButton()
+{
+	moveUp(document.getElementById("redball1"));
+}
+
 function moveDown(thing)
 {
         thing.mVelocityX = 0;
 	thing.mVelocityY = 1;
+}
+
+function moveDownButton()
+{
+	moveDown(document.getElementById("redball1"));
 }
 
 function moveStop(thing)
@@ -292,6 +303,12 @@ function moveStop(thing)
         thing.mVelocityX = 0;
         thing.mVelocityY = 0;
 }
+
+function moveStopButton()
+{
+	moveStop(document.getElementById("redball1"));
+}
+
 var keynum;
 
 function moveKey(e)
@@ -336,18 +353,16 @@ function submitGuess(image_id)
         
 	newQuestion();
         newAnswer();
-        setChoices();
         printScore();
 }
 
 function init()
 {
 	resetVariables();
-	
+	setButtons();	
 	newQuestion();
 	setImages();
 	newAnswer();
-	setChoices();
 	printScore();
 	move();
 }
@@ -402,11 +417,11 @@ function setImages()
 <p id="question"> </p>
 
 <!-- Create Buttons (could this be done in db?) -->
-        <button type="button" id="buttonMoveLeft" onclick="moveLeft(this.id)"> </button> 
-        <button type="button" id="buttonMoveRight" onclick="moveRight(this.id)"> </button> 
-        <button type="button" id="buttonMoveUp" onclick="moveUp(this.id)"> </button>
-        <button type="button" id="buttonMoveDown" onclick="moveDown(this.id)"> </button> 
-        <button type="button" id="buttonMoveStop" onclick="moveStop(this.id)"> </button> 
+        <button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> </button> 
+        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> </button> 
+        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> </button>
+        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> </button> 
+        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> </button> 
 
 <!-- create images -->
 <style>
