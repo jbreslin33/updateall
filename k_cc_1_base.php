@@ -475,12 +475,6 @@ DIV.movable { position:absolute; }
 
 
 
-<div style="display: none;" class="demo-description">
-<p>Examples of the markup that can be used for buttons: A button element, an input of type submit and an anchor.</p>
-</div><!-- End demo-description -->
-
-
-
 
 <script type="text/javascript"> 
 
