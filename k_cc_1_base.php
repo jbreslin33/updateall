@@ -166,24 +166,24 @@ function setButtons()
 	
 	document.getElementById("buttonMoveLeft").style.position="absolute";
 	document.getElementById("buttonMoveLeft").style.top="575px";
-	document.getElementById("buttonMoveLeft").style.left="75px";
+	document.getElementById("buttonMoveLeft").style.left="72px";
 
 	document.getElementById("buttonMoveRight").style.position="absolute";
 	document.getElementById("buttonMoveRight").style.top="575px";
-	document.getElementById("buttonMoveRight").style.left="220px";
+	document.getElementById("buttonMoveRight").style.left="237px";
 
 
 	document.getElementById("buttonMoveUp").style.position="absolute";
-	document.getElementById("buttonMoveUp").style.top="550px";
+	document.getElementById("buttonMoveUp").style.top="535px";
 	document.getElementById("buttonMoveUp").style.left="150px";
 
 	document.getElementById("buttonMoveDown").style.position="absolute";
-	document.getElementById("buttonMoveDown").style.top="600px";
+	document.getElementById("buttonMoveDown").style.top="615px";
 	document.getElementById("buttonMoveDown").style.left="150px";
 
 	document.getElementById("buttonMoveStop").style.position="absolute";
 	document.getElementById("buttonMoveStop").style.top="575px";
-	document.getElementById("buttonMoveStop").style.left="150px";
+	document.getElementById("buttonMoveStop").style.left="152px";
 }
 
 function move()
@@ -459,7 +459,7 @@ DIV.movable { position:absolute; }
         <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
         <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
         <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
-        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> Stop. </button> 
+        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> .Stop. </button> 
 
 </div><!-- End demo -->
 
