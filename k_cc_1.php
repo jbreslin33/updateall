@@ -162,14 +162,27 @@ function newAnswer()
 //set buttons
 function setButtons()
 {
-	document.getElementById("buttonMoveLeft").innerHTML="left";
-	document.getElementById("buttonMoveRight").innerHTML="right";
-	document.getElementById("buttonMoveUp").innerHTML="up";
-	document.getElementById("buttonMoveDown").innerHTML="down";
-	document.getElementById("buttonMoveStop").innerHTML="stop";
+	document.getElementById("buttonMoveLeft").style.position="absolute";
+	document.getElementById("buttonMoveLeft").style.top="575px";
+	document.getElementById("buttonMoveLeft").style.left="100px";
+
+	document.getElementById("buttonMoveRight").style.position="absolute";
+	document.getElementById("buttonMoveRight").style.top="575px";
+	document.getElementById("buttonMoveRight").style.left="220px";
+
+
+	document.getElementById("buttonMoveUp").style.position="absolute";
+	document.getElementById("buttonMoveUp").style.top="550px";
+	document.getElementById("buttonMoveUp").style.left="150px";
+
+	document.getElementById("buttonMoveDown").style.position="absolute";
+	document.getElementById("buttonMoveDown").style.top="600px";
+	document.getElementById("buttonMoveDown").style.left="150px";
+
+	document.getElementById("buttonMoveStop").style.position="absolute";
+	document.getElementById("buttonMoveStop").style.top="575px";
+	document.getElementById("buttonMoveStop").style.left="150px";
 }
-
-
 
 function move()
 {
@@ -409,12 +422,6 @@ function setImages()
 <!-- create and set question -->
 <p id="question"> </p>
 
-<!-- Create Buttons (could this be done in db?) -->
-        <button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> </button> 
-        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> </button> 
-        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> </button>
-        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> </button> 
-        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> </button> 
 
 <!-- create images -->
 <style>
@@ -432,6 +439,13 @@ DIV.movable { position:absolute; }
 
 ?>
 
+
+<!-- Create Buttons (could this be done in db?) -->
+       	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
+        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
+        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
+        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
+        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> Stop. </button> 
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
