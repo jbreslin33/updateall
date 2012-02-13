@@ -166,7 +166,7 @@ function setButtons()
 	
 	document.getElementById("buttonMoveLeft").style.position="absolute";
 	document.getElementById("buttonMoveLeft").style.top="575px";
-	document.getElementById("buttonMoveLeft").style.left="100px";
+	document.getElementById("buttonMoveLeft").style.left="75px";
 
 	document.getElementById("buttonMoveRight").style.position="absolute";
 	document.getElementById("buttonMoveRight").style.top="575px";
