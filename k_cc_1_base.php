@@ -455,7 +455,7 @@ DIV.movable { position:absolute; }
 
 <script>
 	$(function() {
-		$( "input:submit, a, button", ".demo" ).button();
+		$( "button", ".demo" ).button();
 		$( "a", ".demo" ).click(function() { return false; });
 	});
 	</script>
@@ -463,12 +463,6 @@ DIV.movable { position:absolute; }
 
 
 <div class="demo">
-
-<button>A button element</button>
-
-<input value="A submit button" type="submit">
-
-<a href="#">An anchor</a>
 
 <!-- Create Buttons (could this be done in db?) -->
        	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
