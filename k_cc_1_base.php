@@ -454,18 +454,19 @@ DIV.movable { position:absolute; }
 
 
 <script>
-	$(function() {
+	$(function()
+	{
 		$( "button", ".demo" ).button();
-		$( "a", ".demo" ).click(function() { return false; });
+		$("#buttonMoveLeft").click(function() { moveLeftButton(); });
 	});
-	</script>
+</script>
 
 
 
 <div class="demo">
 
 <!-- Create Buttons (could this be done in db?) -->
-       	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
+       	<button type="button" id="buttonMoveLeft" > .Left. </button> 
         <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
         <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
         <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
