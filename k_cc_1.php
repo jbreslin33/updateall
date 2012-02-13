@@ -112,7 +112,13 @@ function resetVariables()
 	//move avatar to start
 	document.getElementById("redball1").mPositionX = 0;
         document.getElementById("redball1").mPositionY = 0;
-
+	
+	//make images and numbers visible and collidable
+        for (i=mStartNumber;i<=mEndNumber;i++)
+	{
+		document.getElementById('number' + i).style.visibility = 'visible'; 
+		document.getElementById('number' + i).mCollidable = true; 
+	}
 }
 
 //check guess
