@@ -162,6 +162,8 @@ function newAnswer()
 //set buttons
 function setButtons()
 {
+	$("button").button();
+	
 	document.getElementById("buttonMoveLeft").style.position="absolute";
 	document.getElementById("buttonMoveLeft").style.top="575px";
 	document.getElementById("buttonMoveLeft").style.left="100px";
@@ -450,18 +452,6 @@ DIV.movable { position:absolute; }
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
 
-
-
-
-<script>
-	$(function()
-	{
-		$("button").button();
-	});
-</script>
-
-
-
 <div class="demo">
 
 <!-- Create Buttons (could this be done in db?) -->
@@ -472,9 +462,6 @@ DIV.movable { position:absolute; }
         <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> Stop. </button> 
 
 </div><!-- End demo -->
-
-
-
 
 <script type="text/javascript"> 
 
