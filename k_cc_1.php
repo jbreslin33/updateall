@@ -88,7 +88,7 @@ function printScore()
 
 function checkForEndOfGame()
 {
-        if (mScore == <?php echo "$scoreNeeded"; ?> )
+        if (mScore == mScoreNeeded)
         {
                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 window.location = "goto_next_math_level.php"
@@ -309,39 +309,32 @@ function moveStopButton()
 	moveStop(document.getElementById("redball1"));
 }
 
-var keynum;
-
-function moveKey(e)
+document.onkeydown = function(ev) 
 {
-	if(window.event) // IE8 and earlier
+	var keynum;
+	ev = ev || event;
+	keynum = ev.keyCode;
+
+	if (keynum == 37)
 	{
-		//	keynum = e.keyCode;
-		//	alert('keypressedddd');
-	}
-	else if(e.which) // IE9/Firefox/Chrome/Opera/Safari
+		moveLeft(document.getElementById("redball1"));	
+	}	
+	if (keynum == 39)
 	{
-		keynum = e.which;
-		if (keynum == 106)
-		{
-			moveLeft(document.getElementById("redball1"));	
-		}	
-		if (keynum == 108)
-		{
-			moveRight(document.getElementById("redball1"));	
-		}	
-		if (keynum == 105)
-		{
-			moveUp(document.getElementById("redball1"));	
-		}	
-		if (keynum == 107)
-		{
-			moveDown(document.getElementById("redball1"));	
-		}	
-		if (keynum == 32)
-		{
-			moveStop(document.getElementById("redball1"));	
-		}	
-	}
+		moveRight(document.getElementById("redball1"));	
+	}	
+	if (keynum == 38)
+	{
+		moveUp(document.getElementById("redball1"));	
+	}	
+	if (keynum == 40)
+	{
+		moveDown(document.getElementById("redball1"));	
+	}	
+	if (keynum == 32)
+	{
+		moveStop(document.getElementById("redball1"));	
+	}	
 }
 
 //submit guess
@@ -451,15 +444,15 @@ DIV.movable { position:absolute; }
 
 
 <script type="text/javascript"> 
-$(document).ready(function(){
- // $("button").click(function(){
-    //$(".test").hide();
+
+$(document).ready(function()
+{
 	init();
-//  });
-});
+}
+);
+
 </script>
 
-<script type="text/javascript"> document.onkeypress=moveKey </script>
 
 </body>
 </html>
