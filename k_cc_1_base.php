@@ -59,9 +59,9 @@ var mScoreNeeded = 0;
 var mScore = 0;
 var mQuestion = 0;
 var mGuess = 0;
-var mAnswer = -1;
+var mAnswer = 0;
 var mCountBy = 0;
-var mCount = -1;
+var mCount = 0;
 var mTickLength = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
@@ -104,7 +104,7 @@ function resetVariables()
 	//game
         mQuestion = "";
         mGuess = 0;
-        mAnswer = -1;
+        mAnswer = 0;
 
 	//count
         mCount = mStartNumber - 1;
