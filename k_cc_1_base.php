@@ -440,12 +440,6 @@ DIV.movable { position:absolute; }
 ?>
 
 
-<!-- Create Buttons (could this be done in db?) -->
-       	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
-        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
-        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
-        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
-        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> Stop. </button> 
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
@@ -455,6 +449,43 @@ DIV.movable { position:absolute; }
 
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
+
+
+
+
+<script>
+	$(function() {
+		$( "input:submit, a, button", ".demo" ).button();
+		$( "a", ".demo" ).click(function() { return false; });
+	});
+	</script>
+
+
+
+<div class="demo">
+
+<button>A button element</button>
+
+<input value="A submit button" type="submit">
+
+<a href="#">An anchor</a>
+
+<!-- Create Buttons (could this be done in db?) -->
+       	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
+        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
+        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
+        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
+        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> Stop. </button> 
+
+</div><!-- End demo -->
+
+
+
+<div style="display: none;" class="demo-description">
+<p>Examples of the markup that can be used for buttons: A button element, an input of type submit and an anchor.</p>
+</div><!-- End demo-description -->
+
+
 
 
 <script type="text/javascript"> 
