@@ -108,16 +108,24 @@ function resetVariables()
 
 	//count
         mCount = mStartNumber;
+	
+	//move avatar to start
+	document.getElementById("redball1").mPositionX = 0;
+        document.getElementById("redball1").mPositionY = 0;
+
 }
 
 //check guess
-function checkGuess()
+function checkGuess(image_id)
 {
         if (mGuess == mAnswer)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
 
+		//made image disapper and make collibal false
+		document.getElementById('number' + image_id).mCollidable = false;
+		
                 document.getElementById("feedback").innerHTML="Correct!";
 
                 checkForEndOfGame();
@@ -214,16 +222,16 @@ function checkCollisions()
 	
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
-		var x2 = document.getElementById('number' + i).mPositionX;		
-		var y2 = document.getElementById('number' + i).mPositionY;		
-		
-		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-		if (distSQ < 1300)
+		if (document.getElementById('number' + i).mCollidable)
 		{
-	//		alert('collision');
-			document.getElementById("redball1").mPositionX = 0;
-		        document.getElementById("redball1").mPositionY = 0;
-
+			var x2 = document.getElementById('number' + i).mPositionX;		
+			var y2 = document.getElementById('number' + i).mPositionY;		
+		
+			var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+			if (distSQ < 1300)
+			{
+				submitGuess(document.getElementById('number' + i).mID);	
+			}
 		}	
 	}
 }
@@ -313,11 +321,11 @@ function moveKey(e)
 }
 
 //submit guess
-function submitGuess(button_id)
+function submitGuess(image_id)
 {
-        mGuess = document.getElementById(button_id).innerHTML;
+        mGuess = image_id;
         
-	checkGuess();
+	checkGuess(image_id);
         
 	newQuestion();
         newAnswer();
@@ -364,7 +372,9 @@ function setImages()
         	document.getElementById('number' + i).mVelocityY = 0;
 		
         	document.getElementById('number' + i).mCollidable = true;
-		
+		document.getElementById('number' + i).mID = i;
+		document.getElementById('number' + i).mAnswer = i;
+			
 	
 		offset = offset + 60;
 	}  
