@@ -425,24 +425,6 @@ function setImages()
 <p id="question"> </p>
 
 
-<!-- create images -->
-<style>
-DIV.movable { position:absolute; }
-</style>
-
-<div id="redball1" class="movable"><img src="redball.png" /></div>
-
-<?php
-
-	for ($i=$startNumber; $i<=$scoreNeeded; $i++)
-	{
-		echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
-	}
-
-?>
-
-
-
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
 
@@ -462,6 +444,20 @@ DIV.movable { position:absolute; }
         <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> .Stop. </button> 
 
 </div><!-- End demo -->
+
+<!-- create images -->
+<style>
+DIV.movable { position:absolute; }
+</style>
+
+<div id="redball1" class="movable"><img src="redball.png" /></div>
+
+<?php
+	for ($i=$startNumber; $i<=$scoreNeeded; $i++)
+	{
+		echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
+	}
+?>
 
 <script type="text/javascript"> 
 
