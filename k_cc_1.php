@@ -172,6 +172,7 @@ function move()
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
      	
 	checkBounds(document.getElementById("redball1"));	
+	checkCollisions();
 
 	//move numbers
         for (i=mStartNumber;i<=mEndNumber;i++)
@@ -203,6 +204,27 @@ function render()
 	
 		document.getElementById('number' + i).style.left = x+'px';
         	document.getElementById('number' + i).style.top  = y+'px';
+	}
+}
+
+function checkCollisions()
+{
+	var x1 = document.getElementById("redball1").mPositionX; 
+	var y1 = document.getElementById("redball1").mPositionY; 
+	
+	for (i=mStartNumber;i<=mEndNumber;i++)
+	{
+		var x2 = document.getElementById('number' + i).mPositionX;		
+		var y2 = document.getElementById('number' + i).mPositionY;		
+		
+		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+		if (distSQ < 1300)
+		{
+	//		alert('collision');
+			document.getElementById("redball1").mPositionX = 0;
+		        document.getElementById("redball1").mPositionY = 0;
+
+		}	
 	}
 }
 
