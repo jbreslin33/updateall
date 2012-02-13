@@ -430,7 +430,7 @@ function setImages()
 DIV.movable { position:absolute; }
 </style>
 
-<div id="redball1" class="movable"><img src="redball.gif" /></div>
+<div id="redball1" class="movable"><img src="redball.png" /></div>
 
 <?php
 
