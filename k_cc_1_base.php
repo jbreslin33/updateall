@@ -255,17 +255,17 @@ function checkCollisions()
 
 function checkBounds(thing)
 {
-        if (thing.mPositionX < 0)
+        if (thing.mPositionX < 25)
         {
-                thing.mPositionX = 0;
+                thing.mPositionX = 25;
         }
         if (thing.mPositionX > 600)
         {
                 thing.mPositionX = 600;
         }
-        if (thing.mPositionY < 0)
+        if (thing.mPositionY < 25)
         {
-                thing.mPositionY = 0;
+                thing.mPositionY = 25;
         }
         if (thing.mPositionY > 600)
         {
