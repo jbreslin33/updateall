@@ -470,6 +470,11 @@ $(document).ready(function()
 </script>
 
 
+<div style="width:600px;height:600px;border:1px solid blue;">
+HTML borders are best created with CSS.
+</div>
+
+<h3 class="ui-widget-header">Resizable</h3>
 </body>
 </html>
 
