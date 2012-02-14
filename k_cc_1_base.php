@@ -211,6 +211,10 @@ function render()
 	var x = 0;
 	var y = 0;
 
+	//boundary
+	document.getElementById("boundry").style.left = 0+'px';
+        document.getElementById("boundry").style.top  = 0+'px';
+
 	//move avatar	
        	x = document.getElementById("redball1").mPositionX - 25;
      	y = document.getElementById("redball1").mPositionY - 25;
@@ -418,6 +422,14 @@ function setImages()
 <!-- creating game -->
 <script type="text/javascript">  var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?> </script>
 
+<!-- create images -->
+<style>
+DIV.movable { position:absolute; }
+</style>
+
+<!-- boundry -->
+<div id="boundry" class="movable"><img src="boundry.png" /></div>
+
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
 
@@ -445,10 +457,6 @@ function setImages()
 
 </div><!-- End demo -->
 
-<!-- create images -->
-<style>
-DIV.movable { position:absolute; }
-</style>
 
 <div id="redball1" class="movable"><img src="redball.png" /></div>
 
@@ -469,12 +477,6 @@ $(document).ready(function()
 
 </script>
 
-
-<div style="width:600px;height:600px;border:1px solid blue;">
-HTML borders are best created with CSS.
-</div>
-
-<h3 class="ui-widget-header">Resizable</h3>
 </body>
 </html>
 
