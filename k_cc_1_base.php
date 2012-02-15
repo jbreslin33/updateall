@@ -53,6 +53,8 @@ if ($num > 0)
 <!-- class for game -->
 <script type="text/javascript">
 
+var mViewPortWidth = 0;
+var mViewPortHeight = 0;
 var mStartNumber = 0;
 var mEndNumber = 0;
 var mScoreNeeded = 0;
@@ -83,7 +85,6 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	//ticks
 	mTickLength = tickLength;
 }
-
 
 //Score
 function printScore()
@@ -361,6 +362,12 @@ document.onkeydown = function(ev)
 		moveStop(document.getElementById("redball1"));	
 	}	
 }
+
+$(window).resize(function() {
+    $("#width").text($(this).width());
+    $("#height").text($(this).height());
+        	document.getElementById("number5").mPositionX = 400;
+});
 
 //submit guess
 function submitGuess(image_id)
