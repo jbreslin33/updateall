@@ -64,6 +64,12 @@ var mCountBy = 0;
 var mCount = 0;
 var mTickLength = 0;
 
+
+//ball positions
+var mNumberPositionXArray = new Array(0,75,150,225,300,375,450,525,600,675,750);
+var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
+
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
 	//score
@@ -399,8 +405,8 @@ function setImages()
 	{
 		document.getElementById('image' + i).src  = i + ".png";
 		
-		document.getElementById('number' + i).mPositionX = offset;
-        	document.getElementById('number' + i).mPositionY = offset;
+                document.getElementById('number' + i).mPositionX = mNumberPositionXArray[i];
+                document.getElementById('number' + i).mPositionY = mNumberPositionYArray[i];
 
 		document.getElementById('number' + i).mVelocityX = 0;
         	document.getElementById('number' + i).mVelocityY = 0;
