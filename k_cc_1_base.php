@@ -234,8 +234,8 @@ function render()
 	var y = 0;
 
 	//boundary
-	document.getElementById("boundry").style.left = 0+'px';
-        document.getElementById("boundry").style.top  = 0+'px';
+	//document.getElementById("boundry").style.left = 0+'px';
+        //document.getElementById("boundry").style.top  = 0+'px';
 
 	//move avatar	
        	x = document.getElementById("redball1").mPositionX - 25;
@@ -379,10 +379,22 @@ document.onkeydown = function(ev)
 }
 
 $(window).resize(function() {
-    $("#width").text($(this).width());
-    $("#height").text($(this).height());
-        	document.getElementById("number5").mPositionX = 400;
-	resize_image(document.getElementById("image6"),25,25);
+	mViewPortWidth = $(this).width();
+	mViewPortHeight = $(this).height();
+
+        document.getElementById("number5").mPositionX = 400;
+	
+	//1280x1024
+	var mViewPortWidthOptimal = 1280;
+	var mViewPortHeightOptimal = 1024;
+
+	var newWidthPercent = mViewPortWidth / mViewPortWidthOptimal;
+	var newHeightPercent = mViewPortHeight / mViewPortHeightOptimal;
+	
+        document.getElementById("dimensions").innerHTML="Width: " + mViewPortWidth + " Height: " + mViewPortHeight + "newWidthPercent: " + newWidthPercent + " newHeightPercent " + newHeightPercent;	
+	var xmod = newWidthPercent * 50;	
+	var ymod = newHeightPercent * 50;	
+	resize_image(document.getElementById("image6"),xmod,ymod);
 });
 
 //submit guess
@@ -456,8 +468,9 @@ function setImages()
 DIV.movable { position:absolute; }
 </style>
 
-<!-- boundry -->
+<!-- boundry 
 <div id="boundry" class="movable"><img src="boundry.png" /></div>
+-->
 
 <!-- creat and set game name -->
 <h1 = id="game_name"> <?php echo "$name"; ?> </h1>
@@ -474,6 +487,9 @@ DIV.movable { position:absolute; }
 
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
+
+<!-- create dimensions -->
+<p id="dimensions"></p>
 
 <div class="demo">
 
