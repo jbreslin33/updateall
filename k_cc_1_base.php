@@ -86,6 +86,21 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	mTickLength = tickLength;
 }
 
+function resize_image(image, w, h) {
+
+    if (typeof(image) != 'object') image = document.getElementById(image);
+
+    if (w == null || w == undefined)
+        w = (h / image.clientHeight) * image.clientWidth;
+
+    if (h == null || h == undefined)
+        h = (w / image.clientWidth) * image.clientHeight;
+
+    image.style['height'] = h + 'px';
+    image.style['width'] = w + 'px';
+    return;
+}
+
 //Score
 function printScore()
 {
@@ -367,6 +382,7 @@ $(window).resize(function() {
     $("#width").text($(this).width());
     $("#height").text($(this).height());
         	document.getElementById("number5").mPositionX = 400;
+	resize_image(document.getElementById("image6"),25,25);
 });
 
 //submit guess
