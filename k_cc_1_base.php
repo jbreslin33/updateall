@@ -60,10 +60,10 @@ var mViewPortYActual = 0;
 var mViewPortXScale = 0.0;
 var mViewPortYScale = 0.0;
 
-var mSpriteXSizeOptimal = 50;
-var mSpriteYSizeOptimal = 50;
-var mSpriteXSizeActual = 0;
-var mSpriteYSizeActual = 0;
+var mSpriteXOptimal = 50;
+var mSpriteYOptimal = 50;
+var mSpriteXActual = 0;
+var mSpriteYActual = 0;
 var mSpriteXScale = 0.0;
 var mSpriteYScale = 0.0;
 
@@ -246,15 +246,26 @@ function move()
 //or 
 function render()
 {
-	var x = 0;
-	var y = 0;
+
+	//check scales
+	mViewPortXActual = $(this).width();
+        mViewPortYActual = $(this).height();
+
+        var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
+        var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
+        
+        var mSpriteXScale = mSpriteXOptimal * mViewPortXScale;
+        var mSpriteYScale = mSpriteYActual / mSpriteYOptimal;
+        
+        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
+	var x = 0; var y = 0;
 
 	//resize_image(document.getElementById("image6"),xmod,ymod);
 	//must figure out where to draw avatar...
-	
+//	mSpriteXScalekh
 	//move avatar	
-       	x = document.getElementById("redball1").mPositionX - 25;
-     	y = document.getElementById("redball1").mPositionY - 25;
+       	x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
+     	y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
 	document.getElementById("redball1").style.left = x+'px';
         document.getElementById("redball1").style.top  = y+'px';
 
@@ -394,13 +405,6 @@ document.onkeydown = function(ev)
 }
 
 $(window).resize(function() {
-	mViewPortXActual = $(this).width();
-	mViewPortYActual = $(this).height();
-
-	var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
-	var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
-	
-        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;	
 });
 
 function resizeAll() 
