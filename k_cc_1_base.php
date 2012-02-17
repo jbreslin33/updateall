@@ -247,23 +247,30 @@ function move()
 function render()
 {
 
-	//check scales
+	//viewport
 	mViewPortXActual = $(this).width();
         mViewPortYActual = $(this).height();
 
         var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
         var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
-        
-        var mSpriteXScale = mSpriteXOptimal * mViewPortXScale;
-        var mSpriteYScale = mSpriteYActual / mSpriteYOptimal;
-        
+       
+	//sprites 
+        //var mSpriteXScale = mSpriteXOptimal * mViewPortXScale;
+        //var mSpriteYScale = mSpriteYOptimal * mViewPortYScale;
+       
+	var mSpriteXActual = mViewPortXScale * mSpriteXOptimal;
+	var mSpriteYActual = mViewPortYScale * mSpriteYOptimal;
+ 
         document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
 	var x = 0; var y = 0;
 
 	//resize_image(document.getElementById("image6"),xmod,ymod);
 	//must figure out where to draw avatar...
 //	mSpriteXScalekh
-	//move avatar	
+	//render avatar	
+	//first lest size him.
+	resize_image("avatar",mSpriteXActual, mSpriteYActual);
+	//resize_image("avatar",mSpriteXScale, mSpriteYScale);
        	x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
      	y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
 	document.getElementById("redball1").style.left = x+'px';
@@ -518,7 +525,7 @@ DIV.movable { position:absolute; }
 </div><!-- End demo -->
 
 
-<div id="redball1" class="movable"><img src="redball.png" /></div>
+<div id="redball1" class="movable"><img id="avatar" src="redball.png" /></div>
 
 <?php
 	for ($i=$startNumber; $i<=$scoreNeeded; $i++)
