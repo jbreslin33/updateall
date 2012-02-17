@@ -59,6 +59,14 @@ var mViewPortXActual = 0;
 var mViewPortYActual = 0;
 var mViewPortXScale = 0.0;
 var mViewPortYScale = 0.0;
+
+var mSpriteXSizeOptimal = 50;
+var mSpriteYSizeOptimal = 50;
+var mSpriteXSizeActual = 0;
+var mSpriteYSizeActual = 0;
+var mSpriteXScale = 0.0;
+var mSpriteYScale = 0.0;
+
 var mStartNumber = 0;
 var mEndNumber = 0;
 var mScoreNeeded = 0;
@@ -218,7 +226,7 @@ function move()
  	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
      	
-	checkBounds(document.getElementById("redball1"));	
+	//checkBounds(document.getElementById("redball1"));	
 	checkCollisions();
 
 	//move numbers
@@ -242,6 +250,7 @@ function render()
 	var y = 0;
 
 	//resize_image(document.getElementById("image6"),xmod,ymod);
+	//must figure out where to draw avatar...
 	
 	//move avatar	
        	x = document.getElementById("redball1").mPositionX - 25;
