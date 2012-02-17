@@ -53,8 +53,12 @@ if ($num > 0)
 <!-- class for game -->
 <script type="text/javascript">
 
-var mViewPortWidth = 0;
-var mViewPortHeight = 0;
+var mViewPortXOptimal = 1280;
+var mViewPortYOptimal = 1024;
+var mViewPortXActual = 0;
+var mViewPortYActual = 0;
+var mViewPortXScale = 0.0;
+var mViewPortYScale = 0.0;
 var mStartNumber = 0;
 var mEndNumber = 0;
 var mScoreNeeded = 0;
@@ -227,16 +231,18 @@ function move()
 
         window.setTimeout('move()',mTickLength);
 }
-
+//render- let's pretend on "server" that field is 1280x1060 then we simply still move x spaces per move but
+//render handles the client drawing...or only render what is in the viewport no matter the size then you
+//don't need to worry about anything. player is always located center...
+//to do this do you need to render everything relative to player?
+//or 
 function render()
 {
 	var x = 0;
 	var y = 0;
 
-	//boundary
-	//document.getElementById("boundry").style.left = 0+'px';
-        //document.getElementById("boundry").style.top  = 0+'px';
-
+	//resize_image(document.getElementById("image6"),xmod,ymod);
+	
 	//move avatar	
        	x = document.getElementById("redball1").mPositionX - 25;
      	y = document.getElementById("redball1").mPositionY - 25;
@@ -379,23 +385,19 @@ document.onkeydown = function(ev)
 }
 
 $(window).resize(function() {
-	mViewPortWidth = $(this).width();
-	mViewPortHeight = $(this).height();
+	mViewPortXActual = $(this).width();
+	mViewPortYActual = $(this).height();
 
-        document.getElementById("number5").mPositionX = 400;
+	var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
+	var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
 	
-	//1280x1024
-	var mViewPortWidthOptimal = 1280;
-	var mViewPortHeightOptimal = 1024;
-
-	var newWidthPercent = mViewPortWidth / mViewPortWidthOptimal;
-	var newHeightPercent = mViewPortHeight / mViewPortHeightOptimal;
-	
-        document.getElementById("dimensions").innerHTML="Width: " + mViewPortWidth + " Height: " + mViewPortHeight + "newWidthPercent: " + newWidthPercent + " newHeightPercent " + newHeightPercent;	
-	var xmod = newWidthPercent * 50;	
-	var ymod = newHeightPercent * 50;	
-	resize_image(document.getElementById("image6"),xmod,ymod);
+        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;	
 });
+
+function resizeAll() 
+{
+
+}
 
 //submit guess
 function submitGuess(image_id)
