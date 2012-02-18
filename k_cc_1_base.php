@@ -347,7 +347,7 @@ function checkBounds(thing)
 
 function moveLeft(thing)
 {
-	thing.mVelocityX = -1;
+	thing.mVelocityX = 1;
         thing.mVelocityY = 0;
 }
 
@@ -358,7 +358,7 @@ function moveLeftButton()
 
 function moveRight(thing)
 {
-	thing.mVelocityX = 1;
+	thing.mVelocityX = -1;
         thing.mVelocityY = 0;
 }
 
@@ -370,7 +370,7 @@ function moveRightButton()
 function moveUp(thing)
 {
        	thing.mVelocityX = 0;
-	thing.mVelocityY = -1;
+	thing.mVelocityY = 1;
 }
 
 function moveUpButton()
@@ -381,7 +381,7 @@ function moveUpButton()
 function moveDown(thing)
 {
         thing.mVelocityX = 0;
-	thing.mVelocityY = 1;
+	thing.mVelocityY = -1;
 }
 
 function moveDownButton()
