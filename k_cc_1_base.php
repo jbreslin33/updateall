@@ -117,7 +117,7 @@ function render()
         document.getElementById("redball1").style.top  = y+'px';
 
 	//move numbers
-	for (i=mStartNumber;i<=mEndNumber;i++)
+	for (i=mCount + 1;i<=mEndNumber;i++)
 	{
 		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
 		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
@@ -185,8 +185,8 @@ function checkGuess(image_id)
 
 		//made image disapper and make collibal false
 		document.getElementById('number' + image_id).mCollidable = false;
-		document.getElementById('number' + image_id).style.visibility = 'hidden';
-		
+		//document.getElementById('number' + image_id).style.visibility = 'hidden';
+		$("#number" + image_id).remove();	
                 document.getElementById("feedback").innerHTML="Correct!";
 
                 checkForEndOfGame();
@@ -250,7 +250,7 @@ function move()
 	checkCollisions();
 
 	//move numbers
-        for (i=mStartNumber;i<=mEndNumber;i++)
+        for (i=mCount + 1;i<=mEndNumber;i++)
         {
         	document.getElementById('number' + i).mPositionX += document.getElementById('number' + i).mVelocityX;
         	document.getElementById('number' + i).mPositionY += document.getElementById('number' + i).mVelocityY;
@@ -265,7 +265,7 @@ function checkCollisions()
 	var x1 = document.getElementById("redball1").mPositionX; 
 	var y1 = document.getElementById("redball1").mPositionY; 
 	
-	for (i=mStartNumber;i<=mEndNumber;i++)
+	for (i=mCount + 1;i<=mEndNumber;i++)
 	{
 		if (document.getElementById('number' + i).mCollidable)
 		{
@@ -406,10 +406,10 @@ function submitGuess(image_id)
 
 function init()
 {
+	setImages();
 	resetVariables();
 	setButtons();	
 	newQuestion();
-	setImages();
 	newAnswer();
 	printScore();
 	move();
@@ -418,7 +418,7 @@ function init()
 //set images
 function setImages()
 {
-	
+
 	//avatar
 	document.getElementById("redball1").mPositionX = 0;
        	document.getElementById("redball1").mPositionY = 0;
@@ -433,6 +433,25 @@ function setImages()
 	var offset = 60;
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
+		//create the images
+		var newdiv = document.createElement('div'); 
+	//	var divID = 'number' + i;
+		newdiv.setAttribute('id','number' + i); 	
+		newdiv.setAttribute("class","movable"); 
+		document.body.appendChild(newdiv); 	
+		//echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
+	
+		var img = document.createElement("IMG");
+		//img.src = "img/dir.gif";
+		img.id = 'image' + i;	
+		document.getElementById('number' + i).appendChild(img);
+
+
+//	var newimg = document.createElement('img');
+//		newimg.setAttribute('id','image' + i);	
+	
+//		newdiv.appendChild(newimg);
+	
 		document.getElementById('image' + i).src  = i + ".png";
 		
                 document.getElementById('number' + i).mPositionX = mNumberPositionXArray[i];
@@ -499,13 +518,6 @@ DIV.movable { position:absolute; }
 
 
 <div id="redball1" class="movable"><img id="avatar" src="redball.png" /></div>
-
-<?php
-	for ($i=$startNumber; $i<=$scoreNeeded; $i++)
-	{
-		echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
-	}
-?>
 
 <script type="text/javascript"> 
 
