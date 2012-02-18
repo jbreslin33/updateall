@@ -429,7 +429,6 @@ function createImages()
 	document.getElementById('redball1').appendChild(img);
 	document.getElementById('avatar').src  = "redball.png";
 
-//<div id="redball1" class="movable"><img id="avatar" src="redball.png" /></div>
 	document.getElementById("redball1").mPositionX = 0;
        	document.getElementById("redball1").mPositionY = 0;
 
