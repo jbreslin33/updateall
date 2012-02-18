@@ -67,6 +67,11 @@ var mSpriteYActual = 0;
 var mSpriteXScale = 0.0;
 var mSpriteYScale = 0.0;
 
+var mXOffset = 0.0;
+var mYOffet = 0.0;
+var mXCenter = 0.0;
+var mYCenter = 0.0;
+
 var mStartNumber = 0;
 var mEndNumber = 0;
 var mScoreNeeded = 0;
@@ -98,6 +103,53 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	mTickLength = tickLength;
 }
 
+//render- let's pretend on "server" that field is 1280x1060 then we simply still move x spaces per move but
+//render handles the client drawing...or only render what is in the viewport no matter the size then you
+//don't need to worry about anything. player is always located center...
+//to do this do you need to render everything relative to player?
+//or 
+function render()
+{
+
+	//viewport
+	mViewPortXActual = $(this).width();
+        mViewPortYActual = $(this).height();
+	
+	var mXCenter = mViewPortXActual / 2;
+	var mYCenter = mViewPortYActual / 2;
+	
+        var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
+        var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
+       
+	var mSpriteXActual = mViewPortXScale * mSpriteXOptimal;
+	var mSpriteYActual = mViewPortYScale * mSpriteYOptimal;
+ 
+        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
+	var x = 0;
+	var y = 0; 
+	
+	//this centers avatar in view port
+	x = mXCenter - mSpriteXScale / 2; 	
+	y = mYCenter - mSpriteYScale / 2; 	
+	
+	//this will move sprite over by half size so that it's position is centered in world units	
+       	//x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
+     	//y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
+
+	//this actual moves it	
+	document.getElementById("redball1").style.left = x+'px';
+        document.getElementById("redball1").style.top  = y+'px';
+
+	//move numbers
+	for (i=mStartNumber;i<=mEndNumber;i++)
+	{
+        	x = document.getElementById('number' + i).mPositionX - 25;
+              	y = document.getElementById('number' + i).mPositionY - 25;
+	
+		document.getElementById('number' + i).style.left = x+'px';
+        	document.getElementById('number' + i).style.top  = y+'px';
+	}
+}
 function resize_image(image, w, h) {
 
     if (typeof(image) != 'object') image = document.getElementById(image);
@@ -238,53 +290,6 @@ function move()
 	render();
 
         window.setTimeout('move()',mTickLength);
-}
-//render- let's pretend on "server" that field is 1280x1060 then we simply still move x spaces per move but
-//render handles the client drawing...or only render what is in the viewport no matter the size then you
-//don't need to worry about anything. player is always located center...
-//to do this do you need to render everything relative to player?
-//or 
-function render()
-{
-
-	//viewport
-	mViewPortXActual = $(this).width();
-        mViewPortYActual = $(this).height();
-
-        var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
-        var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
-       
-	//sprites 
-        //var mSpriteXScale = mSpriteXOptimal * mViewPortXScale;
-        //var mSpriteYScale = mSpriteYOptimal * mViewPortYScale;
-       
-	var mSpriteXActual = mViewPortXScale * mSpriteXOptimal;
-	var mSpriteYActual = mViewPortYScale * mSpriteYOptimal;
- 
-        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
-	var x = 0; var y = 0;
-
-	//resize_image(document.getElementById("image6"),xmod,ymod);
-	//must figure out where to draw avatar...
-//	mSpriteXScalekh
-	//render avatar	
-	//first lest size him.
-	//resize_image("avatar",mSpriteXActual, mSpriteYActual);
-	//resize_image("avatar",mSpriteXScale, mSpriteYScale);
-       	x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
-     	y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
-	document.getElementById("redball1").style.left = x+'px';
-        document.getElementById("redball1").style.top  = y+'px';
-
-	//move numbers
-	for (i=mStartNumber;i<=mEndNumber;i++)
-	{
-        	x = document.getElementById('number' + i).mPositionX - 25;
-              	y = document.getElementById('number' + i).mPositionY - 25;
-	
-		document.getElementById('number' + i).style.left = x+'px';
-        	document.getElementById('number' + i).style.top  = y+'px';
-	}
 }
 
 function checkCollisions()
