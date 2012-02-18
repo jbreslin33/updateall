@@ -150,8 +150,21 @@ function checkForEndOfGame()
 }
 
 //reset
-function resetVariables()
+function resetGame()
 {
+	//delete all images
+	//$('div').remove();	
+//$("#myDiv")	
+        for (i=mStartNumber;i<=mEndNumber;i++)
+	{
+		$("#number" + i).remove();
+	}
+		
+	$("#redball1").remove();
+	
+	//create all images	
+	createImages();
+
 	//score
 	mScore = 0;
 
@@ -194,8 +207,8 @@ function checkGuess(image_id)
         else
         {
                 document.getElementById("feedback").innerHTML="Wrong! Try again.";
-
-                resetVariables();
+		
+                resetGame();
         }
 }
 
@@ -406,7 +419,7 @@ function submitGuess(image_id)
 function init()
 {
 	createImages();
-	resetVariables();
+	resetGame();
 	setButtons();	
 	newQuestion();
 	newAnswer();
