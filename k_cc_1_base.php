@@ -226,7 +226,6 @@ function setButtons()
 	document.getElementById("buttonMoveRight").style.top="575px";
 	document.getElementById("buttonMoveRight").style.left="237px";
 
-
 	document.getElementById("buttonMoveUp").style.position="absolute";
 	document.getElementById("buttonMoveUp").style.top="535px";
 	document.getElementById("buttonMoveUp").style.left="150px";
@@ -420,6 +419,17 @@ function createImages()
 {
 
 	//avatar
+	var newdiv = document.createElement('div');
+	newdiv.setAttribute('id','redball1');
+	newdiv.setAttribute("class","movable");
+	document.body.appendChild(newdiv);
+
+	var img = document.createElement("IMG");
+	img.id = 'avatar';
+	document.getElementById('redball1').appendChild(img);
+	document.getElementById('avatar').src  = "redball.png";
+
+//<div id="redball1" class="movable"><img id="avatar" src="redball.png" /></div>
 	document.getElementById("redball1").mPositionX = 0;
        	document.getElementById("redball1").mPositionY = 0;
 
@@ -508,7 +518,6 @@ DIV.movable { position:absolute; }
 </div><!-- End demo -->
 
 
-<div id="redball1" class="movable"><img id="avatar" src="redball.png" /></div>
 
 <script type="text/javascript"> 
 
