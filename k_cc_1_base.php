@@ -153,8 +153,6 @@ function checkForEndOfGame()
 function resetGame()
 {
 	//delete all images
-	//$('div').remove();	
-//$("#myDiv")	
         for (i=mStartNumber;i<=mEndNumber;i++)
 	{
 		$("#number" + i).remove();
@@ -224,32 +222,6 @@ function newQuestion()
 function newAnswer()
 {
         mAnswer = mCount + mCountBy;
-}
-
-//set buttons
-function setButtons()
-{
-	$("button").button();
-	
-	document.getElementById("buttonMoveLeft").style.position="absolute";
-	document.getElementById("buttonMoveLeft").style.top="575px";
-	document.getElementById("buttonMoveLeft").style.left="72px";
-
-	document.getElementById("buttonMoveRight").style.position="absolute";
-	document.getElementById("buttonMoveRight").style.top="575px";
-	document.getElementById("buttonMoveRight").style.left="237px";
-
-	document.getElementById("buttonMoveUp").style.position="absolute";
-	document.getElementById("buttonMoveUp").style.top="535px";
-	document.getElementById("buttonMoveUp").style.left="150px";
-
-	document.getElementById("buttonMoveDown").style.position="absolute";
-	document.getElementById("buttonMoveDown").style.top="615px";
-	document.getElementById("buttonMoveDown").style.left="150px";
-
-	document.getElementById("buttonMoveStop").style.position="absolute";
-	document.getElementById("buttonMoveStop").style.top="575px";
-	document.getElementById("buttonMoveStop").style.left="152px";
 }
 
 function move()
@@ -420,11 +392,76 @@ function init()
 {
 	createImages();
 	resetGame();
-	setButtons();	
+	createButtons();	
 	newQuestion();
 	newAnswer();
 	printScore();
 	move();
+}
+
+//set buttons
+function createButtons()
+{
+        //<div class="demo">
+        //<!-- Create Buttons (could this be done in db?) -->
+        //<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button>
+        //<button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button>
+        //<button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
+        //<button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button>
+        //<button type="button" id="buttonMoveStop" onclick="moveStopButton()"> .Stop. </button>
+        //</div><!-- End demo -->
+
+	
+	var newdiv = document.createElement('div');
+	newdiv.setAttribute("class","demo");
+	document.body.appendChild(newdiv);
+
+	var newbuttonleft = document.createElement('button');
+	newbuttonleft.setAttribute('id','buttonMoveLeft');
+	newdiv.appendChild(newbuttonleft);
+
+	var newbuttonright = document.createElement('button');
+	newbuttonright.setAttribute('id','buttonMoveRight');
+	newdiv.appendChild(newbuttonright);
+
+	var newbuttonup = document.createElement('button');
+	newbuttonup.setAttribute('id','buttonMoveUp');
+	newdiv.appendChild(newbuttonup);
+	
+	var newbuttondown = document.createElement('button');
+	newbuttondown.setAttribute('id','buttonMoveDown');
+	newdiv.appendChild(newbuttondown);
+        
+	var newbuttonstop = document.createElement('button');
+	newbuttonstop.setAttribute('id','buttonMoveStop');
+	newdiv.appendChild(newbuttonstop);
+        
+	$("button").button();
+        
+	document.getElementById("buttonMoveLeft").innerHTML=".Left.";
+	document.getElementById("buttonMoveLeft").style.position="absolute";
+        document.getElementById("buttonMoveLeft").style.top="575px";
+        document.getElementById("buttonMoveLeft").style.left="72px";
+
+	document.getElementById("buttonMoveRight").innerHTML="Right";
+        document.getElementById("buttonMoveRight").style.position="absolute";
+        document.getElementById("buttonMoveRight").style.top="575px";
+        document.getElementById("buttonMoveRight").style.left="237px";
+
+	document.getElementById("buttonMoveUp").innerHTML="..Up...";
+        document.getElementById("buttonMoveUp").style.position="absolute";
+        document.getElementById("buttonMoveUp").style.top="535px";
+        document.getElementById("buttonMoveUp").style.left="150px";
+
+	document.getElementById("buttonMoveDown").innerHTML="Down.";
+        document.getElementById("buttonMoveDown").style.position="absolute";
+        document.getElementById("buttonMoveDown").style.top="615px";
+        document.getElementById("buttonMoveDown").style.left="150px";
+
+	document.getElementById("buttonMoveStop").innerHTML=".Stop.";
+        document.getElementById("buttonMoveStop").style.position="absolute";
+        document.getElementById("buttonMoveStop").style.top="575px";
+        document.getElementById("buttonMoveStop").style.left="152px";
 }
 
 //set images
@@ -517,19 +554,6 @@ DIV.movable { position:absolute; }
 
 <!-- create dimensions -->
 <p id="dimensions"></p>
-
-<div class="demo">
-
-<!-- Create Buttons (could this be done in db?) -->
-       	<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button> 
-        <button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button> 
-        <button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
-        <button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button> 
-        <button type="button" id="buttonMoveStop" onclick="moveStopButton()"> .Stop. </button> 
-
-</div><!-- End demo -->
-
-
 
 <script type="text/javascript"> 
 
