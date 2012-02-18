@@ -53,24 +53,11 @@ if ($num > 0)
 <!-- class for game -->
 <script type="text/javascript">
 
-var mViewPortXOptimal = 1280;
-var mViewPortYOptimal = 1024;
-var mViewPortXActual = 0;
-var mViewPortYActual = 0;
-var mViewPortXScale = 0.0;
-var mViewPortYScale = 0.0;
+var mViewPortX = 0;
+var mViewPortY = 0;
 
-var mSpriteXOptimal = 50;
-var mSpriteYOptimal = 50;
-var mSpriteXActual = 0;
-var mSpriteYActual = 0;
-var mSpriteXScale = 0.0;
-var mSpriteYScale = 0.0;
-
-var mXOffset = 0.0;
-var mYOffet = 0.0;
-var mXCenter = 0.0;
-var mYCenter = 0.0;
+var mSpriteX = 50;
+var mSpriteY = 50;
 
 var mStartNumber = 0;
 var mEndNumber = 0;
@@ -112,29 +99,19 @@ function render()
 {
 
 	//viewport
-	mViewPortXActual = $(this).width();
-        mViewPortYActual = $(this).height();
+	mViewPortX = $(this).width();
+        mViewPortY = $(this).height();
 	
-	var mXCenter = mViewPortXActual / 2;
-	var mYCenter = mViewPortYActual / 2;
+	var xCenter = mViewPortX / 2;
+	var yCenter = mViewPortY / 2;
 	
-        var mViewPortXScale = mViewPortXActual / mViewPortXOptimal;
-        var mViewPortYScale = mViewPortYActual / mViewPortYOptimal;
-       
-	var mSpriteXActual = mViewPortXScale * mSpriteXOptimal;
-	var mSpriteYActual = mViewPortYScale * mSpriteYOptimal;
- 
 	var x = 0;
 	var y = 0; 
 	
 	//this centers avatar in view port
-	x = mXCenter - mSpriteXScale / 2; 	
-	y = mYCenter - mSpriteYScale / 2; 	
+	x = xCenter - mSpriteX / 2; 	
+	y = yCenter - mSpriteY / 2; 	
 	
-	//this will move sprite over by half size so that it's position is centered in world units	
-       	//x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
-     	//y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
-
 	//this actual moves it	
 	document.getElementById("redball1").style.left = x+'px';
         document.getElementById("redball1").style.top  = y+'px';
@@ -145,13 +122,11 @@ function render()
 		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
 		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
 
-			//center image
-        	//x = document.getElementById('number' + i).mPositionX - 25;
-              	//y = document.getElementById('number' + i).mPositionY - 25;
-		x = xdiff + mXCenter;
-		y = ydiff + mYCenter;	
-		x = x - mSpriteXScale / 2;	
-		y = y - mSpriteYScale / 2;	
+		//center image
+		x = xdiff + xCenter;
+		y = ydiff + yCenter;	
+		x = x - mSpriteX / 2;	
+		y = y - mSpriteY / 2;	
 		
 		document.getElementById('number' + i).style.left = x+'px';
         	document.getElementById('number' + i).style.top  = y+'px';
