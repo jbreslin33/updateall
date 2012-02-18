@@ -124,7 +124,6 @@ function render()
 	var mSpriteXActual = mViewPortXScale * mSpriteXOptimal;
 	var mSpriteYActual = mViewPortYScale * mSpriteYOptimal;
  
-        document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
 	var x = 0;
 	var y = 0; 
 	
@@ -143,11 +142,21 @@ function render()
 	//move numbers
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
-        	x = document.getElementById('number' + i).mPositionX - 25;
-              	y = document.getElementById('number' + i).mPositionY - 25;
-	
+		var xdiff = document.getElementById('number' + i).mPositionX - document.getElementById("redball1").mPositionX;	
+		var ydiff = document.getElementById('number' + i).mPositionY - document.getElementById("redball1").mPositionY;	
+
+			//center image
+        	//x = document.getElementById('number' + i).mPositionX - 25;
+              	//y = document.getElementById('number' + i).mPositionY - 25;
+		x = xdiff;
+		y = ydiff;	
+		
+		
 		document.getElementById('number' + i).style.left = x+'px';
         	document.getElementById('number' + i).style.top  = y+'px';
+        
+	document.getElementById("dimensions").innerHTML="xdiff: " + xdiff + " ydiff: " + ydiff;     
+	//document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
 	}
 }
 function resize_image(image, w, h) {
