@@ -130,26 +130,7 @@ function render()
 		
 		document.getElementById('number' + i).style.left = x+'px';
         	document.getElementById('number' + i).style.top  = y+'px';
-		if (i == 1)
-		{	        
-		document.getElementById("dimensions").innerHTML="xdiff: " + xdiff + " ydiff: " + ydiff;     
-		//document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
-		}
 	}
-}
-function resize_image(image, w, h) {
-
-    if (typeof(image) != 'object') image = document.getElementById(image);
-
-    if (w == null || w == undefined)
-        w = (h / image.clientHeight) * image.clientWidth;
-
-    if (h == null || h == undefined)
-        h = (w / image.clientWidth) * image.clientHeight;
-
-    image.style['height'] = h + 'px';
-    image.style['width'] = w + 'px';
-    return;
 }
 
 //Score
