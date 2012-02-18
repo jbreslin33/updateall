@@ -269,7 +269,7 @@ function render()
 //	mSpriteXScalekh
 	//render avatar	
 	//first lest size him.
-	resize_image("avatar",mSpriteXActual, mSpriteYActual);
+	//resize_image("avatar",mSpriteXActual, mSpriteYActual);
 	//resize_image("avatar",mSpriteXScale, mSpriteYScale);
        	x = document.getElementById("redball1").mPositionX - mSpriteXScale / 2;
      	y = document.getElementById("redball1").mPositionY - mSpriteYScale / 2;
