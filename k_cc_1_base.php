@@ -142,21 +142,24 @@ function render()
 	//move numbers
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
-		var xdiff = document.getElementById('number' + i).mPositionX - document.getElementById("redball1").mPositionX;	
-		var ydiff = document.getElementById('number' + i).mPositionY - document.getElementById("redball1").mPositionY;	
+		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
+		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
 
 			//center image
         	//x = document.getElementById('number' + i).mPositionX - 25;
               	//y = document.getElementById('number' + i).mPositionY - 25;
-		x = xdiff;
-		y = ydiff;	
-		
+		x = xdiff + mXCenter;
+		y = ydiff + mYCenter;	
+		x = x - mSpriteXScale / 2;	
+		y = y - mSpriteYScale / 2;	
 		
 		document.getElementById('number' + i).style.left = x+'px';
         	document.getElementById('number' + i).style.top  = y+'px';
-        
-	document.getElementById("dimensions").innerHTML="xdiff: " + xdiff + " ydiff: " + ydiff;     
-	//document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
+		if (i == 1)
+		{	        
+		document.getElementById("dimensions").innerHTML="xdiff: " + xdiff + " ydiff: " + ydiff;     
+		//document.getElementById("dimensions").innerHTML="mViewPortXActual: " + mViewPortXActual + " mViewPortYActual: " + mViewPortYActual + "mViewPortXScale: " + mViewPortXScale + " mViewPortYScale " + mViewPortYScale;     
+		}
 	}
 }
 function resize_image(image, w, h) {
