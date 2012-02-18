@@ -406,7 +406,7 @@ function submitGuess(image_id)
 
 function init()
 {
-	setImages();
+	createImages();
 	resetVariables();
 	setButtons();	
 	newQuestion();
@@ -416,7 +416,7 @@ function init()
 }
 
 //set images
-function setImages()
+function createImages()
 {
 
 	//avatar
@@ -435,22 +435,13 @@ function setImages()
 	{
 		//create the images
 		var newdiv = document.createElement('div'); 
-	//	var divID = 'number' + i;
 		newdiv.setAttribute('id','number' + i); 	
 		newdiv.setAttribute("class","movable"); 
 		document.body.appendChild(newdiv); 	
-		//echo "<div id=\"number$i\" class=\"movable\"><img id=\"image$i\" /></div>";
 	
 		var img = document.createElement("IMG");
-		//img.src = "img/dir.gif";
 		img.id = 'image' + i;	
 		document.getElementById('number' + i).appendChild(img);
-
-
-//	var newimg = document.createElement('img');
-//		newimg.setAttribute('id','image' + i);	
-	
-//		newdiv.appendChild(newimg);
 	
 		document.getElementById('image' + i).src  = i + ".png";
 		
