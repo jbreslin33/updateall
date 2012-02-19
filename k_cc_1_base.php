@@ -419,30 +419,36 @@ function createButtons()
 	var newbuttonleft = document.createElement('button');
 	newbuttonleft.setAttribute('id','buttonMoveLeft');
 	newdiv.appendChild(newbuttonleft);
-
+        document.getElementById("buttonMoveLeft").onclick=moveLeftButton;
+	
 	var newbuttonright = document.createElement('button');
 	newbuttonright.setAttribute('id','buttonMoveRight');
 	newdiv.appendChild(newbuttonright);
+        document.getElementById("buttonMoveRight").onclick=moveRightButton;
 
 	var newbuttonup = document.createElement('button');
 	newbuttonup.setAttribute('id','buttonMoveUp');
 	newdiv.appendChild(newbuttonup);
+        document.getElementById("buttonMoveUp").onclick=moveUpButton;
 	
 	var newbuttondown = document.createElement('button');
 	newbuttondown.setAttribute('id','buttonMoveDown');
 	newdiv.appendChild(newbuttondown);
+        document.getElementById("buttonMoveDown").onclick=moveDownButton;
         
 	var newbuttonstop = document.createElement('button');
 	newbuttonstop.setAttribute('id','buttonMoveStop');
 	newdiv.appendChild(newbuttonstop);
+        document.getElementById("buttonMoveStop").onclick=moveStopButton;
         
+	
 	$("button").button();
         
 	document.getElementById("buttonMoveLeft").innerHTML=".Left.";
 	document.getElementById("buttonMoveLeft").style.position="absolute";
         document.getElementById("buttonMoveLeft").style.top="575px";
         document.getElementById("buttonMoveLeft").style.left="72px";
-
+	
 	document.getElementById("buttonMoveRight").innerHTML="Right";
         document.getElementById("buttonMoveRight").style.position="absolute";
         document.getElementById("buttonMoveRight").style.top="575px";
