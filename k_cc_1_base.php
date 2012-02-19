@@ -90,11 +90,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	mTickLength = tickLength;
 }
 
-//render- let's pretend on "server" that field is 1280x1060 then we simply still move x spaces per move but
-//render handles the client drawing...or only render what is in the viewport no matter the size then you
-//don't need to worry about anything. player is always located center...
-//to do this do you need to render everything relative to player?
-//or 
+//this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
 
@@ -152,15 +148,16 @@ function checkForEndOfGame()
 //reset
 function resetGame()
 {
-	//delete all images
+	//delete all numbers 
         for (i=mStartNumber;i<=mEndNumber;i++)
 	{
 		$("#number" + i).remove();
 	}
-		
+	
+	//delete avatar	
 	$("#redball1").remove();
 	
-	//create all images	
+	//create all numbers and avatar 
 	createImages();
 
 	//score
@@ -368,14 +365,6 @@ document.onkeydown = function(ev)
 	}	
 }
 
-$(window).resize(function() {
-});
-
-function resizeAll() 
-{
-
-}
-
 //submit guess
 function submitGuess(image_id)
 {
@@ -402,16 +391,6 @@ function init()
 //set buttons
 function createButtons()
 {
-        //<div class="demo">
-        //<!-- Create Buttons (could this be done in db?) -->
-        //<button type="button" id="buttonMoveLeft" onclick="moveLeftButton()"> .Left. </button>
-        //<button type="button" id="buttonMoveRight" onclick="moveRightButton()"> Right </button>
-        //<button type="button" id="buttonMoveUp" onclick="moveUpButton()"> ..Up... </button>
-        //<button type="button" id="buttonMoveDown" onclick="moveDownButton()"> Down. </button>
-        //<button type="button" id="buttonMoveStop" onclick="moveStopButton()"> .Stop. </button>
-        //</div><!-- End demo -->
-
-	
 	var newdiv = document.createElement('div');
 	newdiv.setAttribute("class","demo");
 	document.body.appendChild(newdiv);
@@ -441,7 +420,6 @@ function createButtons()
 	newdiv.appendChild(newbuttonstop);
         document.getElementById("buttonMoveStop").onclick=moveStopButton;
         
-	
 	$("button").button();
         
 	document.getElementById("buttonMoveLeft").innerHTML=".Left.";
@@ -473,7 +451,6 @@ function createButtons()
 //set images
 function createImages()
 {
-
 	//avatar
 	var newdiv = document.createElement('div');
 	newdiv.setAttribute('id','redball1');
@@ -547,7 +524,6 @@ DIV.movable { position:absolute; }
 
 <!-- create and set question -->
 <p id="question"> </p>
-
 
 <!-- create feedback -->
 <p id="feedback">"Have Fun!"</p>
