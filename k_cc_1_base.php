@@ -115,6 +115,7 @@ function render()
 	//move numbers
 	for (i=mCount + 1;i<=mEndNumber;i++)
 	{
+			
 		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
 		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
 
@@ -124,8 +125,18 @@ function render()
 		x = x - mSpriteX / 2;	
 		y = y - mSpriteY / 2;	
 		
-		document.getElementById('number' + i).style.left = x+'px';
-        	document.getElementById('number' + i).style.top  = y+'px';
+		if (x + mSpriteX > mViewPortX)
+		{
+			document.getElementById('image' + i).style.visibility = 'hidden';
+			document.getElementById('number' + i).style.left = 0+'px';
+       			document.getElementById('number' + i).style.top  = 0+'px';
+		}
+		else
+		{
+			document.getElementById('image' + i).style.visibility = 'visible';
+			document.getElementById('number' + i).style.left = x+'px';
+       			document.getElementById('number' + i).style.top  = y+'px';
+		}
 	}
 }
 
