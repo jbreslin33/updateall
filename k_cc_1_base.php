@@ -93,7 +93,6 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
-
 	//viewport
 	mViewPortX = $(this).width();
         mViewPortY = $(this).height();
@@ -115,7 +114,6 @@ function render()
 	//move numbers
 	for (i=mCount + 1;i<=mEndNumber;i++)
 	{
-			
 		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
 		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
 
@@ -487,7 +485,6 @@ function createImages()
 
 	//numbers	
 	var i = 0;
-	var offset = 60;
 	for (i=mStartNumber;i<=mEndNumber;i++)
 	{
 		//create the images
@@ -511,9 +508,6 @@ function createImages()
         	document.getElementById('number' + i).mCollidable = true;
 		document.getElementById('number' + i).mID = i;
 		document.getElementById('number' + i).mAnswer = i;
-			
-	
-		offset = offset + 60;
 	}  
 	render();
 }
