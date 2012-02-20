@@ -194,7 +194,9 @@ function checkGuess(image_id)
 		//made image disapper and make collibal false
 		document.getElementById('number' + image_id).mCollidable = false;
 		//document.getElementById('number' + image_id).style.visibility = 'hidden';
-		$("#number" + image_id).remove();	
+		document.getElementById('image' + image_id).style.visibility = 'hidden';
+		
+		//$("#number" + image_id).remove();	
                 document.getElementById("feedback").innerHTML="Correct!";
 
                 checkForEndOfGame();
