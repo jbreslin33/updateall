@@ -72,11 +72,11 @@ var mTickLength = 0;
 
 
 //ball positions
-//var mNumberPositionXArray = new Array(0,075,150,225,300,375,450,525,600,675,750);
-//var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
+var mNumberPositionXArray = new Array(0,075,150,225,300,375,450,525,600,675,750);
+var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
 
-var mNumberPositionXArray = new Array(0,750,600,375,300,375,075,150,225,300,375);
-var mNumberPositionYArray = new Array(0,525,300,600,150,075,675,225,750,675,375);
+//var mNumberPositionXArray = new Array(0,750,600,375,300,375,075,150,225,300,375);
+//var mNumberPositionYArray = new Array(0,525,300,600,150,075,675,225,750,675,375);
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
