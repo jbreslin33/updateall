@@ -125,7 +125,7 @@ function render()
 		x = x - mSpriteX / 2;	
 		y = y - mSpriteY / 2;	
 		
-		if (x + mSpriteX > mViewPortX)
+		if (x + mSpriteX > mViewPortX || y + mSpriteY > mViewPortY)
 		{
 			document.getElementById('image' + i).style.visibility = 'hidden';
 			document.getElementById('number' + i).style.left = 0+'px';
