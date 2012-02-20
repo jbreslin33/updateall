@@ -72,9 +72,11 @@ var mTickLength = 0;
 
 
 //ball positions
-var mNumberPositionXArray = new Array(0,075,150,225,300,375,450,525,600,675,750);
-var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
+//var mNumberPositionXArray = new Array(0,075,150,225,300,375,450,525,600,675,750);
+//var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
 
+var mNumberPositionXArray = new Array(0,-375,-300,-225,-150,-075,075,150,225,300,375);
+var mNumberPositionYArray = new Array(0,200,200,200,200,200,200,200,200,200,200);
 //var mNumberPositionXArray = new Array(0,750,600,375,300,375,075,150,225,300,375);
 //var mNumberPositionYArray = new Array(0,525,300,600,150,075,675,225,750,675,375);
 
@@ -116,8 +118,8 @@ function render()
 	//move numbers
 	for (i=mCount + 1;i<=mEndNumber;i++)
 	{
-		var xdiff = document.getElementById("redball1").mPositionX - document.getElementById('number' + i).mPositionX;	
-		var ydiff = document.getElementById("redball1").mPositionY - document.getElementById('number' + i).mPositionY;	
+		var xdiff = document.getElementById('number' + i).mPositionX - document.getElementById("redball1").mPositionX;	
+		var ydiff = document.getElementById('number' + i).mPositionY - document.getElementById("redball1").mPositionY;	
 
 		//center image
 		x = xdiff + xCenter;
@@ -299,7 +301,7 @@ function checkBounds(thing)
 
 function moveLeft(thing)
 {
-	thing.mVelocityX = 1;
+	thing.mVelocityX = -1;
         thing.mVelocityY = 0;
 }
 
@@ -310,7 +312,7 @@ function moveLeftButton()
 
 function moveRight(thing)
 {
-	thing.mVelocityX = -1;
+	thing.mVelocityX = 1;
         thing.mVelocityY = 0;
 }
 
@@ -322,7 +324,7 @@ function moveRightButton()
 function moveUp(thing)
 {
        	thing.mVelocityX = 0;
-	thing.mVelocityY = 1;
+	thing.mVelocityY = -1;
 }
 
 function moveUpButton()
@@ -333,7 +335,7 @@ function moveUpButton()
 function moveDown(thing)
 {
         thing.mVelocityX = 0;
-	thing.mVelocityY = -1;
+	thing.mVelocityY = 1;
 }
 
 function moveDownButton()
