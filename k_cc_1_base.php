@@ -193,18 +193,20 @@ function checkGuess(image_id)
 
 		//made image disapper and make collibal false
 		document.getElementById('number' + image_id).mCollidable = false;
-		//document.getElementById('number' + image_id).style.visibility = 'hidden';
 		document.getElementById('image' + image_id).style.visibility = 'hidden';
 		
-		//$("#number" + image_id).remove();	
+		//feedback	
                 document.getElementById("feedback").innerHTML="Correct!";
-
+		
+		//check for end of game
                 checkForEndOfGame();
         }
         else
         {
-                document.getElementById("feedback").innerHTML="Wrong! Try again.";
-		
+               	//feedback 
+		document.getElementById("feedback").innerHTML="Wrong! Try again.";
+	
+		//this deletes and then recreates everthing.	
                 resetGame();
         }
 }
