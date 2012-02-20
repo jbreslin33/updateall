@@ -89,6 +89,35 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	mTickLength = tickLength;
 }
 
+function updateMove(moveKey)
+{
+	if (str=="")
+  	{
+  		document.getElementById("txtHint").innerHTML="";
+  		return;
+  	}
+	if (window.XMLHttpRequest)
+  	{
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+  		xmlhttp=new XMLHttpRequest();
+  	}
+	else
+  	{
+		// code for IE6, IE5
+  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    		{
+    			document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    		}
+	}
+	xmlhttp.open("GET","update_move.php?q="+moveKey,true);
+	xmlhttp.send();
+}
+
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
@@ -298,6 +327,7 @@ function moveLeft(thing)
 {
 	thing.mVelocityX = -1;
         thing.mVelocityY = 0;
+	updateMove(1);
 }
 
 function moveLeftButton()
@@ -309,6 +339,7 @@ function moveRight(thing)
 {
 	thing.mVelocityX = 1;
         thing.mVelocityY = 0;
+	updateMove(2);
 }
 
 function moveRightButton()
@@ -320,6 +351,7 @@ function moveUp(thing)
 {
        	thing.mVelocityX = 0;
 	thing.mVelocityY = -1;
+	updateMove(3);
 }
 
 function moveUpButton()
@@ -331,6 +363,7 @@ function moveDown(thing)
 {
         thing.mVelocityX = 0;
 	thing.mVelocityY = 1;
+	updateMove(4);
 }
 
 function moveDownButton()
@@ -342,6 +375,7 @@ function moveStop(thing)
 {
         thing.mVelocityX = 0;
         thing.mVelocityY = 0;
+	updateMove(5);
 }
 
 function moveStopButton()
