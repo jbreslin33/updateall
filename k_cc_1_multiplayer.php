@@ -70,6 +70,7 @@ var mCountBy = 0;
 var mCount = 0;
 var mTickLength = 0;
 
+var mMoveKeyFromDB = 0;
 
 //ball positions
 var mNumberPositionXArray = new Array(+000,-375,+300,-225,-150,-075,+075,+150,+225,-300,+375);
@@ -111,7 +112,9 @@ function updateMove(moveKey)
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
     		{
-    			document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    			//document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+			mMoveKeyFromDB = xmlhttp.responseText;			
+    			document.getElementById("moveKey").innerHTML=mMoveKeyFromDB;
     		}
 	}
 	xmlhttp.open("GET","update_move.php?moveKey="+moveKey,true);
@@ -578,6 +581,10 @@ DIV.movable { position:absolute; }
 
 <!-- create dimensions -->
 <p id="dimensions"></p>
+
+
+<!-- create dimensions -->
+<p id="moveKey"></p>
 
 <script type="text/javascript"> 
 
