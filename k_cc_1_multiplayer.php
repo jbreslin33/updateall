@@ -91,7 +91,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 
 function updateMove(moveKey)
 {
-	if (str=="")
+	if (moveKey=="")
   	{
   		document.getElementById("txtHint").innerHTML="";
   		return;
@@ -114,7 +114,7 @@ function updateMove(moveKey)
     			document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
     		}
 	}
-	xmlhttp.open("GET","update_move.php?q="+moveKey,true);
+	xmlhttp.open("GET","update_move.php?moveKey="+moveKey,true);
 	xmlhttp.send();
 }
 
