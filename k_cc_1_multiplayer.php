@@ -70,7 +70,8 @@ var mCountBy = 0;
 var mCount = 0;
 var mTickLength = 0;
 
-var mMoveKeyFromDB = 0;
+var mMoveKey = 0;
+var mMoveCommand = 0;
 
 //ball positions
 var mNumberPositionXArray = new Array(+000,-375,+300,-225,-150,-075,+075,+150,+225,-300,+375);
@@ -90,12 +91,12 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 	mTickLength = tickLength;
 }
 
-function updateMove(moveKey)
+function updateMove()
 {
-	if (moveKey=="")
+	if (mMoveKey=="")
   	{
-  		document.getElementById("txtHint").innerHTML="";
-  		return;
+  	//	document.getElementById("moveKey").innerHTML="nada";
+  	//	return;
   	}
 	if (window.XMLHttpRequest)
   	{
@@ -113,11 +114,12 @@ function updateMove(moveKey)
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
     		{
     			//document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-			mMoveKeyFromDB = xmlhttp.responseText;			
-    			document.getElementById("moveKey").innerHTML=mMoveKeyFromDB;
+			mMoveCommand = xmlhttp.responseText;			
+    			document.getElementById("moveKey").innerHTML=mMoveCommand;
+			processDeltaMoveCommand(document.getElementById("redball1"),mMoveCommand);
     		}
 	}
-	xmlhttp.open("GET","update_move.php?moveKey="+moveKey,true);
+	xmlhttp.open("GET","update_move.php?moveKey="+mMoveKey,true);
 	xmlhttp.send();
 }
 
@@ -267,6 +269,8 @@ function newAnswer()
 
 function move()
 {
+	updateMove();
+
 	//move avatar
  	document.getElementById("redball1").mPositionX += document.getElementById("redball1").mVelocityX;
         document.getElementById("redball1").mPositionY += document.getElementById("redball1").mVelocityY;
@@ -326,64 +330,60 @@ function checkBounds(thing)
         }
 }
 
-function moveLeft(thing)
+function processDeltaMoveCommand(thing,command)
 {
-	thing.mVelocityX = -1;
-        thing.mVelocityY = 0;
-	updateMove(1);
+	if (command == 1)
+	{
+		thing.mVelocityX = -1;
+        	thing.mVelocityY = 0;
+	}
+	if (command == 2)
+	{
+		thing.mVelocityX = 1;
+        	thing.mVelocityY = 0;
+	}
+	if (command == 3)
+	{
+		thing.mVelocityX = 0;
+        	thing.mVelocityY = -1;
+	}
+	if (command == 4)
+	{
+		thing.mVelocityX = 0;
+        	thing.mVelocityY = 1;
+	}
+	if (command == 5)
+	{
+		thing.mVelocityX = 0;
+        	thing.mVelocityY = 0;
+	}
 }
 
-function moveLeftButton()
+function moveLeft()
 {
-	moveLeft(document.getElementById("redball1"));
+	mMoveKey = 1;
+	
+  		document.getElementById("moveKey").innerHTML="left";
 }
 
-function moveRight(thing)
+function moveRight()
 {
-	thing.mVelocityX = 1;
-        thing.mVelocityY = 0;
-	updateMove(2);
+	mMoveKey = 2;
 }
 
-function moveRightButton()
+function moveUp()
 {
-	moveRight(document.getElementById("redball1"));
+	mMoveUp = 3;
 }
 
-function moveUp(thing)
+function moveDown()
 {
-       	thing.mVelocityX = 0;
-	thing.mVelocityY = -1;
-	updateMove(3);
+	mMoveKey = 4;
 }
 
-function moveUpButton()
+function moveStop()
 {
-	moveUp(document.getElementById("redball1"));
-}
-
-function moveDown(thing)
-{
-        thing.mVelocityX = 0;
-	thing.mVelocityY = 1;
-	updateMove(4);
-}
-
-function moveDownButton()
-{
-	moveDown(document.getElementById("redball1"));
-}
-
-function moveStop(thing)
-{
-        thing.mVelocityX = 0;
-        thing.mVelocityY = 0;
-	updateMove(5);
-}
-
-function moveStopButton()
-{
-	moveStop(document.getElementById("redball1"));
+	mMoveKey = 5;
 }
 
 document.onkeydown = function(ev) 
@@ -394,23 +394,23 @@ document.onkeydown = function(ev)
 
 	if (keynum == 37)
 	{
-		moveLeft(document.getElementById("redball1"));	
+		moveLeft();	
 	}	
 	if (keynum == 39)
 	{
-		moveRight(document.getElementById("redball1"));	
+		moveRight();	
 	}	
 	if (keynum == 38)
 	{
-		moveUp(document.getElementById("redball1"));	
+		moveUp();	
 	}	
 	if (keynum == 40)
 	{
-		moveDown(document.getElementById("redball1"));	
+		moveDown();	
 	}	
 	if (keynum == 32)
 	{
-		moveStop(document.getElementById("redball1"));	
+		moveStop();
 	}	
 }
 
@@ -447,27 +447,27 @@ function createButtons()
 	var newbuttonleft = document.createElement('button');
 	newbuttonleft.setAttribute('id','buttonMoveLeft');
 	newdiv.appendChild(newbuttonleft);
-        document.getElementById("buttonMoveLeft").onclick=moveLeftButton;
+        document.getElementById("buttonMoveLeft").onclick=moveLeft;
 	
 	var newbuttonright = document.createElement('button');
 	newbuttonright.setAttribute('id','buttonMoveRight');
 	newdiv.appendChild(newbuttonright);
-        document.getElementById("buttonMoveRight").onclick=moveRightButton;
+        document.getElementById("buttonMoveRight").onclick=moveRight;
 
 	var newbuttonup = document.createElement('button');
 	newbuttonup.setAttribute('id','buttonMoveUp');
 	newdiv.appendChild(newbuttonup);
-        document.getElementById("buttonMoveUp").onclick=moveUpButton;
+        document.getElementById("buttonMoveUp").onclick=moveUp;
 	
 	var newbuttondown = document.createElement('button');
 	newbuttondown.setAttribute('id','buttonMoveDown');
 	newdiv.appendChild(newbuttondown);
-        document.getElementById("buttonMoveDown").onclick=moveDownButton;
+        document.getElementById("buttonMoveDown").onclick=moveDown;
         
 	var newbuttonstop = document.createElement('button');
 	newbuttonstop.setAttribute('id','buttonMoveStop');
 	newdiv.appendChild(newbuttonstop);
-        document.getElementById("buttonMoveStop").onclick=moveStopButton;
+        document.getElementById("buttonMoveStop").onclick=moveStop;
         
 	$("button").button();
         
