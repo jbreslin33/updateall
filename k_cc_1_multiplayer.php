@@ -108,7 +108,7 @@ function updateMove()
   			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   		}
 
-		xmlhttp.open("GET","update_move.php?moveKey="+mMoveKey,true);
+		xmlhttp.open("POST","update_move.php?moveKey="+mMoveKey,true);
 		xmlhttp.send();
 	}
 }
@@ -364,7 +364,7 @@ function moveRight()
 function moveUp()
 {
 	mMoveKeyOld = mMoveKey;
-	mMoveUp = 3;
+	mMoveKey = 3;
 }
 
 function moveDown()
