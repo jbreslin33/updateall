@@ -71,6 +71,7 @@ var mCount = 0;
 var mTickLength = 0;
 
 var mMoveKey = 0;
+var mMoveKeyOld = 0;
 var mMoveCommand = 0;
 
 //ball positions
@@ -93,34 +94,23 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 
 function updateMove()
 {
-	if (mMoveKey=="")
+	if (mMoveKey != mMoveKeyOld)
   	{
-  	//	document.getElementById("moveKey").innerHTML="nada";
-  	//	return;
-  	}
-	if (window.XMLHttpRequest)
-  	{
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-  		xmlhttp=new XMLHttpRequest();
-  	}
-	else
-  	{
-		// code for IE6, IE5
-  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  	}
+        	document.getElementById("moveKey").innerHTML="moveKey: " + mMoveKey;
+		if (window.XMLHttpRequest)
+  		{
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+  			xmlhttp=new XMLHttpRequest();
+  		}
+		else
+  		{
+			// code for IE6, IE5
+  			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  		}
 
-	xmlhttp.onreadystatechange=function()
-	{
-		if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    		{
-    			//document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
-			mMoveCommand = xmlhttp.responseText;			
-    			document.getElementById("moveKey").innerHTML=mMoveCommand;
-			processDeltaMoveCommand(document.getElementById("redball1"),mMoveCommand);
-    		}
+		xmlhttp.open("GET","update_move.php?moveKey="+mMoveKey,true);
+		xmlhttp.send();
 	}
-	xmlhttp.open("GET","update_move.php?moveKey="+mMoveKey,true);
-	xmlhttp.send();
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
@@ -361,28 +351,31 @@ function processDeltaMoveCommand(thing,command)
 
 function moveLeft()
 {
+	mMoveKeyOld = mMoveKey;
 	mMoveKey = 1;
-	
-  		document.getElementById("moveKey").innerHTML="left";
 }
 
 function moveRight()
 {
+	mMoveKeyOld = mMoveKey;
 	mMoveKey = 2;
 }
 
 function moveUp()
 {
+	mMoveKeyOld = mMoveKey;
 	mMoveUp = 3;
 }
 
 function moveDown()
 {
+	mMoveKeyOld = mMoveKey;
 	mMoveKey = 4;
 }
 
 function moveStop()
 {
+	mMoveKeyOld = mMoveKey;
 	mMoveKey = 5;
 }
 
