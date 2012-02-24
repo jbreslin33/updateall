@@ -471,6 +471,8 @@ function createImages()
 
 	var img = document.createElement("IMG");
 	img.id = 'avatar';
+	img.alt = 'avatart';
+	img.title = 'avatar';	
 	document.getElementById('redball1').appendChild(img);
 	document.getElementById('avatar').src  = "redball.png";
 
@@ -494,6 +496,8 @@ function createImages()
 	
 		var img = document.createElement("IMG");
 		img.id = 'image' + i;	
+		img.alt = 'image' + i;
+		img.title = 'image' + i;
 		document.getElementById('number' + i).appendChild(img);
 	
 		document.getElementById('image' + i).src  = i + ".png";
