@@ -29,7 +29,7 @@ function createPlayer()
         img.alt = 'avatart';
         img.title = 'avatar';   
         document.getElementById('redball1').appendChild(img);
-        //document.getElementById('avatar').src  = "redball.png";
+        document.getElementById('avatar').src  = "redball.png";
 
         document.getElementById("redball1").mPositionX = 0;
         document.getElementById("redball1").mPositionY = 0;
@@ -52,7 +52,7 @@ function createPlayer()
 <body onload="createPlayer()">
 
 <div id="redball1" class="movable">
-<img src="redball.png" alt="Please link to a vaild image." /> 
+<alt="Please link to a vaild image." /> 
 </div>
 
 <!-- create images 
