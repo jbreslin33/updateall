@@ -52,7 +52,6 @@ function createPlayer()
 <body onload="createPlayer()">
 
 <div id="redball1" class="movable">
-<alt="Please link to a vaild image." /> 
 </div>
 
 <!-- create images 
