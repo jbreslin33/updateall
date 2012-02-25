@@ -15,23 +15,51 @@ function game()
 
 }
 
-function update() {
-	//Keep on moving the image till the target is achieved
-	x = x + interval; 
-	y = y + interval;
-	
-	//Move the image to the new location
-	document.getElementById("ufo").style.top  = y+'px';
-	document.getElementById("ufo").style.left = x+'px';
+function createPlayer()
+{
+	//create the movable div that will be used to move image around.	
+	//var newdiv = document.createElement('div');
+        //newdiv.setAttribute('id','redball1');
+        //newdiv.setAttribute("class","movable");
+        //document.body.appendChild(newdiv);
 
-	window.setTimeout('update()',16);
+	//image to attache to our div "vessel"
+        var img = document.createElement("IMG");
+        img.id = 'avatar';
+        img.alt = 'avatart';
+        img.title = 'avatar';   
+        document.getElementById('redball1').appendChild(img);
+        //document.getElementById('avatar').src  = "redball.png";
+
+        document.getElementById("redball1").mPositionX = 0;
+        document.getElementById("redball1").mPositionY = 0;
+
+        document.getElementById("redball1").mVelocityX = 0;
+        document.getElementById("redball1").mVelocityY = 0;
+
+        document.getElementById("redball1").mCollidable = true;
+
+	//move it
+        document.getElementById("redball1").style.left = 200+'px';
+        document.getElementById("redball1").style.top  = 200+'px';
+
+	
+
 }
+
 </script>
 </head>
-<body onload="update()">
-<div id="ufo" class="movable">
-<img src="redball.gif" alt="Please link to a vaild image." />
+<body onload="createPlayer()">
+
+<div id="redball1" class="movable">
+<img src="redball.png" alt="Please link to a vaild image." /> 
 </div>
+
+<!-- create images 
+<style>
+DIV.movable { position:absolute; }
+</style>
+-->
 
 </body>
 </html>
