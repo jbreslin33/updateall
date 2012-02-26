@@ -210,6 +210,7 @@ function render()
        		var imageCenterX = $("#image" + i).width() / 2;     
        		var imageCenterY = $("#image" + i).height() / 2;     
 
+		//if control object center it on screen
 		if (mPlayerArray[i] == mControlObject)
 		{
 			//shift the position based on pageCenterXY and imageCenterXY	
@@ -220,6 +221,7 @@ function render()
         		mPlayerArray[i].style.left = posX+'px';
         		mPlayerArray[i].style.top  = posY+'px';
 		} 
+		//else if anything else render relative to the control object	
 		else
 		{
 			//get the offset from control object
@@ -229,13 +231,15 @@ function render()
                 	//center image relative to position
                 	var posX = xdiff + pageCenterX - imageCenterX;
                 	var posY = ydiff + pageCenterY - imageCenterY;    
-                
+               
+			//if off screen then hide it so we don't have scroll bars mucking up controls 
                 	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
                 	{
                         	mPlayerArray[i].style.visibility = 'hidden';
                         	mPlayerArray[i].style.left = 0+'px';
                         	mPlayerArray[i].style.top  = 0+'px';
                 	}
+			//else make sure it's visible
                 	else
                 	{
                         	mPlayerArray[i].style.visibility = 'visible';
