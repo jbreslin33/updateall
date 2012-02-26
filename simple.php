@@ -249,6 +249,64 @@ function render()
         }
 }
 
+function moveLeft()
+{
+        mControlObject.mVelocityX = -1;
+        mControlObject.mVelocityY = 0;
+}
+
+function moveRight()
+{
+        mControlObject.mVelocityX = 1;
+        mControlObject.mVelocityY = 0;
+}
+
+function moveUp()
+{
+        mControlObject.mVelocityX = 0;
+        mControlObject.mVelocityY = -1;
+}
+
+function moveDown()
+{
+        mControlObject.mVelocityX = 0;
+        mControlObject.mVelocityY = 1;
+}
+
+function moveStop()
+{
+        mControlObject.mVelocityX = 0;
+        mControlObject.mVelocityY = 0;
+}
+
+document.onkeydown = function(ev) 
+{
+        var keynum;
+        ev = ev || event;
+        keynum = ev.keyCode;
+
+        if (keynum == 37)
+        {
+                moveLeft();  
+        }       
+        if (keynum == 39)
+        {
+                moveRight(); 
+        }       
+        if (keynum == 38)
+        {
+                moveUp();    
+        }       
+        if (keynum == 40)
+        {
+                moveDown();  
+        }       
+        if (keynum == 32)
+        {
+                moveStop();  
+        }       
+}
+
 </script>
 
 </head>
