@@ -51,11 +51,9 @@ if ($num > 0)
 
 ?>
 
-
-
 <script language="javascript">
 
-//globals
+//GLOBALS
 
 //players
 var mPlayerArray = new Array();
@@ -76,7 +74,6 @@ var mTickLength = 0;
 
 //questions
 var mQuestion = 0;
-var mGuess = 0;
 var mAnswer = 0;
 
 // id counter
@@ -106,17 +103,17 @@ function init()
 	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
 	
 	//create all players
-	createPlayer('smiley.png',300,300,true);
-	createPlayer('1.png',75,75,false);
-	createPlayer('2.png',75,150,false);
-	createPlayer('3.png',300,450,false);
-	createPlayer('4.png',0,150,false);
-	createPlayer('5.png',0,300,false);
-	createPlayer('6.png',150,150,false);
-	createPlayer('7.png',300,0,false);
-	createPlayer('8.png',150,0,false);
-	createPlayer('9.png',450,150,false);
-	createPlayer('10.png',75,300,false);
+	createPlayer('smiley.png',300,300,true,0);
+	createPlayer('1.png',75,75,false,1);
+	createPlayer('2.png',75,150,false,2);
+	createPlayer('3.png',300,450,false,3);
+	createPlayer('4.png',0,150,false,4);
+	createPlayer('5.png',0,300,false,5);
+	createPlayer('6.png',150,150,false,6);
+	createPlayer('7.png',300,0,false,7);
+	createPlayer('8.png',150,0,false,8);
+	createPlayer('9.png',450,150,false,9);
+	createPlayer('10.png',75,300,false,10);
 
 	//start update
 	update();
@@ -131,7 +128,7 @@ function update()
         //checkBounds(document.getElementById("redball1"));     
 
 	//check collisions
-        //checkCollisions();
+        checkCollisions();
 		
 	//graphics	
 	render();
@@ -140,7 +137,7 @@ function update()
 	window.setTimeout('update()',mTickLength);
 }
 
-function createPlayer(src,spawnX,spawnY,isControlObject)
+function createPlayer(src,spawnX,spawnY,isControlObject,answer)
 {
 	
 	//create the movable div that will be used to move image around.	
@@ -171,6 +168,9 @@ function createPlayer(src,spawnX,spawnY,isControlObject)
 	{
 		mControlObject = div;
 	}
+
+	//assign and answer value
+	div.mAnswer = answer;
 	
 	//move it
         div.style.left = spawnX+'px';
@@ -195,6 +195,36 @@ function movePlayers()
                 div.mPositionY += div.mVelocityY;
         }
 }
+
+function checkCollisions()
+{
+        var x1 = mControlObject.mPositionX; 
+        var y1 = mControlObject.mPositionY; 
+        
+        for (i=0; i<mPlayerArray.length; i++)
+        {
+		if (mPlayerArray[i] == mControlObject)
+		{
+			//skip
+		}
+		else
+		{
+	       		if (mPlayerArray[i].mCollidable)
+                	{
+                        	var x2 = mPlayerArray[i].mPositionX;              
+                     		var y2 = mPlayerArray[i].mPositionY;              
+                
+                        	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                        	if (distSQ < 1300)
+                        	{
+                                	submitGuess(mPlayerArray[i]); 
+                        	}
+			}
+                }       
+        }
+}
+
+
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
@@ -250,6 +280,112 @@ function render()
         }
 }
 
+//submit guess
+function submitGuess(player)
+{
+        checkGuess(player.mAnswer);
+        
+        newQuestion();
+        newAnswer();
+        printScore();
+}
+
+//Score
+function printScore()
+{
+        document.getElementById("score").innerHTML="Score: " + mScore;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mScoreNeeded;
+}
+
+function checkForEndOfGame()
+{
+        if (mScore == mScoreNeeded)
+        {
+                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                window.location = "goto_next_math_level.php"
+        }
+}
+
+//reset
+function resetGame()
+{
+        //delete all numbers 
+        for (i=mStartNumber;i<=mEndNumber;i++)
+        {
+                $("#number" + i).remove();
+        }
+        
+        //delete avatar 
+        $("#redball1").remove();
+        
+        //create all numbers and avatar 
+        createImages();
+
+        //score
+        mScore = 0;
+
+        //game
+        mQuestion = "";
+        mAnswer = 0;
+
+        //count
+        mCount = mStartNumber - 1;
+        
+        //move avatar to start
+        document.getElementById("redball1").mPositionX = 0;
+        document.getElementById("redball1").mPositionY = 0;
+        
+        //make images and numbers visible and collidable
+        for (i=mStartNumber;i<=mEndNumber;i++)
+        {
+                document.getElementById('number' + i).style.visibility = 'visible'; 
+                document.getElementById('number' + i).mCollidable = true; 
+        }
+}
+
+//check guess
+function checkGuess(answer)
+{
+        if (answer == mAnswer)
+        {
+                mCount = mCount + mCountBy;  //add to count
+                mScore++;
+
+                //made image disapper and make collibal false
+                document.getElementById('number' + image_id).mCollidable = false;
+                document.getElementById('image' + image_id).style.visibility = 'hidden';
+                
+                //feedback      
+                document.getElementById("feedback").innerHTML="Correct!";
+                
+                //check for end of game
+                checkForEndOfGame();
+        }
+        else
+        {
+                //feedback 
+                document.getElementById("feedback").innerHTML="Wrong! Try again.";
+        
+                //this deletes and then recreates everthing.    
+                resetGame();
+        }
+}
+
+//questions
+function newQuestion()
+{
+        //set question
+        mQuestion = mQuestion + ' ' + mCount;
+        document.getElementById("question").innerHTML=mQuestion;
+}
+
+//new answer
+function newAnswer()
+{
+        mAnswer = mCount + mCountBy;
+}
+
+//CONTROLS
 function moveLeft()
 {
         mControlObject.mVelocityX = -1;
