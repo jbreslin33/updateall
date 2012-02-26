@@ -55,14 +55,28 @@ if ($num > 0)
 
 <script language="javascript">
 
+//globals
 
+//score
+var mScoreNeeded = 0;
+var mScore = 0;
 
-var x = 5; //Starting Location - left
-var y = 5; //Starting Location - top
-var interval = 1; //Move 10px every initialization
+//count
+var mCountBy = 0;
+var mCount = 0;
+var mStartNumber = 0;
+var mEndNumber = 0;
 
+//ticks
+var mTickLength = 0;
 
-var idCount = 0;
+//questions
+var mQuestion = 0;
+var mGuess = 0;
+var mAnswer = 0;
+
+// id counter
+var mIdCount = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
@@ -81,20 +95,20 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 function createPlayer(src,spawnX,spawnY)
 {
 	//increment uniqueid count	
-	idCount++;
+	mIdCount++;
 	
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
-        div.setAttribute('id','div' + idCount);
+        div.setAttribute('id','div' + mIdCount);
         div.setAttribute("class","movable");
 	div.style.position="absolute";
         document.body.appendChild(div);
 
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
-        image.id = 'image' + idCount;
-        image.alt = 'image' + idCount;
-        image.title = 'image' + idCount;   
+        image.id = 'image' + mIdCount;
+        image.alt = 'image' + mIdCount;
+        image.title = 'image' + mIdCount;   
         div.appendChild(image);
         
 	image.src  = src;
