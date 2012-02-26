@@ -153,7 +153,6 @@ function createPlayer(src,spawnX,spawnY,isControlObject)
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
         image.id = 'image' + mIdCount;
-        //image.setAttribute('id',"image" + mIdCount);
         image.alt = 'image' + mIdCount;
         image.title = 'image' + mIdCount;   
         div.appendChild(image);
@@ -200,11 +199,9 @@ function movePlayers()
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
-
         //loop thru player array and update their xy positions
         for (i=0; i<mPlayerArray.length; i++)
         {
-       		
 		//get the center of the page xy
        		var pageCenterX = $(this).width() / 2;
         	var pageCenterY = $(this).height() / 2;
@@ -222,7 +219,6 @@ function render()
 			//this actual moves it  
         		mPlayerArray[i].style.left = posX+'px';
         		mPlayerArray[i].style.top  = posY+'px';
-
 		} 
 		else
 		{
