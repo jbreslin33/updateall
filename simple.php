@@ -1,8 +1,16 @@
 <html>
 <head>
+
 <title>Image Mover</title>
 
+<!-- jquery and jqueryui -->
+<link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
+<script type="text/javascript" src="jquery-1.7.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
+
+
 <script language="javascript">
+
 var x = 5; //Starting Location - left
 var y = 5; //Starting Location - top
 var interval = 1; //Move 10px every initialization
@@ -49,9 +57,24 @@ function createPlayer(src)
         div.style.top  = 200+'px';
 }
 
+function init()
+{
+	createPlayer('smiley.png');
+}
+
 </script>
+
 </head>
-<body onload="createPlayer('smiley.png')">
+
+<script type="text/javascript"> 
+
+$(document).ready(function()
+{
+        init();
+}
+);
+
+</script>
 
 </body>
 </html>
