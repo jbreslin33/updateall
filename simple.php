@@ -10,6 +10,8 @@ var y = 5; //Starting Location - top
 var interval = 1; //Move 10px every initialization
 
 
+var idCount = 0;
+
 function game()
 {
 
@@ -17,35 +19,36 @@ function game()
 
 function createPlayer()
 {
+	//increment uniqueid count	
+	idCount++;
+	
 	//create the movable div that will be used to move image around.	
-	var newdiv = document.createElement('div');
-        newdiv.setAttribute('id','redball1');
-        newdiv.setAttribute("class","movable");
-	newdiv.style.position="absolute";
-        document.body.appendChild(newdiv);
+	var div = document.createElement('div');
+        div.setAttribute('id','div' + idCount);
+        div.setAttribute("class","movable");
+	div.style.position="absolute";
+        document.body.appendChild(div);
 
 	//image to attache to our div "vessel"
-        var img = document.createElement("IMG");
-        img.id = 'avatar';
-        img.alt = 'avatart';
-        img.title = 'avatar';   
-        document.getElementById('redball1').appendChild(img);
-        document.getElementById('avatar').src  = "redball.png";
+        var image = document.createElement("IMG");
+        image.id = 'image' + idCount;
+        image.alt = 'image' + idCount;
+        image.title = 'image' + idCount;   
+        div.appendChild(image);
+        
+	image.src  = "redball.png";
 
-        document.getElementById("redball1").mPositionX = 0;
-        document.getElementById("redball1").mPositionY = 0;
+        div.mPositionX = 0;
+        div.mPositionY = 0;
 
-        document.getElementById("redball1").mVelocityX = 0;
-        document.getElementById("redball1").mVelocityY = 0;
+        div.mVelocityX = 0;
+        div.mVelocityY = 0;
 
-        document.getElementById("redball1").mCollidable = true;
+        div.mCollidable = true;
 
 	//move it
-        document.getElementById("redball1").style.left = 200+'px';
-        document.getElementById("redball1").style.top  = 200+'px';
-
-	
-
+        div.style.left = 200+'px';
+        div.style.top  = 200+'px';
 }
 
 </script>
