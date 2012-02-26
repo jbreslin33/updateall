@@ -204,53 +204,47 @@ function render()
         //loop thru player array and update their xy positions
         for (i=0; i<mPlayerArray.length; i++)
         {
-       		if (mPlayerArray[i] == mControlObject)
-		{
+       		
+		//get the center of the page xy
+       		var pageCenterX = $(this).width() / 2;
+        	var pageCenterY = $(this).height() / 2;
+      
+       		//get the center xy of the image
+       		var imageCenterX = $("#image" + i).width() / 2;     
+       		var imageCenterY = $("#image" + i).height() / 2;     
 
-       			var xCenter = $(this).width() / 2;
-        		var yCenter = $(this).height() / 2;
-        
-        		var x = 0;
-        		var y = 0; 
-        
-        		//this centers avatar in view port
-      			
-        		var w = $("#image" + i).width();
-        		var h = $("#image" + i).height();
-				
-        		x = xCenter - w / 2;     
-        		y = yCenter - w / 2;     
+		if (mPlayerArray[i] == mControlObject)
+		{
+			//shift the position based on pageCenterXY and imageCenterXY	
+        		var posX = pageCenterX - imageCenterX;     
+        		var posY = pageCenterY - imageCenterY;     
 			
 			//this actual moves it  
-        		mPlayerArray[i].style.left = x+'px';
-        		mPlayerArray[i].style.top  = y+'px';
+        		mPlayerArray[i].style.left = posX+'px';
+        		mPlayerArray[i].style.top  = posY+'px';
 
 		} 
 		else
 		{
-
-	        	var xdiff = mPlayerArray[i].mPositionX - mControlObject.mPositionX;  
+			//get the offset from control object
+			var xdiff = mPlayerArray[i].mPositionX - mControlObject.mPositionX;  
                 	var ydiff = mPlayerArray[i].mPositionY - mControlObject.mPositionY;  
 
-                	//center image
-                	x = xdiff + xCenter;
-                	y = ydiff + yCenter;    
-                	x = x - 50 / 2;   
-                	y = y - 50 / 2;   
+                	//center image relative to position
+                	var posX = xdiff + pageCenterX - imageCenterX;
+                	var posY = ydiff + pageCenterY - imageCenterY;    
                 
-                	if (x + 50 > $(this).width() || y + 50 > $(this).height())
+                	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
                 	{
-                        	//document.getElementById('image' + i).style.visibility = 'hidden';
                         	mPlayerArray[i].style.visibility = 'hidden';
                         	mPlayerArray[i].style.left = 0+'px';
                         	mPlayerArray[i].style.top  = 0+'px';
                 	}
                 	else
                 	{
-                        	//document.getElementById('image' + i).style.visibility = 'visible';
                         	mPlayerArray[i].style.visibility = 'visible';
-                        	mPlayerArray[i].style.left = x+'px';
-                        	mPlayerArray[i].style.top  = y+'px';
+                        	mPlayerArray[i].style.left = posX+'px';
+                        	mPlayerArray[i].style.top  = posY+'px';
                		} 
 		}
         }
