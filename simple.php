@@ -57,6 +57,9 @@ if ($num > 0)
 
 //globals
 
+//players
+var mPlayerArray = new Array();
+
 //score
 var mScoreNeeded = 0;
 var mScore = 0;
@@ -80,6 +83,8 @@ var mIdCount = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
+	//players
+
         //score
         mScoreNeeded = scoreNeeded;
 
@@ -90,6 +95,35 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 
         //ticks
         mTickLength = tickLength;
+}
+
+function init()
+{
+	//create game	
+	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
+	
+	//create all players
+	createPlayer('smiley.png',300,300);
+	createPlayer('1.png',75,75);
+	createPlayer('2.png',75,150);
+	createPlayer('3.png',300,450);
+	createPlayer('4.png',0,150);
+	createPlayer('5.png',0,300);
+	createPlayer('6.png',150,150);
+	createPlayer('7.png',300,0);
+	createPlayer('8.png',150,0);
+	createPlayer('9.png',450,150);
+	createPlayer('10.png',75,300);
+
+	//start update
+	update();
+}
+
+function update()
+{	
+	movePlayers();
+
+        window.setTimeout('update()',mTickLength);
 }
 
 function createPlayer(src,spawnX,spawnY)
@@ -124,24 +158,31 @@ function createPlayer(src,spawnX,spawnY)
 	//move it
         div.style.left = spawnX+'px';
         div.style.top  = spawnY+'px';
+
+	//add to array
+	mPlayerArray.push(div);
+
 }
 
-function init()
+
+function movePlayers()
 {
-	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
-	createPlayer('smiley.png',300,300);
-	createPlayer('1.png',75,75);
-	createPlayer('2.png',75,150);
-	createPlayer('3.png',300,450);
-	createPlayer('4.png',0,150);
-	createPlayer('5.png',0,300);
-	createPlayer('6.png',150,150);
-	createPlayer('7.png',300,0);
-	createPlayer('8.png',150,0);
-	createPlayer('9.png',450,150);
-	createPlayer('10.png',75,300);
-		
+        
+        //checkBounds(document.getElementById("redball1"));     
+        //checkCollisions();
+
+        //move numbers
+        for (i=0; i<mPlayerArray.length; i++)
+        {
+                div = mPlayerArray[i];
+		 
+		div.mPositionX += div.mVelocityX;
+                div.mPositionY += div.mVelocityY;
+        }
+        //render();
+
 }
+
 
 </script>
 
