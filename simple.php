@@ -64,12 +64,21 @@ var interval = 1; //Move 10px every initialization
 
 var idCount = 0;
 
-function game()
+function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
+        //score
+        mScoreNeeded = scoreNeeded;
 
+        //count
+        mCountBy = countBy;
+        mStartNumber = startNumber;
+        mEndNumber = endNumber; 
+
+        //ticks
+        mTickLength = tickLength;
 }
 
-function createPlayer(src)
+function createPlayer(src,spawnX,spawnY)
 {
 	//increment uniqueid count	
 	idCount++;
@@ -99,13 +108,14 @@ function createPlayer(src)
         div.mCollidable = true;
 
 	//move it
-        div.style.left = 200+'px';
-        div.style.top  = 200+'px';
+        div.style.left = spawnX+'px';
+        div.style.top  = spawnY+'px';
 }
 
 function init()
 {
-	createPlayer('smiley.png');
+	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
+	createPlayer('smiley.png',300,300);
 }
 
 </script>
