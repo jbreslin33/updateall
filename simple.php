@@ -59,6 +59,7 @@ if ($num > 0)
 
 //players
 var mPlayerArray = new Array();
+var mControlObject;
 
 //score
 var mScoreNeeded = 0;
@@ -95,6 +96,8 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 
         //ticks
         mTickLength = tickLength;
+
+
 }
 
 function init()
@@ -103,17 +106,17 @@ function init()
 	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
 	
 	//create all players
-	createPlayer('smiley.png',300,300);
-	createPlayer('1.png',75,75);
-	createPlayer('2.png',75,150);
-	createPlayer('3.png',300,450);
-	createPlayer('4.png',0,150);
-	createPlayer('5.png',0,300);
-	createPlayer('6.png',150,150);
-	createPlayer('7.png',300,0);
-	createPlayer('8.png',150,0);
-	createPlayer('9.png',450,150);
-	createPlayer('10.png',75,300);
+	createPlayer('smiley.png',300,300,true);
+	createPlayer('1.png',75,75,false);
+	createPlayer('2.png',75,150,false);
+	createPlayer('3.png',300,450,false);
+	createPlayer('4.png',0,150,false);
+	createPlayer('5.png',0,300,false);
+	createPlayer('6.png',150,150,false);
+	createPlayer('7.png',300,0,false);
+	createPlayer('8.png',150,0,false);
+	createPlayer('9.png',450,150,false);
+	createPlayer('10.png',75,300,false);
 
 	//start update
 	update();
@@ -122,11 +125,11 @@ function init()
 function update()
 {	
 	movePlayers();
-
+	render();
         window.setTimeout('update()',mTickLength);
 }
 
-function createPlayer(src,spawnX,spawnY)
+function createPlayer(src,spawnX,spawnY,isControlObject)
 {
 	//increment uniqueid count	
 	mIdCount++;
@@ -147,14 +150,19 @@ function createPlayer(src,spawnX,spawnY)
         
 	image.src  = src;
 
-        div.mPositionX = 0;
-        div.mPositionY = 0;
+        div.mPositionX = spawnX;
+        div.mPositionY = spawnY;
 
         div.mVelocityX = 0;
         div.mVelocityY = 0;
 
         div.mCollidable = true;
-
+	
+	if (isControlObject)
+	{
+		mControlObject = div;
+	}
+	
 	//move it
         div.style.left = spawnX+'px';
         div.style.top  = spawnY+'px';
@@ -183,6 +191,58 @@ function movePlayers()
 
 }
 
+//this renders avatar in center of viewport then draws everthing else in relation to avatar
+function render()
+{
+
+        //move numbers
+        for (i=0; i<mPlayerArray.length; i++)
+        {
+       		if (mPlayerArray[i] == mControlObject)
+		{
+
+       			var xCenter = $(this).width() / 2;
+        		var yCenter = $(this).height() / 2;
+        
+        		var x = 0;
+        		var y = 0; 
+        
+        		//this centers avatar in view port
+        		x = xCenter - 50 / 2;     
+        		y = yCenter - 50 / 2;     
+        
+        		//this actual moves it  
+        		mPlayerArray[i].style.left = x+'px';
+        		mPlayerArray[i].style.top  = y+'px';
+
+		} 
+		else
+		{
+
+	        	var xdiff = mPlayerArray[i].mPositionX - mControlObject.mPositionX;  
+                	var ydiff = mPlayerArray[i].mPositionY - mControlObject.mPositionY;  
+
+                	//center image
+                	x = xdiff + xCenter;
+                	y = ydiff + yCenter;    
+                	x = x - 50 / 2;   
+                	y = y - 50 / 2;   
+                
+                	if (x + 50 > $(this).width() || y + 50 > $(this).height())
+                	{
+                        	document.getElementById('image' + i).style.visibility = 'hidden';
+                        	mPlayerArray[i].style.left = 0+'px';
+                        	mPlayerArray[i].style.top  = 0+'px';
+                	}
+                	else
+                	{
+                        	document.getElementById('image' + i).style.visibility = 'visible';
+                        	mPlayerArray[i].style.left = x+'px';
+                        	mPlayerArray[i].style.top  = y+'px';
+               		} 
+		}
+        }
+}
 
 </script>
 
