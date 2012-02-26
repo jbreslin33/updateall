@@ -116,6 +116,17 @@ function init()
 {
 	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
 	createPlayer('smiley.png',300,300);
+	createPlayer('1.png',75,75);
+	createPlayer('2.png',75,150);
+	createPlayer('3.png',300,450);
+	createPlayer('4.png',0,150);
+	createPlayer('5.png',0,300);
+	createPlayer('6.png',150,150);
+	createPlayer('7.png',300,0);
+	createPlayer('8.png',150,0);
+	createPlayer('9.png',450,150);
+	createPlayer('10.png',75,300);
+		
 }
 
 </script>
