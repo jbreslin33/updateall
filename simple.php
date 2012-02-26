@@ -17,7 +17,7 @@ function game()
 
 }
 
-function createPlayer()
+function createPlayer(src)
 {
 	//increment uniqueid count	
 	idCount++;
@@ -36,7 +36,7 @@ function createPlayer()
         image.title = 'image' + idCount;   
         div.appendChild(image);
         
-	image.src  = "redball.png";
+	image.src  = src;
 
         div.mPositionX = 0;
         div.mPositionY = 0;
@@ -53,7 +53,7 @@ function createPlayer()
 
 </script>
 </head>
-<body onload="createPlayer()">
+<body onload="createPlayer('smiley.png')">
 
 </body>
 </html>
