@@ -18,10 +18,11 @@ function game()
 function createPlayer()
 {
 	//create the movable div that will be used to move image around.	
-	//var newdiv = document.createElement('div');
-        //newdiv.setAttribute('id','redball1');
-        //newdiv.setAttribute("class","movable");
-        //document.body.appendChild(newdiv);
+	var newdiv = document.createElement('div');
+        newdiv.setAttribute('id','redball1');
+        newdiv.setAttribute("class","movable");
+	newdiv.style.position="absolute";
+        document.body.appendChild(newdiv);
 
 	//image to attache to our div "vessel"
         var img = document.createElement("IMG");
@@ -50,15 +51,6 @@ function createPlayer()
 </script>
 </head>
 <body onload="createPlayer()">
-
-<div id="redball1" class="movable">
-</div>
-
-<!-- create images 
-<style>
-DIV.movable { position:absolute; }
-</style>
--->
 
 </body>
 </html>
