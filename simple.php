@@ -235,13 +235,15 @@ function render()
                 
                 	if (x + 50 > $(this).width() || y + 50 > $(this).height())
                 	{
-                        	document.getElementById('image' + i).style.visibility = 'hidden';
+                        	//document.getElementById('image' + i).style.visibility = 'hidden';
+                        	mPlayerArray[i].style.visibility = 'hidden';
                         	mPlayerArray[i].style.left = 0+'px';
                         	mPlayerArray[i].style.top  = 0+'px';
                 	}
                 	else
                 	{
-                        	document.getElementById('image' + i).style.visibility = 'visible';
+                        	//document.getElementById('image' + i).style.visibility = 'visible';
+                        	mPlayerArray[i].style.visibility = 'visible';
                         	mPlayerArray[i].style.left = x+'px';
                         	mPlayerArray[i].style.top  = y+'px';
                		} 
