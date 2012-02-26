@@ -1,9 +1,7 @@
 <html>
 <head>
 <title>Image Mover</title>
-<style>
-DIV.movable { position:absolute; }
-</style>
+
 <script language="javascript">
 var x = 5; //Starting Location - left
 var y = 5; //Starting Location - top
