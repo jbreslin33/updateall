@@ -142,8 +142,6 @@ function update()
 
 function createPlayer(src,spawnX,spawnY,isControlObject)
 {
-	//increment uniqueid count	
-	mIdCount++;
 	
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
@@ -155,6 +153,7 @@ function createPlayer(src,spawnX,spawnY,isControlObject)
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
         image.id = 'image' + mIdCount;
+        //image.setAttribute('id',"image" + mIdCount);
         image.alt = 'image' + mIdCount;
         image.title = 'image' + mIdCount;   
         div.appendChild(image);
@@ -181,6 +180,8 @@ function createPlayer(src,spawnX,spawnY,isControlObject)
 	//add to array
 	mPlayerArray.push(div);
 
+	//increment uniqueid count	
+	mIdCount++;
 }
 
 
@@ -213,10 +214,14 @@ function render()
         		var y = 0; 
         
         		//this centers avatar in view port
-        		x = xCenter - 50 / 2;     
-        		y = yCenter - 50 / 2;     
-        
-        		//this actual moves it  
+      			
+        		var w = $("#image" + i).width();
+        		var h = $("#image" + i).height();
+				
+        		x = xCenter - w / 2;     
+        		y = yCenter - w / 2;     
+			
+			//this actual moves it  
         		mPlayerArray[i].style.left = x+'px';
         		mPlayerArray[i].style.top  = y+'px';
 
