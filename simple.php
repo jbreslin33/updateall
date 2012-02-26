@@ -124,9 +124,20 @@ function init()
 
 function update()
 {	
+	//move players	
 	movePlayers();
+
+	//check bounds
+        //checkBounds(document.getElementById("redball1"));     
+
+	//check collisions
+        //checkCollisions();
+		
+	//graphics	
 	render();
-        window.setTimeout('update()',mTickLength);
+       
+	//tick 
+	window.setTimeout('update()',mTickLength);
 }
 
 function createPlayer(src,spawnX,spawnY,isControlObject)
@@ -175,10 +186,6 @@ function createPlayer(src,spawnX,spawnY,isControlObject)
 
 function movePlayers()
 {
-        
-        //checkBounds(document.getElementById("redball1"));     
-        //checkCollisions();
-
         //move numbers
         for (i=0; i<mPlayerArray.length; i++)
         {
@@ -187,15 +194,13 @@ function movePlayers()
 		div.mPositionX += div.mVelocityX;
                 div.mPositionY += div.mVelocityY;
         }
-        //render();
-
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
 
-        //move numbers
+        //loop thru player array and update their xy positions
         for (i=0; i<mPlayerArray.length; i++)
         {
        		if (mPlayerArray[i] == mControlObject)
