@@ -101,20 +101,10 @@ function init()
 {
 	//create game	
 	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
-	
-	//create all players
-	createPlayer('smiley.png',300,300,true,0);
-	createPlayer('1.png',75,75,false,1);
-	createPlayer('2.png',75,150,false,2);
-	createPlayer('3.png',300,450,false,3);
-	createPlayer('4.png',0,150,false,4);
-	createPlayer('5.png',0,300,false,5);
-	createPlayer('6.png',150,150,false,6);
-	createPlayer('7.png',300,0,false,7);
-	createPlayer('8.png',150,0,false,8);
-	createPlayer('9.png',450,150,false,9);
-	createPlayer('10.png',75,300,false,10);
 
+	//createWorld
+	createWorld();
+	
 	//start update
 	update();
 }
@@ -135,6 +125,22 @@ function update()
        
 	//tick 
 	window.setTimeout('update()',mTickLength);
+}
+
+function createWorld()
+{
+	//create all players
+	createPlayer('smiley.png',300,300,true,0);
+	createPlayer('1.png',75,75,false,1);
+	createPlayer('2.png',75,150,false,2);
+	createPlayer('3.png',300,450,false,3);
+	createPlayer('4.png',0,150,false,4);
+	createPlayer('5.png',0,300,false,5);
+	createPlayer('6.png',150,150,false,6);
+	createPlayer('7.png',300,0,false,7);
+	createPlayer('8.png',150,0,false,8);
+	createPlayer('9.png',450,150,false,9);
+	createPlayer('10.png',75,300,false,10);
 }
 
 function createPlayer(src,spawnX,spawnY,isControlObject,answer)
@@ -217,7 +223,11 @@ function checkCollisions()
                         	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                         	if (distSQ < 1300)
                         	{
-                                	submitGuess(mPlayerArray[i]); 
+        				checkGuess(i);
+        
+        				newQuestion();
+        				newAnswer();
+        				printScore();
                         	}
 			}
                 }       
@@ -280,16 +290,6 @@ function render()
         }
 }
 
-//submit guess
-function submitGuess(player)
-{
-        checkGuess(player.mAnswer);
-        
-        newQuestion();
-        newAnswer();
-        printScore();
-}
-
 //Score
 function printScore()
 {
@@ -310,16 +310,23 @@ function checkForEndOfGame()
 function resetGame()
 {
         //delete all numbers 
-        for (i=mStartNumber;i<=mEndNumber;i++)
+        for (i=0; i<mPlayerArray.length; i++)
+        //for (i=mStartNumber;i<=mEndNumber;i++)
         {
-                $("#number" + i).remove();
+        //	mPlayerArray.pop(); 
+	 //      	$("#div" + i).remove();
+	  //	llllll     	$("#image" + i).remove();
+                mPlayerArray[i].style.visibility = 'hidden';
         }
+      
+	//reset player array 
+	mPlayerArray = new Array();
+
+	//id's 
+	mIdCount = 0;
         
-        //delete avatar 
-        $("#redball1").remove();
-        
-        //create all numbers and avatar 
-        createImages();
+	//create world 
+        createWorld();
 
         //score
         mScore = 0;
@@ -331,29 +338,19 @@ function resetGame()
         //count
         mCount = mStartNumber - 1;
         
-        //move avatar to start
-        document.getElementById("redball1").mPositionX = 0;
-        document.getElementById("redball1").mPositionY = 0;
-        
-        //make images and numbers visible and collidable
-        for (i=mStartNumber;i<=mEndNumber;i++)
-        {
-                document.getElementById('number' + i).style.visibility = 'visible'; 
-                document.getElementById('number' + i).mCollidable = true; 
-        }
 }
 
 //check guess
-function checkGuess(answer)
+function checkGuess(index)
 {
-        if (answer == mAnswer)
+        if (mPlayerArray[index].mAnswer == mAnswer)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
 
                 //made image disapper and make collibal false
-                document.getElementById('number' + image_id).mCollidable = false;
-                document.getElementById('image' + image_id).style.visibility = 'hidden';
+                mPlayerArray[index].mCollidable = false;
+                mPlayerArray[index].style.visibility = 'hidden';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
@@ -457,6 +454,21 @@ $(document).ready(function()
 );
 
 </script>
+
+<!-- creat and set game name -->
+<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
+
+<!-- create and set question -->
+<p id="question"> </p>
+
+<!-- create feedback -->
+<p id="feedback">"Have Fun!"</p>
+
+<!-- create score -->
+<p id="score"></p>
+
+<!-- create scoreNeeded -->
+<p id="scoreNeeded"></p>
 
 </body>
 </html>
