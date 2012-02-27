@@ -94,7 +94,8 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
         //ticks
         mTickLength = tickLength;
 
-
+        //speed
+	mSpeed = 10;
 }
 
 function init()
@@ -396,26 +397,26 @@ function newAnswer()
 //CONTROLS
 function moveLeft()
 {
-        mControlObject.mVelocityX = -1;
+        mControlObject.mVelocityX = -1 * mSpeed;
         mControlObject.mVelocityY = 0;
 }
 
 function moveRight()
 {
-        mControlObject.mVelocityX = 1;
+        mControlObject.mVelocityX = 1 * mSpeed;
         mControlObject.mVelocityY = 0;
 }
 
 function moveUp()
 {
         mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = -1;
+        mControlObject.mVelocityY = -1 * mSpeed;
 }
 
 function moveDown()
 {
         mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = 1;
+        mControlObject.mVelocityY = 1 * mSpeed;
 }
 
 function moveStop()
