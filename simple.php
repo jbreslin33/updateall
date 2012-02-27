@@ -456,7 +456,7 @@ document.onkeydown = function(ev)
 </script>
 
 </head>
-
+<body scroll=no >
 <script type="text/javascript"> 
 
 $(document).ready(function()
