@@ -321,6 +321,7 @@ function resetGame()
         for (i=0; i<mPlayerArray.length; i++)
         {
                 mPlayerArray[i].mCollidable = true;
+                mPlayerArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -353,7 +354,7 @@ function checkGuess(index)
                	//mPlayerArray.splice(index,1); 
 		//made image disapper and make collibal false
                 mPlayerArray[index].mCollidable = false;
-                //mPlayerArray[index].style.visibility = 'hidden';
+                mPlayerArray[index].style.visibility = 'hidden';
                 //$("#image" + index).style.visibility = 'hidden';
                 //mPlayerArray[index].style.left = 0+'px';
                 //mPlayerArray[index].style.top  = 0+'px';
