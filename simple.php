@@ -281,9 +281,6 @@ function render()
                 	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
                 	{
                         	mPlayerArray[i].style.visibility = 'hidden';
-                        	//$("#image" + i).style.visibility = 'hidden';
-                       // 	mPlayerArray[i].style.left = 0+'px';
-                        //	mPlayerArray[i].style.top  = 0+'px';
                 	}
 			//else make sure it's visible
                 	else
@@ -350,17 +347,9 @@ function checkGuess(index)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
-		//mydiv.removeChild( mydiv.firstChild );
-		//mPlayerArray[index].removeChild( mPlayerArray[index].firstChild );
-	
-		//delete mPlayerArray[index];
-               	//mPlayerArray.splice(index,1); 
-		//made image disapper and make collibal false
-                mPlayerArray[index].mCollidable = false;
+               
+		mPlayerArray[index].mCollidable = false;
                 mPlayerArray[index].style.visibility = 'hidden';
-                //$("#image" + index).style.visibility = 'hidden';
-                //mPlayerArray[index].style.left = 0+'px';
-                //mPlayerArray[index].style.top  = 0+'px';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
