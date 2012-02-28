@@ -81,7 +81,7 @@ var mIdCount = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
-	//players
+        //players
 
         //score
         mScoreNeeded = scoreNeeded;
@@ -95,20 +95,21 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
         mTickLength = tickLength;
 
         //speed
-	mSpeed = 10;
+        mSpeed = 3;
 }
+
 
 function init()
 {
-	//create game	
-	var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
+        //create game   
+        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength);"; ?>
 
 	//createWorld
 	createWorld();
 
-	//new answer
-	newAnswer();
-	
+	//this will be used for resetting to
+	resetGame();
+
 	//start update
 	update();
 }
@@ -134,7 +135,7 @@ function update()
 function createWorld()
 {
 	//create all players
-	createPlayer('smiley.png',300,300,true,0);
+	createPlayer('smiley.png',0,0,true,0);
 	createPlayer('1.png',75,75,false,1);
 	createPlayer('2.png',75,150,false,2);
 	createPlayer('3.png',300,450,false,3);
@@ -277,20 +278,20 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
                
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
-                	{
-                        	mPlayerArray[i].style.visibility = 'hidden';
+                	//if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
+                	//{
+                        //	mPlayerArray[i].style.visibility = 'hidden';
                         	//$("#image" + i).style.visibility = 'hidden';
-                        	mPlayerArray[i].style.left = 0+'px';
-                        	mPlayerArray[i].style.top  = 0+'px';
-                	}
+                       // 	mPlayerArray[i].style.left = 0+'px';
+                        //	mPlayerArray[i].style.top  = 0+'px';
+                //	}
 			//else make sure it's visible
-                	else
-                	{
-                        	mPlayerArray[i].style.visibility = 'visible';
+                //	else
+                //	{
+                 //       	mPlayerArray[i].style.visibility = 'visible';
                         	mPlayerArray[i].style.left = posX+'px';
                         	mPlayerArray[i].style.top  = posY+'px';
-               		} 
+               	//	} 
 		}
         }
 }
@@ -314,35 +315,28 @@ function checkForEndOfGame()
 //reset
 function resetGame()
 {
-        //delete all numbers 
+//count
+
+ //set collidable to true 
         for (i=0; i<mPlayerArray.length; i++)
-        //for (i=mStartNumber;i<=mEndNumber;i++)
         {
-        //	mPlayerArray.pop(); 
-	 //      	$("#div" + i).remove();
-	  //	llllll     	$("#image" + i).remove();
-                mPlayerArray[i].style.visibility = 'hidden';
+                mPlayerArray[i].mCollidable = true;
         }
-      
-	//reset player array 
-	mPlayerArray = new Array();
-
-	//id's 
-	mIdCount = 0;
-        
-	//create world 
-        createWorld();
-
+	mControlObject.mPositionX = 0;     
+	mControlObject.mPositionY = 0;     
+ 
         //score
         mScore = 0;
 
         //game
         mQuestion = "";
-        mAnswer = 0;
 
         //count
         mCount = mStartNumber - 1;
         
+var mAnswer = 0;
+	//answer
+	newAnswer();
 }
 
 //check guess
@@ -353,12 +347,12 @@ function checkGuess(index)
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
 		//mydiv.removeChild( mydiv.firstChild );
-		mPlayerArray[index].removeChild( mPlayerArray[index].firstChild );
+		//mPlayerArray[index].removeChild( mPlayerArray[index].firstChild );
 	
-		delete mPlayerArray[index];
-               	mPlayerArray.splice(index,1); 
+		//delete mPlayerArray[index];
+               	//mPlayerArray.splice(index,1); 
 		//made image disapper and make collibal false
-                //mPlayerArray[index].mCollidable = false;
+                mPlayerArray[index].mCollidable = false;
                 //mPlayerArray[index].style.visibility = 'hidden';
                 //$("#image" + index).style.visibility = 'hidden';
                 //mPlayerArray[index].style.left = 0+'px';
