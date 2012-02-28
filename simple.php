@@ -278,20 +278,23 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
                
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                	//if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
-                	//{
-                        //	mPlayerArray[i].style.visibility = 'hidden';
+                	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
+                	{
+                        	mPlayerArray[i].style.visibility = 'hidden';
                         	//$("#image" + i).style.visibility = 'hidden';
                        // 	mPlayerArray[i].style.left = 0+'px';
                         //	mPlayerArray[i].style.top  = 0+'px';
-                //	}
+                	}
 			//else make sure it's visible
-                //	else
-                //	{
-                 //       	mPlayerArray[i].style.visibility = 'visible';
-                        	mPlayerArray[i].style.left = posX+'px';
-                        	mPlayerArray[i].style.top  = posY+'px';
-               	//	} 
+                	else
+                	{
+				if (mPlayerArray[i].mCollidable)
+				{
+                        		mPlayerArray[i].style.visibility = 'visible';
+                        		mPlayerArray[i].style.left = posX+'px';
+                        		mPlayerArray[i].style.top  = posY+'px';
+				}
+               		} 
 		}
         }
 }
