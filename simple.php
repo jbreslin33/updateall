@@ -271,7 +271,7 @@ function render()
        		var imageCenterY = $("#image" + i).height() / 2;     
 
 		//if control object center it on screen
-		if (mPlayerArray[i] == mControlObject)
+		if (mSpriteArray[i] == mControlObject)
 		{
 			//shift the position based on pageCenterXY and imageCenterXY	
         		var posX = pageCenterX - imageCenterX;     
