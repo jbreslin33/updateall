@@ -54,6 +54,7 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
+var mSpriteArray= new Array();
 
 //players
 var mPlayerArray = new Array();
@@ -132,23 +133,57 @@ function update()
 	window.setTimeout('update()',mTickLength);
 }
 
+
+
 function createWorld()
 {
+
+	createSprite('smiley.png',0,0,true,0,true);
+
 	//create all players
-	createPlayer('smiley.png',0,0,true,0);
-	createPlayer('1.png',75,75,false,1);
-	createPlayer('2.png',75,150,false,2);
-	createPlayer('3.png',300,450,false,3);
-	createPlayer('4.png',0,150,false,4);
-	createPlayer('5.png',0,300,false,5);
-	createPlayer('6.png',150,150,false,6);
-	createPlayer('7.png',300,0,false,7);
-	createPlayer('8.png',150,0,false,8);
-	createPlayer('9.png',450,150,false,9);
-	createPlayer('10.png',75,300,false,10);
+	createSprite('1.png',75,75,false,1,true);
+	createSprite('2.png',75,150,false,2,true);
+	createSprite('3.png',300,450,false,3,true);
+	createSprite('4.png',0,150,false,4,true);
+	createSprite('5.png',0,300,false,5,true);
+	createSprite('6.png',150,150,false,6,true);
+	createSprite('7.png',300,0,false,7,true);
+	createSprite('8.png',150,0,false,8,true);
+	createSprite('9.png',450,150,false,9,true);
+	createSprite('10.png',75,300,false,10,true);
+		
+        for (i=0; i<mSpriteArray.length; i++)
+	{
+		createPlayer(i);
+	}
 }
 
-function createPlayer(src,spawnX,spawnY,isControlObject,answer)
+function createSprite(src,spawnX,spawnY,isControlObject,answer,collidable)
+{
+	var sprite = new Object();
+	sprite.mSrc = src;
+	sprite.mId = mIdCount;
+	sprite.mSpawnPositionX = spawnX;
+	sprite.mSpawnPositionY = spawnY;
+	sprite.mPositionX = spawnX;
+	sprite.mPositionY = spawnY;
+	sprite.mVelocityX = 0;
+	sprite.mVelocityY = 0;
+	sprite.mCollidable = collidable;
+	sprite.mAnswer = answer;
+	 
+	if (isControlObject)
+	{
+		mControlObject = sprite;
+	}
+	
+	mIdCount++;
+	
+	//add to array
+	mSpriteArray.push(sprite);
+}
+
+function createPlayer(i)
 {
 	
 	//create the movable div that will be used to move image around.	
@@ -160,50 +195,30 @@ function createPlayer(src,spawnX,spawnY,isControlObject,answer)
 
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
-        image.id = 'image' + mIdCount;
-        image.alt = 'image' + mIdCount;
-        image.title = 'image' + mIdCount;   
+        image.id = 'image' + i;
+        //image.alt = 'image' + i;
+        //image.title = 'image' + i;   
         div.appendChild(image);
         
-	image.src  = src;
+	image.src  = mSpriteArray[i].mSrc;
 
-        div.mPositionX = spawnX;
-        div.mPositionY = spawnY;
-
-        div.mVelocityX = 0;
-        div.mVelocityY = 0;
-
-        div.mCollidable = true;
-	
-	if (isControlObject)
-	{
-		mControlObject = div;
-	}
-
-	//assign and answer value
-	div.mAnswer = answer;
-	
 	//move it
-        div.style.left = spawnX+'px';
-        div.style.top  = spawnY+'px';
+        div.style.left = mSpriteArray[i].mPositionX+'px';
+        div.style.top  = mSpriteArray[i].mPositionY+'px';
 
 	//add to array
 	mPlayerArray.push(div);
 
-	//increment uniqueid count	
-	mIdCount++;
 }
 
 
 function movePlayers()
 {
         //move numbers
-        for (i=0; i<mPlayerArray.length; i++)
+        for (i=0; i<mSpriteArray.length; i++)
         {
-                div = mPlayerArray[i];
-		 
-		div.mPositionX += div.mVelocityX;
-                div.mPositionY += div.mVelocityY;
+		mSpriteArray[i].mPositionX += mSpriteArray[i].mVelocityX;
+		mSpriteArray[i].mPositionY += mSpriteArray[i].mVelocityY;
         }
 }
 
@@ -212,18 +227,18 @@ function checkCollisions()
         var x1 = mControlObject.mPositionX; 
         var y1 = mControlObject.mPositionY; 
         
-        for (i=0; i<mPlayerArray.length; i++)
+        for (i=0; i<mSpriteArray.length; i++)
         {
-		if (mPlayerArray[i] == mControlObject)
+		if (mSpriteArray[i] == mControlObject)
 		{
 			//skip
 		}
 		else
 		{
-	       		if (mPlayerArray[i].mCollidable)
+	       		if (mSpriteArray[i].mCollidable)
                 	{
-                        	var x2 = mPlayerArray[i].mPositionX;              
-                     		var y2 = mPlayerArray[i].mPositionY;              
+                        	var x2 = mSpriteArray[i].mPositionX;              
+                     		var y2 = mSpriteArray[i].mPositionY;              
                 
                         	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                         	if (distSQ < 1300)
@@ -245,7 +260,7 @@ function checkCollisions()
 function render()
 {
         //loop thru player array and update their xy positions
-        for (i=0; i<mPlayerArray.length; i++)
+        for (i=0; i<mSpriteArray.length; i++)
         {
 		//get the center of the page xy
        		var pageCenterX = $(this).width() / 2;
@@ -270,28 +285,15 @@ function render()
 		else
 		{
 			//get the offset from control object
-			var xdiff = mPlayerArray[i].mPositionX - mControlObject.mPositionX;  
-                	var ydiff = mPlayerArray[i].mPositionY - mControlObject.mPositionY;  
+			var xdiff = mSpriteArray[i].mPositionX - mControlObject.mPositionX;  
+                	var ydiff = mSpriteArray[i].mPositionY - mControlObject.mPositionY;  
 
                 	//center image relative to position
                 	var posX = xdiff + pageCenterX - imageCenterX;
                 	var posY = ydiff + pageCenterY - imageCenterY;    
                
-			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                	if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
-                	{
-                        	mPlayerArray[i].style.visibility = 'hidden';
-                	}
-			//else make sure it's visible
-                	else
-                	{
-				if (mPlayerArray[i].mCollidable)
-				{
-                        		mPlayerArray[i].style.visibility = 'visible';
-                        		mPlayerArray[i].style.left = posX+'px';
-                        		mPlayerArray[i].style.top  = posY+'px';
-				}
-               		} 
+                	mPlayerArray[i].style.left = posX+'px';
+                       	mPlayerArray[i].style.top  = posY+'px';
 		}
         }
 }
@@ -320,8 +322,8 @@ function resetGame()
  //set collidable to true 
         for (i=0; i<mPlayerArray.length; i++)
         {
-                mPlayerArray[i].mCollidable = true;
-                mPlayerArray[i].style.visibility = 'visible';
+                mSpriteArray[i].mCollidable = true;
+                //mPlayerArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -343,13 +345,13 @@ var mAnswer = 0;
 //check guess
 function checkGuess(index)
 {
-        if (mPlayerArray[index].mAnswer == mAnswer)
+        if (mSpriteArray[index].mAnswer == mAnswer)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
                
-		mPlayerArray[index].mCollidable = false;
-                mPlayerArray[index].style.visibility = 'hidden';
+		mSpriteArray[index].mCollidable = false;
+                //mSpriteArray[index].style.visibility = 'hidden';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
@@ -443,7 +445,7 @@ document.onkeydown = function(ev)
 </script>
 
 </head>
-<body scroll=no >
+<body>
 <script type="text/javascript"> 
 
 $(document).ready(function()
