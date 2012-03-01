@@ -54,10 +54,10 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
-var mSpriteArray= new Array();
+var mServerShapeArray= new Array();
 
 //players
-var mPlayerArray = new Array();
+var mClientShapeArray = new Array();
 var mControlObject;
 
 //score
@@ -152,7 +152,7 @@ function createWorld()
 	createSprite('9.png',450,150,false,9,true);
 	createSprite('10.png',75,300,false,10,true);
 		
-        for (i=0; i<mSpriteArray.length; i++)
+        for (i=0; i<mServerShapeArray.length; i++)
 	{
 		createPlayer(i);
 	}
@@ -180,7 +180,7 @@ function createSprite(src,spawnX,spawnY,isControlObject,answer,collidable)
 	mIdCount++;
 	
 	//add to array
-	mSpriteArray.push(sprite);
+	mServerShapeArray.push(sprite);
 }
 
 function createPlayer(i)
@@ -200,14 +200,14 @@ function createPlayer(i)
         //image.title = 'image' + i;   
         div.appendChild(image);
         
-	image.src  = mSpriteArray[i].mSrc;
+	image.src  = mServerShapeArray[i].mSrc;
 
 	//move it
-        div.style.left = mSpriteArray[i].mPositionX+'px';
-        div.style.top  = mSpriteArray[i].mPositionY+'px';
+        div.style.left = mServerShapeArray[i].mPositionX+'px';
+        div.style.top  = mServerShapeArray[i].mPositionY+'px';
 
 	//add to array
-	mPlayerArray.push(div);
+	mClientShapeArray.push(div);
 
 }
 
@@ -215,10 +215,10 @@ function createPlayer(i)
 function movePlayers()
 {
         //move numbers
-        for (i=0; i<mSpriteArray.length; i++)
+        for (i=0; i<mServerShapeArray.length; i++)
         {
-		mSpriteArray[i].mPositionX += mSpriteArray[i].mVelocityX;
-		mSpriteArray[i].mPositionY += mSpriteArray[i].mVelocityY;
+		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
+		mServerShapeArray[i].mPositionY += mServerShapeArray[i].mVelocityY;
         }
 }
 
@@ -227,18 +227,18 @@ function checkCollisions()
         var x1 = mControlObject.mPositionX; 
         var y1 = mControlObject.mPositionY; 
         
-        for (i=0; i<mSpriteArray.length; i++)
+        for (i=0; i<mServerShapeArray.length; i++)
         {
-		if (mSpriteArray[i] == mControlObject)
+		if (mServerShapeArray[i] == mControlObject)
 		{
 			//skip
 		}
 		else
 		{
-	       		if (mSpriteArray[i].mCollidable)
+	       		if (mServerShapeArray[i].mCollidable)
                 	{
-                        	var x2 = mSpriteArray[i].mPositionX;              
-                     		var y2 = mSpriteArray[i].mPositionY;              
+                        	var x2 = mServerShapeArray[i].mPositionX;              
+                     		var y2 = mServerShapeArray[i].mPositionY;              
                 
                         	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                         	if (distSQ < 1300)
@@ -260,7 +260,7 @@ function checkCollisions()
 function render()
 {
         //loop thru player array and update their xy positions
-        for (i=0; i<mSpriteArray.length; i++)
+        for (i=0; i<mServerShapeArray.length; i++)
         {
 		//get the center of the page xy
        		var pageCenterX = $(this).width() / 2;
@@ -271,15 +271,15 @@ function render()
        		var imageCenterY = $("#image" + i).height() / 2;     
 
 		//if control object center it on screen
-		if (mSpriteArray[i] == mControlObject)
+		if (mServerShapeArray[i] == mControlObject)
 		{
 			//shift the position based on pageCenterXY and imageCenterXY	
         		var posX = pageCenterX - imageCenterX;     
         		var posY = pageCenterY - imageCenterY;     
 			
 			//this actual moves it  
-        		mPlayerArray[i].style.left = posX+'px';
-        		mPlayerArray[i].style.top  = posY+'px';
+        		mClientShapeArray[i].style.left = posX+'px';
+        		mClientShapeArray[i].style.top  = posY+'px';
 		} 
 		//else if anything else render relative to the control object	
 		else
@@ -295,15 +295,15 @@ function render()
 			{
 
 				//get the offset from control object
-				var xdiff = mSpriteArray[i].mPositionX - mControlObject.mPositionX;  
-                		var ydiff = mSpriteArray[i].mPositionY - mControlObject.mPositionY;  
+				var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
+                		var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
 
                 		//center image relative to position
                 		var posX = xdiff + pageCenterX - imageCenterX;
                 		var posY = ydiff + pageCenterY - imageCenterY;    
                
-                		mPlayerArray[i].style.left = posX+'px';
-                       		mPlayerArray[i].style.top  = posY+'px';
+                		mClientShapeArray[i].style.left = posX+'px';
+                       		mClientShapeArray[i].style.top  = posY+'px';
 
 			}
 		}
@@ -332,10 +332,10 @@ function resetGame()
 //count
 
  //set collidable to true 
-        for (i=0; i<mSpriteArray.length; i++)
+        for (i=0; i<mServerShapeArray.length; i++)
         {
-                mSpriteArray[i].mCollidable = true;
-                //mPlayerArray[i].style.visibility = 'visible';
+                mServerShapeArray[i].mCollidable = true;
+                //mClientShapeArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -357,13 +357,13 @@ var mAnswer = 0;
 //check guess
 function checkGuess(index)
 {
-        if (mSpriteArray[index].mAnswer == mAnswer)
+        if (mServerShapeArray[index].mAnswer == mAnswer)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
                
-		mSpriteArray[index].mCollidable = false;
-                //mSpriteArray[index].style.visibility = 'hidden';
+		mServerShapeArray[index].mCollidable = false;
+                //mServerShapeArray[index].style.visibility = 'hidden';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
