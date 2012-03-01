@@ -284,16 +284,28 @@ function render()
 		//else if anything else render relative to the control object	
 		else
 		{
-			//get the offset from control object
-			var xdiff = mSpriteArray[i].mPositionX - mControlObject.mPositionX;  
-                	var ydiff = mSpriteArray[i].mPositionY - mControlObject.mPositionY;  
 
-                	//center image relative to position
-                	var posX = xdiff + pageCenterX - imageCenterX;
-                	var posY = ydiff + pageCenterY - imageCenterY;    
+			//if off screen then hide it so we don't have scroll bars mucking up controls 
+        //                if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
+                        if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
+			{
+			
+			}
+//			else
+			{
+
+				//get the offset from control object
+				var xdiff = mSpriteArray[i].mPositionX - mControlObject.mPositionX;  
+                		var ydiff = mSpriteArray[i].mPositionY - mControlObject.mPositionY;  
+
+                		//center image relative to position
+                		var posX = xdiff + pageCenterX - imageCenterX;
+                		var posY = ydiff + pageCenterY - imageCenterY;    
                
-                	mPlayerArray[i].style.left = posX+'px';
-                       	mPlayerArray[i].style.top  = posY+'px';
+                		mPlayerArray[i].style.left = posX+'px';
+                       		mPlayerArray[i].style.top  = posY+'px';
+
+			}
 		}
         }
 }
@@ -320,7 +332,7 @@ function resetGame()
 //count
 
  //set collidable to true 
-        for (i=0; i<mPlayerArray.length; i++)
+        for (i=0; i<mSpriteArray.length; i++)
         {
                 mSpriteArray[i].mCollidable = true;
                 //mPlayerArray[i].style.visibility = 'visible';
