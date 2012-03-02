@@ -198,13 +198,19 @@ function createPlayer(i)
         image.id = 'image' + i;
         //image.alt = 'image' + i;
         //image.title = 'image' + i;   
-        div.appendChild(image);
-        
 	image.src  = mServerShapeArray[i].mSrc;
+        
+	div.appendChild(image);
+        
+
+	div.style.display = 'inline';
+
 
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
         div.style.top  = mServerShapeArray[i].mPositionY+'px';
+
+
 
 	//add to array
 	mClientShapeArray.push(div);
@@ -289,21 +295,26 @@ function render()
         //                if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
                         if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
 			{
-			
+				mClientShapeArray[i].style.display = 'none';	
+				//alert('item out of page' + i);		
 			}
 //			else
 			{
+				if (mServerShapeArray[i].mCollidable)
+				{	
+					mClientShapeArray[i].style.display = 'inline';			
 
-				//get the offset from control object
-				var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
-                		var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
+					//get the offset from control object
+					var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
+                			var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
 
-                		//center image relative to position
-                		var posX = xdiff + pageCenterX - imageCenterX;
-                		var posY = ydiff + pageCenterY - imageCenterY;    
+                			//center image relative to position
+                			var posX = xdiff + pageCenterX - imageCenterX;
+                			var posY = ydiff + pageCenterY - imageCenterY;    
                
-                		mClientShapeArray[i].style.left = posX+'px';
-                       		mClientShapeArray[i].style.top  = posY+'px';
+                			mClientShapeArray[i].style.left = posX+'px';
+                       			mClientShapeArray[i].style.top  = posY+'px';
+				}
 
 			}
 		}
@@ -335,7 +346,7 @@ function resetGame()
         for (i=0; i<mServerShapeArray.length; i++)
         {
                 mServerShapeArray[i].mCollidable = true;
-                //mClientShapeArray[i].style.visibility = 'visible';
+                mClientShapeArray[i].style.display = 'inline';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -349,7 +360,7 @@ function resetGame()
         //count
         mCount = mStartNumber - 1;
         
-var mAnswer = 0;
+	var mAnswer = 0;
 	//answer
 	newAnswer();
 }
@@ -363,6 +374,7 @@ function checkGuess(index)
                 mScore++;
                
 		mServerShapeArray[index].mCollidable = false;
+		mClientShapeArray[index].style.display = 'none';
                 //mServerShapeArray[index].style.visibility = 'hidden';
                 
                 //feedback      
