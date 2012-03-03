@@ -1,15 +1,6 @@
 <html>
 <head>
 
-<style>
-body {
-border-left: 25px solid #000000;
-border-right: 25px solid #000000;
-border-top: 25px solid #000000;
-border-bottom: 25px solid #000000;
-}
-</style>
-
 <title>Image Mover</title>
 
 <!-- jquery and jqueryui -->
@@ -207,7 +198,7 @@ function createClientShape(i)
         
 	div.appendChild(image);
         
-	div.style.display = 'inline-block';
+	div.style.display = 'inline';
 
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
@@ -305,22 +296,22 @@ function render()
                         if (posX + 50 > $(this).width() ||
 			   posY + 50 > $(this).height())
 			{
-                	mClientShapeArray[i].style.left = posX+'px';
-                       	mClientShapeArray[i].style.top  = posY+'px';
+                		mClientShapeArray[i].style.left = 0+'px';
+                       		mClientShapeArray[i].style.top  = 0+'px';
 				mClientShapeArray[i].style.display = 'none';	
 			}
 			else //within dimensions...
 			{
 				if (mServerShapeArray[i].mCollidable)
 				{	
-                	mClientShapeArray[i].style.left = posX+'px';
-                       	mClientShapeArray[i].style.top  = posY+'px';
-					mClientShapeArray[i].style.display = 'inline-block';			
+                			mClientShapeArray[i].style.left = posX+'px';
+                       			mClientShapeArray[i].style.top  = posY+'px';
+					mClientShapeArray[i].style.display = 'inline';			
 				}
 				else
 				{
-                	mClientShapeArray[i].style.left = posX+'px';
-                       	mClientShapeArray[i].style.top  = posY+'px';
+                			mClientShapeArray[i].style.left = 0+'px';
+                       			mClientShapeArray[i].style.top  = 0+'px';
 					mClientShapeArray[i].style.display = 'none';			
 				}
 			}
@@ -353,7 +344,7 @@ function resetGame()
         for (i=0; i<mServerShapeArray.length; i++)
         {
                 mServerShapeArray[i].mCollidable = true;
-                mClientShapeArray[i].style.display = 'inline-block';
+                mClientShapeArray[i].style.display = 'inline';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
