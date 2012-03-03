@@ -291,14 +291,11 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        //if (posX + $("#image" + i).width() / 2 > $(this).width() ||
-			 //   posY + $("#image" + i).height()  / 2 > $(this).height())
-                        if (posX + 50 > $(this).width() ||
-			   posY + 50 > $(this).height())
+                        if (posX + $("#image" + i).width()  > $(this).width() ||
+			    posY + $("#image" + i).height()  > $(this).height())
 			{
                 		mClientShapeArray[i].style.left = 0+'px';
                        		mClientShapeArray[i].style.top  = 0+'px';
-				//mClientShapeArray[i].style.display = 'none';	
 				mClientShapeArray[i].style.visibility = 'hidden';	
 			}
 			else //within dimensions...
@@ -307,14 +304,12 @@ function render()
 				{	
                 			mClientShapeArray[i].style.left = posX+'px';
                        			mClientShapeArray[i].style.top  = posY+'px';
-					//mClientShapeArray[i].style.display = 'inline';			
 					mClientShapeArray[i].style.visibility = 'visible';	
 				}
 				else
 				{
                 			mClientShapeArray[i].style.left = 0+'px';
                        			mClientShapeArray[i].style.top  = 0+'px';
-					//mClientShapeArray[i].style.display = 'none';			
 					mClientShapeArray[i].style.visibility = 'hidden';	
 				}
 			}
@@ -347,7 +342,6 @@ function resetGame()
         for (i=0; i<mServerShapeArray.length; i++)
         {
                 mServerShapeArray[i].mCollidable = true;
-                //mClientShapeArray[i].style.display = 'inline';
                 mClientShapeArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
@@ -374,13 +368,8 @@ function checkGuess(index)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
-              //i should just make it hidden and then stop moving it in window .
-	//	so render will on render those that are mCollidable and "onscreen"... 
 		mServerShapeArray[index].mCollidable = false;
-		//mClientShapeArray[index].style.display = 'none';
 		mClientShapeArray[index].style.visibility = 'hidden';
-		//mClientShapeArray
-                //mServerShapeArray[index].style.visibility = 'hidden';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
