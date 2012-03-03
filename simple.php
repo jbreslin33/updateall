@@ -137,24 +137,24 @@ function update()
 
 function createWorld()
 {
-	createServerShape('smiley.png',0,0,true,0,true);
+	createServerShape('smiley.png',0,0,true,false,0,true);
 
 	//create all players
-	createServerShape('1.png',75,75,false,1,true);
-	createServerShape('2.png',75,150,false,2,true);
-	createServerShape('3.png',300,450,false,3,true);
-	createServerShape('4.png',0,150,false,4,true);
-	createServerShape('5.png',0,300,false,5,true);
-	createServerShape('6.png',150,150,false,6,true);
-	createServerShape('7.png',300,0,false,7,true);
-	createServerShape('8.png',150,0,false,8,true);
-	createServerShape('9.png',450,150,false,9,true);
-	createServerShape('10.png',75,300,false,10,true);
+	createServerShape('1.png',75,75,false,true,1,true);
+	createServerShape('2.png',75,150,false,true,2,true);
+	createServerShape('3.png',300,450,false,true,3,true);
+	createServerShape('4.png',0,150,false,true,4,true);
+	createServerShape('5.png',0,300,false,true,5,true);
+	createServerShape('6.png',150,150,false,true,6,true);
+	createServerShape('7.png',300,0,false,true,7,true);
+	createServerShape('8.png',150,0,false,true,8,true);
+	createServerShape('9.png',450,150,false,true,9,true);
+	createServerShape('10.png',75,300,false,true,10,true);
 
-	createServerShape('smiley.png',100,100,false,99,true);
+	createServerShape('smiley.png',100,100,false,false,99,true);
 }
 
-function createServerShape(src,spawnX,spawnY,isControlObject,answer,collidable)
+function createServerShape(src,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
 {
 	var sprite = new Object();
 	sprite.mSrc = src;
@@ -166,6 +166,7 @@ function createServerShape(src,spawnX,spawnY,isControlObject,answer,collidable)
 	sprite.mVelocityX = 0;
 	sprite.mVelocityY = 0;
 	sprite.mCollidable = collidable;
+	sprite.mIsQuestion = isQuestion;
 	sprite.mAnswer = answer;
 	 
 	if (isControlObject)
@@ -362,30 +363,38 @@ function resetGame()
 //check guess
 function evaluateCollision(mId1,mId2)
 {
-        if (mServerShapeArray[mId2].mAnswer == mAnswer)
-        {
-                mCount = mCount + mCountBy;  //add to count
-                mScore++;
-		mServerShapeArray[mId2].mCollidable = false;
-		mClientShapeArray[mId2].style.visibility = 'hidden';
+	if (mServerShapeArray[mId2].mIsQuestion)
+	{
+        	if (mServerShapeArray[mId2].mAnswer == mAnswer)
+        	{
+                	mCount = mCount + mCountBy;  //add to count
+                	mScore++;
+			mServerShapeArray[mId2].mCollidable = false;
+			mClientShapeArray[mId2].style.visibility = 'hidden';
                 
-                //feedback      
-                document.getElementById("feedback").innerHTML="Correct!";
+                	//feedback      
+                	document.getElementById("feedback").innerHTML="Correct!";
                 
-                //check for end of game
-                checkForEndOfGame();
-        }
-        else
-        {
-                //feedback 
-                document.getElementById("feedback").innerHTML="Wrong! Try again.";
+                	//check for end of game
+                	checkForEndOfGame();
+        	}
+        	else
+        	{
+                	//feedback 
+                	document.getElementById("feedback").innerHTML="Wrong! Try again.";
         
-                //this deletes and then recreates everthing.    
-                resetGame();
-        }
-    	newQuestion();
-        newAnswer();
-        printScore();
+                	//this deletes and then recreates everthing.    
+                	resetGame();
+        	}
+	
+    		newQuestion();
+        	newAnswer();
+        	printScore();
+	}
+	else
+	{
+
+	}
 }
 
 //questions
