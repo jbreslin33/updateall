@@ -291,8 +291,10 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + $("#image" + i).width() / 2 > $(this).width() || 
-			    posY + $("#image" + i).height()  / 2 > $(this).height())
+                        //if (posX + $("#image" + i).width() / 2 > $(this).width() ||
+			 //   posY + $("#image" + i).height()  / 2 > $(this).height())
+                        if (posX + 50 > $(this).width() ||
+			   posY + 50 > $(this).height())
 			{
 				mClientShapeArray[i].style.display = 'none';	
 			}
