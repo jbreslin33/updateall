@@ -124,7 +124,7 @@ function update()
         //checkBounds(document.getElementById("redball1"));     
 
 	//check collisions
-        checkCollisions();
+        checkForCollisions();
 		
 	//graphics	
 	render();
@@ -150,6 +150,8 @@ function createWorld()
 	createServerShape('8.png',150,0,false,8,true);
 	createServerShape('9.png',450,150,false,9,true);
 	createServerShape('10.png',75,300,false,10,true);
+
+	createServerShape('smiley.png',100,100,false,99,true);
 }
 
 function createServerShape(src,spawnX,spawnY,isControlObject,answer,collidable)
@@ -219,7 +221,7 @@ function movePlayers()
         }
 }
 
-function checkCollisions()
+function checkForCollisions()
 {
         var x1 = mControlObject.mPositionX; 
         var y1 = mControlObject.mPositionY; 
@@ -240,11 +242,7 @@ function checkCollisions()
                         	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                         	if (distSQ < 1300)
                         	{
-        				checkGuess(i);
-        
-        				newQuestion();
-        				newAnswer();
-        				printScore();
+					evaluateCollision(mControlObject.mId,mServerShapeArray[i].mId);		      
                         	}
 			}
                 }       
@@ -362,14 +360,14 @@ function resetGame()
 }
 
 //check guess
-function checkGuess(index)
+function evaluateCollision(mId1,mId2)
 {
-        if (mServerShapeArray[index].mAnswer == mAnswer)
+        if (mServerShapeArray[mId2].mAnswer == mAnswer)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
-		mServerShapeArray[index].mCollidable = false;
-		mClientShapeArray[index].style.visibility = 'hidden';
+		mServerShapeArray[mId2].mCollidable = false;
+		mClientShapeArray[mId2].style.visibility = 'hidden';
                 
                 //feedback      
                 document.getElementById("feedback").innerHTML="Correct!";
@@ -385,6 +383,9 @@ function checkGuess(index)
                 //this deletes and then recreates everthing.    
                 resetGame();
         }
+    	newQuestion();
+        newAnswer();
+        printScore();
 }
 
 //questions
