@@ -137,28 +137,22 @@ function update()
 
 function createWorld()
 {
-
-	createSprite('smiley.png',0,0,true,0,true);
+	createServerShape('smiley.png',0,0,true,0,true);
 
 	//create all players
-	createSprite('1.png',75,75,false,1,true);
-	createSprite('2.png',75,150,false,2,true);
-	createSprite('3.png',300,450,false,3,true);
-	createSprite('4.png',0,150,false,4,true);
-	createSprite('5.png',0,300,false,5,true);
-	createSprite('6.png',150,150,false,6,true);
-	createSprite('7.png',300,0,false,7,true);
-	createSprite('8.png',150,0,false,8,true);
-	createSprite('9.png',450,150,false,9,true);
-	createSprite('10.png',75,300,false,10,true);
-		
-        for (i=0; i<mServerShapeArray.length; i++)
-	{
-		createPlayer(i);
-	}
+	createServerShape('1.png',75,75,false,1,true);
+	createServerShape('2.png',75,150,false,2,true);
+	createServerShape('3.png',300,450,false,3,true);
+	createServerShape('4.png',0,150,false,4,true);
+	createServerShape('5.png',0,300,false,5,true);
+	createServerShape('6.png',150,150,false,6,true);
+	createServerShape('7.png',300,0,false,7,true);
+	createServerShape('8.png',150,0,false,8,true);
+	createServerShape('9.png',450,150,false,9,true);
+	createServerShape('10.png',75,300,false,10,true);
 }
 
-function createSprite(src,spawnX,spawnY,isControlObject,answer,collidable)
+function createServerShape(src,spawnX,spawnY,isControlObject,answer,collidable)
 {
 	var sprite = new Object();
 	sprite.mSrc = src;
@@ -177,15 +171,17 @@ function createSprite(src,spawnX,spawnY,isControlObject,answer,collidable)
 		mControlObject = sprite;
 	}
 	
-	mIdCount++;
-	
 	//add to array
 	mServerShapeArray.push(sprite);
+	
+	//create clientside shape, this would send across network...
+	createClientShape(mIdCount);
+	
+	mIdCount++;
 }
 
-function createPlayer(i)
+function createClientShape(i)
 {
-	
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
         div.setAttribute('id','div' + mIdCount);
@@ -202,19 +198,14 @@ function createPlayer(i)
         
 	div.appendChild(image);
         
-
 	div.style.display = 'inline';
-
 
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
         div.style.top  = mServerShapeArray[i].mPositionY+'px';
 
-
-
 	//add to array
 	mClientShapeArray.push(div);
-
 }
 
 
@@ -291,32 +282,33 @@ function render()
 		else
 		{
 
+			//get the offset from control object
+			var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
+                	var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
+
+                	//center image relative to position
+                	var posX = xdiff + pageCenterX - imageCenterX;
+                	var posY = ydiff + pageCenterY - imageCenterY;    
+			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-        //                if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
-                        if (posX + $("#image" + i).width() > $(this).width() || posY + $("#image" + i).height() > $(this).height())
+                        if (posX + $("#image" + i).width() / 2 > $(this).width() || 
+			    posY + $("#image" + i).height()  / 2 > $(this).height())
 			{
 				mClientShapeArray[i].style.display = 'none';	
-				//alert('item out of page' + i);		
 			}
-//			else
+			else //within dimensions...
 			{
 				if (mServerShapeArray[i].mCollidable)
 				{	
 					mClientShapeArray[i].style.display = 'inline';			
-
-					//get the offset from control object
-					var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
-                			var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
-
-                			//center image relative to position
-                			var posX = xdiff + pageCenterX - imageCenterX;
-                			var posY = ydiff + pageCenterY - imageCenterY;    
-               
-                			mClientShapeArray[i].style.left = posX+'px';
-                       			mClientShapeArray[i].style.top  = posY+'px';
 				}
-
+				else
+				{
+					mClientShapeArray[i].style.display = 'none';			
+				}
 			}
+                	mClientShapeArray[i].style.left = posX+'px';
+                       	mClientShapeArray[i].style.top  = posY+'px';
 		}
         }
 }
