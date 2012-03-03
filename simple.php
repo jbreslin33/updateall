@@ -118,7 +118,7 @@ function init()
 function update()
 {	
 	//move players	
-	movePlayers();
+	moveShapes();
 
 	//check bounds
         //checkBounds(document.getElementById("redball1"));     
@@ -156,26 +156,28 @@ function createWorld()
 
 function createServerShape(src,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
 {
-	var sprite = new Object();
-	sprite.mSrc = src;
-	sprite.mId = mIdCount;
-	sprite.mSpawnPositionX = spawnX;
-	sprite.mSpawnPositionY = spawnY;
-	sprite.mPositionX = spawnX;
-	sprite.mPositionY = spawnY;
-	sprite.mVelocityX = 0;
-	sprite.mVelocityY = 0;
-	sprite.mCollidable = collidable;
-	sprite.mIsQuestion = isQuestion;
-	sprite.mAnswer = answer;
+	var shape = new Object();
+	shape.mSrc = src;
+	shape.mId = mIdCount;
+	shape.mSpawnPositionX = spawnX;
+	shape.mSpawnPositionY = spawnY;
+	shape.mPositionX = spawnX;
+	shape.mPositionY = spawnY;
+	shape.mOldPositionX = spawnX;
+	shape.mOldPositionY = spawnY;
+	shape.mVelocityX = 0;
+	shape.mVelocityY = 0;
+	shape.mCollidable = collidable;
+	shape.mIsQuestion = isQuestion;
+	shape.mAnswer = answer;
 	 
 	if (isControlObject)
 	{
-		mControlObject = sprite;
+		mControlObject = shape;
 	}
 	
 	//add to array
-	mServerShapeArray.push(sprite);
+	mServerShapeArray.push(shape);
 	
 	//create clientside shape, this would send across network...
 	createClientShape(mIdCount);
@@ -212,11 +214,16 @@ function createClientShape(i)
 }
 
 
-function movePlayers()
+function moveShapes()
 {
         //move numbers
         for (i=0; i<mServerShapeArray.length; i++)
         {
+		//record old position to use for collisions or whatever you fancy	
+		mServerShapeArray[i].mOldPositionX = mServerShapeArray[i].mPositionX;
+		mServerShapeArray[i].mOldPositionY = mServerShapeArray[i].mPositionY;
+	
+		//move shape	
 		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
 		mServerShapeArray[i].mPositionY += mServerShapeArray[i].mVelocityY;
         }
@@ -393,7 +400,11 @@ function evaluateCollision(mId1,mId2)
 	}
 	else
 	{
-
+		mServerShapeArray[mId1].mPositionX = mServerShapeArray[mId1].mOldPositionX;
+		mServerShapeArray[mId1].mPositionY = mServerShapeArray[mId1].mOldPositionY;
+		
+		mServerShapeArray[mId2].mPositionX = mServerShapeArray[mId2].mOldPositionX;
+		mServerShapeArray[mId2].mPositionY = mServerShapeArray[mId2].mOldPositionY;
 	}
 }
 
