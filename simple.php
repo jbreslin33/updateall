@@ -198,7 +198,7 @@ function createClientShape(i)
         
 	div.appendChild(image);
         
-	div.style.display = 'inline';
+	div.style.visibility = 'visible';
 
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
@@ -298,7 +298,8 @@ function render()
 			{
                 		mClientShapeArray[i].style.left = 0+'px';
                        		mClientShapeArray[i].style.top  = 0+'px';
-				mClientShapeArray[i].style.display = 'none';	
+				//mClientShapeArray[i].style.display = 'none';	
+				mClientShapeArray[i].style.visibility = 'hidden';	
 			}
 			else //within dimensions...
 			{
@@ -306,13 +307,15 @@ function render()
 				{	
                 			mClientShapeArray[i].style.left = posX+'px';
                        			mClientShapeArray[i].style.top  = posY+'px';
-					mClientShapeArray[i].style.display = 'inline';			
+					//mClientShapeArray[i].style.display = 'inline';			
+					mClientShapeArray[i].style.visibility = 'visible';	
 				}
 				else
 				{
                 			mClientShapeArray[i].style.left = 0+'px';
                        			mClientShapeArray[i].style.top  = 0+'px';
-					mClientShapeArray[i].style.display = 'none';			
+					//mClientShapeArray[i].style.display = 'none';			
+					mClientShapeArray[i].style.visibility = 'hidden';	
 				}
 			}
 		}
@@ -344,7 +347,8 @@ function resetGame()
         for (i=0; i<mServerShapeArray.length; i++)
         {
                 mServerShapeArray[i].mCollidable = true;
-                mClientShapeArray[i].style.display = 'inline';
+                //mClientShapeArray[i].style.display = 'inline';
+                mClientShapeArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -370,9 +374,12 @@ function checkGuess(index)
         {
                 mCount = mCount + mCountBy;  //add to count
                 mScore++;
-               
+              //i should just make it hidden and then stop moving it in window .
+	//	so render will on render those that are mCollidable and "onscreen"... 
 		mServerShapeArray[index].mCollidable = false;
-		mClientShapeArray[index].style.display = 'none';
+		//mClientShapeArray[index].style.display = 'none';
+		mClientShapeArray[index].style.visibility = 'hidden';
+		//mClientShapeArray
                 //mServerShapeArray[index].style.visibility = 'hidden';
                 
                 //feedback      
