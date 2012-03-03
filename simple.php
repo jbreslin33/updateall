@@ -96,7 +96,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
         mTickLength = tickLength;
 
         //speed
-        mSpeed = 3;
+        mSpeed = 10;
 }
 
 
@@ -140,18 +140,36 @@ function createWorld()
 	createServerShape('smiley.png',0,0,true,false,0,true);
 
 	//create all players
-	createServerShape('1.png',75,75,false,true,1,true);
+	createServerShape('1.png',-75,-75,false,true,1,true);
 	createServerShape('2.png',75,150,false,true,2,true);
-	createServerShape('3.png',300,450,false,true,3,true);
+	createServerShape('3.png',300,-150,false,true,3,true);
 	createServerShape('4.png',0,150,false,true,4,true);
-	createServerShape('5.png',0,300,false,true,5,true);
-	createServerShape('6.png',150,150,false,true,6,true);
+	createServerShape('5.png',0,-300,false,true,5,true);
+	createServerShape('6.png',-150,-150,false,true,6,true);
 	createServerShape('7.png',300,0,false,true,7,true);
 	createServerShape('8.png',150,0,false,true,8,true);
-	createServerShape('9.png',450,150,false,true,9,true);
+	createServerShape('9.png',-250,-150,false,true,9,true);
 	createServerShape('10.png',75,300,false,true,10,true);
 
-	createServerShape('smiley.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('black_wall.png',100,100,false,false,99,true);
 }
 
 function createServerShape(src,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
