@@ -96,7 +96,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
         mTickLength = tickLength;
 
         //speed
-        mSpeed = 10;
+        mSpeed = 5;
 }
 
 
@@ -111,8 +111,11 @@ function init()
 	//this will be used for resetting to
 	resetGame();
 
+	//tick 
+	//window.setTimeout('update()',mTickLength);
+	setInterval(update,20);
 	//start update
-	update();
+	//update();
 }
 
 function update()
@@ -121,7 +124,7 @@ function update()
 	moveShapes();
 
 	//check bounds
-        //checkBounds(document.getElementById("redball1"));     
+        checkBounds();     
 
 	//check collisions
         checkForCollisions();
@@ -129,56 +132,73 @@ function update()
 	//graphics	
 	render();
        
-	//tick 
-	window.setTimeout('update()',mTickLength);
 }
 
 
 
 function createWorld()
 {
-	createServerShape('smiley.png',0,0,true,false,0,true);
+	createServerShape('smiley.png',50,50,0,0,true,false,0,true);
 
 	//create all players
-	createServerShape('1.png',-75,-75,false,true,1,true);
-	createServerShape('2.png',75,150,false,true,2,true);
-	createServerShape('3.png',300,-150,false,true,3,true);
-	createServerShape('4.png',0,150,false,true,4,true);
-	createServerShape('5.png',0,-300,false,true,5,true);
-	createServerShape('6.png',-150,-150,false,true,6,true);
-	createServerShape('7.png',300,0,false,true,7,true);
-	createServerShape('8.png',150,0,false,true,8,true);
-	createServerShape('9.png',-250,-150,false,true,9,true);
-	createServerShape('10.png',75,300,false,true,10,true);
-
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
-	createServerShape('black_wall.png',100,100,false,false,99,true);
+	createServerShape('1.png',50,50,-75,-75,false,true,1,true);
+	createServerShape('2.png',50,50,75,150,false,true,2,true);
+	createServerShape('3.png',50,50,300,-150,false,true,3,true);
+	createServerShape('4.png',50,50,0,150,false,true,4,true);
+	createServerShape('5.png',50,50,0,-250,false,true,5,true);
+	createServerShape('6.png',50,50,-150,-150,false,true,6,true);
+	createServerShape('7.png',50,50,300,0,false,true,7,true);
+	createServerShape('8.png',50,50,150,0,false,true,8,true);
+	createServerShape('9.png',50,50,-250,-150,false,true,9,true);
+	createServerShape('10.png',50,50,75,250,false,true,10,true);
+	
+	createLeftWall();
+	createRightWall();
 }
 
-function createServerShape(src,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
+function createLeftWall()
+{
+	createServerShape('black_wall.png',1,50,-400,-275,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,-225,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,-175,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,-125,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,-75,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,-25,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,25,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,75,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,125,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,175,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,225,false,false,0,false);
+	createServerShape('black_wall.png',1,50,-400,275,false,false,0,false);
+}
+
+function createRightWall()
+{
+	createServerShape('black_wall.png',1,50,400,-275,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,-225,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,-175,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,-125,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,-75,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,-25,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,25,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,75,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,125,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,175,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,225,false,false,0,false);
+	createServerShape('black_wall.png',1,50,400,275,false,false,0,false);
+}
+
+function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
 {
 	var shape = new Object();
 	shape.mSrc = src;
 	shape.mId = mIdCount;
-	shape.mSpawnPositionX = spawnX;
+		
+
+shape.mSpawnPositionX = spawnX;
 	shape.mSpawnPositionY = spawnY;
+	shape.mWidth = width;
+	shape.mHeight = height;
 	shape.mPositionX = spawnX;
 	shape.mPositionY = spawnY;
 	shape.mOldPositionX = spawnX;
@@ -210,19 +230,23 @@ function createClientShape(i)
         div.setAttribute('id','div' + mIdCount);
         div.setAttribute("class","movable");
 	div.style.position="absolute";
+	//div.style.position="absolute";
+	//div.width = 20+'px';
         document.body.appendChild(div);
 
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
         image.id = 'image' + i;
-        //image.alt = 'image' + i;
-        //image.title = 'image' + i;   
+        image.alt = 'image' + i;
+        image.title = 'image' + i;   
 	image.src  = mServerShapeArray[i].mSrc;
-        
+       	image.style.width=mServerShapeArray[i].mWidth+'px'; 
+       	image.style.height=mServerShapeArray[i].mHeight+'px'; 
+	//image.width = 20+'px';
 	div.appendChild(image);
         
 	div.style.visibility = 'visible';
-
+	
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
         div.style.top  = mServerShapeArray[i].mPositionY+'px';
@@ -247,6 +271,19 @@ function moveShapes()
         }
 }
 
+function checkBounds()
+{
+	if (mControlObject.mPositionX < -400 ||	
+	    mControlObject.mPositionX > 400 ||
+	    mControlObject.mPositionY < -300 ||
+	    mControlObject.mPositionY > 300)
+	{
+		mControlObject.mPositionX = mControlObject.mPositionX;	
+		mControlObject.mPositionY = mControlObject.mPositionY;	
+	}
+	
+}
+
 function checkForCollisions()
 {
         var x1 = mControlObject.mPositionX; 
@@ -266,7 +303,7 @@ function checkForCollisions()
                      		var y2 = mServerShapeArray[i].mPositionY;              
                 
                         	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        	if (distSQ < 1300)
+                        	if (distSQ < 650)
                         	{
 					evaluateCollision(mControlObject.mId,mServerShapeArray[i].mId);		      
                         	}
@@ -288,8 +325,9 @@ function render()
         	var pageCenterY = $(this).height() / 2;
       
        		//get the center xy of the image
-       		var imageCenterX = $("#image" + i).width() / 2;     
-       		var imageCenterY = $("#image" + i).height() / 2;     
+       		var imageCenterX = mServerShapeArray[i].mWidth / 2;     
+       		var imageCenterY = mServerShapeArray[i].mHeight / 2;     
+       		//var imageCenterY = $("#image" + i).height() / 2;     
 
 		//if control object center it on screen
 		if (mServerShapeArray[i] == mControlObject)
@@ -315,8 +353,8 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + $("#image" + i).width()  > $(this).width() ||
-			    posY + $("#image" + i).height()  > $(this).height())
+                        if (posX + mServerShapeArray[i].mWidth  > $(this).width() ||
+			    posY + mServerShapeArray[i].mHeight  > $(this).height())
 			{
                 		mClientShapeArray[i].style.left = 0+'px';
                        		mClientShapeArray[i].style.top  = 0+'px';
@@ -324,7 +362,7 @@ function render()
 			}
 			else //within dimensions...
 			{
-				if (mServerShapeArray[i].mCollidable)
+				if (mServerShapeArray[i].mCollidable || mServerShapeArray[i].mIsQuestion == 'false')
 				{	
                 			mClientShapeArray[i].style.left = posX+'px';
                        			mClientShapeArray[i].style.top  = posY+'px';
