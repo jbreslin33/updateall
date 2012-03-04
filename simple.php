@@ -192,54 +192,26 @@ function foo()
 
 function createLeftWall()
 {
-	createServerShape('black_wall.png',1,50,-400,-275,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,-225,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,-175,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,-125,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,-75,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,-25,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,25,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,75,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,125,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,175,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,225,false,false,0,false);
-	createServerShape('black_wall.png',1,50,-400,275,false,false,0,false);
+        for (i=-275; i <= 275; i = i + 50)
+	{
+		createServerShape('black_wall.png',1,50,-400,i,false,false,0,false);
+	}
 }
 
 function createRightWall()
 {
-	createServerShape('black_wall.png',1,50,400,-275,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,-225,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,-175,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,-125,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,-75,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,-25,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,25,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,75,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,125,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,175,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,225,false,false,0,false);
-	createServerShape('black_wall.png',1,50,400,275,false,false,0,false);
+        for (i=-275; i <= 275; i = i + 50)
+	{
+		createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
+	}
 }
 
 function createTopWall()
 {
-	createServerShape('black_wall.png',50,1,-375,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-325,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-275,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-225,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-175,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-125,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-75,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,-25,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,25,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,75,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,125,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,175,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,225,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,275,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,325,-300,false,false,0,false);
-	createServerShape('black_wall.png',50,1,375,-300,false,false,0,false);
+        for (i=-375; i <= 375; i = i + 50)
+	{
+		createServerShape('black_wall.png',1,50,i,-300,false,false,0,false);
+	}
 }
 
 function createBottomWall()
