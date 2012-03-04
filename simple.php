@@ -60,7 +60,9 @@ var mDoorEntered = false;
 
 //shapes
 var mServerShapeArray= new Array();
-var mClientShapeArray = new Array();
+var mClientDivArray = new Array();
+var mClientImageArray = new Array();
+
 var mControlObject;
 
 //score
@@ -289,22 +291,39 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	mServerShapeArray.push(shape);
 	
 	//create clientside shape, this would send across network...
-	createClientShape(mIdCount);
+	createClientDiv(mIdCount);
 	
 	mIdCount++;
 }
 
-function createClientShape(i)
+function createClientDiv(i)
 {
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
         div.setAttribute('id','div' + mIdCount);
         div.setAttribute("class","movable");
 	div.style.position="absolute";
-	//div.style.position="absolute";
-	//div.width = 20+'px';
-        document.body.appendChild(div);
+	div.style.visibility = 'visible';
+	
+	//move it
+        div.style.left = mServerShapeArray[i].mPositionX+'px';
+        div.style.top  = mServerShapeArray[i].mPositionY+'px';
 
+        document.body.appendChild(div);
+	
+	//add div to array
+	mClientDivArray.push(div);
+
+	//create clientImage
+	createClientImage(i);
+
+	//back to div	
+	div.appendChild(mClientImageArray[i]);
+        
+}
+
+function createClientImage(i)
+{
 	//image to attache to our div "vessel"
         var image = document.createElement("IMG");
         image.id = 'image' + i;
@@ -313,19 +332,10 @@ function createClientShape(i)
 	image.src  = mServerShapeArray[i].mSrc;
        	image.style.width=mServerShapeArray[i].mWidth+'px'; 
        	image.style.height=mServerShapeArray[i].mHeight+'px'; 
-	//image.width = 20+'px';
-	div.appendChild(image);
-        
-	div.style.visibility = 'visible';
-	
-	//move it
-        div.style.left = mServerShapeArray[i].mPositionX+'px';
-        div.style.top  = mServerShapeArray[i].mPositionY+'px';
 
-	//add to array
-	mClientShapeArray.push(div);
+	//add image to array
+	mClientImageArray.push(image);
 }
-
 
 function moveShapes()
 {
@@ -408,8 +418,8 @@ function render()
         		var posY = pageCenterY - imageCenterY;     
 			
 			//this actual moves it  
-        		mClientShapeArray[i].style.left = posX+'px';
-        		mClientShapeArray[i].style.top  = posY+'px';
+        		mClientDivArray[i].style.left = posX+'px';
+        		mClientDivArray[i].style.top  = posY+'px';
 		} 
 		//else if anything else render relative to the control object	
 		else
@@ -427,24 +437,24 @@ function render()
                         if (posX + mServerShapeArray[i].mWidth  > $(this).width() ||
 			    posY + mServerShapeArray[i].mHeight  > $(this).height())
 			{
-                		mClientShapeArray[i].style.left = 0+'px';
-                       		mClientShapeArray[i].style.top  = 0+'px';
-				mClientShapeArray[i].style.visibility = 'hidden';	
+                		mClientDivArray[i].style.left = 0+'px';
+                       		mClientDivArray[i].style.top  = 0+'px';
+				mClientDivArray[i].style.visibility = 'hidden';	
 			}
 			else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
 			{
 				if (mServerShapeArray[i].mCollidable || 
 				    mServerShapeArray[i].mIsQuestion == 'false')
 				{	
-                			mClientShapeArray[i].style.left = posX+'px';
-                       			mClientShapeArray[i].style.top  = posY+'px';
-					mClientShapeArray[i].style.visibility = 'visible';	
+                			mClientDivArray[i].style.left = posX+'px';
+                       			mClientDivArray[i].style.top  = posY+'px';
+					mClientDivArray[i].style.visibility = 'visible';	
 				}
 				else
 				{
-                			mClientShapeArray[i].style.left = 0+'px';
-                       			mClientShapeArray[i].style.top  = 0+'px';
-					mClientShapeArray[i].style.visibility = 'hidden';	
+                			mClientDivArray[i].style.left = 0+'px';
+                       			mClientDivArray[i].style.top  = 0+'px';
+					mClientDivArray[i].style.visibility = 'hidden';	
 				}
 			}
 		}
@@ -485,7 +495,7 @@ function resetGame()
         for (i=0; i<mServerShapeArray.length; i++)
         {
                 mServerShapeArray[i].mCollidable = true;
-                mClientShapeArray[i].style.visibility = 'visible';
+                mClientDivArray[i].style.visibility = 'visible';
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -514,7 +524,7 @@ function evaluateCollision(mId1,mId2)
                 	mCount = mCount + mCountBy;  //add to count
                 	mScore++;
 			mServerShapeArray[mId2].mCollidable = false;
-			mClientShapeArray[mId2].style.visibility = 'hidden';
+			mClientDivArray[mId2].style.visibility = 'hidden';
                 
                 	//feedback      
                 	document.getElementById("feedback").innerHTML="Correct!";
