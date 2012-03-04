@@ -54,9 +54,12 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
-var mServerShapeArray= new Array();
+//game
+var mGameOn = true;
+var mDoorEntered = false;
 
-//players
+//shapes
+var mServerShapeArray= new Array();
 var mClientShapeArray = new Array();
 var mControlObject;
 
@@ -128,7 +131,10 @@ function update()
 
 	//check collisions
         checkForCollisions();
-		
+	
+	//check for end game
+	checkForScoreNeeded();
+	
 	//graphics	
 	render();
        
@@ -155,6 +161,7 @@ function createWorld()
 	createLeftWall();
 	createRightWall();
 	createTopWall();
+	createBottomWall();
 }
 
 function createLeftWall()
@@ -209,14 +216,33 @@ function createTopWall()
 	createServerShape('black_wall.png',50,1,375,-300,false,false,0,false);
 }
 
+function createBottomWall()
+{
+	createServerShape('black_wall.png',50,1,-375,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-325,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-275,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-225,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-175,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-125,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-75,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,-25,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,25,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,75,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,125,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,175,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,225,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,275,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,325,300,false,false,0,false);
+	createServerShape('black_wall.png',50,1,375,300,false,false,0,false);
+}
+
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
 {
 	var shape = new Object();
 	shape.mSrc = src;
 	shape.mId = mIdCount;
 		
-
-shape.mSpawnPositionX = spawnX;
+	shape.mSpawnPositionX = spawnX;
 	shape.mSpawnPositionY = spawnY;
 	shape.mWidth = width;
 	shape.mHeight = height;
@@ -407,10 +433,19 @@ function printScore()
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mScoreNeeded;
 }
 
-function checkForEndOfGame()
+function checkForScoreNeeded()
 {
         if (mScore == mScoreNeeded)
         {
+		//open the doors
+	}
+}
+
+function checkForDoorEntered()
+{
+        if (mDoorEntered)
+        {
+		mGameOn = false;
                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 window.location = "goto_next_math_level.php"
         }
@@ -459,8 +494,6 @@ function evaluateCollision(mId1,mId2)
                 	//feedback      
                 	document.getElementById("feedback").innerHTML="Correct!";
                 
-                	//check for end of game
-                	checkForEndOfGame();
         	}
         	else
         	{
