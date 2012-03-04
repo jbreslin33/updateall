@@ -258,7 +258,14 @@ function createRightWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
+		if (i == 25 || i == -25)
+		{
+			createServerShape('green_wall.png',1,50,400,i,false,false,0,false);
+		}	
+		else
+		{	
+			createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
+		}
 	}
 }
 
@@ -414,6 +421,14 @@ function checkForScoreNeeded()
         if (mScore == mScoreNeeded)
         {
 		//open the doors
+		for (i=0; i < mServerShapeArray.length; i++)
+		{
+			if (mServerShapeArray[i].mSrc == 'green_wall.png')
+			{
+				mServerShapeArray[i].mSrc = 'black_wall.png';
+				mClientImageArray[i].src = 'black_wall.png';
+			}
+		}
 	}
 }
 
