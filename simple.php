@@ -172,56 +172,6 @@ function createServerShapes()
 	createServerShape('10.png',50,50,250,0,false,true,10,true);
 }
 
-function foo()
-{
-	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,0,true);
-	
-	//numbers
-	createServerShape('1.png',50,50,75,-75,false,true,1,true);
-	createServerShape('2.png',50,50,75,150,false,true,2,true);
-	createServerShape('3.png',50,50,300,-150,false,true,3,true);
-	createServerShape('4.png',50,50,0,150,false,true,4,true);
-	createServerShape('5.png',50,50,0,-250,false,true,5,true);
-	createServerShape('6.png',50,50,-150,-150,false,true,6,true);
-	createServerShape('7.png',50,50,300,0,false,true,7,true);
-	createServerShape('8.png',50,50,150,0,false,true,8,true);
-	createServerShape('9.png',50,50,-250,-150,false,true,9,true);
-	createServerShape('10.png',50,50,75,250,false,true,10,true);
-}
-
-function createLeftWall()
-{
-        for (i=-275; i <= 275; i = i + 50)
-	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,0,false);
-	}
-}
-
-function createRightWall()
-{
-        for (i=-275; i <= 275; i = i + 50)
-	{
-		createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
-	}
-}
-
-function createTopWall()
-{
-        for (i=-375; i <= 375; i = i + 50)
-	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,0,false);
-	}
-}
-
-function createBottomWall()
-{
-        for (i=-375; i <= 375; i = i + 50)
-	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,0,false);
-	}
-}
-
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
 {
 	var shape = new Object();
@@ -279,7 +229,6 @@ function createClientDiv(i)
 
 	//back to div	
 	div.appendChild(mClientImageArray[i]);
-        
 }
 
 function createClientImage(i)
@@ -295,6 +244,38 @@ function createClientImage(i)
 
 	//add image to array
 	mClientImageArray.push(image);
+}
+
+function createLeftWall()
+{
+        for (i=-275; i <= 275; i = i + 50)
+	{
+		createServerShape('black_wall.png',1,50,-400,i,false,false,0,false);
+	}
+}
+
+function createRightWall()
+{
+        for (i=-275; i <= 275; i = i + 50)
+	{
+		createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
+	}
+}
+
+function createTopWall()
+{
+        for (i=-375; i <= 375; i = i + 50)
+	{
+		createServerShape('black_wall.png',50,1,i,-300,false,false,0,false);
+	}
+}
+
+function createBottomWall()
+{
+        for (i=-375; i <= 375; i = i + 50)
+	{
+		createServerShape('black_wall.png',50,1,i,300,false,false,0,false);
+	}
 }
 
 function moveShapes()
