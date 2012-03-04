@@ -425,8 +425,8 @@ function checkForScoreNeeded()
 		{
 			if (mServerShapeArray[i].mSrc == 'green_wall.png')
 			{
-				mServerShapeArray[i].mSrc = 'black_wall.png';
-				mClientImageArray[i].src = 'black_wall.png';
+				mServerShapeArray[i].mSrc = 'white_wall.png';
+				mClientImageArray[i].src = 'white_wall.png';
 			}
 		}
 	}
