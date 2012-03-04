@@ -431,9 +431,10 @@ function render()
                        		mClientShapeArray[i].style.top  = 0+'px';
 				mClientShapeArray[i].style.visibility = 'hidden';	
 			}
-			else //within dimensions...
+			else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
 			{
-				if (mServerShapeArray[i].mCollidable || mServerShapeArray[i].mIsQuestion == 'false')
+				if (mServerShapeArray[i].mCollidable || 
+				    mServerShapeArray[i].mIsQuestion == 'false')
 				{	
                 			mClientShapeArray[i].style.left = posX+'px';
                        			mClientShapeArray[i].style.top  = posY+'px';
