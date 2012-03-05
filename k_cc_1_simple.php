@@ -16,7 +16,7 @@ include("db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -30,6 +30,7 @@ $countBy = 0;
 $startNumber = 0;
 $endNumber = 0;
 $tickLength = 0;
+$nextLevel = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -47,6 +48,8 @@ if ($num > 0)
         $startNumber = $row[3];
         $endNumber = $row[4];
         $tickLength = $row[5];
+	$nextLevel = $row[6];
+	$_SESSION["math_game_next_level"] = $nextLevel;
 }
 
 ?>
@@ -59,7 +62,7 @@ var mGameOn = true;
 var mDoorEntered = false;
 
 //shapes
-var mServerShapeArray= new Array();
+var mServerShapeArray = new Array();
 var mClientDivArray = new Array();
 var mClientImageArray = new Array();
 
@@ -118,7 +121,7 @@ function init()
 
 	//tick 
 	//window.setTimeout('update()',mTickLength);
-	setInterval(update,20);
+	setInterval(update,mTickLength);
 	//start update
 	//update();
 }
