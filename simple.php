@@ -125,21 +125,28 @@ function init()
 
 function update()
 {	
-	//move players	
-	moveShapes();
+	if (mGameOn)
+	{	
 
-	//check bounds
-        checkBounds();     
+		//move players	
+		moveShapes();
 
-	//check collisions
-        checkForCollisions();
+		//door entered?
+		checkForDoorEntered();
+
+
+		//check bounds
+        	checkBounds();     
+
+		//check collisions
+        	checkForCollisions();
 	
-	//check for end game
-	checkForScoreNeeded();
-	
-	//graphics	
-	render();
-       
+		//check for end game
+		checkForScoreNeeded();
+		
+		//graphics	
+		render();
+      	} 
 }
 
 
@@ -434,11 +441,16 @@ function checkForScoreNeeded()
 
 function checkForDoorEntered()
 {
-        if (mDoorEntered)
+        //if (mDoorEntered)
+        if (mScore == mScoreNeeded)
         {
-		mGameOn = false;
-                document.getElementById("feedback").innerHTML="YOU WIN!!!";
-                window.location = "goto_next_math_level.php"
+		if (mControlObject.mPositionX > 375) 
+		    	
+		{
+			mGameOn = false;
+                	document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                	window.location = "goto_next_math_level.php"
+		}
         }
 }
 
