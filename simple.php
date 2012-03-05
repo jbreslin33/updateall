@@ -444,7 +444,9 @@ function checkForDoorEntered()
         //if (mDoorEntered)
         if (mScore == mScoreNeeded)
         {
-		if (mControlObject.mPositionX > 375) 
+		if (mControlObject.mPositionX > 375 &&
+		    mControlObject.mPositionY > -25 &&
+		    mControlObject.mPositionY < 25) 
 		    	
 		{
 			mGameOn = false;
