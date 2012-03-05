@@ -167,7 +167,7 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,0,true);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
 	
 	//numbers
 	createServerShape('1.png',50,50,25,0,false,true,mStartNumber,true);
@@ -262,9 +262,7 @@ function createClientImage(i)
 function createClientParagraph(i)
 {
 	var paragraph = document.createElement("p");
-	//paragraph.style.width="50";
-	//paragraph.style.height="50";
-	paragraph.innerHTML="100";
+	paragraph.innerHTML = mServerShapeArray[i].mAnswer;
 
 	mClientParagraphArray.push(paragraph);
 }
@@ -273,7 +271,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,0,false);
+		createServerShape('black_wall.png',1,50,-400,i,false,false,"",false);
 	}
 }
 
@@ -283,11 +281,11 @@ function createRightWall()
 	{
 		if (i == 25 || i == -25)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,0,false);
+			createServerShape('green_wall.png',1,50,400,i,false,false,"",false);
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,0,false);
+			createServerShape('black_wall.png',1,50,400,i,false,false,"",false);
 		}
 	}
 }
@@ -296,7 +294,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,0,false);
+		createServerShape('black_wall.png',50,1,i,-300,false,false,"",false);
 	}
 }
 
@@ -304,7 +302,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,0,false);
+		createServerShape('black_wall.png',50,1,i,300,false,false,"",false);
 	}
 }
 
@@ -405,8 +403,8 @@ function render()
                 	var posY = ydiff + pageCenterY - imageCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + mServerShapeArray[i].mWidth  > $(this).width() ||
-			    posY + mServerShapeArray[i].mHeight  > $(this).height())
+                        if (posX + mServerShapeArray[i].mWidth  + 3 > $(this).width() ||
+			    posY + mServerShapeArray[i].mHeight + 13 > $(this).height())
 			{
                 		mClientDivArray[i].style.left = 0+'px';
                        		mClientDivArray[i].style.top  = 0+'px';
