@@ -221,9 +221,12 @@ function createClientDiv(i)
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
         div.setAttribute('id','div' + mIdCount);
-        div.setAttribute("class","movable");
+        div.setAttribute("class","ui-widget-content");
 	div.style.position="absolute";
 	div.style.visibility = 'visible';
+
+	div.style.width= mServerShapeArray[i].mWidth;
+	div.style.height= mServerShapeArray[i].mHeight;
 	
 	//move it
         div.style.left = mServerShapeArray[i].mPositionX+'px';
@@ -259,6 +262,8 @@ function createClientImage(i)
 function createClientParagraph(i)
 {
 	var paragraph = document.createElement("p");
+	//paragraph.style.width="50";
+	//paragraph.style.height="50";
 	paragraph.innerHTML="100";
 
 	mClientParagraphArray.push(paragraph);
