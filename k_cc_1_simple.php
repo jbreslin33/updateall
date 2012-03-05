@@ -64,7 +64,7 @@ var mDoorEntered = false;
 //shapes
 var mServerShapeArray = new Array();
 var mClientDivArray = new Array();
-var mClientImageArray = new Array();
+var mClientParagraphArray = new Array();
 
 var mControlObject;
 
@@ -235,10 +235,10 @@ function createClientDiv(i)
 	mClientDivArray.push(div);
 
 	//create clientImage
-	createClientImage(i);
+	createClientParagraph(i);
 
 	//back to div	
-	div.appendChild(mClientImageArray[i]);
+	div.appendChild(mClientParagraphArray[i]);
 }
 
 function createClientImage(i)
@@ -253,7 +253,15 @@ function createClientImage(i)
        	image.style.height=mServerShapeArray[i].mHeight+'px'; 
 
 	//add image to array
-	mClientImageArray.push(image);
+	//mClientImageArray.push(image);
+}
+
+function createClientParagraph(i)
+{
+	var paragraph = document.createElement("p");
+	paragraph.innerHTML="100";
+
+	mClientParagraphArray.push(paragraph);
 }
 
 function createLeftWall()
@@ -433,11 +441,11 @@ function checkForScoreNeeded()
 		//open the doors
 		for (i=0; i < mServerShapeArray.length; i++)
 		{
-			if (mServerShapeArray[i].mSrc == 'green_wall.png')
-			{
-				mServerShapeArray[i].mSrc = 'white_wall.png';
-				mClientImageArray[i].src = 'white_wall.png';
-			}
+			//if (mServerShapeArray[i].mSrc == 'green_wall.png')
+			//{
+			//	mServerShapeArray[i].mSrc = 'white_wall.png';
+			//	mClientImageArray[i].src = 'white_wall.png';
+			//}
 		}
 	}
 }
