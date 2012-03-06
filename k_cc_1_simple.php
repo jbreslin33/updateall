@@ -452,11 +452,11 @@ function checkForScoreNeeded()
 		//open the doors
 		for (i=0; i < mServerShapeArray.length; i++)
 		{
-			//if (mServerShapeArray[i].mSrc == 'green_wall.png')
-			//{
-			//	mServerShapeArray[i].mSrc = 'white_wall.png';
-			//	mClientImageArray[i].src = 'white_wall.png';
-			//}
+			if (mServerShapeArray[i].mSrc == 'green_wall.png')
+			{
+				mServerShapeArray[i].mSrc = 'white_wall.png';
+				mClientShapeArray[i].src = 'white_wall.png';
+			}
 		}
 	}
 }
