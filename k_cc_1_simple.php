@@ -170,16 +170,16 @@ function createServerShapes()
 	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
 	
 	//numbers
-	createServerShape('1.png',50,50,25,0,false,true,mStartNumber,true);
-	createServerShape('2.png',50,50,50,0,false,true,mStartNumber + 1,true);
-	createServerShape('3.png',50,50,75,0,false,true,mStartNumber + 2,true);
-	createServerShape('4.png',50,50,100,0,false,true,mStartNumber + 3,true);
-	createServerShape('5.png',50,50,125,0,false,true,mStartNumber + 4,true);
-	createServerShape('6.png',50,50,150,0,false,true,mStartNumber + 5,true);
-	createServerShape('7.png',50,50,175,0,false,true,mStartNumber + 6,true);
-	createServerShape('8.png',50,50,200,0,false,true,mStartNumber + 7,true);
-	createServerShape('9.png',50,50,225,0,false,true,mStartNumber + 8,true);
-	createServerShape('10.png',50,50,250,0,false,true,mStartNumber + 9,true);
+	createServerShape("",50,50,25,0,false,true,mStartNumber,true);
+	createServerShape("",50,50,50,0,false,true,mStartNumber + 1,true);
+	createServerShape("",50,50,75,0,false,true,mStartNumber + 2,true);
+	createServerShape("",50,50,100,0,false,true,mStartNumber + 3,true);
+	createServerShape("",50,50,125,0,false,true,mStartNumber + 4,true);
+	createServerShape("",50,50,150,0,false,true,mStartNumber + 5,true);
+	createServerShape("",50,50,175,0,false,true,mStartNumber + 6,true);
+	createServerShape("",50,50,200,0,false,true,mStartNumber + 7,true);
+	createServerShape("",50,50,225,0,false,true,mStartNumber + 8,true);
+	createServerShape("",50,50,250,0,false,true,mStartNumber + 9,true);
 }
 
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
