@@ -64,7 +64,7 @@ var mDoorEntered = false;
 //shapes
 var mServerShapeArray = new Array();
 var mClientDivArray = new Array();
-var mClientParagraphArray = new Array();
+var mClientShapeArray = new Array();
 
 var mControlObject;
 
@@ -238,10 +238,33 @@ function createClientDiv(i)
 	mClientDivArray.push(div);
 
 	//create clientImage
-	createClientParagraph(i);
-
+	if (mServerShapeArray[i].mSrc)
+	{
+		createClientImage(i);
+	}
+	else //create paragraph
+	{
+		createClientParagraph(i);
+	}
 	//back to div	
-	div.appendChild(mClientParagraphArray[i]);
+	div.appendChild(mClientShapeArray[i]);
+
+
+}
+
+function createClientImage(i)
+{
+        //image to attache to our div "vessel"
+        var image = document.createElement("IMG");
+        image.id = 'image' + i;
+        image.alt = 'image' + i;
+        image.title = 'image' + i;   
+        image.src  = mServerShapeArray[i].mSrc;
+        image.style.width=mServerShapeArray[i].mWidth+'px'; 
+        image.style.height=mServerShapeArray[i].mHeight+'px'; 
+
+        //add image to array
+        mClientShapeArray.push(image);
 }
 
 function createClientParagraph(i)
@@ -249,7 +272,7 @@ function createClientParagraph(i)
 	var paragraph = document.createElement("p");
 	paragraph.innerHTML = mServerShapeArray[i].mAnswer;
 
-	mClientParagraphArray.push(paragraph);
+	mClientShapeArray.push(paragraph);
 }
 
 function createLeftWall()
