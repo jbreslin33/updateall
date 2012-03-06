@@ -244,21 +244,6 @@ function createClientDiv(i)
 	div.appendChild(mClientParagraphArray[i]);
 }
 
-function createClientImage(i)
-{
-	//image to attache to our div "vessel"
-        var image = document.createElement("IMG");
-        image.id = 'image' + i;
-        image.alt = 'image' + i;
-        image.title = 'image' + i;   
-	image.src  = mServerShapeArray[i].mSrc;
-       	image.style.width=mServerShapeArray[i].mWidth+'px'; 
-       	image.style.height=mServerShapeArray[i].mHeight+'px'; 
-
-	//add image to array
-	//mClientImageArray.push(image);
-}
-
 function createClientParagraph(i)
 {
 	var paragraph = document.createElement("p");
