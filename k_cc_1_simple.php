@@ -137,7 +137,6 @@ function update()
 		//door entered?
 		checkForDoorEntered();
 
-
 		//check bounds
         	checkBounds();     
 
@@ -248,8 +247,6 @@ function createClientDiv(i)
 	}
 	//back to div	
 	div.appendChild(mClientShapeArray[i]);
-
-
 }
 
 function createClientImage(i)
@@ -401,7 +398,6 @@ function render()
 		//else if anything else render relative to the control object	
 		else
 		{
-
 			//get the offset from control object
 			var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
                 	var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
@@ -520,7 +516,6 @@ function evaluateCollision(mId1,mId2)
                 
                 	//feedback      
                 	document.getElementById("feedback").innerHTML="Correct!";
-                
         	}
         	else
         	{
@@ -530,7 +525,6 @@ function evaluateCollision(mId1,mId2)
                 	//this deletes and then recreates everthing.    
                 	resetGame();
         	}
-	
     		newQuestion();
         	newAnswer();
         	printScore();
