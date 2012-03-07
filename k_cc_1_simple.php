@@ -74,6 +74,9 @@ var mClientShapeArray = new Array();
 var mPositionXArray = new Array();
 var mPositionYArray = new Array();
 
+var mSlotPositionXArray = new Array();
+var mSlotPositionYArray = new Array();
+
 var mControlObject;
 
 //score
@@ -169,6 +172,8 @@ function createWorld()
 	createRightWall();
 	createTopWall();
 	createBottomWall();
+
+	fillRandomArrays();
 }
 
 function createServerShapes()
@@ -201,8 +206,14 @@ function fillRandomArrays()
 		mPositionYArray.push(i);	
 	}
 
-	
-
+	for (i = 0; i <= 14; i++)
+	{
+		mSlotPositionXArray.push(mPositionXArray[i]);
+		for (b = 0; b <= 12; b++)
+		{
+			mSlotPositionYArray.push(mPositionYArray[i]);
+		}
+	}
 }
 
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
