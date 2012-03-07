@@ -185,10 +185,20 @@ function createServerShapes()
 	for (i = 0; i <= 9; i++)
 	{
 		//numbers
-		createServerShape("",50,50,mPositionXArray[i],mPositionYArray[i],false,true,mStartNumber + i,true);
+		var proposedX = Math.floor(Math.random()*14);
+		var proposedY = Math.floor(Math.random()*12);
+	
+		//checkForUniqueSpawnPosition();
+		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true);
 	}
 }
 
+function checkForUniqueSpawnPosition()
+{
+	for (r= 0; r < 168; r++)
+	{
+	}
+}
 function fillRandomArrays()
 {
 	for (i=-375; i <= 375; i = i + 50)
