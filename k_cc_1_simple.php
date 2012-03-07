@@ -174,7 +174,7 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('',50,50,0,0,true,false,"",true);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
 	
 	//numbers
 	createServerShape("",50,50,25,0,false,true,mStartNumber,true);
