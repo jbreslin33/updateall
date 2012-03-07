@@ -1,6 +1,11 @@
 <html>
 <head>
-
+<style type="text/css">
+div
+{
+background-color:yellow;
+}
+</style>
 <title>Image Mover</title>
 
 <!-- jquery and jqueryui -->
@@ -65,6 +70,9 @@ var mDoorEntered = false;
 var mServerShapeArray = new Array();
 var mClientDivArray = new Array();
 var mClientShapeArray = new Array();
+
+var mPositionXArray = new Array();
+var mPositionYArray = new Array();
 
 var mControlObject;
 
@@ -166,7 +174,7 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
+	createServerShape('',50,50,0,0,true,false,"",true);
 	
 	//numbers
 	createServerShape("",50,50,25,0,false,true,mStartNumber,true);
@@ -179,6 +187,22 @@ function createServerShapes()
 	createServerShape("",50,50,200,0,false,true,mStartNumber + 7,true);
 	createServerShape("",50,50,225,0,false,true,mStartNumber + 8,true);
 	createServerShape("",50,50,250,0,false,true,mStartNumber + 9,true);
+}
+
+function fillRandomArrays()
+{
+	for (i=-375; i <= 375; i = i + 50)
+	{ 	
+		mPositionXArray.push(i);	
+	}
+	
+	for (i=-275; i <= 275; i = i + 50)
+	{ 	
+		mPositionYArray.push(i);	
+	}
+
+	
+
 }
 
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
@@ -220,9 +244,11 @@ function createClientDiv(i)
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
         div.setAttribute('id','div' + mIdCount);
-        div.setAttribute("class","ui-widget-content");
+        div.setAttribute("class","demo");
 	div.style.position="absolute";
 	div.style.visibility = 'visible';
+	
+//	div.style.background-color="#e0ffff";
 
 	div.style.width= mServerShapeArray[i].mWidth;
 	div.style.height= mServerShapeArray[i].mHeight;
@@ -270,6 +296,14 @@ function createClientParagraph(i)
 	paragraph.innerHTML = mServerShapeArray[i].mAnswer;
 
 	mClientShapeArray.push(paragraph);
+}
+
+function createClientButton(i)
+{
+	var button = document.createElement("button");
+	button.innerHTML = mServerShapeArray[i].mAnswer;
+
+	mClientShapeArray.push(button);
 }
 
 function createLeftWall()
