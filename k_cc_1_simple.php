@@ -166,6 +166,8 @@ function update()
 
 function createWorld()
 {
+	
+	fillRandomArrays();
 	createServerShapes();
 	
 	createLeftWall();
@@ -173,7 +175,6 @@ function createWorld()
 	createTopWall();
 	createBottomWall();
 
-	fillRandomArrays();
 }
 
 function createServerShapes()
@@ -181,17 +182,11 @@ function createServerShapes()
 	//control object	
 	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
 	
-	//numbers
-	createServerShape("",50,50,25,0,false,true,mStartNumber,true);
-	createServerShape("",50,50,50,0,false,true,mStartNumber + 1,true);
-	createServerShape("",50,50,75,0,false,true,mStartNumber + 2,true);
-	createServerShape("",50,50,100,0,false,true,mStartNumber + 3,true);
-	createServerShape("",50,50,125,0,false,true,mStartNumber + 4,true);
-	createServerShape("",50,50,150,0,false,true,mStartNumber + 5,true);
-	createServerShape("",50,50,175,0,false,true,mStartNumber + 6,true);
-	createServerShape("",50,50,200,0,false,true,mStartNumber + 7,true);
-	createServerShape("",50,50,225,0,false,true,mStartNumber + 8,true);
-	createServerShape("",50,50,250,0,false,true,mStartNumber + 9,true);
+	for (i = 0; i <= 9; i++)
+	{
+		//numbers
+		createServerShape("",50,50,mPositionXArray[i],mPositionYArray[i],false,true,mStartNumber + i,true);
+	}
 }
 
 function fillRandomArrays()
@@ -206,14 +201,16 @@ function fillRandomArrays()
 		mPositionYArray.push(i);	
 	}
 
-	for (i = 0; i <= 14; i++)
-	{
-		mSlotPositionXArray.push(mPositionXArray[i]);
-		for (b = 0; b <= 12; b++)
-		{
-			mSlotPositionYArray.push(mPositionYArray[i]);
-		}
-	}
+//	for (i = 0; i <= 14; i++)
+//	{
+//		mSlotPositionXArray.push(mPositionXArray[i]);
+//		for (b = 0; b <= 12; b++)
+//		{
+//			mSlotPositionYArray.push(mPositionYArray[i]);
+//		}
+//	}
+	//Math.floor(Math.random()*11)
+	//Math.floor(Math.random()*11)
 }
 
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
