@@ -1,11 +1,6 @@
 <html>
 <head>
-<style type="text/css">
-div
-{
-background-color:yellow;
-}
-</style>
+
 <title>Image Mover</title>
 
 <!-- jquery and jqueryui -->
@@ -275,6 +270,8 @@ function createClientDiv(i)
         div.style.top  = mServerShapeArray[i].mPositionY+'px';
 
         document.body.appendChild(div);
+	
+	div.style.backgroundColor = "yellow";
 	
 	//add div to array
 	mClientDivArray.push(div);
