@@ -16,7 +16,7 @@ include("db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, number_of_chasers from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, number_of_chasers, speed from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -32,6 +32,7 @@ $endNumber = 0;
 $tickLength = 0;
 $nextLevel = 0;
 $numberOfChasers = 0;
+$speed = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -51,6 +52,7 @@ if ($num > 0)
         $tickLength = $row[5];
 	$nextLevel = $row[6];
 	$numberOfChasers = $row[7];
+	$speed = $row[8];
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
 
@@ -102,7 +104,7 @@ var mIdCount = 0;
 //chasers
 var mNumberOfChasers = 0;
 
-function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers)
+function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed)
 {
         //score
         mScoreNeeded = scoreNeeded;
@@ -116,7 +118,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
         mTickLength = tickLength;
 
         //speed
-        mSpeed = 5;
+        mSpeed = speed;
 	
 	//chasers
 	mNumberOfChasers = numberOfChasers;
@@ -125,7 +127,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
 function init()
 {
         //create game   
-        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers);"; ?>
+        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed);"; ?>
 
 	//createWorld
 	createWorld();
