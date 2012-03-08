@@ -187,7 +187,7 @@ function createServerShapes()
 		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true);
 	}
 
-	for (i = 0; i <= mNumberOfChasers; i++)
+	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
 		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"chaser",true);
