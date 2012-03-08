@@ -189,16 +189,16 @@ function createServerShapes()
 function setUniqueSpawnPosition()
 {
 	//get random spawn element
-	proposedX = Math.floor(Math.random()*14);
-	proposedY = Math.floor(Math.random()*12);
+	proposedX = Math.floor(Math.random()*mPositionXArray.length);
+	proposedY = Math.floor(Math.random()*mPositionYArray.length);
 
 	for (r= 0; r < mServerShapeArray.length; r++)
 	{
 		if (proposedX == mServerShapeArray[r].mPositionX && proposedY == mServerShapeArray[r].mPositionY)	
 		{
 			r = 0;
-			proposedX = Math.floor(Math.random()*14);
-			proposedY = Math.floor(Math.random()*12);
+			proposedX = Math.floor(Math.random()*mPositionXArray.length);
+			proposedY = Math.floor(Math.random()*mPositionYArray.length);
 		}
 	}
 }
