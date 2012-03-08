@@ -77,6 +77,9 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
+var proposedX = 0;
+var proposedY = 0;
+
 var mControlObject;
 
 //score
@@ -98,6 +101,8 @@ var mAnswer = 0;
 
 // id counter
 var mIdCount = 0;
+
+
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
@@ -184,21 +189,29 @@ function createServerShapes()
 	
 	for (i = 0; i <= 9; i++)
 	{
-		//numbers
-		var proposedX = Math.floor(Math.random()*14);
-		var proposedY = Math.floor(Math.random()*12);
-	
-		//checkForUniqueSpawnPosition();
+		setUniqueSpawnPosition();
 		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true);
 	}
 }
 
-function checkForUniqueSpawnPosition()
+function setUniqueSpawnPosition()
 {
-	for (r= 0; r < 168; r++)
+
+	//numbers
+	proposedX = Math.floor(Math.random()*14);
+	proposedY = Math.floor(Math.random()*12);
+
+	for (r= 0; r < mServerShapeArray.length; r++)
 	{
+		if (proposedX == mServerShapeArray[r].mPositionX && proposedY == mServerShapeArray[r].mPositionY)	
+		{
+			r = 0;
+			proposedX = Math.floor(Math.random()*14);
+			proposedY = Math.floor(Math.random()*12);
+		}
 	}
 }
+
 function fillRandomArrays()
 {
 	for (i=-375; i <= 375; i = i + 50)
