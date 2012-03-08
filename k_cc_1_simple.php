@@ -394,30 +394,35 @@ function checkBounds()
 
 function checkForCollisions()
 {
-        var x1 = mControlObject.mPositionX; 
-        var y1 = mControlObject.mPositionY; 
-        
-        for (i=0; i<mServerShapeArray.length; i++)
-        {
-		if (mServerShapeArray[i] == mControlObject)
-		{
-			//skip
-		}
-		else
-		{
-	       		if (mServerShapeArray[i].mCollidable)
-                	{
-                        	var x2 = mServerShapeArray[i].mPositionX;              
-                     		var y2 = mServerShapeArray[i].mPositionY;              
-                
-                        	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        	if (distSQ < 650)
-                        	{
-					evaluateCollision(mControlObject.mId,mServerShapeArray[i].mId);		      
-                        	}
+
+	for (s=0; s < mServerShapeArray.length; s++)
+	{
+	       	var x1 = mServerShapeArray[s].mPositionX;
+	       	var y1 = mServerShapeArray[s].mPositionY;
+ 
+		for (i=0; i<mServerShapeArray.length; i++)
+       		{
+			if (mServerShapeArray[i] == mServerShapeArray[s])
+			{
+				//skip
 			}
-                }       
-        }
+			else
+			{
+				if (mServerShapeArray[i].mCollidable == true && mServerShapeArray[s].mCollidable == true)
+                		{
+                        		var x2 = mServerShapeArray[i].mPositionX;              
+                     			var y2 = mServerShapeArray[i].mPositionY;              
+                
+                        		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                        		if (distSQ < 650)
+                        		{
+						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
+                        		}
+				}
+                	}       
+        	}
+	}
+
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
@@ -556,37 +561,41 @@ function resetGame()
 //check guess
 function evaluateCollision(mId1,mId2)
 {
-	if (mServerShapeArray[mId2].mIsQuestion)
+	if (mServerShapeArray[mId1] == mControlObject)
 	{
-        	if (mServerShapeArray[mId2].mAnswer == mAnswer)
-        	{
-                	mCount = mCount + mCountBy;  //add to count
-                	mScore++;
-			mServerShapeArray[mId2].mCollidable = false;
-			mClientDivArray[mId2].style.visibility = 'hidden';
+
+		if (mServerShapeArray[mId2].mIsQuestion)
+		{
+        		if (mServerShapeArray[mId2].mAnswer == mAnswer)
+        		{
+                		mCount = mCount + mCountBy;  //add to count
+                		mScore++;
+				mServerShapeArray[mId2].mCollidable = false;
+				mClientDivArray[mId2].style.visibility = 'hidden';
                 
-                	//feedback      
-                	document.getElementById("feedback").innerHTML="Correct!";
-        	}
-        	else
-        	{
-                	//feedback 
-                	document.getElementById("feedback").innerHTML="Wrong! Try again.";
+                		//feedback      
+                		document.getElementById("feedback").innerHTML="Correct!";
+        		}
+        		else
+        		{
+                		//feedback 
+                		document.getElementById("feedback").innerHTML="Wrong! Try again.";
         
-                	//this deletes and then recreates everthing.    
-                	resetGame();
-        	}
-    		newQuestion();
-        	newAnswer();
-        	printScore();
-	}
-	else
-	{
-		mServerShapeArray[mId1].mPositionX = mServerShapeArray[mId1].mOldPositionX;
-		mServerShapeArray[mId1].mPositionY = mServerShapeArray[mId1].mOldPositionY;
+                		//this deletes and then recreates everthing.    
+                		resetGame();
+        		}
+    			newQuestion();
+        		newAnswer();
+        		printScore();
+		}
+		else
+		{
+			mServerShapeArray[mId1].mPositionX = mServerShapeArray[mId1].mOldPositionX;
+			mServerShapeArray[mId1].mPositionY = mServerShapeArray[mId1].mOldPositionY;
 		
-		mServerShapeArray[mId2].mPositionX = mServerShapeArray[mId2].mOldPositionX;
-		mServerShapeArray[mId2].mPositionY = mServerShapeArray[mId2].mOldPositionY;
+			mServerShapeArray[mId2].mPositionX = mServerShapeArray[mId2].mOldPositionX;
+			mServerShapeArray[mId2].mPositionY = mServerShapeArray[mId2].mOldPositionY;
+		}
 	}
 }
 
