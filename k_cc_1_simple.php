@@ -101,8 +101,6 @@ var mIdCount = 0;
 
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
 {
-        //players
-
         //score
         mScoreNeeded = scoreNeeded;
 
@@ -118,7 +116,6 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength)
         mSpeed = 5;
 }
 
-
 function init()
 {
         //create game   
@@ -130,18 +127,14 @@ function init()
 	//this will be used for resetting to
 	resetGame();
 
-	//tick 
-	//window.setTimeout('update()',mTickLength);
-	setInterval(update,mTickLength);
 	//start update
-	//update();
+	setInterval(update,mTickLength);
 }
 
 function update()
 {	
 	if (mGameOn)
 	{	
-
 		//move players	
 		moveShapes();
 
@@ -167,7 +160,7 @@ function update()
 function createWorld()
 {
 	
-	fillRandomArrays();
+	fillSpawnPositionArrays();
 	createServerShapes();
 	
 	createLeftWall();
@@ -206,7 +199,7 @@ function setUniqueSpawnPosition()
 	}
 }
 
-function fillRandomArrays()
+function fillSpawnPositionArrays()
 {
 	for (i=-375; i <= 375; i = i + 50)
 	{ 	
@@ -414,8 +407,6 @@ function checkForCollisions()
                 }       
         }
 }
-
-
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
