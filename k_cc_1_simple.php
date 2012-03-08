@@ -159,7 +159,6 @@ function update()
 
 function createWorld()
 {
-	
 	fillSpawnPositionArrays();
 	createServerShapes();
 	
@@ -167,7 +166,6 @@ function createWorld()
 	createRightWall();
 	createTopWall();
 	createBottomWall();
-
 }
 
 function createServerShapes()
