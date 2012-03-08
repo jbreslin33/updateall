@@ -196,8 +196,7 @@ function createServerShapes()
 
 function setUniqueSpawnPosition()
 {
-
-	//numbers
+	//get random spawn element
 	proposedX = Math.floor(Math.random()*14);
 	proposedY = Math.floor(Math.random()*12);
 
@@ -223,17 +222,6 @@ function fillRandomArrays()
 	{ 	
 		mPositionYArray.push(i);	
 	}
-
-//	for (i = 0; i <= 14; i++)
-//	{
-//		mSlotPositionXArray.push(mPositionXArray[i]);
-//		for (b = 0; b <= 12; b++)
-//		{
-//			mSlotPositionYArray.push(mPositionYArray[i]);
-//		}
-//	}
-	//Math.floor(Math.random()*11)
-	//Math.floor(Math.random()*11)
 }
 
 function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
@@ -279,8 +267,6 @@ function createClientDiv(i)
 	div.style.position="absolute";
 	div.style.visibility = 'visible';
 	
-//	div.style.background-color="#e0ffff";
-
 	div.style.width= mServerShapeArray[i].mWidth;
 	div.style.height= mServerShapeArray[i].mHeight;
 	
