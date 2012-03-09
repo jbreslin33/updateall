@@ -146,11 +146,11 @@ function update()
 	if (mGameOn)
 	{	
 		//run ai		
-		if (mAiCounter > 10)
-		{	
+	//jj	if (mAiCounter > 10)
+	//	{	
 			ai();
 			mAiCounter = 0;
-		}
+	//	}
 		mAiCounter++;
 
 		//move players	
@@ -207,7 +207,6 @@ function ai()
 			}
 		} 
 	}
-	
 }
 
 function createWorld()
@@ -426,15 +425,17 @@ function moveShapes()
 
 function checkBounds()
 {
-	if (mControlObject.mPositionX < -400 ||	
-	    mControlObject.mPositionX > 400 ||
-	    mControlObject.mPositionY < -300 ||
-	    mControlObject.mPositionY > 300)
-	{
-		mControlObject.mPositionX = mControlObject.mPositionX;	
-		mControlObject.mPositionY = mControlObject.mPositionY;	
+	for (i = 0; i < mServerShapeArray.length; i++)
+	{	
+		if (mServerShapeArray[i].mPositionX < -400 ||	
+	    	mServerShapeArray[i].mPositionX > 400 ||
+	    	mServerShapeArray[i].mPositionY < -300 ||
+	    	mServerShapeArray[i].mPositionY > 300)
+		{
+			mServerShapeArray[i].mPositionX = mServerShapeArray[i].mPositionX;	
+			mServerShapeArray[i].mPositionY = mServerShapeArray[i].mPositionY;	
+		}
 	}
-	
 }
 
 function checkForCollisions()
