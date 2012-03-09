@@ -217,6 +217,10 @@ function createWorld()
 	createBottomWall();
 
 	createButton("buttonMoveLeft",moveLeft,".Left.",575,72);
+	createButton("buttonMoveRight",moveRight,"Right",575,237);
+	createButton("buttonMoveUp",moveUp,"..Up...",535,150);
+	createButton("buttonMoveDown",moveDown,"Down.",615,150);
+	createButton("buttonMoveStop",moveStop,".Stop.",575,152);
 }
 
 function createButton(id,clickFunction,ihtml,x,y)
