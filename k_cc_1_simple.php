@@ -215,6 +215,28 @@ function createWorld()
 	createRightWall();
 	createTopWall();
 	createBottomWall();
+
+	createButton("buttonMoveLeft",'moveLeftButton',".Left.","575px","72px");
+}
+
+function createButton(id,clickFunction,ihtml,x,y)
+{
+	var div = document.createElement('div');
+	div.setAttribute("class","demo");
+	document.body.appendChild(div);
+
+	var button = document.createElement('button');
+	button.setAttribute('id',id);
+	div.appendChild(button);
+	button.onclick=clickFunction;
+
+	$("button").button();
+	
+	button.innerHTML=ihtml;
+	button.style.position="absolute";
+	button.style.top=x;
+	button.style.left=y;
+	
 }
 
 function createServerShapes()
