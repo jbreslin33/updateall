@@ -143,6 +143,9 @@ function update()
 {	
 	if (mGameOn)
 	{	
+		//run ai		
+		ai();
+
 		//move players	
 		moveShapes();
 
@@ -163,7 +166,42 @@ function update()
       	} 
 }
 
-
+function ai()
+{
+	for (i = 0; i < mServerShapeArray.length; i++)
+	{
+		if (mServerShapeArray[i].mAnswer == "chaser")
+		{
+			var direction = Math.floor(Math.random()*4)	
+			if (direction == 0)
+			{
+				mServerShapeArray[i].mVelocityX = -1 * mSpeed;
+				mServerShapeArray[i].mVelocityY = 0;
+			}
+			if (direction == 1)
+			{
+				mServerShapeArray[i].mVelocityX = 1 * mSpeed;
+				mServerShapeArray[i].mVelocityY = 0;
+			}
+			if (direction == 2)
+			{
+				mServerShapeArray[i].mVelocityX = 0;
+				mServerShapeArray[i].mVelocityY = -1 * mSpeed;
+			}
+			if (direction == 3)
+			{
+				mServerShapeArray[i].mVelocityX = 0;
+				mServerShapeArray[i].mVelocityY = 1 * mSpeed;
+			}
+			if (direction == 4)
+			{
+				mServerShapeArray[i].mVelocityX = 0;
+				mServerShapeArray[i].mVelocityY = 0;
+			}
+		} 
+	}
+	
+}
 
 function createWorld()
 {
