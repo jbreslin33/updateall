@@ -146,11 +146,11 @@ function update()
 	if (mGameOn)
 	{	
 		//run ai		
-	//jj	if (mAiCounter > 10)
-	//	{	
+		if (mAiCounter > 10)
+		{	
 			ai();
 			mAiCounter = 0;
-	//	}
+		}
 		mAiCounter++;
 
 		//move players	
@@ -158,9 +158,6 @@ function update()
 
 		//door entered?
 		checkForDoorEntered();
-
-		//check bounds
-        	checkBounds();     
 
 		//check collisions
         	checkForCollisions();
@@ -177,7 +174,7 @@ function ai()
 {
 	for (i = 0; i < mServerShapeArray.length; i++)
 	{
-		if (mServerShapeArray[i].mAnswer == "chaser")
+		if (mServerShapeArray[i].mAI == true)
 		{
 			var direction = Math.floor(Math.random()*4)	
 			if (direction == 0)
@@ -223,18 +220,18 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true,false);
 	
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true);
+		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,false);
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"chaser",true);
+		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true);
 	}
 }
 
@@ -268,7 +265,7 @@ function fillSpawnPositionArrays()
 	}
 }
 
-function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable)
+function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,ai)
 {
 	var shape = new Object();
 	shape.mSrc = src;
@@ -287,7 +284,7 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mCollidable = collidable;
 	shape.mIsQuestion = isQuestion;
 	shape.mAnswer = answer;
-	 
+	shape.mAI = ai;	 
 	if (isControlObject)
 	{
 		mControlObject = shape;
@@ -373,7 +370,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,"",false);
+		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,false);
 	}
 }
 
@@ -383,11 +380,11 @@ function createRightWall()
 	{
 		if (i == 25 || i == -25)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,"",false);
+			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,false);
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,"",false);
+			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,false);
 		}
 	}
 }
@@ -396,7 +393,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,"",false);
+		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,false);
 	}
 }
 
@@ -404,14 +401,14 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,"",false);
+		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,false);
 	}
 }
 
 function moveShapes()
 {
         //move numbers
-        for (i=0; i<mServerShapeArray.length; i++)
+        for (i = 0; i < mServerShapeArray.length; i++)
         {
 		//record old position to use for collisions or whatever you fancy	
 		mServerShapeArray[i].mOldPositionX = mServerShapeArray[i].mPositionX;
@@ -423,30 +420,15 @@ function moveShapes()
         }
 }
 
-function checkBounds()
-{
-	for (i = 0; i < mServerShapeArray.length; i++)
-	{	
-		if (mServerShapeArray[i].mPositionX < -400 ||	
-	    	mServerShapeArray[i].mPositionX > 400 ||
-	    	mServerShapeArray[i].mPositionY < -300 ||
-	    	mServerShapeArray[i].mPositionY > 300)
-		{
-			mServerShapeArray[i].mPositionX = mServerShapeArray[i].mPositionX;	
-			mServerShapeArray[i].mPositionY = mServerShapeArray[i].mPositionY;	
-		}
-	}
-}
-
 function checkForCollisions()
 {
 
-	for (s=0; s < mServerShapeArray.length; s++)
+	for (s = 0; s < mServerShapeArray.length; s++)
 	{
 	       	var x1 = mServerShapeArray[s].mPositionX;
 	       	var y1 = mServerShapeArray[s].mPositionY;
  
-		for (i=0; i<mServerShapeArray.length; i++)
+		for (i = 0; i<mServerShapeArray.length; i++)
        		{
 			if (mServerShapeArray[i] == mServerShapeArray[s])
 			{
@@ -642,6 +624,14 @@ function evaluateCollision(mId1,mId2)
 			mServerShapeArray[mId2].mPositionX = mServerShapeArray[mId2].mOldPositionX;
 			mServerShapeArray[mId2].mPositionY = mServerShapeArray[mId2].mOldPositionY;
 		}
+	}
+	else
+	{
+		mServerShapeArray[mId1].mPositionX = mServerShapeArray[mId1].mOldPositionX;
+		mServerShapeArray[mId1].mPositionY = mServerShapeArray[mId1].mOldPositionY;
+		
+		mServerShapeArray[mId2].mPositionX = mServerShapeArray[mId2].mOldPositionX;
+		mServerShapeArray[mId2].mPositionY = mServerShapeArray[mId2].mOldPositionY;
 	}
 }
 
