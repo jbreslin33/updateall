@@ -216,11 +216,11 @@ function createWorld()
 	createTopWall();
 	createBottomWall();
 
-	createButton("buttonMoveLeft",moveLeft,".Left.",575,72);
-	createButton("buttonMoveRight",moveRight,"Right",575,237);
-	createButton("buttonMoveUp",moveUp,"..Up...",535,150);
-	createButton("buttonMoveDown",moveDown,"Down.",615,150);
-	createButton("buttonMoveStop",moveStop,".Stop.",575,152);
+	createButton("buttonMoveLeft",moveLeft,".Left.",-75,0);
+	createButton("buttonMoveRight",moveRight,"Right",87,0);
+	createButton("buttonMoveUp",moveUp,"..Up...",0,-40);
+	createButton("buttonMoveDown",moveDown,"Down.",0,40);
+	createButton("buttonMoveStop",moveStop,".Stop.",2,0);
 }
 
 function createButton(id,clickFunction,ihtml,x,y)
@@ -238,26 +238,26 @@ function createButton(id,clickFunction,ihtml,x,y)
 	
 	button.innerHTML=ihtml;
 	button.style.position="absolute";
-	button.style.top=x+'px';
-	button.style.left=y+'px';
+	button.style.left=x+'px';
+	button.style.top=y+'px';
 	
 }
 
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true,false);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false);
 	
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,false);
+		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false);
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true);
+		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true);
 	}
 }
 
@@ -291,7 +291,7 @@ function fillSpawnPositionArrays()
 	}
 }
 
-function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,ai)
+function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai)
 {
 	var shape = new Object();
 	shape.mSrc = src;
@@ -308,6 +308,7 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mVelocityX = 0;
 	shape.mVelocityY = 0;
 	shape.mCollidable = collidable;
+	shape.mCollisionOn = collisionOn;
 	shape.mIsQuestion = isQuestion;
 	shape.mAnswer = answer;
 	shape.mAI = ai;	 
@@ -396,7 +397,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,false);
+		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false);
 	}
 }
 
@@ -406,11 +407,11 @@ function createRightWall()
 	{
 		if (i == 25 || i == -25)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,false);
+			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false);
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,false);
+			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false);
 		}
 	}
 }
@@ -419,7 +420,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,false);
+		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false);
 	}
 }
 
@@ -427,7 +428,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,false);
+		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false);
 	}
 }
 
@@ -462,7 +463,7 @@ function checkForCollisions()
 			}
 			else
 			{
-				if (mServerShapeArray[i].mCollidable == true && mServerShapeArray[s].mCollidable == true)
+				if (mServerShapeArray[i].mCollisionOn == true && mServerShapeArray[s].mCollisionOn == true)
                 		{
                         		var x2 = mServerShapeArray[i].mPositionX;              
                      			var y2 = mServerShapeArray[i].mPositionY;              
@@ -526,7 +527,7 @@ function render()
 			}
 			else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
 			{
-				if (mServerShapeArray[i].mCollidable || 
+				if (mServerShapeArray[i].mCollisionOn || 
 				    mServerShapeArray[i].mIsQuestion == 'false')
 				{	
                 			mClientDivArray[i].style.left = posX+'px';
@@ -592,8 +593,11 @@ function resetGame()
  //set collidable to true 
         for (i=0; i<mServerShapeArray.length; i++)
         {
-                mServerShapeArray[i].mCollidable = true;
-                mClientDivArray[i].style.visibility = 'visible';
+               	if (mServerShapeArray[i].mCollidable == true)
+		{ 
+			mServerShapeArray[i].mCollisionOn = true;
+                	mClientDivArray[i].style.visibility = 'visible';
+		}
         }
 	mControlObject.mPositionX = 0;     
 	mControlObject.mPositionY = 0;     
@@ -624,7 +628,7 @@ function evaluateCollision(mId1,mId2)
         		{
                 		mCount = mCount + mCountBy;  //add to count
                 		mScore++;
-				mServerShapeArray[mId2].mCollidable = false;
+				mServerShapeArray[mId2].mCollisionOn = false;
 				mClientDivArray[mId2].style.visibility = 'hidden';
                 
                 		//feedback      
