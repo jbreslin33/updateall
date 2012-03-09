@@ -216,7 +216,7 @@ function createWorld()
 	createTopWall();
 	createBottomWall();
 
-	createButton("buttonMoveLeft",moveLeft,".Left.","575px","72px");
+	createButton("buttonMoveLeft",moveLeft,".Left.",575,72);
 }
 
 function createButton(id,clickFunction,ihtml,x,y)
@@ -234,8 +234,8 @@ function createButton(id,clickFunction,ihtml,x,y)
 	
 	button.innerHTML=ihtml;
 	button.style.position="absolute";
-	button.style.top=x;
-	button.style.left=y;
+	button.style.top=x+'px';
+	button.style.left=y+'px';
 	
 }
 
