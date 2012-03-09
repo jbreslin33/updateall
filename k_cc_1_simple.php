@@ -104,6 +104,8 @@ var mIdCount = 0;
 //chasers
 var mNumberOfChasers = 0;
 
+var mAiCounter = 0;
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed)
 {
         //score
@@ -144,7 +146,12 @@ function update()
 	if (mGameOn)
 	{	
 		//run ai		
-		ai();
+		if (mAiCounter > 10)
+		{	
+			ai();
+			mAiCounter = 0;
+		}
+		mAiCounter++;
 
 		//move players	
 		moveShapes();
@@ -184,7 +191,7 @@ function ai()
 				mServerShapeArray[i].mVelocityY = 0;
 			}
 			if (direction == 2)
-			{
+			{	
 				mServerShapeArray[i].mVelocityX = 0;
 				mServerShapeArray[i].mVelocityY = -1 * mSpeed;
 			}
