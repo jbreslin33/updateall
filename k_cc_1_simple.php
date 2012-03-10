@@ -358,9 +358,16 @@ function createClientDiv(i)
 	{
 		createClientImage(i);
 	}
-	else //create paragraph
+	else if (mServerShapeArray[i].mSrc == "")//create paragraph
 	{
-		createClientParagraph(i);
+		if (mServerShapeArray[i].mGui)
+		{		
+			createClientButton(i);
+		}
+		else
+		{
+			createClientParagraph(i);
+		}
 	}
 	//back to div	
 	div.appendChild(mClientShapeArray[i]);
@@ -392,7 +399,7 @@ function createClientParagraph(i)
 function createClientButton(i)
 {
 	var button = document.createElement("button");
-	button.innerHTML = mServerShapeArray[i].mAnswer;
+	button.innerHTML = "hello";
 
 	mClientShapeArray.push(button);
 }
