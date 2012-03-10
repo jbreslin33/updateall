@@ -216,11 +216,11 @@ function createWorld()
 	createTopWall();
 	createBottomWall();
 
-	createButton("buttonMoveLeft",moveLeft,".Left.",-75,0);
-	createButton("buttonMoveRight",moveRight,"Right",87,0);
-	createButton("buttonMoveUp",moveUp,"..Up...",0,-40);
-	createButton("buttonMoveDown",moveDown,"Down.",0,40);
-	createButton("buttonMoveStop",moveStop,".Stop.",2,0);
+	//createButton("buttonMoveLeft",moveLeft,".Left.",-75,0);
+	//createButton("buttonMoveRight",moveRight,"Right",87,0);
+	//createButton("buttonMoveUp",moveUp,"..Up...",0,-40);
+	//createButton("buttonMoveDown",moveDown,"Down.",0,40);
+	//createButton("buttonMoveStop",moveStop,".Stop.",2,0);
 }
 
 function createButton(id,clickFunction,ihtml,x,y)
@@ -246,19 +246,21 @@ function createButton(id,clickFunction,ihtml,x,y)
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false,false);
 	
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false);
+		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false);
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true);
+		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false);
 	}
+	
+	createServerShape("",50,50,100,100,false,false,"",false,false,false,true);
 }
 
 function setUniqueSpawnPosition()
@@ -291,7 +293,7 @@ function fillSpawnPositionArrays()
 	}
 }
 
-function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai)
+function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui)
 {
 	var shape = new Object();
 	shape.mSrc = src;
@@ -311,7 +313,9 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mCollisionOn = collisionOn;
 	shape.mIsQuestion = isQuestion;
 	shape.mAnswer = answer;
-	shape.mAI = ai;	 
+	shape.mAI = ai;	
+	shape.mGui = gui;
+ 
 	if (isControlObject)
 	{
 		mControlObject = shape;
@@ -397,7 +401,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false);
+		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false,false);
 	}
 }
 
@@ -407,11 +411,11 @@ function createRightWall()
 	{
 		if (i == 25 || i == -25)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false);
+			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false,false);
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false);
+			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false,false);
 		}
 	}
 }
@@ -420,7 +424,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false);
+		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false,false);
 	}
 }
 
@@ -428,7 +432,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false);
+		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false,false);
 	}
 }
 
@@ -493,19 +497,32 @@ function render()
        		//get the center xy of the image
        		var imageCenterX = mServerShapeArray[i].mWidth / 2;     
        		var imageCenterY = mServerShapeArray[i].mHeight / 2;     
-       		//var imageCenterY = $("#image" + i).height() / 2;     
 
 		//if control object center it on screen
-		if (mServerShapeArray[i] == mControlObject)
+		if (mServerShapeArray[i] == mControlObject || mServerShapeArray[i].mGui == true)
 		{
 			//shift the position based on pageCenterXY and imageCenterXY	
         		var posX = pageCenterX - imageCenterX;     
         		var posY = pageCenterY - imageCenterY;     
 			
-			//this actual moves it  
-        		mClientDivArray[i].style.left = posX+'px';
-        		mClientDivArray[i].style.top  = posY+'px';
+			if (mServerShapeArray[i] == mControlObject)
+			{
+				//this actual moves it  
+        			mClientDivArray[i].style.left = posX+'px';
+        			mClientDivArray[i].style.top  = posY+'px';
+			}
+			else if (mServerShapeArray[i].mGui == true)
+			{
+				//this actual moves it 
+				posX = posX + mServerShapeArray[i].mPositionX; 
+				posY = posY + mServerShapeArray[i].mPositionY;
+ 
+        			mClientDivArray[i].style.left = posX+'px';
+        			mClientDivArray[i].style.top  = posY+'px';
+			}
 		} 
+
+		
 		//else if anything else render relative to the control object	
 		else
 		{
