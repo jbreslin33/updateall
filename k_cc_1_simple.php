@@ -223,44 +223,24 @@ function createWorld()
 	//createButton("buttonMoveStop",moveStop,".Stop.",2,0);
 }
 
-function createButton(id,clickFunction,ihtml,x,y)
-{
-	var div = document.createElement('div');
-	div.setAttribute("class","demo");
-	document.body.appendChild(div);
-
-	var button = document.createElement('button');
-	button.setAttribute('id',id);
-	div.appendChild(button);
-	button.onclick=clickFunction;
-
-	$("button").button();
-	
-	button.innerHTML=ihtml;
-	button.style.position="absolute";
-	button.style.left=x+'px';
-	button.style.top=y+'px';
-	
-}
-
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false,false);
+	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false,false,"","yellow","");
 	
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false);
+		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false);
+		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","yellow","");
 	}
 	
-	createServerShape("",50,50,100,100,false,false,"",false,false,false,true);
+	createServerShape("",50,50,100,100,false,false,"",false,false,false,true,".LEFT.","",moveLeft);
 }
 
 function setUniqueSpawnPosition()
@@ -293,7 +273,7 @@ function fillSpawnPositionArrays()
 	}
 }
 
-function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui)
+function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 {
 	var shape = new Object();
 	shape.mSrc = src;
@@ -315,8 +295,10 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mAnswer = answer;
 	shape.mAI = ai;	
 	shape.mGui = gui;
- 
-	if (isControlObject)
+	shape.mInnerHTML = innerHTML; 
+	shape.mBackgroundColor = backgroundColor;
+	shape.mOnClick = onClick;
+ 	if (isControlObject)
 	{
 		mControlObject = shape;
 	}
@@ -348,7 +330,7 @@ function createClientDiv(i)
 
         document.body.appendChild(div);
 	
-	div.style.backgroundColor = "yellow";
+	div.style.backgroundColor = mServerShapeArray[i].mBackgroundColor;
 	
 	//add div to array
 	mClientDivArray.push(div);
@@ -396,11 +378,32 @@ function createClientParagraph(i)
 	mClientShapeArray.push(paragraph);
 }
 
+function createButtonFoo(id,clickFunction,ihtml,x,y)
+{
+	var div = document.createElement('div');
+	div.setAttribute("class","demo");
+	document.body.appendChild(div);
+
+	var button = document.createElement('button');
+	button.setAttribute('id',id);
+	div.appendChild(button);
+	button.onclick=clickFunction;
+
+	$("button").button();
+	
+	button.innerHTML=ihtml;
+	button.style.position="absolute";
+	button.style.left=x+'px';
+	button.style.top=y+'px';
+}	
 function createClientButton(i)
 {
 	var button = document.createElement("button");
-	button.innerHTML = "hello";
-
+	button.id = 'button' + i;
+	button.style.width=mServerShapeArray[i].mWidth+'px';
+	button.style.width=mServerShapeArray[i].mHeight+'px';
+	button.innerHTML = mServerShapeArray[i].mInnerHTML;
+	button.onclick = mServerShapeArray[i].mOnClick;
 	mClientShapeArray.push(button);
 }
 
@@ -408,7 +411,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + 50)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false,false);
+		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
@@ -418,11 +421,11 @@ function createRightWall()
 	{
 		if (i == 25 || i == -25)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false,false);
+			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false,false,"","yellow","");
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false,false);
+			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false,false,"","yellow","");
 		}
 	}
 }
@@ -431,7 +434,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false,false);
+		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
@@ -439,7 +442,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + 50)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false,false);
+		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
