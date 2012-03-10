@@ -215,12 +215,6 @@ function createWorld()
 	createRightWall();
 	createTopWall();
 	createBottomWall();
-
-	//createButton("buttonMoveLeft",moveLeft,".Left.",-75,0);
-	//createButton("buttonMoveRight",moveRight,"Right",87,0);
-	//createButton("buttonMoveUp",moveUp,"..Up...",0,-40);
-	//createButton("buttonMoveDown",moveDown,"Down.",0,40);
-	//createButton("buttonMoveStop",moveStop,".Stop.",2,0);
 }
 
 function createServerShapes()
@@ -378,24 +372,6 @@ function createClientParagraph(i)
 	mClientShapeArray.push(paragraph);
 }
 
-function createButtonFoo(id,clickFunction,ihtml,x,y)
-{
-	var div = document.createElement('div');
-	div.setAttribute("class","demo");
-	document.body.appendChild(div);
-
-	var button = document.createElement('button');
-	button.setAttribute('id',id);
-	div.appendChild(button);
-	button.onclick=clickFunction;
-
-	$("button").button();
-	
-	button.innerHTML=ihtml;
-	button.style.position="absolute";
-	button.style.left=x+'px';
-	button.style.top=y+'px';
-}	
 function createClientButton(i)
 {
 	var button = document.createElement("button");
