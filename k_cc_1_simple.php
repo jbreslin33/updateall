@@ -105,6 +105,7 @@ var mIdCount = 0;
 var mNumberOfChasers = 0;
 
 var mAiCounter = 0;
+var mAiCounterDelay = 10;
 
 //dimensions
 var mDefaultSpriteSize = 50;
@@ -154,7 +155,7 @@ function update()
 	if (mGameOn)
 	{	
 		//run ai		
-		if (mAiCounter > 10)
+		if (mAiCounter > mAiCounterDelay)
 		{	
 			ai();
 			mAiCounter = 0;
