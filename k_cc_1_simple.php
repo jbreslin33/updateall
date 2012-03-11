@@ -239,7 +239,7 @@ function createServerShapes()
 	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
 	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
 	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
-	//createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
+	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -552,6 +552,11 @@ function render()
 					tempy = $(this).height() - tempy;
 					mServerShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
 					
+				}
+				if (mServerShapeArray[i].mInnerHTML == "STOP")
+				{
+					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
 
 				
