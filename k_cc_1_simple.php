@@ -380,6 +380,7 @@ function createClientButton(i)
 	button.style.width=mServerShapeArray[i].mHeight+'px';
 	button.innerHTML = mServerShapeArray[i].mInnerHTML;
 	button.onclick = mServerShapeArray[i].mOnClick;
+	button.style.backgroundColor = 'transparent';
 	mClientShapeArray.push(button);
 }
 
