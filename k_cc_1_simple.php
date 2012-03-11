@@ -489,15 +489,15 @@ function render()
         	var pageCenterY = $(this).height() / 2;
       
        		//get the center xy of the image
-       		var imageCenterX = mServerShapeArray[i].mWidth / 2;     
-       		var imageCenterY = mServerShapeArray[i].mHeight / 2;     
+       		var shapeCenterX = mServerShapeArray[i].mWidth / 2;     
+       		var shapeCenterY = mServerShapeArray[i].mHeight / 2;     
 
 		//if control object center it on screen
 		if (mServerShapeArray[i] == mControlObject || mServerShapeArray[i].mGui == true)
 		{
-			//shift the position based on pageCenterXY and imageCenterXY	
-        		var posX = pageCenterX - imageCenterX;     
-        		var posY = pageCenterY - imageCenterY;     
+			//shift the position based on pageCenterXY and shapeCenterXY	
+        		var posX = pageCenterX - shapeCenterX;     
+        		var posY = pageCenterY - shapeCenterY;     
 			
 			if (mServerShapeArray[i] == mControlObject)
 			{
@@ -507,12 +507,27 @@ function render()
 			}
 			else if (mServerShapeArray[i].mGui == true)
 			{
+				
+				//we also need to resize gui based on size...
+        			//button.style.width=mServerShapeArray[i].mWidth+'px'; 
+        			//button.style.height=mServerShapeArray[i].mHeight+'px'; 
+				
+				//get the new size....
+        			mServerShapeArray[i].mWidth = $(this).width() / 3;
+        			mServerShapeArray[i].mHeight = $(this).height() / 3;
+				
+				mClientShapeArray[i].style.width=mServerShapeArray[i].mWidth+'px'; 
+        			mClientShapeArray[i].style.height=mServerShapeArray[i].mHeight+'px'; 
+					
+
+
 				//this actual moves it 
 				posX = posX + mServerShapeArray[i].mPositionX; 
 				posY = posY + mServerShapeArray[i].mPositionY;
  
         			mClientDivArray[i].style.left = posX+'px';
         			mClientDivArray[i].style.top  = posY+'px';
+				
 			}
 		} 
 
@@ -525,8 +540,8 @@ function render()
                 	var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
 
                 	//center image relative to position
-                	var posX = xdiff + pageCenterX - imageCenterX;
-                	var posY = ydiff + pageCenterY - imageCenterY;    
+                	var posX = xdiff + pageCenterX - shapeCenterX;
+                	var posY = ydiff + pageCenterY - shapeCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
                         if (posX + mServerShapeArray[i].mWidth  + 3 > $(this).width() ||
