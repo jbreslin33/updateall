@@ -106,6 +106,14 @@ var mNumberOfChasers = 0;
 
 var mAiCounter = 0;
 
+//dimensions
+var mDefaultSpriteSize = 50;
+var mLeftBounds = -400;
+var mRightBounds = 400;
+var mTopBounds = -300;
+var mBottomBounds = 300;
+
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed)
 {
         //score
@@ -220,18 +228,18 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',50,50,0,0,true,false,"",true,true,false,false,"","yellow","");
+	createServerShape('smiley.png',mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","yellow","");
 	
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","yellow","");
+		createServerShape('redball.gif',mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","yellow","");
 	}
 
 	//control buttons	
@@ -261,12 +269,12 @@ function setUniqueSpawnPosition()
 
 function fillSpawnPositionArrays()
 {
-	for (i=-375; i <= 375; i = i + 50)
+	for (i=mLeftBounds + mDefaultSpriteSize / 2; i <= mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
 	{ 	
 		mPositionXArray.push(i);	
 	}
 	
-	for (i=-275; i <= 275; i = i + 50)
+	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{ 	
 		mPositionYArray.push(i);	
 	}
@@ -393,40 +401,43 @@ function createClientButton(i)
 
 function createLeftWall()
 {
-        for (i=-275; i <= 275; i = i + 50)
+        for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',1,50,-400,i,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('black_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
 function createRightWall()
 {
-        for (i=-275; i <= 275; i = i + 50)
+       	var greenDoorCount = 0; 
+	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		if (i == 25 || i == -25)
+		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape('green_wall.png',1,50,400,i,false,false,"",true,true,false,false,"","yellow","");
+			createServerShape('green_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,50,400,i,false,false,"",true,true,false,false,"","yellow","");
+			createServerShape('black_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
 		}
+		greenDoorCount++;
 	}
+	
 }
 
 function createTopWall()
 {
-        for (i=-375; i <= 375; i = i + 50)
+        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',50,1,i,-300,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('black_wall.png',mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
 function createBottomWall()
 {
-        for (i=-375; i <= 375; i = i + 50)
+        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',50,1,i,300,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('black_wall.png',mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
@@ -639,9 +650,9 @@ function checkForDoorEntered()
         //if (mDoorEntered)
         if (mScore == mScoreNeeded)
         {
-		if (mControlObject.mPositionX > 375 &&
-		    mControlObject.mPositionY > -25 &&
-		    mControlObject.mPositionY < 25) 
+		if (mControlObject.mPositionX > mRightBounds - mDefaultSpriteSize / 2 &&
+		    mControlObject.mPositionY > mTopBounds &&
+		    mControlObject.mPositionY < mTopBounds + mDefaultSpriteSize * 2) 
 		    	
 		{
 			mGameOn = false;
