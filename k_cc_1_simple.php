@@ -274,7 +274,7 @@ function fillSpawnPositionArrays()
 		mPositionXArray.push(i);	
 	}
 	
-	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
+	for (i=mTopBounds + mDefaultSpriteSize / 2; i <= mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
 	{ 	
 		mPositionYArray.push(i);	
 	}
