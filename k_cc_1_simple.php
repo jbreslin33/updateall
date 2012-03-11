@@ -237,8 +237,8 @@ function createServerShapes()
 	//control buttons	
 	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"LEFT","",moveLeft);
 	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
-	//createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
-	//createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
+	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
+	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
 	//createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
 }
 
@@ -515,6 +515,11 @@ function render()
 				//get the new size....
         			mServerShapeArray[i].mWidth = $(this).width() / 3;
         			mServerShapeArray[i].mHeight = $(this).height() / 3;
+
+				if (mServerShapeArray[i].mInnerHTML == "DOWN")
+				{
+					mServerShapeArray[i].mHeight = mServerShapeArray[i].mHeight - 13;
+				}
 				
 				mClientShapeArray[i].style.width=mServerShapeArray[i].mWidth+'px'; 
         			mClientShapeArray[i].style.height=mServerShapeArray[i].mHeight+'px'; 
@@ -523,7 +528,7 @@ function render()
 				//now get the position
 				if (mServerShapeArray[i].mInnerHTML == "LEFT")
 				{
-					mServerShapeArray[i].mPositionX = $(this).width() / 6 - shapeCenterX; 
+					mServerShapeArray[i].mPositionX = 0; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
 				if (mServerShapeArray[i].mInnerHTML == "RIGHT")
@@ -534,6 +539,22 @@ function render()
 					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
+				if (mServerShapeArray[i].mInnerHTML == "UP")
+				{
+					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = 0; 
+				}
+				if (mServerShapeArray[i].mInnerHTML == "DOWN")
+				{
+					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
+					
+					var tempy = $(this).height() / 6;
+					tempy = $(this).height() - tempy;
+					mServerShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
+					
+				}
+
+				
 
 				//this actual moves it 
 		//		posX = posX + mServerShapeArray[i].mPositionX; 
