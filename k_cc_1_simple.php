@@ -236,10 +236,10 @@ function createServerShapes()
 
 	//control buttons	
 	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"LEFT","",moveLeft);
-	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
-	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
-	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
-	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
+	//createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
+	//createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
+	//createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
+	//createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -520,13 +520,19 @@ function render()
         			mClientShapeArray[i].style.height=mServerShapeArray[i].mHeight+'px'; 
 					
 
+				//now get the position
+				if (mServerShapeArray[i].mInnerHTML == "LEFT")
+				{
+					mServerShapeArray[i].mPositionX = $(this).width() / 6 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
+				}
 
 				//this actual moves it 
-				posX = posX + mServerShapeArray[i].mPositionX; 
-				posY = posY + mServerShapeArray[i].mPositionY;
+		//		posX = posX + mServerShapeArray[i].mPositionX; 
+		//		posY = posY + mServerShapeArray[i].mPositionY;
  
-        			mClientDivArray[i].style.left = posX+'px';
-        			mClientDivArray[i].style.top  = posY+'px';
+        			mClientDivArray[i].style.left = mServerShapeArray[i].mPositionX+'px';
+        			mClientDivArray[i].style.top  = mServerShapeArray[i].mPositionY+'px';
 				
 			}
 		} 
