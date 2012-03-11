@@ -236,7 +236,7 @@ function createServerShapes()
 
 	//control buttons	
 	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"LEFT","",moveLeft);
-	//createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
+	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
 	//createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
 	//createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
 	//createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
@@ -524,6 +524,14 @@ function render()
 				if (mServerShapeArray[i].mInnerHTML == "LEFT")
 				{
 					mServerShapeArray[i].mPositionX = $(this).width() / 6 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
+				}
+				if (mServerShapeArray[i].mInnerHTML == "RIGHT")
+				{
+					var tempx = $(this).width() / 6;
+					tempx = $(this).width() - tempx;
+					
+					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
 
