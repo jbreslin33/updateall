@@ -233,8 +233,13 @@ function createServerShapes()
 		setUniqueSpawnPosition();
 		createServerShape('redball.gif',50,50,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","yellow","");
 	}
-	
-	createServerShape("",50,50,100,100,false,false,"",false,false,false,true,".LEFT.","",moveLeft);
+
+	//control buttons	
+	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"LEFT","",moveLeft);
+	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
+	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
+	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
+	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -381,6 +386,8 @@ function createClientButton(i)
 	button.innerHTML = mServerShapeArray[i].mInnerHTML;
 	button.onclick = mServerShapeArray[i].mOnClick;
 	button.style.backgroundColor = 'transparent';
+        button.style.width=mServerShapeArray[i].mWidth+'px'; 
+        button.style.height=mServerShapeArray[i].mHeight+'px'; 
 	mClientShapeArray.push(button);
 }
 
