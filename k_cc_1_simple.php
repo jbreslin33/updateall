@@ -395,6 +395,7 @@ function createClientButton(i)
 	button.innerHTML = mServerShapeArray[i].mInnerHTML;
 	button.onclick = mServerShapeArray[i].mOnClick;
 	button.style.backgroundColor = 'transparent';
+	button.style.border = 'thin none #FFFFFF';
         button.style.width=mServerShapeArray[i].mWidth+'px'; 
         button.style.height=mServerShapeArray[i].mHeight+'px'; 
 	mClientShapeArray.push(button);
@@ -404,7 +405,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('red_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
@@ -419,7 +420,7 @@ function createRightWall()
 		}	
 		else
 		{	
-			createServerShape('black_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
+			createServerShape('red_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
 		}
 		greenDoorCount++;
 	}
@@ -430,7 +431,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('red_wall.png',mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
@@ -438,7 +439,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('black_wall.png',mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape('red_wall.png',mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
