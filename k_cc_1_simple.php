@@ -244,11 +244,11 @@ function createServerShapes()
 	}
 
 	//control buttons	
-	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"LEFT","",moveLeft);
-	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"RIGHT","",moveRight);
-	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"UP","",moveUp);
-	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"DOWN","",moveDown);
-	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"STOP","",moveStop);
+	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -539,12 +539,12 @@ function render()
 					
 
 				//now get the position
-				if (mServerShapeArray[i].mInnerHTML == "LEFT")
+				if (mServerShapeArray[i].mOnClick == moveLeft)
 				{
 					mServerShapeArray[i].mPositionX = 0; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
-				if (mServerShapeArray[i].mInnerHTML == "RIGHT")
+				if (mServerShapeArray[i].mOnClick == moveRight)
 				{
 					var tempx = $(this).width() / 6;
 					tempx = $(this).width() - tempx;
@@ -552,12 +552,12 @@ function render()
 					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
 				}
-				if (mServerShapeArray[i].mInnerHTML == "UP")
+				if (mServerShapeArray[i].mOnClick == moveUp)
 				{
 					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = 0; 
 				}
-				if (mServerShapeArray[i].mInnerHTML == "DOWN")
+				if (mServerShapeArray[i].mOnClick == moveDown)
 				{
 					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
 					
@@ -566,7 +566,7 @@ function render()
 					mServerShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
 					
 				}
-				if (mServerShapeArray[i].mInnerHTML == "STOP")
+				if (mServerShapeArray[i].mOnClick == moveStop)
 				{
 					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
