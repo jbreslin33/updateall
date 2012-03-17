@@ -163,7 +163,6 @@ function update()
 {	
 	while (mGameOn)
 	{	
-
 		while (mDate.getTime() > mNextGameTick &&
 			mLoops < mMaxFrameSkip)
 		{
