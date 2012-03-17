@@ -100,6 +100,9 @@ var mDate;
 var mLoops = 0;
 var mInterpolation = 0;
 var mTimeSinceEpoch = 0;
+var mFrameCount = 0;
+var mRenderCount = 0;
+
 //questions
 var mQuestion = 0;
 var mAnswer = 0;
@@ -156,27 +159,32 @@ function init()
 
 	//start update
 //	setInterv/al(update,mSkipTicks);
-	var interval = self.setInterval("update()",1000);
+	var interval = self.setInterval("update()",16);
 	//update();	
-
+	
 }
 
 function update()
 {	
 	if (mGameOn)
 	{	
-
+		mTimeSinceEpoch = new Date().getTime();	
+		if (mTimeSinceEpoch > mNextGameTick)
+		{
 		//while (new Date().getTime() > mNextGameTick &&
 		//	mLoops < mMaxFrameSkip)
 		//{
-			updateGame();	
 			mNextGameTick += mSkipTicks;
-			mLoops++;
-		//}
+			updateGame();	
+			mFrameCount++;
+        		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
+		}
 		mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
 		(mSkipTicks - mNextGameTick);
 		
+		mRenderCount++;	
 		render(mInterpolation);	
+        	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
       	} 
 }
 
@@ -870,6 +878,12 @@ $(document).ready(function()
 
 <!-- create scoreNeeded -->
 <p id="scoreNeeded"></p>
+
+<!-- create frameCount -->
+<p id="frameCount">frameCount: </p>
+
+<!-- create renderCount-->
+<p id="renderCount">renderCount: </p>
 
 </body>
 </html>
