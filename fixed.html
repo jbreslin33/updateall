@@ -3,9 +3,8 @@
   <head>
     <title>setInterval Example</title>
     <link rel="stylesheet" href="style.css" type="text/css"charset="utf-8" />
-    <script type="text/javascript" charset="utf-8" src="scripts/stats.js"></script>
-    <script type="text/javascript" charset="utf-8" src="scripts/rect.js"></script>
-    <script type="text/javascript" charset="utf-8" src="scripts/game.js"></script>
+    <script type="text/javascript" charset="utf-8" src="rect.js"></script>
+    <script type="text/javascript" charset="utf-8" src="game.js"></script>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -23,11 +22,6 @@
     <canvas id="viewport" height="480" width="640"></canvas>
 
     <script type="text/javascript" charset="utf-8">
-      var renderStats = new Stats();
-      document.body.appendChild(renderStats.domElement);
-
-      var updateStats = new Stats();
-      document.body.appendChild(updateStats.domElement);
 
       Game.initialize();
 
@@ -44,13 +38,11 @@
           loops = 0;
 
           while ((new Date).getTime() > nextGameTick) {
-            updateStats.update();
             Game.update();
             nextGameTick += skipTicks;
             loops++;
           }
 
-          renderStats.update();
           Game.draw();
         };
       })();

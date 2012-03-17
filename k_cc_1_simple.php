@@ -99,7 +99,7 @@ var mNextGameTick = 0;
 var mDate;
 var mLoops = 0;
 var mInterpolation = 0;
-
+var mTimeSinceEpoch = 0;
 //questions
 var mQuestion = 0;
 var mAnswer = 0;
@@ -155,22 +155,24 @@ function init()
 	resetGame();
 
 	//start update
-	//setInterval(update,mTickLength);
-	update();	
+//	setInterv/al(update,mSkipTicks);
+	var interval = self.setInterval("update()",1000);
+	//update();	
+
 }
 
 function update()
 {	
-	while (mGameOn)
+	if (mGameOn)
 	{	
 
-		while (mDate.getTime() > mNextGameTick &&
-			mLoops < mMaxFrameSkip)
-		{
+		//while (new Date().getTime() > mNextGameTick &&
+		//	mLoops < mMaxFrameSkip)
+		//{
 			updateGame();	
 			mNextGameTick += mSkipTicks;
 			mLoops++;
-		}
+		//}
 		mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
 		(mSkipTicks - mNextGameTick);
 		
