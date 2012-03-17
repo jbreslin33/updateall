@@ -211,7 +211,8 @@ function update()
 		}
 		//mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
 	//	(mSkipTicks - mNextGameTick);
-		
+		mInterpolation = mFrameTime / mTickLength; 	
+        	document.getElementById("interpolation").innerHTML="interpolation: " + mInterpolation;
 		mRenderCount++;	
 		render(mInterpolation);	
         	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
@@ -932,6 +933,9 @@ $(document).ready(function()
 
 <!-- create timeSinceLastInterval-->
 <p id="timeSinceLastInterval">timeSinceLastInterval: </p>
+
+<!-- create interpolation-->
+<p id="interpolation">interpolation: </p>
 
 </body>
 </html>
