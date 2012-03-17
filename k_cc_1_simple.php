@@ -92,16 +92,19 @@ var mStartNumber = 0;
 var mEndNumber = 0;
 
 //ticks
-var mTickLength = 0;
-var mSkiptTicks = 0;
-var mMaxFrameSkip = 5;
-var mNextGameTick = 0;
-var mDate;
-var mLoops = 0;
-var mInterpolation = 0;
-var mTimeSinceEpoch = 0;
+var mTickLength = 250;
 var mFrameCount = 0;
 var mRenderCount = 0;
+
+
+var mGameTime = 0;
+var mGameStartTime = 0;
+var mTimeSinceEpoch = 0;
+var mLastTimeSinceEpoch = 0;
+var mTimeSinceLastInterval = 0;
+var mFrameTime = 0;
+
+var mInterpolation = 0;
 
 //questions
 var mQuestion = 0;
@@ -135,9 +138,6 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
 
         //ticks
         mTickLength = tickLength;
-	mSkipTicks = 1000 / mTickLength;
-	mDate = new Date();
-	mNextGameTick = mDate.getTime(); 
 
         //speed
         mSpeed = speed;
@@ -159,28 +159,58 @@ function init()
 
 	//start update
 //	setInterv/al(update,mSkipTicks);
-	var interval = self.setInterval("update()",16);
+	
+	g = new Date();
+	mGameStartTime = g.getTime();
+		
+	var interval = self.setInterval("update()",1);
 	//update();	
 	
 }
 
+var mLasTimeSinceEpoch = 0;
+
+
 function update()
 {	
 	if (mGameOn)
-	{	
-		mTimeSinceEpoch = new Date().getTime();	
-		if (mTimeSinceEpoch > mNextGameTick)
+	{
+		//just print game start time it's only used in calcs not updated
+        	document.getElementById("gameStartTime").innerHTML="gameStartTime: " + mGameStartTime;
+		
+		//get time since epoch and set lasttime	
+		e = new Date();
+		mLastTimeSinceEpoch = mTimeSinceEpoch;
+		mTimeSinceEpoch = e.getTime();
+        	document.getElementById("epoch").innerHTML="epoch: " + mTimeSinceEpoch;
+		
+		//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
+		mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
+        	document.getElementById("timeSinceLastInterval").innerHTML="timeSinceLastInterval " + mTimeSinceLastInterval;
+		
+		//accumulate mFrameTime	
+		mFrameTime += mTimeSinceLastInterval;
+        	document.getElementById("frameTime").innerHTML="frameTime: " + mFrameTime;
+		
+		//calc gameTime elapsed based on epoch and starttime	
+		mGameTime = mTimeSinceEpoch - mGameStartTime;	
+        	document.getElementById("gameTime").innerHTML="gameTime: " + mGameTime;
+
+			
+        	document.getElementById("tickLength").innerHTML="tickLength: " + mTickLength;
+	
+
+		if (mFrameTime > mTickLength) //this is always true, why?
 		{
-		//while (new Date().getTime() > mNextGameTick &&
-		//	mLoops < mMaxFrameSkip)
-		//{
-			mNextGameTick += mSkipTicks;
+				
 			updateGame();	
 			mFrameCount++;
         		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
+			
+			mFrameTime = 0;
 		}
-		mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
-		(mSkipTicks - mNextGameTick);
+		//mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
+	//	(mSkipTicks - mNextGameTick);
 		
 		mRenderCount++;	
 		render(mInterpolation);	
@@ -884,6 +914,24 @@ $(document).ready(function()
 
 <!-- create renderCount-->
 <p id="renderCount">renderCount: </p>
+
+<!-- create gameStartTime-->
+<p id="gameStartTime">gameStartTime: </p>
+
+<!-- create epoch-->
+<p id="epoch">epoch: </p>
+
+<!-- create gameTime-->
+<p id="gameTime">gameTime: </p>
+
+<!-- create frameTime-->
+<p id="frameTime">frameTime: </p>
+
+<!-- create tickLength-->
+<p id="tickLength">tickLength: </p>
+
+<!-- create timeSinceLastInterval-->
+<p id="timeSinceLastInterval">timeSinceLastInterval: </p>
 
 </body>
 </html>
