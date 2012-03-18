@@ -287,7 +287,7 @@ function createWorld()
 	fillSpawnPositionArrays();
 	createServerShapes();
 	
-//	createLeftWall();
+	createLeftWall();
 //	createRightWall();
 //	createTopWall();
 //	createBottomWall();
@@ -427,7 +427,8 @@ function createClientDiv(i)
 		}
 	}
 	//back to div	
-	div.appendChild(mClientShapeArray[i]);
+	div.appendChild(mClientShapeArray[i].cloneNode(true));
+//oParent.appendChild(balls[0].cloneNode(true));
 }
 
 function createClientImage(i)
@@ -472,7 +473,8 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('red_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
+		//createServerShape('red_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
 	}
 }
 
