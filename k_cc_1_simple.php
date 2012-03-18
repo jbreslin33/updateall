@@ -296,7 +296,7 @@ function createWorld()
 function createServerShapes()
 {
 	//control object	
-	createServerShape('smiley.png',mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","yellow","");
+	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","green","");
 	
 	for (i = 0; i <= 9; i++)
 	{
@@ -307,7 +307,7 @@ function createServerShapes()
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape('redball.gif',mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","red","");
 	}
 
 	//control buttons	
@@ -474,7 +474,7 @@ function createLeftWall()
         for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
 		//createServerShape('red_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
