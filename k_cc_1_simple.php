@@ -92,7 +92,7 @@ var mStartNumber = 0;
 var mEndNumber = 0;
 
 //ticks
-var mTickLength = 250;
+var mTickLength = 0;
 var mFrameCount = 0;
 var mRenderCount = 0;
 
@@ -163,8 +163,8 @@ function init()
 	g = new Date();
 	mGameStartTime = g.getTime();
 		
-	var interval = self.setInterval("update()",1);
-	//update();	
+	//var interval = self.setInterval("update()",15);
+	update();	
 	
 }
 
@@ -175,6 +175,9 @@ function update()
 {	
 	if (mGameOn)
 	{
+		//if (mFrameTime > mTickLength) //this is always true, why?
+		//{
+		
 		//just print game start time it's only used in calcs not updated
         	document.getElementById("gameStartTime").innerHTML="gameStartTime: " + mGameStartTime;
 		
@@ -198,25 +201,25 @@ function update()
 
 			
         	document.getElementById("tickLength").innerHTML="tickLength: " + mTickLength;
-	
 
-		if (mFrameTime > mTickLength) //this is always true, why?
-		{
-				
-			updateGame();	
-			mFrameCount++;
-        		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
-			
-			mFrameTime = 0;
-		}
-		//mInterpolation = (mDate.getTime() + mSkipTicks - mNextGameTick) /
-	//	(mSkipTicks - mNextGameTick);
+		//interpolation calc
 		mInterpolation = mFrameTime / mTickLength; 	
         	document.getElementById("interpolation").innerHTML="interpolation: " + mInterpolation;
+	
+		//old update only
+		updateGame();	
+		mFrameCount++;
+       		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
+			
+		mFrameTime = 0;
+		//end old update only
+
 		mRenderCount++;	
-		render(mInterpolation);	
+		render();	
         	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
-      	} 
+		var t=setTimeout("update()",20)
+	}	
+	//}
 }
 
 function updateGame()
@@ -252,23 +255,23 @@ function ai()
 			var direction = Math.floor(Math.random()*4)	
 			if (direction == 0)
 			{
-				mServerShapeArray[i].mVelocityX = -1 * mSpeed;
+				mServerShapeArray[i].mVelocityX = -1 * mSpeed * mInterpolation;
 				mServerShapeArray[i].mVelocityY = 0;
 			}
 			if (direction == 1)
 			{
-				mServerShapeArray[i].mVelocityX = 1 * mSpeed;
+				mServerShapeArray[i].mVelocityX = 1 * mSpeed * mInterpolation;
 				mServerShapeArray[i].mVelocityY = 0;
 			}
 			if (direction == 2)
 			{	
 				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = -1 * mSpeed;
+				mServerShapeArray[i].mVelocityY = -1 * mSpeed * mInterpolation;
 			}
 			if (direction == 3)
 			{
 				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = 1 * mSpeed;
+				mServerShapeArray[i].mVelocityY = 1 * mSpeed * mInterpolation;
 			}
 			if (direction == 4)
 			{
@@ -284,10 +287,10 @@ function createWorld()
 	fillSpawnPositionArrays();
 	createServerShapes();
 	
-	createLeftWall();
-	createRightWall();
-	createTopWall();
-	createBottomWall();
+//	createLeftWall();
+//	createRightWall();
+//	createTopWall();
+//	createBottomWall();
 }
 
 function createServerShapes()
@@ -308,11 +311,11 @@ function createServerShapes()
 	}
 
 	//control buttons	
-	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
-	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
-	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
-	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
-	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
+//	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+//	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+//	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+//	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+//	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -556,7 +559,7 @@ function checkForCollisions()
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
-function render(interpolation)
+function render()
 {
         //loop thru player array and update their xy positions
         for (i=0; i<mServerShapeArray.length; i++)
@@ -825,26 +828,26 @@ function newAnswer()
 //CONTROLS
 function moveLeft()
 {
-        mControlObject.mVelocityX = -1 * mSpeed;
+        mControlObject.mVelocityX = -1 * mSpeed * mInterpolation;
         mControlObject.mVelocityY = 0;
 }
 
 function moveRight()
 {
-        mControlObject.mVelocityX = 1 * mSpeed;
+        mControlObject.mVelocityX = 1 * mSpeed * mInterpolation;
         mControlObject.mVelocityY = 0;
 }
 
 function moveUp()
 {
         mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = -1 * mSpeed;
+        mControlObject.mVelocityY = -1 * mSpeed * mInterpolation;
 }
 
 function moveDown()
 {
         mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = 1 * mSpeed;
+        mControlObject.mVelocityY = 1 * mSpeed * mInterpolation;
 }
 
 function moveStop()
