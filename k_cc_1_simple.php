@@ -288,9 +288,9 @@ function createWorld()
 	createServerShapes();
 	
 	createLeftWall();
-//	createRightWall();
-//	createTopWall();
-//	createBottomWall();
+	createRightWall();
+	createTopWall();
+	createBottomWall();
 }
 
 function createServerShapes()
@@ -473,8 +473,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		//createServerShape('red_wall.png',1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","yellow","");
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -485,11 +484,11 @@ function createRightWall()
 	{
 		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape('green_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
+			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 		}	
 		else
 		{	
-			createServerShape('red_wall.png',1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","yellow","");
+			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 		}
 		greenDoorCount++;
 	}
@@ -500,7 +499,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('red_wall.png',mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -508,7 +507,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape('red_wall.png',mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 

@@ -20,8 +20,8 @@ p {
 
 .balls img {
  position:absolute;
- width:12px;
- height:12px;
+ width:50px;
+ height:50px;
 }
 
 </style>
@@ -120,6 +120,17 @@ function mouseUp() {
 }
 
 function init() {
+        var div = document.createElement('div');
+        div.setAttribute('id','ball-container');
+        div.setAttribute("class","demo");
+        div.style.position="absolute";
+        //div.style.visibility = 'visible';
+       //move it
+       // div.style.left = mServerShapeArray[i].mPositionX+'px';
+        //div.style.top  = mServerShapeArray[i].mPositionY+'px';
+	
+
+
   balls = document.getElementById('ball-container').getElementsByTagName('img');
   for (var i=balls.length; i--;) {
     initBall(balls[i]);
@@ -157,11 +168,11 @@ window.onload = init;
  <button onclick="stopAnimation()">Stop</button>
 </p>
 
-
+<!--
 <div id="ball-container" class="balls">
  <img src="ball.gif" alt="" />
 </div>
-
+-->
 </body>
 
 </html>
