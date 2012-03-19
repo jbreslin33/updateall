@@ -461,7 +461,7 @@ function createRightWall()
 	{
 		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","green","");
 		}	
 		else
 		{	
