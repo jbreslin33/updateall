@@ -219,8 +219,7 @@ function update()
 		render();	
         	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
 		var t=setTimeout("update()",1)
-	}	
-	//}
+	}
 }
 
 function updateGame()
@@ -865,8 +864,8 @@ function moveDown()
 
 function moveStop()
 {
-        mControlObject.mkeyX = 0;
-        mControlObject.mkeyY = 0;
+        mControlObject.mKeyX = 0;
+        mControlObject.mKeyY = 0;
 }
 
 document.onkeydown = function(ev) 
