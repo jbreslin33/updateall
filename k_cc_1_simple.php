@@ -243,7 +243,10 @@ function updateGame()
 	
 	//check for end game
 	checkForScoreNeeded();
-		
+	
+	//save old positions
+	saveOldPositions();
+	
 }
 
 function ai()
@@ -513,15 +516,22 @@ function createBottomWall()
 	}
 }
 
+function saveOldPositions()
+{
+        //move numbers
+        for (i = 0; i < mServerShapeArray.length; i++)
+        {
+                //record old position to use for collisions or whatever you fancy
+                mServerShapeArray[i].mOldPositionX = mServerShapeArray[i].mPositionX;
+                mServerShapeArray[i].mOldPositionY = mServerShapeArray[i].mPositionY;
+        }
+}
+
 function moveShapes()
 {
         //move numbers
         for (i = 0; i < mServerShapeArray.length; i++)
         {
-		//record old position to use for collisions or whatever you fancy	
-		mServerShapeArray[i].mOldPositionX = mServerShapeArray[i].mPositionX;
-		mServerShapeArray[i].mOldPositionY = mServerShapeArray[i].mPositionY;
-	
 		//update Velocity
 		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mTimeSinceLastInterval * mSpeed;
 		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mTimeSinceLastInterval * mSpeed;
@@ -539,7 +549,6 @@ function moveShapes()
 
 function checkForCollisions()
 {
-
 	for (s = 0; s < mServerShapeArray.length; s++)
 	{
 	       	var x1 = mServerShapeArray[s].mPositionX;
@@ -567,7 +576,6 @@ function checkForCollisions()
                 	}       
         	}
 	}
-
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
