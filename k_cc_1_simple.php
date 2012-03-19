@@ -189,32 +189,33 @@ function update()
 		
 		//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
 		mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
-        	document.getElementById("timeSinceLastInterval").innerHTML="timeSinceLastInterval " + mTimeSinceLastInterval;
+       		//mTimeSinceLastInterval = mTimeSinceLastInterval / 1000; 	
+		document.getElementById("timeSinceLastInterval").innerHTML="timeSinceLastInterval " + mTimeSinceLastInterval;
 		
 		//accumulate mFrameTime	
-		mFrameTime += mTimeSinceLastInterval;
-        	document.getElementById("frameTime").innerHTML="frameTime: " + mFrameTime;
+		//mFrameTime += mTimeSinceLastInterval;
+        	//document.getElementById("frameTime").innerHTML="frameTime: " + mFrameTime;
 		
 		//calc gameTime elapsed based on epoch and starttime	
-		mGameTime = mTimeSinceEpoch - mGameStartTime;	
-        	document.getElementById("gameTime").innerHTML="gameTime: " + mGameTime;
+		//mGameTime = mTimeSinceEpoch - mGameStartTime;	
+        	//document.getElementById("gameTime").innerHTML="gameTime: " + mGameTime;
 
 			
-        	document.getElementById("tickLength").innerHTML="tickLength: " + mTickLength;
+        	//document.getElementById("tickLength").innerHTML="tickLength: " + mTickLength;
 
 		//interpolation calc
-		mInterpolation = mFrameTime / mTickLength; 	
-        	document.getElementById("interpolation").innerHTML="interpolation: " + mInterpolation;
+		//mInterpolation = mFrameTime / mTickLength; 	
+        	//document.getElementById("interpolation").innerHTML="interpolation: " + mInterpolation;
 	
 		//old update only
 		updateGame();	
 		mFrameCount++;
        		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
 			
-		mFrameTime = 0;
+		//mFrameTime = 0;
 		//end old update only
 
-		mRenderCount++;	
+		//mRenderCount++;	
 		render();	
         	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
 		var t=setTimeout("update()",20)
@@ -255,23 +256,23 @@ function ai()
 			var direction = Math.floor(Math.random()*4)	
 			if (direction == 0)
 			{
-				mServerShapeArray[i].mVelocityX = -1 * mSpeed * mInterpolation;
+				mServerShapeArray[i].mVelocityX = -1;
 				mServerShapeArray[i].mVelocityY = 0;
 			}
 			if (direction == 1)
 			{
-				mServerShapeArray[i].mVelocityX = 1 * mSpeed * mInterpolation;
+				mServerShapeArray[i].mVelocityX = 1;
 				mServerShapeArray[i].mVelocityY = 0;
 			}
 			if (direction == 2)
 			{	
 				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = -1 * mSpeed * mInterpolation;
+				mServerShapeArray[i].mVelocityY = -1;
 			}
 			if (direction == 3)
 			{
 				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = 1 * mSpeed * mInterpolation;
+				mServerShapeArray[i].mVelocityY = 1;
 			}
 			if (direction == 4)
 			{
@@ -364,6 +365,8 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mOldPositionY = spawnY;
 	shape.mVelocityX = 0;
 	shape.mVelocityY = 0;
+	shape.mKeyX = 0;
+	shape.mKeyY = 0;
 	shape.mCollidable = collidable;
 	shape.mCollisionOn = collisionOn;
 	shape.mIsQuestion = isQuestion;
@@ -520,9 +523,18 @@ function moveShapes()
 		mServerShapeArray[i].mOldPositionX = mServerShapeArray[i].mPositionX;
 		mServerShapeArray[i].mOldPositionY = mServerShapeArray[i].mPositionY;
 	
-		//move shape	
+		//update Velocity
+		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mTimeSinceLastInterval * mSpeed;
+		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mTimeSinceLastInterval * mSpeed;
+
+		//update position
 		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
 		mServerShapeArray[i].mPositionY += mServerShapeArray[i].mVelocityY;
+       		if (mServerShapeArray[i] == mControlObject)
+		{	
+			document.getElementById("velocityX").innerHTML="velocityX: " + mServerShapeArray[i].mVelocityX;
+       			document.getElementById("velocityY").innerHTML="velocityY: " + mServerShapeArray[i].mVelocityY;
+		}
         }
 }
 
@@ -829,32 +841,32 @@ function newAnswer()
 //CONTROLS
 function moveLeft()
 {
-        mControlObject.mVelocityX = -1 * mSpeed * mInterpolation;
-        mControlObject.mVelocityY = 0;
+        mControlObject.mKeyX = -1;
+        mControlObject.mKeyY = 0;
 }
 
 function moveRight()
 {
-        mControlObject.mVelocityX = 1 * mSpeed * mInterpolation;
-        mControlObject.mVelocityY = 0;
+        mControlObject.mKeyX = 1;
+        mControlObject.mKeyY = 0;
 }
 
 function moveUp()
 {
-        mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = -1 * mSpeed * mInterpolation;
+        mControlObject.mKeyX = 0;
+        mControlObject.mKeyY = -1;
 }
 
 function moveDown()
 {
-        mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = 1 * mSpeed * mInterpolation;
+        mControlObject.mKeyX = 0;
+        mControlObject.mKeyY = 1;
 }
 
 function moveStop()
 {
-        mControlObject.mVelocityX = 0;
-        mControlObject.mVelocityY = 0;
+        mControlObject.mkeyX = 0;
+        mControlObject.mkeyY = 0;
 }
 
 document.onkeydown = function(ev) 
@@ -940,6 +952,12 @@ $(document).ready(function()
 
 <!-- create interpolation-->
 <p id="interpolation">interpolation: </p>
+
+<!-- create velocityX-->
+<p id="velocityX">velocityX: </p>
+
+<!-- create velocityY-->
+<p id="velocityY">velocityY: </p>
 
 </body>
 </html>
