@@ -218,7 +218,7 @@ function update()
 		//mRenderCount++;	
 		render();	
         	document.getElementById("renderCount").innerHTML="renderCount: " + mRenderCount;
-		var t=setTimeout("update()",20)
+		var t=setTimeout("update()",1)
 	}	
 	//}
 }
