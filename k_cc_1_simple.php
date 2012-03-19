@@ -61,6 +61,10 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
+//window
+var mWindowX = 0;
+var mWindowY = 0;
+
 //game
 var mGameOn = true;
 var mDoorEntered = false;
@@ -142,6 +146,9 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
 
 function init()
 {
+	mWindowX = $(this).width();
+	mWindowY = $(this).height(); 
+ 
         //create game   
         var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed);"; ?>
 
@@ -153,7 +160,10 @@ function init()
 
 	g = new Date();
 	mGameStartTime = g.getTime();
-		
+	
+
+
+	
 	update();	
 }
 
@@ -180,7 +190,7 @@ function update()
        		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
 			
 		render();	
-		var t=setTimeout("update()",1)
+		var t=setTimeout("update()",20)
 	}
 }
 
@@ -539,7 +549,11 @@ function checkForCollisions()
         	}
 	}
 }
-
+window.onresize = function(event)
+{
+	mWindowX = $(this).width();
+	mWindowY = $(this).height(); 
+}
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
@@ -547,8 +561,8 @@ function render()
         for (i=0; i<mServerShapeArray.length; i++)
         {
 		//get the center of the page xy
-       		var pageCenterX = $(this).width() / 2;
-        	var pageCenterY = $(this).height() / 2;
+       		var pageCenterX = mWindowX / 2;
+        	var pageCenterY = mWindowY / 2;
       
        		//get the center xy of the image
        		var shapeCenterX = mServerShapeArray[i].mWidth / 2;     
@@ -575,8 +589,8 @@ function render()
         			//button.style.height=mServerShapeArray[i].mHeight+'px'; 
 				
 				//get the new size....
-        			mServerShapeArray[i].mWidth = $(this).width() / 3;
-        			mServerShapeArray[i].mHeight = $(this).height() / 3;
+        			mServerShapeArray[i].mWidth = mWindowX / 3;
+        			mServerShapeArray[i].mHeight = mWindowY / 3;
 
 				if (mServerShapeArray[i].mInnerHTML == "DOWN")
 				{
@@ -591,41 +605,35 @@ function render()
 				if (mServerShapeArray[i].mOnClick == moveLeft)
 				{
 					mServerShapeArray[i].mPositionX = 0; 
-					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveRight)
 				{
-					var tempx = $(this).width() / 6;
-					tempx = $(this).width() - tempx;
+					var tempx = mWindowX / 6;
+					tempx = mWindowY - tempx;
 					
 					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
-					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveUp)
 				{
-					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = 0; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveDown)
 				{
-					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
 					
-					var tempy = $(this).height() / 6;
-					tempy = $(this).height() - tempy;
+					var tempy = mWindowY / 6;
+					tempy = mWindowY - tempy;
 					mServerShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
 					
 				}
 				if (mServerShapeArray[i].mOnClick == moveStop)
 				{
-					mServerShapeArray[i].mPositionX = $(this).width() / 2 - shapeCenterX; 
-					mServerShapeArray[i].mPositionY = $(this).height() / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
 				}
-
-				
-
-				//this actual moves it 
-		//		posX = posX + mServerShapeArray[i].mPositionX; 
-		//		posY = posY + mServerShapeArray[i].mPositionY;
  
         			mClientDivArray[i].style.left = mServerShapeArray[i].mPositionX+'px';
         			mClientDivArray[i].style.top  = mServerShapeArray[i].mPositionY+'px';
@@ -646,8 +654,8 @@ function render()
                 	var posY = ydiff + pageCenterY - shapeCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + mServerShapeArray[i].mWidth  + 3 > $(this).width() ||
-			    posY + mServerShapeArray[i].mHeight + 13 > $(this).height())
+                        if (posX + mServerShapeArray[i].mWidth  + 3 > mWindowX ||
+			    posY + mServerShapeArray[i].mHeight + 13 > mWindowY)
 			{
                 		mClientDivArray[i].style.left = 0+'px';
                        		mClientDivArray[i].style.top  = 0+'px';
