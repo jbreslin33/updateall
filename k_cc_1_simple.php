@@ -286,11 +286,11 @@ function createServerShapes()
 	}
 
 	//control buttons	
-//	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
-//	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
-//	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
-//	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
-//	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
+	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -404,7 +404,9 @@ function createClientDiv(i)
 		}
 	}
 	//back to div	
-	div.appendChild(mClientShapeArray[i].cloneNode(true));
+	div.appendChild(mClientShapeArray[i]);
+	
+//div.appendChild(mClientShapeArray[i].cloneNode(true));
 //oParent.appendChild(balls[0].cloneNode(true));
 }
 
@@ -610,7 +612,7 @@ function render()
 				if (mServerShapeArray[i].mOnClick == moveRight)
 				{
 					var tempx = mWindowX / 6;
-					tempx = mWindowY - tempx;
+					tempx = mWindowX - tempx;
 					
 					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
@@ -818,7 +820,7 @@ function newAnswer()
 //CONTROLS
 function moveLeft()
 {
-        mControlObject.mKeyX = -1;
+	mControlObject.mKeyX = -1;
         mControlObject.mKeyY = 0;
 }
 
