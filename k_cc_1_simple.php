@@ -80,8 +80,8 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
-var proposedX = 0;
-var proposedY = 0;
+var mProposedX = 0;
+var mProposedY = 0;
 
 var mControlObject;
 
@@ -167,7 +167,11 @@ function init()
 	update();	
 }
 
-var mLasTimeSinceEpoch = 0;
+function log(msg) {
+    setTimeout(function() {
+        throw new Error(msg);
+    }, 0);
+}
 
 
 function update()
@@ -276,13 +280,13 @@ function createServerShapes()
 	for (i = 0; i <= 9; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[proposedX],mPositionYArray[proposedY],false,true,"",true,true,true,false,"","red","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,"",true,true,true,false,"","red","");
 	}
 
 	//control buttons	
@@ -296,17 +300,34 @@ function createServerShapes()
 function setUniqueSpawnPosition()
 {
 	//get random spawn element
-	proposedX = Math.floor(Math.random()*mPositionXArray.length);
-	proposedY = Math.floor(Math.random()*mPositionYArray.length);
+	mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+	mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 
 	for (r= 0; r < mServerShapeArray.length; r++)
 	{
-		if (proposedX == mServerShapeArray[r].mPositionX && proposedY == mServerShapeArray[r].mPositionY)	
+		if (mPositionXArray[mProposedX] == mServerShapeArray[r].mPositionX && mPositionYArray[mProposedY] == mServerShapeArray[r].mPositionY)
 		{
 			r = 0;
-			proposedX = Math.floor(Math.random()*mPositionXArray.length);
-			proposedY = Math.floor(Math.random()*mPositionYArray.length);
+			mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+			mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 		}
+		if (r > 0)
+		{	
+			if (
+			    Math.abs(mPositionXArray[mProposedX] - mServerShapeArray[r-1].mPositionX) > 350 
+				  ||
+		            Math.abs(mPositionXArray[mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
+			   ) 
+			 //   Math.abs(mProposedY - mServerShapeArray[r-1].mPositionY) > 25
+			//	)		
+			{
+				r = 0;
+				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+			}
+		}
+		//log(mServerShapeArray[r].mPositionX);
+		//log(mProposedX);
 	}
 }
 
