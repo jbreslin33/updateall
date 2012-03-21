@@ -1,7 +1,7 @@
 <html>
 <head>
 
-<title>Image Mover</title>
+<title>ABC AND YOU</title>
 
 <!-- jquery and jqueryui -->
 <link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
@@ -234,28 +234,28 @@ function ai()
 			var direction = Math.floor(Math.random()*4)	
 			if (direction == 0)
 			{
-				mServerShapeArray[i].mVelocityX = -1;
-				mServerShapeArray[i].mVelocityY = 0;
+				mServerShapeArray[i].mKeyX = -1;
+				mServerShapeArray[i].mKeyY = 0;
 			}
 			if (direction == 1)
 			{
-				mServerShapeArray[i].mVelocityX = 1;
-				mServerShapeArray[i].mVelocityY = 0;
+				mServerShapeArray[i].mKeyX = 1;
+				mServerShapeArray[i].mKeyY = 0;
 			}
 			if (direction == 2)
 			{	
-				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = -1;
+				mServerShapeArray[i].mKeyX = 0;
+				mServerShapeArray[i].mKeyY = -1;
 			}
 			if (direction == 3)
 			{
-				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = 1;
+				mServerShapeArray[i].mKeyX = 0;
+				mServerShapeArray[i].mKeyY = 1;
 			}
 			if (direction == 4)
 			{
-				mServerShapeArray[i].mVelocityX = 0;
-				mServerShapeArray[i].mVelocityY = 0;
+				mServerShapeArray[i].mKeyX = 0;
+				mServerShapeArray[i].mKeyY = 0;
 			}
 		} 
 	}
@@ -270,6 +270,19 @@ function createWorld()
 	createRightWall();
 	createTopWall();
 	createBottomWall();
+}
+
+function fillSpawnPositionArrays()
+{
+	for (i=mLeftBounds + mDefaultSpriteSize / 2; i <= mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	{ 	
+		mPositionXArray.push(i);	
+	}
+	
+	for (i=mTopBounds + mDefaultSpriteSize / 2; i <= mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	{ 	
+		mPositionYArray.push(i);	
+	}
 }
 
 function createServerShapes()
@@ -318,29 +331,54 @@ function setUniqueSpawnPosition()
 				  ||
 		            Math.abs(mPositionXArray[mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
 			   ) 
-			 //   Math.abs(mProposedY - mServerShapeArray[r-1].mPositionY) > 25
-			//	)		
 			{
 				r = 0;
 				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
 				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 			}
 		}
-		//log(mServerShapeArray[r].mPositionX);
-		//log(mProposedX);
 	}
 }
 
-function fillSpawnPositionArrays()
+function createLeftWall()
 {
-	for (i=mLeftBounds + mDefaultSpriteSize / 2; i <= mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
-	{ 	
-		mPositionXArray.push(i);	
+        for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
+	{
+		createServerShape("",1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+	}
+}
+
+function createRightWall()
+{
+       	var greenDoorCount = 0; 
+	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
+	{
+		if (greenDoorCount == 0 || greenDoorCount == 1)
+		{
+			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+		}	
+		else
+		{	
+			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+		}
+		greenDoorCount++;
 	}
 	
-	for (i=mTopBounds + mDefaultSpriteSize / 2; i <= mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
-	{ 	
-		mPositionYArray.push(i);	
+}
+
+function createTopWall()
+{
+        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
+	{
+		createServerShape("",mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","black","");
+	}
+}
+
+function createBottomWall()
+{
+        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
+	{
+		createServerShape("",mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -426,9 +464,6 @@ function createClientDiv(i)
 	}
 	//back to div	
 	div.appendChild(mClientShapeArray[i]);
-	
-//div.appendChild(mClientShapeArray[i].cloneNode(true));
-//oParent.appendChild(balls[0].cloneNode(true));
 }
 
 function createClientImage(i)
@@ -469,47 +504,6 @@ function createClientButton(i)
 	mClientShapeArray.push(button);
 }
 
-function createLeftWall()
-{
-        for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
-	{
-		createServerShape("",1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
-	}
-}
-
-function createRightWall()
-{
-       	var greenDoorCount = 0; 
-	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
-	{
-		if (greenDoorCount == 0 || greenDoorCount == 1)
-		{
-			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","green","");
-		}	
-		else
-		{	
-			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
-		}
-		greenDoorCount++;
-	}
-	
-}
-
-function createTopWall()
-{
-        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
-	{
-		createServerShape("",mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","black","");
-	}
-}
-
-function createBottomWall()
-{
-        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
-	{
-		createServerShape("",mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","black","");
-	}
-}
 
 function saveOldPositions()
 {
@@ -572,11 +566,13 @@ function checkForCollisions()
         	}
 	}
 }
+
 window.onresize = function(event)
 {
 	mWindowX = $(this).width();
 	mWindowY = $(this).height(); 
 }
+
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
 {
@@ -663,7 +659,6 @@ function render()
 				
 			}
 		} 
-
 		
 		//else if anything else render relative to the control object	
 		else
