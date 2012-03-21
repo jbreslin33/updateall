@@ -1,6 +1,13 @@
 <html>
 <head>
 
+	<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+	#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
+	html>body #sortable li { height: 1.5em; line-height: 1.2em; }
+	.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+	</style>
+
 <title>ABC AND YOU</title>
 
 <!-- jquery and jqueryui -->
@@ -906,32 +913,22 @@ $(document).ready(function()
 
 </script>
 
-<!-- creat and set game name -->
-<h1 = id="game_name"> <?php echo "$name"; ?> </h1>
+<div class="demo">
 
-<!-- create and set question -->
-<p id="question"> </p>
+<ul id="sortable">
+	<li id="game_name" class="ui-state-default"> <?php echo "$name"; ?> </li>
+	<li id="question" class="ui-state-default"></li>
+	<li id="feedback" class="ui-state-default"></li>
+	<li id="score" class="ui-state-default"></li>
+	<li id="scoreNeeded" class="ui-state-default"></li>
+	<li id="frameCount" class="ui-state-default"></li>
+	<li id="timeSinceLastInterval" class="ui-state-default"></li>
+	<li id="velocityX" class="ui-state-default"></li>
+	<li id="velocityY" class="ui-state-default"></li>
+</ul>
 
-<!-- create feedback -->
-<p id="feedback">"Have Fun!"</p>
+</div><!-- End demo -->
 
-<!-- create score -->
-<p id="score"></p>
-
-<!-- create scoreNeeded -->
-<p id="scoreNeeded"></p>
-
-<!-- create frameCount -->
-<p id="frameCount">frameCount: </p>
-
-<!-- create timeSinceLastInterval-->
-<p id="timeSinceLastInterval">timeSinceLastInterval: </p>
-
-<!-- create velocityX-->
-<p id="velocityX">velocityX: </p>
-
-<!-- create velocityY-->
-<p id="velocityY">velocityY: </p>
 
 </body>
 </html>
