@@ -104,7 +104,6 @@ var mEndNumber = 0;
 
 //ticks
 var mTickLength = 0;
-var mFrameCount = 0;
 
 //time
 var mTimeSinceEpoch = 0;
@@ -168,9 +167,6 @@ function init()
 	g = new Date();
 	mGameStartTime = g.getTime();
 	
-
-
-	
 	update();	
 }
 
@@ -192,14 +188,10 @@ function update()
 		
 		//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
 		mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
-		document.getElementById("timeSinceLastInterval").innerHTML="timeSinceLastInterval " + mTimeSinceLastInterval;
 		
 		//old update only
 		updateGame();	
 		
-		mFrameCount++;
-       		document.getElementById("frameCount").innerHTML="frameCount: " + mFrameCount;
-			
 		render();	
 		var t=setTimeout("update()",20)
 	}
@@ -535,11 +527,6 @@ function moveShapes()
 		//update position
 		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
 		mServerShapeArray[i].mPositionY += mServerShapeArray[i].mVelocityY;
-       		if (mServerShapeArray[i] == mControlObject)
-		{	
-			document.getElementById("velocityX").innerHTML="velocityX: " + mServerShapeArray[i].mVelocityX;
-       			document.getElementById("velocityY").innerHTML="velocityY: " + mServerShapeArray[i].mVelocityY;
-		}
         }
 }
 
@@ -831,7 +818,7 @@ function newQuestion()
 {
         //set question
         mQuestion = mQuestion + ' ' + mCount;
-        document.getElementById("question").innerHTML=mQuestion;
+        document.getElementById("question").innerHTML="Question: " + mQuestion;
 }
 
 //new answer
@@ -917,14 +904,10 @@ $(document).ready(function()
 
 <ul id="sortable">
 	<li id="game_name" class="ui-state-default"> <?php echo "$name"; ?> </li>
-	<li id="question" class="ui-state-default"></li>
-	<li id="feedback" class="ui-state-default"></li>
-	<li id="score" class="ui-state-default"></li>
-	<li id="scoreNeeded" class="ui-state-default"></li>
-	<li id="frameCount" class="ui-state-default"></li>
-	<li id="timeSinceLastInterval" class="ui-state-default"></li>
-	<li id="velocityX" class="ui-state-default"></li>
-	<li id="velocityY" class="ui-state-default"></li>
+	<li id="question" class="ui-state-default"> <?php echo $startNumber - 1; ?> </li>
+	<li id="feedback" class="ui-state-default"> Have Fun! </li>
+	<li id="score" class="ui-state-default"> Score: 0</li>
+	<li id="scoreNeeded" class="ui-state-default"> Score Needed: <?php echo "$scoreNeeded"; ?> </li>
 </ul>
 
 </div><!-- End demo -->
