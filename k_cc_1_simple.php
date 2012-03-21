@@ -102,10 +102,8 @@ var mCount = 0;
 var mStartNumber = 0;
 var mEndNumber = 0;
 
-//ticks
-var mTickLength = 0;
-
 //time
+var mTickLength = 0;
 var mTimeSinceEpoch = 0;
 var mLastTimeSinceEpoch = 0;
 var mTimeSinceLastInterval = 0;
@@ -754,7 +752,7 @@ function resetGame()
         mScore = 0;
 
         //game
-        mQuestion = "";
+        mQuestion = mCount;
 
         //count
         mCount = mStartNumber - 1;
@@ -762,6 +760,7 @@ function resetGame()
 	var mAnswer = 0;
 	//answer
 	newAnswer();
+        mClientShapeArray[0].innerHTML=mCount;
 }
 
 //check guess
@@ -817,8 +816,10 @@ function evaluateCollision(mId1,mId2)
 function newQuestion()
 {
         //set question
-        mQuestion = mQuestion + ' ' + mCount;
+        //mQuestion = mQuestion + ' ' + mCount;
+        mQuestion = mCount;
         document.getElementById("question").innerHTML="Question: " + mQuestion;
+        mClientShapeArray[0].innerHTML=mCount;
 }
 
 //new answer
