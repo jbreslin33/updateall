@@ -288,7 +288,7 @@ function fillSpawnPositionArrays()
 function createServerShapes()
 {
 	//control object	
-	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","green","");
+	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 	
 	for (i = 0; i <= 9; i++)
 	{
@@ -713,10 +713,10 @@ function checkForScoreNeeded()
 		//open the doors
 		for (i=0; i < mServerShapeArray.length; i++)
 		{
-			if (mServerShapeArray[i].mSrc == 'green_wall.png')
+			if (mServerShapeArray[i].mBackgroundColor == 'green')
 			{
-				mServerShapeArray[i].mSrc = 'white_wall.png';
-				mClientShapeArray[i].src = 'white_wall.png';
+				mServerShapeArray[i].mBackgroundColor = 'white';
+				mClientDivArray[i].style.backgroundColor = 'white';
 			}
 		}
 	}
