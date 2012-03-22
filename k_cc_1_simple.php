@@ -330,13 +330,24 @@ function setUniqueSpawnPosition()
 			if (
 			    Math.abs(mPositionXArray[mProposedX] - mServerShapeArray[r-1].mPositionX) > 350 
 				  ||
-		            Math.abs(mPositionXArray[mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
+		            Math.abs(mPositionYArray[mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
 			   ) 
 			{
 				r = 0;
 				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
 				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 			}
+			if (
+			    Math.abs(mPositionXArray[mProposedX] - mControlObject.mPositionX) < 100 
+				 && 
+		            Math.abs(mPositionYArray[mProposedY] - mControlObject.mPositionY) < 100			
+			   ) 
+			{
+				r = 0;
+				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+			}
+			
 		}
 	}
 }
