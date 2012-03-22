@@ -211,8 +211,12 @@ function updateGame()
 	//door entered?
 	checkForDoorEntered();
 
+	//reality check for out of bounds for avatar
+	checkForOutOfBounds();
+	
 	//check collisions
        	checkForCollisions();
+
 	
 	//check for end game
 	checkForScoreNeeded();
@@ -528,6 +532,8 @@ function moveShapes()
         }
 }
 
+
+
 function checkForCollisions()
 {
 	for (s = 0; s < mServerShapeArray.length; s++)
@@ -549,7 +555,7 @@ function checkForCollisions()
                      			var y2 = mServerShapeArray[i].mPositionY;              
                 
                         		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < 650)
+                        		if (distSQ < 1875)
                         		{
 						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
                         		}
@@ -557,6 +563,35 @@ function checkForCollisions()
                 	}       
         	}
 	}
+}
+function checkForOutOfBounds()
+{
+
+//var mLeftBounds = -400;
+//var mRightBounds = 400;
+//var mTopBounds = -300;
+//var mBottomBounds = 300;
+	for (i = 0; i < mServerShapeArray.length; i++)
+	{	
+		if (mServerShapeArray[i].mPositionX < mLeftBounds)
+		{
+			mServerShapeArray[i].mPositionX = mLeftBounds;		
+		}
+		if (mServerShapeArray[i].mPositionX > mRightBounds)
+		{
+			mServerShapeArray[i].mPositionX = mRightBounds;
+		}
+		if (mServerShapeArray[i].mPositionY < mTopBounds)
+		{
+			mServerShapeArray[i].mPositionY = mTopBounds;
+		}
+		if (mServerShapeArray[i].mPositionY > mBottomBounds)
+		{
+			mServerShapeArray[i].mPositionY = mBottomBounds;
+		}
+	}
+
+
 }
 
 window.onresize = function(event)
