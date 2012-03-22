@@ -785,7 +785,12 @@ function resetGame()
  //set collidable to true 
         for (i=0; i<mServerShapeArray.length; i++)
         {
-               	if (mServerShapeArray[i].mCollidable == true)
+         
+		//set every shape to spawn position	
+		mServerShapeArray[i].mPositionX = mServerShapeArray[i].mSpawnPositionX;
+		mServerShapeArray[i].mPositionY = mServerShapeArray[i].mSpawnPositionY;
+
+	      	if (mServerShapeArray[i].mCollidable == true)
 		{ 
 			mServerShapeArray[i].mCollisionOn = true;
                 	mClientDivArray[i].style.visibility = 'visible';
