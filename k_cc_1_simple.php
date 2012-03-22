@@ -566,7 +566,7 @@ function checkForCollisions()
                      			var y2 = mServerShapeArray[i].mPositionY;              
                 
                         		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < 1875)
+                        		if (distSQ < 2000) 
                         		{
 						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
                         		}
