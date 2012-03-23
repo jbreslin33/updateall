@@ -216,14 +216,12 @@ function updateGame()
 	
 	//check collisions
        	checkForCollisions();
-
 	
 	//check for end game
 	checkForScoreNeeded();
 	
 	//save old positions
 	saveOldPositions();
-	
 }
 
 function ai()
@@ -566,7 +564,7 @@ function checkForCollisions()
                      			var y2 = mServerShapeArray[i].mPositionY;              
                 
                         		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < 2000) 
+                        		if (distSQ < 650) 
                         		{
 						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
                         		}
