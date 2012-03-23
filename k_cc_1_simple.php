@@ -23,7 +23,7 @@ include("db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, number_of_chasers, speed from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, number_of_chasers, speed, left_bounds, right_bounds, top_bounds, bottom_bounds, collision_distance from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -40,6 +40,11 @@ $tickLength = 0;
 $nextLevel = 0;
 $numberOfChasers = 0;
 $speed = 0;
+$leftBounds;
+$rightBounds;
+$topBounds;
+$bottomBounds;
+$collisionDistance;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -60,6 +65,12 @@ if ($num > 0)
 	$nextLevel = $row[6];
 	$numberOfChasers = $row[7];
 	$speed = $row[8];
+	$leftBounds = $row[9];
+	$rightBounds = $row[10];
+	$topBounds = $row[11];
+	$bottomBounds = $row[12];
+	$collisionDistance = $row[13];
+	
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
 
@@ -123,12 +134,13 @@ var mAiCounterDelay = 10;
 
 //dimensions
 var mDefaultSpriteSize = 50;
-var mLeftBounds = -400;
-var mRightBounds = 400;
-var mTopBounds = -300;
-var mBottomBounds = 300;
+var mLeftBounds = 0;
+var mRightBounds = 0;
+var mTopBounds = 0;
+var mBottomBounds = 0;
+var mCollisionDistance = 0;
 
-function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed)
+function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 {
         //score
         mScoreNeeded = scoreNeeded;
@@ -146,6 +158,15 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
 	
 	//chasers
 	mNumberOfChasers = numberOfChasers;
+
+	//dimensions
+	mLeftBounds = leftBounds;
+	mRightBounds = rightBounds;
+	mTopBounds = topBounds;
+	mBottomBounds = bottomBounds;
+
+	//collisionDistnce
+	mCollisionDistance = collisionDistance;	
 }
 
 function init()
@@ -154,7 +175,7 @@ function init()
 	mWindowY = $(this).height(); 
  
         //create game   
-        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed);"; ?>
+        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 
 	//createWorld
 	createWorld();
@@ -173,7 +194,6 @@ function log(msg) {
         throw new Error(msg);
     }, 0);
 }
-
 
 function update()
 {	
@@ -564,7 +584,7 @@ function checkForCollisions()
                      			var y2 = mServerShapeArray[i].mPositionY;              
                 
                         		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < 650) 
+                        		if (distSQ < mCollisionDistance) 
                         		{
 						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
                         		}
