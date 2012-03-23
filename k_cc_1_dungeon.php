@@ -309,10 +309,11 @@ function createServerShapes()
 	//control object	
 	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 	
-	for (i = 0; i <= 9; i++)
+	for (i = mStartNumber + mCountBy; i <= mEndNumber; i = i + mCountBy)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,mStartNumber + i,true,true,false,false,"","yellow","");
+	//	var a = i * mCountBy;
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mNumberOfChasers; i++)
@@ -824,7 +825,7 @@ function resetGame()
         mQuestion = mCount;
 
         //count
-        mCount = mStartNumber - 1;
+        mCount = mStartNumber;
         
 	var mAnswer = 0;
 	//answer
