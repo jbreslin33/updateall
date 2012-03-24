@@ -98,8 +98,12 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
+var mNumberOrderArray= new Array();
+
 var mProposedX = 0;
 var mProposedY = 0;
+
+var mProposedNumber = 0;
 
 var mControlObject;
 
@@ -283,12 +287,31 @@ function ai()
 function createWorld()
 {
 	fillSpawnPositionArrays();
+	fillNumberOrderArray();
 	createServerShapes();
 	
 	createLeftWall();
 	createRightWall();
 	createTopWall();
 	createBottomWall();
+}
+
+function fillNumberOrderArray()
+{
+
+	for (t = mStartNumber; t < mEndNumber; t++)
+	{
+		mProposedNumber = Math.floor(Math.random()*mEndNumber)	
+		for (i = mStartNumber; i < t; i++)
+		{
+			if (mProposedNumber == mNumberOrderArray[i])
+			{
+				i = 0;
+				mProposedNumber = Math.floor(Math.random()*mEndNumber)	
+			} 	
+		}
+		mNumberOrderArray[t] = mProposedNumber;
+	}
 }
 
 function fillSpawnPositionArrays()
@@ -896,6 +919,7 @@ function newQuestion()
 function newAnswer()
 {
         mAnswer = mCount + mCountBy;
+        document.getElementById("answer").innerHTML="Answer: " + mAnswer;
 }
 
 //CONTROLS
@@ -979,6 +1003,7 @@ $(document).ready(function()
 	<li id="feedback" class="ui-state-default"> Have Fun! </li>
 	<li id="score" class="ui-state-default"> Score: 0</li>
 	<li id="scoreNeeded" class="ui-state-default"> Score Needed: <?php echo "$scoreNeeded"; ?> </li>
+	<li id="answer" class="ui-state-default"> Answer: </li>
 </ul>
 
 </div><!-- End demo -->
