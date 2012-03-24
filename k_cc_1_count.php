@@ -254,7 +254,7 @@ function ai()
 	{
 		if (mServerShapeArray[i].mAI == true)
 		{
-			var direction = Math.floor(Math.random()*4)	
+			var direction = Math.floor(Math.random()*5)	
 			if (direction == 0)
 			{
 				mServerShapeArray[i].mKeyX = -1;
@@ -301,13 +301,15 @@ function fillNumberOrderArray()
 
 	for (t = mStartNumber; t < mEndNumber; t++)
 	{
-		mProposedNumber = Math.floor(Math.random()*mEndNumber)	
+		mProposedNumber = Math.floor(Math.random()*mEndNumber);	
+		mProposedNumber++;
 		for (i = mStartNumber; i < t; i++)
 		{
 			if (mProposedNumber == mNumberOrderArray[i])
 			{
 				i = 0;
-				mProposedNumber = Math.floor(Math.random()*mEndNumber)	
+				mProposedNumber = Math.floor(Math.random()*mEndNumber);	
+				mProposedNumber++;
 			} 	
 		}
 		mNumberOrderArray[t] = mProposedNumber;
@@ -918,8 +920,9 @@ function newQuestion()
 //new answer
 function newAnswer()
 {
-        mAnswer = mCount + mCountBy;
-        document.getElementById("answer").innerHTML="Answer: " + mAnswer;
+        //mAnswer = mCount + mCountBy;
+       	mAnswer = mNumberOrderArray[mCount]; 
+	document.getElementById("answer").innerHTML="Answer: " + mAnswer;
 }
 
 //CONTROLS
