@@ -261,32 +261,53 @@ function ai()
 	{
 		if (mServerShapeArray[i].mAI == true)
 		{
-			var direction = Math.floor(Math.random()*4)	
-			if (direction == 0)
-			{
-				mServerShapeArray[i].mKeyX = -1;
-				mServerShapeArray[i].mKeyY = 0;
-			}
-			if (direction == 1)
-			{
-				mServerShapeArray[i].mKeyX = 1;
-				mServerShapeArray[i].mKeyY = 0;
-			}
-			if (direction == 2)
-			{	
-				mServerShapeArray[i].mKeyX = 0;
-				mServerShapeArray[i].mKeyY = -1;
-			}
-			if (direction == 3)
-			{
-				mServerShapeArray[i].mKeyX = 0;
-				mServerShapeArray[i].mKeyY = 1;
-			}
-			if (direction == 4)
-			{
-				mServerShapeArray[i].mKeyX = 0;
-				mServerShapeArray[i].mKeyY = 0;
-			}
+			var direction = Math.floor(Math.random()*9)	
+	                if (direction == 0) //left
+                        {
+                                mServerShapeArray[i].mKeyX = -1;
+                                mServerShapeArray[i].mKeyY = 0;
+                        }
+                        if (direction == 1) //right
+                        {
+                                mServerShapeArray[i].mKeyX = 1;
+                                mServerShapeArray[i].mKeyY = 0;
+                        }
+                        if (direction == 2) //up
+                        {
+                                mServerShapeArray[i].mKeyX = 0;
+                                mServerShapeArray[i].mKeyY = -1;
+                        }
+                        if (direction == 3) //down
+                        {
+                                mServerShapeArray[i].mKeyX = 0;
+                                mServerShapeArray[i].mKeyY = 1;
+                        }
+                        if (direction == 4) //leftup
+                        {
+                                mServerShapeArray[i].mKeyX = -.5;
+                                mServerShapeArray[i].mKeyY = -.5;
+                        }
+                        if (direction == 5) //leftdown
+                        {
+                                mServerShapeArray[i].mKeyX = -.5;
+                                mServerShapeArray[i].mKeyY = .5;
+                        }
+                        if (direction == 6) //rightup
+                        {
+                                mServerShapeArray[i].mKeyX = .5;
+                                mServerShapeArray[i].mKeyY = -.5;
+                        }
+                        if (direction == 7) //rightdown
+                        {
+                                mServerShapeArray[i].mKeyX = .5;
+                                mServerShapeArray[i].mKeyY = .5;
+                        }
+                        if (direction == 8) //stop
+                        {
+                                mServerShapeArray[i].mKeyX = 0;
+                                mServerShapeArray[i].mKeyY = 0;
+                        }
+	
 		} 
 	}
 }
