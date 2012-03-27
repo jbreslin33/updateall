@@ -1044,12 +1044,6 @@ function checkKeys()
 		mControlObject.mKeyX = 0;
         	mControlObject.mKeyY = 1;
 	}
-	//stop	
-	if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == false && mKeyStop == true)
-	{
-		mControlObject.mKeyX = 0;
-        	mControlObject.mKeyY = 0;
-	}
 	//left_up	
 	if (mKeyLeft == true && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == false)
 	{
@@ -1073,6 +1067,18 @@ function checkKeys()
 	{
 		mControlObject.mKeyX = .5;
         	mControlObject.mKeyY = .5;
+	}
+	//all up...stop	
+	if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == false)
+	{
+		mControlObject.mKeyX = 0;
+        	mControlObject.mKeyY = 0;
+	}
+	//stop	
+	if (mKeyStop == true)
+	{
+		mControlObject.mKeyX = 0;
+        	mControlObject.mKeyY = 0;
 	}
 }
 
