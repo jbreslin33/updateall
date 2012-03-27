@@ -968,63 +968,53 @@ function moveStop()
 }
 //
 
-
-
-document.onkeydown = function(ev) 
+$(document).keydown(function (e)
 {
-        var keynum;
-        ev = ev || event;
-        keynum = ev.keyCode;
-
-        if (keynum == 37)
-        {
-       		mKeyLeft = true;  
-        }       
-        if (keynum == 39)
-        {
-               mKeyRight = true; 
-        }       
-        if (keynum == 38)
-        {
+	if (e.which == 37)
+	{
+		mKeyLeft = true;
+	}
+	if (e.which == 39)
+	{
+		mKeyRight = true;
+	}
+	if (e.which == 38)
+	{
 		mKeyUp = true;
-        }       
-        if (keynum == 40)
-        {
+	}
+	if (e.which == 40)
+	{
 		mKeyDown = true;
-        }       
-        if (keynum == 32)
-        {
-		mKeyStop = true; 
-        }       
-}
+	}
+	if (e.which == 32)
+	{
+		mKeyStop = true;
+	}
+});
 
-document.onkeyup = function(ev) 
+$(document).keyup(function (e)
 {
-        var keynum;
-        ev = ev || event;
-        keynum = ev.keyCode;
-
-        if (keynum == 37)
-        {
-       		mKeyLeft = false;  
-        }       
-        if (keynum == 39)
-        {
-               mKeyRight = false; 
-        }       
-        if (keynum == 38)
-        {
-		mKeyUp= false;
-        }       
-        if (keynum == 40)
-        {
+	if (e.which == 37)
+	{
+		mKeyLeft = false;
+	}
+	if (e.which == 39)
+	{
+		mKeyRight = false;
+	}
+	if (e.which == 38)
+	{
+		mKeyUp = false;
+	}
+	if (e.which == 40)
+	{
 		mKeyDown = false;
-        }       
-        if (keynum == 32)
-        {
-		mKeyStop = false; 
-        }       
-}
+	}
+	if (e.which == 32)
+	{
+		mKeyStop = false;
+	}
+});
 
 function checkKeys()
 {
@@ -1061,11 +1051,28 @@ function checkKeys()
         	mControlObject.mKeyY = 0;
 	}
 	//left_up	
-	if (mKeyLeft == true && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == true)
+	if (mKeyLeft == true && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == false)
 	{
-		alert('leftup');
-		mControlObject.mKeyX = -1;
-        	mControlObject.mKeyY = -1;
+		mControlObject.mKeyX = -.5;
+        	mControlObject.mKeyY = -.5;
+	}
+	//left_down	
+	if (mKeyLeft == true && mKeyRight == false && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+	{
+		mControlObject.mKeyX = -.5;
+        	mControlObject.mKeyY = .5;
+	}
+	//right_up	
+	if (mKeyLeft == false && mKeyRight == true && mKeyUp == true && mKeyDown == false && mKeyStop == false)
+	{
+		mControlObject.mKeyX = .5;
+        	mControlObject.mKeyY = -.5;
+	}
+	//right_down	
+	if (mKeyLeft == false && mKeyRight == true && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+	{
+		mControlObject.mKeyX = .5;
+        	mControlObject.mKeyY = .5;
 	}
 }
 
