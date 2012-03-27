@@ -144,6 +144,13 @@ var mTopBounds = 0;
 var mBottomBounds = 0;
 var mCollisionDistance = 0;
 
+//key pressed
+var mKeyLeft = false;
+var mKeyRight = false;
+var mKeyUp = false;
+var mKeyDown = false;
+var mKeyStop = false;
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 {
         //score
@@ -221,6 +228,9 @@ function update()
 
 function updateGame()
 {
+	//check keys
+	checkKeys();	
+
 	//run ai		
 	if (mAiCounter > mAiCounterDelay)
 	{	
@@ -313,6 +323,7 @@ function fillNumberOrderArray()
 			} 	
 		}
 		mNumberOrderArray[t] = mProposedNumber;
+		log(mNumberOrderArray[t]);
 	}
 }
 
@@ -955,6 +966,9 @@ function moveStop()
         mControlObject.mKeyX = 0;
         mControlObject.mKeyY = 0;
 }
+//
+
+
 
 document.onkeydown = function(ev) 
 {
@@ -964,25 +978,97 @@ document.onkeydown = function(ev)
 
         if (keynum == 37)
         {
-                moveLeft();  
+       		mKeyLeft = true;  
         }       
         if (keynum == 39)
         {
-                moveRight(); 
+               mKeyRight = true; 
         }       
         if (keynum == 38)
         {
-                moveUp();    
+		mKeyUp = true;
         }       
         if (keynum == 40)
         {
-                moveDown();  
+		mKeyDown = true;
         }       
         if (keynum == 32)
         {
-                moveStop();  
+		mKeyStop = true; 
         }       
 }
+
+document.onkeyup = function(ev) 
+{
+        var keynum;
+        ev = ev || event;
+        keynum = ev.keyCode;
+
+        if (keynum == 37)
+        {
+       		mKeyLeft = false;  
+        }       
+        if (keynum == 39)
+        {
+               mKeyRight = false; 
+        }       
+        if (keynum == 38)
+        {
+		mKeyUp= false;
+        }       
+        if (keynum == 40)
+        {
+		mKeyDown = false;
+        }       
+        if (keynum == 32)
+        {
+		mKeyStop = false; 
+        }       
+}
+
+function checkKeys()
+{
+	//left	
+	if (mKeyLeft == true && mKeyRight == false && mKeyUp == false && mKeyDown == false && mKeyStop == false)
+	{
+		mControlObject.mKeyX = -1;
+        	mControlObject.mKeyY = 0;
+	}
+	
+	//right	
+	if (mKeyLeft == false && mKeyRight == true && mKeyUp == false && mKeyDown == false && mKeyStop == false)
+	{
+		mControlObject.mKeyX = 1;
+        	mControlObject.mKeyY = 0;
+	}
+	
+	//up	
+	if (mKeyLeft == false && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == false)
+	{
+		mControlObject.mKeyX = 0;
+        	mControlObject.mKeyY = -1;
+	}
+	//down	
+	if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+	{
+		mControlObject.mKeyX = 0;
+        	mControlObject.mKeyY = 1;
+	}
+	//stop	
+	if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == false && mKeyStop == true)
+	{
+		mControlObject.mKeyX = 0;
+        	mControlObject.mKeyY = 0;
+	}
+	//left_up	
+	if (mKeyLeft == true && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == true)
+	{
+		alert('leftup');
+		mControlObject.mKeyX = -1;
+        	mControlObject.mKeyY = -1;
+	}
+}
+
 
 </script>
 
