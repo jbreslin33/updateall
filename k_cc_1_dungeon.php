@@ -10,10 +10,13 @@
 
 <title>ABC AND YOU</title>
 
-<!-- jquery and jqueryui -->
+<!-- jquery and jqueryui 
 <link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
 <script type="text/javascript" src="jquery-1.7.js"></script>
 <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
+-->
+<!-- mootools -->
+<script type="text/javascript" src="mootools-core-1.4.5-full-compat.js"></script>
 
 <?php 
 include("check_login.php");
@@ -80,8 +83,7 @@ if ($num > 0)
 
 //GLOBALS
 //window
-var mWindowX = 0;
-var mWindowY = 0;
+var mWindow;
 
 //game
 var mGameOn = true;
@@ -147,6 +149,8 @@ var mKeyUp = false;
 var mKeyDown = false;
 var mKeyStop = false;
 
+
+
 function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 {
         //score
@@ -178,8 +182,7 @@ function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOf
 
 function init()
 {
-	mWindowX = $(this).width();
-	mWindowY = $(this).height(); 
+	mWindow = window.getSize();
  
         //create game   
         var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
@@ -658,8 +661,7 @@ function checkForOutOfBounds()
 
 window.onresize = function(event)
 {
-	mWindowX = $(this).width();
-	mWindowY = $(this).height(); 
+	mWindow = window.getSize();
 }
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
@@ -669,8 +671,8 @@ function render()
         for (i=0; i<mServerShapeArray.length; i++)
         {
 		//get the center of the page xy
-       		var pageCenterX = mWindowX / 2;
-        	var pageCenterY = mWindowY / 2;
+       		var pageCenterX = mWindow.x / 2;
+        	var pageCenterY = mWindow.y / 2;
       
        		//get the center xy of the image
        		var shapeCenterX = mServerShapeArray[i].mWidth / 2;     
@@ -697,8 +699,8 @@ function render()
         			//button.style.height=mServerShapeArray[i].mHeight+'px'; 
 				
 				//get the new size....
-        			mServerShapeArray[i].mWidth = mWindowX / 3;
-        			mServerShapeArray[i].mHeight = mWindowY / 3;
+        			mServerShapeArray[i].mWidth = mWindow.x / 3;
+        			mServerShapeArray[i].mHeight = mWindow.y / 3;
 
 				if (mServerShapeArray[i].mInnerHTML == "DOWN")
 				{
@@ -713,34 +715,34 @@ function render()
 				if (mServerShapeArray[i].mOnClick == moveLeft)
 				{
 					mServerShapeArray[i].mPositionX = 0; 
-					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionY = mWindow.y / 2 - shapeCenterY; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveRight)
 				{
-					var tempx = mWindowX / 6;
-					tempx = mWindowX - tempx;
+					var tempx = mWindow.x / 6;
+					tempx = mWindow.x - tempx;
 					
 					mServerShapeArray[i].mPositionX = tempx - shapeCenterX; 
-					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionY = mWindow.y / 2 - shapeCenterY; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveUp)
 				{
-					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionX = mWindow.x / 2 - shapeCenterX; 
 					mServerShapeArray[i].mPositionY = 0; 
 				}
 				if (mServerShapeArray[i].mOnClick == moveDown)
 				{
-					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionX = mWindow.x / 2 - shapeCenterX; 
 					
-					var tempy = mWindowY / 6;
-					tempy = mWindowY - tempy;
+					var tempy = mWindow.y / 6;
+					tempy = mWindow.y - tempy;
 					mServerShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
 					
 				}
 				if (mServerShapeArray[i].mOnClick == moveStop)
 				{
-					mServerShapeArray[i].mPositionX = mWindowX / 2 - shapeCenterX; 
-					mServerShapeArray[i].mPositionY = mWindowY / 2 - shapeCenterY; 
+					mServerShapeArray[i].mPositionX = mWindow.x / 2 - shapeCenterX; 
+					mServerShapeArray[i].mPositionY = mWindow.y / 2 - shapeCenterY; 
 				}
  
         			mClientDivArray[i].style.left = mServerShapeArray[i].mPositionX+'px';
@@ -761,8 +763,8 @@ function render()
                 	var posY = ydiff + pageCenterY - shapeCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + mServerShapeArray[i].mWidth  + 3 > mWindowX ||
-			    posY + mServerShapeArray[i].mHeight + 13 > mWindowY)
+                        if (posX + mServerShapeArray[i].mWidth  + 3 > mWindow.x ||
+			    posY + mServerShapeArray[i].mHeight + 13 > mWindow.y)
 			{
                 		mClientDivArray[i].style.left = 0+'px';
                        		mClientDivArray[i].style.top  = 0+'px';
@@ -961,49 +963,50 @@ function moveStop()
         mControlObject.mKeyY = 0;
 }
 
-$(document).keydown(function (e)
+window.addEvent('keydown', function(event)
 {
-        if (e.which == 37)
+        if (event.key == 'left')
         {
                 mKeyLeft = true;
         }
-        if (e.which == 39)
+        if (event.key == 'right')
         {
                 mKeyRight = true;
         }
-        if (e.which == 38)
+        if (event.key == 'up')
         {
                 mKeyUp = true;
         }
-        if (e.which == 40)
+        if (event.key == 'down')
         {
                 mKeyDown = true;
         }
-        if (e.which == 32)
+        if (event.key == 'space')
         {
                 mKeyStop = true;
         }
 });
 
-$(document).keyup(function (e)
+
+window.addEvent('keyup', function(event)
 {
-        if (e.which == 37)
+        if (event.key == 'left')
         {
                 mKeyLeft = false;
         }
-        if (e.which == 39)
+        if (event.key == 'right')
         {
                 mKeyRight = false;
         }
-        if (e.which == 38)
+        if (event.key == 'up')
         {
                 mKeyUp = false;
         }
-        if (e.which == 40)
+        if (event.key == 'down')
         {
                 mKeyDown = false;
         }
-        if (e.which == 32)
+        if (event.key == 'space')
         {
                 mKeyStop = false;
         }
@@ -1082,9 +1085,10 @@ function checkKeys()
 </head>
 <body>
 <script type="text/javascript"> 
-
-$(document).ready(function()
+window.addEvent('domready', function()
 {
+//$(document).ready(function()
+//{
         init();
 }
 );
