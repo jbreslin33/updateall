@@ -963,7 +963,13 @@ function moveStop()
         mControlObject.mKeyY = 0;
 }
 
-window.addEvent('keydown', function(event)
+window.addEvent('domready', function()
+{
+	document.addEvent("keydown", this.onkeydown);
+	document.addEvent("keyup", this.onkeyup);
+}) ;
+
+function onkeydown(event)
 {
         if (event.key == 'left')
         {
@@ -985,10 +991,9 @@ window.addEvent('keydown', function(event)
         {
                 mKeyStop = true;
         }
-});
+}
 
-
-window.addEvent('keyup', function(event)
+function onkeyup(event)
 {
         if (event.key == 'left')
         {
@@ -1010,7 +1015,7 @@ window.addEvent('keyup', function(event)
         {
                 mKeyStop = false;
         }
-});
+}
 
 function checkKeys()
 {
