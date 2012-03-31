@@ -105,9 +105,6 @@ var mProposedY = 0;
 
 var mControlObject;
 
-//questions
-var mAnswer = 0;
-
 // id counter
 var mIdCount = 0;
 
@@ -849,7 +846,6 @@ function resetGame()
         //count
         mGame.mCount = mGame.mStartNumber;
         
-	var mAnswer = 0;
 	//answer
 	newAnswer();
         mClientShapeArray[0].innerHTML=mGame.mCount;
@@ -863,7 +859,7 @@ function evaluateCollision(mId1,mId2)
 
 		if (mServerShapeArray[mId2].mIsQuestion)
 		{
-        		if (mServerShapeArray[mId2].mAnswer == mAnswer)
+        		if (mServerShapeArray[mId2].mAnswer == mGame.mAnswer)
         		{
                 		mGame.mCount = mGame.mCount + mGame.mCountBy;  //add to count
                 		mGame.mScore++;
@@ -916,7 +912,7 @@ function newQuestion()
 //new answer
 function newAnswer()
 {
-        mAnswer = mGame.mCount + mGame.mCountBy;
+        mGame.mAnswer = mGame.mCount + mGame.mCountBy;
 }
 
 //CONTROLS
