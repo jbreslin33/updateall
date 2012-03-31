@@ -166,6 +166,25 @@ var Application = new Class(
 
 		//collisionDistnce
 		this.mCollisionDistance = collisionDistance;	
+	},
+	update: function()
+	{
+		if (mGameOn)
+		{
+			//get time since epoch and set lasttime	
+			e = new Date();
+			mLastTimeSinceEpoch = mTimeSinceEpoch;
+			mTimeSinceEpoch = e.getTime();
+		
+			//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
+			mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
+		
+			//old update only
+			updateGame();	
+		
+			render();	
+			var t=setTimeout("mApplication.update()",20)
+		}
 	}
 });
 
@@ -186,33 +205,13 @@ function init()
 	g = new Date();
 	mGameStartTime = g.getTime();
 	
-	update();	
+	mApplication.update();	
 }
 
 function log(msg) {
     setTimeout(function() {
         throw new Error(msg);
     }, 0);
-}
-
-function update()
-{	
-	if (mGameOn)
-	{
-		//get time since epoch and set lasttime	
-		e = new Date();
-		mLastTimeSinceEpoch = mTimeSinceEpoch;
-		mTimeSinceEpoch = e.getTime();
-		
-		//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
-		mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
-		
-		//old update only
-		updateGame();	
-		
-		render();	
-		var t=setTimeout("update()",20)
-	}
 }
 
 function updateGame()
