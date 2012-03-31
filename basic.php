@@ -103,7 +103,6 @@ var mSlotPositionYArray = new Array();
 var mProposedX = 0;
 var mProposedY = 0;
 
-var mControlObject;
 
 // id counter
 var mIdCount = 0;
@@ -167,7 +166,10 @@ var Game = new Class(
 	{
 		//On_Off
 		this.mGameOn = true;
-	
+		
+		//control object
+		this.mControlObject;
+		
 		//window size
 		this.mWindow = window.getSize();
 
@@ -387,9 +389,9 @@ function setUniqueSpawnPosition()
 				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 			}
 			if (
-			    Math.abs(mPositionXArray[mProposedX] - mControlObject.mPositionX) < 100 
+			    Math.abs(mPositionXArray[mProposedX] - mGame.mControlObject.mPositionX) < 100 
 				 && 
-		            Math.abs(mPositionYArray[mProposedY] - mControlObject.mPositionY) < 100			
+		            Math.abs(mPositionYArray[mProposedY] - mGame.mControlObject.mPositionY) < 100			
 			   ) 
 			{
 				r = 0;
@@ -472,7 +474,7 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	shape.mOnClick = onClick;
  	if (isControlObject)
 	{
-		mControlObject = shape;
+		mGame.mControlObject = shape;
 	}
 	
 	//add to array
@@ -667,13 +669,13 @@ function render()
        		var shapeCenterY = mServerShapeArray[i].mHeight / 2;     
 
 		//if control object center it on screen
-		if (mServerShapeArray[i] == mControlObject || mServerShapeArray[i].mGui == true)
+		if (mServerShapeArray[i] == mGame.mControlObject || mServerShapeArray[i].mGui == true)
 		{
 			//shift the position based on pageCenterXY and shapeCenterXY	
         		var posX = pageCenterX - shapeCenterX;     
         		var posY = pageCenterY - shapeCenterY;     
 			
-			if (mServerShapeArray[i] == mControlObject)
+			if (mServerShapeArray[i] == mGame.mControlObject)
 			{
 				//this actual moves it  
         			mClientDivArray[i].style.left = posX+'px';
@@ -743,8 +745,8 @@ function render()
 		else
 		{
 			//get the offset from control object
-			var xdiff = mServerShapeArray[i].mPositionX - mControlObject.mPositionX;  
-                	var ydiff = mServerShapeArray[i].mPositionY - mControlObject.mPositionY;  
+			var xdiff = mServerShapeArray[i].mPositionX - mGame.mControlObject.mPositionX;  
+                	var ydiff = mServerShapeArray[i].mPositionY - mGame.mControlObject.mPositionY;  
 
                 	//center image relative to position
                 	var posX = xdiff + pageCenterX - shapeCenterX;
@@ -805,9 +807,9 @@ function checkForDoorEntered()
 {
         if (mGame.mScore == mGame.mScoreNeeded)
         {
-		if (mControlObject.mPositionX > mGame.mRightBounds - mDefaultSpriteSize / 2 &&
-		    mControlObject.mPositionY > mGame.mTopBounds &&
-		    mControlObject.mPositionY < mGame.mTopBounds + mDefaultSpriteSize * 2) 
+		if (mGame.mControlObject.mPositionX > mGame.mRightBounds - mDefaultSpriteSize / 2 &&
+		    mGame.mControlObject.mPositionY > mGame.mTopBounds &&
+		    mGame.mControlObject.mPositionY < mGame.mTopBounds + mDefaultSpriteSize * 2) 
 		    	
 		{
 			mGame.mGameOn = false;
@@ -836,8 +838,8 @@ function resetGame()
                 	mClientDivArray[i].style.visibility = 'visible';
 		}
         }
-	mControlObject.mPositionX = 0;     
-	mControlObject.mPositionY = 0;     
+	mGame.mControlObject.mPositionX = 0;     
+	mGame.mControlObject.mPositionY = 0;     
  
         //score
         mGame.mScore = 0;
@@ -856,7 +858,7 @@ function resetGame()
 //check guess
 function evaluateCollision(mId1,mId2)
 {
-	if (mServerShapeArray[mId1] == mControlObject)
+	if (mServerShapeArray[mId1] == mGame.mControlObject)
 	{
 
 		if (mServerShapeArray[mId2].mIsQuestion)
@@ -920,32 +922,32 @@ function newAnswer()
 //CONTROLS
 function moveLeft()
 {
-	mControlObject.mKeyX = -1;
-        mControlObject.mKeyY = 0;
+	mGame.mControlObject.mKeyX = -1;
+        mGame.mControlObject.mKeyY = 0;
 }
 
 function moveRight()
 {
-        mControlObject.mKeyX = 1;
-        mControlObject.mKeyY = 0;
+        mGame.mControlObject.mKeyX = 1;
+        mGame.mControlObject.mKeyY = 0;
 }
 
 function moveUp()
 {
-        mControlObject.mKeyX = 0;
-        mControlObject.mKeyY = -1;
+        mGame.mControlObject.mKeyX = 0;
+        mGame.mControlObject.mKeyY = -1;
 }
 
 function moveDown()
 {
-        mControlObject.mKeyX = 0;
-        mControlObject.mKeyY = 1;
+        mGame.mControlObject.mKeyX = 0;
+        mGame.mControlObject.mKeyY = 1;
 }
 
 function moveStop()
 {
-        mControlObject.mKeyX = 0;
-        mControlObject.mKeyY = 0;
+        mGame.mControlObject.mKeyX = 0;
+        mGame.mControlObject.mKeyY = 0;
 }
 
 window.addEvent('domready', function()
@@ -1007,64 +1009,64 @@ function checkKeys()
         //left  
         if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = -1;
-                mControlObject.mKeyY = 0;
+                mGame.mControlObject.mKeyX = -1;
+                mGame.mControlObject.mKeyY = 0;
         }
         
         //right 
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = 1;
-                mControlObject.mKeyY = 0;
+                mGame.mControlObject.mKeyX = 1;
+                mGame.mControlObject.mKeyY = 0;
         }
         
         //up    
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = 0;
-                mControlObject.mKeyY = -1;
+                mGame.mControlObject.mKeyX = 0;
+                mGame.mControlObject.mKeyY = -1;
         }
         //down  
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = 0;
-                mControlObject.mKeyY = 1;
+                mGame.mControlObject.mKeyX = 0;
+                mGame.mControlObject.mKeyY = 1;
         }
         //left_up       
         if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = -.5;
-                mControlObject.mKeyY = -.5;
+                mGame.mControlObject.mKeyX = -.5;
+                mGame.mControlObject.mKeyY = -.5;
         }
         //left_down     
         if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = -.5;
-                mControlObject.mKeyY = .5;
+                mGame.mControlObject.mKeyX = -.5;
+                mGame.mControlObject.mKeyY = .5;
         }
         //right_up      
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = .5;
-                mControlObject.mKeyY = -.5;
+                mGame.mControlObject.mKeyX = .5;
+                mGame.mControlObject.mKeyY = -.5;
         }
         //right_down    
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
-                mControlObject.mKeyX = .5;
-                mControlObject.mKeyY = .5;
+                mGame.mControlObject.mKeyX = .5;
+                mGame.mControlObject.mKeyY = .5;
         }
         //all up...stop 
         if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
         {
-                mControlObject.mKeyX = 0;
-                mControlObject.mKeyY = 0;
+                mGame.mControlObject.mKeyX = 0;
+                mGame.mControlObject.mKeyY = 0;
         }
         //stop  
         if (mApplication.mKeyStop == true)
         {
-                mControlObject.mKeyX = 0;
-                mControlObject.mKeyY = 0;
+                mGame.mControlObject.mKeyX = 0;
+                mGame.mControlObject.mKeyY = 0;
         }
 }
 
