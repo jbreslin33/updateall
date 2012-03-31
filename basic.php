@@ -102,9 +102,45 @@ var mSlotPositionYArray = new Array();
 
 var Shape = new Class(
 {
-	initialize: function()
+	initialize: function (src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 	{
-
+		this.mSrc = src;
+		this.mId = mGame.mIdCount;
+		
+		this.mSpawnPositionX = spawnX;
+		this.mSpawnPositionY = spawnY;
+		this.mWidth = width;
+		this.mHeight = height;
+		this.mPositionX = spawnX;
+		this.mPositionY = spawnY;
+		this.mOldPositionX = spawnX;
+		this.mOldPositionY = spawnY;
+		this.mVelocityX = 0;
+		this.mVelocityY = 0;
+		this.mKeyX = 0;
+		this.mKeyY = 0;
+		this.mCollidable = collidable;
+		this.mCollisionOn = collisionOn;
+		this.mIsQuestion = isQuestion;
+		this.mAnswer = answer;
+		this.mAI = ai;	
+		this.mGui = gui;
+		this.mInnerHTML = innerHTML; 
+		this.mBackgroundColor = backgroundColor;
+		this.mOnClick = onClick;
+ 		
+		if (isControlObject)
+		{
+			mGame.mControlObject = this;
+		}
+	
+		//add to array
+		mServerShapeArray.push(this);
+	
+		//create clientside shape, this would send across network...
+		createClientDiv(mGame.mIdCount);
+	
+		mGame.mIdCount++;
 	},
 	
 	update: function()
@@ -258,7 +294,6 @@ function init()
 {
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
 
-
 	mGame = new Game(<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 	
 	//createWorld
@@ -272,7 +307,6 @@ function init()
 	
 	mApplication.update();	
 }
-
 
 function ai()
 {
@@ -358,26 +392,25 @@ function fillSpawnPositionArrays()
 function createServerShapes()
 {
 	//control object	
-	createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
-	
+	new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 	for (i = mGame.mStartNumber + mGame.mCountBy; i <= mGame.mEndNumber; i = i + mGame.mCountBy)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+		new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mGame.mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
+		new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
 	}
 
 	//control buttons	
-	createServerShape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
-	createServerShape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
-	createServerShape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
-	createServerShape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
-	createServerShape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
+	new Shape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+	new Shape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+	new Shape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+	new Shape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+	new Shape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
 }
 
 function setUniqueSpawnPosition()
@@ -425,7 +458,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+		new Shape("",1,mGame.mDefaultSpriteSize,mGame.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -436,11 +469,11 @@ function createRightWall()
 	{
 		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+			new Shape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
 		}	
 		else
 		{	
-			createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+			new Shape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 		}
 		greenDoorCount++;
 	}
@@ -451,7 +484,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",mGame.mDefaultSpriteSize,1,i,mGame.mTopBounds,false,false,"",true,true,false,false,"","black","");
+		new Shape("",mGame.mDefaultSpriteSize,1,i,mGame.mTopBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -459,50 +492,10 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",mGame.mDefaultSpriteSize,1,i,mGame.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+		new Shape("",mGame.mDefaultSpriteSize,1,i,mGame.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
-function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
-{
-	var shape = new Object();
-	shape.mSrc = src;
-	shape.mId = mGame.mIdCount;
-		
-	shape.mSpawnPositionX = spawnX;
-	shape.mSpawnPositionY = spawnY;
-	shape.mWidth = width;
-	shape.mHeight = height;
-	shape.mPositionX = spawnX;
-	shape.mPositionY = spawnY;
-	shape.mOldPositionX = spawnX;
-	shape.mOldPositionY = spawnY;
-	shape.mVelocityX = 0;
-	shape.mVelocityY = 0;
-	shape.mKeyX = 0;
-	shape.mKeyY = 0;
-	shape.mCollidable = collidable;
-	shape.mCollisionOn = collisionOn;
-	shape.mIsQuestion = isQuestion;
-	shape.mAnswer = answer;
-	shape.mAI = ai;	
-	shape.mGui = gui;
-	shape.mInnerHTML = innerHTML; 
-	shape.mBackgroundColor = backgroundColor;
-	shape.mOnClick = onClick;
- 	if (isControlObject)
-	{
-		mGame.mControlObject = shape;
-	}
-	
-	//add to array
-	mServerShapeArray.push(shape);
-	
-	//create clientside shape, this would send across network...
-	createClientDiv(mGame.mIdCount);
-	
-	mGame.mIdCount++;
-}
 
 function createClientDiv(i)
 {
