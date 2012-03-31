@@ -191,11 +191,8 @@ var Application = new Class(
 
 function init()
 {
- 
-        //create game   
-        //var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
-	
 	mApplication = new Application(<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+	
 	//createWorld
 	createWorld();
 
@@ -1072,8 +1069,6 @@ function checkKeys()
 <script type="text/javascript"> 
 window.addEvent('domready', function()
 {
-//$(document).ready(function()
-//{
         init();
 }
 );
