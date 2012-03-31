@@ -106,7 +106,6 @@ var mProposedY = 0;
 var mControlObject;
 
 //questions
-var mQuestion = 0;
 var mAnswer = 0;
 
 // id counter
@@ -174,7 +173,8 @@ var Game = new Class(
 		this.mWindow = window.getSize();
 
 		//score
-        	this.mScoreNeeded = scoreNeeded;
+      		this.mScore = 0; 
+	 	this.mScoreNeeded = scoreNeeded;
 
         	//count
         	this.mCountBy = countBy;
@@ -844,7 +844,7 @@ function resetGame()
         mGame.mScore = 0;
 
         //game
-        mQuestion = mGame.mCount;
+        mGame.mQuestion = mGame.mCount;
 
         //count
         mGame.mCount = mGame.mStartNumber;
@@ -908,8 +908,8 @@ function evaluateCollision(mId1,mId2)
 function newQuestion()
 {
         //set question
-        mQuestion = mGame.mCount;
-        document.getElementById("question").innerHTML="Question: " + mQuestion;
+        mGame.mQuestion = mGame.mCount;
+        document.getElementById("question").innerHTML="Question: " + mGame.mQuestion;
         mClientShapeArray[0].innerHTML=mGame.mCount;
 }
 
