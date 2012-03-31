@@ -87,7 +87,6 @@ var mApplication;
 
 //game
 var mGame;
-var mGameOn = true;
 var mDoorEntered = false;
 
 //shapes
@@ -148,7 +147,7 @@ var Application = new Class(
 
 	update: function()
 	{
-		if (mGameOn)
+		if (mGame.mGameOn)
 		{
 			//get time since epoch and set lasttime	
 			e = new Date();
@@ -171,6 +170,9 @@ var Game = new Class(
 {
 	initialize: function(scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 	{
+		//On_Off
+		this.mGameOn = true;
+	
 		//window size
 		this.mWindow = window.getSize();
 
@@ -813,7 +815,7 @@ function checkForDoorEntered()
 		    mControlObject.mPositionY < mGame.mTopBounds + mDefaultSpriteSize * 2) 
 		    	
 		{
-			mGameOn = false;
+			mGame.mGameOn = false;
                 	document.getElementById("feedback").innerHTML="YOU WIN!!!";
                 	window.location = "goto_next_math_level.php"
 		}
