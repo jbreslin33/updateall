@@ -115,12 +115,6 @@ var mAiCounterDelay = 10;
 //dimensions
 var mDefaultSpriteSize = 50;
 
-//key pressed
-var mKeyLeft = false;
-var mKeyRight = false;
-var mKeyUp = false;
-var mKeyDown = false;
-var mKeyStop = false;
 
 var Application = new Class(
 {
@@ -136,6 +130,14 @@ var Application = new Class(
 		this.mTimeSinceEpoch = 0;
 		this.mLastTimeSinceEpoch = 0;
 		this.mTimeSinceLastInterval = 0;
+		
+		//key pressed
+		this.mKeyLeft = false;
+		this.mKeyRight = false;
+		this.mKeyUp = false;
+		this.mKeyDown = false;
+		this.mKeyStop = false;
+
 	},
 
 	update: function()
@@ -956,23 +958,23 @@ function onkeydown(event)
 {
         if (event.key == 'left')
         {
-                mKeyLeft = true;
+                mApplication.mKeyLeft = true;
         }
         if (event.key == 'right')
         {
-                mKeyRight = true;
+                mApplication.mKeyRight = true;
         }
         if (event.key == 'up')
         {
-                mKeyUp = true;
+                mApplication.mKeyUp = true;
         }
         if (event.key == 'down')
         {
-                mKeyDown = true;
+                mApplication.mKeyDown = true;
         }
         if (event.key == 'space')
         {
-                mKeyStop = true;
+                mApplication.mKeyStop = true;
         }
 }
 
@@ -980,86 +982,86 @@ function onkeyup(event)
 {
         if (event.key == 'left')
         {
-                mKeyLeft = false;
+                mApplication.mKeyLeft = false;
         }
         if (event.key == 'right')
         {
-                mKeyRight = false;
+                mApplication.mKeyRight = false;
         }
         if (event.key == 'up')
         {
-                mKeyUp = false;
+                mApplication.mKeyUp = false;
         }
         if (event.key == 'down')
         {
-                mKeyDown = false;
+                mApplication.mKeyDown = false;
         }
         if (event.key == 'space')
         {
-                mKeyStop = false;
+                mApplication.mKeyStop = false;
         }
 }
 
 function checkKeys()
 {
         //left  
-        if (mKeyLeft == true && mKeyRight == false && mKeyUp == false && mKeyDown == false && mKeyStop == false)
+        if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = -1;
                 mControlObject.mKeyY = 0;
         }
         
         //right 
-        if (mKeyLeft == false && mKeyRight == true && mKeyUp == false && mKeyDown == false && mKeyStop == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = 1;
                 mControlObject.mKeyY = 0;
         }
         
         //up    
-        if (mKeyLeft == false && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = 0;
                 mControlObject.mKeyY = -1;
         }
         //down  
-        if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = 0;
                 mControlObject.mKeyY = 1;
         }
         //left_up       
-        if (mKeyLeft == true && mKeyRight == false && mKeyUp == true && mKeyDown == false && mKeyStop == false)
+        if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = -.5;
                 mControlObject.mKeyY = -.5;
         }
         //left_down     
-        if (mKeyLeft == true && mKeyRight == false && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+        if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = -.5;
                 mControlObject.mKeyY = .5;
         }
         //right_up      
-        if (mKeyLeft == false && mKeyRight == true && mKeyUp == true && mKeyDown == false && mKeyStop == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = .5;
                 mControlObject.mKeyY = -.5;
         }
         //right_down    
-        if (mKeyLeft == false && mKeyRight == true && mKeyUp == false && mKeyDown == true && mKeyStop == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
         {
                 mControlObject.mKeyX = .5;
                 mControlObject.mKeyY = .5;
         }
         //all up...stop 
-        if (mKeyLeft == false && mKeyRight == false && mKeyUp == false && mKeyDown == false)
+        if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
         {
                 mControlObject.mKeyX = 0;
                 mControlObject.mKeyY = 0;
         }
         //stop  
-        if (mKeyStop == true)
+        if (mApplication.mKeyStop == true)
         {
                 mControlObject.mKeyX = 0;
                 mControlObject.mKeyY = 0;
