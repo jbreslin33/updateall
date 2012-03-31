@@ -108,10 +108,6 @@ var mControlObject;
 //score
 var mScore = 0;
 
-//time
-var mTimeSinceEpoch = 0;
-var mLastTimeSinceEpoch = 0;
-var mTimeSinceLastInterval = 0;
 
 //questions
 var mQuestion = 0;
@@ -143,6 +139,11 @@ var Application = new Class(
 
         	//ticks
         	this.mTickLength = tickLength;
+		
+		//time
+		this.mTimeSinceEpoch = 0;
+		this.mLastTimeSinceEpoch = 0;
+		this.mTimeSinceLastInterval = 0;
 	},
 
 	update: function()
@@ -151,11 +152,11 @@ var Application = new Class(
 		{
 			//get time since epoch and set lasttime	
 			e = new Date();
-			mLastTimeSinceEpoch = mTimeSinceEpoch;
-			mTimeSinceEpoch = e.getTime();
+			mApplication.mLastTimeSinceEpoch = mApplication.mTimeSinceEpoch;
+			mApplication.mTimeSinceEpoch = e.getTime();
 		
 			//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
-			mTimeSinceLastInterval = mTimeSinceEpoch - mLastTimeSinceEpoch;
+			mApplication.mTimeSinceLastInterval = mApplication.mTimeSinceEpoch - mApplication.mLastTimeSinceEpoch;
 		
 			//old update only
 			mGame.update();	
@@ -587,8 +588,8 @@ function moveShapes()
         for (i = 0; i < mServerShapeArray.length; i++)
         {
 		//update Velocity
-		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mTimeSinceLastInterval * mGame.mSpeed;
-		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mTimeSinceLastInterval * mGame.mSpeed;
+		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mApplication.mTimeSinceLastInterval * mGame.mSpeed;
+		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mApplication.mTimeSinceLastInterval * mGame.mSpeed;
 
 		//update position
 		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
