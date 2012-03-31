@@ -156,6 +156,14 @@ var Application = new Class(
 			render();	
 			var t=setTimeout("mApplication.update()",20)
 		}
+	},
+
+	log: function(msg)
+	{
+		setTimeout(function()
+		{
+			throw new Error(msg);
+		}, 0);
 	}
 });
 
@@ -265,11 +273,6 @@ function init()
 	mApplication.update();	
 }
 
-function log(msg) {
-    setTimeout(function() {
-        throw new Error(msg);
-    }, 0);
-}
 
 function ai()
 {
