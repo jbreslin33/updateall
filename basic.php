@@ -105,10 +105,6 @@ var mProposedY = 0;
 
 var mControlObject;
 
-//score
-var mScore = 0;
-
-
 //questions
 var mQuestion = 0;
 var mAnswer = 0;
@@ -786,13 +782,13 @@ function render()
 //Score
 function printScore()
 {
-        document.getElementById("score").innerHTML="Score: " + mScore;
+        document.getElementById("score").innerHTML="Score: " + mGame.mScore;
         document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mGame.mScoreNeeded;
 }
 
 function checkForScoreNeeded()
 {
-        if (mScore == mGame.mScoreNeeded)
+        if (mGame.mScore == mGame.mScoreNeeded)
         {
 		//open the doors
 		for (i=0; i < mServerShapeArray.length; i++)
@@ -808,7 +804,7 @@ function checkForScoreNeeded()
 
 function checkForDoorEntered()
 {
-        if (mScore == mGame.mScoreNeeded)
+        if (mGame.mScore == mGame.mScoreNeeded)
         {
 		if (mControlObject.mPositionX > mGame.mRightBounds - mDefaultSpriteSize / 2 &&
 		    mControlObject.mPositionY > mGame.mTopBounds &&
@@ -845,7 +841,7 @@ function resetGame()
 	mControlObject.mPositionY = 0;     
  
         //score
-        mScore = 0;
+        mGame.mScore = 0;
 
         //game
         mQuestion = mGame.mCount;
@@ -870,7 +866,7 @@ function evaluateCollision(mId1,mId2)
         		if (mServerShapeArray[mId2].mAnswer == mAnswer)
         		{
                 		mGame.mCount = mGame.mCount + mGame.mCountBy;  //add to count
-                		mScore++;
+                		mGame.mScore++;
 				mServerShapeArray[mId2].mCollisionOn = false;
 				mClientDivArray[mId2].style.visibility = 'hidden';
                 
