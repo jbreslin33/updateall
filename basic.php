@@ -100,9 +100,6 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
-var mProposedX = 0;
-var mProposedY = 0;
-
 
 // id counter
 var mIdCount = 0;
@@ -114,7 +111,7 @@ var mAiCounterDelay = 10;
 //dimensions
 var mDefaultSpriteSize = 50;
 
-
+//Application Class
 var Application = new Class(
 {
 	initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
@@ -160,6 +157,7 @@ var Application = new Class(
 	}
 });
 
+//Game Class
 var Game = new Class(
 {
 	initialize: function(scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
@@ -196,6 +194,10 @@ var Game = new Class(
 
 		//collisionDistnce
 		this.mCollisionDistance = collisionDistance;	
+		
+		//proposed positions	
+		this.mProposedX = 0;
+		this.mProposedY = 0;
 	},
 
 	update: function()
@@ -345,13 +347,13 @@ function createServerShapes()
 	for (i = mGame.mStartNumber + mGame.mCountBy; i <= mGame.mEndNumber; i = i + mGame.mCountBy)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,i,true,true,false,false,"","yellow","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mGame.mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,"",true,true,true,false,"","red","");
+		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
 	}
 
 	//control buttons	
@@ -365,38 +367,38 @@ function createServerShapes()
 function setUniqueSpawnPosition()
 {
 	//get random spawn element
-	mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-	mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+	mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+	mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 
 	for (r= 0; r < mServerShapeArray.length; r++)
 	{
-		if (mPositionXArray[mProposedX] == mServerShapeArray[r].mPositionX && mPositionYArray[mProposedY] == mServerShapeArray[r].mPositionY)
+		if (mPositionXArray[mGame.mProposedX] == mServerShapeArray[r].mPositionX && mPositionYArray[mGame.mProposedY] == mServerShapeArray[r].mPositionY)
 		{
 			r = 0;
-			mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-			mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+			mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+			mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 		}
 		if (r > 0)
 		{	
 			if (
-			    Math.abs(mPositionXArray[mProposedX] - mServerShapeArray[r-1].mPositionX) > 350 
+			    Math.abs(mPositionXArray[mGame.mProposedX] - mServerShapeArray[r-1].mPositionX) > 350 
 				  ||
-		            Math.abs(mPositionYArray[mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
+		            Math.abs(mPositionYArray[mGame.mProposedY] - mServerShapeArray[r-1].mPositionY) > 350			
 			   ) 
 			{
 				r = 0;
-				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+				mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+				mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 			}
 			if (
-			    Math.abs(mPositionXArray[mProposedX] - mGame.mControlObject.mPositionX) < 100 
+			    Math.abs(mPositionXArray[mGame.mProposedX] - mGame.mControlObject.mPositionX) < 100 
 				 && 
-		            Math.abs(mPositionYArray[mProposedY] - mGame.mControlObject.mPositionY) < 100			
+		            Math.abs(mPositionYArray[mGame.mProposedY] - mGame.mControlObject.mPositionY) < 100			
 			   ) 
 			{
 				r = 0;
-				mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-				mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+				mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+				mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
 			}
 			
 		}
