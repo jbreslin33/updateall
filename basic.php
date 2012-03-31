@@ -100,6 +100,19 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
+var Shape = new Class(
+{
+	initialize: function()
+	{
+
+	},
+	
+	update: function()
+	{
+
+	}
+});
+
 //Application Class
 var Application = new Class(
 {
