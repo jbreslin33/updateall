@@ -82,6 +82,9 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
+//application
+var mApplication;
+
 //window
 var mWindow;
 
@@ -106,17 +109,9 @@ var mProposedY = 0;
 var mControlObject;
 
 //score
-var mScoreNeeded = 0;
 var mScore = 0;
 
-//count
-var mCountBy = 0;
-var mCount = 0;
-var mStartNumber = 0;
-var mEndNumber = 0;
-
 //time
-var mTickLength = 0;
 var mTimeSinceEpoch = 0;
 var mLastTimeSinceEpoch = 0;
 var mTimeSinceLastInterval = 0;
@@ -129,18 +124,11 @@ var mAnswer = 0;
 var mIdCount = 0;
 
 //chasers
-var mNumberOfChasers = 0;
-
 var mAiCounter = 0;
 var mAiCounterDelay = 10;
 
 //dimensions
 var mDefaultSpriteSize = 50;
-var mLeftBounds = 0;
-var mRightBounds = 0;
-var mTopBounds = 0;
-var mBottomBounds = 0;
-var mCollisionDistance = 0;
 
 //key pressed
 var mKeyLeft = false;
@@ -149,44 +137,46 @@ var mKeyUp = false;
 var mKeyDown = false;
 var mKeyStop = false;
 
-
-
-function Game(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+var Application = new Class(
 {
-        //score
-        mScoreNeeded = scoreNeeded;
+	initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+	{
+		//score
+        	this.mScoreNeeded = scoreNeeded;
 
-        //count
-        mCountBy = countBy;
-        mStartNumber = startNumber;
-        mEndNumber = endNumber; 
+        	//count
+        	this.mCountBy = countBy;
+        	this.mStartNumber = startNumber;
+        	this.mEndNumber = endNumber; 
 
-        //ticks
-        mTickLength = tickLength;
+        	//ticks
+        	this.mTickLength = tickLength;
 
-        //speed
-        mSpeed = speed;
+        	//speed
+        	this.mSpeed = speed;
 	
-	//chasers
-	mNumberOfChasers = numberOfChasers;
+		//chasers
+		this.mNumberOfChasers = numberOfChasers;
 
-	//dimensions
-	mLeftBounds = leftBounds;
-	mRightBounds = rightBounds;
-	mTopBounds = topBounds;
-	mBottomBounds = bottomBounds;
+		//dimensions
+		this.mLeftBounds = leftBounds;
+		this.mRightBounds = rightBounds;
+		this.mTopBounds = topBounds;
+		this.mBottomBounds = bottomBounds;
 
-	//collisionDistnce
-	mCollisionDistance = collisionDistance;	
-}
+		//collisionDistnce
+		this.mCollisionDistance = collisionDistance;	
+	}
+});
 
 function init()
 {
 	mWindow = window.getSize();
  
         //create game   
-        var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
-
+        //var game = new Game( <?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+	
+	mApplication = new Application(<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $tickLength, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 	//createWorld
 	createWorld();
 
@@ -328,12 +318,12 @@ function createWorld()
 
 function fillSpawnPositionArrays()
 {
-	for (i=mLeftBounds + mDefaultSpriteSize / 2; i <= mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	for (i=mApplication.mLeftBounds + mDefaultSpriteSize / 2; i <= mApplication.mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
 	{ 	
 		mPositionXArray.push(i);	
 	}
 	
-	for (i=mTopBounds + mDefaultSpriteSize / 2; i <= mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	for (i=mApplication.mTopBounds + mDefaultSpriteSize / 2; i <= mApplication.mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
 	{ 	
 		mPositionYArray.push(i);	
 	}
@@ -344,14 +334,13 @@ function createServerShapes()
 	//control object	
 	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 	
-	for (i = mStartNumber + mCountBy; i <= mEndNumber; i = i + mCountBy)
+	for (i = mApplication.mStartNumber + mApplication.mCountBy; i <= mApplication.mEndNumber; i = i + mApplication.mCountBy)
 	{
 		setUniqueSpawnPosition();
-	//	var a = i * mCountBy;
 		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,i,true,true,false,false,"","yellow","");
 	}
 
-	for (i = 0; i < mNumberOfChasers; i++)
+	for (i = 0; i < mApplication.mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
 		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mProposedX],mPositionYArray[mProposedY],false,true,"",true,true,true,false,"","red","");
@@ -410,7 +399,7 @@ function createLeftWall()
 {
         for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
 	{
-		createServerShape("",1,mDefaultSpriteSize,mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",1,mDefaultSpriteSize,mApplication.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -421,11 +410,11 @@ function createRightWall()
 	{
 		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+			createServerShape("",1,mDefaultSpriteSize,mApplication.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
 		}	
 		else
 		{	
-			createServerShape("",1,mDefaultSpriteSize,mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+			createServerShape("",1,mDefaultSpriteSize,mApplication.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 		}
 		greenDoorCount++;
 	}
@@ -436,7 +425,7 @@ function createTopWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape("",mDefaultSpriteSize,1,i,mTopBounds,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",mDefaultSpriteSize,1,i,mApplication.mTopBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -444,7 +433,7 @@ function createBottomWall()
 {
         for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
 	{
-		createServerShape("",mDefaultSpriteSize,1,i,mBottomBounds,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",mDefaultSpriteSize,1,i,mApplication.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -588,8 +577,8 @@ function moveShapes()
         for (i = 0; i < mServerShapeArray.length; i++)
         {
 		//update Velocity
-		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mTimeSinceLastInterval * mSpeed;
-		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mTimeSinceLastInterval * mSpeed;
+		mServerShapeArray[i].mVelocityX = mServerShapeArray[i].mKeyX * mTimeSinceLastInterval * mApplication.mSpeed;
+		mServerShapeArray[i].mVelocityY = mServerShapeArray[i].mKeyY * mTimeSinceLastInterval * mApplication.mSpeed;
 
 		//update position
 		mServerShapeArray[i].mPositionX += mServerShapeArray[i].mVelocityX;
@@ -620,7 +609,7 @@ function checkForCollisions()
                      			var y2 = mServerShapeArray[i].mPositionY;              
                 
                         		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < mCollisionDistance) 
+                        		if (distSQ < mApplication.mCollisionDistance) 
                         		{
 						evaluateCollision(mServerShapeArray[s].mId,mServerShapeArray[i].mId);		      
                         		}
@@ -631,32 +620,25 @@ function checkForCollisions()
 }
 function checkForOutOfBounds()
 {
-
-//var mLeftBounds = -400;
-//var mRightBounds = 400;
-//var mTopBounds = -300;
-//var mBottomBounds = 300;
 	for (i = 0; i < mServerShapeArray.length; i++)
 	{	
-		if (mServerShapeArray[i].mPositionX < mLeftBounds)
+		if (mServerShapeArray[i].mPositionX < mApplication.mLeftBounds)
 		{
-			mServerShapeArray[i].mPositionX = mLeftBounds;		
+			mServerShapeArray[i].mPositionX = mApplication.mLeftBounds;		
 		}
-		if (mServerShapeArray[i].mPositionX > mRightBounds)
+		if (mServerShapeArray[i].mPositionX > mApplication.mRightBounds)
 		{
-			mServerShapeArray[i].mPositionX = mRightBounds;
+			mServerShapeArray[i].mPositionX = mApplication.mRightBounds;
 		}
-		if (mServerShapeArray[i].mPositionY < mTopBounds)
+		if (mServerShapeArray[i].mPositionY < mApplication.mTopBounds)
 		{
-			mServerShapeArray[i].mPositionY = mTopBounds;
+			mServerShapeArray[i].mPositionY = mApplication.mTopBounds;
 		}
-		if (mServerShapeArray[i].mPositionY > mBottomBounds)
+		if (mServerShapeArray[i].mPositionY > mApplication.mBottomBounds)
 		{
-			mServerShapeArray[i].mPositionY = mBottomBounds;
+			mServerShapeArray[i].mPositionY = mApplication.mBottomBounds;
 		}
 	}
-
-
 }
 
 window.onresize = function(event)
@@ -794,12 +776,12 @@ function render()
 function printScore()
 {
         document.getElementById("score").innerHTML="Score: " + mScore;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mScoreNeeded;
+        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mApplication.mScoreNeeded;
 }
 
 function checkForScoreNeeded()
 {
-        if (mScore == mScoreNeeded)
+        if (mScore == mApplication.mScoreNeeded)
         {
 		//open the doors
 		for (i=0; i < mServerShapeArray.length; i++)
@@ -816,11 +798,11 @@ function checkForScoreNeeded()
 function checkForDoorEntered()
 {
         //if (mDoorEntered)
-        if (mScore == mScoreNeeded)
+        if (mScore == mApplication.mScoreNeeded)
         {
-		if (mControlObject.mPositionX > mRightBounds - mDefaultSpriteSize / 2 &&
-		    mControlObject.mPositionY > mTopBounds &&
-		    mControlObject.mPositionY < mTopBounds + mDefaultSpriteSize * 2) 
+		if (mControlObject.mPositionX > mApplication.mRightBounds - mDefaultSpriteSize / 2 &&
+		    mControlObject.mPositionY > mApplication.mTopBounds &&
+		    mControlObject.mPositionY < mApplication.mTopBounds + mDefaultSpriteSize * 2) 
 		    	
 		{
 			mGameOn = false;
@@ -856,15 +838,15 @@ function resetGame()
         mScore = 0;
 
         //game
-        mQuestion = mCount;
+        mQuestion = mApplication.mCount;
 
         //count
-        mCount = mStartNumber;
+        mApplication.mCount = mApplication.mStartNumber;
         
 	var mAnswer = 0;
 	//answer
 	newAnswer();
-        mClientShapeArray[0].innerHTML=mCount;
+        mClientShapeArray[0].innerHTML=mApplication.mCount;
 }
 
 //check guess
@@ -877,7 +859,7 @@ function evaluateCollision(mId1,mId2)
 		{
         		if (mServerShapeArray[mId2].mAnswer == mAnswer)
         		{
-                		mCount = mCount + mCountBy;  //add to count
+                		mApplication.mCount = mApplication.mCount + mApplication.mCountBy;  //add to count
                 		mScore++;
 				mServerShapeArray[mId2].mCollisionOn = false;
 				mClientDivArray[mId2].style.visibility = 'hidden';
@@ -920,16 +902,15 @@ function evaluateCollision(mId1,mId2)
 function newQuestion()
 {
         //set question
-        //mQuestion = mQuestion + ' ' + mCount;
-        mQuestion = mCount;
+        mQuestion = mApplication.mCount;
         document.getElementById("question").innerHTML="Question: " + mQuestion;
-        mClientShapeArray[0].innerHTML=mCount;
+        mClientShapeArray[0].innerHTML=mApplication.mCount;
 }
 
 //new answer
 function newAnswer()
 {
-        mAnswer = mCount + mCountBy;
+        mAnswer = mApplication.mCount + mApplication.mCountBy;
 }
 
 //CONTROLS
