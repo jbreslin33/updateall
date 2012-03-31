@@ -82,12 +82,12 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
+
 //application
 var mApplication;
 
 //game
 var mGame;
-var mDoorEntered = false;
 
 //shapes
 var mServerShapeArray = new Array();
@@ -807,7 +807,6 @@ function checkForScoreNeeded()
 
 function checkForDoorEntered()
 {
-        //if (mDoorEntered)
         if (mScore == mGame.mScoreNeeded)
         {
 		if (mControlObject.mPositionX > mGame.mRightBounds - mDefaultSpriteSize / 2 &&
