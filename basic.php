@@ -100,17 +100,6 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
-
-// id counter
-var mIdCount = 0;
-
-//chasers
-var mAiCounter = 0;
-var mAiCounterDelay = 10;
-
-//dimensions
-var mDefaultSpriteSize = 50;
-
 //Application Class
 var Application = new Class(
 {
@@ -198,6 +187,17 @@ var Game = new Class(
 		//proposed positions	
 		this.mProposedX = 0;
 		this.mProposedY = 0;
+		
+		// id counter
+		this.mIdCount = 0;
+
+		//chasers
+		this.mAiCounter = 0;
+		this.mAiCounterDelay = 10;
+
+		//dimensions
+		this.mDefaultSpriteSize = 50;
+
 	},
 
 	update: function()
@@ -206,12 +206,12 @@ var Game = new Class(
 		checkKeys();
 
 		//run ai		
-		if (mAiCounter > mAiCounterDelay)
+		if (mGame.mAiCounter > mGame.mAiCounterDelay)
 		{	
 			ai();
-			mAiCounter = 0;
+			mGame.mAiCounter = 0;
 		}
-		mAiCounter++;
+		mGame.mAiCounter++;
 
 		//move players	
 		moveShapes();
@@ -328,12 +328,12 @@ function createWorld()
 
 function fillSpawnPositionArrays()
 {
-	for (i=mGame.mLeftBounds + mDefaultSpriteSize / 2; i <= mGame.mRightBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	for (i=mGame.mLeftBounds + mGame.mDefaultSpriteSize / 2; i <= mGame.mRightBounds - mGame.mDefaultSpriteSize / 2; i = i + mGame.mDefaultSpriteSize)
 	{ 	
 		mPositionXArray.push(i);	
 	}
 	
-	for (i=mGame.mTopBounds + mDefaultSpriteSize / 2; i <= mGame.mBottomBounds - mDefaultSpriteSize / 2; i = i + mDefaultSpriteSize)
+	for (i=mGame.mTopBounds + mGame.mDefaultSpriteSize / 2; i <= mGame.mBottomBounds - mGame.mDefaultSpriteSize / 2; i = i + mGame.mDefaultSpriteSize)
 	{ 	
 		mPositionYArray.push(i);	
 	}
@@ -342,18 +342,18 @@ function fillSpawnPositionArrays()
 function createServerShapes()
 {
 	//control object	
-	createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
+	createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 	
 	for (i = mGame.mStartNumber + mGame.mCountBy; i <= mGame.mEndNumber; i = i + mGame.mCountBy)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+		createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
 	}
 
 	for (i = 0; i < mGame.mNumberOfChasers; i++)
 	{
 		setUniqueSpawnPosition();
-		createServerShape("",mDefaultSpriteSize,mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
+		createServerShape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
 	}
 
 	//control buttons	
@@ -407,24 +407,24 @@ function setUniqueSpawnPosition()
 
 function createLeftWall()
 {
-        for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
+        for (i=-275; i <= 275; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",1,mDefaultSpriteSize,mGame.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
 function createRightWall()
 {
        	var greenDoorCount = 0; 
-	for (i=-275; i <= 275; i = i + mDefaultSpriteSize)
+	for (i=-275; i <= 275; i = i + mGame.mDefaultSpriteSize)
 	{
 		if (greenDoorCount == 0 || greenDoorCount == 1)
 		{
-			createServerShape("",1,mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+			createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
 		}	
 		else
 		{	
-			createServerShape("",1,mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+			createServerShape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 		}
 		greenDoorCount++;
 	}
@@ -433,17 +433,17 @@ function createRightWall()
 
 function createTopWall()
 {
-        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
+        for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",mDefaultSpriteSize,1,i,mGame.mTopBounds,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",mGame.mDefaultSpriteSize,1,i,mGame.mTopBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
 function createBottomWall()
 {
-        for (i=-375; i <= 375; i = i + mDefaultSpriteSize)
+        for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
 	{
-		createServerShape("",mDefaultSpriteSize,1,i,mGame.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+		createServerShape("",mGame.mDefaultSpriteSize,1,i,mGame.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 	}
 }
 
@@ -451,7 +451,7 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 {
 	var shape = new Object();
 	shape.mSrc = src;
-	shape.mId = mIdCount;
+	shape.mId = mGame.mIdCount;
 		
 	shape.mSpawnPositionX = spawnX;
 	shape.mSpawnPositionY = spawnY;
@@ -483,16 +483,16 @@ function createServerShape(src,width,height,spawnX,spawnY,isControlObject,isQues
 	mServerShapeArray.push(shape);
 	
 	//create clientside shape, this would send across network...
-	createClientDiv(mIdCount);
+	createClientDiv(mGame.mIdCount);
 	
-	mIdCount++;
+	mGame.mIdCount++;
 }
 
 function createClientDiv(i)
 {
 	//create the movable div that will be used to move image around.	
 	var div = document.createElement('div');
-        div.setAttribute('id','div' + mIdCount);
+        div.setAttribute('id','div' + mGame.mIdCount);
         div.setAttribute("class","demo");
 	div.style.position="absolute";
 	div.style.visibility = 'visible';
@@ -809,9 +809,9 @@ function checkForDoorEntered()
 {
         if (mGame.mScore == mGame.mScoreNeeded)
         {
-		if (mGame.mControlObject.mPositionX > mGame.mRightBounds - mDefaultSpriteSize / 2 &&
+		if (mGame.mControlObject.mPositionX > mGame.mRightBounds - mGame.mDefaultSpriteSize / 2 &&
 		    mGame.mControlObject.mPositionY > mGame.mTopBounds &&
-		    mGame.mControlObject.mPositionY < mGame.mTopBounds + mDefaultSpriteSize * 2) 
+		    mGame.mControlObject.mPositionY < mGame.mTopBounds + mGame.mDefaultSpriteSize * 2) 
 		    	
 		{
 			mGame.mGameOn = false;
