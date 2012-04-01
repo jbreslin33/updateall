@@ -222,6 +222,7 @@ var Application = new Class(
 		this.mKeyDown = false;
 		this.mKeyStop = false;
 
+		mGame = new Game(this,<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 	},
 
 	update: function()
@@ -319,8 +320,10 @@ var Application = new Class(
 //Game Class
 var Game = new Class(
 {
-	initialize: function(scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+	initialize: function(application,scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 	{
+		//application
+		this.mApplication = application;	
 		//On_Off
 		this.mGameOn = true;
 	
@@ -577,7 +580,6 @@ function init()
 {
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
 
-	mGame = new Game(<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 	
 	//this will be used for resetting to
 	resetGame();
