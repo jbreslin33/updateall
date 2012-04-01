@@ -478,13 +478,13 @@ var Game = new Class(
 		this.checkForOutOfBounds();
 	
 		//check collisions
-       		checkForCollisions();
+       		this.checkForCollisions();
 	
 		//check for end game
 		checkForScoreNeeded();
 	
 		//save old positions
-		saveOldPositions();
+		this.saveOldPositions();
 	},
 
 	checkForOutOfBounds: function()
@@ -643,55 +643,52 @@ var Game = new Class(
 			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
+	},
+
+	saveOldPositions: function()
+	{
+        	//save old positions
+        	for (i = 0; i < this.mShapeArray.length; i++)
+        	{
+                	//record old position to use for collisions or whatever you fancy
+                	this.mShapeArray[i].mOldPositionX = this.mShapeArray[i].mPositionX;
+                	this.mShapeArray[i].mOldPositionY = this.mShapeArray[i].mPositionY;
+        	}
+	},
+
+	checkForCollisions: function()
+	{
+		for (s = 0; s < this.mShapeArray.length; s++)
+		{
+	       		var x1 = this.mShapeArray[s].mPositionX;
+	       		var y1 = this.mShapeArray[s].mPositionY;
+ 
+			for (i = 0; i < this.mShapeArray.length; i++)
+       			{
+				if (this.mShapeArray[i] == this.mShapeArray[s])
+				{
+					//skip
+				}
+				else
+				{
+					if (this.mShapeArray[i].mCollisionOn == true && this.mShapeArray[s].mCollisionOn == true)
+                			{
+                        			var x2 = this.mShapeArray[i].mPositionX;              
+                     				var y2 = this.mShapeArray[i].mPositionY;              
+                
+                        			var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                        			if (distSQ < this.mCollisionDistance) 
+                        			{
+							evaluateCollision(this.mShapeArray[s].mId,this.mShapeArray[i].mId);		      
+                        			}
+					}
+                		}       
+        		}
+		}
 	}
-	
 });
 
 
-function saveOldPositions()
-{
-        //save old positions
-        for (i = 0; i < mGame.mShapeArray.length; i++)
-        {
-                //record old position to use for collisions or whatever you fancy
-                mGame.mShapeArray[i].mOldPositionX = mGame.mShapeArray[i].mPositionX;
-                mGame.mShapeArray[i].mOldPositionY = mGame.mShapeArray[i].mPositionY;
-        }
-}
-
-
-
-
-function checkForCollisions()
-{
-	for (s = 0; s < mGame.mShapeArray.length; s++)
-	{
-	       	var x1 = mGame.mShapeArray[s].mPositionX;
-	       	var y1 = mGame.mShapeArray[s].mPositionY;
- 
-		for (i = 0; i<mGame.mShapeArray.length; i++)
-       		{
-			if (mGame.mShapeArray[i] == mGame.mShapeArray[s])
-			{
-				//skip
-			}
-			else
-			{
-				if (mGame.mShapeArray[i].mCollisionOn == true && mGame.mShapeArray[s].mCollisionOn == true)
-                		{
-                        		var x2 = mGame.mShapeArray[i].mPositionX;              
-                     			var y2 = mGame.mShapeArray[i].mPositionY;              
-                
-                        		var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                        		if (distSQ < mGame.mCollisionDistance) 
-                        		{
-						evaluateCollision(mGame.mShapeArray[s].mId,mGame.mShapeArray[i].mId);		      
-                        		}
-				}
-                	}       
-        	}
-	}
-}
 
 
 window.onresize = function(event)
