@@ -393,6 +393,37 @@ var Application = new Class(
                 	mGame.mControlObject.mKeyX = 0;
                 	mGame.mControlObject.mKeyY = 0;
         	}
+	},
+
+	//CONTROLS
+	moveLeft: function()
+	{
+		mGame.mControlObject.mKeyX = -1;
+        	mGame.mControlObject.mKeyY = 0;
+	},
+
+	moveRight: function()
+	{
+        	mGame.mControlObject.mKeyX = 1;
+        	mGame.mControlObject.mKeyY = 0;
+	},
+
+	moveUp: function()
+	{
+        	mGame.mControlObject.mKeyX = 0;
+        	mGame.mControlObject.mKeyY = -1;
+	},
+
+	moveDown: function()
+	{
+        	mGame.mControlObject.mKeyX = 0;
+        	mGame.mControlObject.mKeyY = 1;
+	},
+
+	moveStop: function()
+	{
+        	mGame.mControlObject.mKeyX = 0;
+        	mGame.mControlObject.mKeyY = 0;
 	}
 });
 
@@ -544,15 +575,15 @@ var Game = new Class(
 		}
 
 		//control buttons	
-		new Shape(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+		new Shape(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+		new Shape(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+		new Shape(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+		new Shape(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
+		new Shape(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
 		this.mIdCount++;
 	},
 
@@ -877,12 +908,12 @@ function render()
 					
 
 				//now get the position
-				if (mGame.mShapeArray[i].mOnClick == moveLeft)
+				if (mGame.mShapeArray[i].mOnClick == mApplication.moveLeft)
 				{
 					mGame.mShapeArray[i].mPositionX = 0; 
 					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
 				}
-				if (mGame.mShapeArray[i].mOnClick == moveRight)
+				if (mGame.mShapeArray[i].mOnClick == mApplication.moveRight)
 				{
 					var tempx = mGame.mWindow.x / 6;
 					tempx = mGame.mWindow.x - tempx;
@@ -890,12 +921,12 @@ function render()
 					mGame.mShapeArray[i].mPositionX = tempx - shapeCenterX; 
 					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
 				}
-				if (mGame.mShapeArray[i].mOnClick == moveUp)
+				if (mGame.mShapeArray[i].mOnClick == mApplication.moveUp)
 				{
 					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
 					mGame.mShapeArray[i].mPositionY = 0; 
 				}
-				if (mGame.mShapeArray[i].mOnClick == moveDown)
+				if (mGame.mShapeArray[i].mOnClick == mApplication.moveDown)
 				{
 					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
 					
@@ -904,7 +935,7 @@ function render()
 					mGame.mShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
 					
 				}
-				if (mGame.mShapeArray[i].mOnClick == moveStop)
+				if (mGame.mShapeArray[i].mOnClick == mApplication.moveStop)
 				{
 					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
 					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
@@ -956,36 +987,6 @@ function render()
 }
 
 
-//CONTROLS
-function moveLeft()
-{
-	mGame.mControlObject.mKeyX = -1;
-        mGame.mControlObject.mKeyY = 0;
-}
-
-function moveRight()
-{
-        mGame.mControlObject.mKeyX = 1;
-        mGame.mControlObject.mKeyY = 0;
-}
-
-function moveUp()
-{
-        mGame.mControlObject.mKeyX = 0;
-        mGame.mControlObject.mKeyY = -1;
-}
-
-function moveDown()
-{
-        mGame.mControlObject.mKeyX = 0;
-        mGame.mControlObject.mKeyY = 1;
-}
-
-function moveStop()
-{
-        mGame.mControlObject.mKeyX = 0;
-        mGame.mControlObject.mKeyY = 0;
-}
 
 window.addEvent('domready', function()
 {
