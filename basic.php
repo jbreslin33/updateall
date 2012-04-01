@@ -100,6 +100,11 @@ var Shape = new Class(
 {
 	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 	{
+		//ai
+		this.mAiCounter = 0;
+		this.mAiCounterDelay = 10;
+		
+		//
 		this.mGame = game;	
 		this.mSrc = src;
 		this.mId = id;
@@ -195,8 +200,75 @@ var Shape = new Class(
 	
 	update: function()
 	{
+		//run ai		
+		if (this.mAiCounter > this.mAiCounterDelay)
+		{	
+			this.ai();
+			this.mAiCounter = 0;
+		}
+		this.mAiCounter++;
+		
+		//update Velocity
+		this.mVelocityX = this.mKeyX * this.mGame.mApplication.mTimeSinceLastInterval * this.mGame.mSpeed;
+		this.mVelocityY = this.mKeyY * this.mGame.mApplication.mTimeSinceLastInterval * this.mGame.mSpeed;
 
-	}
+		//update position
+		this.mPositionX += this.mVelocityX;
+		this.mPositionY += this.mVelocityY;
+	},
+
+	ai: function()
+	{
+			if (this.mAI == true)
+			{
+				var direction = Math.floor(Math.random()*9)	
+	                	if (direction == 0) //left
+                        	{
+                                	this.mKeyX = -1;
+                                	this.mKeyY = 0;
+                        	}
+                        	if (direction == 1) //right
+                        	{
+                                	this.mKeyX = 1;
+                                	this.mKeyY = 0;
+                        	}
+                        	if (direction == 2) //up
+                        	{
+                                	this.mKeyX = 0;
+                                	this.mKeyY = -1;
+                        	}
+                        	if (direction == 3) //down
+                        	{
+                                	this.mKeyX = 0;
+                                	this.mKeyY = 1;
+                        	}
+                        	if (direction == 4) //leftup
+                        	{
+                                	this.mKeyX = -.5;
+                                	this.mKeyY = -.5;
+                        	}
+                        	if (direction == 5) //leftdown
+                        	{
+                                	this.mKeyX = -.5;
+                                	this.mKeyY = .5;
+                        	}
+                        	if (direction == 6) //rightup
+                        	{
+                                	this.mKeyX = .5;
+                                	this.mKeyY = -.5;
+                        	}
+                        	if (direction == 7) //rightdown
+                        	{
+                                	this.mKeyX = .5;
+                                	this.mKeyY = .5;
+                        	}
+                        	if (direction == 8) //stop
+                        	{
+                                	this.mKeyX = 0;
+                                	this.mKeyY = 0;
+                        	}
+			} 
+		}
 });
 
 //Application Class
@@ -374,9 +446,6 @@ var Game = new Class(
 		// id counter
 		this.mIdCount = 0;
 
-		//chasers
-		this.mAiCounter = 0;
-		this.mAiCounterDelay = 10;
 
 		//dimensions
 		this.mDefaultSpriteSize = 50;
@@ -396,18 +465,12 @@ var Game = new Class(
 
 	update: function()
 	{
-
-		//run ai		
-		if (mGame.mAiCounter > mGame.mAiCounterDelay)
-		{	
-			ai();
-			mGame.mAiCounter = 0;
+		//move shapes	
+		for (i = 0; i < this.mShapeArray.length; i++)
+		{
+			this.mShapeArray[i].update();
 		}
-		mGame.mAiCounter++;
-
-		//move players	
-		this.moveShapes();
-
+		
 		//door entered?
 		checkForDoorEntered();
 
@@ -580,89 +643,14 @@ var Game = new Class(
 			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
-	},
-	
-	moveShapes: function()
-	{
-        	//move numbers
-        	for (i = 0; i < this.mShapeArray.length; i++)
-        	{
-			//update Velocity
-			this.mShapeArray[i].mVelocityX = this.mShapeArray[i].mKeyX * this.mApplication.mTimeSinceLastInterval * this.mSpeed;
-			this.mShapeArray[i].mVelocityY = this.mShapeArray[i].mKeyY * this.mApplication.mTimeSinceLastInterval * this.mSpeed;
-
-			//update position
-			this.mShapeArray[i].mPositionX += this.mShapeArray[i].mVelocityX;
-			this.mShapeArray[i].mPositionY += this.mShapeArray[i].mVelocityY;
-        	}
 	}
+	
 });
-
-function ai()
-{
-	for (i = 0; i < mGame.mShapeArray.length; i++)
-	{
-		if (mGame.mShapeArray[i].mAI == true)
-		{
-			var direction = Math.floor(Math.random()*9)	
-	                if (direction == 0) //left
-                        {
-                                mGame.mShapeArray[i].mKeyX = -1;
-                                mGame.mShapeArray[i].mKeyY = 0;
-                        }
-                        if (direction == 1) //right
-                        {
-                                mGame.mShapeArray[i].mKeyX = 1;
-                                mGame.mShapeArray[i].mKeyY = 0;
-                        }
-                        if (direction == 2) //up
-                        {
-                                mGame.mShapeArray[i].mKeyX = 0;
-                                mGame.mShapeArray[i].mKeyY = -1;
-                        }
-                        if (direction == 3) //down
-                        {
-                                mGame.mShapeArray[i].mKeyX = 0;
-                                mGame.mShapeArray[i].mKeyY = 1;
-                        }
-                        if (direction == 4) //leftup
-                        {
-                                mGame.mShapeArray[i].mKeyX = -.5;
-                                mGame.mShapeArray[i].mKeyY = -.5;
-                        }
-                        if (direction == 5) //leftdown
-                        {
-                                mGame.mShapeArray[i].mKeyX = -.5;
-                                mGame.mShapeArray[i].mKeyY = .5;
-                        }
-                        if (direction == 6) //rightup
-                        {
-                                mGame.mShapeArray[i].mKeyX = .5;
-                                mGame.mShapeArray[i].mKeyY = -.5;
-                        }
-                        if (direction == 7) //rightdown
-                        {
-                                mGame.mShapeArray[i].mKeyX = .5;
-                                mGame.mShapeArray[i].mKeyY = .5;
-                        }
-                        if (direction == 8) //stop
-                        {
-                                mGame.mShapeArray[i].mKeyX = 0;
-                                mGame.mShapeArray[i].mKeyY = 0;
-                        }
-	
-		} 
-	}
-}
-
-
-
-
 
 
 function saveOldPositions()
 {
-        //move numbers
+        //save old positions
         for (i = 0; i < mGame.mShapeArray.length; i++)
         {
                 //record old position to use for collisions or whatever you fancy
