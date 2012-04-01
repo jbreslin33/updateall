@@ -598,12 +598,6 @@ var Game = new Class(
 	}
 });
 
-function init()
-{
-	mApplication = new Application(<?php echo "$tickLength);"; ?>
-	mApplication.update();
-}
-
 function ai()
 {
 	for (i = 0; i < mGame.mShapeArray.length; i++)
@@ -1077,7 +1071,8 @@ function onkeyup(event)
 <script type="text/javascript"> 
 window.addEvent('domready', function()
 {
-        init();
+	mApplication = new Application(<?php echo "$tickLength);"; ?>
+	mApplication.update();
 }
 );
 
