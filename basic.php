@@ -297,7 +297,7 @@ var Application = new Class(
 		mGame = new Game(this,<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 		
 		//this will be used for resetting to
-		resetGame();
+		mGame.resetGame();
 
 		g = new Date();
 		mGameStartTime = g.getTime();
@@ -725,7 +725,7 @@ var Game = new Class(
                 			document.getElementById("feedback").innerHTML="Wrong! Try again.";
         
                 			//this deletes and then recreates everthing.    
-                			resetGame();
+                			this.resetGame();
         			}
     				this.newQuestion();
         			this.newAnswer();
@@ -787,6 +787,40 @@ var Game = new Class(
                 		window.location = "goto_next_math_level.php"
 			}
         	}
+	},
+
+	//reset
+	resetGame: function()
+	{
+ 		//set collidable to true 
+        	for (i=0; i < this.mShapeArray.length; i++)
+        	{
+         
+			//set every shape to spawn position	
+			this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
+			this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
+
+	      		if (this.mShapeArray[i].mCollidable == true)
+			{ 
+				this.mShapeArray[i].mCollisionOn = true;
+                		this.mShapeArray[i].mDiv.style.visibility = 'visible';
+			}
+        	}
+		this.mControlObject.mPositionX = 0;     
+		this.mControlObject.mPositionY = 0;     
+ 
+        	//score
+        	this.mScore = 0;
+
+        	//game
+        	this.mQuestion = this.mCount;
+
+        	//count
+        	this.mCount = this.mStartNumber;
+        
+		//answer
+		this.newAnswer();
+        	this.mShapeArray[0].mMesh.innerHTML=this.mCount;
 	}
 });
 
@@ -920,45 +954,6 @@ function render()
 		}
         }
 }
-
-
-//reset
-function resetGame()
-{
-//count
-
- //set collidable to true 
-        for (i=0; i<mGame.mShapeArray.length; i++)
-        {
-         
-		//set every shape to spawn position	
-		mGame.mShapeArray[i].mPositionX = mGame.mShapeArray[i].mSpawnPositionX;
-		mGame.mShapeArray[i].mPositionY = mGame.mShapeArray[i].mSpawnPositionY;
-
-	      	if (mGame.mShapeArray[i].mCollidable == true)
-		{ 
-			mGame.mShapeArray[i].mCollisionOn = true;
-                	mGame.mShapeArray[i].mDiv.style.visibility = 'visible';
-		}
-        }
-	mGame.mControlObject.mPositionX = 0;     
-	mGame.mControlObject.mPositionY = 0;     
- 
-        //score
-        mGame.mScore = 0;
-
-        //game
-        mGame.mQuestion = mGame.mCount;
-
-        //count
-        mGame.mCount = mGame.mStartNumber;
-        
-	//answer
-	mGame.newAnswer();
-        mGame.mShapeArray[0].mMesh.innerHTML=mGame.mCount;
-}
-
-//check guess
 
 
 //CONTROLS
