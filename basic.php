@@ -331,7 +331,7 @@ var Game = new Class(
 		checkForDoorEntered();
 
 		//reality check for out of bounds for avatar
-		checkForOutOfBounds();
+		mGame.checkForOutOfBounds();
 	
 		//check collisions
        		checkForCollisions();
@@ -341,6 +341,29 @@ var Game = new Class(
 	
 		//save old positions
 		saveOldPositions();
+	},
+
+	checkForOutOfBounds: function()
+	{
+		for (i = 0; i < mGame.mShapeArray.length; i++)
+		{	
+			if (mGame.mShapeArray[i].mPositionX < mGame.mLeftBounds)
+			{
+				mGame.mShapeArray[i].mPositionX = mGame.mLeftBounds;		
+			}
+			if (mGame.mShapeArray[i].mPositionX > mGame.mRightBounds)
+			{
+				mGame.mShapeArray[i].mPositionX = mGame.mRightBounds;
+			}
+			if (mGame.mShapeArray[i].mPositionY < mGame.mTopBounds)
+			{
+				mGame.mShapeArray[i].mPositionY = mGame.mTopBounds;
+			}
+			if (mGame.mShapeArray[i].mPositionY > mGame.mBottomBounds)
+			{
+				mGame.mShapeArray[i].mPositionY = mGame.mBottomBounds;
+			}
+		}
 	}
 });
 
@@ -610,28 +633,7 @@ function checkForCollisions()
         	}
 	}
 }
-function checkForOutOfBounds()
-{
-	for (i = 0; i < mGame.mShapeArray.length; i++)
-	{	
-		if (mGame.mShapeArray[i].mPositionX < mGame.mLeftBounds)
-		{
-			mGame.mShapeArray[i].mPositionX = mGame.mLeftBounds;		
-		}
-		if (mGame.mShapeArray[i].mPositionX > mGame.mRightBounds)
-		{
-			mGame.mShapeArray[i].mPositionX = mGame.mRightBounds;
-		}
-		if (mGame.mShapeArray[i].mPositionY < mGame.mTopBounds)
-		{
-			mGame.mShapeArray[i].mPositionY = mGame.mTopBounds;
-		}
-		if (mGame.mShapeArray[i].mPositionY > mGame.mBottomBounds)
-		{
-			mGame.mShapeArray[i].mPositionY = mGame.mBottomBounds;
-		}
-	}
-}
+
 
 window.onresize = function(event)
 {
