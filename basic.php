@@ -347,23 +347,23 @@ var Game = new Class(
 
 	checkForOutOfBounds: function()
 	{
-		for (i = 0; i < mGame.mShapeArray.length; i++)
+		for (i = 0; i < this.mShapeArray.length; i++)
 		{	
-			if (mGame.mShapeArray[i].mPositionX < mGame.mLeftBounds)
+			if (this.mShapeArray[i].mPositionX < this.mLeftBounds)
 			{
-				mGame.mShapeArray[i].mPositionX = mGame.mLeftBounds;		
+				this.mShapeArray[i].mPositionX = this.mLeftBounds;		
 			}
-			if (mGame.mShapeArray[i].mPositionX > mGame.mRightBounds)
+			if (this.mShapeArray[i].mPositionX > this.mRightBounds)
 			{
-				mGame.mShapeArray[i].mPositionX = mGame.mRightBounds;
+				this.mShapeArray[i].mPositionX = this.mRightBounds;
 			}
-			if (mGame.mShapeArray[i].mPositionY < mGame.mTopBounds)
+			if (this.mShapeArray[i].mPositionY < this.mTopBounds)
 			{
-				mGame.mShapeArray[i].mPositionY = mGame.mTopBounds;
+				this.mShapeArray[i].mPositionY = this.mTopBounds;
 			}
-			if (mGame.mShapeArray[i].mPositionY > mGame.mBottomBounds)
+			if (this.mShapeArray[i].mPositionY > this.mBottomBounds)
 			{
-				mGame.mShapeArray[i].mPositionY = mGame.mBottomBounds;
+				this.mShapeArray[i].mPositionY = this.mBottomBounds;
 			}
 		}
 	},
