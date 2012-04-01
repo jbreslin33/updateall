@@ -223,6 +223,14 @@ var Application = new Class(
 		this.mKeyStop = false;
 
 		mGame = new Game(this,<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+		
+		//this will be used for resetting to
+		resetGame();
+
+		g = new Date();
+		mGameStartTime = g.getTime();
+	
+		//this.update();	
 	},
 
 	update: function()
@@ -231,11 +239,11 @@ var Application = new Class(
 		{
 			//get time since epoch and set lasttime	
 			e = new Date();
-			mApplication.mLastTimeSinceEpoch = mApplication.mTimeSinceEpoch;
-			mApplication.mTimeSinceEpoch = e.getTime();
+			this.mLastTimeSinceEpoch = this.mTimeSinceEpoch;
+			this.mTimeSinceEpoch = e.getTime();
 		
 			//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
-			mApplication.mTimeSinceLastInterval = mApplication.mTimeSinceEpoch - mApplication.mLastTimeSinceEpoch;
+			this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
 		
 			//checkKeys
 			this.checkKeys();
@@ -244,8 +252,14 @@ var Application = new Class(
 			mGame.update();	
 		
 			render();	
+			//this.foo();
 			var t=setTimeout("mApplication.update()",20)
 		}
+	},
+
+	foo: function()
+	{
+		var t=setTimeout("this.update()",20)
 	},
 
 	log: function(msg)
@@ -399,7 +413,7 @@ var Game = new Class(
 		mGame.mAiCounter++;
 
 		//move players	
-		moveShapes();
+		this.moveShapes();
 
 		//door entered?
 		checkForDoorEntered();
@@ -573,21 +587,28 @@ var Game = new Class(
 			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
+	},
+	
+	moveShapes: function()
+	{
+        	//move numbers
+        	for (i = 0; i < this.mShapeArray.length; i++)
+        	{
+			//update Velocity
+			this.mShapeArray[i].mVelocityX = this.mShapeArray[i].mKeyX * this.mApplication.mTimeSinceLastInterval * this.mSpeed;
+			this.mShapeArray[i].mVelocityY = this.mShapeArray[i].mKeyY * this.mApplication.mTimeSinceLastInterval * this.mSpeed;
+
+			//update position
+			this.mShapeArray[i].mPositionX += this.mShapeArray[i].mVelocityX;
+			this.mShapeArray[i].mPositionY += this.mShapeArray[i].mVelocityY;
+        	}
 	}
 });
 
 function init()
 {
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
-
-	
-	//this will be used for resetting to
-	resetGame();
-
-	g = new Date();
-	mGameStartTime = g.getTime();
-	
-	mApplication.update();	
+	mApplication.update();
 }
 
 function ai()
@@ -663,20 +684,6 @@ function saveOldPositions()
         }
 }
 
-function moveShapes()
-{
-        //move numbers
-        for (i = 0; i < mGame.mShapeArray.length; i++)
-        {
-		//update Velocity
-		mGame.mShapeArray[i].mVelocityX = mGame.mShapeArray[i].mKeyX * mApplication.mTimeSinceLastInterval * mGame.mSpeed;
-		mGame.mShapeArray[i].mVelocityY = mGame.mShapeArray[i].mKeyY * mApplication.mTimeSinceLastInterval * mGame.mSpeed;
-
-		//update position
-		mGame.mShapeArray[i].mPositionX += mGame.mShapeArray[i].mVelocityX;
-		mGame.mShapeArray[i].mPositionY += mGame.mShapeArray[i].mVelocityY;
-        }
-}
 
 
 
