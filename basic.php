@@ -237,6 +237,9 @@ var Application = new Class(
 			//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
 			mApplication.mTimeSinceLastInterval = mApplication.mTimeSinceEpoch - mApplication.mLastTimeSinceEpoch;
 		
+			//checkKeys
+			checkKeys();
+			
 			//old update only
 			mGame.update();	
 		
@@ -315,8 +318,6 @@ var Game = new Class(
 
 	update: function()
 	{
-		//checkKeys
-		checkKeys();
 
 		//run ai		
 		if (mGame.mAiCounter > mGame.mAiCounterDelay)
