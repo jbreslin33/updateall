@@ -472,7 +472,7 @@ var Game = new Class(
 		}
 		
 		//door entered?
-		checkForDoorEntered();
+		this.checkForDoorEntered();
 
 		//reality check for out of bounds for avatar
 		this.checkForOutOfBounds();
@@ -481,7 +481,7 @@ var Game = new Class(
        		this.checkForCollisions();
 	
 		//check for end game
-		checkForScoreNeeded();
+		this.checkForScoreNeeded();
 	
 		//save old positions
 		this.saveOldPositions();
@@ -729,7 +729,7 @@ var Game = new Class(
         			}
     				this.newQuestion();
         			this.newAnswer();
-        			printScore();
+        			this.printScore();
 			}
 			else
 			{
@@ -748,6 +748,45 @@ var Game = new Class(
 			this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
 			this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
 		}
+	},
+
+	//Score
+	printScore: function()
+	{
+        	document.getElementById("score").innerHTML="Score: " + this.mScore;
+        	document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.mScoreNeeded;
+	},
+
+	checkForScoreNeeded: function()
+	{
+        	if (this.mScore == this.mScoreNeeded)
+        	{
+			//open the doors
+			for (i=0; i < this.mShapeArray.length; i++)
+			{
+				if (this.mShapeArray[i].mBackgroundColor == 'green')
+				{
+					this.mShapeArray[i].mBackgroundColor = 'white';
+					this.mShapeArray[i].mDiv.style.backgroundColor = 'white';
+				}
+			}
+		}
+	},
+
+	checkForDoorEntered: function()
+	{
+        	if (this.mScore == this.mScoreNeeded)
+        	{
+			if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
+		    	this.mControlObject.mPositionY > this.mTopBounds &&
+		    	this.mControlObject.mPositionY < this.mTopBounds + this.mDefaultSpriteSize * 2) 
+		    	
+			{
+				this.mGameOn = false;
+                		document.getElementById("feedback").innerHTML="YOU WIN!!!";
+                		window.location = "goto_next_math_level.php"
+			}
+        	}
 	}
 });
 
@@ -882,44 +921,6 @@ function render()
         }
 }
 
-//Score
-function printScore()
-{
-        document.getElementById("score").innerHTML="Score: " + mGame.mScore;
-        document.getElementById("scoreNeeded").innerHTML="Score Needed: " + mGame.mScoreNeeded;
-}
-
-function checkForScoreNeeded()
-{
-        if (mGame.mScore == mGame.mScoreNeeded)
-        {
-		//open the doors
-		for (i=0; i < mGame.mShapeArray.length; i++)
-		{
-			if (mGame.mShapeArray[i].mBackgroundColor == 'green')
-			{
-				mGame.mShapeArray[i].mBackgroundColor = 'white';
-				mGame.mShapeArray[i].mDiv.style.backgroundColor = 'white';
-			}
-		}
-	}
-}
-
-function checkForDoorEntered()
-{
-        if (mGame.mScore == mGame.mScoreNeeded)
-        {
-		if (mGame.mControlObject.mPositionX > mGame.mRightBounds - mGame.mDefaultSpriteSize / 2 &&
-		    mGame.mControlObject.mPositionY > mGame.mTopBounds &&
-		    mGame.mControlObject.mPositionY < mGame.mTopBounds + mGame.mDefaultSpriteSize * 2) 
-		    	
-		{
-			mGame.mGameOn = false;
-                	document.getElementById("feedback").innerHTML="YOU WIN!!!";
-                	window.location = "goto_next_math_level.php"
-		}
-        }
-}
 
 //reset
 function resetGame()
@@ -1044,9 +1045,6 @@ function onkeyup(event)
                 mApplication.mKeyStop = false;
         }
 }
-
-
-
 
 </script>
 
