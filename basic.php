@@ -259,63 +259,63 @@ var Application = new Class(
 	checkKeys: function()
 	{
         	//left  
-        	if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == true && this.mKeyRight == false && this.mKeyUp == false && this.mKeyDown == false && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = -1;
                 	mGame.mControlObject.mKeyY = 0;
         	}
         
         	//right 
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == true && this.mKeyUp == false && this.mKeyDown == false && mApplication.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = 1;
                 	mGame.mControlObject.mKeyY = 0;
         	}
         
         	//up    
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == false && this.mKeyUp == true && this.mKeyDown == false && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = 0;
                 	mGame.mControlObject.mKeyY = -1;
         	}
         	//down  
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == false && this.mKeyUp == false && this.mKeyDown == true && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = 0;
                 	mGame.mControlObject.mKeyY = 1;
         	}
         	//left_up       
-        	if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == true && this.mKeyRight == false && this.mKeyUp == true && this.mKeyDown == false && mApplication.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = -.5;
                 	mGame.mControlObject.mKeyY = -.5;
         	}
         	//left_down     
-        	if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == true && this.mKeyRight == false && this.mKeyUp == false && this.mKeyDown == true && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = -.5;
                 	mGame.mControlObject.mKeyY = .5;
         	}
         	//right_up      
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == true && this.mKeyUp == true && this.mKeyDown == false && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = .5;
                 	mGame.mControlObject.mKeyY = -.5;
         	}
         	//right_down    
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true && mApplication.mKeyStop == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == true && this.mKeyUp == false && this.mKeyDown == true && this.mKeyStop == false)
         	{
                 	mGame.mControlObject.mKeyX = .5;
                 	mGame.mControlObject.mKeyY = .5;
         	}
         	//all up...stop 
-        	if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
+        	if (this.mKeyLeft == false && this.mKeyRight == false && this.mKeyUp == false && this.mKeyDown == false)
         	{
                 	mGame.mControlObject.mKeyX = 0;
                 	mGame.mControlObject.mKeyY = 0;
         	}
         	//stop  
-        	if (mApplication.mKeyStop == true)
+        	if (this.mKeyStop == true)
         	{
                 	mGame.mControlObject.mKeyX = 0;
                 	mGame.mControlObject.mKeyY = 0;
