@@ -331,7 +331,7 @@ var Game = new Class(
 		checkForDoorEntered();
 
 		//reality check for out of bounds for avatar
-		mGame.checkForOutOfBounds();
+		this.checkForOutOfBounds();
 	
 		//check collisions
        		checkForCollisions();
