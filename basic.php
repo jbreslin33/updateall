@@ -679,17 +679,77 @@ var Game = new Class(
                         			var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                         			if (distSQ < this.mCollisionDistance) 
                         			{
-							evaluateCollision(this.mShapeArray[s].mId,this.mShapeArray[i].mId);		      
+							this.evaluateCollision(this.mShapeArray[s].mId,this.mShapeArray[i].mId);		      
                         			}
 					}
                 		}       
         		}
 		}
+	},
+
+	//questions
+	newQuestion: function()
+	{
+        	//set question
+        	this.mQuestion = this.mCount;
+        	document.getElementById("question").innerHTML="Question: " + this.mQuestion;
+        	this.mShapeArray[0].mMesh.innerHTML=this.mCount;
+	},
+
+	//new answer
+	newAnswer: function()
+	{
+        	this.mAnswer = this.mCount + this.mCountBy;
+	},
+
+	evaluateCollision: function(mId1,mId2)
+	{
+		if (this.mShapeArray[mId1] == this.mControlObject)
+		{
+
+			if (this.mShapeArray[mId2].mIsQuestion)
+			{
+        			if (this.mShapeArray[mId2].mAnswer == this.mAnswer)
+        			{
+                			this.mCount = this.mCount + this.mCountBy;  //add to count
+                			this.mScore++;
+					this.mShapeArray[mId2].mCollisionOn = false;
+					this.mShapeArray[mId2].mDiv.style.visibility = 'hidden';
+                
+                			//feedback      
+                			document.getElementById("feedback").innerHTML="Correct!";
+        			}
+        			else
+        			{
+                			//feedback 
+                			document.getElementById("feedback").innerHTML="Wrong! Try again.";
+        
+                			//this deletes and then recreates everthing.    
+                			resetGame();
+        			}
+    				this.newQuestion();
+        			this.newAnswer();
+        			printScore();
+			}
+			else
+			{
+				this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
+				this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
+		
+				this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
+				this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
+			}
+		}
+		else
+		{
+			this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
+			this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
+		
+			this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
+			this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
+		}
 	}
 });
-
-
-
 
 window.onresize = function(event)
 {
@@ -893,73 +953,12 @@ function resetGame()
         mGame.mCount = mGame.mStartNumber;
         
 	//answer
-	newAnswer();
+	mGame.newAnswer();
         mGame.mShapeArray[0].mMesh.innerHTML=mGame.mCount;
 }
 
 //check guess
-function evaluateCollision(mId1,mId2)
-{
-	if (mGame.mShapeArray[mId1] == mGame.mControlObject)
-	{
 
-		if (mGame.mShapeArray[mId2].mIsQuestion)
-		{
-        		if (mGame.mShapeArray[mId2].mAnswer == mGame.mAnswer)
-        		{
-                		mGame.mCount = mGame.mCount + mGame.mCountBy;  //add to count
-                		mGame.mScore++;
-				mGame.mShapeArray[mId2].mCollisionOn = false;
-				mGame.mShapeArray[mId2].mDiv.style.visibility = 'hidden';
-                
-                		//feedback      
-                		document.getElementById("feedback").innerHTML="Correct!";
-        		}
-        		else
-        		{
-                		//feedback 
-                		document.getElementById("feedback").innerHTML="Wrong! Try again.";
-        
-                		//this deletes and then recreates everthing.    
-                		resetGame();
-        		}
-    			newQuestion();
-        		newAnswer();
-        		printScore();
-		}
-		else
-		{
-			mGame.mShapeArray[mId1].mPositionX = mGame.mShapeArray[mId1].mOldPositionX;
-			mGame.mShapeArray[mId1].mPositionY = mGame.mShapeArray[mId1].mOldPositionY;
-		
-			mGame.mShapeArray[mId2].mPositionX = mGame.mShapeArray[mId2].mOldPositionX;
-			mGame.mShapeArray[mId2].mPositionY = mGame.mShapeArray[mId2].mOldPositionY;
-		}
-	}
-	else
-	{
-		mGame.mShapeArray[mId1].mPositionX = mGame.mShapeArray[mId1].mOldPositionX;
-		mGame.mShapeArray[mId1].mPositionY = mGame.mShapeArray[mId1].mOldPositionY;
-		
-		mGame.mShapeArray[mId2].mPositionX = mGame.mShapeArray[mId2].mOldPositionX;
-		mGame.mShapeArray[mId2].mPositionY = mGame.mShapeArray[mId2].mOldPositionY;
-	}
-}
-
-//questions
-function newQuestion()
-{
-        //set question
-        mGame.mQuestion = mGame.mCount;
-        document.getElementById("question").innerHTML="Question: " + mGame.mQuestion;
-        mGame.mShapeArray[0].mMesh.innerHTML=mGame.mCount;
-}
-
-//new answer
-function newAnswer()
-{
-        mGame.mAnswer = mGame.mCount + mGame.mCountBy;
-}
 
 //CONTROLS
 function moveLeft()
