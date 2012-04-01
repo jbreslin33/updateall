@@ -309,6 +309,8 @@ var Game = new Class(
 		//dimensions
 		this.mDefaultSpriteSize = 50;
 
+		//fill possible spawnPosition Arrays
+		this.fillSpawnPositionArrays();
 	},
 
 	update: function()
@@ -363,6 +365,19 @@ var Game = new Class(
 			{
 				mGame.mShapeArray[i].mPositionY = mGame.mBottomBounds;
 			}
+		}
+	},
+
+	fillSpawnPositionArrays: function()
+	{
+		for (i=this.mLeftBounds + this.mDefaultSpriteSize / 2; i <= this.mRightBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
+		{ 	
+			mPositionXArray.push(i);	
+		}
+	
+		for (i=this.mTopBounds + this.mDefaultSpriteSize / 2; i <= this.mBottomBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
+		{ 	
+			mPositionYArray.push(i);	
 		}
 	}
 });
@@ -444,7 +459,6 @@ function ai()
 
 function createWorld()
 {
-	fillSpawnPositionArrays();
 	createServerShapes();
 	
 	createLeftWall();
@@ -453,18 +467,6 @@ function createWorld()
 	createBottomWall();
 }
 
-function fillSpawnPositionArrays()
-{
-	for (i=mGame.mLeftBounds + mGame.mDefaultSpriteSize / 2; i <= mGame.mRightBounds - mGame.mDefaultSpriteSize / 2; i = i + mGame.mDefaultSpriteSize)
-	{ 	
-		mPositionXArray.push(i);	
-	}
-	
-	for (i=mGame.mTopBounds + mGame.mDefaultSpriteSize / 2; i <= mGame.mBottomBounds - mGame.mDefaultSpriteSize / 2; i = i + mGame.mDefaultSpriteSize)
-	{ 	
-		mPositionYArray.push(i);	
-	}
-}
 
 function createServerShapes()
 {
