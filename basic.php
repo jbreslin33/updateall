@@ -229,8 +229,6 @@ var Application = new Class(
 
 		g = new Date();
 		mGameStartTime = g.getTime();
-	
-		//this.update();	
 	},
 
 	update: function()
@@ -252,14 +250,9 @@ var Application = new Class(
 			mGame.update();	
 		
 			render();	
-			//this.foo();
+			
 			var t=setTimeout("mApplication.update()",20)
 		}
-	},
-
-	foo: function()
-	{
-		var t=setTimeout("this.update()",20)
 	},
 
 	log: function(msg)
