@@ -98,11 +98,11 @@ var mSlotPositionYArray = new Array();
 
 var Shape = new Class(
 {
-	initialize: function (src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 	{
-		this.mShapeArray = new Array();
+		this.mGame = game;	
 		this.mSrc = src;
-		this.mId = mGame.mIdCount;
+		this.mId = id;
 		
 		this.mSpawnPositionX = spawnX;
 		this.mSpawnPositionY = spawnY;
@@ -128,70 +128,69 @@ var Shape = new Class(
  		
 		if (isControlObject)
 		{
-			mGame.mControlObject = this;
+			this.mGame.mControlObject = this;
 		}
 	
 		//add to array
-		mGame.mShapeArray.push(this);
+		this.mGame.mShapeArray.push(this);
 	
 		//create the movable div that will be used to move image around.	
 		this.mDiv = document.createElement('div');
-        	this.mDiv.setAttribute('id','div' + mGame.mIdCount);
+        	this.mDiv.setAttribute('id','div' + this.mGame.mIdCount);
         	this.mDiv.setAttribute("class","demo");
 		this.mDiv.style.position="absolute";
 		this.mDiv.style.visibility = 'visible';
 	
-		this.mDiv.style.width= mGame.mShapeArray[mGame.mIdCount].mWidth;
-		this.mDiv.style.height= mGame.mShapeArray[mGame.mIdCount].mHeight;
+		this.mDiv.style.width= this.mGame.mShapeArray[this.mGame.mIdCount].mWidth;
+		this.mDiv.style.height= this.mGame.mShapeArray[this.mGame.mIdCount].mHeight;
 	
 		//move it
-        	this.mDiv.style.left = mGame.mShapeArray[mGame.mIdCount].mPositionX+'px';
-        	this.mDiv.style.top  = mGame.mShapeArray[mGame.mIdCount].mPositionY+'px';
+        	this.mDiv.style.left = this.mGame.mShapeArray[this.mGame.mIdCount].mPositionX+'px';
+        	this.mDiv.style.top  = this.mGame.mShapeArray[this.mGame.mIdCount].mPositionY+'px';
 
         	document.body.appendChild(this.mDiv);
 	
-		this.mDiv.style.backgroundColor = mGame.mShapeArray[mGame.mIdCount].mBackgroundColor;
+		this.mDiv.style.backgroundColor = this.mGame.mShapeArray[this.mGame.mIdCount].mBackgroundColor;
 
 		this.mMesh;
 	
 		//create clientImage
-		if (mGame.mShapeArray[mGame.mIdCount].mSrc)
+		if (this.mGame.mShapeArray[this.mGame.mIdCount].mSrc)
 		{
         		//image to attache to our div "vessel"
         		this.mMesh  = document.createElement("IMG");
-        		this.mMesh.id = 'image' + mGame.mIdCount;
-        		this.mMesh.alt = 'image' + mGame.mIdCount;
-        		this.mMesh.title = 'image' + mGame.mIdCount;   
-        		this.mMesh.src  = mGame.mShapeArray[mGame.mIdCount].mSrc;
-        		this.mMesh.style.width=mGame.mShapeArray[mGame.mIdCount].mWidth+'px'; 
-        		this.mMesh.style.height=mGame.mShapeArray[mGame.mIdCount].mHeight+'px'; 
+        		this.mMesh.id = 'image' + this.mGame.mIdCount;
+        		this.mMesh.alt = 'image' + this.mGame.mIdCount;
+        		this.mMesh.title = 'image' + this.mGame.mIdCount;   
+        		this.mMesh.src  = this.mGame.mShapeArray[this.mGame.mIdCount].mSrc;
+        		this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px'; 
+        		this.mMesh.style.height=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px'; 
 		}
-		else if (mGame.mShapeArray[mGame.mIdCount].mSrc == "")//create paragraph
+		else if (this.mGame.mShapeArray[this.mGame.mIdCount].mSrc == "")//create paragraph
 		{
-			if (mGame.mShapeArray[mGame.mIdCount].mGui)
+			if (this.mGame.mShapeArray[this.mGame.mIdCount].mGui)
 			{		
 				this.mMesh = document.createElement("button");
-				this.mMesh.id = 'button' + mGame.mIdCount;
-				this.mMesh.style.width=mGame.mShapeArray[mGame.mIdCount].mWidth+'px';
-				this.mMesh.style.width=mGame.mShapeArray[mGame.mIdCount].mHeight+'px';
-				this.mMesh.innerHTML = mGame.mShapeArray[mGame.mIdCount].mInnerHTML;
-				this.mMesh.onclick = mGame.mShapeArray[mGame.mIdCount].mOnClick;
+				this.mMesh.id = 'button' + this.mGame.mIdCount;
+				this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px';
+				this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px';
+				this.mMesh.innerHTML = this.mGame.mShapeArray[this.mGame.mIdCount].mInnerHTML;
+				this.mMesh.onclick = this.mGame.mShapeArray[this.mGame.mIdCount].mOnClick;
 				this.mMesh.style.backgroundColor = 'transparent';
 				this.mMesh.style.border = 'thin none #FFFFFF';
-        			this.mMesh.style.width=mGame.mShapeArray[mGame.mIdCount].mWidth+'px'; 
-        			this.mMesh.style.height=mGame.mShapeArray[mGame.mIdCount].mHeight+'px'; 
+        			this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px'; 
+        			this.mMesh.style.height=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px'; 
 			}
 			else
 			{
 				this.mMesh = document.createElement("p");
-				this.mMesh.innerHTML = mGame.mShapeArray[mGame.mIdCount].mAnswer;
+				this.mMesh.innerHTML = this.mGame.mShapeArray[this.mGame.mIdCount].mAnswer;
 			}
 		}
 
 		//back to div	
 		this.mDiv.appendChild(this.mMesh);
 	
-		mGame.mIdCount++;
 	},
 	
 	update: function()
@@ -374,6 +373,15 @@ var Game = new Class(
 
 		//fill possible spawnPosition Arrays
 		this.fillSpawnPositionArrays();
+	
+		//create Shapes	
+		this.createShapes();
+
+		//create walls		
+		this.createLeftWall();
+		this.createRightWall();
+		this.createTopWall();
+		this.createBottomWall();
 	},
 
 	update: function()
@@ -440,6 +448,128 @@ var Game = new Class(
 		{ 	
 			mPositionYArray.push(i);	
 		}
+	},
+
+	createShapes: function()
+	{
+		//control object	
+		new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
+		this.mIdCount++;
+		for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
+		{
+			this.setUniqueSpawnPosition();
+			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+			this.mIdCount++;
+		}
+
+		for (i = 0; i < this.mNumberOfChasers; i++)
+		{
+			this.setUniqueSpawnPosition();
+			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
+			this.mIdCount++;	
+			
+		}
+
+		//control buttons	
+		new Shape(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
+		this.mIdCount++;
+		new Shape(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
+		this.mIdCount++;
+		new Shape(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
+		this.mIdCount++;
+		new Shape(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
+		this.mIdCount++;
+		new Shape(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
+		this.mIdCount++;
+	},
+
+	setUniqueSpawnPosition: function()
+	{
+		//get random spawn element
+		this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+		this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+
+		for (r= 0; r < this.mShapeArray.length; r++)
+		{
+			if (mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
+			{
+				r = 0;
+				this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+				this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+			}
+			if (r > 0)
+			{	
+				if (
+			    	Math.abs(mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
+					||
+		            	Math.abs(mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350			
+			   	) 
+				{
+					r = 0;
+					this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+					this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+				}
+				if (
+			    	Math.abs(mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
+				 	&& 
+		            	Math.abs(mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100			
+			   	) 
+				{
+					r = 0;
+					this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
+					this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+				}
+			
+			}
+		}
+	},
+	
+
+	createLeftWall: function()
+	{
+        	for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
+		{
+			new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+			this.mIdCount++;
+		}
+	},
+
+	createRightWall: function()
+	{
+       		var greenDoorCount = 0; 
+		for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
+		{
+			if (greenDoorCount == 0 || greenDoorCount == 1)
+			{
+				new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+				this.mIdCount++;
+			}	
+			else
+			{	
+				new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+				this.mIdCount++;
+			}
+			greenDoorCount++;
+		}
+	
+	},
+
+	createTopWall: function()
+	{
+        	for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
+		{
+			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
+			this.mIdCount++;
+		}
+	},
+
+	createBottomWall: function()
+	{
+       		for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
+		{
+			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+			this.mIdCount++;
+		}
 	}
 });
 
@@ -449,9 +579,6 @@ function init()
 
 	mGame = new Game(<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 	
-	//createWorld
-	createWorld();
-
 	//this will be used for resetting to
 	resetGame();
 
@@ -518,123 +645,8 @@ function ai()
 	}
 }
 
-function createWorld()
-{
-	createServerShapes();
-	
-	createLeftWall();
-	createRightWall();
-	createTopWall();
-	createBottomWall();
-}
 
 
-function createServerShapes()
-{
-	//control object	
-	new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
-	for (i = mGame.mStartNumber + mGame.mCountBy; i <= mGame.mEndNumber; i = i + mGame.mCountBy)
-	{
-		setUniqueSpawnPosition();
-		new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,i,true,true,false,false,"","yellow","");
-	}
-
-	for (i = 0; i < mGame.mNumberOfChasers; i++)
-	{
-		setUniqueSpawnPosition();
-		new Shape("",mGame.mDefaultSpriteSize,mGame.mDefaultSpriteSize,mPositionXArray[mGame.mProposedX],mPositionYArray[mGame.mProposedY],false,true,"",true,true,true,false,"","red","");
-	}
-
-	//control buttons	
-	new Shape("",100,100,-200,0,false,false,"",false,false,false,true,"","",moveLeft);
-	new Shape("",100,100,200,0,false,false,"",false,false,false,true,"","",moveRight);
-	new Shape("",100,100,0,-200,false,false,"",false,false,false,true,"","",moveUp);
-	new Shape("",100,100,0,200,false,false,"",false,false,false,true,"","",moveDown);
-	new Shape("",100,100,0,0,false,false,"",false,false,false,true,"","",moveStop);
-}
-
-function setUniqueSpawnPosition()
-{
-	//get random spawn element
-	mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-	mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
-
-	for (r= 0; r < mGame.mShapeArray.length; r++)
-	{
-		if (mPositionXArray[mGame.mProposedX] == mGame.mShapeArray[r].mPositionX && mPositionYArray[mGame.mProposedY] == mGame.mShapeArray[r].mPositionY)
-		{
-			r = 0;
-			mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-			mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
-		}
-		if (r > 0)
-		{	
-			if (
-			    Math.abs(mPositionXArray[mGame.mProposedX] - mGame.mShapeArray[r-1].mPositionX) > 350 
-				  ||
-		            Math.abs(mPositionYArray[mGame.mProposedY] - mGame.mShapeArray[r-1].mPositionY) > 350			
-			   ) 
-			{
-				r = 0;
-				mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-				mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
-			}
-			if (
-			    Math.abs(mPositionXArray[mGame.mProposedX] - mGame.mControlObject.mPositionX) < 100 
-				 && 
-		            Math.abs(mPositionYArray[mGame.mProposedY] - mGame.mControlObject.mPositionY) < 100			
-			   ) 
-			{
-				r = 0;
-				mGame.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-				mGame.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
-			}
-			
-		}
-	}
-}
-
-function createLeftWall()
-{
-        for (i=-275; i <= 275; i = i + mGame.mDefaultSpriteSize)
-	{
-		new Shape("",1,mGame.mDefaultSpriteSize,mGame.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
-	}
-}
-
-function createRightWall()
-{
-       	var greenDoorCount = 0; 
-	for (i=-275; i <= 275; i = i + mGame.mDefaultSpriteSize)
-	{
-		if (greenDoorCount == 0 || greenDoorCount == 1)
-		{
-			new Shape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
-		}	
-		else
-		{	
-			new Shape("",1,mGame.mDefaultSpriteSize,mGame.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
-		}
-		greenDoorCount++;
-	}
-	
-}
-
-function createTopWall()
-{
-        for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
-	{
-		new Shape("",mGame.mDefaultSpriteSize,1,i,mGame.mTopBounds,false,false,"",true,true,false,false,"","black","");
-	}
-}
-
-function createBottomWall()
-{
-        for (i=-375; i <= 375; i = i + mGame.mDefaultSpriteSize)
-	{
-		new Shape("",mGame.mDefaultSpriteSize,1,i,mGame.mBottomBounds,false,false,"",true,true,false,false,"","black","");
-	}
-}
 
 
 
