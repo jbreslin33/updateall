@@ -1025,54 +1025,6 @@ function render()
 		}
         }
 }
-/*
-function onkeydown(event)
-{
-        if (event.key == 'left')
-        {
-                mApplication.mKeyLeft = true;
-        }
-        if (event.key == 'right')
-        {
-                mApplication.mKeyRight = true;
-        }
-        if (event.key == 'up')
-        {
-                mApplication.mKeyUp = true;
-        }
-        if (event.key == 'down')
-        {
-                mApplication.mKeyDown = true;
-        }
-        if (event.key == 'space')
-        {
-                mApplication.mKeyStop = true;
-        }
-}
-*/
-function onkeyup(event)
-{
-        if (event.key == 'left')
-        {
-                mApplication.mKeyLeft = false;
-        }
-        if (event.key == 'right')
-        {
-                mApplication.mKeyRight = false;
-        }
-        if (event.key == 'up')
-        {
-                mApplication.mKeyUp = false;
-        }
-        if (event.key == 'down')
-        {
-                mApplication.mKeyDown = false;
-        }
-        if (event.key == 'space')
-        {
-                mApplication.mKeyStop = false;
-        }
-}
 
 </script>
 
@@ -1081,11 +1033,14 @@ function onkeyup(event)
 <script type="text/javascript"> 
 window.addEvent('domready', function()
 {
+	//the application
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
-	//document.addEvent("keydown", this.onkeydown);
-	//document.addEvent("keyup", this.onkeyup);
+
+	//keys	
 	document.addEvent("keydown", mApplication.keyDown);
 	document.addEvent("keyup", mApplication.keyUp);
+
+	//start updating	
 	mApplication.update();
 }
 );
