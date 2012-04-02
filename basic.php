@@ -424,6 +424,46 @@ var Application = new Class(
 	{
         	mGame.mControlObject.mKeyX = 0;
         	mGame.mControlObject.mKeyY = 0;
+	},
+	
+	fooDown: function(event)
+	{
+	 	if (event.key == 'left')
+        	{
+                	mApplication.mKeyLeft = true;
+        	}
+        	if (event.key == 'right')
+        	{
+               		mApplication.mKeyRight = true;
+        	}
+        	if (event.key == 'up')
+        	{
+                	mApplication.mKeyUp = true;
+        	}
+        	if (event.key == 'down')
+        	{
+                	mApplication.mKeyDown = true;
+        	}
+	},
+	
+	fooUp: function(event)
+	{	
+		if (event.key == 'left')
+                {
+                        mApplication.mKeyLeft = false;
+                }
+                if (event.key == 'right')
+                {
+                        mApplication.mKeyRight = false;
+                }
+                if (event.key == 'up')
+                {
+                        mApplication.mKeyUp = false;
+                }
+                if (event.key == 'down')
+                {
+                        mApplication.mKeyDown = false;
+                }
 	}
 });
 
@@ -985,7 +1025,7 @@ function render()
 		}
         }
 }
-
+/*
 function onkeydown(event)
 {
         if (event.key == 'left')
@@ -1009,7 +1049,7 @@ function onkeydown(event)
                 mApplication.mKeyStop = true;
         }
 }
-
+*/
 function onkeyup(event)
 {
         if (event.key == 'left')
@@ -1042,8 +1082,10 @@ function onkeyup(event)
 window.addEvent('domready', function()
 {
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
-	document.addEvent("keydown", this.onkeydown);
-	document.addEvent("keyup", this.onkeyup);
+	//document.addEvent("keydown", this.onkeydown);
+	//document.addEvent("keyup", this.onkeyup);
+	document.addEvent("keydown", mApplication.fooDown);
+	document.addEvent("keyup", mApplication.fooUp);
 	mApplication.update();
 }
 );
