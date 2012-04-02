@@ -426,7 +426,7 @@ var Application = new Class(
         	mGame.mControlObject.mKeyY = 0;
 	},
 	
-	fooDown: function(event)
+	keyDown: function(event)
 	{
 	 	if (event.key == 'left')
         	{
@@ -446,7 +446,7 @@ var Application = new Class(
         	}
 	},
 	
-	fooUp: function(event)
+	keyUp: function(event)
 	{	
 		if (event.key == 'left')
                 {
@@ -1084,8 +1084,8 @@ window.addEvent('domready', function()
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
 	//document.addEvent("keydown", this.onkeydown);
 	//document.addEvent("keyup", this.onkeyup);
-	document.addEvent("keydown", mApplication.fooDown);
-	document.addEvent("keyup", mApplication.fooUp);
+	document.addEvent("keydown", mApplication.keyDown);
+	document.addEvent("keyup", mApplication.keyUp);
 	mApplication.update();
 }
 );
