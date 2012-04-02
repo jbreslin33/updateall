@@ -100,6 +100,13 @@ var Shape = new Class(
 {
 	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 	{
+		//replace this.....!!!!!!!!!!!!!!!!	
+		this.mPageCenterX = 0;
+		this.mPageCenterY = 0;
+		
+		this.mShapeCenterX = 0;
+		this.mShapeCenterY = 0;
+
 		//ai
 		this.mAiCounter = 0;
 		this.mAiCounterDelay = 10;
@@ -215,6 +222,7 @@ var Shape = new Class(
 		//update position
 		this.mPositionX += this.mVelocityX;
 		this.mPositionY += this.mVelocityY;
+		this.draw();
 	},
 
 	ai: function()
@@ -268,19 +276,149 @@ var Shape = new Class(
                                 	this.mKeyY = 0;
                         	}
 			} 
-		}
+		},
+
+	draw: function()
+	{
+		//get the center of the page xy
+       		var mPageCenterX = mGame.mWindow.x / 2;
+        	var mPageCenterY = mGame.mWindow.y / 2;
+      
+       		//get the center xy of the image
+       		var mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
+       		var mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
+	}
 });
 
 var ShapeGui = new Class({
     Extends: Shape,
-    //initialize: function(name, age){
+	
 	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
 	{
-	this.parent(game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick);
-        //this.name = name;
-    }
+		this.parent(game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick);
+    	},
+
+	draw: function()
+	{
+		this.parent();
+        	
+		this.mWidth = mGame.mWindow.x / 3;
+        	this.mHeight = mGame.mWindow.y / 3;
+
+		if (this.mInnerHTML == "DOWN")
+		{
+			this.mHeight = this.mHeight - 13;
+		}
+				
+		this.mMesh.style.width=this.mWidth+'px'; 
+        	this.mMesh.style.height=this.mHeight+'px'; 
+					
+		//now get the position
+		if (this.mOnClick == mApplication.moveLeft)
+		{
+			this.mPositionX = 0; 
+			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+		}
+		
+		if (this.mOnClick == mApplication.moveRight)
+		{
+			var tempx = mGame.mWindow.x / 6;
+			tempx = mGame.mWindow.x - tempx;
+				
+			this.mPositionX = tempx - mShapeCenterX; 
+			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+		}
+		
+		if (this.mOnClick == mApplication.moveUp)
+		{
+			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+			this.mPositionY = 0; 
+		}
+		
+		if (this.mOnClick == mApplication.moveDown)
+		{
+			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+			
+			var tempy = mGame.mWindow.y / 6;
+			tempy = mGame.mWindow.y - tempy;
+			this.mPositionY = tempy - mShapeCenterY - 13; 
+		}
+		
+		if this.mOnClick == mApplication.moveStop)
+		{
+			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+		}
+
+		this.mDiv.style.left = this.mPositionX+'px';
+      		this.mDiv.style.top  = this.mPositionY+'px';
+        }
 });
 
+var ShapeRelative = new Class({
+    Extends: Shape,
+	
+	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+	{
+		this.parent(game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick);
+    	},
+
+	draw: function()
+	{
+		this.parent();
+
+		//get the offset from control object
+		var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;  
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;  
+
+                //center image relative to position
+                var posX = xdiff + mPageCenterX - mShapeCenterX;
+                var posY = ydiff + mPageCenterY - mShapeCenterY;    
+			
+		//if off screen then hide it so we don't have scroll bars mucking up controls 
+                if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
+			posY + this.mHeight + 13 > mGame.mWindow.y)
+		{
+                	this.mDiv.style.left = 0+'px';
+                       	this.mDiv.style.top  = 0+'px';
+			this.mDiv.style.visibility = 'hidden';	
+		}
+		else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
+		{
+			if (this.mCollisionOn || 
+			    this.mIsQuestion == 'false')
+			{	
+                		this.mDiv.style.left = posX+'px';
+                       		this.mDiv.style.top  = posY+'px';
+				this.mDiv.style.visibility = 'visible';	
+			}
+			else
+			{
+                		this.mDiv.style.left = 0+'px';
+                       		this.mDiv.style.top  = 0+'px';
+				this.mDiv.style.visibility = 'hidden';	
+			}
+		}
+	}
+});
+
+var ShapeControlObject = new Class({
+    Extends: Shape,
+	
+	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+	{
+		this.parent(game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick);
+    	},
+
+	draw: function()
+	{
+		this.parent();
+	
+		//this actual moves it  
+        	this.mDiv.style.left = posX+'px';
+        	this.mDiv.style.top  = posY+'px';
+	}
+});
 
 //Application Class
 var Application = new Class(
@@ -915,19 +1053,19 @@ function render()
         for (i=0; i<mGame.mShapeArray.length; i++)
         {
 		//get the center of the page xy
-       		var pageCenterX = mGame.mWindow.x / 2;
-        	var pageCenterY = mGame.mWindow.y / 2;
+       		var mPageCenterX = mGame.mWindow.x / 2;
+        	var mPageCenterY = mGame.mWindow.y / 2;
       
        		//get the center xy of the image
-       		var shapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
-       		var shapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
+       		var mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
+       		var mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
 
 		//if control object center it on screen
 		if (mGame.mShapeArray[i] == mGame.mControlObject || mGame.mShapeArray[i].mGui == true)
 		{
-			//shift the position based on pageCenterXY and shapeCenterXY	
-        		var posX = pageCenterX - shapeCenterX;     
-        		var posY = pageCenterY - shapeCenterY;     
+			//shift the position based on mPageCenterXY and mShapeCenterXY	
+        		var posX = mPageCenterX - mShapeCenterX;     
+        		var posY = mPageCenterY - mShapeCenterY;     
 			
 			if (mGame.mShapeArray[i] == mGame.mControlObject)
 			{
@@ -959,34 +1097,34 @@ function render()
 				if (mGame.mShapeArray[i].mOnClick == mApplication.moveLeft)
 				{
 					mGame.mShapeArray[i].mPositionX = 0; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
+					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
 				}
 				if (mGame.mShapeArray[i].mOnClick == mApplication.moveRight)
 				{
 					var tempx = mGame.mWindow.x / 6;
 					tempx = mGame.mWindow.x - tempx;
 					
-					mGame.mShapeArray[i].mPositionX = tempx - shapeCenterX; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
+					mGame.mShapeArray[i].mPositionX = tempx - mShapeCenterX; 
+					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
 				}
 				if (mGame.mShapeArray[i].mOnClick == mApplication.moveUp)
 				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
+					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
 					mGame.mShapeArray[i].mPositionY = 0; 
 				}
 				if (mGame.mShapeArray[i].mOnClick == mApplication.moveDown)
 				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
+					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
 					
 					var tempy = mGame.mWindow.y / 6;
 					tempy = mGame.mWindow.y - tempy;
-					mGame.mShapeArray[i].mPositionY = tempy - shapeCenterY - 13; 
+					mGame.mShapeArray[i].mPositionY = tempy - mShapeCenterY - 13; 
 					
 				}
 				if (mGame.mShapeArray[i].mOnClick == mApplication.moveStop)
 				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - shapeCenterX; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - shapeCenterY; 
+					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
 				}
  
         			mGame.mShapeArray[i].mDiv.style.left = mGame.mShapeArray[i].mPositionX+'px';
@@ -1003,8 +1141,8 @@ function render()
                 	var ydiff = mGame.mShapeArray[i].mPositionY - mGame.mControlObject.mPositionY;  
 
                 	//center image relative to position
-                	var posX = xdiff + pageCenterX - shapeCenterX;
-                	var posY = ydiff + pageCenterY - shapeCenterY;    
+                	var posX = xdiff + mPageCenterX - mShapeCenterX;
+                	var posY = ydiff + mPageCenterY - mShapeCenterY;    
 			
 			//if off screen then hide it so we don't have scroll bars mucking up controls 
                         if (posX + mGame.mShapeArray[i].mWidth  + 3 > mGame.mWindow.x ||
