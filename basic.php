@@ -980,8 +980,8 @@ function render()
         			mGame.mShapeArray[i].mDiv.style.left = mGame.mShapeArray[i].mPositionX+'px';
         			mGame.mShapeArray[i].mDiv.style.top  = mGame.mShapeArray[i].mPositionY+'px';
 				
-			}
-		} 
+			} //else if
+		} //if control object 
 		
 		//else if anything else render relative to the control object	
 		else
