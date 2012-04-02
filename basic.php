@@ -986,14 +986,6 @@ function render()
         }
 }
 
-
-
-window.addEvent('domready', function()
-{
-	document.addEvent("keydown", this.onkeydown);
-	document.addEvent("keyup", this.onkeyup);
-}) ;
-
 function onkeydown(event)
 {
         if (event.key == 'left')
@@ -1050,6 +1042,8 @@ function onkeyup(event)
 window.addEvent('domready', function()
 {
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
+	document.addEvent("keydown", this.onkeydown);
+	document.addEvent("keyup", this.onkeyup);
 	mApplication.update();
 }
 );
