@@ -271,6 +271,17 @@ var Shape = new Class(
 		}
 });
 
+var ShapeGui = new Class({
+    Extends: Shape,
+    //initialize: function(name, age){
+	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+	{
+	this.parent(game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick);
+        //this.name = name;
+    }
+});
+
+
 //Application Class
 var Application = new Class(
 {
