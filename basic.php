@@ -895,10 +895,6 @@ var Game = new Class(
 	}
 });
 
-window.onresize = function(event)
-{
-	mGame.mWindow = window.getSize();
-}
 
 //this renders avatar in center of viewport then draws everthing else in relation to avatar
 function render()
@@ -1024,6 +1020,11 @@ function render()
 			}
 		}
         }
+}
+
+window.onresize = function(event)
+{
+	mGame.mWindow = window.getSize();
 }
 
 </script>
