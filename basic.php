@@ -409,6 +409,7 @@ var Application = new Class(
 	//CONTROLS
 	moveLeft: function()
 	{
+		alert('moveLeft');
 		mGame.mControlObject.mKeyX = -1;
         	mGame.mControlObject.mKeyY = 0;
 	},
@@ -626,15 +627,15 @@ var Game = new Class(
 		}
 
 		//control buttons	
-		new Shape(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
+		new ShapeGui(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
+		new ShapeGui(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
+		new ShapeGui(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
+		new ShapeGui(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
 		this.mIdCount++;
-		new Shape(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
+		new ShapeGui(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
 		this.mIdCount++;
 	},
 
