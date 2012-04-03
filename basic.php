@@ -222,6 +222,7 @@ var Shape = new Class(
 		//update position
 		this.mPositionX += this.mVelocityX;
 		this.mPositionY += this.mVelocityY;
+		
 		this.draw();
 	},
 
@@ -280,13 +281,14 @@ var Shape = new Class(
 
 	draw: function()
 	{
+	//	mGame.mApplication.log('Shape:Draw');	
 		//get the center of the page xy
-       		var mPageCenterX = mGame.mWindow.x / 2;
-        	var mPageCenterY = mGame.mWindow.y / 2;
+       		this.mPageCenterX = mGame.mWindow.x / 2;
+        	this.mPageCenterY = mGame.mWindow.y / 2;
       
        		//get the center xy of the image
-       		var mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
-       		var mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
+       		this.mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
+       		this.mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
 	}
 });
 
@@ -300,6 +302,7 @@ var ShapeGui = new Class({
 
 	draw: function()
 	{
+		//mGame.mApplication.log('ShapeGui:Draw');	
 		this.parent();
         	
 		this.mWidth = mGame.mWindow.x / 3;
@@ -317,7 +320,7 @@ var ShapeGui = new Class({
 		if (this.mOnClick == mApplication.moveLeft)
 		{
 			this.mPositionX = 0; 
-			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+			this.mPositionY = mGame.mWindow.y / 2 - this.mShapeCenterY; 
 		}
 		
 		if (this.mOnClick == mApplication.moveRight)
@@ -325,29 +328,29 @@ var ShapeGui = new Class({
 			var tempx = mGame.mWindow.x / 6;
 			tempx = mGame.mWindow.x - tempx;
 				
-			this.mPositionX = tempx - mShapeCenterX; 
-			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+			this.mPositionX = tempx - this.mShapeCenterX; 
+			this.mPositionY = mGame.mWindow.y / 2 - this.mShapeCenterY; 
 		}
 		
 		if (this.mOnClick == mApplication.moveUp)
 		{
-			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+			this.mPositionX = mGame.mWindow.x / 2 - this.mShapeCenterX; 
 			this.mPositionY = 0; 
 		}
 		
 		if (this.mOnClick == mApplication.moveDown)
 		{
-			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
+			this.mPositionX = mGame.mWindow.x / 2 - this.mShapeCenterX; 
 			
 			var tempy = mGame.mWindow.y / 6;
 			tempy = mGame.mWindow.y - tempy;
-			this.mPositionY = tempy - mShapeCenterY - 13; 
+			this.mPositionY = tempy - this.mShapeCenterY - 13; 
 		}
 		
-		if this.mOnClick == mApplication.moveStop)
+		if (this.mOnClick == mApplication.moveStop)
 		{
-			this.mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
-			this.mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
+			this.mPositionX = mGame.mWindow.x / 2 - this.mShapeCenterX; 
+			this.mPositionY = mGame.mWindow.y / 2 - this.mShapeCenterY; 
 		}
 
 		this.mDiv.style.left = this.mPositionX+'px';
@@ -365,6 +368,7 @@ var ShapeRelative = new Class({
 
 	draw: function()
 	{
+		//mGame.mApplication.log('ShapeRelative:Draw');	
 		this.parent();
 
 		//get the offset from control object
@@ -372,8 +376,8 @@ var ShapeRelative = new Class({
                 var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;  
 
                 //center image relative to position
-                var posX = xdiff + mPageCenterX - mShapeCenterX;
-                var posY = ydiff + mPageCenterY - mShapeCenterY;    
+                var posX = xdiff + this.mPageCenterX - this.mShapeCenterX;
+                var posY = ydiff + this.mPageCenterY - this.mShapeCenterY;    
 			
 		//if off screen then hide it so we don't have scroll bars mucking up controls 
                 if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
@@ -413,9 +417,16 @@ var ShapeControlObject = new Class({
 	draw: function()
 	{
 		this.parent();
-	
-		//this actual moves it  
-        	this.mDiv.style.left = posX+'px';
+		//alert('controlObject');	
+                //center image relative to position
+		//get the offset from control object
+		var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;  
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;  
+                
+		var posX = xdiff + this.mPageCenterX - this.mShapeCenterX;
+                var posY = ydiff + this.mPageCenterY - this.mShapeCenterY;    
+        	
+		this.mDiv.style.left = posX+'px';
         	this.mDiv.style.top  = posY+'px';
 	}
 });
@@ -470,7 +481,7 @@ var Application = new Class(
 			//old update only
 			mGame.update();	
 		
-			render();	
+			//render();	
 			
 			var t=setTimeout("mApplication.update()",20)
 		}
@@ -547,7 +558,7 @@ var Application = new Class(
 	//CONTROLS
 	moveLeft: function()
 	{
-		alert('moveLeft');
+		//alert('moveLeft');
 		mGame.mControlObject.mKeyX = -1;
         	mGame.mControlObject.mKeyY = 0;
 	},
@@ -747,19 +758,19 @@ var Game = new Class(
 	createShapes: function()
 	{
 		//control object	
-		new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
+		new ShapeControlObject(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
 		this.mIdCount++;
 		for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
 		{
 			this.setUniqueSpawnPosition();
-			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
 			this.mIdCount++;
 		}
 
 		for (i = 0; i < this.mNumberOfChasers; i++)
 		{
 			this.setUniqueSpawnPosition();
-			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
 			this.mIdCount++;	
 			
 		}
@@ -823,7 +834,7 @@ var Game = new Class(
 	{
         	for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
 		{
-			new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+			new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
 	},
@@ -835,12 +846,12 @@ var Game = new Class(
 		{
 			if (greenDoorCount == 0 || greenDoorCount == 1)
 			{
-				new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+				new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
 				this.mIdCount++;
 			}	
 			else
 			{	
-				new Shape(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+				new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
 				this.mIdCount++;
 			}
 			greenDoorCount++;
@@ -852,7 +863,7 @@ var Game = new Class(
 	{
         	for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
 		{
-			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
 	},
@@ -861,7 +872,7 @@ var Game = new Class(
 	{
        		for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
 		{
-			new Shape(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
 			this.mIdCount++;
 		}
 	},
@@ -1044,133 +1055,6 @@ var Game = new Class(
         	this.mShapeArray[0].mMesh.innerHTML=this.mCount;
 	}
 });
-
-
-//this renders avatar in center of viewport then draws everthing else in relation to avatar
-function render()
-{
-        //loop thru player array and update their xy positions
-        for (i=0; i<mGame.mShapeArray.length; i++)
-        {
-		//get the center of the page xy
-       		var mPageCenterX = mGame.mWindow.x / 2;
-        	var mPageCenterY = mGame.mWindow.y / 2;
-      
-       		//get the center xy of the image
-       		var mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
-       		var mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
-
-		//if control object center it on screen
-		if (mGame.mShapeArray[i] == mGame.mControlObject || mGame.mShapeArray[i].mGui == true)
-		{
-			//shift the position based on mPageCenterXY and mShapeCenterXY	
-        		var posX = mPageCenterX - mShapeCenterX;     
-        		var posY = mPageCenterY - mShapeCenterY;     
-			
-			if (mGame.mShapeArray[i] == mGame.mControlObject)
-			{
-				//this actual moves it  
-        			mGame.mShapeArray[i].mDiv.style.left = posX+'px';
-        			mGame.mShapeArray[i].mDiv.style.top  = posY+'px';
-			}
-			else if (mGame.mShapeArray[i].mGui == true)
-			{
-				
-				//we also need to resize gui based on size...
-        			//button.style.width=mGame.mShapeArray[i].mWidth+'px'; 
-        			//button.style.height=mGame.mShapeArray[i].mHeight+'px'; 
-				
-				//get the new size....
-        			mGame.mShapeArray[i].mWidth = mGame.mWindow.x / 3;
-        			mGame.mShapeArray[i].mHeight = mGame.mWindow.y / 3;
-
-				if (mGame.mShapeArray[i].mInnerHTML == "DOWN")
-				{
-					mGame.mShapeArray[i].mHeight = mGame.mShapeArray[i].mHeight - 13;
-				}
-				
-				mGame.mShapeArray[i].mMesh.style.width=mGame.mShapeArray[i].mWidth+'px'; 
-        			mGame.mShapeArray[i].mMesh.style.height=mGame.mShapeArray[i].mHeight+'px'; 
-					
-
-				//now get the position
-				if (mGame.mShapeArray[i].mOnClick == mApplication.moveLeft)
-				{
-					mGame.mShapeArray[i].mPositionX = 0; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
-				}
-				if (mGame.mShapeArray[i].mOnClick == mApplication.moveRight)
-				{
-					var tempx = mGame.mWindow.x / 6;
-					tempx = mGame.mWindow.x - tempx;
-					
-					mGame.mShapeArray[i].mPositionX = tempx - mShapeCenterX; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
-				}
-				if (mGame.mShapeArray[i].mOnClick == mApplication.moveUp)
-				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
-					mGame.mShapeArray[i].mPositionY = 0; 
-				}
-				if (mGame.mShapeArray[i].mOnClick == mApplication.moveDown)
-				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
-					
-					var tempy = mGame.mWindow.y / 6;
-					tempy = mGame.mWindow.y - tempy;
-					mGame.mShapeArray[i].mPositionY = tempy - mShapeCenterY - 13; 
-					
-				}
-				if (mGame.mShapeArray[i].mOnClick == mApplication.moveStop)
-				{
-					mGame.mShapeArray[i].mPositionX = mGame.mWindow.x / 2 - mShapeCenterX; 
-					mGame.mShapeArray[i].mPositionY = mGame.mWindow.y / 2 - mShapeCenterY; 
-				}
- 
-        			mGame.mShapeArray[i].mDiv.style.left = mGame.mShapeArray[i].mPositionX+'px';
-        			mGame.mShapeArray[i].mDiv.style.top  = mGame.mShapeArray[i].mPositionY+'px';
-				
-			} //else if
-		} //if control object 
-		
-		//else if anything else render relative to the control object	
-		else
-		{
-			//get the offset from control object
-			var xdiff = mGame.mShapeArray[i].mPositionX - mGame.mControlObject.mPositionX;  
-                	var ydiff = mGame.mShapeArray[i].mPositionY - mGame.mControlObject.mPositionY;  
-
-                	//center image relative to position
-                	var posX = xdiff + mPageCenterX - mShapeCenterX;
-                	var posY = ydiff + mPageCenterY - mShapeCenterY;    
-			
-			//if off screen then hide it so we don't have scroll bars mucking up controls 
-                        if (posX + mGame.mShapeArray[i].mWidth  + 3 > mGame.mWindow.x ||
-			    posY + mGame.mShapeArray[i].mHeight + 13 > mGame.mWindow.y)
-			{
-                		mGame.mShapeArray[i].mDiv.style.left = 0+'px';
-                       		mGame.mShapeArray[i].mDiv.style.top  = 0+'px';
-				mGame.mShapeArray[i].mDiv.style.visibility = 'hidden';	
-			}
-			else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
-			{
-				if (mGame.mShapeArray[i].mCollisionOn || 
-				    mGame.mShapeArray[i].mIsQuestion == 'false')
-				{	
-                			mGame.mShapeArray[i].mDiv.style.left = posX+'px';
-                       			mGame.mShapeArray[i].mDiv.style.top  = posY+'px';
-					mGame.mShapeArray[i].mDiv.style.visibility = 'visible';	
-				}
-				else
-				{
-                			mGame.mShapeArray[i].mDiv.style.left = 0+'px';
-                       			mGame.mShapeArray[i].mDiv.style.top  = 0+'px';
-					mGame.mShapeArray[i].mDiv.style.visibility = 'hidden';	
-				}
-			}
-		}
-        }
-}
 
 window.onresize = function(event)
 {
