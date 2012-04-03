@@ -96,6 +96,12 @@ var mPositionYArray = new Array();
 var mSlotPositionXArray = new Array();
 var mSlotPositionYArray = new Array();
 
+</script>
+
+
+<script type="text/javascript" src="src/shape/shape.js"></script>
+
+<!--
 var Shape = new Class(
 {
 	initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
@@ -291,6 +297,8 @@ var Shape = new Class(
        		this.mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
 	}
 });
+-->
+<script language="javascript">
 
 var ShapeGui = new Class({
     Extends: Shape,
