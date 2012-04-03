@@ -100,9 +100,9 @@ var mSlotPositionYArray = new Array();
 
 
 <script type="text/javascript" src="src/shape/shape.js"></script>
+<script type="text/javascript" src="src/shape/shape_gui.js"></script>
 
-<script language="javascript">
-
+<!--
 var ShapeGui = new Class({
     Extends: Shape,
 	
@@ -168,6 +168,8 @@ var ShapeGui = new Class({
       		this.mDiv.style.top  = this.mPositionY+'px';
         }
 });
+-->
+<script language="javascript">
 
 var ShapeRelative = new Class({
     Extends: Shape,
