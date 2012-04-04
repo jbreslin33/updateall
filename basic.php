@@ -81,7 +81,7 @@ if ($num > 0)
 
 <script language="javascript">
 
-var jScoreNeeded = 10;
+var jScoreNeeded = <?php echo $scoreNeeded; ?>;
 
 //application
 var mApplication;
