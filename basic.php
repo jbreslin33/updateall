@@ -135,7 +135,7 @@ var Application = new Class(
 		this.mKeyDown = false;
 		this.mKeyStop = false;
 
-		mGame = new Game(this, scoreNeeded, countBy, <?php echo "$startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+		mGame = new Game(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
 		
 		//this will be used for resetting to
 		mGame.resetGame();
