@@ -110,7 +110,6 @@ var mSlotPositionYArray = new Array();
 var Application = new Class(
 {
 	initialize: function(tickLength)
-	//initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 	{
 		//window size
 		this.mWindow = window.getSize();
