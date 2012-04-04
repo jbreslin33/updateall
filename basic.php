@@ -89,12 +89,6 @@ var mApplication;
 //game
 var mGame;
 
-//shapes
-var mPositionXArray = new Array();
-var mPositionYArray = new Array();
-
-var mSlotPositionXArray = new Array();
-var mSlotPositionYArray = new Array();
 
 </script>
 
@@ -313,6 +307,13 @@ var Game = new Class(
 		//On_Off
 		this.mGameOn = true;
 	
+		//shapes
+		this.mPositionXArray = new Array();
+		this.mPositionYArray = new Array();
+
+		this.mSlotPositionXArray = new Array();
+		this.mSlotPositionYArray = new Array();
+		
 		//shape Array
 		this.mShapeArray = new Array();
 	
@@ -421,12 +422,12 @@ var Game = new Class(
 	{
 		for (i=this.mLeftBounds + this.mDefaultSpriteSize / 2; i <= this.mRightBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
 		{ 	
-			mPositionXArray.push(i);	
+			this.mPositionXArray.push(i);	
 		}
 	
 		for (i=this.mTopBounds + this.mDefaultSpriteSize / 2; i <= this.mBottomBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
 		{ 	
-			mPositionYArray.push(i);	
+			this.mPositionYArray.push(i);	
 		}
 	},
 
@@ -438,14 +439,14 @@ var Game = new Class(
 		for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
 		{
 			this.setUniqueSpawnPosition();
-			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
 			this.mIdCount++;
 		}
 
 		for (i = 0; i < this.mNumberOfChasers; i++)
 		{
 			this.setUniqueSpawnPosition();
-			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,mPositionXArray[this.mProposedX],mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
+			new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
 			this.mIdCount++;	
 			
 		}
@@ -466,38 +467,38 @@ var Game = new Class(
 	setUniqueSpawnPosition: function()
 	{
 		//get random spawn element
-		this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-		this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+		this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+		this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
 
 		for (r= 0; r < this.mShapeArray.length; r++)
 		{
-			if (mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
+			if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
 			{
 				r = 0;
-				this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-				this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+				this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+				this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
 			}
 			if (r > 0)
 			{	
 				if (
-			    	Math.abs(mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
+			    	Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
 					||
-		            	Math.abs(mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350			
+		            	Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350			
 			   	) 
 				{
 					r = 0;
-					this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-					this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+					this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+					this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
 				}
 				if (
-			    	Math.abs(mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
+			    	Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
 				 	&& 
-		            	Math.abs(mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100			
+		            	Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100			
 			   	) 
 				{
 					r = 0;
-					this.mProposedX = Math.floor(Math.random()*mPositionXArray.length);
-					this.mProposedY = Math.floor(Math.random()*mPositionYArray.length);
+					this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+					this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
 				}
 			
 			}
