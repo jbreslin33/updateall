@@ -1,7 +1,6 @@
-//Application Class
 var Application = new Class(
 {
-        initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(tickLength)
         {
                 //window size
                 this.mWindow = window.getSize();
@@ -194,4 +193,5 @@ var Application = new Class(
                 }
         }
 });
+
 
