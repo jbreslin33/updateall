@@ -82,6 +82,9 @@ if ($num > 0)
 <script language="javascript">
 
 //GLOBALS
+        //mApplication = new Application(<?php echo "$tickLength);"; ?>
+//var scoreNeeded = <?php echo "$scoreNeeded;"; ?>
+var scoreNeeded = 10;
 
 //application
 var mApplication;
