@@ -1,6 +1,6 @@
 var Game = new Class(
 {
-        initialize: function(application,scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(application, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
         {
                 //application
                 this.mApplication = application;        
