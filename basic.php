@@ -81,10 +81,7 @@ if ($num > 0)
 
 <script language="javascript">
 
-//GLOBALS
-        //mApplication = new Application(<?php echo "$tickLength);"; ?>
-//var scoreNeeded = <?php echo "$scoreNeeded;"; ?>
-var scoreNeeded = 10;
+var jScoreNeeded = 10;
 
 //application
 var mApplication;
@@ -126,7 +123,7 @@ var Application = new Class(
 		this.mKeyDown = false;
 		this.mKeyStop = false;
 
-		mGame = new Game(this,<?php echo "$scoreNeeded, $countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+		mGame = new Game(this, jScoreNeeded, <?php echo "$countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 		
 		//this will be used for resetting to
 		mGame.resetGame();
@@ -303,7 +300,7 @@ var Application = new Class(
 //Game Class
 var Game = new Class(
 {
-	initialize: function(application,scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+	initialize: function(application, jScoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 	{
 		//application
 		this.mApplication = application;	
@@ -328,7 +325,7 @@ var Game = new Class(
 
 		//score
       		this.mScore = 0; 
-	 	this.mScoreNeeded = scoreNeeded;
+	 	this.mScoreNeeded = jScoreNeeded;
 
         	//count
         	this.mCountBy = countBy;
