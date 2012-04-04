@@ -82,6 +82,18 @@ if ($num > 0)
 <script language="javascript">
 
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
+var countBy = <?php echo $countBy; ?>;
+var startNumber = <?php echo $startNumber; ?>;
+var endNumber = <?php echo $endNumber; ?>;
+var tickLength = <?php echo $tickLength; ?>;
+var nextLevel = <?php echo $nextLevel; ?>;
+var numberOfChasers = <?php echo $numberOfChasers; ?>;
+var speed = <?php echo $speed; ?>;
+var leftBounds = <?php echo $leftBounds; ?>;
+var rightBounds = <?php echo $rightBounds; ?>;
+var topBounds = <?php echo $topBounds; ?>;
+var bottomBounds = <?php echo $bottomBounds; ?>;
+var collisionDistance = <?php echo $collisionDistance; ?>;
 
 //application
 var mApplication;
@@ -123,7 +135,7 @@ var Application = new Class(
 		this.mKeyDown = false;
 		this.mKeyStop = false;
 
-		mGame = new Game(this, scoreNeeded, <?php echo "$countBy, $startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
+		mGame = new Game(this, scoreNeeded, countBy, <?php echo "$startNumber, $endNumber, $numberOfChasers, $speed, $leftBounds, $rightBounds, $topBounds, $bottomBounds, $collisionDistance);"; ?>
 		
 		//this will be used for resetting to
 		mGame.resetGame();
