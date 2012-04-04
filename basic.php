@@ -99,17 +99,18 @@ var mSlotPositionYArray = new Array();
 </script>
 
 
-<script type="text/javascript" src="src/shape/shape.js"></script>
-<script type="text/javascript" src="src/shape/shape_gui.js"></script>
-<script type="text/javascript" src="src/shape/shape_relative.js"></script>
-<script type="text/javascript" src="src/shape/shape_controlobject.js"></script>
+<script type="text/javascript" src="src/shape/shape.php"></script>
+<script type="text/javascript" src="src/shape/shape_gui.php"></script>
+<script type="text/javascript" src="src/shape/shape_relative.php"></script>
+<script type="text/javascript" src="src/shape/shape_controlobject.php"></script>
 
 
 <script language="javascript">
 //Application Class
 var Application = new Class(
 {
-	initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+	initialize: function(tickLength)
+	//initialize: function(scoreNeeded, countBy, startNumber, endNumber, tickLength, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
 	{
 		//window size
 		this.mWindow = window.getSize();
@@ -746,6 +747,7 @@ window.addEvent('domready', function()
 	//the application
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
 
+	
 	//keys	
 	document.addEvent("keydown", mApplication.keyDown);
 	document.addEvent("keyup", mApplication.keyUp);
