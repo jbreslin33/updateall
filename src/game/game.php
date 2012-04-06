@@ -392,7 +392,7 @@ var Game = new Class(
                         {
                                 this.mGameOn = false;
                                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
-                                window.location = "goto_next_math_level.php"
+                                window.location = "../database/goto_next_math_level.php"
                         }
                 }
         },

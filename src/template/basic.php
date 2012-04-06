@@ -16,11 +16,11 @@
 <script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
 -->
 <!-- mootools -->
-<script type="text/javascript" src="mootools-core-1.4.5-full-compat.js"></script>
+<script type="text/javascript" src="../mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php 
-include("check_login.php");
-include("db_connect.php");
+include("../login/check_login.php");
+include("../database/db_connect.php");
 
 //db connection
 $conn = dbConnect();
@@ -105,12 +105,12 @@ var mGame;
 </script>
 
 
-<script type="text/javascript" src="src/shape/shape.php"></script>
-<script type="text/javascript" src="src/shape/shape_gui.php"></script>
-<script type="text/javascript" src="src/shape/shape_relative.php"></script>
-<script type="text/javascript" src="src/shape/shape_controlobject.php"></script>
-<script type="text/javascript" src="src/application/application.php"></script>
-<script type="text/javascript" src="src/game/game.php"></script>
+<script type="text/javascript" src="../shape/shape.php"></script>
+<script type="text/javascript" src="../shape/shape_gui.php"></script>
+<script type="text/javascript" src="../shape/shape_relative.php"></script>
+<script type="text/javascript" src="../shape/shape_controlobject.php"></script>
+<script type="text/javascript" src="../application/application.php"></script>
+<script type="text/javascript" src="../game/game.php"></script>
 
 
 <script language="javascript">
