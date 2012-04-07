@@ -106,6 +106,7 @@ var mGame;
 
 
 <script type="text/javascript" src="../shape/shape.php"></script>
+<script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../shape/shape_gui.php"></script>
 <script type="text/javascript" src="../shape/shape_relative.php"></script>
 <script type="text/javascript" src="../shape/shape_controlobject.php"></script>

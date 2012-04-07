@@ -17,8 +17,8 @@ var ShapeControlObject = new Class({
 		var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);    
                 
-                this.mDiv.style.left = posX+'px';
-                this.mDiv.style.top  = posY+'px';
+                this.mDiv.mDiv.style.left = posX+'px';
+                this.mDiv.mDiv.style.top  = posY+'px';
         }
 });
 

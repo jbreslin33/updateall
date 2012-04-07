@@ -67,24 +67,9 @@ var Shape = new Class(
         
                 //add to array
                 this.mGame.mShapeArray.push(this);
-        
-                //create the movable div that will be used to move image around.        
-                this.mDiv = document.createElement('div');
-                this.mDiv.setAttribute('id','div' + this.mId);
-                this.mDiv.setAttribute("class","vessel");
-                this.mDiv.style.position="absolute";
-                this.mDiv.style.visibility = 'visible';
-        
-                this.mDiv.style.width = this.mWidth;
-                this.mDiv.style.height = this.mHeight;
-        
-                //move it
-                this.mDiv.style.left = this.mPositionX+'px';
-                this.mDiv.style.top  = this.mPositionY+'px';
 
-                document.body.appendChild(this.mDiv);
-        
-                this.mDiv.style.backgroundColor = this.mBackgroundColor;
+                //create the movable div that will be used to move image around.        
+		this.mDiv = new Div(this);
 
                 this.mMesh;
         
@@ -123,7 +108,7 @@ var Shape = new Class(
                 }
 
                 //back to div   
-                this.mDiv.appendChild(this.mMesh);
+                this.mDiv.mDiv.appendChild(this.mMesh);
 		this.mGame.mIdCount++;
         
         },

@@ -23,24 +23,24 @@ var ShapeRelative = new Class({
                 if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
                         posY + this.mHeight + 13 > mGame.mWindow.y)
                 {
-                        this.mDiv.style.left = 0+'px';
-                        this.mDiv.style.top  = 0+'px';
-                        this.mDiv.style.visibility = 'hidden';  
+                        this.mDiv.mDiv.style.left = 0+'px';
+                        this.mDiv.mDiv.style.top  = 0+'px';
+                        this.mDiv.mDiv.style.visibility = 'hidden';  
                 }
                 else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
                 {
                         if (this.mCollisionOn || 
                             this.mIsQuestion == 'false')
                         {       
-                                this.mDiv.style.left = posX+'px';
-                                this.mDiv.style.top  = posY+'px';
-                                this.mDiv.style.visibility = 'visible'; 
+                                this.mDiv.mDiv.style.left = posX+'px';
+                                this.mDiv.mDiv.style.top  = posY+'px';
+                                this.mDiv.mDiv.style.visibility = 'visible'; 
                         }
                         else
                         {
-                                this.mDiv.style.left = 0+'px';
-                                this.mDiv.style.top  = 0+'px';
-                                this.mDiv.style.visibility = 'hidden';  
+                                this.mDiv.mDiv.style.left = 0+'px';
+                                this.mDiv.mDiv.style.top  = 0+'px';
+                                this.mDiv.mDiv.style.visibility = 'hidden';  
                         }
                 }
         }

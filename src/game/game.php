@@ -312,7 +312,7 @@ var Game = new Class(
                                         this.mCount = this.mCount + this.mCountBy;  //add to count
                                         this.mScore++;
                                         this.mShapeArray[mId2].mCollisionOn = false;
-                                        this.mShapeArray[mId2].mDiv.style.visibility = 'hidden';
+                                        this.mShapeArray[mId2].mDiv.mDiv.style.visibility = 'hidden';
                 
                                         //feedback      
                                         document.getElementById("feedback").innerHTML="Correct!";
@@ -365,7 +365,7 @@ var Game = new Class(
                                 if (this.mShapeArray[i].mBackgroundColor == 'green')
                                 {
                                         this.mShapeArray[i].mBackgroundColor = 'white';
-                                        this.mShapeArray[i].mDiv.style.backgroundColor = 'white';
+                                        this.mShapeArray[i].mDiv.mDiv.style.backgroundColor = 'white';
                                 }
                         }
                 }
@@ -401,7 +401,7 @@ var Game = new Class(
                         if (this.mShapeArray[i].mCollidable == true)
                         { 
                                 this.mShapeArray[i].mCollisionOn = true;
-                                this.mShapeArray[i].mDiv.style.visibility = 'visible';
+                                this.mShapeArray[i].mDiv.mDiv.style.visibility = 'visible';
                         }
                 }
                 this.mControlObject.mPositionX = 0;     

@@ -59,8 +59,8 @@ var ShapeGui = new Class({
                         this.mPositionY = (mGame.mWindow.y / 2) - (this.mHeight / 2); 
                 }
 
-                this.mDiv.style.left = this.mPositionX+'px';
-                this.mDiv.style.top  = this.mPositionY+'px';
+                this.mDiv.mDiv.style.left = this.mPositionX+'px';
+                this.mDiv.mDiv.style.top  = this.mPositionY+'px';
         }
 });
 
