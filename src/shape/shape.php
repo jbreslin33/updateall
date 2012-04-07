@@ -85,26 +85,11 @@ var Shape = new Class(
                         this.mMesh.style.width = this.mWidth+'px'; 
                         this.mMesh.style.height = this.mHeight+'px'; 
                 }
-                else if (this.mSrc == "")//create paragraph
+                
+		if (this.mSrc == "")//create paragraph
                 {
-                        if (this.mGui)
-                        {               
-                                this.mMesh = document.createElement("button");
-                                this.mMesh.id = 'button' + this.mId;
-                                this.mMesh.style.width = this.mWidth+'px';
-                                this.mMesh.style.width = this.mHeight+'px';
-                                this.mMesh.innerHTML = this.mInnerHTML;
-                                this.mMesh.onclick = this.mOnClick;
-                                this.mMesh.style.backgroundColor = 'transparent';
-                                this.mMesh.style.border = 'thin none #FFFFFF';
-                                this.mMesh.style.width = this.mWidth+'px'; 
-                                this.mMesh.style.height = this.mHeight+'px'; 
-                        }
-                        else
-                        {
-                                this.mMesh = document.createElement("p");
-                                this.mMesh.innerHTML = this.mAnswer;
-                        }
+                	this.mMesh = document.createElement("p");
+                        this.mMesh.innerHTML = this.mAnswer;
                 }
 
                 //back to div   
