@@ -2,37 +2,64 @@ var Shape = new Class(
 {
         initialize: function (game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
         {
-                //ai
+                
+                //game
+                this.mGame = game;      
+		
+		//id 
+		this.mId = this.mGame.mIdCount;
+		
+		//ai
+		this.mAI = ai;  
                 this.mAiCounter = 0;
                 this.mAiCounterDelay = 10;
+		
+		//src 
+		this.mSrc = src;
+               
+		//size 
+		this.mWidth = width;
+                this.mHeight = height;
                 
-                //
-                this.mGame = game;      
-                this.mSrc = src;
-                this.mId = this.mGame.mIdCount;
-		                
+		//position
                 this.mSpawnPositionX = spawnX;
                 this.mSpawnPositionY = spawnY;
-                this.mWidth = width;
-                this.mHeight = height;
-                this.mPositionX = spawnX;
+		this.mPositionX = spawnX;
                 this.mPositionY = spawnY;
                 this.mOldPositionX = spawnX;
                 this.mOldPositionY = spawnY;
-                this.mVelocityX = 0;
+               
+		//velocity 
+		this.mVelocityX = 0;
                 this.mVelocityY = 0;
-                this.mKeyX = 0;
-                this.mKeyY = 0;
-                this.mCollidable = collidable;
-                this.mCollisionOn = collisionOn;
-                this.mIsQuestion = isQuestion;
-                this.mAnswer = answer;
-                this.mAI = ai;  
-                this.mGui = gui;
-                this.mInnerHTML = innerHTML; 
-                this.mBackgroundColor = backgroundColor;
-                this.mOnClick = onClick;
                 
+		//keys
+		this.mKeyX = 0;
+                this.mKeyY = 0;
+                
+		//collision
+		this.mCollidable = collidable;
+                this.mCollisionOn = collisionOn;
+               
+		//questions 
+		this.mIsQuestion = isQuestion;
+               
+		//answers 
+		this.mAnswer = answer;
+               
+		//gui	
+                this.mGui = gui;
+                
+		//html	
+		this.mInnerHTML = innerHTML; 
+                
+		//background
+		this.mBackgroundColor = backgroundColor;
+                
+		//onclick	
+		this.mOnClick = onClick;
+               
+		//control object 
                 if (isControlObject)
                 {
                         this.mGame.mControlObject = this;
