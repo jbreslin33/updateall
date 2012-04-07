@@ -2,10 +2,6 @@ var Shape = new Class(
 {
         initialize: function (game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
         {
-                //replace this.....!!!!!!!!!!!!!!!!     
-                this.mPageCenterX = 0;
-                this.mPageCenterY = 0;
-                
                 this.mShapeCenterX = 0;
                 this.mShapeCenterY = 0;
 

@@ -9,14 +9,13 @@ var ShapeControlObject = new Class({
         draw: function()
         {
                 this.parent();
-                //alert('controlObject');       
                 //center image relative to position
                 //get the offset from control object
                 var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;  
                 var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;  
-                
-                var posX = xdiff + this.mPageCenterX - this.mShapeCenterX;
-                var posY = ydiff + this.mPageCenterY - this.mShapeCenterY;    
+
+		var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);    
                 
                 this.mDiv.style.left = posX+'px';
                 this.mDiv.style.top  = posY+'px';

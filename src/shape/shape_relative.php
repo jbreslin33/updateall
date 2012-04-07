@@ -14,10 +14,10 @@ var ShapeRelative = new Class({
                 //get the offset from control object
                 var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;  
                 var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;  
-
-                //center image relative to position
-                var posX = xdiff + this.mPageCenterX - this.mShapeCenterX;
-                var posY = ydiff + this.mPageCenterY - this.mShapeCenterY;    
+                
+		//center image relative to position
+                var posX = xdiff + (this.mGame.mWindow.x / 2) - this.mShapeCenterX;
+                var posY = ydiff + (this.mGame.mWindow.y / 2) - this.mShapeCenterY;    
                         
                 //if off screen then hide it so we don't have scroll bars mucking up controls 
                 if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
