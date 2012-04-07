@@ -1,20 +1,8 @@
 <html>
 <head>
-<!--
-	<style>
-	#sortable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
-	#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 1.5em; }
-	html>body #sortable li { height: 1.5em; line-height: 1.2em; }
-	.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
-	</style>
--->
+
 <title>ABC AND YOU</title>
 
-<!-- jquery and jqueryui 
-<link type="text/css" href="jquery-ui-1.8.17.custom.css" rel="Stylesheet" />
-<script type="text/javascript" src="jquery-1.7.js"></script>
-<script type="text/javascript" src="jquery-ui-1.8.17.custom.min.js"></script>
--->
 <!-- mootools -->
 <script type="text/javascript" src="../mootools/mootools-core-1.4.5-full-compat.js"></script>
 
