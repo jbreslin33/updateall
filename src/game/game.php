@@ -135,33 +135,25 @@ var Game = new Class(
         {
                 //control object        
                 new ShapeControlObject(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
-                this.mIdCount++;
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
                         new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
-                        this.mIdCount++;
                 }
 
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
                         new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
-                        this.mIdCount++;        
                         
                 }
 
                 //control buttons       
                 new ShapeGui(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
-                this.mIdCount++;
                 new ShapeGui(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
-                this.mIdCount++;
                 new ShapeGui(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
-                this.mIdCount++;
                 new ShapeGui(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
-                this.mIdCount++;
                 new ShapeGui(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
-                this.mIdCount++;
         },
 
         setUniqueSpawnPosition: function()
@@ -211,7 +203,6 @@ var Game = new Class(
                 for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
                 {
                         new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
-                        this.mIdCount++;
                 }
         },
 
@@ -223,12 +214,10 @@ var Game = new Class(
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
                                 new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
-                                this.mIdCount++;
                         }       
                         else
                         {       
                                 new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
-                                this.mIdCount++;
                         }
                         greenDoorCount++;
                 }
@@ -240,7 +229,6 @@ var Game = new Class(
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
                         new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
-                        this.mIdCount++;
                 }
         },
 
@@ -249,7 +237,6 @@ var Game = new Class(
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
                         new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
-                        this.mIdCount++;
                 }
         },
 

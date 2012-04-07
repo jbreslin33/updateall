@@ -17,7 +17,7 @@ var Shape = new Class(
                 this.mGame = game;      
                 this.mSrc = src;
                 this.mId = id;
-                
+		                
                 this.mSpawnPositionX = spawnX;
                 this.mSpawnPositionY = spawnY;
                 this.mWidth = width;
@@ -104,6 +104,7 @@ var Shape = new Class(
 
                 //back to div   
                 this.mDiv.appendChild(this.mMesh);
+		this.mGame.mIdCount++;
         
         },
         
