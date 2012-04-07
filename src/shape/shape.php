@@ -152,6 +152,12 @@ var Shape = new Class(
 		}
 	},		
 
+	setBackgroundColor: function(c)
+	{
+		this.mBackgroundColor = c;
+		this.mDiv.mDiv.style.backgroundColor = c;
+	},
+
         ai: function()
         {
                 if (this.mAI == true)

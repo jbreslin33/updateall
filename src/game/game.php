@@ -364,8 +364,7 @@ var Game = new Class(
                         {
                                 if (this.mShapeArray[i].mBackgroundColor == 'green')
                                 {
-                                        this.mShapeArray[i].mBackgroundColor = 'white';
-                                        this.mShapeArray[i].mDiv.mDiv.style.backgroundColor = 'white';
+					this.mShapeArray[i].setBackgroundColor('white');
                                 }
                         }
                 }
