@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function (game,id,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+        initialize: function (game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
         {
                 //replace this.....!!!!!!!!!!!!!!!!     
                 this.mPageCenterX = 0;
@@ -16,7 +16,7 @@ var Shape = new Class(
                 //
                 this.mGame = game;      
                 this.mSrc = src;
-                this.mId = id;
+                this.mId = this.mGame.mIdCount;
 		                
                 this.mSpawnPositionX = spawnX;
                 this.mSpawnPositionY = spawnY;

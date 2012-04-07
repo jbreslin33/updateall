@@ -134,26 +134,26 @@ var Game = new Class(
         createShapes: function()
         {
                 //control object        
-                new ShapeControlObject(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
+                new ShapeControlObject(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+                        new ShapeRelative(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
                 }
 
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
+                        new ShapeRelative(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
                         
                 }
 
                 //control buttons       
-                new ShapeGui(this,this.mIdCount,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
-                new ShapeGui(this,this.mIdCount,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
-                new ShapeGui(this,this.mIdCount,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
-                new ShapeGui(this,this.mIdCount,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
-                new ShapeGui(this,this.mIdCount,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
+                new ShapeGui(this,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
+                new ShapeGui(this,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
+                new ShapeGui(this,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
+                new ShapeGui(this,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
+                new ShapeGui(this,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
         },
 
         setUniqueSpawnPosition: function()
@@ -202,7 +202,7 @@ var Game = new Class(
         {
                 for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+                        new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
                 }
         },
 
@@ -213,11 +213,11 @@ var Game = new Class(
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+                                new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
                         }       
                         else
                         {       
-                                new ShapeRelative(this,this.mIdCount,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+                                new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
                         }
                         greenDoorCount++;
                 }
@@ -228,7 +228,7 @@ var Game = new Class(
         {
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
+                        new ShapeRelative(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
                 }
         },
 
@@ -236,7 +236,7 @@ var Game = new Class(
         {
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,this.mIdCount,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+                        new ShapeRelative(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
                 }
         },
 
