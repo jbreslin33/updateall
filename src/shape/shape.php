@@ -75,50 +75,50 @@ var Shape = new Class(
                 this.mDiv.style.position="absolute";
                 this.mDiv.style.visibility = 'visible';
         
-                this.mDiv.style.width= this.mGame.mShapeArray[this.mId].mWidth;
-                this.mDiv.style.height= this.mGame.mShapeArray[this.mId].mHeight;
+                this.mDiv.style.width = this.mWidth;
+                this.mDiv.style.height = this.mHeight;
         
                 //move it
-                this.mDiv.style.left = this.mGame.mShapeArray[this.mId].mPositionX+'px';
-                this.mDiv.style.top  = this.mGame.mShapeArray[this.mId].mPositionY+'px';
+                this.mDiv.style.left = this.mPositionX+'px';
+                this.mDiv.style.top  = this.mPositionY+'px';
 
                 document.body.appendChild(this.mDiv);
         
-                this.mDiv.style.backgroundColor = this.mGame.mShapeArray[this.mId].mBackgroundColor;
+                this.mDiv.style.backgroundColor = this.mBackgroundColor;
 
                 this.mMesh;
         
                 //create clientImage
-                if (this.mGame.mShapeArray[this.mId].mSrc)
+                if (this.mSrc)
                 {
                         //image to attache to our div "vessel"
                         this.mMesh  = document.createElement("IMG");
                         this.mMesh.id = 'image' + this.mId;
                         this.mMesh.alt = 'image' + this.mId;
                         this.mMesh.title = 'image' + this.mId;   
-                        this.mMesh.src  = this.mGame.mShapeArray[this.mId].mSrc;
-                        this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px'; 
-                        this.mMesh.style.height=this.mGame.mShapeArray[this.mId].mHeight+'px'; 
+                        this.mMesh.src  = this.mSrc;
+                        this.mMesh.style.width = this.mWidth+'px'; 
+                        this.mMesh.style.height = this.mHeight+'px'; 
                 }
-                else if (this.mGame.mShapeArray[this.mId].mSrc == "")//create paragraph
+                else if (this.mSrc == "")//create paragraph
                 {
-                        if (this.mGame.mShapeArray[this.mId].mGui)
+                        if (this.mGui)
                         {               
                                 this.mMesh = document.createElement("button");
                                 this.mMesh.id = 'button' + this.mId;
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px';
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mHeight+'px';
-                                this.mMesh.innerHTML = this.mGame.mShapeArray[this.mId].mInnerHTML;
-                                this.mMesh.onclick = this.mGame.mShapeArray[this.mId].mOnClick;
+                                this.mMesh.style.width = this.mWidth+'px';
+                                this.mMesh.style.width = this.mHeight+'px';
+                                this.mMesh.innerHTML = this.mInnerHTML;
+                                this.mMesh.onclick = this.mOnClick;
                                 this.mMesh.style.backgroundColor = 'transparent';
                                 this.mMesh.style.border = 'thin none #FFFFFF';
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px'; 
-                                this.mMesh.style.height=this.mGame.mShapeArray[this.mId].mHeight+'px'; 
+                                this.mMesh.style.width = this.mWidth+'px'; 
+                                this.mMesh.style.height = this.mHeight+'px'; 
                         }
                         else
                         {
                                 this.mMesh = document.createElement("p");
-                                this.mMesh.innerHTML = this.mGame.mShapeArray[this.mGame.mIdCount].mAnswer;
+                                this.mMesh.innerHTML = this.mAnswer;
                         }
                 }
 
