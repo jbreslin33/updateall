@@ -22,12 +22,12 @@ var Shape = new Class(
                 this.mHeight = height;
                 
 		//position
-                this.mSpawnPositionX = spawnX;
-                this.mSpawnPositionY = spawnY;
 		this.mPositionX = spawnX;
                 this.mPositionY = spawnY;
                 this.mOldPositionX = spawnX;
                 this.mOldPositionY = spawnY;
+                this.mSpawnPositionX = spawnX;
+                this.mSpawnPositionY = spawnY;
                
 		//velocity 
 		this.mVelocityX = 0;
@@ -70,50 +70,50 @@ var Shape = new Class(
         
                 //create the movable div that will be used to move image around.        
                 this.mDiv = document.createElement('div');
-                this.mDiv.setAttribute('id','div' + this.mGame.mIdCount);
+                this.mDiv.setAttribute('id','div' + this.mId);
                 this.mDiv.setAttribute("class","demo");
                 this.mDiv.style.position="absolute";
                 this.mDiv.style.visibility = 'visible';
         
-                this.mDiv.style.width= this.mGame.mShapeArray[this.mGame.mIdCount].mWidth;
-                this.mDiv.style.height= this.mGame.mShapeArray[this.mGame.mIdCount].mHeight;
+                this.mDiv.style.width= this.mGame.mShapeArray[this.mId].mWidth;
+                this.mDiv.style.height= this.mGame.mShapeArray[this.mId].mHeight;
         
                 //move it
-                this.mDiv.style.left = this.mGame.mShapeArray[this.mGame.mIdCount].mPositionX+'px';
-                this.mDiv.style.top  = this.mGame.mShapeArray[this.mGame.mIdCount].mPositionY+'px';
+                this.mDiv.style.left = this.mGame.mShapeArray[this.mId].mPositionX+'px';
+                this.mDiv.style.top  = this.mGame.mShapeArray[this.mId].mPositionY+'px';
 
                 document.body.appendChild(this.mDiv);
         
-                this.mDiv.style.backgroundColor = this.mGame.mShapeArray[this.mGame.mIdCount].mBackgroundColor;
+                this.mDiv.style.backgroundColor = this.mGame.mShapeArray[this.mId].mBackgroundColor;
 
                 this.mMesh;
         
                 //create clientImage
-                if (this.mGame.mShapeArray[this.mGame.mIdCount].mSrc)
+                if (this.mGame.mShapeArray[this.mId].mSrc)
                 {
                         //image to attache to our div "vessel"
                         this.mMesh  = document.createElement("IMG");
-                        this.mMesh.id = 'image' + this.mGame.mIdCount;
-                        this.mMesh.alt = 'image' + this.mGame.mIdCount;
-                        this.mMesh.title = 'image' + this.mGame.mIdCount;   
-                        this.mMesh.src  = this.mGame.mShapeArray[this.mGame.mIdCount].mSrc;
-                        this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px'; 
-                        this.mMesh.style.height=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px'; 
+                        this.mMesh.id = 'image' + this.mId;
+                        this.mMesh.alt = 'image' + this.mId;
+                        this.mMesh.title = 'image' + this.mId;   
+                        this.mMesh.src  = this.mGame.mShapeArray[this.mId].mSrc;
+                        this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px'; 
+                        this.mMesh.style.height=this.mGame.mShapeArray[this.mId].mHeight+'px'; 
                 }
-                else if (this.mGame.mShapeArray[this.mGame.mIdCount].mSrc == "")//create paragraph
+                else if (this.mGame.mShapeArray[this.mId].mSrc == "")//create paragraph
                 {
-                        if (this.mGame.mShapeArray[this.mGame.mIdCount].mGui)
+                        if (this.mGame.mShapeArray[this.mId].mGui)
                         {               
                                 this.mMesh = document.createElement("button");
-                                this.mMesh.id = 'button' + this.mGame.mIdCount;
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px';
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px';
-                                this.mMesh.innerHTML = this.mGame.mShapeArray[this.mGame.mIdCount].mInnerHTML;
-                                this.mMesh.onclick = this.mGame.mShapeArray[this.mGame.mIdCount].mOnClick;
+                                this.mMesh.id = 'button' + this.mId;
+                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px';
+                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mHeight+'px';
+                                this.mMesh.innerHTML = this.mGame.mShapeArray[this.mId].mInnerHTML;
+                                this.mMesh.onclick = this.mGame.mShapeArray[this.mId].mOnClick;
                                 this.mMesh.style.backgroundColor = 'transparent';
                                 this.mMesh.style.border = 'thin none #FFFFFF';
-                                this.mMesh.style.width=this.mGame.mShapeArray[this.mGame.mIdCount].mWidth+'px'; 
-                                this.mMesh.style.height=this.mGame.mShapeArray[this.mGame.mIdCount].mHeight+'px'; 
+                                this.mMesh.style.width=this.mGame.mShapeArray[this.mId].mWidth+'px'; 
+                                this.mMesh.style.height=this.mGame.mShapeArray[this.mId].mHeight+'px'; 
                         }
                         else
                         {
