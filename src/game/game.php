@@ -148,13 +148,6 @@ var Game = new Class(
                         
                 }
 
-                //control buttons       
-                new ShapeGui(this,"",100,100,-200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveLeft);
-                new ShapeGui(this,"",100,100,200,0,false,false,"",false,false,false,true,"","",this.mApplication.moveRight);
-                new ShapeGui(this,"",100,100,0,-200,false,false,"",false,false,false,true,"","",this.mApplication.moveUp);
-                new ShapeGui(this,"",100,100,0,200,false,false,"",false,false,false,true,"","",this.mApplication.moveDown);
-                new ShapeGui(this,"",100,100,0,0,false,false,"",false,false,false,true,"","",this.mApplication.moveStop);
-
 		//hud
 		
         },
