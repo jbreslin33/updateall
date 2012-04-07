@@ -24,7 +24,7 @@ var ShapeRelative = new Class({
                         posY + this.mHeight + 13 > mGame.mWindow.y)
                 {
 			this.setPosition(0,0);
-                        this.mDiv.mDiv.style.visibility = 'hidden';  
+			this.setVisibility(false);
                 }
                 else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
                 {
@@ -32,12 +32,12 @@ var ShapeRelative = new Class({
                             this.mIsQuestion == 'false')
                         {       
 				this.setPosition(posX,posY);
-                                this.mDiv.mDiv.style.visibility = 'visible'; 
+				this.setVisibility(true);
                         }
                         else
                         {
 				this.setPosition(0,0);
-                                this.mDiv.mDiv.style.visibility = 'hidden';  
+				this.setVisibility(false);
                         }
                 }
         }

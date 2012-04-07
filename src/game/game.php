@@ -312,7 +312,7 @@ var Game = new Class(
                                         this.mCount = this.mCount + this.mCountBy;  //add to count
                                         this.mScore++;
                                         this.mShapeArray[mId2].mCollisionOn = false;
-                                        this.mShapeArray[mId2].mDiv.mDiv.style.visibility = 'hidden';
+                                        this.mShapeArray[mId2].setVisibility(false);
                 
                                         //feedback      
                                         document.getElementById("feedback").innerHTML="Correct!";
@@ -401,7 +401,7 @@ var Game = new Class(
                         if (this.mShapeArray[i].mCollidable == true)
                         { 
                                 this.mShapeArray[i].mCollisionOn = true;
-                                this.mShapeArray[i].mDiv.mDiv.style.visibility = 'visible';
+				this.mShapeArray[i].setVisibility(true);
                         }
                 }
                 this.mControlObject.mPositionX = 0;     

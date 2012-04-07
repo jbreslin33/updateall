@@ -140,6 +140,18 @@ var Shape = new Class(
 		this.mDiv.mDiv.style.top = y+'px';
 	},
 
+	setVisibility: function(b)
+	{
+		if (b)
+		{
+			this.mDiv.mDiv.style.visibility = 'visible';
+		}
+		else
+		{
+			this.mDiv.mDiv.style.visibility = 'hidden';
+		}
+	},		
+
         ai: function()
         {
                 if (this.mAI == true)
