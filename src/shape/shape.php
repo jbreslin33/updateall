@@ -2,9 +2,6 @@ var Shape = new Class(
 {
         initialize: function (game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
         {
-                this.mShapeCenterX = 0;
-                this.mShapeCenterY = 0;
-
                 //ai
                 this.mAiCounter = 0;
                 this.mAiCounterDelay = 10;
@@ -180,14 +177,7 @@ var Shape = new Class(
 
         draw: function()
         {
-        //      mGame.mApplication.log('Shape:Draw');   
-                //get the center of the page xy
-                this.mPageCenterX = mGame.mWindow.x / 2;
-                this.mPageCenterY = mGame.mWindow.y / 2;
-      
-                //get the center xy of the image
-                this.mShapeCenterX = mGame.mShapeArray[i].mWidth / 2;     
-                this.mShapeCenterY = mGame.mShapeArray[i].mHeight / 2;     
-        }
+        
+	}
 });
 

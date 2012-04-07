@@ -34,7 +34,7 @@ var ShapeGui = new Class({
                         var tempx = mGame.mWindow.x / 6;
                         tempx = mGame.mWindow.x - tempx;
                                 
-                        this.mPositionX = tempx - this.mShapeCenterX; 
+                        this.mPositionX = tempx - (this.mWidth / 2); 
                         this.mPositionY = (mGame.mWindow.y / 2) - (this.mHeight / 2); 
                 }
                 
