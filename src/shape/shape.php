@@ -71,7 +71,7 @@ var Shape = new Class(
                 //create the movable div that will be used to move image around.        
                 this.mDiv = document.createElement('div');
                 this.mDiv.setAttribute('id','div' + this.mId);
-                this.mDiv.setAttribute("class","demo");
+                this.mDiv.setAttribute("class","vessel");
                 this.mDiv.style.position="absolute";
                 this.mDiv.style.visibility = 'visible';
         
@@ -91,7 +91,7 @@ var Shape = new Class(
                 //create clientImage
                 if (this.mSrc)
                 {
-                        //image to attache to our div "vessel"
+                        //image to attach to our div "vessel"
                         this.mMesh  = document.createElement("IMG");
                         this.mMesh.id = 'image' + this.mId;
                         this.mMesh.alt = 'image' + this.mId;
