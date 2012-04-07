@@ -134,6 +134,12 @@ var Shape = new Class(
                 this.draw();
         },
 
+	setPosition: function(x,y)
+	{
+		this.mDiv.mDiv.style.left = x+'px';
+		this.mDiv.mDiv.style.top = y+'px';
+	},
+
         ai: function()
         {
                 if (this.mAI == true)
