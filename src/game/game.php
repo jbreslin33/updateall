@@ -134,17 +134,17 @@ var Game = new Class(
         createShapes: function()
         {
                 //control object        
-                new ShapeControlObject(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","");
+                new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,0,0,true,false,"",true,true,false,false,"","blue","","middle");
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeRelative(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","");
+                        new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,false,"","yellow","","relative");
                 }
 
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeRelative(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","");
+                        new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,false,"","red","","relative");
                         
                 }
 
@@ -198,7 +198,7 @@ var Game = new Class(
         {
                 for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","");
+                        new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","","relative");
                 }
         },
 
@@ -209,11 +209,11 @@ var Game = new Class(
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","");
+                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","green","","relative");
                         }       
                         else
                         {       
-                                new ShapeRelative(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","");
+                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,false,"","black","","relative");
                         }
                         greenDoorCount++;
                 }
@@ -224,7 +224,7 @@ var Game = new Class(
         {
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","");
+                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,false,"","black","","relative");
                 }
         },
 
@@ -232,7 +232,7 @@ var Game = new Class(
         {
                 for (i=-375; i <= 375; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeRelative(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","");
+                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,false,"","black","","relative");
                 }
         },
 

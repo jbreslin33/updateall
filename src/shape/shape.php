@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function (game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick)
+        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //game
@@ -58,7 +58,10 @@ var Shape = new Class(
                 
 		//onclick	
 		this.mOnClick = onClick;
-               
+              
+		//drawType
+		this.mDrawType = drawType;
+ 
 		//control object 
                 if (isControlObject)
                 {
@@ -198,7 +201,61 @@ var Shape = new Class(
 
         draw: function()
         {
-        
-	}
+       		if (this.mDrawType == 'relative')
+		{
+			this.drawRelative();
+		} 
+		if (this.mDrawType == 'middle')
+		{
+			this.drawCenter();
+		}
+	},
+
+        drawRelative: function()
+        {
+                //get the offset from control object
+                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+
+                //center image relative to position
+                var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
+
+                //if off screen then hide it so we don't have scroll bars mucking up controls
+                if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
+                        posY + this.mHeight + 13 > mGame.mWindow.y)
+                {
+                        this.setPosition(0,0);
+                        this.setVisibility(false);
+                }
+                else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
+                {
+                        if (this.mCollisionOn ||
+                            this.mIsQuestion == 'false')
+                        {
+                                this.setPosition(posX,posY);
+                                this.setVisibility(true);
+                        }
+                        else
+                        {
+                                this.setPosition(0,0);
+                                this.setVisibility(false);
+                        }
+                }
+        },
+
+        drawCenter: function()
+        {
+                //center image relative to position
+                //get the offset from control object
+                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+
+                var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
+
+                this.setPosition(posX,posY);
+        }
+
 });
 
