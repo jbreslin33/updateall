@@ -143,7 +143,10 @@ var Shape = new Class(
 	setText: function(t)
 	{
         	this.mInnerHTML = t;	
-		this.mMesh.innerHTML = this.mInnerHTML;
+		if (this.mSrc == "")
+		{
+			this.mMesh.innerHTML = this.mInnerHTML;
+		}
 	},
 
 	setBackgroundColor: function(c)
