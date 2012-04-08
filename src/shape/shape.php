@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,gui,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //game
@@ -47,9 +47,6 @@ var Shape = new Class(
 		//answers 
 		this.mAnswer = answer;
                
-		//gui	
-                this.mGui = gui;
-                
 		//html	
 		this.mInnerHTML = innerHTML; 
                 
