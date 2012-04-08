@@ -284,7 +284,8 @@ var Game = new Class(
                 //set question
                 this.mQuestion = this.mCount;
                 document.getElementById("question").innerHTML="Question: " + this.mQuestion;
-                this.mShapeArray[0].mMesh.innerHTML=this.mCount;
+                //this.mShapeArray[0].mMesh.innerHTML=this.mCount;
+		this.mShapeArray[0].setText(this.mCount);
         },
 
         //new answer

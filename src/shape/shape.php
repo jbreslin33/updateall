@@ -140,6 +140,12 @@ var Shape = new Class(
 		}
 	},		
 
+	setText: function(t)
+	{
+        	this.mInnerHTML = t;	
+		this.mMesh.innerHTML = this.mInnerHTML;
+	},
+
 	setBackgroundColor: function(c)
 	{
 		this.mBackgroundColor = c;
