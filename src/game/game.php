@@ -188,7 +188,6 @@ var Game = new Class(
                                         this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
                                         this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
                                 }
-                        
                         }
                 }
         },
@@ -278,21 +277,6 @@ var Game = new Class(
                 }
         },
 
-        //questions
-        newQuestion: function()
-        {
-                //set question
-                this.mQuestion = this.mCount;
-                document.getElementById("question").innerHTML="Question: " + this.mQuestion;
-                //this.mShapeArray[0].mMesh.innerHTML=this.mCount;
-		this.mShapeArray[0].setText(this.mCount);
-        },
-
-        //new answer
-        newAnswer: function()
-        {
-                this.mAnswer = this.mCount + this.mCountBy;
-        },
 
         evaluateCollision: function(mId1,mId2)
         {
@@ -342,7 +326,23 @@ var Game = new Class(
                 }
         },
 
-        //Score
+        //questions
+        newQuestion: function()
+        {
+                //set question
+                this.mQuestion = this.mCount;
+                document.getElementById("question").innerHTML="Question: " + this.mQuestion;
+                //this.mShapeArray[0].mMesh.innerHTML=this.mCount;
+		this.mShapeArray[0].setText(this.mCount);
+        },
+
+        //new answer
+        newAnswer: function()
+        {
+                this.mAnswer = this.mCount + this.mCountBy;
+        },
+        
+	//Score
         printScore: function()
         {
                 document.getElementById("score").innerHTML="Score: " + this.mScore;
