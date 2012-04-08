@@ -204,7 +204,7 @@ var Game = new Class(
         createRightWall: function()
         {
                 var greenDoorCount = 0; 
-                for (i = this.mTopBounds + this.mDefaultSpriteSize; i <= this.mBottomBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
+                for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + this.mDefaultSpriteSize)
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
