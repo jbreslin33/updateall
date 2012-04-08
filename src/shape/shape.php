@@ -242,8 +242,8 @@ var Shape = new Class(
                 var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
 
                 //center image relative to position
-                var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGame.mApplication.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGame.mApplication.mWindow.y / 2) - (this.mHeight / 2);
 	
 		this.protectScrollBars(posX,posY);
 
@@ -256,8 +256,8 @@ var Shape = new Class(
                 var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
                 var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
 
-                var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGame.mApplication.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGame.mApplication.mWindow.y / 2) - (this.mHeight / 2);
 
                 this.setPosition(posX,posY);
         },
@@ -266,8 +266,8 @@ var Shape = new Class(
 	{
 
                 //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mGame.mWindow.x ||
-                        y + this.mHeight + 13 > mGame.mWindow.y)
+                if (x + this.mWidth  + 3 > mGame.mApplication.mWindow.x ||
+                        y + this.mHeight + 13 > mGame.mApplication.mWindow.y)
                 {
                         this.setPosition(0,0);
                         this.setVisibility(false);

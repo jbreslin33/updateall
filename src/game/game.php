@@ -20,9 +20,6 @@ var Game = new Class(
                 //control object
                 this.mControlObject;
                 
-                //window size
-                this.mWindow = window.getSize();
-
                 //score
                 this.mScore = 0; 
                 this.mScoreNeeded = scoreNeeded;
