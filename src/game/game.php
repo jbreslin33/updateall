@@ -195,7 +195,7 @@ var Game = new Class(
 
         createLeftWall: function()
         {
-                for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
+                for (i=this.mLeftBounds + (this.mWidth / 2); i <= 275; i = i + this.mDefaultSpriteSize)
                 {
                         new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,"","black","","normal");
                 }
@@ -204,7 +204,9 @@ var Game = new Class(
         createRightWall: function()
         {
                 var greenDoorCount = 0; 
-                for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
+                //for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
+                for (i = this.mTopBounds + 25; i <= this.mBottomBounds - 25; i = i + this.mDefaultSpriteSize)
+                //for (i=25; i <= 575; i = i + this.mDefaultSpriteSize)
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
