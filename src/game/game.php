@@ -411,7 +411,7 @@ var Game = new Class(
         
                 //answer
                 this.newAnswer();
-                this.mShapeArray[0].mMesh.innerHTML=this.mCount;
+		this.mShapeArray[0].setText(this.mCount);
         }
 });
 
