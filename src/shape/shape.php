@@ -215,6 +215,24 @@ var Shape = new Class(
 		{
 			this.drawCenter();
 		}
+		if (this.mDrawType == 'normal')
+		{
+			this.drawNormal();
+		}
+	},
+
+	drawNormal: function()
+	{
+	
+                //get the offset from control object
+                //var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                //var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+
+                //center image relative to position
+                var posX = this.mPositionX - (this.mWidth / 2);
+                var posY = this.mPositionY - (this.mHeight / 2);
+	
+		this.protectScrollBars(posX,posY);
 	},
 
         drawRelative: function()
