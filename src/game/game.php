@@ -197,7 +197,7 @@ var Game = new Class(
         {
                 for (i=-275; i <= 275; i = i + this.mDefaultSpriteSize)
                 {
-                        new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,false,"","black","","relative");
+                        new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,"","black","","relative");
                 }
         },
 

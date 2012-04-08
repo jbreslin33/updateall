@@ -226,28 +226,9 @@ var Shape = new Class(
                 //center image relative to position
                 var posX = xdiff + (this.mGame.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
+	
+		this.protectScrollBars(posX,posY);
 
-                //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (posX + this.mWidth  + 3 > mGame.mWindow.x ||
-                        posY + this.mHeight + 13 > mGame.mWindow.y)
-                {
-                        this.setPosition(0,0);
-                        this.setVisibility(false);
-                }
-                else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
-                {
-                        if (this.mCollisionOn ||
-                            this.mIsQuestion == 'false')
-                        {
-                                this.setPosition(posX,posY);
-                                this.setVisibility(true);
-                        }
-                        else
-                        {
-                                this.setPosition(0,0);
-                                this.setVisibility(false);
-                        }
-                }
         },
 
         drawCenter: function()
@@ -261,7 +242,33 @@ var Shape = new Class(
                 var posY = ydiff + (this.mGame.mWindow.y / 2) - (this.mHeight / 2);
 
                 this.setPosition(posX,posY);
-        }
+        },
+
+	protectScrollBars: function(x,y)
+	{
+
+                //if off screen then hide it so we don't have scroll bars mucking up controls
+                if (x + this.mWidth  + 3 > mGame.mWindow.x ||
+                        y + this.mHeight + 13 > mGame.mWindow.y)
+                {
+                        this.setPosition(0,0);
+                        this.setVisibility(false);
+                }
+                else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
+                {
+                        if (this.mCollisionOn ||
+                            this.mIsQuestion == 'false')
+                        {
+                                this.setPosition(x,y);
+                                this.setVisibility(true);
+                        }
+                        else
+                        {
+                                this.setPosition(0,0);
+                                this.setVisibility(false);
+                        }
+                }
+	}
 
 });
 
