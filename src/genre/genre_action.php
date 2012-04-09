@@ -1,4 +1,4 @@
-var GenreAdventure = new Class(
+var GenreAction = new Class(
 {
 
 Extends: Genre,

@@ -97,6 +97,7 @@ var mGame;
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../genre/genre.php"></script>
+<script type="text/javascript" src="../genre/genre_action.php"></script>
 <script type="text/javascript" src="../genre/genre_adventure.php"></script>
 
 
