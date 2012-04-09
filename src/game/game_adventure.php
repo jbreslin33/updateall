@@ -4,8 +4,7 @@ var Game = new Class(
         {
                 //application
                 this.mApplication = application;        
-         
-	        //On_Off
+                //On_Off
                 this.mGameOn = true;
         
                 //shapes
@@ -274,6 +273,7 @@ var Game = new Class(
                         }
                 }
         },
+
 
         evaluateCollision: function(mId1,mId2)
         {
