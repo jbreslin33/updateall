@@ -96,7 +96,7 @@ var mGame;
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
-<script type="text/javascript" src="../game/game.php"></script>
+<script type="text/javascript" src="../genre/genre.php"></script>
 
 
 <script language="javascript">
