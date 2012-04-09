@@ -75,6 +75,9 @@ Extends: Genre,
 
         update: function()
         {
+		//check Keys from application
+		this.checkKeys();
+
                 //move shapes   
                 for (i = 0; i < this.mShapeArray.length; i++)
                 {
@@ -95,6 +98,64 @@ Extends: Genre,
         
                 //save old positions
                 this.saveOldPositions();
+        },
+
+	checkKeys: function()
+        {
+                //left
+                if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = -1;
+                        mGenre.mControlObject.mKeyY = 0;
+                }
+                //right
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = 1;
+                        mGenre.mControlObject.mKeyY = 0;
+                }
+                //up
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = 0;
+                        mGenre.mControlObject.mKeyY = -1;
+                }
+                //down
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
+                {
+                        mGenre.mControlObject.mKeyX = 0;
+                        mGenre.mControlObject.mKeyY = 1;
+                }
+                //left_up
+                if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = -.5;
+                        mGenre.mControlObject.mKeyY = -.5;
+                }
+                //left_down
+                if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
+                {
+                        mGenre.mControlObject.mKeyX = -.5;
+                        mGenre.mControlObject.mKeyY = .5;
+                }
+                //right_up
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = .5;
+                        mGenre.mControlObject.mKeyY = -.5;
+                }
+                //right_down
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
+                {
+                        mGenre.mControlObject.mKeyX = .5;
+                        mGenre.mControlObject.mKeyY = .5;
+                }
+                //all up...stop
+                if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
+                {
+                        mGenre.mControlObject.mKeyX = 0;
+                        mGenre.mControlObject.mKeyY = 0;
+                }
         },
 
         checkForOutOfBounds: function()
