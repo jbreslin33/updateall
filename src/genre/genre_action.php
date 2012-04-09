@@ -7,7 +7,7 @@ Extends: Genre,
         {
 
                 //application
-		this.parent(application);
+		this.parent(application, scoreNeeded);
          
 	        //On_Off
                 this.mGenreOn = true;
@@ -346,7 +346,7 @@ Extends: Genre,
                                 if (this.mShapeArray[mId2].mAnswer == this.mAnswer)
                                 {
                                         this.mCount = this.mCount + this.mCountBy;  //add to count
-                                        this.mScore++;
+                                        this.mQuiz.mScore++;
                                         this.mShapeArray[mId2].mCollisionOn = false;
                                         this.mShapeArray[mId2].setVisibility(false);
                 
@@ -403,13 +403,13 @@ Extends: Genre,
 	//Score
         printScore: function()
         {
-                document.getElementById("score").innerHTML="Score: " + this.mScore;
-                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.mScoreNeeded;
+                document.getElementById("score").innerHTML="Score: " + this.mQuiz.mScore;
+                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.mQuiz.mScoreNeeded;
         },
 
         checkForScoreNeeded: function()
         {
-                if (this.mScore == this.mScoreNeeded)
+                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
                 {
                         //open the doors
                         for (i=0; i < this.mShapeArray.length; i++)
@@ -424,7 +424,7 @@ Extends: Genre,
 
         checkForDoorEntered: function()
         {
-                if (this.mScore == this.mScoreNeeded)
+                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
                 {
                         if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
                         this.mControlObject.mPositionY > this.mTopBounds &&
@@ -459,7 +459,7 @@ Extends: Genre,
                 this.mControlObject.mPositionY = 0;     
  
                 //score
-                this.mScore = 0;
+                this.mQuiz.mScore = 0;
 
                 //game
                 this.mQuestion = this.mCount;

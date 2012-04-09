@@ -1,6 +1,6 @@
 var Quiz = new Class(
 {
-        initialize: function()
+        initialize: function(scoreNeeded)
         {
 
 		//score
