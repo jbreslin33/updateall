@@ -4,10 +4,10 @@ var Shape = new Class(
         {
                 
                 //game
-                this.mGame = game;      
+                this.mGenre = game;      
 		
 		//id 
-		this.mId = this.mGame.mIdCount;
+		this.mId = this.mGenre.mIdCount;
 		
 		//ai
 		this.mAI = ai;  
@@ -62,11 +62,11 @@ var Shape = new Class(
 		//control object 
                 if (isControlObject)
                 {
-                        this.mGame.mControlObject = this;
+                        this.mGenre.mControlObject = this;
                 }
         
                 //add to array
-                this.mGame.mShapeArray.push(this);
+                this.mGenre.mShapeArray.push(this);
 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
@@ -94,7 +94,7 @@ var Shape = new Class(
 
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
-		this.mGame.mIdCount++;
+		this.mGenre.mIdCount++;
         
         },
         
@@ -109,8 +109,8 @@ var Shape = new Class(
                 this.mAiCounter++;
                 
                 //update Velocity
-                this.mVelocityX = this.mKeyX * this.mGame.mApplication.mTimeSinceLastInterval * this.mGame.mSpeed;
-                this.mVelocityY = this.mKeyY * this.mGame.mApplication.mTimeSinceLastInterval * this.mGame.mSpeed;
+                this.mVelocityX = this.mKeyX * this.mGenre.mApplication.mTimeSinceLastInterval * this.mGenre.mSpeed;
+                this.mVelocityY = this.mKeyY * this.mGenre.mApplication.mTimeSinceLastInterval * this.mGenre.mSpeed;
 
                 //update position
                 this.mPositionX += this.mVelocityX;
@@ -225,8 +225,8 @@ var Shape = new Class(
 	{
 	
                 //get the offset from control object
-                //var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
-                //var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+                //var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
+                //var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
 
                 //center image relative to position
                 var posX = this.mPositionX - (this.mWidth / 2);
@@ -238,12 +238,12 @@ var Shape = new Class(
         drawRelative: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
 
                 //center image relative to position
-                var posX = xdiff + (this.mGame.mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGame.mApplication.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGenre.mApplication.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGenre.mApplication.mWindow.y / 2) - (this.mHeight / 2);
 	
 		this.protectScrollBars(posX,posY);
 
@@ -253,11 +253,11 @@ var Shape = new Class(
         {
                 //center image relative to position
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
 
-                var posX = xdiff + (this.mGame.mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGame.mApplication.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGenre.mApplication.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGenre.mApplication.mWindow.y / 2) - (this.mHeight / 2);
 
                 this.setPosition(posX,posY);
         },
@@ -266,8 +266,8 @@ var Shape = new Class(
 	{
 
                 //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mGame.mApplication.mWindow.x ||
-                        y + this.mHeight + 13 > mGame.mApplication.mWindow.y)
+                if (x + this.mWidth  + 3 > mGenre.mApplication.mWindow.x ||
+                        y + this.mHeight + 13 > mGenre.mApplication.mWindow.y)
                 {
                         this.setPosition(0,0);
                         this.setVisibility(false);

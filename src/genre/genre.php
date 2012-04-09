@@ -6,7 +6,7 @@ var Genre = new Class(
                 this.mApplication = application;        
          
 	        //On_Off
-                this.mGameOn = true;
+                this.mGenreOn = true;
         
                 //shapes
                 this.mPositionXArray = new Array();
@@ -370,7 +370,7 @@ var Genre = new Class(
                         this.mControlObject.mPositionY < this.mTopBounds + this.mDefaultSpriteSize * 2) 
                         
                         {
-                                this.mGameOn = false;
+                                this.mGenreOn = false;
                                 document.getElementById("feedback").innerHTML="YOU WIN!!!";
                                 window.location = "../database/goto_next_math_level.php"
                         }
