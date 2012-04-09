@@ -7,7 +7,7 @@ Extends: Genre,
         {
 
                 //application
-		this.parent(application, scoreNeeded);
+		this.parent(application, scoreNeeded,countBy,startNumber,endNumber);
          
 	        //On_Off
                 this.mGenreOn = true;
@@ -25,11 +25,6 @@ Extends: Genre,
                 //control object
                 this.mControlObject;
                 
-                //count
-                this.mCountBy = countBy;
-                this.mStartNumber = startNumber;
-                this.mEndNumber = endNumber; 
-
                 //speed
                 this.mSpeed = speed;
         
@@ -51,7 +46,6 @@ Extends: Genre,
                 
                 // id counter
                 this.mIdCount = 0;
-
 
                 //dimensions
                 this.mDefaultSpriteSize = 50;
@@ -194,7 +188,7 @@ Extends: Genre,
         {
                 //control object        
                 new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
-                for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
+                for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
                         new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,"","yellow","","relative");
@@ -343,9 +337,9 @@ Extends: Genre,
 
                         if (this.mShapeArray[mId2].mIsQuestion)
                         {
-                                if (this.mShapeArray[mId2].mAnswer == this.mAnswer)
+                                if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
                                 {
-                                        this.mCount = this.mCount + this.mCountBy;  //add to count
+                                        this.mQuiz.mCount = this.mQuiz.mCount + this.mQuiz.mCountBy;  //add to count
                                         this.mQuiz.mScore++;
                                         this.mShapeArray[mId2].mCollisionOn = false;
                                         this.mShapeArray[mId2].setVisibility(false);
@@ -361,9 +355,9 @@ Extends: Genre,
                                         //this deletes and then recreates everthing.    
                                         this.resetGame();
                                 }
-                                this.newQuestion();
-                                this.newAnswer();
-                                this.printScore();
+                                this.mQuiz.newQuestion();
+                                this.mQuiz.newAnswer();
+                                this.mQuiz.printScore();
                         }
                         else
                         {
@@ -382,29 +376,6 @@ Extends: Genre,
                         this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
                         this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
                 }
-        },
-
-        //questions
-        newQuestion: function()
-        {
-                //set question
-                this.mQuestion = this.mCount;
-                document.getElementById("question").innerHTML="Question: " + this.mQuestion;
-                //this.mShapeArray[0].mMesh.innerHTML=this.mCount;
-		this.mShapeArray[0].setText(this.mCount);
-        },
-
-        //new answer
-        newAnswer: function()
-        {
-                this.mAnswer = this.mCount + this.mCountBy;
-        },
-        
-	//Score
-        printScore: function()
-        {
-                document.getElementById("score").innerHTML="Score: " + this.mQuiz.mScore;
-                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.mQuiz.mScoreNeeded;
         },
 
         checkForScoreNeeded: function()
@@ -462,14 +433,14 @@ Extends: Genre,
                 this.mQuiz.mScore = 0;
 
                 //game
-                this.mQuestion = this.mCount;
+                this.mQuiz.mQuestion = this.mQuiz.mCount;
 
                 //count
-                this.mCount = this.mStartNumber;
+                this.mQuiz.mCount = this.mQuiz.mStartNumber;
         
                 //answer
-                this.newAnswer();
-		this.mShapeArray[0].setText(this.mCount);
+                this.mQuiz.newAnswer();
+		this.mShapeArray[0].setText(this.mQuiz.mCount);
         }
 });
 
