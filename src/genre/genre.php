@@ -4,6 +4,10 @@ var Genre = new Class(
         {
                 //application
                 this.mApplication = application;        
+
+	        //score
+                this.mScore = 0;
+                this.mScoreNeeded = scoreNeeded;
          
         },
 

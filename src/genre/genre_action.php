@@ -25,10 +25,6 @@ Extends: Genre,
                 //control object
                 this.mControlObject;
                 
-                //score
-                this.mScore = 0; 
-                this.mScoreNeeded = scoreNeeded;
-
                 //count
                 this.mCountBy = countBy;
                 this.mStartNumber = startNumber;
