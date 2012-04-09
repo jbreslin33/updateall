@@ -1,9 +1,13 @@
-var Genre = new Class(
+var GenreAdventure = new Class(
 {
+
+Extends: Genre,
+
         initialize: function(application, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
         {
+
                 //application
-                this.mApplication = application;        
+		this.parent(application);
          
 	        //On_Off
                 this.mGenreOn = true;

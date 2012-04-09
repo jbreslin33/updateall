@@ -20,7 +20,7 @@ var Application = new Class(
                 this.mKeyDown = false;
                 this.mKeyStop = false;
 
-                mGenre = new Genre(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+                mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
                 
                 //this will be used for resetting to
                 mGenre.resetGame();
