@@ -1,3 +1,10 @@
+/*************************************************************
+
+Base Class for Game Genre. Extend this for Action Games...then
+extend that for Adventure games. etc. 
+
+**************************************************************/
+
 var Genre = new Class(
 {
         initialize: function(application, scoreNeeded, countBy, startNumber, endNumber)
