@@ -58,37 +58,6 @@ var Application = new Class(
         },
 
         //CONTROLS
-        moveLeft: function()
-        {
-                //alert('moveLeft');
-                mGenre.mControlObject.mKeyX = -1;
-                mGenre.mControlObject.mKeyY = 0;
-        },
-
-        moveRight: function()
-        {
-                mGenre.mControlObject.mKeyX = 1;
-                mGenre.mControlObject.mKeyY = 0;
-        },
-
-        moveUp: function()
-        {
-                mGenre.mControlObject.mKeyX = 0;
-                mGenre.mControlObject.mKeyY = -1;
-        },
-
-        moveDown: function()
-        {
-                mGenre.mControlObject.mKeyX = 0;
-                mGenre.mControlObject.mKeyY = 1;
-        },
-
-        moveStop: function()
-        {
-                mGenre.mControlObject.mKeyX = 0;
-                mGenre.mControlObject.mKeyY = 0;
-        },
-        
         keyDown: function(event)
         {
                 if (event.key == 'left')
