@@ -93,6 +93,7 @@ var mGame;
 </script>
 
 
+<script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
@@ -116,6 +117,9 @@ window.onresize = function(event)
 <script type="text/javascript"> 
 window.addEvent('domready', function()
 {
+	//the game
+	mGame = new Game();
+	
 	//the application
 	mApplication = new Application(<?php echo "$tickLength);"; ?>
 
