@@ -15,7 +15,8 @@ var Game = new Class(
 
         update: function()
         {
-        
+		mApplication.update();	
+		var t=setTimeout("mGame.update()",20)
 	}
 
 });

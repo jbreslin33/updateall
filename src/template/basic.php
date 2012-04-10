@@ -129,7 +129,7 @@ window.addEvent('domready', function()
 	document.addEvent("keyup", mApplication.keyUp);
 
 	//start updating	
-	mApplication.update();
+	mGame.update();
 }
 );
 

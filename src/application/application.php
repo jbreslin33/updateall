@@ -48,7 +48,7 @@ var Application = new Class(
                         //update genre
                         mGenre.update(); 
                 
-                        var t=setTimeout("mApplication.update()",20)
+//                        var t=setTimeout("mApplication.update()",20)
                 }
         },
 
