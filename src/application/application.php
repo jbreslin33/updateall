@@ -1,3 +1,9 @@
+/******************************************************************** 
+
+Application Class: This class handles Time, ticks and keystrokes.
+
+********************************************************************/
+ 
 var Application = new Class(
 {
         initialize: function(tickLength)
@@ -25,7 +31,6 @@ var Application = new Class(
                 //this will be used for resetting to
                 mGenre.resetGame();
 
-                g = new Date();
         },
 
         update: function()
@@ -40,11 +45,9 @@ var Application = new Class(
                         //set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
                         this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
                 
-                        //old update only
+                        //update genre
                         mGenre.update(); 
                 
-                        //render();     
-                        
                         var t=setTimeout("mApplication.update()",20)
                 }
         },
