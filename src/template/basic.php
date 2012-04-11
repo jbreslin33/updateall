@@ -86,9 +86,7 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 //game
 var mGame;
 
-
 </script>
-
 
 <script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
@@ -98,35 +96,8 @@ var mGame;
 <script type="text/javascript" src="../genre/genre_action.php"></script>
 <script type="text/javascript" src="../genre/genre_adventure.php"></script>
 
-
-<script language="javascript">
-
-window.onresize = function(event)
-{
-	mGame.mWindow = window.getSize();
-}
-
-</script>
-
 </head>
 <body>
-<script type="text/javascript"> 
-window.addEvent('domready', function()
-{
-	//the game
-	mGame = new Game(<?php echo "$tickLength);"; ?>
-
-	
-	//keys	
-	document.addEvent("keydown", mGame.keyDown);
-	document.addEvent("keyup", mGame.keyUp);
-
-	//start updating	
-	mGame.update();
-}
-);
-
-</script>
 
 <div class="demo">
 

@@ -103,4 +103,24 @@ var Game = new Class(
         }
 });
 
+window.addEvent('domready', function()
+{
+        //the game
+        mGame = new Game(<?php echo "$tickLength);"; ?>
+
+
+        //keys
+        document.addEvent("keydown", mGame.keyDown);
+        document.addEvent("keyup", mGame.keyUp);
+
+        //start updating
+        mGame.update();
+}
+);
+
+window.onresize = function(event)
+{
+        mGame.mWindow = window.getSize();
+}
+
 
