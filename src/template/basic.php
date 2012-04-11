@@ -83,9 +83,6 @@ var topBounds = <?php echo $topBounds; ?>;
 var bottomBounds = <?php echo $bottomBounds; ?>;
 var collisionDistance = <?php echo $collisionDistance; ?>;
 
-//application
-var mApplication;
-
 //game
 var mGame;
 
@@ -96,7 +93,6 @@ var mGame;
 <script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
-<script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../genre/genre.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
 <script type="text/javascript" src="../genre/genre_action.php"></script>
@@ -107,7 +103,7 @@ var mGame;
 
 window.onresize = function(event)
 {
-	mApplication.mWindow = window.getSize();
+	mGame.mWindow = window.getSize();
 }
 
 </script>
@@ -118,15 +114,12 @@ window.onresize = function(event)
 window.addEvent('domready', function()
 {
 	//the game
-	mGame = new Game();
-	
-	//the application
-	mApplication = new Application(<?php echo "$tickLength);"; ?>
+	mGame = new Game(<?php echo "$tickLength);"; ?>
 
 	
 	//keys	
-	document.addEvent("keydown", mApplication.keyDown);
-	document.addEvent("keyup", mApplication.keyUp);
+	document.addEvent("keydown", mGame.keyDown);
+	document.addEvent("keyup", mGame.keyUp);
 
 	//start updating	
 	mGame.update();

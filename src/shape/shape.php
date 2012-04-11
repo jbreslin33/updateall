@@ -109,8 +109,8 @@ var Shape = new Class(
                 this.mAiCounter++;
                 
                 //update Velocity
-                this.mVelocityX = this.mKeyX * this.mGenre.mApplication.mTimeSinceLastInterval * this.mGenre.mSpeed;
-                this.mVelocityY = this.mKeyY * this.mGenre.mApplication.mTimeSinceLastInterval * this.mGenre.mSpeed;
+                this.mVelocityX = this.mKeyX * this.mGenre.mGame.mTimeSinceLastInterval * this.mGenre.mSpeed;
+                this.mVelocityY = this.mKeyY * this.mGenre.mGame.mTimeSinceLastInterval * this.mGenre.mSpeed;
 
                 //update position
                 this.mPositionX += this.mVelocityX;
@@ -242,8 +242,8 @@ var Shape = new Class(
                 var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
 
                 //center image relative to position
-                var posX = xdiff + (this.mGenre.mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGenre.mApplication.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGenre.mGame.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGenre.mGame.mWindow.y / 2) - (this.mHeight / 2);
 	
 		this.protectScrollBars(posX,posY);
 
@@ -256,8 +256,8 @@ var Shape = new Class(
                 var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
                 var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
 
-                var posX = xdiff + (this.mGenre.mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (this.mGenre.mApplication.mWindow.y / 2) - (this.mHeight / 2);
+                var posX = xdiff + (this.mGenre.mGame.mWindow.x / 2) - (this.mWidth / 2);
+                var posY = ydiff + (this.mGenre.mGame.mWindow.y / 2) - (this.mHeight / 2);
 
                 this.setPosition(posX,posY);
         },
@@ -266,8 +266,8 @@ var Shape = new Class(
 	{
 
                 //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mGenre.mApplication.mWindow.x ||
-                        y + this.mHeight + 13 > mGenre.mApplication.mWindow.y)
+                if (x + this.mWidth  + 3 > mGenre.mGame.mWindow.x ||
+                        y + this.mHeight + 13 > mGenre.mGame.mWindow.y)
                 {
                         this.setPosition(0,0);
                         this.setVisibility(false);

@@ -93,55 +93,55 @@ Extends: Genre,
 	checkKeys: function()
         {
                 //left
-                if (this.mApplication.mKeyLeft == true && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == true && this.mGame.mKeyRight == false && this.mGame.mKeyUp == false && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = -1;
                         this.mControlObject.mKeyY = 0;
                 }
                 //right
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == true && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == true && this.mGame.mKeyUp == false && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = 1;
                         this.mControlObject.mKeyY = 0;
                 }
                 //up
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == true && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == false && this.mGame.mKeyUp == true && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = 0;
                         this.mControlObject.mKeyY = -1;
                 }
                 //down
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == true)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == false && this.mGame.mKeyUp == false && this.mGame.mKeyDown == true)
                 {
                         this.mControlObject.mKeyX = 0;
                         this.mControlObject.mKeyY = 1;
                 }
                 //left_up
-                if (this.mApplication.mKeyLeft == true && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == true && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == true && this.mGame.mKeyRight == false && this.mGame.mKeyUp == true && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = -.5;
                         this.mControlObject.mKeyY = -.5;
                 }
                 //left_down
-                if (this.mApplication.mKeyLeft == true && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == true)
+                if (this.mGame.mKeyLeft == true && this.mGame.mKeyRight == false && this.mGame.mKeyUp == false && this.mGame.mKeyDown == true)
                 {
                         this.mControlObject.mKeyX = -.5;
                         this.mControlObject.mKeyY = .5;
                 }
                 //right_up
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == true && this.mApplication.mKeyUp == true && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == true && this.mGame.mKeyUp == true && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = .5;
                         this.mControlObject.mKeyY = -.5;
                 }
                 //right_down
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == true && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == true)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == true && this.mGame.mKeyUp == false && this.mGame.mKeyDown == true)
                 {
                         this.mControlObject.mKeyX = .5;
                         this.mControlObject.mKeyY = .5;
                 }
                 //all up...stop
-                if (this.mApplication.mKeyLeft == false && this.mApplication.mKeyRight == false && this.mApplication.mKeyUp == false && this.mApplication.mKeyDown == false)
+                if (this.mGame.mKeyLeft == false && this.mGame.mKeyRight == false && this.mGame.mKeyUp == false && this.mGame.mKeyDown == false)
                 {
                         this.mControlObject.mKeyX = 0;
                         this.mControlObject.mKeyY = 0;
