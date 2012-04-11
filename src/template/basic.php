@@ -83,9 +83,6 @@ var topBounds = <?php echo $topBounds; ?>;
 var bottomBounds = <?php echo $bottomBounds; ?>;
 var collisionDistance = <?php echo $collisionDistance; ?>;
 
-//game
-//var mGame;
-
 </script>
 
 <script type="text/javascript" src="../game/game.php"></script>
