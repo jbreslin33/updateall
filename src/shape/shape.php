@@ -1,10 +1,10 @@
 var Shape = new Class(
 {
-        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(genre,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //game
-                this.mGenre = game;      
+                this.mGenre = genre;      
 		
 		//id 
 		this.mId = this.mGenre.mIdCount;
