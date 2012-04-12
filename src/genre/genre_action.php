@@ -65,6 +65,16 @@ Extends: Genre,
 
         update: function()
         {
+	
+                //get time since epoch and set lasttime
+                e = new Date();
+                this.mLastTimeSinceEpoch = this.mTimeSinceEpoch;
+                this.mTimeSinceEpoch = e.getTime();
+
+                //set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
+                this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
+
+
 		//check Keys from application
 		this.checkKeys();
 

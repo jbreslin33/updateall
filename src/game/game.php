@@ -15,11 +15,6 @@ var Game = new Class(
                 //ticks
                 this.mTickLength = tickLength;
                 
-                //time
-                this.mTimeSinceEpoch = 0;
-                this.mLastTimeSinceEpoch = 0;
-                this.mTimeSinceLastInterval = 0;
-                
                 //key pressed
                 this.mKeyLeft = false;
                 this.mKeyRight = false;
@@ -38,14 +33,6 @@ var Game = new Class(
         {
                 if (mGenre.mGenreOn)
                 {
-                        //get time since epoch and set lasttime 
-                        e = new Date();
-                        this.mLastTimeSinceEpoch = this.mTimeSinceEpoch;
-                        this.mTimeSinceEpoch = e.getTime();
-                
-                        //set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
-                        this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
-                
                         //update genre
                         mGenre.update(); 
                 

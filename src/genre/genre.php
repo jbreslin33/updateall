@@ -12,6 +12,11 @@ var Genre = new Class(
                 //application
                 this.mGame = game;        
 
+                //time
+                this.mTimeSinceEpoch = 0;
+                this.mLastTimeSinceEpoch = 0;
+                this.mTimeSinceLastInterval = 0;
+
 		//quiz	
 		this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
 
