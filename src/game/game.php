@@ -6,7 +6,7 @@ Game Class: this class should be the different games by instantiating a genre an
  
 var Game = new Class(
 {
-        initialize: function(tickLength)
+        initialize: function()
         {
 		mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
 
@@ -34,10 +34,10 @@ window.addEvent('domready', function()
 {
 
         //the game
-        mGame = new Game(<?php echo "$tickLength);"; ?>
+        mGame = new Game();
         
 	//the game
-        mApplication = new Application(<?php echo "$tickLength);"; ?>
+        mApplication = new Application();
 
 
         //keys

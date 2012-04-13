@@ -7,14 +7,11 @@ tended to create different games.
  
 var Application = new Class(
 {
-        initialize: function(tickLength)
+        initialize: function()
         {
                 //window size
                 this.mWindow = window.getSize();
 
-                //ticks
-                this.mTickLength = tickLength;
-                
                 //key pressed
                 this.mKeyLeft = false;
                 this.mKeyRight = false;
