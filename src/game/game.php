@@ -1,7 +1,6 @@
 /******************************************************************** 
 
-Game lass: This class handles Time, ticks and keystrokes. and is ex-
-tended to create different games.
+Game Class: this class should be the different games by instantiating a genre and hopefully other things. 
 
 ********************************************************************/
  
