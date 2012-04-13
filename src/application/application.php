@@ -22,22 +22,7 @@ var Application = new Class(
                 this.mKeyDown = false;
                 this.mKeyStop = false;
 
-                mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
-                
-                //this will be used for resetting to
-                mGenre.resetGame();
 
-        },
-
-        update: function()
-        {
-                if (mGenre.mGenreOn)
-                {
-                        //update genre
-                        mGenre.update(); 
-                
-                        var t=setTimeout("mApplication.update()",20)
-                }
         },
 
         log: function(msg)

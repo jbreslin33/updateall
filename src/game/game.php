@@ -9,12 +9,21 @@ var Game = new Class(
 {
         initialize: function(tickLength)
         {
+		mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+
+                //this will be used for resetting to
+                mGenre.resetGame();
 
         },
 
         update: function()
         {
-		mApplication.update();	
+                if (mGenre.mGenreOn)
+                {
+                        //update genre
+                        mGenre.update();
+                        var t=setTimeout("mGame.update()",20)
+                }
 	}
 
 });
