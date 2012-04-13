@@ -61,6 +61,8 @@ Extends: Genre,
                 this.createRightWall();
                 this.createTopWall();
                 this.createBottomWall();
+
+		this.resetGame();
         },
 
         update: function()
