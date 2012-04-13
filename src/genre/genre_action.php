@@ -19,9 +19,6 @@ Extends: Genre,
                 this.mSlotPositionXArray = new Array();
                 this.mSlotPositionYArray = new Array();
                 
-                //shape Array
-                this.mShapeArray = new Array();
-        
                 //control object
                 this.mControlObject;
                 
