@@ -10,9 +10,6 @@ var Game = new Class(
         {
 		mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
 
-                //this will be used for resetting to
-//                mGenre.resetGame();
-
         },
 
         update: function()
