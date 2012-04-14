@@ -1,13 +1,13 @@
 var Shape = new Class(
 {
-        initialize: function(genre,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //game
-                this.mGenre = genre;      
+                this.mGame = game;      
 		
 		//id 
-		this.mId = this.mGenre.mIdCount;
+		this.mId = this.mGame.mIdCount;
 		
 		//ai
 		this.mAI = ai;  
@@ -62,11 +62,11 @@ var Shape = new Class(
 		//control object 
                 if (isControlObject)
                 {
-                        this.mGenre.mControlObject = this;
+                        this.mGame.mControlObject = this;
                 }
         
                 //add to array
-                this.mGenre.mShapeArray.push(this);
+                this.mGame.mShapeArray.push(this);
 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
@@ -94,7 +94,7 @@ var Shape = new Class(
 
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
-		this.mGenre.mIdCount++;
+		this.mGame.mIdCount++;
         
         },
         
@@ -109,8 +109,8 @@ var Shape = new Class(
                 this.mAiCounter++;
                 
                 //update Velocity
-                this.mVelocityX = this.mKeyX * this.mGenre.mTimeSinceLastInterval * this.mGenre.mSpeed;
-                this.mVelocityY = this.mKeyY * this.mGenre.mTimeSinceLastInterval * this.mGenre.mSpeed;
+                this.mVelocityX = this.mKeyX * this.mGame.mTimeSinceLastInterval * this.mGame.mSpeed;
+                this.mVelocityY = this.mKeyY * this.mGame.mTimeSinceLastInterval * this.mGame.mSpeed;
 
                 //update position
                 this.mPositionX += this.mVelocityX;
@@ -225,8 +225,8 @@ var Shape = new Class(
 	{
 	
                 //get the offset from control object
-                //var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
-                //var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
+                //var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                //var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
 
                 //center image relative to position
                 var posX = this.mPositionX - (this.mWidth / 2);
@@ -238,8 +238,8 @@ var Shape = new Class(
         drawRelative: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
 
                 //center image relative to position
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
@@ -253,8 +253,8 @@ var Shape = new Class(
         {
                 //center image relative to position
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGenre.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGenre.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
+                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
 
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
