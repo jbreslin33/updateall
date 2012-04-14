@@ -8,7 +8,11 @@ var Game = new Class(
 {
         initialize: function()
         {
+	  	//quiz
+                this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
+		
 		mGenre = new GenreAdventure(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+
 
         },
 

@@ -20,8 +20,6 @@ var Genre = new Class(
 	 	//shape Array
                 this.mShapeArray = new Array();
 
-		//quiz	
-		this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
 
         },
 
@@ -36,6 +34,7 @@ var Genre = new Class(
                 this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
         
 	}
+
 
 });
 

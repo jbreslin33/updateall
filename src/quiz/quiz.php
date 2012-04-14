@@ -1,9 +1,9 @@
 var Quiz = new Class(
 {
-        initialize: function(genre,scoreNeeded,countBy,startNumber,endNumber)
+        initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
         {
 		//genre
-		this.mGenre = genre;
+		this.mGame = game;
 
 		//score
                 this.mScore = 0;
@@ -34,7 +34,7 @@ var Quiz = new Class(
                 //set question
                 this.mQuestion = this.mCount;
                 document.getElementById("question").innerHTML="Question: " + this.mQuestion;
-                this.mGenre.mShapeArray[0].setText(this.mCount);
+//                this.mGame.mGenre.mShapeArray[0].setText(this.mCount);
         },
 
         //new answer

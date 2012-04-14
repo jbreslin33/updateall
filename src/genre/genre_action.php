@@ -189,7 +189,7 @@ Extends: Genre,
         {
                 //control object        
                 new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
-                for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
+                for (i = this.mGame.mQuiz.mStartNumber + this.mGame.mQuiz.mCountBy; i <= this.mGame.mQuiz.mEndNumber; i = i + this.mGame.mQuiz.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
                         new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,"","yellow","","relative");
@@ -338,10 +338,10 @@ Extends: Genre,
 
                         if (this.mShapeArray[mId2].mIsQuestion)
                         {
-                                if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
+                                if (this.mShapeArray[mId2].mAnswer == this.mGame.mQuiz.mAnswer)
                                 {
-                                        this.mQuiz.mCount = this.mQuiz.mCount + this.mQuiz.mCountBy;  //add to count
-                                        this.mQuiz.mScore++;
+                                        this.mGame.mQuiz.mCount = this.mGame.mQuiz.mCount + this.mGame.mQuiz.mCountBy;  //add to count
+                                        this.mGame.mQuiz.mScore++;
                                         this.mShapeArray[mId2].mCollisionOn = false;
                                         this.mShapeArray[mId2].setVisibility(false);
                 
@@ -356,9 +356,11 @@ Extends: Genre,
                                         //this deletes and then recreates everthing.    
                                         this.resetGame();
                                 }
-                                this.mQuiz.newQuestion();
-                                this.mQuiz.newAnswer();
-                                this.mQuiz.printScore();
+                                this.mGame.mQuiz.newQuestion();
+		                this.mShapeArray[0].setText(this.mGame.mQuiz.mCount);
+
+                                this.mGame.mQuiz.newAnswer();
+                                this.mGame.mQuiz.printScore();
                         }
                         else
                         {
@@ -381,7 +383,7 @@ Extends: Genre,
 
         checkForScoreNeeded: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
+                if (this.mGame.mQuiz.mScore == this.mGame.mQuiz.mScoreNeeded)
                 {
                         //open the doors
                         for (i=0; i < this.mShapeArray.length; i++)
@@ -396,7 +398,7 @@ Extends: Genre,
 
         checkForDoorEntered: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
+                if (this.mGame.mQuiz.mScore == this.mGame.mQuiz.mScoreNeeded)
                 {
                         if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
                         this.mControlObject.mPositionY > this.mTopBounds &&
@@ -431,17 +433,17 @@ Extends: Genre,
                 this.mControlObject.mPositionY = 0;     
  
                 //score
-                this.mQuiz.mScore = 0;
+                this.mGame.mQuiz.mScore = 0;
 
                 //game
-                this.mQuiz.mQuestion = this.mQuiz.mCount;
+                this.mGame.mQuiz.mQuestion = this.mGame.mQuiz.mCount;
 
                 //count
-                this.mQuiz.mCount = this.mQuiz.mStartNumber;
+                this.mGame.mQuiz.mCount = this.mGame.mQuiz.mStartNumber;
         
                 //answer
-                this.mQuiz.newAnswer();
-		this.mShapeArray[0].setText(this.mQuiz.mCount);
+                this.mGame.mQuiz.newAnswer();
+		this.mShapeArray[0].setText(this.mGame.mQuiz.mCount);
         }
 });
 
