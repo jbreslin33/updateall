@@ -86,6 +86,7 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 </script>
 
 <script type="text/javascript" src="../game/game.php"></script>
+<script type="text/javascript" src="../game/game_dungeon_count.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
@@ -115,7 +116,7 @@ window.addEvent('domready', function()
 
         //the game
         //mGame = new Game();
-        mGame = new Game(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+        mGame = new GameDungeonCount(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
         //the game
         mApplication = new Application();
 
