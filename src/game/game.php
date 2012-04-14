@@ -55,16 +55,7 @@ var Game = new Class(
                 //fill possible spawnPosition Arrays
                 this.fillSpawnPositionArrays();
         
-                //create Shapes 
-                this.createShapes();
 
-                //create walls          
-                this.createLeftWall();
-                this.createRightWall();
-                this.createTopWall();
-                this.createBottomWall();
-
-		this.resetGame();
         },
 
         update: function()
@@ -105,6 +96,19 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",20)
                 }
         },
+
+	createWorld: function()
+	{
+                //create Shapes 
+                this.createShapes();
+
+                //create walls          
+                this.createLeftWall();
+                this.createRightWall();
+                this.createTopWall();
+                this.createBottomWall();
+		
+	},
 
 	checkKeys: function()
         {

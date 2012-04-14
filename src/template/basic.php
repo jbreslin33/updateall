@@ -118,6 +118,11 @@ window.addEvent('domready', function()
         //mGame = new Game();
         mGame = new GameDungeonCount(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
         //the game
+
+	//call thes "virtual methods"
+	mGame.createWorld();
+	mGame.resetGame();
+
         mApplication = new Application();
 
 
