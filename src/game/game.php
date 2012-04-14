@@ -463,31 +463,3 @@ var Game = new Class(
 });
 
 
-var mGame;
-var mApplication;
-
-window.addEvent('domready', function()
-{
-
-        //the game
-        //mGame = new Game();
-        mGame = new Game(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance); 
-        //the game
-        mApplication = new Application();
-
-
-        //keys
-        document.addEvent("keydown", mApplication.keyDown);
-        document.addEvent("keyup", mApplication.keyUp);
-
-        //start updating
-        mGame.update();
-}
-);
-
-window.onresize = function(event)
-{
-        mApplication.mWindow = window.getSize();
-}
-
-
