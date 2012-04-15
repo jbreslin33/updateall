@@ -15,6 +15,10 @@ Extends: Game,
         update: function()
         {
                 this.parent();
+          
+		//door entered?
+                this.checkForDoorEntered();
+
         },
 	
 	createWorld: function()

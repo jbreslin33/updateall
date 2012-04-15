@@ -79,9 +79,6 @@ var Game = new Class(
                         	this.mShapeArray[i].update();
                 	}
                 
-                	//door entered?
-                	this.checkForDoorEntered();
-
                 	//reality check for out of bounds for avatar
                 	this.checkForOutOfBounds();
         
