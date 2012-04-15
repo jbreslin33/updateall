@@ -198,22 +198,6 @@ var Game = new Class(
 
         createShapes: function()
         {
-                //control object        
-                new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
-                for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
-                {
-                        this.setUniqueSpawnPosition();
-                        new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,i,true,true,false,"","yellow","","relative");
-                }
-
-                for (i = 0; i < this.mNumberOfChasers; i++)
-                {
-                        this.setUniqueSpawnPosition();
-                        new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],false,true,"",true,true,true,"","red","","relative");
-                        
-                }
-
-		//hud
 		
         },
 
