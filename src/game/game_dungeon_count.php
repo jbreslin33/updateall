@@ -122,6 +122,56 @@ Extends: Game,
                 {
                         new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,"","black","","relative");
                 }
+        },
+
+	evaluateCollision: function(mId1,mId2)
+        {
+                if (this.mShapeArray[mId1] == this.mControlObject)
+                {
+
+                        if (this.mShapeArray[mId2].mIsQuestion)
+                        {
+                                if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
+                                {
+                                        this.mQuiz.mCount = this.mQuiz.mCount + this.mQuiz.mCountBy;  //add to count
+                                        this.mQuiz.mScore++;
+                                        this.mShapeArray[mId2].mCollisionOn = false;
+                                        this.mShapeArray[mId2].setVisibility(false);
+
+                                        //feedback
+                                        document.getElementById("feedback").innerHTML="Correct!";
+                                }
+                                else
+                                {
+                                        //feedback
+                                        document.getElementById("feedback").innerHTML="Wrong! Try again.";
+
+                                        //this deletes and then recreates everthing.
+                                        this.resetGame();
+                                }
+                                this.mQuiz.newQuestion();
+                                this.mShapeArray[0].setText(this.mQuiz.mCount);
+
+                                this.mQuiz.newAnswer();
+                                this.mQuiz.printScore();
+                        }
+                        else
+                        {
+                                this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
+                                this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
+
+                                this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
+                                this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
+                        }
+                }
+                else
+                {
+                        this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
+                        this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
+
+                        this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
+                        this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
+                }
         }
 
 });
