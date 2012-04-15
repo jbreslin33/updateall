@@ -85,7 +85,9 @@ Extends: Game,
 
                 //answer
                 this.mQuiz.newAnswer();
-                this.mShapeArray[0].setText(this.mQuiz.mCount);
+                
+		//set text of control object
+		this.mControlObject.setText(this.mQuiz.mCount);
 
 	},
 
@@ -156,8 +158,12 @@ Extends: Game,
                                         //this deletes and then recreates everthing.
                                         this.resetGame();
                                 }
-                                this.mQuiz.newQuestion();
-                                this.mShapeArray[0].setText(this.mQuiz.mCount);
+                               
+				//get a new question 
+				this.mQuiz.newQuestion();
+                                
+				//set text of control object
+				this.mControlObject.setText(this.mQuiz.mCount);
 
                                 this.mQuiz.newAnswer();
                                 this.mQuiz.printScore();

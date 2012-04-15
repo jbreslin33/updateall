@@ -277,6 +277,11 @@ var Game = new Class(
                 }
         },
 
+	createHud: function()
+	{
+
+	},	
+
         evaluateCollision: function(mId1,mId2)
         {
         

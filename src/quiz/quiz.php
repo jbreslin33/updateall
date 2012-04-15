@@ -34,7 +34,6 @@ var Quiz = new Class(
                 //set question
                 this.mQuestion = this.mCount;
                 document.getElementById("question").innerHTML="Question: " + this.mQuestion;
-//                this.mGame.mGenre.mShapeArray[0].setText(this.mCount);
         },
 
         //new answer
