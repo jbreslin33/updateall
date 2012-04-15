@@ -257,49 +257,6 @@ var Game = new Class(
                 }
         },
         
-
-        createLeftWall: function()
-        {
-                for (i = this.mTopBounds + this.mDefaultSpriteSize; i <= this.mBottomBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
-                {
-                        new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,false,"",true,true,false,"","black","","relative");
-                }
-        },
-
-        createRightWall: function()
-        {
-                var greenDoorCount = 0; 
-                for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + this.mDefaultSpriteSize)
-                {
-                        if (greenDoorCount == 0 || greenDoorCount == 1)
-                        {
-                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,"","green","","relative");
-                        }       
-                        else
-                        {       
-                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,false,"",true,true,false,"","black","","relative");
-                        }
-                        greenDoorCount++;
-                }
-        
-        },
-
-        createTopWall: function()
-        {
-                for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
-                {
-                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,false,"",true,true,false,"","black","","relative");
-                }
-        },
-
-        createBottomWall: function()
-        {
-                for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
-                {
-                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,false,"",true,true,false,"","black","","relative");
-                }
-        },
-
         saveOldPositions: function()
         {
                 //save old positions
