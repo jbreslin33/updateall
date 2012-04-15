@@ -290,34 +290,13 @@ var Game = new Class(
 
         checkForScoreNeeded: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
-                {
-                        //open the doors
-                        for (i=0; i < this.mShapeArray.length; i++)
-                        {
-                                if (this.mShapeArray[i].mBackgroundColor == 'green')
-                                {
-					this.mShapeArray[i].setBackgroundColor('white');
-                                }
-                        }
-                }
-        },
+        
+	},
 
         checkForDoorEntered: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
-                {
-                        if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
-                        this.mControlObject.mPositionY > this.mTopBounds &&
-                        this.mControlObject.mPositionY < this.mTopBounds + this.mDefaultSpriteSize * 2) 
-                        
-                        {
-                                this.mOn = false;
-                                document.getElementById("feedback").innerHTML="YOU WIN!!!";
-                                window.location = "../database/goto_next_math_level.php"
-                        }
-                }
-        },
+        
+	},
 
         //reset
         resetGame: function()
