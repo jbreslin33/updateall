@@ -290,11 +290,6 @@ var Game = new Class(
         
 	},
 
-        checkForDoorEntered: function()
-        {
-        
-	},
-
         //reset
         resetGame: function()
         {
