@@ -8,6 +8,9 @@ Extends: Game,
 
                 //application
                 this.parent(application, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+
+                //chasers
+                this.mNumberOfChasers = numberOfChasers;
          
         },
 

@@ -30,9 +30,6 @@ var Game = new Class(
                 //speed
                 this.mSpeed = speed;
         
-                //chasers
-                this.mNumberOfChasers = numberOfChasers;
-
                 //dimensions
                 this.mLeftBounds = leftBounds;
                 this.mRightBounds = rightBounds;
