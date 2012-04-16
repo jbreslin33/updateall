@@ -241,7 +241,7 @@ var Shape = new Class(
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
 	
 		this.protectScrollBars(posX,posY);
-
+		this.sortGameVisibility(posX,posY);
         },
 
         drawCenter: function()
@@ -267,19 +267,20 @@ var Shape = new Class(
                         this.setPosition(0,0);
                         this.setVisibility(false);
                 }
-                else //within dimensions..and still collidable(meaning a number that has been answered) or not a question at all
+	},
+
+	sortGameVisibility: function(x,y)
+	{
+        	if (this.mCollisionOn ||
+                	this.mIsQuestion == 'false')
                 {
-                        if (this.mCollisionOn ||
-                            this.mIsQuestion == 'false')
-                        {
-                                this.setPosition(x,y);
-                                this.setVisibility(true);
-                        }
-                        else
-                        {
-                                this.setPosition(0,0);
-                                this.setVisibility(false);
-                        }
+                	this.setPosition(x,y);
+                       	this.setVisibility(true);
+                }
+                else
+                {
+                	this.setPosition(0,0);
+                        this.setVisibility(false);
                 }
 	}
 
