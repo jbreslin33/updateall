@@ -75,7 +75,7 @@ Extends: Game,
                 this.mControlObject.mPositionY = 0;
 
                 //score
-                this.mQuiz.mScore = 0;
+                this.mQuiz.setScore(0);
 
                 //game
                 this.mQuiz.mQuestion = this.mQuiz.mCount;
@@ -143,7 +143,7 @@ Extends: Game,
                                 if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
                                 {
                                         this.mQuiz.mCount = this.mQuiz.mCount + this.mQuiz.mCountBy;  //add to count
-                                        this.mQuiz.mScore++;
+                                        this.mQuiz.incrementScore();
                                         this.mShapeArray[mId2].mCollisionOn = false;
                                         this.mShapeArray[mId2].setVisibility(false);
 
@@ -189,7 +189,7 @@ Extends: Game,
 
         checkForScoreNeeded: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
+                if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
                 {
                         //open the doors
                         for (i=0; i < this.mShapeArray.length; i++)
@@ -204,7 +204,7 @@ Extends: Game,
 
         checkForDoorEntered: function()
         {
-                if (this.mQuiz.mScore == this.mQuiz.mScoreNeeded)
+                if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
                 {
                         if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
                         this.mControlObject.mPositionY > this.mTopBounds &&

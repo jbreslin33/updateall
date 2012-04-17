@@ -45,10 +45,34 @@ var Quiz = new Class(
         //Score
         printScore: function()
         {
-                document.getElementById("score").innerHTML="Score: " + this.mScore;
-                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.mScoreNeeded;
-        }
+                document.getElementById("score").innerHTML="Score: " + this.getScore();
+                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.getScoreNeeded();
+        },
 
+	getScore: function()
+	{
+		return this.mScore;
+	},
+
+	getScoreNeeded: function()
+	{
+		return this.mScoreNeeded;
+	},
+	
+	setScore: function(score)
+	{
+		this.mScore = score;	
+	},
+
+	setScoreNeeded: function(scoreNeeded)
+	{
+		this.mScoreNeeded = scoreNeeded;
+	},
+	
+	incrementScore: function()
+	{
+		this.mScore++;
+	}
 });
 
 
