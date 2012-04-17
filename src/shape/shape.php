@@ -227,7 +227,7 @@ var Shape = new Class(
                 var posX = this.mPositionX - (this.mWidth / 2);
                 var posY = this.mPositionY - (this.mHeight / 2);
 	
-	//	this.protectScrollBars(posX,posY);
+		this.protectScrollBars(posX,posY);
 	},
 
         drawRelative: function()
@@ -257,18 +257,6 @@ var Shape = new Class(
                 this.setPosition(posX,posY);
         },
 
-	protectScrollBars: function(x,y)
-	{
-
-                //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
-                        y + this.mHeight + 13 > mApplication.mWindow.y)
-                {
-                        this.setPosition(0,0);
-                        this.setVisibility(false);
-                }
-	},
-
 	sortGameVisibility: function(x,y)
 	{
         	if (this.mCollisionOn ||
@@ -282,7 +270,17 @@ var Shape = new Class(
                 	this.setPosition(0,0);
                         this.setVisibility(false);
                 }
-	}
+	},
 
+	protectScrollBars: function(x,y)
+	{
+                //if off screen then hide it so we don't have scroll bars mucking up controls
+                if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
+                        y + this.mHeight + 13 > mApplication.mWindow.y)
+                {
+                        this.setPosition(0,0);
+                        this.setVisibility(false);
+                }
+	}
 });
 

@@ -279,9 +279,7 @@ var Game = new Class(
 
 	createHud: function()
 	{
-	//	new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
 		new Shape(this,"",100,20,300,300,false,false,"",false,false,false,"UserName: ","green","","normal");
-	mApplication.log('creatingHud');	
 	},	
 
         evaluateCollision: function(mId1,mId2)
