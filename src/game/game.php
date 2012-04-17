@@ -53,7 +53,9 @@ var Game = new Class(
                 this.fillSpawnPositionArrays();
 
 		//hud
-		this.createHud();
+		//this.createHud();
+		this.mHud = new Hud();
+		this.mHud.createHud();
         },
 
         update: function()
@@ -277,11 +279,6 @@ var Game = new Class(
                         }
                 }
         },
-
-	createHud: function()
-	{
-		new Shape(this,"",50,50,300,300,false,false,"",false,false,false,"U","green","","normal");
-	},	
 
         evaluateCollision: function(mId1,mId2)
         {
