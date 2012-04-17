@@ -240,8 +240,8 @@ var Shape = new Class(
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
 	
-		this.protectScrollBars(posX,posY);
 		this.sortGameVisibility(posX,posY);
+		this.protectScrollBars(posX,posY);
         },
 
         drawCenter: function()
