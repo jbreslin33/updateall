@@ -46,9 +46,18 @@ var Shape = new Class(
                
 		//answers 
 		this.mAnswer = answer;
-               
-		//html	
-		this.mInnerHTML = innerHTML; 
+              
+		if (this.mAnswer == "")
+		{
+			//html	
+			this.mInnerHTML = innerHTML; 
+		}
+		else
+		{
+			//html
+			this.mInnerHTML = this.mAnswer; 
+		}
+ 
                 
 		//background
 		this.mBackgroundColor = backgroundColor;
@@ -89,7 +98,7 @@ var Shape = new Class(
 		if (this.mSrc == "")//create paragraph
                 {
                 	this.mMesh = document.createElement("p");
-                        this.mMesh.innerHTML = this.mAnswer;
+                        this.mMesh.innerHTML = this.mInnerHTML;
                 }
 
                 //back to div   
