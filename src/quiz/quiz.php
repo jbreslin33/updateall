@@ -27,6 +27,21 @@ var Quiz = new Class(
         {
         
 	},
+
+	reset: function()
+	{
+        	//score
+                this.setScore(0);
+
+                //game
+                this.mQuestion = this.mCount;
+
+                //count
+                this.mCount = this.mStartNumber;
+
+                //answer
+                this.newAnswer();
+	},
        
 	//questions
         newQuestion: function()

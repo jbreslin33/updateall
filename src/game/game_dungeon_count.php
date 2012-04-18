@@ -74,18 +74,9 @@ Extends: Game,
                 this.mControlObject.mPositionX = 0;
                 this.mControlObject.mPositionY = 0;
 
-                //score
-                this.mQuiz.setScore(0);
+		//let's reset all quiz stuff right here.
+		this.mQuiz.reset();
 
-                //game
-                this.mQuiz.mQuestion = this.mQuiz.mCount;
-
-                //count
-                this.mQuiz.mCount = this.mQuiz.mStartNumber;
-
-                //answer
-                this.mQuiz.newAnswer();
-                
 		//set text of control object
 		this.mControlObject.setText(this.mQuiz.mCount);
 
