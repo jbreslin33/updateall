@@ -78,6 +78,9 @@ var Game = new Class(
                 	{
                         	this.mShapeArray[i].update();
                 	}
+
+			//update hud
+			this.mHud.update();
                 
                 	//reality check for out of bounds for avatar
                 	this.checkForOutOfBounds();
