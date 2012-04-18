@@ -40,8 +40,9 @@ var Hud = new Class(
 
 	createHud: function()
 	{
-		this.mScoreHud 	     = new Shape(this,"",110,50,0,200,false,false,"",false,false,false,"","pink","","normal");
-		this.mScoreNeededHud = new Shape(this,"",110,50,0,250,false,false,"",false,false,false,"","violet","","normal");
+		this.mScoreHud 	     = new Shape(this,"",140,50,0,200,false,false,"",false,false,false,"","pink","","normal");
+		this.mScoreNeededHud = new Shape(this,"",140,50,0,250,false,false,"",false,false,false,"","violet","","normal");
+		this.mFeedbackHud    = new Shape(this,"",140,50,0,300,false,false,"",false,false,false,"","pink","","normal");
 
 	},	
 
@@ -55,6 +56,10 @@ var Hud = new Class(
 		this.mScoreNeededHud.setText("Score Needed:" + mGame.mQuiz.getScoreNeeded());
 	},
 	
+	setFeedback: function(feedback)
+	{
+		this.mFeedbackHud.setText(feedback);
+	},
 
         //reset
         resetHud: function()

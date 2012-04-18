@@ -42,12 +42,6 @@ var Quiz = new Class(
                 this.mAnswer = this.mCount + this.mCountBy;
         },
 
-        //Score
-        printScore: function()
-        {
-                document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.getScoreNeeded();
-        },
-
 	getScore: function()
 	{
 		return this.mScore;

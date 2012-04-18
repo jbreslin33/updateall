@@ -148,12 +148,12 @@ Extends: Game,
                                         this.mShapeArray[mId2].setVisibility(false);
 
                                         //feedback
-                                        document.getElementById("feedback").innerHTML="Correct!";
+                                       	this.mHud.setFeedback("Correct!"); 
                                 }
                                 else
                                 {
                                         //feedback
-                                        document.getElementById("feedback").innerHTML="Wrong! Try again.";
+                                       	this.mHud.setFeedback("Wrong! Try again."); 
 
                                         //this deletes and then recreates everthing.
                                         this.resetGame();
@@ -166,7 +166,6 @@ Extends: Game,
 				this.mControlObject.setText(this.mQuiz.mCount);
 
                                 this.mQuiz.newAnswer();
-                                this.mQuiz.printScore();
                         }
                         else
                         {
@@ -212,7 +211,7 @@ Extends: Game,
 
                         {
                                 this.mOn = false;
-                                document.getElementById("feedback").innerHTML="YOU WIN!!!";
+				this.mHud.setFeedback("YOU WIN!!!");
                                 window.location = "../database/goto_next_math_level.php"
                         }
                 }
