@@ -34,6 +34,8 @@ var Hud = new Class(
 
 				//set score needed...this may only need be done once so it might really belong somewhere else but for now this will suffice
 				this.setScoreNeeded();
+				
+				this.setQuestion();
                 	}
                 }
         },
@@ -64,7 +66,7 @@ var Hud = new Class(
 	},
 
 	//question
-	setQuestion: function(question)
+	setQuestion: function()
 	{
 		this.mQuestionHud.setText("Question:" + mGame.mQuiz.getQuestion());
 	},	
