@@ -95,15 +95,8 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 <script type="text/javascript" src="../quiz/quiz.php"></script>
 
 </head>
+
 <body>
-
-<div class="demo">
-
-<ul id="sortable">
-	<li id="question" class="ui-state-default"> <?php echo $startNumber - 1; ?> </li>
-</ul>
-
-</div><!-- End demo -->
 
 <script language="javascript">
 var mGame;

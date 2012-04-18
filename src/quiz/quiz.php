@@ -33,8 +33,13 @@ var Quiz = new Class(
         {
                 //set question
                 this.mQuestion = this.mCount;
-                document.getElementById("question").innerHTML="Question: " + this.mQuestion;
+		this.mGame.mHud.setQuestion(this.mQuestion);
         },
+
+	getQuestion: function()
+	{
+		return this.mQuestion;
+	},
 
         //new answer
         newAnswer: function()
