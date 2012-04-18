@@ -31,19 +31,30 @@ var Hud = new Class(
 				
 				//set score	
 				this.setScore();
+
+				//set score needed...this may only need be done once so it might really belong somewhere else but for now this will suffice
+				this.setScoreNeeded();
                 	}
                 }
         },
 
 	createHud: function()
 	{
-		this.mScoreHud = new Shape(this,"",100,50,0,300,false,false,"",false,false,false,"Score:0","pink","","normal");
+		this.mScoreHud 	     = new Shape(this,"",110,50,0,200,false,false,"",false,false,false,"","pink","","normal");
+		this.mScoreNeededHud = new Shape(this,"",110,50,0,250,false,false,"",false,false,false,"","violet","","normal");
+
 	},	
 
 	setScore: function()
 	{
 		this.mScoreHud.setText("Score:" + mGame.mQuiz.getScore());
 	},
+
+	setScoreNeeded: function()
+	{
+		this.mScoreNeededHud.setText("Score Needed:" + mGame.mQuiz.getScoreNeeded());
+	},
+	
 
         //reset
         resetHud: function()
