@@ -45,7 +45,6 @@ var Quiz = new Class(
         //Score
         printScore: function()
         {
-                document.getElementById("score").innerHTML="Score: " + this.getScore();
                 document.getElementById("scoreNeeded").innerHTML="Score Needed: " + this.getScoreNeeded();
         },
 

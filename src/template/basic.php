@@ -102,7 +102,6 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 	<li id="game_name" class="ui-state-default"> <?php echo "$name"; ?> </li>
 	<li id="question" class="ui-state-default"> <?php echo $startNumber - 1; ?> </li>
 	<li id="feedback" class="ui-state-default"> Have Fun! </li>
-	<li id="score" class="ui-state-default"> Score: 0</li>
 	<li id="scoreNeeded" class="ui-state-default"> Score Needed: <?php echo "$scoreNeeded"; ?> </li>
 </ul>
 
