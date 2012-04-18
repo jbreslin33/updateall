@@ -37,7 +37,7 @@ var Hud = new Class(
 
 	createHud: function()
 	{
-		this.mScoreHud = new Shape(this,"",50,50,300,300,false,false,"",false,false,false,"Score:0","green","","normal");
+		this.mScoreHud = new Shape(this,"",100,50,0,300,false,false,"",false,false,false,"Score:0","pink","","normal");
 	},	
 
 	setScore: function()
