@@ -62,6 +62,11 @@ var Quiz = new Class(
                 this.mAnswer = this.mCount + this.mCountBy;
         },
 
+	getAnswer: function()
+	{
+		return this.mAnswer;
+	},
+
 	getScore: function()
 	{
 		return this.mScore;
