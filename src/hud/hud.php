@@ -28,7 +28,7 @@ var Hud = new Class(
 
 	createHud: function()
 	{
-		new Shape(this,"",50,50,300,300,false,false,"",false,false,false,"U","green","","normal");
+		new Shape(this,"",50,50,300,300,false,false,"",false,false,false,"Score:0","green","","normal");
 	},	
 
         //reset
