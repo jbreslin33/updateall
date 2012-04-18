@@ -69,6 +69,7 @@ if ($num > 0)
 
 <script language="javascript">
 
+var name = "<?php echo $name; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
@@ -99,7 +100,6 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 <div class="demo">
 
 <ul id="sortable">
-	<li id="game_name" class="ui-state-default"> <?php echo "$name"; ?> </li>
 	<li id="question" class="ui-state-default"> <?php echo $startNumber - 1; ?> </li>
 </ul>
 
@@ -114,7 +114,7 @@ window.addEvent('domready', function()
 	//application to handle time and input
         mApplication = new Application();
         //the game
-        mGame = new GameDungeonCount(this, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+        mGame = new GameDungeonCount(this, name, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
 	
 	//call thes "virtual methods"
 	mGame.createWorld();

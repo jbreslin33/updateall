@@ -40,6 +40,7 @@ var Hud = new Class(
 
 	createHud: function()
 	{
+		this.mGameNameHud    = new Shape(this,"",140,50,0,150,false,false,"",false,false,false,"" + this.mGame.mName,"violet","","normal");
 		this.mScoreHud 	     = new Shape(this,"",140,50,0,200,false,false,"",false,false,false,"","pink","","normal");
 		this.mScoreNeededHud = new Shape(this,"",140,50,0,250,false,false,"",false,false,false,"","violet","","normal");
 		this.mFeedbackHud    = new Shape(this,"",140,50,0,300,false,false,"",false,false,false,"","pink","","normal");

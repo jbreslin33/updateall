@@ -1,8 +1,11 @@
 var Game = new Class(
 {
 
-        initialize: function(application, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(application, name, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
         {
+		//game name
+		this.mName = name;
+
                 //time
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
@@ -54,7 +57,7 @@ var Game = new Class(
 
 		//hud
 		//this.createHud();
-		this.mHud = new Hud();
+		this.mHud = new Hud(this);
 		this.mHud.createHud();
         },
 
