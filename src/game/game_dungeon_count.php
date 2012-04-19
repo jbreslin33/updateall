@@ -131,8 +131,9 @@ Extends: Game,
 
                         if (this.mShapeArray[mId2].mIsQuestion)
                         {
-                                if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
-                                {
+                                //if (this.mShapeArray[mId2].mAnswer == this.mQuiz.mAnswer)
+                               	if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mAnswer))			 
+				{
                                         this.mQuiz.mCount = this.mQuiz.mCount + this.mQuiz.mCountBy;  //add to count
                                         this.mQuiz.incrementScore();
                                         this.mShapeArray[mId2].mCollisionOn = false;

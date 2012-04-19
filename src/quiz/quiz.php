@@ -42,6 +42,19 @@ var Quiz = new Class(
                 //answer
                 this.newAnswer();
 	},
+
+	//check answer
+	checkAnswer: function(answer)
+	{
+		if (answer == this.mAnswer)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}	
+	},
        
 	//questions
         newQuestion: function()
