@@ -48,6 +48,9 @@ var Quiz = new Class(
 	{
 		if (answer == this.mAnswer)
 		{
+                	this.mCount = this.mCount + this.mCountBy;  //add to count
+                        this.incrementScore();
+	
 			return true;
 		}
 		else
