@@ -14,9 +14,7 @@ var Game = new Class(
                 //shape Array
                 this.mShapeArray = new Array();
 
-	        //quiz
-                this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
-
+		
 	        //On_Off
                 this.mOn = true;
         
@@ -59,6 +57,9 @@ var Game = new Class(
 		//this.createHud();
 		this.mHud = new Hud(this);
 		this.mHud.createHud();
+	        
+		//quiz
+                this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
         },
 
         update: function()
