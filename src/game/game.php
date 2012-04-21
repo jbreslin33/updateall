@@ -203,7 +203,7 @@ var Game = new Class(
         createShapes: function()
         {
         	//control object
-                this.mControlObject = new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
+                this.mControlObject = new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,false,"",true,true,false,"","blue","","middle");
         },
 
         setUniqueSpawnPosition: function()

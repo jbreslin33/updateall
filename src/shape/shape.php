@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function(game,src,width,height,spawnX,spawnY,isControlObject,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(game,src,width,height,spawnX,spawnY,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //game
@@ -68,12 +68,6 @@ var Shape = new Class(
 		//drawType
 		this.mDrawType = drawType;
  
-		//control object 
-                if (isControlObject)
-                {
-                        this.mGame.mControlObject = this;
-                }
-        
                 //add to array
                 this.mGame.mShapeArray.push(this);
 
