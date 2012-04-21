@@ -5,7 +5,10 @@ var Shape = new Class(
                 
                 //game
                 this.mGame = game;      
-		
+	
+		//speed
+		this.mSpeed = .1;
+	
 		//id 
 		this.mId = this.mGame.mIdCount;
 		
@@ -101,7 +104,7 @@ var Shape = new Class(
         
         },
         
-        update: function()
+        update: function(delta)
         {
                 //run ai                
                 if (this.mAiCounter > this.mAiCounterDelay)
@@ -112,8 +115,8 @@ var Shape = new Class(
                 this.mAiCounter++;
                 
                 //update Velocity
-                this.mVelocityX = this.mKeyX * this.mGame.mTimeSinceLastInterval * this.mGame.mSpeed;
-                this.mVelocityY = this.mKeyY * this.mGame.mTimeSinceLastInterval * this.mGame.mSpeed;
+                this.mVelocityX = this.mKeyX * delta * speed;
+                this.mVelocityY = this.mKeyY * delta * speed;
 
                 //update position
                 this.mPositionX += this.mVelocityX;

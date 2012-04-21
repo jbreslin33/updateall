@@ -80,11 +80,11 @@ var Game = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].update();
+                        	this.mShapeArray[i].update(this.mTimeSinceLastInterval);
                 	}
 
 			//update hud
-			this.mHud.update();
+			this.mHud.update(0);
                 
                 	//reality check for out of bounds for avatar
                 	this.checkForOutOfBounds();

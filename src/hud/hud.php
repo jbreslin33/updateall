@@ -27,7 +27,7 @@ var Hud = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].update();
+                        	this.mShapeArray[i].update(this.mGame.mTimeSinceLastInterval); 
 				
 				//set score	
 				this.setScore();
