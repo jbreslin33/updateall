@@ -25,6 +25,11 @@ var Quiz = new Class(
 //		this.create();
         },
 
+	getGame: function()
+	{
+		return mGame;
+	},
+
 	create: function()
 	{
                 //these are the questions. SHould they not be created in the quiz? and then either updated there like i do with hud or in game as normal.

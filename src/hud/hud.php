@@ -20,6 +20,11 @@ var Hud = new Class(
 
         },
 
+	getGame: function()
+	{
+		return mGame;
+	},
+
         update: function()
         {
                 if (this.mOn)

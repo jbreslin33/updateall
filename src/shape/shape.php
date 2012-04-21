@@ -1,16 +1,16 @@
 var Shape = new Class(
 {
-        initialize: function(game,src,width,height,spawnX,spawnY,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
         {
                 
-                //game
-                this.mGame = game;      
+                //container for this shape, for the quiz class we pass in game but for hud we pass in hud. the quiz shapes can collide but the hud is independent.
+                this.mContainer = container;      
 	
 		//speed
 		this.mSpeed = .1;
 	
 		//id 
-		this.mId = this.mGame.mIdCount;
+		this.mId = this.mContainer.mIdCount;
 		
 		//ai
 		this.mAI = ai;  
@@ -72,7 +72,7 @@ var Shape = new Class(
 		this.mDrawType = drawType;
  
                 //add to array
-                this.mGame.mShapeArray.push(this);
+                this.mContainer.mShapeArray.push(this);
 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
@@ -100,7 +100,7 @@ var Shape = new Class(
 
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
-		this.mGame.mIdCount++;
+		this.mContainer.mIdCount++;
         
         },
         
@@ -239,8 +239,8 @@ var Shape = new Class(
         drawRelative: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - this.mContainer.getGame().mControlObject.mPositionX;
+                var ydiff = this.mPositionY - this.mContainer.getGame().mControlObject.mPositionY;
 
                 //center image relative to position
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
@@ -254,8 +254,8 @@ var Shape = new Class(
         {
                 //center image relative to position
                 //get the offset from control object
-                var xdiff = this.mPositionX - mGame.mControlObject.mPositionX;
-                var ydiff = this.mPositionY - mGame.mControlObject.mPositionY;
+                var xdiff = this.mPositionX - this.mContainer.getGame().mControlObject.mPositionX;
+                var ydiff = this.mPositionY - this.mContainer.getGame().mControlObject.mPositionY;
 
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);

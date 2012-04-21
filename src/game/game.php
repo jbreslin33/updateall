@@ -62,6 +62,11 @@ var Game = new Class(
                 this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
         },
 
+	getGame: function()
+	{
+		return this;
+	},
+
         update: function()
         {
                 if (this.mOn)
