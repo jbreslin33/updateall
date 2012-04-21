@@ -42,10 +42,8 @@ Extends: Game,
 
 	createShapes: function()
 	{
+		this.parent();
 		
-                //control object
-                new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,false,"",true,true,false,"","blue","","middle");
-
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
