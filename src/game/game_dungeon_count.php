@@ -3,11 +3,11 @@ var GameDungeonCount = new Class(
 
 Extends: Game,
 
-        initialize: function(application, game, numberOfChasers, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(application, game, numberOfChasers, leftBounds, rightBounds, topBounds, bottomBounds)
         {
 
                 //application
-                this.parent(application, game, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+                this.parent(application, game, leftBounds, rightBounds, topBounds, bottomBounds);
 
                 //chasers
                 this.mNumberOfChasers = numberOfChasers;
