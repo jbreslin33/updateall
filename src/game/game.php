@@ -3,18 +3,34 @@ var Game = new Class(
 
         initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds)
         {
-		//game name
+		/************ NAME *******/
 		this.mName = name;
 
-		//On_Off
+		/************ DIMENSIONS *******/
+                this.mLeftBounds = leftBounds;
+                this.mRightBounds = rightBounds;
+                this.mTopBounds = topBounds;
+                this.mBottomBounds = bottomBounds;
+		
+		/************** On_Off **********/
                 this.mOn = true;
                 
-		//time
+		/**************** TIME ************/
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
                 this.mTimeSinceLastInterval = 0;
 
-               	/*********SHAPES*******************/ 
+		/************ HUD **********************/
+		this.mHud = new Hud(this);
+		this.mHud.createHud();
+	        
+		/********************** QUIZ **************/
+                this.mQuiz;
+               	
+		/********* SHAPES *******************/ 
+                // id counter
+                this.mIdCount = 0;
+		
 		//control object
                 this.mControlObject;
                 
@@ -34,27 +50,10 @@ var Game = new Class(
                 //proposed positions    
                 this.mProposedX = 0;
                 this.mProposedY = 0;
-                
-                
-		//dimensions
-                this.mLeftBounds = leftBounds;
-                this.mRightBounds = rightBounds;
-                this.mTopBounds = topBounds;
-                this.mBottomBounds = bottomBounds;
-                
-                // id counter
-                this.mIdCount = 0;
 
                 //fill possible spawnPosition Arrays
                 this.fillSpawnPositionArrays();
 
-		//hud
-		//this.createHud();
-		this.mHud = new Hud(this);
-		this.mHud.createHud();
-	        
-		//quiz
-                this.mQuiz;
         },
 
 	getGame: function()
