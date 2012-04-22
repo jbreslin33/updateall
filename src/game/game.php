@@ -6,20 +6,24 @@ var Game = new Class(
 		//game name
 		this.mName = name;
 
-                //time
+		//On_Off
+                this.mOn = true;
+                
+		//time
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
                 this.mTimeSinceLastInterval = 0;
 
-                //shape Array
+               	/*********SHAPES*******************/ 
+		//control object
+                this.mControlObject;
+                
+		//shape Array
                 this.mShapeArray = new Array();
 
 		//collidable shape array
                 this.mShapeCollidableArray = new Array();
 	        
-		//On_Off
-                this.mOn = true;
-        
                 //shapes
                 this.mPositionXArray = new Array();
                 this.mPositionYArray = new Array();
@@ -27,24 +31,19 @@ var Game = new Class(
                 this.mSlotPositionXArray = new Array();
                 this.mSlotPositionYArray = new Array();
                 
-                //control object
-                this.mControlObject;
-                
-                //dimensions
-                this.mLeftBounds = leftBounds;
-                this.mRightBounds = rightBounds;
-                this.mTopBounds = topBounds;
-                this.mBottomBounds = bottomBounds;
-
                 //proposed positions    
                 this.mProposedX = 0;
                 this.mProposedY = 0;
                 
+                
+		//dimensions
+                this.mLeftBounds = leftBounds;
+                this.mRightBounds = rightBounds;
+                this.mTopBounds = topBounds;
+                this.mBottomBounds = bottomBounds;
+                
                 // id counter
                 this.mIdCount = 0;
-
-                //dimensions
-                this.mDefaultSpriteSize = 50;
 
                 //fill possible spawnPosition Arrays
                 this.fillSpawnPositionArrays();
@@ -195,12 +194,12 @@ var Game = new Class(
 
         fillSpawnPositionArrays: function()
         {
-                for (i=this.mLeftBounds + this.mDefaultSpriteSize / 2; i <= this.mRightBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
+                for (i=this.mLeftBounds + 50 / 2; i <= this.mRightBounds - 50 / 2; i = i + 50)
                 {       
                         this.mPositionXArray.push(i);   
                 }
         
-                for (i=this.mTopBounds + this.mDefaultSpriteSize / 2; i <= this.mBottomBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
+                for (i=this.mTopBounds + 50 / 2; i <= this.mBottomBounds - 50 / 2; i = i + 50)
                 {       
                         this.mPositionYArray.push(i);   
                 }
@@ -209,7 +208,7 @@ var Game = new Class(
         createShapes: function()
         {
         	//control object
-                this.mControlObject = new ShapeCollidable(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,"","blue","","middle");
+                this.mControlObject = new ShapeCollidable(this,"",50,50,100,100,"","blue","","middle");
         },
 
         setUniqueSpawnPosition: function()

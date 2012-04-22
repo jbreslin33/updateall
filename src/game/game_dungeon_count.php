@@ -47,7 +47,7 @@ Extends: Game,
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeCollidableAI(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative");
+                        new ShapeCollidableAI(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative");
 
                 }
 	},
@@ -81,24 +81,24 @@ Extends: Game,
 
    	createLeftWall: function()
         {
-                for (i = this.mTopBounds + this.mDefaultSpriteSize; i <= this.mBottomBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
+                for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,"","black","","relative");
+                        new ShapeCollidable(this,"",1,50,this.mLeftBounds,i,"","black","","relative");
                 }
         },
 
         createRightWall: function()
         {
                 var greenDoorCount = 0; 
-                for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + this.mDefaultSpriteSize)
+                for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + 50)
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,"","green","","relative");
+                                new ShapeCollidable(this,"",1,50,this.mRightBounds,i,"","green","","relative");
                         }       
                         else
                         {       
-                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,"","black","","relative");
+                                new ShapeCollidable(this,"",1,50,this.mRightBounds,i,"","black","","relative");
                         }
                         greenDoorCount++;
                 }
@@ -107,17 +107,17 @@ Extends: Game,
 
         createTopWall: function()
         {
-                for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
+                for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,"","black","","relative");
+                        new ShapeCollidable(this,"",50,1,i,this.mTopBounds,"","black","","relative");
                 }
         },
 
         createBottomWall: function()
         {
-                for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
+                for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,"","black","","relative");
+                        new ShapeCollidable(this,"",50,1,i,this.mBottomBounds,"","black","","relative");
                 }
         },
 
@@ -184,9 +184,9 @@ Extends: Game,
         {
                 if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
                 {
-                        if (this.mControlObject.mPositionX > this.mRightBounds - this.mDefaultSpriteSize / 2 &&
+                        if (this.mControlObject.mPositionX > this.mRightBounds - 50 / 2 &&
                         this.mControlObject.mPositionY > this.mTopBounds &&
-                        this.mControlObject.mPositionY < this.mTopBounds + this.mDefaultSpriteSize * 2)
+                        this.mControlObject.mPositionY < this.mTopBounds + 50 * 2)
 
                         {
                                 this.mOn = false;

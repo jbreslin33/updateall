@@ -36,7 +36,7 @@ var Quiz = new Class(
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         this.mGame.setUniqueSpawnPosition();
-                        new ShapeCollidable(this.mGame,"",this.mGame.mDefaultSpriteSize,this.mGame.mDefaultSpriteSize,this.mGame.mPositionXArray[this.mGame.mProposedX],this.mGame.mPositionYArray[this.mGame.mProposedY],i,"yellow","","relative");
+                        new ShapeCollidable(this.mGame,"",50,50,this.mGame.mPositionXArray[this.mGame.mProposedX],this.mGame.mPositionYArray[this.mGame.mProposedY],i,"yellow","","relative");
                 }
 
 	},
