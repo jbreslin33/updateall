@@ -85,9 +85,6 @@ var Game = new Class(
 			//update hud
 			this.mHud.update(0);
                 
-                	//check collisions
-                	//this.checkForCollisions();
-        
                 	//check for end game
                 	this.checkForScoreNeeded();
         
@@ -234,41 +231,6 @@ var Game = new Class(
                         this.mShapeArray[i].mOldPositionY = this.mShapeArray[i].mPositionY;
                 }
         },
-
-        checkForCollisions: function()
-        {
-                for (s = 0; s < this.mShapeCollidableArray.length; s++)
-                {
-                        var x1 = this.mShapeCollidableArray[s].mPositionX;
-                        var y1 = this.mShapeCollidableArray[s].mPositionY;
- 
-                        for (i = 0; i < this.mShapeCollidableArray.length; i++)
-                        {
-                        	if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
-                                {
-                               		if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
-					{
-						continue;
-					}
-                                        var x2 = this.mShapeCollidableArray[i].mPositionX;              
-                                        var y2 = this.mShapeCollidableArray[i].mPositionY;              
-                
-                                        var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-					var collisionDistance = this.mShapeCollidableArray[s].mCollisionDistance + this.mShapeCollidableArray[i].mCollisionDistance;
-						
-                                        if (distSQ < collisionDistance) 
-                                        {
-                                        	this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
-                                        }
-                        	}
-                        }
-                }
-        },
-
-        evaluateCollision: function(mId1,mId2)
-        {
-        
-	},
 
         checkForScoreNeeded: function()
         {

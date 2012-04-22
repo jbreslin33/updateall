@@ -121,54 +121,6 @@ Extends: Game,
                 }
         },
 
-	evaluateCollision: function(mId1,mId2)
-        {
-                if (this.mShapeArray[mId1] == this.mControlObject)
-                {
-			if (this.mShapeArray[mId2].mInnerHTML)
-			{
-                               	if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mInnerHTML))			 
-				{
-                                        this.mShapeCollidableArray[mId2].mCollisionOn = false;
-                                        this.mShapeArray[mId2].setVisibility(false);
-
-                                        //feedback
-                                       	this.mHud.setFeedback("Correct!"); 
-                                }
-                                else
-                                {
-                                        //feedback
-                                       	this.mHud.setFeedback("Wrong! Try again."); 
-
-                                        //this deletes and then recreates everthing.
-                                        this.resetGame();
-                                }
-                               
-				//get a new question 
-				this.mQuiz.newQuestion();
-                                
-				//set text of control object
-				this.mControlObject.setText(this.mQuiz.mCount);
-
-                                this.mQuiz.newAnswer();
-        
-	                        this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
-                                this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
-
-                                this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
-                                this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
-			}
-                }
-                else
-                {
-                        this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
-                        this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
-
-                        this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
-                        this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
-                }
-        },
-
         checkForScoreNeeded: function()
         {
                 if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())

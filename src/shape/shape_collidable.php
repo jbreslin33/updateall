@@ -92,37 +92,6 @@ Extends: Shape,
                 this.mPositionY = this.mOldPositionY;
 	},
 
-/*
- if (this.mShapeArray[mId1] == this.mControlObject)
-                {
-                        if (this.mShapeArray[mId2].mInnerHTML)
-                        {
-                                if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mInnerHTML))                   
-                                {
-                                        this.mShapeCollidableArray[mId2].mCollisionOn = false;
-                                        this.mShapeArray[mId2].setVisibility(false);
-
-                                        //feedback
-                                        this.mHud.setFeedback("Correct!"); 
-                                }
-                                else
-                                {
-                                        //feedback
-                                        this.mHud.setFeedback("Wrong! Try again."); 
-
-                                        //this deletes and then recreates everthing.
-                                        this.resetGame();
-                                }
-                               
-                                //get a new question 
-                                this.mQuiz.newQuestion();
-                                
-                                //set text of control object
-                                this.mControlObject.setText(this.mQuiz.mCount);
-
-                                this.mQuiz.newAnswer();
-
-*/
 	sortGameVisibility: function(x,y)
 	{
         	if (this.mCollisionOn)
