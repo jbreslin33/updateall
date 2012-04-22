@@ -20,7 +20,46 @@ Extends: Shape,
         update: function(delta)
         {
        		this.parent(delta);
+	
+		if (this.mCollisionOn == true)
+		{	
+			this.checkForCollision();
+		}
         },
+
+	checkForCollision: function()
+        {
+                for (s = 0; s < this.mContainer.getGame().mShapeCollidableArray.length; s++)
+                {
+                        var x1 = this.mContainer.getGame().mShapeCollidableArray[s].mPositionX;
+                        var y1 = this.mContainer.getGame().mShapeCollidableArray[s].mPositionY;
+ 
+                        if (this.mContainer.getGame().mShapeCollidableArray[s].mCollisionOn == true)
+                        {
+                        	if (this == this.mContainer.getGame().mShapeCollidableArray[s])
+                                {
+                                        continue;
+                                }
+                                var x2 = this.mPositionX;              
+                                var y2 = this.mPositionY;              
+               
+                                var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                                var collisionDistance = this.mContainer.getGame().mShapeCollidableArray[s].mCollisionDistance + this.mCollisionDistance;
+                                                
+                                if (distSQ < collisionDistance) 
+                                {
+                                	this.evaluateCollision(this.mContainer.getGame().mShapeCollidableArray[s].mId);  
+                                	this.mContainer.getGame().mShapeCollidableArray[s].evaluateCollision(this);  
+                                }
+                	}
+		}
+        },
+
+	evaluateCollision: function(col)
+	{
+		this.mPositionX = this.mOldPositionX;
+                this.mPositionY = this.mOldPositionY;
+	},
 
 	sortGameVisibility: function(x,y)
 	{

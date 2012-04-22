@@ -86,7 +86,7 @@ var Game = new Class(
 			this.mHud.update(0);
                 
                 	//check collisions
-                	this.checkForCollisions();
+                	//this.checkForCollisions();
         
                 	//check for end game
                 	this.checkForScoreNeeded();
