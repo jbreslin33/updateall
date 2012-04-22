@@ -57,7 +57,6 @@ Extends: Game,
               	//set collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
-
                         //set every shape to spawn position
                         this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
                         this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
