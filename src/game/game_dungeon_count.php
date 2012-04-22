@@ -42,8 +42,9 @@ Extends: Game,
 
 	createShapes: function()
 	{
-		this.parent();
-		
+		//control object
+                this.mControlObject = new ShapeCollidableDungeonCount(this,"",50,50,100,100,"","blue","","middle");
+	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
