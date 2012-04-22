@@ -282,7 +282,6 @@ var Game = new Class(
                                                 var y2 = this.mShapeCollidableArray[i].mPositionY;              
                 
                                                 var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-						//var collisionDistance = (this.mShapeCollidableArray[s].mWidth + this.mShapeCollidableArray[i].mWidth) * 6.5;
 						var collisionDistance = this.mShapeCollidableArray[s].mCollisionDistance + this.mShapeCollidableArray[i].mCollisionDistance;
 						
                                                 if (distSQ < collisionDistance) 
