@@ -270,14 +270,12 @@ var Game = new Class(
  
                         for (i = 0; i < this.mShapeCollidableArray.length; i++)
                         {
-                                if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
-                                {
-                                        //skip
-                                }
-                                else
-                                {
                                         if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
                                         {
+                                		if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
+						{
+							continue;
+						}
                                                 var x2 = this.mShapeCollidableArray[i].mPositionX;              
                                                 var y2 = this.mShapeCollidableArray[i].mPositionY;              
                 
@@ -289,7 +287,6 @@ var Game = new Class(
                                                         this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
                                                 }
                                         }
-                                }       
                         }
                 }
         },
