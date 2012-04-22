@@ -178,7 +178,7 @@ var Game = new Class(
         createShapes: function()
         {
         	//control object
-                this.mControlObject = new ShapeCollidable(this,"",50,50,100,100,"","blue","","middle");
+                this.mControlObject = new ShapeCollidable(this,"",50,50,100,100,"","blue","","middle","controlObject");
         },
 
         setUniqueSpawnPosition: function()

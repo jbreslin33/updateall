@@ -43,12 +43,12 @@ Extends: Game,
 	createShapes: function()
 	{
 		//control object
-                this.mControlObject = new ShapeCollidableDungeonCount(this,"",50,50,100,100,"","blue","","middle");
+                this.mControlObject = new ShapeCollidableDungeonCount(this,"",50,50,100,100,"","blue","","middle","controlObject");
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeCollidableAI(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative");
+                        new ShapeCollidableAI(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative","chaser");
 
                 }
 	},
@@ -84,7 +84,7 @@ Extends: Game,
         {
                 for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,this.mLeftBounds,i,"","black","","relative");
+                        new ShapeCollidable(this,"",50,50,this.mLeftBounds,i,"","black","","relative","wall");
                 }
         },
 
@@ -95,11 +95,11 @@ Extends: Game,
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","green","","relative");
+                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","green","","relative","wall");
                         }       
                         else
                         {       
-                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","black","","relative");
+                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","black","","relative","wall");
                         }
                         greenDoorCount++;
                 }
@@ -110,7 +110,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,i,this.mTopBounds,"","black","","relative");
+                        new ShapeCollidable(this,"",50,50,i,this.mTopBounds,"","black","","relative","wall");
                 }
         },
 
@@ -118,7 +118,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,i,this.mBottomBounds,"","black","","relative");
+                        new ShapeCollidable(this,"",50,50,i,this.mBottomBounds,"","black","","relative","wall");
                 }
         },
 

@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
                 
                 //container for this shape, for the quiz class we pass in game but for hud we pass in hud. the quiz shapes can collide but the hud is independent.
@@ -77,7 +77,9 @@ var Shape = new Class(
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
 		this.mContainer.mIdCount++;
-        
+       
+		//message ..this can be used for collisions or whatever
+		this.mMessage 
         },
         
         update: function(delta)
