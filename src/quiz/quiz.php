@@ -82,8 +82,10 @@ var Quiz = new Class(
         {
                 //set question
                 this.mQuestion = this.mCount;
-//		this.mGame.mHud.setQuestion(this.mQuestion);
-        },
+		
+		//a new question needs a new answer
+       		this.newAnswer(); 
+	},
 
 	getQuestion: function()
 	{
