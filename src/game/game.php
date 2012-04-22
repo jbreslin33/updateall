@@ -210,7 +210,7 @@ var Game = new Class(
         createShapes: function()
         {
         	//control object
-                this.mControlObject = new ShapeCollidable(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,true,"","blue","","middle");
+                this.mControlObject = new ShapeCollidable(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,"","blue","","middle");
         },
 
         setUniqueSpawnPosition: function()

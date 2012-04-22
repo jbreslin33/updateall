@@ -3,14 +3,11 @@ var ShapeCollidable = new Class(
 
 Extends: Shape, 
 
-        initialize: function(container,src,width,height,spawnX,spawnY,collidable,collisionOn,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType)
         {
         	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType);
                 
-		//collision
-		this.mCollidable = collidable;
-
-                this.mCollisionOn = collisionOn;
+                this.mCollisionOn = true;
 
                 //add to array
                 this.mContainer.getGame().mShapeCollidableArray.push(this);

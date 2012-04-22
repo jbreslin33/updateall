@@ -47,7 +47,7 @@ Extends: Game,
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeCollidableAI(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],true,true,true,"","red","","relative");
+                        new ShapeCollidableAI(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative");
 
                 }
 	},
@@ -84,7 +84,7 @@ Extends: Game,
         {
                 for (i = this.mTopBounds + this.mDefaultSpriteSize; i <= this.mBottomBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,true,true,"","black","","relative");
+                        new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,"","black","","relative");
                 }
         },
 
@@ -95,11 +95,11 @@ Extends: Game,
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,true,true,"","green","","relative");
+                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,"","green","","relative");
                         }       
                         else
                         {       
-                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,true,true,"","black","","relative");
+                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,"","black","","relative");
                         }
                         greenDoorCount++;
                 }
@@ -110,7 +110,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,true,true,"","black","","relative");
+                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,"","black","","relative");
                 }
         },
 
@@ -118,7 +118,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,true,true,"","black","","relative");
+                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,"","black","","relative");
                 }
         },
 
