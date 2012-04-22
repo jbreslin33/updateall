@@ -47,11 +47,11 @@ var Hud = new Class(
 
 	createHud: function()
 	{
-		this.mGameNameHud    = new Shape(this,"",140,50,0,0,false,"",false,false,false,"" + this.mGame.mName,"violet","","normal");
-		this.mScoreHud 	     = new Shape(this,"",140,50,0,50,false,"",false,false,false,"","pink","","normal");
-		this.mScoreNeededHud = new Shape(this,"",140,50,0,100,false,"",false,false,false,"","violet","","normal");
-		this.mFeedbackHud    = new Shape(this,"",140,50,0,150,false,"",false,false,false,"","pink","","normal");
-		this.mQuestionHud    = new Shape(this,"",140,50,0,200,false,"",false,false,false,"","violet","","normal");
+		this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.mGame.mName,"violet","","normal");
+		this.mScoreHud 	     = new Shape(this,"",140,50,0,50,"","pink","","normal");
+		this.mScoreNeededHud = new Shape(this,"",140,50,0,100,"","violet","","normal");
+		this.mFeedbackHud    = new Shape(this,"",140,50,0,150,"","pink","","normal");
+		this.mQuestionHud    = new Shape(this,"",140,50,0,200,"","violet","","normal");
 
 	},	
 

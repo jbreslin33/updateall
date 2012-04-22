@@ -91,6 +91,9 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 <script type="text/javascript" src="../hud/hud.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
+<script type="text/javascript" src="../shape/shape_collidable.php"></script>
+<script type="text/javascript" src="../shape/shape_collidable_question.php"></script>
+<script type="text/javascript" src="../shape/shape_collidable_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
 

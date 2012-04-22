@@ -47,7 +47,7 @@ Extends: Game,
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],true,"",true,true,true,"","red","","relative");
+                        new ShapeCollidableAI(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],true,true,true,"","red","","relative");
 
                 }
 	},
@@ -62,9 +62,9 @@ Extends: Game,
                         this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
                         this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
 
-                        if (this.mShapeArray[i].mCollidable == true)
+                        if (this.mShapeCollidableArray[i].mCollidable == true)
                         {
-                                this.mShapeArray[i].mCollisionOn = true;
+                                this.mShapeCollidableArray[i].mCollisionOn = true;
                                 this.mShapeArray[i].setVisibility(true);
                         }
                 }
@@ -83,7 +83,7 @@ Extends: Game,
         {
                 for (i = this.mTopBounds + this.mDefaultSpriteSize; i <= this.mBottomBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new Shape(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,false,"",true,true,false,"","black","","relative");
+                        new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mLeftBounds,i,true,true,"","black","","relative");
                 }
         },
 
@@ -94,11 +94,11 @@ Extends: Game,
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,"",true,true,false,"","green","","relative");
+                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,true,true,"","green","","relative");
                         }       
                         else
                         {       
-                                new Shape(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,false,"",true,true,false,"","black","","relative");
+                                new ShapeCollidable(this,"",1,this.mDefaultSpriteSize,this.mRightBounds,i,true,true,"","black","","relative");
                         }
                         greenDoorCount++;
                 }
@@ -109,7 +109,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,false,"",true,true,false,"","black","","relative");
+                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mTopBounds,true,true,"","black","","relative");
                 }
         },
 
@@ -117,20 +117,19 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + this.mDefaultSpriteSize; i <= this.mRightBounds - this.mDefaultSpriteSize; i = i + this.mDefaultSpriteSize)
                 {
-                        new Shape(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,false,"",true,true,false,"","black","","relative");
+                        new ShapeCollidable(this,"",this.mDefaultSpriteSize,1,i,this.mBottomBounds,true,true,"","black","","relative");
                 }
         },
 
 	evaluateCollision: function(mId1,mId2)
         {
+
                 if (this.mShapeArray[mId1] == this.mControlObject)
                 {
 
-                        if (this.mShapeArray[mId2].mIsQuestion)
-                        {
-                               	if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mAnswer))			 
+                               	if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mInnerHTML))			 
 				{
-                                        this.mShapeArray[mId2].mCollisionOn = false;
+                                        this.mShapeCollidableArray[mId2].mCollisionOn = false;
                                         this.mShapeArray[mId2].setVisibility(false);
 
                                         //feedback
@@ -152,15 +151,11 @@ Extends: Game,
 				this.mControlObject.setText(this.mQuiz.mCount);
 
                                 this.mQuiz.newAnswer();
-                        }
-                        else
-                        {
                                 this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
                                 this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
 
                                 this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
                                 this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
-                        }
                 }
                 else
                 {
@@ -170,6 +165,7 @@ Extends: Game,
                         this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
                         this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
                 }
+
         },
 
         checkForScoreNeeded: function()

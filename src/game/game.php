@@ -14,8 +14,10 @@ var Game = new Class(
                 //shape Array
                 this.mShapeArray = new Array();
 
-		
-	        //On_Off
+		//collidable shape array
+                this.mShapeCollidableArray = new Array();
+	        
+		//On_Off
                 this.mOn = true;
         
                 //shapes
@@ -208,7 +210,7 @@ var Game = new Class(
         createShapes: function()
         {
         	//control object
-                this.mControlObject = new Shape(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,false,"",true,true,false,"","blue","","middle");
+                this.mControlObject = new ShapeCollidable(this,"",this.mDefaultSpriteSize,this.mDefaultSpriteSize,100,100,true,true,"","blue","","middle");
         },
 
         setUniqueSpawnPosition: function()
@@ -269,15 +271,15 @@ var Game = new Class(
                         var x1 = this.mShapeArray[s].mPositionX;
                         var y1 = this.mShapeArray[s].mPositionY;
  
-                        for (i = 0; i < this.mShapeArray.length; i++)
+                        for (i = 0; i < this.mShapeCollidableArray.length; i++)
                         {
-                                if (this.mShapeArray[i] == this.mShapeArray[s])
+                                if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
                                 {
                                         //skip
                                 }
                                 else
                                 {
-                                        if (this.mShapeArray[i].mCollisionOn == true && this.mShapeArray[s].mCollisionOn == true)
+                                        if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
                                         {
                                                 var x2 = this.mShapeArray[i].mPositionX;              
                                                 var y2 = this.mShapeArray[i].mPositionY;              
@@ -285,7 +287,7 @@ var Game = new Class(
                                                 var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                                                 if (distSQ < this.mCollisionDistance) 
                                                 {
-                                                        this.evaluateCollision(this.mShapeArray[s].mId,this.mShapeArray[i].mId);                      
+                                                        this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
                                                 }
                                         }
                                 }       

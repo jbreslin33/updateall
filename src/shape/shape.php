@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function(container,src,width,height,spawnX,spawnY,isQuestion,answer,collidable,collisionOn,ai,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType)
         {
                 
                 //container for this shape, for the quiz class we pass in game but for hud we pass in hud. the quiz shapes can collide but the hud is independent.
@@ -11,11 +11,6 @@ var Shape = new Class(
 	
 		//id 
 		this.mId = this.mContainer.mIdCount;
-		
-		//ai
-		this.mAI = ai;  
-                this.mAiCounter = 0;
-                this.mAiCounterDelay = 10;
 		
 		//src 
 		this.mSrc = src;
@@ -40,27 +35,8 @@ var Shape = new Class(
 		this.mKeyX = 0;
                 this.mKeyY = 0;
                 
-		//collision
-		this.mCollidable = collidable;
-                this.mCollisionOn = collisionOn;
-               
-		//questions 
-		this.mIsQuestion = isQuestion;
-               
-		//answers 
-		this.mAnswer = answer;
-              
-		if (this.mAnswer == "")
-		{
-			//html	
-			this.mInnerHTML = innerHTML; 
-		}
-		else
-		{
-			//html
-			this.mInnerHTML = this.mAnswer; 
-		}
- 
+		//html	
+		this.mInnerHTML = innerHTML; 
                 
 		//background
 		this.mBackgroundColor = backgroundColor;
@@ -106,14 +82,6 @@ var Shape = new Class(
         
         update: function(delta)
         {
-                //run ai                
-                if (this.mAiCounter > this.mAiCounterDelay)
-                {       
-                        this.ai();
-                        this.mAiCounter = 0;
-                }
-                this.mAiCounter++;
-                
                 //update Velocity
                 this.mVelocityX = this.mKeyX * delta * speed;
                 this.mVelocityY = this.mKeyY * delta * speed;
@@ -157,59 +125,6 @@ var Shape = new Class(
 		this.mBackgroundColor = c;
 		this.mDiv.mDiv.style.backgroundColor = c;
 	},
-
-        ai: function()
-        {
-                if (this.mAI == true)
-                {
-                        var direction = Math.floor(Math.random()*9)     
-                        if (direction == 0) //left
-                        {
-                                this.mKeyX = -1;
-                                this.mKeyY = 0;
-                        }
-                        if (direction == 1) //right
-                        {
-                                this.mKeyX = 1;
-                                this.mKeyY = 0;
-                        }
-                        if (direction == 2) //up
-                        {
-                                this.mKeyX = 0;
-                                this.mKeyY = -1;
-                        }
-                        if (direction == 3) //down
-                        {
-                                this.mKeyX = 0;
-                                this.mKeyY = 1;
-                        }
-                        if (direction == 4) //leftup
-                        {
-                                this.mKeyX = -.5;
-                                this.mKeyY = -.5;
-                        }
-                        if (direction == 5) //leftdown
-                        {
-                                this.mKeyX = -.5;
-                                this.mKeyY = .5;
-                        }
-                        if (direction == 6) //rightup
-                        {
-                                this.mKeyX = .5;
-                                this.mKeyY = -.5;
-                        }
-                        if (direction == 7) //rightdown
-                        {
-                                this.mKeyX = .5;
-                                this.mKeyY = .5;
-                        }
-                        if (direction == 8) //stop
-                        {
-                                this.mKeyX = 0;
-                                this.mKeyY = 0;
-                        }
-                } 
-        },
 
         draw: function()
         {
@@ -265,17 +180,7 @@ var Shape = new Class(
 
 	sortGameVisibility: function(x,y)
 	{
-        	if (this.mCollisionOn ||
-                	this.mIsQuestion == 'false')
-                {
-                	this.setPosition(x,y);
-                       	this.setVisibility(true);
-                }
-                else
-                {
-                	this.setPosition(0,0);
-                        this.setVisibility(false);
-                }
+
 	},
 
 	protectScrollBars: function(x,y)
