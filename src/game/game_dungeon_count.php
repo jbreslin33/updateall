@@ -54,22 +54,23 @@ Extends: Game,
 
 	resetGame: function()
 	{
-              //set collidable to true
+              	//set collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
 
                         //set every shape to spawn position
                         this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
                         this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
-
-                        if (this.mShapeCollidableArray[i].mCollidable == true)
-                        {
-                                this.mShapeCollidableArray[i].mCollisionOn = true;
-                                this.mShapeArray[i].setVisibility(true);
-                        }
+                        this.mShapeCollidableArray[i].setVisibility(true);
                 }
-                this.mControlObject.mPositionX = 0;
-                this.mControlObject.mPositionY = 0;
+
+                for (i=0; i < this.mShapeCollidableArray.length; i++)
+		{
+                	this.mShapeCollidableArray[i].mCollisionOn = true;
+		}
+
+                //this.mControlObject.mPositionX = 0;
+                //this.mControlObject.mPositionY = 0;
 
 		//let's reset all quiz stuff right here.
 		this.mQuiz.reset();
