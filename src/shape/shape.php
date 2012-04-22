@@ -79,7 +79,7 @@ var Shape = new Class(
 		this.mContainer.mIdCount++;
        
 		//message ..this can be used for collisions or whatever
-		this.mMessage 
+		this.mMessage = message;
         },
         
         update: function(delta)

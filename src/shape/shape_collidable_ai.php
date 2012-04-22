@@ -3,9 +3,9 @@ var ShapeCollidableAI = new Class(
 
 Extends: ShapeCollidable,
 
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
-        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType);
+        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
 		
 		//ai
                 this.mAiCounter = 0;

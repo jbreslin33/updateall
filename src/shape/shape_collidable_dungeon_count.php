@@ -3,16 +3,16 @@ var ShapeCollidableDungeonCount = new Class(
 
 Extends: ShapeCollidable, 
 
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType)
+        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
-        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType);
+        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
         },
         
 	evaluateCollision: function(col)
 	{
 		if (this == this.mContainer.getGame().mControlObject)
                 {
-                        if (col.mInnerHTML)
+                        if (col.mMessage == "question")
                         {
                                 if (this.mContainer.getGame().mQuiz.checkAnswer(col.mInnerHTML))                   
                                 {
@@ -37,6 +37,8 @@ Extends: ShapeCollidable,
                                 //set text of control object
                                 this.setText(this.mContainer.getGame().mQuiz.mCount);
 			}
+
+			
 		}	
 	
 		this.parent(col);
