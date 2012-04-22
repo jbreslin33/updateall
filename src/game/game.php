@@ -270,23 +270,23 @@ var Game = new Class(
  
                         for (i = 0; i < this.mShapeCollidableArray.length; i++)
                         {
-                                        if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
-                                        {
-                                		if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
-						{
-							continue;
-						}
-                                                var x2 = this.mShapeCollidableArray[i].mPositionX;              
-                                                var y2 = this.mShapeCollidableArray[i].mPositionY;              
+                        	if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
+                                {
+                               		if (this.mShapeCollidableArray[i] == this.mShapeCollidableArray[s])
+					{
+						continue;
+					}
+                                        var x2 = this.mShapeCollidableArray[i].mPositionX;              
+                                        var y2 = this.mShapeCollidableArray[i].mPositionY;              
                 
-                                                var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-						var collisionDistance = this.mShapeCollidableArray[s].mCollisionDistance + this.mShapeCollidableArray[i].mCollisionDistance;
+                                        var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+					var collisionDistance = this.mShapeCollidableArray[s].mCollisionDistance + this.mShapeCollidableArray[i].mCollisionDistance;
 						
-                                                if (distSQ < collisionDistance) 
-                                                {
-                                                        this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
-                                                }
+                                        if (distSQ < collisionDistance) 
+                                        {
+                                        	this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
                                         }
+                        	}
                         }
                 }
         },
