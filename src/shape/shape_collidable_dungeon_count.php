@@ -12,7 +12,7 @@ Extends: ShapeCollidable,
 	{
 		if (this == this.mContainer.getGame().mControlObject)
                 {
-                        if (col.mMessage == "question")
+                        if (col.mMessage == "question" || col.mMessage == "chaser")
                         {
                                 if (this.mContainer.getGame().mQuiz.checkAnswer(col.mInnerHTML))                   
                                 {
