@@ -151,7 +151,8 @@ Extends: Game,
 				this.mControlObject.setText(this.mQuiz.mCount);
 
                                 this.mQuiz.newAnswer();
-                                this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
+        
+	                        this.mShapeArray[mId1].mPositionX = this.mShapeArray[mId1].mOldPositionX;
                                 this.mShapeArray[mId1].mPositionY = this.mShapeArray[mId1].mOldPositionY;
 
                                 this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
