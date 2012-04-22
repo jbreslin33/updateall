@@ -1,7 +1,7 @@
 var Game = new Class(
 {
 
-        initialize: function(application, name, leftBounds, rightBounds, topBounds, bottomBounds)
+        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds)
         {
 		//game name
 		this.mName = name;
@@ -30,9 +30,6 @@ var Game = new Class(
                 //control object
                 this.mControlObject;
                 
-                //speed
-                this.mSpeed = speed;
-        
                 //dimensions
                 this.mLeftBounds = leftBounds;
                 this.mRightBounds = rightBounds;

@@ -110,7 +110,7 @@ window.addEvent('domready', function()
         mApplication = new Application();
         
 	//the game
-        mGame = new GameDungeonCount(this, name, numberOfChasers, leftBounds, rightBounds, topBounds, bottomBounds);
+        mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
 	//the quiz
 	mQuiz = new Quiz(mGame,scoreNeeded,countBy,startNumber,endNumber);

@@ -83,8 +83,8 @@ var Shape = new Class(
         update: function(delta)
         {
                 //update Velocity
-                this.mVelocityX = this.mKeyX * delta * speed;
-                this.mVelocityY = this.mKeyY * delta * speed;
+                this.mVelocityX = this.mKeyX * delta * this.mSpeed;
+                this.mVelocityY = this.mKeyY * delta * this.mSpeed;
 
                 //update position
                 this.mPositionX += this.mVelocityX;
