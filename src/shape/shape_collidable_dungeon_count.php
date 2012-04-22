@@ -37,8 +37,6 @@ Extends: ShapeCollidable,
                                 //set text of control object
                                 this.setText(this.mContainer.getGame().mQuiz.mCount);
 			}
-
-			
 		}	
 	
 		this.parent(col);
