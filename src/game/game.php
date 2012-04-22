@@ -1,7 +1,7 @@
 var Game = new Class(
 {
 
-        initialize: function(application, name, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(application, name, leftBounds, rightBounds, topBounds, bottomBounds)
         {
 		//game name
 		this.mName = name;
@@ -39,9 +39,6 @@ var Game = new Class(
                 this.mTopBounds = topBounds;
                 this.mBottomBounds = bottomBounds;
 
-                //collisionDistnce
-                this.mCollisionDistance = collisionDistance;    
-                
                 //proposed positions    
                 this.mProposedX = 0;
                 this.mProposedY = 0;
@@ -286,11 +283,14 @@ var Game = new Class(
                                 {
                                         if (this.mShapeCollidableArray[i].mCollisionOn == true && this.mShapeCollidableArray[s].mCollisionOn == true)
                                         {
-                                                var x2 = this.mShapeArray[i].mPositionX;              
-                                                var y2 = this.mShapeArray[i].mPositionY;              
+                                                var x2 = this.mShapeCollidableArray[i].mPositionX;              
+                                                var y2 = this.mShapeCollidableArray[i].mPositionY;              
                 
                                                 var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                                                if (distSQ < this.mCollisionDistance) 
+						//var collisionDistance = (this.mShapeCollidableArray[s].mWidth + this.mShapeCollidableArray[i].mWidth) * 6.5;
+						var collisionDistance = this.mShapeCollidableArray[s].mCollisionDistance + this.mShapeCollidableArray[i].mCollisionDistance;
+						
+                                                if (distSQ < collisionDistance) 
                                                 {
                                                         this.evaluateCollision(this.mShapeCollidableArray[s].mId,this.mShapeCollidableArray[i].mId);                      
                                                 }

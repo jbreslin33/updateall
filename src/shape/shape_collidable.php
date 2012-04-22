@@ -9,6 +9,9 @@ Extends: Shape,
                 
                 this.mCollisionOn = true;
 
+	        //collisionDistance
+                this.mCollisionDistance = this.mWidth * 6.5;
+
                 //add to array
                 this.mContainer.getGame().mShapeCollidableArray.push(this);
 

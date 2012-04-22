@@ -18,7 +18,7 @@ var Shape = new Class(
 		//size 
 		this.mWidth = width;
                 this.mHeight = height;
-                
+
 		//position
 		this.mPositionX = spawnX;
                 this.mPositionY = spawnY;
