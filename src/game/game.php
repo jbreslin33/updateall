@@ -85,9 +85,6 @@ var Game = new Class(
 			//update hud
 			this.mHud.update(0);
                 
-                	//reality check for out of bounds for avatar
-                	this.checkForOutOfBounds();
-        
                 	//check collisions
                 	this.checkForCollisions();
         
@@ -165,29 +162,6 @@ var Game = new Class(
                 {
                         this.mControlObject.mKeyX = 0;
                         this.mControlObject.mKeyY = 0;
-                }
-        },
-
-        checkForOutOfBounds: function()
-        {
-                for (i = 0; i < this.mShapeArray.length; i++)
-                {       
-                        if (this.mShapeArray[i].mPositionX < this.mLeftBounds)
-                        {
-                                this.mShapeArray[i].mPositionX = this.mLeftBounds;              
-                        }
-                        if (this.mShapeArray[i].mPositionX > this.mRightBounds)
-                        {
-                                this.mShapeArray[i].mPositionX = this.mRightBounds;
-                        }
-                        if (this.mShapeArray[i].mPositionY < this.mTopBounds)
-                        {
-                                this.mShapeArray[i].mPositionY = this.mTopBounds;
-                        }
-                        if (this.mShapeArray[i].mPositionY > this.mBottomBounds)
-                        {
-                                this.mShapeArray[i].mPositionY = this.mBottomBounds;
-                        }
                 }
         },
 

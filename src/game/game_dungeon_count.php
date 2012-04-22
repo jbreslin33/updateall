@@ -125,6 +125,8 @@ Extends: Game,
         {
                 if (this.mShapeArray[mId1] == this.mControlObject)
                 {
+			if (this.mShapeArray[mId2].mInnerHTML)
+			{
                                	if (this.mQuiz.checkAnswer(this.mShapeArray[mId2].mInnerHTML))			 
 				{
                                         this.mShapeCollidableArray[mId2].mCollisionOn = false;
@@ -154,6 +156,7 @@ Extends: Game,
 
                                 this.mShapeArray[mId2].mPositionX = this.mShapeArray[mId2].mOldPositionX;
                                 this.mShapeArray[mId2].mPositionY = this.mShapeArray[mId2].mOldPositionY;
+			}
                 }
                 else
                 {
