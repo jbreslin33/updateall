@@ -199,7 +199,6 @@ var Game = new Class(
                 }
         },
 
-//you should instead just do collision detection instead of this nonsense.
         fillSpawnPositionArrays: function()
         {
                 for (i=this.mLeftBounds + this.mDefaultSpriteSize / 2; i <= this.mRightBounds - this.mDefaultSpriteSize / 2; i = i + this.mDefaultSpriteSize)
