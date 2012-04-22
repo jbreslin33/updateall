@@ -1,7 +1,7 @@
 var Game = new Class(
 {
 
-        initialize: function(application, name, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
+        initialize: function(application, name, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance)
         {
 		//game name
 		this.mName = name;
@@ -61,7 +61,7 @@ var Game = new Class(
 		this.mHud.createHud();
 	        
 		//quiz
-                this.mQuiz = new Quiz(this,scoreNeeded,countBy,startNumber,endNumber);
+                this.mQuiz;
         },
 
 	getGame: function()
@@ -107,6 +107,11 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",20)
                 }
         },
+
+	setQuiz: function(quiz)
+	{
+		this.mQuiz = quiz;
+	},
 
 	createWorld: function()
 	{

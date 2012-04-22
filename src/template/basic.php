@@ -108,8 +108,14 @@ window.addEvent('domready', function()
 {
 	//application to handle time and input
         mApplication = new Application();
-        //the game
-        mGame = new GameDungeonCount(this, name, scoreNeeded, countBy, startNumber, endNumber, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+        
+	//the game
+        mGame = new GameDungeonCount(this, name, numberOfChasers, speed, leftBounds, rightBounds, topBounds, bottomBounds, collisionDistance);
+
+	//the quiz
+	mQuiz = new Quiz(mGame,scoreNeeded,countBy,startNumber,endNumber);
+
+	mGame.setQuiz(mQuiz);
 	
 	//call thes "virtual methods"
 	mGame.createWorld();
