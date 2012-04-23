@@ -113,6 +113,11 @@ window.addEvent('domready', function()
 	//the game
         mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
+	//hud
+	mHud = new Hud(mGame);
+	mGame.setHud(mHud);
+	mHud.createHud();
+
 	//the quiz
 	mQuiz = new Quiz(mGame,scoreNeeded,countBy,startNumber,endNumber);
 

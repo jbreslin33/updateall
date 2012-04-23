@@ -21,8 +21,7 @@ var Game = new Class(
                 this.mTimeSinceLastInterval = 0;
 
 		/************ HUD **********************/
-		this.mHud = new Hud(this);
-		this.mHud.createHud();
+		this.mHud;
 	        
 		/********************** QUIZ **************/
                 this.mQuiz;
@@ -93,6 +92,11 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",20)
                 }
         },
+
+	setHud: function(hud)
+	{
+		this.mHud = hud;
+	},
 
 	setQuiz: function(quiz)
 	{
