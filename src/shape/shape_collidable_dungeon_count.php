@@ -3,39 +3,39 @@ var ShapeCollidableDungeonCount = new Class(
 
 Extends: ShapeCollidable, 
 
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
+        initialize: function(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
-        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
+        	this.parent(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
         },
         
 	evaluateCollision: function(col)
 	{
-		if (this == this.mContainer.getGame().mControlObject)
+		if (this == this.getGame().mControlObject)
                 {
                         if (col.mMessage == "question" || col.mMessage == "chaser")
                         {
-                                if (this.mContainer.getGame().mQuiz.checkAnswer(col.mInnerHTML))                   
+                                if (this.getGame().mQuiz.checkAnswer(col.mInnerHTML))                   
                                 {
                                         col.mCollisionOn = false;
                                         col.setVisibility(false);
 
                                         //feedback
-                                        this.mContainer.getGame().mHud.setFeedback("Correct!"); 
+                                        this.getGame().setFeedback("Correct!"); 
                                 }
                                 else
                                 {
                                         //feedback
-                                        this.mContainer.getGame().mHud.setFeedback("Wrong! Try again."); 
+                                        this.getGame().setFeedback("Wrong! Try again."); 
 
                                         //this deletes and then recreates everthing.
-                                        this.mContainer.getGame().resetGame();
+                                        this.getGame().resetGame();
                                 }
                                
                                 //get a new question 
-                                this.mContainer.getGame().mQuiz.newQuestion();
+                                this.getGame().mQuiz.newQuestion();
                                 
                                 //set text of control object
-                                this.setText(this.mContainer.getGame().mQuiz.mCount);
+                                this.setText(this.getGame().mQuiz.mCount);
 			}
 		}	
 	

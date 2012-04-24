@@ -20,9 +20,6 @@ var Game = new Class(
                 this.mLastTimeSinceEpoch = 0;
                 this.mDeltaTime = 0;
 
-		/************ HUD **********************/
-		this.mHud;
-	        
 		/********************** QUIZ **************/
                 this.mQuiz;
                	
@@ -50,8 +47,16 @@ var Game = new Class(
 
                 //fill possible spawnPosition Arrays
                 this.fillSpawnPositionArrays();
-
+		
+		/***************** HUD ****************/
+                this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
+              	this.mFeedbackHud    = new Shape(this,"",140,50,0,50,"HAV FUN!","pink","","normal","hud");
         },
+
+	setFeedback: function(feedback)
+	{
+		this.mFeedbackHud.setText(feedback);
+	},
 
 	getGame: function()
 	{
@@ -94,9 +99,6 @@ var Game = new Class(
                         	this.mShapeArray[i].update(this.mDeltaTime);
                 	}
 
-			//update hud
-			this.mHud.update(0);
-                
                 	//check for end game
                 	this.checkForScoreNeeded();
         
@@ -105,11 +107,6 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",20)
                 }
         },
-
-	setHud: function(hud)
-	{
-		this.mHud = hud;
-	},
 
 	setQuiz: function(quiz)
 	{

@@ -88,7 +88,6 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 
 <script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../game/game_dungeon_count.php"></script>
-<script type="text/javascript" src="../hud/hud.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../shape/shape_collidable.php"></script>
@@ -113,15 +112,8 @@ window.addEvent('domready', function()
 	//the game
         mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
-	mQuiz = new Quiz(mGame,scoreNeeded,countBy,startNumber,endNumber);
-	
-	//hud
-	mHud = new Hud(mGame,mQuiz);
-	mGame.setHud(mHud);
-	mHud.createHud();
-
 	//the quiz
-
+	mQuiz = new Quiz(mGame,scoreNeeded,countBy,startNumber,endNumber);
 	mGame.setQuiz(mQuiz);
 	
 	//call thes "virtual methods"

@@ -3,9 +3,9 @@ var ShapeCollidable = new Class(
 
 Extends: Shape, 
 
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
+        initialize: function(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
-        	this.parent(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
+        	this.parent(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
                 
                 this.mCollisionOn = true;
 
@@ -13,7 +13,7 @@ Extends: Shape,
                 this.mCollisionDistance = this.mWidth * 6.5;
 
                 //add to array
-                this.mContainer.getGame().mShapeCollidableArray.push(this);
+                this.mGame.mShapeCollidableArray.push(this);
 
         },
         
@@ -29,14 +29,14 @@ Extends: Shape,
 
 	checkForCollision: function()
         {
-                for (s = 0; s < this.mContainer.getGame().mShapeCollidableArray.length; s++)
+                for (s = 0; s < this.getGame().mShapeCollidableArray.length; s++)
                 {
-                        var x1 = this.mContainer.getGame().mShapeCollidableArray[s].mPositionX;
-                        var y1 = this.mContainer.getGame().mShapeCollidableArray[s].mPositionY;
+                        var x1 = this.getGame().mShapeCollidableArray[s].mPositionX;
+                        var y1 = this.getGame().mShapeCollidableArray[s].mPositionY;
  
-                        if (this.mContainer.getGame().mShapeCollidableArray[s].mCollisionOn == true)
+                        if (this.getGame().mShapeCollidableArray[s].mCollisionOn == true)
                         {
-                        	if (this == this.mContainer.getGame().mShapeCollidableArray[s])
+                        	if (this == this.getGame().mShapeCollidableArray[s])
                                 {
                                         continue;
                                 }
@@ -44,12 +44,12 @@ Extends: Shape,
                                 var y2 = this.mPositionY;              
                
                                 var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                                var collisionDistance = this.mContainer.getGame().mShapeCollidableArray[s].mCollisionDistance + this.mCollisionDistance;
+                                var collisionDistance = this.getGame().mShapeCollidableArray[s].mCollisionDistance + this.mCollisionDistance;
                                                 
                                 if (distSQ < collisionDistance) 
                                 {
-                                	this.evaluateCollision(this.mContainer.getGame().mShapeCollidableArray[s]);  
-                                	this.mContainer.getGame().mShapeCollidableArray[s].evaluateCollision(this);  
+                                	this.evaluateCollision(this.getGame().mShapeCollidableArray[s]);  
+                                	this.getGame().mShapeCollidableArray[s].evaluateCollision(this);  
                                 }
                 	}
 		}

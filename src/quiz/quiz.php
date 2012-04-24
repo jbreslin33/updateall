@@ -21,6 +21,10 @@ var Quiz = new Class(
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
 
+		/******************** HUD ********************/
+                this.mScoreHud       = new Shape(this.mGame,"",140,50,0,150,"Score: " + this.getScore(),"pink","","normal","hud");
+                this.mScoreNeededHud = new Shape(this.mGame,"",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","normal","hud");
+                this.mQuestionHud    = new Shape(this.mGame,"",140,50,0,250,"Question:","violet","","normal","hud");
 
 //		this.create();
         },
@@ -68,7 +72,7 @@ var Quiz = new Class(
 		{
                 	this.mCount = this.mCount + this.mCountBy;  //add to count
                         this.incrementScore();
-	
+			
 			return true;
 		}
 		else
@@ -82,6 +86,8 @@ var Quiz = new Class(
         {
                 //set question
                 this.mQuestion = this.mCount;
+
+		this.mQuestionHud.setText("Question: " + this.mQuestion);
 		
 		//a new question needs a new answer
        		this.newAnswer(); 
@@ -125,8 +131,11 @@ var Quiz = new Class(
 	
 	incrementScore: function()
 	{
+	
 		this.mScore++;
+		this.mScoreHud.setText("Score: " + this.mScore);
 	}
+
 });
 
 

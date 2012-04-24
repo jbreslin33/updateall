@@ -1,10 +1,10 @@
 var Shape = new Class(
 {
-        initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
+        initialize: function(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
                 
                 //container for this shape, for the quiz class we pass in game but for hud we pass in hud. the quiz shapes can collide but the hud is independent.
-                this.mContainer = container;      
+                this.mGame = game;      
 	
 		//speed
 		this.mSpeed = .1;
@@ -47,7 +47,7 @@ var Shape = new Class(
 		this.mDrawType = drawType;
  
                 //add to array
-                this.mContainer.mShapeArray.push(this);
+                this.mGame.mShapeArray.push(this);
 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
@@ -76,6 +76,11 @@ var Shape = new Class(
 		//message ..this can be used for collisions or whatever
 		this.mMessage = message;
         },
+
+	getGame: function()
+	{
+		return mGame;
+	},
         
         update: function(delta)
         {
@@ -151,8 +156,8 @@ var Shape = new Class(
         drawRelative: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - this.mContainer.getGame().getControlObject().mPositionX;
-                var ydiff = this.mPositionY - this.mContainer.getGame().getControlObject().mPositionY;
+                var xdiff = this.mPositionX - this.getGame().getControlObject().mPositionX;
+                var ydiff = this.mPositionY - this.getGame().getControlObject().mPositionY;
 
                 //center image relative to position
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
@@ -166,8 +171,8 @@ var Shape = new Class(
         {
                 //center image relative to position
                 //get the offset from control object
-                var xdiff = this.mPositionX - this.mContainer.getGame().getControlObject().mPositionX;
-                var ydiff = this.mPositionY - this.mContainer.getGame().getControlObject().mPositionY;
+                var xdiff = this.mPositionX - this.getGame().getControlObject().mPositionX;
+                var ydiff = this.mPositionY - this.getGame().getControlObject().mPositionY;
 
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);

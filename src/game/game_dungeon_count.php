@@ -55,13 +55,13 @@ Extends: Game,
 
 	resetGame: function()
 	{
-              	//set collidable to true
+              	//reset collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
                         //set every shape to spawn position
                         this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
                         this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
-                        this.mShapeCollidableArray[i].setVisibility(true);
+                        this.mShapeArray[i].setVisibility(true);
                 }
 
                 for (i=0; i < this.mShapeCollidableArray.length; i++)
@@ -147,7 +147,7 @@ Extends: Game,
 
                         {
                                 this.mOn = false;
-				this.mHud.setFeedback("YOU WIN!!!");
+				this.setFeedback("YOU WIN!!!");
                                 window.location = "../database/goto_next_math_level.php"
                         }
                 }
