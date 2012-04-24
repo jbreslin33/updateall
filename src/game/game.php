@@ -52,6 +52,8 @@ var Game = new Class(
                 this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
               	this.mFeedbackHud    = new Shape(this,"",140,50,0,50,"HAV FUN!","pink","","normal","hud");
         },
+	
+	/*********************** PUBLIC ***************************/
 
 	setFeedback: function(feedback)
 	{
@@ -118,7 +120,49 @@ var Game = new Class(
 	
 	},
 
-	checkKeys: function()
+        setUniqueSpawnPosition: function()
+        {
+                //get random spawn element
+                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+
+                for (r= 0; r < this.mShapeArray.length; r++)
+                {
+                        if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
+                        {
+                                r = 0;
+                                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                        }
+                        if (r > 0)
+                        {       
+                                if (
+                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
+                                        ||
+                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350                        
+                                ) 
+                                {
+                                        r = 0;
+                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                                }
+                                if (
+                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
+                                        && 
+                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100                  
+                                ) 
+                                {
+                                        r = 0;
+                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                                }
+                        }
+                }
+        },
+	
+	/****************************** PROTECTED ***************************************/
+
+	checkKeys: (function()
         {
                 //left
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
@@ -174,9 +218,9 @@ var Game = new Class(
                         this.mControlObject.mKeyX = 0;
                         this.mControlObject.mKeyY = 0;
                 }
-        },
+        }).protect(),
 
-        fillSpawnPositionArrays: function()
+        fillSpawnPositionArrays: (function()
         {
                 for (i=this.mLeftBounds + 50 / 2; i <= this.mRightBounds - 50 / 2; i = i + 50)
                 {       
@@ -187,55 +231,16 @@ var Game = new Class(
                 {       
                         this.mPositionYArray.push(i);   
                 }
-        },
+        }).protect(),
 
-        createShapes: function()
+        createShapes: (function()
         {
         	//control object
                 this.mControlObject = new ShapeCollidable(this,"",50,50,100,100,"","blue","","middle","controlObject");
-        },
+        }).protect(),
 
-        setUniqueSpawnPosition: function()
-        {
-                //get random spawn element
-                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
-
-                for (r= 0; r < this.mShapeArray.length; r++)
-                {
-                        if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
-                        {
-                                r = 0;
-                                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
-                        }
-                        if (r > 0)
-                        {       
-                                if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
-                                        ||
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350                        
-                                ) 
-                                {
-                                        r = 0;
-                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
-                                }
-                                if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
-                                        && 
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100                  
-                                ) 
-                                {
-                                        r = 0;
-                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
-                                }
-                        }
-                }
-        },
         
-        saveOldPositions: function()
+        saveOldPositions: (function()
         {
                 //save old positions
                 for (i = 0; i < this.mShapeArray.length; i++)
@@ -244,18 +249,18 @@ var Game = new Class(
                         this.mShapeArray[i].mOldPositionX = this.mShapeArray[i].mPositionX;
                         this.mShapeArray[i].mOldPositionY = this.mShapeArray[i].mPositionY;
                 }
-        },
+        }).protect(),
 
-        checkForScoreNeeded: function()
+        checkForScoreNeeded: (function()
         {
         
-	},
+	}).protect(),
 
         //reset
-        resetGame: function()
+        resetGame: (function()
         {
         
-	}
+	}).protect()
 });
 
 
