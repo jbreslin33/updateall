@@ -60,6 +60,11 @@ var Game = new Class(
 		return this;
 	},
 
+	getControlObject: function()
+	{
+		return this.mControlObject;
+	},
+
         update: function()
         {
                 if (this.mOn)

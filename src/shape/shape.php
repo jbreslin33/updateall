@@ -156,8 +156,8 @@ var Shape = new Class(
         drawRelative: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - this.mContainer.getGame().mControlObject.mPositionX;
-                var ydiff = this.mPositionY - this.mContainer.getGame().mControlObject.mPositionY;
+                var xdiff = this.mPositionX - this.mContainer.getGame().getControlObject().mPositionX;
+                var ydiff = this.mPositionY - this.mContainer.getGame().getControlObject().mPositionY;
 
                 //center image relative to position
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
@@ -171,8 +171,8 @@ var Shape = new Class(
         {
                 //center image relative to position
                 //get the offset from control object
-                var xdiff = this.mPositionX - this.mContainer.getGame().mControlObject.mPositionX;
-                var ydiff = this.mPositionY - this.mContainer.getGame().mControlObject.mPositionY;
+                var xdiff = this.mPositionX - this.mContainer.getGame().getControlObject().mPositionX;
+                var ydiff = this.mPositionY - this.mContainer.getGame().getControlObject().mPositionY;
 
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
