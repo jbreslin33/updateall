@@ -18,7 +18,7 @@ var Game = new Class(
 		/**************** TIME ************/
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
-                this.mTimeSinceLastInterval = 0;
+                this.mDeltaTime = 0;
 
 		/************ HUD **********************/
 		this.mHud;
@@ -58,6 +58,16 @@ var Game = new Class(
 		return this;
 	},
 
+	getName: function()
+	{
+		return this.mName;
+	},
+
+	getDeltaTime: function()
+	{
+		return this.mDeltaTime;
+	},
+
 	getControlObject: function()
 	{
 		return this.mControlObject;
@@ -72,8 +82,8 @@ var Game = new Class(
                 	this.mLastTimeSinceEpoch = this.mTimeSinceEpoch;
                 	this.mTimeSinceEpoch = e.getTime();
 
-                	//set timeSinceLastInterval as function of timeSinceEpoch and LastTimeSinceEpoch diff
-                	this.mTimeSinceLastInterval = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
+                	//set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
+                	this.mDeltaTime = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
                         
 			//check Keys from application
 			this.checkKeys();
@@ -81,7 +91,7 @@ var Game = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].update(this.mTimeSinceLastInterval);
+                        	this.mShapeArray[i].update(this.mDeltaTime);
                 	}
 
 			//update hud

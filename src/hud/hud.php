@@ -1,12 +1,15 @@
 var Hud = new Class(
 {
 
-        initialize: function(game)
+        initialize: function(game,quiz)
         {
 		//game
 		this.mGame = game;
 
-                //shape Array
+		//quiz
+		this.mQuiz = quiz;
+               
+		//shape Array
                 this.mShapeArray = new Array();
 
 	        //On_Off
@@ -29,7 +32,7 @@ var Hud = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].update(this.mGame.mTimeSinceLastInterval); 
+                        	this.mShapeArray[i].update(this.mGame.getDeltaTime()); 
 				
 				//set score	
 				this.setScore();
@@ -44,7 +47,7 @@ var Hud = new Class(
 
 	createHud: function()
 	{
-		this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.mGame.mName,"violet","","normal","hud");
+		this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.mGame.getName(),"violet","","normal","hud");
 		this.mScoreHud 	     = new Shape(this,"",140,50,0,50,"","pink","","normal","hud");
 		this.mScoreNeededHud = new Shape(this,"",140,50,0,100,"","violet","","normal","hud");
 		this.mFeedbackHud    = new Shape(this,"",140,50,0,150,"","pink","","normal","hud");
@@ -54,12 +57,12 @@ var Hud = new Class(
 
 	setScore: function()
 	{
-		this.mScoreHud.setText("Score:" + mGame.mQuiz.getScore());
+		this.mScoreHud.setText("Score:" + this.mQuiz.getScore());
 	},
 
 	setScoreNeeded: function()
 	{
-		this.mScoreNeededHud.setText("Score Needed:" + mGame.mQuiz.getScoreNeeded());
+		this.mScoreNeededHud.setText("Score Needed:" + this.mQuiz.getScoreNeeded());
 	},
 	
 	setFeedback: function(feedback)
@@ -70,7 +73,7 @@ var Hud = new Class(
 	//question
 	setQuestion: function()
 	{
-		this.mQuestionHud.setText("Question:" + mGame.mQuiz.getQuestion());
+		this.mQuestionHud.setText("Question:" + this.mQuiz.getQuestion());
 	},	
 	
         //reset
