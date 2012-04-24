@@ -12,9 +12,6 @@ var Hud = new Class(
 	        //On_Off
                 this.mOn = true;
         
-                // id counter
-                this.mIdCount = 0;
-
 		//score
 		this.mScoreHud;
 

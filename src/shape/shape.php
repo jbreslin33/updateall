@@ -10,7 +10,6 @@ var Shape = new Class(
 		this.mSpeed = .1;
 	
 		//id 
-		this.mId = this.mContainer.mIdCount;
 		
 		//src 
 		this.mSrc = src;
@@ -60,9 +59,6 @@ var Shape = new Class(
                 {
                         //image to attach to our div "vessel"
                         this.mMesh  = document.createElement("IMG");
-                        this.mMesh.id = 'image' + this.mId;
-                        this.mMesh.alt = 'image' + this.mId;
-                        this.mMesh.title = 'image' + this.mId;   
                         this.mMesh.src  = this.mSrc;
                         this.mMesh.style.width = this.mWidth+'px'; 
                         this.mMesh.style.height = this.mHeight+'px'; 
@@ -76,7 +72,6 @@ var Shape = new Class(
 
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
-		this.mContainer.mIdCount++;
        
 		//message ..this can be used for collisions or whatever
 		this.mMessage = message;

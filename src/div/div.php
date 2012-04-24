@@ -6,12 +6,8 @@ var Div = new Class(
                 //shape
                 this.mShape = shape;      
 		
-		//id 
-		this.mId = this.mShape.mId;
-		
                 //create the movable div that will be used to move image around.        
                 this.mDiv = document.createElement('div');
-                this.mDiv.setAttribute('id','div' + this.mId);
                 this.mDiv.setAttribute("class","vessel");
                 this.mDiv.style.position="absolute";
                 this.mDiv.style.visibility = 'visible';

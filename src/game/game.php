@@ -27,8 +27,6 @@ var Game = new Class(
                 this.mQuiz;
                	
 		/********* SHAPES *******************/ 
-                // id counter
-                this.mIdCount = 0;
 		
 		//control object
                 this.mControlObject;
