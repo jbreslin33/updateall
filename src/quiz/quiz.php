@@ -26,7 +26,6 @@ var Quiz = new Class(
                 this.mScoreNeededHud = new Shape(this.mGame,"",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","normal","hud");
                 this.mQuestionHud    = new Shape(this.mGame,"",140,50,0,250,"Question:","violet","","normal","hud");
 
-//		this.create();
         },
 
 	getGame: function()
