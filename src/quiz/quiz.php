@@ -1,3 +1,31 @@
+/***************************************
+public methods
+----------------
+
+//get methods
+answer      getAnswer(); returns current answer
+score       getScore(); //returns current score
+scoreNeeded getScoreNeeded();
+
+//set methods
+void setAnswers(arrayOfAnswers);
+void setScore();
+void setQuestions(arrayOfQuestions);
+void setScoreNeeded(scoreNeeded);
+
+void addQuestion(question,answer); //question answer pair to add to end of question/answer arrays.
+
+void randomizeQuestions();
+void incrementScore();
+
+bool submitAnswer(answer);  //returns whether answer is correct
+
+
+
+
+****************************************/
+
+
 var Quiz = new Class(
 {
         initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
@@ -10,14 +38,14 @@ var Quiz = new Class(
                 this.mScoreNeeded = scoreNeeded;
 
 		//question
-		this.mQuestion = 0;		 
+		this.mQuestion = 0;
 
 		//answer
 		this.mAnswer = 0;
 
 		//countBy
 		this.mCount = 0;
-		this.mCountBy = countBy;	
+		this.mCountBy = countBy;
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
 
@@ -46,7 +74,7 @@ var Quiz = new Class(
 
         update: function()
         {
-        
+
 	},
 
 	reset: function()
@@ -71,15 +99,15 @@ var Quiz = new Class(
 		{
                 	this.mCount = this.mCount + this.mCountBy;  //add to count
                         this.incrementScore();
-			
+
 			return true;
 		}
 		else
 		{
 			return false;
-		}	
+		}
 	},
-       
+
 	//questions
         newQuestion: function()
         {
@@ -87,9 +115,9 @@ var Quiz = new Class(
                 this.mQuestion = this.mCount;
 
 		this.mQuestionHud.setText("Question: " + this.mQuestion);
-		
+
 		//a new question needs a new answer
-       		this.newAnswer(); 
+       		this.newAnswer();
 	},
 
 	getQuestion: function()
@@ -117,20 +145,20 @@ var Quiz = new Class(
 	{
 		return this.mScoreNeeded;
 	},
-	
+
 	setScore: function(score)
 	{
-		this.mScore = score;	
+		this.mScore = score;
 	},
 
 	setScoreNeeded: function(scoreNeeded)
 	{
 		this.mScoreNeeded = scoreNeeded;
 	},
-	
+
 	incrementScore: function()
 	{
-	
+
 		this.mScore++;
 		this.mScoreHud.setText("Score: " + this.mScore);
 	}
