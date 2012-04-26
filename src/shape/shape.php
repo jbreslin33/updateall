@@ -1,3 +1,27 @@
+/**********************************************
+public methods
+----------------------
+
+//set methods
+void update(deltaTime); //update the the shape using the delta time of game update
+
+void setPosition(x,y) //
+void setText(text);  //set text inside shape
+void setVisibility(bool) //can you see it or not
+void setBackgroundColor(color);
+void setMessage(message);
+ 
+//get methods
+x getPositionX();
+y getPositionY();
+text getText();
+bool getVisibility();
+color getBackgroundColor(); 
+message getMessage();
+
+
+************************************************/
+
 var Shape = new Class(
 {
         initialize: function(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)

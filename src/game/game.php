@@ -1,3 +1,15 @@
+/******************************************
+public methods
+-----------------
+
+void setFeedback(feedback);
+deltaTime getDeltaTime();
+controlObject getControlObject();
+
+//get methods
+
+***************************************/
+
 var Game = new Class(
 {
 
