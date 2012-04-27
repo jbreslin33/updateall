@@ -76,7 +76,7 @@ Extends: Game,
 		this.mQuiz.reset();
 
 		//set text of control object
-		this.mControlObject.setText(this.mQuiz.mCount);
+		this.mControlObject.setText(this.mQuiz.getQuestion());
 
 	},
 

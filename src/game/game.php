@@ -2,11 +2,14 @@
 public methods
 -----------------
 
-void setFeedback(feedback);
+//set methods
 deltaTime getDeltaTime();
 controlObject getControlObject();
 
 //get methods
+void setFeedback(feedback);
+
+
 
 ***************************************/
 
