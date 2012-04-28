@@ -14,7 +14,7 @@ Extends: ShapeCollidable,
                 {
                         if (col.mMessage == "question" || col.mMessage == "chaser")
                         {
-                                if (this.getGame().mQuiz.checkAnswer(col.mInnerHTML))                   
+                                if (this.getGame().mQuiz.submitAnswer(col.mInnerHTML))                   
                                 {
                                         col.mCollisionOn = false;
                                         col.setVisibility(false);

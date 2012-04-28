@@ -87,8 +87,8 @@ var Quiz = new Class(
                 this.newAnswer();
 	},
 
-	//check answer
-	checkAnswer: function(answer)
+	//submit answer
+	submitAnswer: function(answer)
 	{
 		if (answer == this.mAnswer)
 		{
