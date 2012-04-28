@@ -3,13 +3,11 @@ public methods
 -----------------
 
 //set methods
-deltaTime getDeltaTime();
+deltaTime     getDeltaTime();
 controlObject getControlObject();
 
 //get methods
-void setFeedback(feedback);
-
-
+void 	      setFeedback(feedback);
 
 ***************************************/
 
@@ -75,6 +73,11 @@ var Game = new Class(
 		this.mFeedbackHud.setText(feedback);
 	},
 
+	setQuiz: function(quiz)
+	{
+		this.mQuiz = quiz;
+	},
+	
 	getGame: function()
 	{
 		return this;
@@ -124,11 +127,6 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",20)
                 }
         },
-
-	setQuiz: function(quiz)
-	{
-		this.mQuiz = quiz;
-	},
 
 	createWorld: function()
 	{

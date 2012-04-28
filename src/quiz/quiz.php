@@ -72,11 +72,6 @@ var Quiz = new Class(
 
 	},
 
-        update: function()
-        {
-
-	},
-
 	reset: function()
 	{
         	//score
