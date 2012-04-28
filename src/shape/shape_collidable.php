@@ -12,8 +12,8 @@ Extends: Shape,
 	        //collisionDistance
                 this.mCollisionDistance = this.mWidth * 6.5;
 
-                //add to array
-                this.mGame.mShapeCollidableArray.push(this);
+                //add to games collidable array
+                this.mGame.addToShapeCollidableArray(this);
 
         },
         

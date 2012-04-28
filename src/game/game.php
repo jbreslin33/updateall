@@ -9,6 +9,9 @@ controlObject getControlObject();
 //get methods
 void 	      setFeedback(feedback);
 
+//add methods
+void          addToShapeArray          (shape);
+void          addToShapeCollidableArray(shape);
 ***************************************/
 
 var Game = new Class(
@@ -96,6 +99,17 @@ var Game = new Class(
 	getControlObject: function()
 	{
 		return this.mControlObject;
+	},
+
+	/**************** ADD METHODS *************/
+	addToShapeArray: function(shape)
+	{
+		this.mShapeArray.push(shape);
+	},
+	
+	addToShapeCollidableArray: function(shape)
+	{
+		this.mShapeCollidableArray.push(shape);
 	},
 
         update: function()
