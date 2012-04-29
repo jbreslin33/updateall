@@ -3,7 +3,6 @@ public methods
 -----------------
 
 //set methods
-deltaTime     getDeltaTime();
 controlObject getControlObject();
 
 //get methods
@@ -89,11 +88,6 @@ var Game = new Class(
 	getName: function()
 	{
 		return this.mName;
-	},
-
-	getDeltaTime: function()
-	{
-		return this.mDeltaTime;
 	},
 
 	getControlObject: function()
