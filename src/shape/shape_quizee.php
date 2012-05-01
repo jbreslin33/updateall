@@ -1,4 +1,4 @@
-var ShapeCollidableDungeonCount = new Class(
+var ShapeQuizee = new Class(
 {
 
 Extends: ShapeCollidable, 

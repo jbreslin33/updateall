@@ -43,7 +43,7 @@ Extends: Game,
 	createShapes: function()
 	{
 		//control object
-                this.mControlObject = new ShapeCollidableDungeonCount(this,"",50,50,100,100,"","blue","","middle","controlObject");
+                this.mControlObject = new ShapeQuizee(this,"",50,50,100,100,"","blue","","middle","controlObject");
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
