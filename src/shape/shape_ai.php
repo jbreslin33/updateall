@@ -1,4 +1,4 @@
-var ShapeCollidableAI = new Class(
+var ShapeAI = new Class(
 {
 
 Extends: ShapeCollidable,
