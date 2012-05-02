@@ -90,8 +90,6 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 <script type="text/javascript" src="../game/game_dungeon_count.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
-<script type="text/javascript" src="../shape/shape_collidable.php"></script>
-<script type="text/javascript" src="../shape/shape_quizee.php"></script>
 <script type="text/javascript" src="../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>

@@ -33,7 +33,7 @@ Extends: Game,
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
-                        new ShapeCollidable(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","relative","question");
+                        new Shape(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","relative","question");
                 }
 
                 //create walls
@@ -47,7 +47,7 @@ Extends: Game,
 	createShapes: function()
 	{
 		//control object
-                this.mControlObject = new ShapeQuizee(this,"",50,50,100,100,"","blue","","middle","controlObject");
+                this.mControlObject = new Shape(this,"",50,50,100,100,"","blue","","middle","controlObject");
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
@@ -68,9 +68,12 @@ Extends: Game,
                         this.mShapeArray[i].setVisibility(true);
                 }
 
-                for (i=0; i < this.mShapeCollidableArray.length; i++)
+                for (i=0; i < this.mShapeArray.length; i++)
 		{
-                	this.mShapeCollidableArray[i].mCollisionOn = true;
+			if (this.mShapeArray.mCollidable == true)
+			{
+                		this.mShapeArray[i].mCollisionOn = true;
+			}
 		}
 
                 //this.mControlObject.mPositionX = 0;
@@ -88,7 +91,7 @@ Extends: Game,
         {
                 for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,this.mLeftBounds,i,"","black","","relative","wall");
+                        new Shape(this,"",50,50,this.mLeftBounds,i,"","black","","relative","wall");
                 }
         },
 
@@ -99,11 +102,11 @@ Extends: Game,
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","green","","relative","wall");
+                                new Shape(this,"",50,50,this.mRightBounds,i,"","green","","relative","wall");
                         }       
                         else
                         {       
-                                new ShapeCollidable(this,"",50,50,this.mRightBounds,i,"","black","","relative","wall");
+                                new Shape(this,"",50,50,this.mRightBounds,i,"","black","","relative","wall");
                         }
                         greenDoorCount++;
                 }
@@ -114,7 +117,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,i,this.mTopBounds,"","black","","relative","wall");
+                        new Shape(this,"",50,50,i,this.mTopBounds,"","black","","relative","wall");
                 }
         },
 
@@ -122,7 +125,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        new ShapeCollidable(this,"",50,50,i,this.mBottomBounds,"","black","","relative","wall");
+                        new Shape(this,"",50,50,i,this.mBottomBounds,"","black","","relative","wall");
                 }
         },
 
@@ -155,7 +158,48 @@ Extends: Game,
                                 window.location = "../database/goto_next_math_level.php"
                         }
                 }
-        }
+        },
+	
+	evaluateCollision: (function(col1,col2)
+        {
+	/*
+                if (col.mMessage == "question")
+                {
+                        if (this.getGame().mQuiz.submitAnswer(col.mInnerHTML))
+                        {
+                                col.mCollisionOn = false;
+                                col.setVisibility(false);
+
+                                //feedback
+                                this.getGame().setFeedback("Correct!");
+
+                                //get a new question
+                                this.getGame().mQuiz.newQuestion();
+
+                                //set text of control object
+                                this.setText(this.getGame().mQuiz.mCount);
+                        }
+                        else
+                        {
+                                //feedback
+                                this.getGame().setFeedback("Wrong! Try again.");
+
+                                //this deletes and then recreates everthing.
+                                this.getGame().resetGame();
+                        }
+                }
+
+                if (col.mMessage == "chaser")
+                {
+                        //feedback
+                        this.getGame().setFeedback("Wrong! Try again.");
+
+                        //this deletes and then recreates everthing.
+                        this.getGame().resetGame();
+                }
+*/
+                this.parent(col1,col2);
+ 	}).protect()
 
 });
 

@@ -66,6 +66,8 @@ var Game = new Class(
 		/***************** HUD ****************/
                 this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
               	this.mFeedbackHud    = new Shape(this,"",140,50,0,50,"HAV FUN!","pink","","normal","hud");
+		this.mGameNameHud.mCollidable = false;
+		this.mFeedbackHud.mCollidable = false;
         },
 	
 	/*********************** PUBLIC ***************************/
@@ -126,6 +128,9 @@ var Game = new Class(
                 	{
                         	this.mShapeArray[i].update(this.mDeltaTime);
                 	}
+
+			//collision Detection
+			this.checkForCollisions();
 
                 	//check for end game
                 	this.checkForScoreNeeded();
@@ -281,7 +286,48 @@ var Game = new Class(
         resetGame: (function()
         {
         
+	}).protect(),
+
+	checkForCollisions: (function()
+        {
+                for (s = 0; s < this.mShapeArray.length; s++)
+                {
+                        	var x1 = this.mShapeArray[s].mPositionX;
+                        	var y1 = this.mShapeArray[s].mPositionY;
+ 
+                        	for (i = 0; i < this.mShapeArray.length; i++)
+                        	{
+                                        if (this.mShapeArray[i].mCollisionOn == true && this.mShapeArray[s].mCollisionOn == true)
+                                        {
+                                                if (this.mShapeArray[i] == this.mShapeArray[s])
+                                                {
+                                                        continue;
+                                                }
+                                                var x2 = this.mShapeArray[i].mPositionX;              
+                                                var y2 = this.mShapeArray[i].mPositionY;              
+                
+                                                var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                                                var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[i].mCollisionDistance;
+                                                
+                                                if (distSQ < collisionDistance) 
+                                                {
+                                                        this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[i]);                      
+                                                }
+                                        }
+                        	}
+                }
+	}).protect(),
+
+	evaluateCollision: (function(col1,col2)
+        {
+		col1.mPositionX = col1.mOldPositionX;
+		col1.mPositionY = col1.mOldPositionY;
+
+		col2.mPositionX = col2.mOldPositionX;
+		col2.mPositionY = col2.mOldPositionY;
+
 	}).protect()
+
 });
 
 

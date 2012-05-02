@@ -1,7 +1,7 @@
 var ShapeAI = new Class(
 {
 
-Extends: ShapeCollidable,
+Extends: Shape,
 
         initialize: function(container,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
@@ -25,11 +25,6 @@ Extends: ShapeCollidable,
 		this.parent(delta);
         },
 
- 	evaluateCollision: function(col)
-        {
-                this.parent(col);
-        },
-        
 	ai: function()
         {
         	var direction = Math.floor(Math.random()*9)     

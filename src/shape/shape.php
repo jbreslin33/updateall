@@ -32,8 +32,6 @@ var Shape = new Class(
 	
 		//speed
 		this.mSpeed = .1;
-	
-		//id 
 		
 		//src 
 		this.mSrc = src;
@@ -75,6 +73,13 @@ var Shape = new Class(
 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
+
+		//collision on or off
+		this.mCollidable = true;
+		this.mCollisionOn = true;
+
+                //collisionDistance
+                this.mCollisionDistance = this.mWidth * 6.5;
 
                 this.mMesh;
         
@@ -204,11 +209,6 @@ var Shape = new Class(
                 this.setPosition(posX,posY);
         },
 
-	sortGameVisibility: function(x,y)
-	{
-
-	},
-
 	protectScrollBars: function(x,y)
 	{
                 //if off screen then hide it so we don't have scroll bars mucking up controls
@@ -218,6 +218,21 @@ var Shape = new Class(
                         this.setPosition(0,0);
                         this.setVisibility(false);
                 }
-	}
+	},
+ 	
+	sortGameVisibility: function(x,y)
+        {
+                if (this.mCollisionOn)
+                {
+                        this.setPosition(x,y);
+                        this.setVisibility(true);
+                }
+                else
+                {
+                        this.setPosition(0,0);
+                        this.setVisibility(false);
+                }
+        }
+
 });
 
