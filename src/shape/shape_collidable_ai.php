@@ -25,7 +25,12 @@ Extends: ShapeCollidable,
 		this.parent(delta);
         },
 
-        ai: function()
+ 	evaluateCollision: function(col)
+        {
+                this.parent(col);
+        },
+        
+	ai: function()
         {
         	var direction = Math.floor(Math.random()*9)     
        

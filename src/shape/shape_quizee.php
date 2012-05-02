@@ -10,35 +10,41 @@ Extends: ShapeCollidable,
         
 	evaluateCollision: function(col)
 	{
-		if (this == this.getGame().mControlObject)
+        	if (col.mMessage == "question")
                 {
-                        if (col.mMessage == "question" || col.mMessage == "chaser")
+                	if (this.getGame().mQuiz.submitAnswer(col.mInnerHTML))                   
                         {
-                                if (this.getGame().mQuiz.submitAnswer(col.mInnerHTML))                   
-                                {
-                                        col.mCollisionOn = false;
-                                        col.setVisibility(false);
+                        	col.mCollisionOn = false;
+                                col.setVisibility(false);
 
-                                        //feedback
-                                        this.getGame().setFeedback("Correct!"); 
-                                }
-                                else
-                                {
-                                        //feedback
-                                        this.getGame().setFeedback("Wrong! Try again."); 
-
-                                        //this deletes and then recreates everthing.
-                                        this.getGame().resetGame();
-                                }
-                               
-                                //get a new question 
-                                this.getGame().mQuiz.newQuestion();
+                                //feedback
+                                this.getGame().setFeedback("Correct!"); 
+                        
+				//get a new question 
+                        	this.getGame().mQuiz.newQuestion();
                                 
-                                //set text of control object
-                                this.setText(this.getGame().mQuiz.mCount);
-			}
-		}	
+                        	//set text of control object
+                        	this.setText(this.getGame().mQuiz.mCount);
+                        }
+                        else
+                        {
+                        	//feedback
+                                this.getGame().setFeedback("Wrong! Try again."); 
+
+                                //this deletes and then recreates everthing.
+                                this.getGame().resetGame();
+                        }
+		}
 	
+		if (col.mMessage == "chaser")
+		{
+                       	//feedback
+                        this.getGame().setFeedback("Wrong! Try again."); 
+
+                        //this deletes and then recreates everthing.
+                        this.getGame().resetGame();
+		}
+
 		this.parent(col);
 	}
 
