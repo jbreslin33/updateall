@@ -10,7 +10,6 @@ void 	      setFeedback(feedback);
 
 //add methods
 void          addToShapeArray          (shape);
-void          addToShapeCollidableArray(shape);
 ***************************************/
 
 var Game = new Class(
@@ -46,9 +45,6 @@ var Game = new Class(
 		//shape Array
                 this.mShapeArray = new Array();
 
-		//collidable shape array
-                this.mShapeCollidableArray = new Array();
-	        
                 //shapes
                 this.mPositionXArray = new Array();
                 this.mPositionYArray = new Array();
@@ -67,7 +63,10 @@ var Game = new Class(
                 this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
               	this.mFeedbackHud    = new Shape(this,"",140,50,0,50,"HAV FUN!","pink","","normal","hud");
 		this.mGameNameHud.mCollidable = false;
+		this.mGameNameHud.mCollisionOn = false;
+		
 		this.mFeedbackHud.mCollidable = false;
+		this.mFeedbackHud.mCollisionOn = false;
         },
 	
 	/*********************** PUBLIC ***************************/
@@ -292,6 +291,8 @@ var Game = new Class(
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
                 {
+			if (this.mShapeArray[s].mCollidable ==  true)
+			{
                         	var x1 = this.mShapeArray[s].mPositionX;
                         	var y1 = this.mShapeArray[s].mPositionY;
  
@@ -315,6 +316,7 @@ var Game = new Class(
                                                 }
                                         }
                         	}
+			}
                 }
 	}).protect(),
 

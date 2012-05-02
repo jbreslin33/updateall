@@ -162,40 +162,40 @@ Extends: Game,
 	
 	evaluateCollision: (function(col1,col2)
         {
-	/*
-                if (col.mMessage == "question")
-                {
-                        if (this.getGame().mQuiz.submitAnswer(col.mInnerHTML))
+/*
+		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
+		{
+                        if (this.mQuiz.submitAnswer(col2.mInnerHTML))
                         {
-                                col.mCollisionOn = false;
-                                col.setVisibility(false);
+                                col2.mCollisionOn = false;
+                                col2.setVisibility(false);
 
                                 //feedback
-                                this.getGame().setFeedback("Correct!");
+                                this.setFeedback("Correct!");
 
                                 //get a new question
-                                this.getGame().mQuiz.newQuestion();
+                                this.mQuiz.newQuestion();
 
                                 //set text of control object
-                                this.setText(this.getGame().mQuiz.mCount);
+                                col1.setText(this.mQuiz.mCount);
                         }
                         else
                         {
                                 //feedback
-                                this.getGame().setFeedback("Wrong! Try again.");
+                                this.setFeedback("Wrong! Try again.");
 
                                 //this deletes and then recreates everthing.
-                                this.getGame().resetGame();
+                                this.resetGame();
                         }
                 }
 
-                if (col.mMessage == "chaser")
+		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
                         //feedback
-                        this.getGame().setFeedback("Wrong! Try again.");
+                        this.setFeedback("Wrong! Try again.");
 
                         //this deletes and then recreates everthing.
-                        this.getGame().resetGame();
+                        this.resetGame();
                 }
 */
                 this.parent(col1,col2);
