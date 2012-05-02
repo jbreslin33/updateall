@@ -68,9 +68,6 @@ var Shape = new Class(
 		//drawType
 		this.mDrawType = drawType;
  
-                //add to array
-                this.mGame.addToShapeArray(this);
-
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
 

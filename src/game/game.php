@@ -62,11 +62,6 @@ var Game = new Class(
 		/***************** HUD ****************/
                 this.mGameNameHud    = new Shape(this,"",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
               	this.mFeedbackHud    = new Shape(this,"",140,50,0,50,"HAV FUN!","pink","","normal","hud");
-		this.mGameNameHud.mCollidable = false;
-		this.mGameNameHud.mCollisionOn = false;
-		
-		this.mFeedbackHud.mCollidable = false;
-		this.mFeedbackHud.mCollisionOn = false;
         },
 	
 	/*********************** PUBLIC ***************************/
