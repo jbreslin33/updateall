@@ -20,34 +20,29 @@ void incrementScore();
 
 bool submitAnswer(answer);  //returns whether answer is correct
 
-
-
-
 ****************************************/
-
 
 var Quiz = new Class(
 {
-        initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
+        initialize: function(game,scoreNeeded)
         {
 		//genre
 		this.mGame = game;
 
+		//Question and Answer Array
+		this.mQuestionArray = new Array();
+		this.mAnswerArray   = new Array();
+		
 		//score
                 this.mScore = 0;
                 this.mScoreNeeded = scoreNeeded;
 
 		//question
+		this.mMarker = 0;
 		this.mQuestion = 0;
 
 		//answer
 		this.mAnswer = 0;
-
-		//countBy
-		this.mCount = 0;
-		this.mCountBy = countBy;
-                this.mStartNumber = startNumber;
-                this.mEndNumber = endNumber;
 
 		/******************** HUD ********************/
                 this.mScoreHud       = new Shape(this.mGame,"",140,50,0,150,"Score: " + this.getScore(),"pink","","normal","hud");
@@ -61,21 +56,13 @@ var Quiz = new Class(
 		return mGame;
 	},
 
-	create: function()
-	{
-
-	},
-
 	reset: function()
 	{
         	//score
                 this.setScore(0);
 
                 //game
-                this.mQuestion = this.mCount;
-
-                //count
-                this.mCount = this.mStartNumber;
+                this.mQuestion = this.mQuestionArray[0];
 
                 //answer
                 this.newAnswer();
@@ -86,9 +73,8 @@ var Quiz = new Class(
 	{
 		if (answer == this.mAnswer)
 		{
-                	this.mCount = this.mCount + this.mCountBy;  //add to count
                         this.incrementScore();
-
+			this.mMarker++;
 			return true;
 		}
 		else
@@ -101,7 +87,7 @@ var Quiz = new Class(
         newQuestion: function()
         {
                 //set question
-                this.mQuestion = this.mCount;
+                this.mQuestion = this.mQuestionArray[mMarker];
 
 		this.mQuestionHud.setText("Question: " + this.mQuestion);
 
@@ -117,7 +103,7 @@ var Quiz = new Class(
         //new answer
         newAnswer: function()
         {
-                this.mAnswer = this.mCount + this.mCountBy;
+                this.mAnswer = this.mAnswerArray[mMarker];
         },
 
 	getAnswer: function()

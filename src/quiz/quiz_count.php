@@ -3,57 +3,34 @@ public methods
 ----------------
 
 //get methods
-answer      getAnswer(); returns current answer
-score       getScore(); //returns current score
-scoreNeeded getScoreNeeded();
+count       getCount(); returns current answer
+countBy     getCountBy(); //returns current score
+startNumber getStartNumber();
+endNumber   getEndNumber();
 
 //set methods
-void setAnswers(arrayOfAnswers);
-void setScore();
-void setQuestions(arrayOfQuestions);
-void setScoreNeeded(scoreNeeded);
-
-void addQuestion(question,answer); //question answer pair to add to end of question/answer arrays.
-
-void randomizeQuestions();
-void incrementScore();
-
-bool submitAnswer(answer);  //returns whether answer is correct
-
-
-
+void setCount(count);
+void setCountBy(countBy);
+void setStartNumber(startNumber);
+void setEndNumber(endNumber);
 
 ****************************************/
 
-
-var Quiz = new Class(
+var QuizCount = new Class(
 {
-        initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
+
+Extends: Quiz,
+        
+	initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
         {
-		//genre
-		this.mGame = game;
-
-		//score
-                this.mScore = 0;
-                this.mScoreNeeded = scoreNeeded;
-
-		//question
-		this.mQuestion = 0;
-
-		//answer
-		this.mAnswer = 0;
+		//parent
+		this.parent(game,scoreNeeded);
 
 		//countBy
 		this.mCount = 0;
 		this.mCountBy = countBy;
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
-
-		/******************** HUD ********************/
-                this.mScoreHud       = new Shape(this.mGame,"",140,50,0,150,"Score: " + this.getScore(),"pink","","normal","hud");
-                this.mScoreNeededHud = new Shape(this.mGame,"",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","normal","hud");
-                this.mQuestionHud    = new Shape(this.mGame,"",140,50,0,250,"Question:","violet","","normal","hud");
-
         },
 
 	getGame: function()
@@ -61,24 +38,12 @@ var Quiz = new Class(
 		return mGame;
 	},
 
-	create: function()
-	{
-
-	},
-
 	reset: function()
 	{
-        	//score
-                this.setScore(0);
-
-                //game
-                this.mQuestion = this.mCount;
-
                 //count
                 this.mCount = this.mStartNumber;
-
-                //answer
-                this.newAnswer();
+	
+		this.parent();	
 	},
 
 	//submit answer
@@ -109,48 +74,11 @@ var Quiz = new Class(
        		this.newAnswer();
 	},
 
-	getQuestion: function()
-	{
-		return this.mQuestion;
-	},
-
         //new answer
         newAnswer: function()
         {
                 this.mAnswer = this.mCount + this.mCountBy;
-        },
-
-	getAnswer: function()
-	{
-		return this.mAnswer;
-	},
-
-	getScore: function()
-	{
-		return this.mScore;
-	},
-
-	getScoreNeeded: function()
-	{
-		return this.mScoreNeeded;
-	},
-
-	setScore: function(score)
-	{
-		this.mScore = score;
-	},
-
-	setScoreNeeded: function(scoreNeeded)
-	{
-		this.mScoreNeeded = scoreNeeded;
-	},
-
-	incrementScore: function()
-	{
-
-		this.mScore++;
-		this.mScoreHud.setText("Score: " + this.mScore);
-	}
+        }
 
 });
 
