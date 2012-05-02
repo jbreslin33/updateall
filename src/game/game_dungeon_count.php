@@ -30,7 +30,11 @@ Extends: Game,
                 this.createShapes();
 
 		//create quiz shapes
-		this.mQuiz.create();
+ 		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
+                {
+                        this.setUniqueSpawnPosition();
+                        new ShapeCollidable(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","relative","question");
+                }
 
                 //create walls
                 this.createLeftWall();

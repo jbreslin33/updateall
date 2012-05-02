@@ -63,12 +63,6 @@ var Quiz = new Class(
 
 	create: function()
 	{
-                //these are the questions. SHould they not be created in the quiz? and then either updated there like i do with hud or in game as normal.
-                for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
-                {
-                        this.mGame.setUniqueSpawnPosition();
-                        new ShapeCollidable(this.mGame,"",50,50,this.mGame.mPositionXArray[this.mGame.mProposedX],this.mGame.mPositionYArray[this.mGame.mProposedY],i,"yellow","","relative","question");
-                }
 
 	},
 
