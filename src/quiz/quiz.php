@@ -31,8 +31,11 @@ var Quiz = new Class(
 
 		//Question and Answer Array
 		this.mQuestionArray = new Array();
+		this.mQuestionArray[0] = 0;	
 		this.mAnswerArray   = new Array();
-		
+		this.mAnswerArray[0] = 0;	
+			
+	
 		//score
                 this.mScore = 0;
                 this.mScoreNeeded = scoreNeeded;
@@ -53,7 +56,7 @@ var Quiz = new Class(
 
 	getGame: function()
 	{
-		return mGame;
+		return this.mGame;
 	},
 
 	reset: function()
@@ -87,7 +90,7 @@ var Quiz = new Class(
         newQuestion: function()
         {
                 //set question
-                this.mQuestion = this.mQuestionArray[mMarker];
+                this.mQuestion = this.mQuestionArray[this.mMarker];
 
 		this.mQuestionHud.setText("Question: " + this.mQuestion);
 
@@ -103,7 +106,7 @@ var Quiz = new Class(
         //new answer
         newAnswer: function()
         {
-                this.mAnswer = this.mAnswerArray[mMarker];
+                this.mAnswer = this.mAnswerArray[this.mMarker];
         },
 
 	getAnswer: function()
