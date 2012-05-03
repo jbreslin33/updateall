@@ -165,7 +165,7 @@ var Shape = new Class(
  	
 	sortGameVisibility: function(x,y)
         {
-                if (this.mCollisionOn)
+                if (this.mCollisionOn == true)
                 {
                         this.setPosition(x,y);
                         this.setVisibility(true);

@@ -72,7 +72,7 @@ Extends: Game,
 
                 for (i=0; i < this.mShapeArray.length; i++)
 		{
-			if (this.mShapeArray.mCollidable == true)
+			if (this.mShapeArray[i].mCollidable == true)
 			{
                 		this.mShapeArray[i].mCollisionOn = true;
 			}
@@ -190,7 +190,7 @@ Extends: Game,
                                 this.resetGame();
                         }
                 }
-
+/*
 		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
                         //feedback
@@ -199,7 +199,7 @@ Extends: Game,
                         //this deletes and then recreates everthing.
                         this.resetGame();
                 }
-
+*/
                 this.parent(col1,col2);
 
  	}).protect()
