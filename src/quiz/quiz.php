@@ -62,9 +62,10 @@ var Quiz = new Class(
 	{
         	//score
                 this.setScore(0);
-
-                //game
+		
+                //question	
                 this.mQuestion = this.mQuestionArray[0];
+		this.mQuestionHud.setText("Question: " + this.mQuestion);
 
                 //answer
                 this.newAnswer();
@@ -126,11 +127,13 @@ var Quiz = new Class(
 	setScore: function(score)
 	{
 		this.mScore = score;
+		this.mScoreHud.setText("Score: " + this.mScore);
 	},
 
 	setScoreNeeded: function(scoreNeeded)
 	{
 		this.mScoreNeeded = scoreNeeded;
+		this.mScoreNeededHud.setText("Score Needed: " + this.mScoreNeeded);
 	},
 
 	incrementScore: function()
