@@ -185,24 +185,25 @@ Extends: Game,
                         else
                         {
                                 //feedback
-                                this.setFeedback("Wrong! Try again.");
+                                this.setFeedback("Try again.");
 
                                 //this deletes and then recreates everthing.
                                 this.resetGame();
 				return;
                         }
                 }
-/*
+
 		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
                         //feedback
-                        this.setFeedback("Wrong! Try again.");
+                        this.setFeedback("Try again.");
 
                         //this deletes and then recreates everthing.
                         this.resetGame();
                 }
-*/
+
 	        this.parent(col1,col2);
+
  	}).protect()
 
 });
