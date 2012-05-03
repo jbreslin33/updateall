@@ -61,7 +61,10 @@ Extends: Game,
 
 	resetGame: function()
 	{
-              	//reset collidable to true
+                this.mControlObject.mPositionX = this.mControlObject.mSpawnPositionX;
+                this.mControlObject.mPositionY = this.mControlObject.mSpawnPositionY;
+              	
+		//reset collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
                         //set every shape to spawn position
@@ -78,8 +81,6 @@ Extends: Game,
 			}
 		}
 
-                this.mControlObject.mPositionX = this.mControlObject.mSpawnPositionX;
-                this.mControlObject.mPositionY = this.mControlObject.mSpawnPositionY;
 
 		//let's reset all quiz stuff right here.
 		this.mQuiz.reset();
@@ -188,6 +189,7 @@ Extends: Game,
 
                                 //this deletes and then recreates everthing.
                                 this.resetGame();
+				return;
                         }
                 }
 /*
@@ -200,8 +202,7 @@ Extends: Game,
                         this.resetGame();
                 }
 */
-                this.parent(col1,col2);
-
+	        this.parent(col1,col2);
  	}).protect()
 
 });
