@@ -141,7 +141,7 @@ var Game = new Class(
 
                 for (r= 0; r < this.mShapeArray.length; r++)
                 {
-                        if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPositionX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPositionY)
+                        if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPosition.mX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPosition.mY)
                         {
                                 r = 0;
                                 this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
@@ -150,9 +150,9 @@ var Game = new Class(
                         if (r > 0)
                         {       
                                 if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPositionX) > 350 
+                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPosition.mX) > 350 
                                         ||
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPositionY) > 350                        
+                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPosition.mY) > 350                        
                                 ) 
                                 {
                                         r = 0;
@@ -160,9 +160,9 @@ var Game = new Class(
                                         this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
                                 }
                                 if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPositionX) < 100 
+                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPosition.mX) < 100 
                                         && 
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPositionY) < 100                  
+                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPosition.mY) < 100                  
                                 ) 
                                 {
                                         r = 0;
@@ -180,56 +180,56 @@ var Game = new Class(
                 //left
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = -1;
-                        this.mControlObject.mKeyY = 0;
+                        this.mControlObject.mKey.mX = -1;
+                        this.mControlObject.mKey.mY = 0;
                 }
                 //right
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = 1;
-                        this.mControlObject.mKeyY = 0;
+                        this.mControlObject.mKey.mX = 1;
+                        this.mControlObject.mKey.mY = 0;
                 }
                 //up
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = 0;
-                        this.mControlObject.mKeyY = -1;
+                        this.mControlObject.mKey.mX = 0;
+                        this.mControlObject.mKey.mY = -1;
                 }
                 //down
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKeyX = 0;
-                        this.mControlObject.mKeyY = 1;
+                        this.mControlObject.mKey.mX = 0;
+                        this.mControlObject.mKey.mY = 1;
                 }
                 //left_up
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = -.5;
-                        this.mControlObject.mKeyY = -.5;
+                        this.mControlObject.mKey.mX = -.5;
+                        this.mControlObject.mKey.mY = -.5;
                 }
                 //left_down
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKeyX = -.5;
-                        this.mControlObject.mKeyY = .5;
+                        this.mControlObject.mKey.mX = -.5;
+                        this.mControlObject.mKey.mY = .5;
                 }
                 //right_up
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = .5;
-                        this.mControlObject.mKeyY = -.5;
+                        this.mControlObject.mKey.mX = .5;
+                        this.mControlObject.mKey.mY = -.5;
                 }
                 //right_down
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKeyX = .5;
-                        this.mControlObject.mKeyY = .5;
+                        this.mControlObject.mKey.mX = .5;
+                        this.mControlObject.mKey.mY = .5;
                 }
                 //all up...stop
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKeyX = 0;
-                        this.mControlObject.mKeyY = 0;
+                        this.mControlObject.mKey.mX = 0;
+                        this.mControlObject.mKey.mY = 0;
                 }
         }).protect(),
 
@@ -259,8 +259,8 @@ var Game = new Class(
                 for (i = 0; i < this.mShapeArray.length; i++)
                 {
                         //record old position to use for collisions or whatever you fancy
-                        this.mShapeArray[i].mOldPositionX = this.mShapeArray[i].mPositionX;
-                        this.mShapeArray[i].mOldPositionY = this.mShapeArray[i].mPositionY;
+                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPosition.mX;
+                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPosition.mY;
                 }
         }).protect(),
 
@@ -281,8 +281,8 @@ var Game = new Class(
                 {
 			if (this.mShapeArray[s].mCollidable ==  true)
 			{
-                        	var x1 = this.mShapeArray[s].mPositionX;
-                        	var y1 = this.mShapeArray[s].mPositionY;
+                        	var x1 = this.mShapeArray[s].mPosition.mX;
+                        	var y1 = this.mShapeArray[s].mPosition.mY;
  
                         	for (i = 0; i < this.mShapeArray.length; i++)
                         	{
@@ -292,8 +292,8 @@ var Game = new Class(
                                                 {
                                                         continue;
                                                 }
-                                                var x2 = this.mShapeArray[i].mPositionX;              
-                                                var y2 = this.mShapeArray[i].mPositionY;              
+                                                var x2 = this.mShapeArray[i].mPosition.mX;              
+                                                var y2 = this.mShapeArray[i].mPosition.mY;              
                 
                                                 var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                                                 var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[i].mCollisionDistance;
@@ -310,11 +310,12 @@ var Game = new Class(
 
 	evaluateCollision: (function(col1,col2)
         {
-		col1.mPositionX = col1.mOldPositionX;
-		col1.mPositionY = col1.mOldPositionY;
+		col1.mPosition.mX = col1.mPositionOld.mX;
 
-		col2.mPositionX = col2.mOldPositionX;
-		col2.mPositionY = col2.mOldPositionY;
+		col1.mPosition.mY = col1.mPositionOld.mY;
+
+		col2.mPosition.mX = col2.mPositionOld.mX;
+		col2.mPosition.mY = col2.mPositionOld.mY;
 
 	}).protect()
 

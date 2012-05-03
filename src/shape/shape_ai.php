@@ -31,48 +31,48 @@ Extends: ShapeRelative,
        
 		if (direction == 0) //left
                 {
-                	this.mKeyX = -1;
-                        this.mKeyY = 0;
+                	this.mKey.mX = -1;
+                        this.mKey.mY = 0;
                 }
                 if (direction == 1) //right
                 {
-                        this.mKeyX = 1;
-                        this.mKeyY = 0;
+                        this.mKey.mX = 1;
+                        this.mKey.mY = 0;
                 }
                 if (direction == 2) //up
                 {
-                        this.mKeyX = 0;
-                        this.mKeyY = -1;
+                        this.mKey.mX = 0;
+                        this.mKey.mY = -1;
                 }
                 if (direction == 3) //down
                 {
-                        this.mKeyX = 0;
-                        this.mKeyY = 1;
+                        this.mKey.mX = 0;
+                        this.mKey.mY = 1;
                 }
                 if (direction == 4) //leftup
                 {
-                        this.mKeyX = -.5;
-                        this.mKeyY = -.5;
+                        this.mKey.mX = -.5;
+                        this.mKey.mY = -.5;
                 }
                 if (direction == 5) //leftdown
                 {
-                        this.mKeyX = -.5;
-                      	this.mKeyY = .5;
+                        this.mKey.mX = -.5;
+                      	this.mKey.mY = .5;
                 }
                 if (direction == 6) //rightup
                 {
-                        this.mKeyX = .5;
-                        this.mKeyY = -.5;
+                        this.mKey.mX = .5;
+                        this.mKey.mY = -.5;
                 }
                	if (direction == 7) //rightdown
                 {
-                        this.mKeyX = .5;
-                        this.mKeyY = .5;
+                        this.mKey.mX = .5;
+                        this.mKey.mY = .5;
                 }
                 if (direction == 8) //stop
                 {
-                        this.mKeyX = 0;
-               	        this.mKeyY = 0;
+                        this.mKey.mX = 0;
+               	        this.mKey.mY = 0;
                 }
 	} 
 

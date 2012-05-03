@@ -68,8 +68,8 @@ Extends: Game,
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
                         //set every shape to spawn position
-                        this.mShapeArray[i].mPositionX = this.mShapeArray[i].mSpawnPositionX;
-                        this.mShapeArray[i].mPositionY = this.mShapeArray[i].mSpawnPositionY;
+                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPosition.mX;
+                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPosition.mY;
                         this.mShapeArray[i].setVisibility(true);
                 }
 
@@ -151,9 +151,9 @@ Extends: Game,
         {
                 if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
                 {
-                        if (this.mControlObject.mPositionX > this.mRightBounds - 50 / 2 &&
-                        this.mControlObject.mPositionY > this.mTopBounds &&
-                        this.mControlObject.mPositionY < this.mTopBounds + 50 * 2)
+                        if (this.mControlObject.mPosition.mX > this.mRightBounds - 50 / 2 &&
+                        this.mControlObject.mPosition.mY > this.mTopBounds &&
+                        this.mControlObject.mPosition.mY < this.mTopBounds + 50 * 2)
 
                         {
                                 this.mOn = false;

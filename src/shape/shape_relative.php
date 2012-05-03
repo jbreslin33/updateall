@@ -21,8 +21,8 @@ Extends: Shape,
         draw: function()
         {
                 //get the offset from control object
-                var xdiff = this.mPositionX - this.mGame.getControlObject().mPositionX;
-                var ydiff = this.mPositionY - this.mGame.getControlObject().mPositionY;
+                var xdiff = this.mPosition.mX - this.mGame.getControlObject().mPosition.mX;
+                var ydiff = this.mPosition.mY - this.mGame.getControlObject().mPosition.mY;
 
                 //center image relative to position
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);

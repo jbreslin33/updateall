@@ -16,8 +16,8 @@ var Div = new Class(
                 this.mDiv.style.height = this.mShape.mHeight;
         
                 //move it
-                this.mDiv.style.left = this.mShape.mPositionX+'px';
-                this.mDiv.style.top  = this.mShape.mPositionY+'px';
+                this.mDiv.style.left = this.mShape.mPosition.mX+'px';
+                this.mDiv.style.top  = this.mShape.mPosition.mY+'px';
 
                 document.body.appendChild(this.mDiv);
         

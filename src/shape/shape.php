@@ -49,20 +49,11 @@ var Shape = new Class(
 		this.mPositionOld   = new Point2D(spawnX,spawnY);
 		this.mPositionSpawn = new Point2D(spawnX,spawnY);
 
-		this.mPositionX = spawnX;
-                this.mPositionY = spawnY;
-                this.mOldPositionX = spawnX;
-                this.mOldPositionY = spawnY;
-                this.mSpawnPositionX = spawnX;
-                this.mSpawnPositionY = spawnY;
-               
 		//velocity 
-		this.mVelocityX = 0;
-                this.mVelocityY = 0;
+		this.mVelocity = new Point2D(0,0);
                 
 		//keys
-		this.mKeyX = 0;
-                this.mKeyY = 0;
+		this.mKey = new Point2D(0,0);
                 
 		//html	
 		this.mInnerHTML = innerHTML; 
@@ -115,12 +106,12 @@ var Shape = new Class(
         update: function(delta)
         {
                 //update Velocity
-                this.mVelocityX = this.mKeyX * delta * this.mSpeed;
-                this.mVelocityY = this.mKeyY * delta * this.mSpeed;
+                this.mVelocity.mX = this.mKey.mX * delta * this.mSpeed;
+                this.mVelocity.mY = this.mKey.mY * delta * this.mSpeed;
 
                 //update position
-                this.mPositionX += this.mVelocityX;
-                this.mPositionY += this.mVelocityY;
+                this.mPosition.mX += this.mVelocity.mX;
+                this.mPosition.mY += this.mVelocity.mY;
                 
                 this.draw();
         },
@@ -197,8 +188,8 @@ var Shape = new Class(
 	draw: (function()
 	{
                 //center image relative to position
-                var posX = this.mPositionX - (this.mWidth / 2);
-                var posY = this.mPositionY - (this.mHeight / 2);
+                var posX = this.mPosition.mX - (this.mWidth / 2);
+                var posY = this.mPosition.mY - (this.mHeight / 2);
 	
 		this.protectScrollBars(posX,posY);
   	}).protect()
