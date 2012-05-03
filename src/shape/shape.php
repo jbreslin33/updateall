@@ -19,6 +19,13 @@ bool getVisibility();
 color getBackgroundColor(); 
 message getMessage();
 
+/**********************************************
+protected methods
+----------------------
+
+void protectScrollBars(x,y);
+void sortGameVisibility(x,y);
+void draw();
 
 ************************************************/
 
@@ -97,6 +104,10 @@ var Shape = new Class(
 		this.mMessage = message;
         },
 
+/******************** PUBLIC METHODS *************/
+
+/****** UTILITY METHODS ******************/
+
         update: function(delta)
         {
                 //update Velocity
@@ -109,6 +120,8 @@ var Shape = new Class(
                 
                 this.draw();
         },
+
+/************** SET METHODS ************************/
 
 	setPosition: function(x,y)
 	{
@@ -143,7 +156,14 @@ var Shape = new Class(
 		this.mDiv.mDiv.style.backgroundColor = c;
 	},
 
-/*********** PRIVATE MEMBER METHODS *************/
+	setMessage: function(message)
+	{
+		this.mMessage = message;
+	},
+
+/*********** GET METHODS *************/
+
+/*********** PROTECTED MEMBER METHODS *************/
 
 	protectScrollBars: (function(x,y)
 	{
