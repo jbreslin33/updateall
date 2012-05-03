@@ -78,8 +78,8 @@ Extends: Game,
 			}
 		}
 
-                //this.mControlObject.mPositionX = 0;
-                //this.mControlObject.mPositionY = 0;
+                this.mControlObject.mPositionX = this.mControlObject.mSpawnPositionX;
+                this.mControlObject.mPositionY = this.mControlObject.mSpawnPositionY;
 
 		//let's reset all quiz stuff right here.
 		this.mQuiz.reset();
@@ -164,7 +164,7 @@ Extends: Game,
 	
 	evaluateCollision: (function(col1,col2)
         {
-/*
+
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
                         if (this.mQuiz.submitAnswer(col2.mInnerHTML))
@@ -199,8 +199,9 @@ Extends: Game,
                         //this deletes and then recreates everthing.
                         this.resetGame();
                 }
-*/
+
                 this.parent(col1,col2);
+
  	}).protect()
 
 });
