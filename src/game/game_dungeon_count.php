@@ -61,9 +61,6 @@ Extends: Game,
 
 	resetGame: function()
 	{
-                this.mControlObject.mPositionX = this.mControlObject.mSpawnPositionX;
-                this.mControlObject.mPositionY = this.mControlObject.mSpawnPositionY;
-              	
 		//reset collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
