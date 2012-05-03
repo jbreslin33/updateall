@@ -143,16 +143,9 @@ var Shape = new Class(
 		this.mDiv.mDiv.style.backgroundColor = c;
 	},
 
-	draw: function()
-	{
-                //center image relative to position
-                var posX = this.mPositionX - (this.mWidth / 2);
-                var posY = this.mPositionY - (this.mHeight / 2);
-	
-		this.protectScrollBars(posX,posY);
-	},
+/*********** PRIVATE MEMBER METHODS *************/
 
-	protectScrollBars: function(x,y)
+	protectScrollBars: (function(x,y)
 	{
                 //if off screen then hide it so we don't have scroll bars mucking up controls
                 if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
@@ -161,9 +154,9 @@ var Shape = new Class(
                         this.setPosition(0,0);
                         this.setVisibility(false);
                 }
-	},
+  	}).protect(),
  	
-	sortGameVisibility: function(x,y)
+	sortGameVisibility: (function(x,y)
         {
                 if (this.mCollisionOn == true)
                 {
@@ -175,7 +168,16 @@ var Shape = new Class(
                         this.setPosition(0,0);
                         this.setVisibility(false);
                 }
-        }
+  	}).protect(),
+
+	draw: (function()
+	{
+                //center image relative to position
+                var posX = this.mPositionX - (this.mWidth / 2);
+                var posY = this.mPositionY - (this.mHeight / 2);
+	
+		this.protectScrollBars(posX,posY);
+  	}).protect()
 
 });
 
