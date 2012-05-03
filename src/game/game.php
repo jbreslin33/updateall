@@ -41,11 +41,7 @@ var Game = new Class(
                 this.mLastTimeSinceEpoch = 0;
                 this.mDeltaTime = 0;
 
-		/********************** QUIZ **************/
-                this.mQuiz;
-               	
 		/********* SHAPES *******************/ 
-		
 		//control object
                 this.mControlObject;
                 
@@ -76,16 +72,6 @@ var Game = new Class(
 	setFeedback: function(feedback)
 	{
 		this.mFeedbackHud.setText(feedback);
-	},
-
-	setQuiz: function(quiz)
-	{
-		this.mQuiz = quiz;
-	},
-	
-	getGame: function()
-	{
-		return this;
 	},
 
 	getName: function()
