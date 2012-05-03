@@ -9,10 +9,10 @@ var ShapeCenter = new Class(
 
 Extends: Shape,
 
-        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message,game)
+        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message,game)
         {
 		                
-        	this.parent(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message);
+        	this.parent(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message);
 		
 		//game
 		this.mGame = game;

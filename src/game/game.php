@@ -60,8 +60,8 @@ var Game = new Class(
                 this.fillSpawnPositionArrays();
 		
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.getName(),"violet","","normal","hud");
-              	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","normal","hud");
+                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.getName(),"violet","","hud");
+              	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","hud");
         },
 	
 	/*********************** PUBLIC ***************************/

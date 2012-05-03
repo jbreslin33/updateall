@@ -24,7 +24,7 @@ message getMessage();
 
 var Shape = new Class(
 {
-        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
+        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message)
         {
                 
 		//speed
@@ -62,9 +62,6 @@ var Shape = new Class(
 		//onclick	
 		this.mOnClick = onClick;
               
-		//drawType
-		this.mDrawType = drawType;
- 
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
 
