@@ -11,11 +11,11 @@ void set(x,y);
 
 var Point2D = new Class(
 {
-        initialize: function(scoreNeeded)
+        initialize: function(x,y)
         {
 		//coordinates
-		this.mX = 0;
-		this.mY = 0;
+		this.mX = x;
+		this.mY = y;
         },
 
 	set: function(x,y)

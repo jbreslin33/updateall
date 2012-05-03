@@ -45,6 +45,10 @@ var Shape = new Class(
                 this.mHeight = height;
 
 		//position
+		this.mPosition      = new Point2D(spawnX,spawnY);
+		this.mPositionOld   = new Point2D(spawnX,spawnY);
+		this.mPositionSpawn = new Point2D(spawnX,spawnY);
+
 		this.mPositionX = spawnX;
                 this.mPositionY = spawnY;
                 this.mOldPositionX = spawnX;
