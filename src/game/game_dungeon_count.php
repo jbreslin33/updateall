@@ -33,7 +33,7 @@ Extends: Game,
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new Shape(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","relative","question"));
+                        this.addToShapeArray(new ShapeRelative("",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","relative","question",this));
 			
                 }
 
@@ -48,13 +48,13 @@ Extends: Game,
 	createShapes: function()
 	{
 		//control object
-                this.mControlObject = new Shape(this,"",50,50,100,100,"","blue","","middle","controlObject");
+                this.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","middle","controlObject",this);
 		this.addToShapeArray(this.mControlObject);
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new ShapeAI(this,"",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative","chaser"));
+                        this.addToShapeArray(new ShapeAI("",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","relative","chaser",this));
 
                 }
 	},
@@ -93,7 +93,7 @@ Extends: Game,
         {
                 for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
                 {
-                        this.addToShapeArray(new Shape(this,"",50,50,this.mLeftBounds,i,"","black","","relative","wall"));
+                        this.addToShapeArray(new ShapeRelative("",50,50,this.mLeftBounds,i,"","black","","relative","wall",this));
                 }
         },
 
@@ -104,11 +104,11 @@ Extends: Game,
                 {
                         if (greenDoorCount == 0 || greenDoorCount == 1)
                         {
-                                this.addToShapeArray(new Shape(this,"",50,50,this.mRightBounds,i,"","green","","relative","wall"));
+                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","green","","relative","wall",this));
                         }       
                         else
                         {       
-                                this.addToShapeArray(new Shape(this,"",50,50,this.mRightBounds,i,"","black","","relative","wall"));
+                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","black","","relative","wall",this));
                         }
                         greenDoorCount++;
                 }
@@ -119,7 +119,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        this.addToShapeArray(new Shape(this,"",50,50,i,this.mTopBounds,"","black","","relative","wall"));
+                        this.addToShapeArray(new ShapeRelative("",50,50,i,this.mTopBounds,"","black","","relative","wall",this));
                 }
         },
 
@@ -127,7 +127,7 @@ Extends: Game,
         {
                 for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
                 {
-                        this.addToShapeArray(new Shape(this,"",50,50,i,this.mBottomBounds,"","black","","relative","wall"));
+                        this.addToShapeArray(new ShapeRelative("",50,50,i,this.mBottomBounds,"","black","","relative","wall",this));
                 }
         },
 

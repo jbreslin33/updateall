@@ -48,9 +48,9 @@ var Quiz = new Class(
 		this.mAnswer = 0;
 
 		/******************** HUD ********************/
-                this.mScoreHud       = new Shape(this.mGame,"",140,50,0,150,"Score: " + this.getScore(),"pink","","normal","hud");
-                this.mScoreNeededHud = new Shape(this.mGame,"",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","normal","hud");
-                this.mQuestionHud    = new Shape(this.mGame,"",140,50,0,250,"Question:","violet","","normal","hud");
+                this.mScoreHud       = new Shape("",140,50,0,150,"Score: " + this.getScore(),"pink","","normal","hud");
+                this.mScoreNeededHud = new Shape("",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","normal","hud");
+                this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","normal","hud");
         },
 
 	getGame: function()

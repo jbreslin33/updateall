@@ -24,12 +24,9 @@ message getMessage();
 
 var Shape = new Class(
 {
-        initialize: function(game,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
+        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,drawType,message)
         {
                 
-                //container for this shape, for the quiz class we pass in game but for hud we pass in hud. the quiz shapes can collide but the hud is independent.
-                this.mGame = game;      
-	
 		//speed
 		this.mSpeed = .1;
 		
@@ -103,11 +100,6 @@ var Shape = new Class(
 		this.mMessage = message;
         },
 
-	getGame: function()
-	{
-		return mGame;
-	},
-        
         update: function(delta)
         {
                 //update Velocity
@@ -154,23 +146,7 @@ var Shape = new Class(
 		this.mDiv.mDiv.style.backgroundColor = c;
 	},
 
-        draw: function()
-        {
-       		if (this.mDrawType == 'relative')
-		{
-			this.drawRelative();
-		} 
-		if (this.mDrawType == 'middle')
-		{
-			this.drawCenter();
-		}
-		if (this.mDrawType == 'normal')
-		{
-			this.drawNormal();
-		}
-	},
-
-	drawNormal: function()
+	draw: function()
 	{
                 //center image relative to position
                 var posX = this.mPositionX - (this.mWidth / 2);
@@ -178,33 +154,6 @@ var Shape = new Class(
 	
 		this.protectScrollBars(posX,posY);
 	},
-
-        drawRelative: function()
-        {
-                //get the offset from control object
-                var xdiff = this.mPositionX - this.getGame().getControlObject().mPositionX;
-                var ydiff = this.mPositionY - this.getGame().getControlObject().mPositionY;
-
-                //center image relative to position
-                var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
-	
-		this.sortGameVisibility(posX,posY);
-		this.protectScrollBars(posX,posY);
-        },
-
-        drawCenter: function()
-        {
-                //center image relative to position
-                //get the offset from control object
-                var xdiff = this.mPositionX - this.getGame().getControlObject().mPositionX;
-                var ydiff = this.mPositionY - this.getGame().getControlObject().mPositionY;
-
-                var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
-
-                this.setPosition(posX,posY);
-        },
 
 	protectScrollBars: function(x,y)
 	{
