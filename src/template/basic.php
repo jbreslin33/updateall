@@ -86,6 +86,7 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 
 </script>
 
+<script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../game/game_dungeon_count.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
