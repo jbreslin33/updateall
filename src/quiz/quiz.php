@@ -24,11 +24,8 @@ bool submitAnswer(answer);  //returns whether answer is correct
 
 var Quiz = new Class(
 {
-        initialize: function(game,scoreNeeded)
+        initialize: function(scoreNeeded)
         {
-		//genre
-		this.mGame = game;
-
 		//Question and Answer Array
 		this.mQuestionArray = new Array();
 		this.mQuestionArray[0] = 0;	
@@ -52,11 +49,6 @@ var Quiz = new Class(
                 this.mScoreNeededHud = new Shape("",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","hud");
                 this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
         },
-
-	getGame: function()
-	{
-		return this.mGame;
-	},
 
 	reset: function()
 	{

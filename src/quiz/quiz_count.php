@@ -21,10 +21,10 @@ var QuizCount = new Class(
 
 Extends: Quiz,
         
-	initialize: function(game,scoreNeeded,countBy,startNumber,endNumber)
+	initialize: function(scoreNeeded,countBy,startNumber,endNumber)
         {
 		//parent
-		this.parent(game,scoreNeeded);
+		this.parent(scoreNeeded);
 
 		//countBy
 		this.mCount = 0;
@@ -32,11 +32,6 @@ Extends: Quiz,
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
         },
-
-	getGame: function()
-	{
-		return mGame;
-	},
 
 	reset: function()
 	{

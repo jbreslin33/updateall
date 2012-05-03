@@ -2,14 +2,21 @@
 public methods
 -----------------
 
+PUBLIC
+---------------------------
+
 //set methods
-controlObject getControlObject();
 
 //get methods
-void 	      setFeedback(feedback);
+controlObject getControlObject();
+
+PRIVATE
+---------------------------------
 
 //add methods
 void          addToShapeArray          (shape);
+void 	      setFeedback(feedback);
+
 ***************************************/
 
 var Game = new Class(

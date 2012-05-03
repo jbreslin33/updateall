@@ -114,7 +114,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
 	//the quiz
-	mQuiz = new QuizCount(mGame,scoreNeeded,countBy,startNumber,endNumber);
+	mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber);
 	mGame.setQuiz(mQuiz);
 	
 	//call thes "virtual methods"
