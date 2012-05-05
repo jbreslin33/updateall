@@ -68,8 +68,8 @@ Extends: Game,
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
                         //set every shape to spawn position
-                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPosition.mX;
-                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPosition.mY;
+                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
+                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPositionSpawn.mY;
                         this.mShapeArray[i].setVisibility(true);
                 }
 
@@ -165,7 +165,8 @@ Extends: Game,
 	
 	evaluateCollision: (function(col1,col2)
         {
-
+	        this.parent(col1,col2);
+		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
                         if (this.mQuiz.submitAnswer(col2.mInnerHTML))
@@ -189,21 +190,17 @@ Extends: Game,
 
                                 //this deletes and then recreates everthing.
                                 this.resetGame();
-				return;
                         }
                 }
 
 		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
-                        //feedback
+	                //feedback
                         this.setFeedback("Try again.");
 
                         //this deletes and then recreates everthing.
                         this.resetGame();
                 }
-
-	        this.parent(col1,col2);
-
  	}).protect()
 
 });

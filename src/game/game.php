@@ -259,8 +259,8 @@ var Game = new Class(
                 for (i = 0; i < this.mShapeArray.length; i++)
                 {
                         //record old position to use for collisions or whatever you fancy
-                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPosition.mX;
-                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPosition.mY;
+                        this.mShapeArray[i].mPositionOld.mX = this.mShapeArray[i].mPosition.mX;
+                        this.mShapeArray[i].mPositionOld.mY = this.mShapeArray[i].mPosition.mY;
                 }
         }).protect(),
 
@@ -311,7 +311,6 @@ var Game = new Class(
 	evaluateCollision: (function(col1,col2)
         {
 		col1.mPosition.mX = col1.mPositionOld.mX;
-
 		col1.mPosition.mY = col1.mPositionOld.mY;
 
 		col2.mPosition.mX = col2.mPositionOld.mX;
