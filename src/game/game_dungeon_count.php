@@ -36,7 +36,7 @@ Extends: Game,
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
                         this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new ShapeRelative("",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],i,"yellow","","question",this));
+                        this.addToShapeArray(new ShapeRelative("",50,50,this.mPositionXArray[this.mPositionProposed.mX],this.mPositionYArray[this.mPositionProposed.mY],i,"yellow","","question",this));
 			
                 }
 
@@ -57,7 +57,7 @@ Extends: Game,
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
                         this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new ShapeAI("",50,50,this.mPositionXArray[this.mProposedX],this.mPositionYArray[this.mProposedY],"","red","","chaser",this));
+                        this.addToShapeArray(new ShapeAI("",50,50,this.mPositionXArray[this.mPositionProposed.mX],this.mPositionYArray[this.mPositionProposed.mY],"","red","","chaser",this));
 
                 }
 	},

@@ -56,8 +56,7 @@ var Game = new Class(
                 this.mSlotPositionYArray = new Array();
                 
                 //proposed positions    
-                this.mProposedX = 0;
-                this.mProposedY = 0;
+		this.mPositionProposed = new Point2D(0,0);
 
                 //fill possible spawnPosition Arrays
                 this.fillSpawnPositionArrays();
@@ -136,38 +135,38 @@ var Game = new Class(
         setUniqueSpawnPosition: function()
         {
                 //get random spawn element
-                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
+                this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
 
                 for (r= 0; r < this.mShapeArray.length; r++)
                 {
-                        if (this.mPositionXArray[this.mProposedX] == this.mShapeArray[r].mPosition.mX && this.mPositionYArray[this.mProposedY] == this.mShapeArray[r].mPosition.mY)
+                        if (this.mPositionXArray[this.mPositionProposed.mX] == this.mShapeArray[r].mPosition.mX && this.mPositionYArray[this.mPositionProposed.mY] == this.mShapeArray[r].mPosition.mY)
                         {
                                 r = 0;
-                                this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                                this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
                         }
                         if (r > 0)
                         {       
                                 if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mShapeArray[r-1].mPosition.mX) > 350 
+                                Math.abs(this.mPositionXArray[this.mPositionProposed.mX] - this.mShapeArray[r-1].mPosition.mX) > 350 
                                         ||
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mShapeArray[r-1].mPosition.mY) > 350                        
+                                Math.abs(this.mPositionYArray[this.mPositionProposed.mY] - this.mShapeArray[r-1].mPosition.mY) > 350                        
                                 ) 
                                 {
                                         r = 0;
-                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                                        this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                        this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
                                 }
                                 if (
-                                Math.abs(this.mPositionXArray[this.mProposedX] - this.mControlObject.mPosition.mX) < 100 
+                                Math.abs(this.mPositionXArray[this.mPositionProposed.mX] - this.mControlObject.mPosition.mX) < 100 
                                         && 
-                                Math.abs(this.mPositionYArray[this.mProposedY] - this.mControlObject.mPosition.mY) < 100                  
+                                Math.abs(this.mPositionYArray[this.mPositionProposed.mY] - this.mControlObject.mPosition.mY) < 100                  
                                 ) 
                                 {
                                         r = 0;
-                                        this.mProposedX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mProposedY = Math.floor(Math.random()*this.mPositionYArray.length);
+                                        this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
+                                        this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
                                 }
                         }
                 }
