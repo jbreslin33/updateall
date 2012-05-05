@@ -111,16 +111,16 @@ window.addEvent('domready', function()
 	//application to handle time and input
         mApplication = new Application();
         
+        //keys
+        document.addEvent("keydown", mApplication.keyDown);
+        document.addEvent("keyup", mApplication.keyUp);
+	
 	//the game
         mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers, scoreNeeded, countBy, startNumber, endNumber);
 
 	//call thes "virtual methods"
 	mGame.createWorld();
 	mGame.resetGame();
-
-        //keys
-        document.addEvent("keydown", mApplication.keyDown);
-        document.addEvent("keyup", mApplication.keyUp);
 
         //start updating
         mGame.update();
