@@ -50,11 +50,20 @@ Extends: Game,
 
   	getRandomSpawnPosition: function()
         {
-
+		//get the size of the playing field
                 var xSize = this.mRightBounds - this.mLeftBounds;
                 var ySize = this.mBottomBounds - this.mTopBounds;
-                this.pointy = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
-                return this.pointy;
+               
+		//get point that would fall in the size range from above 
+		var point2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
+
+		//now add the left and top bounds so that it is on the games actual field	
+		point2D.mX += this.mLeftBounds;	
+		point2D.mY += this.mTopBounds;
+
+		//check for collision and do again if neccesary		
+		
+		return point2D;
         },
 
 
@@ -66,13 +75,9 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-			var p = this.getRandomSpawnPosition();
-			
-			var newP = new Point2D(0,0);
-			newP.mX = this.mLeftBounds + p.mX;
-		 	newP.mY = this.mTopBounds + p.mY;
+			p = this.getRandomSpawnPosition();
                           
-			this.addToShapeArray(new ShapeAI("",50,50,newP.mX,newP.mY,"","red","","chaser",this));
+			this.addToShapeArray(new ShapeAI("",50,50,p.mX,p.mY,"","red","","chaser",this));
                 }
 	},
 
