@@ -48,6 +48,16 @@ Extends: Game,
 
 	},
 
+  	getRandomSpawnPosition: function()
+        {
+
+                var xSize = this.mRightBounds - this.mLeftBounds;
+                var ySize = this.mBottomBounds - this.mTopBounds;
+                this.pointy = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
+                return this.pointy;
+        },
+
+
 	createShapes: function()
 	{
 		//control object
@@ -56,9 +66,13 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-                        this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new ShapeAI("",50,50,this.mPositionXArray[this.mPositionProposed.mX],this.mPositionYArray[this.mPositionProposed.mY],"","red","","chaser",this));
-
+			var p = this.getRandomSpawnPosition();
+			
+			var newP = new Point2D(0,0);
+			newP.mX = this.mLeftBounds + p.mX;
+		 	newP.mY = this.mTopBounds + p.mY;
+                          
+			this.addToShapeArray(new ShapeAI("",50,50,newP.mX,newP.mY,"","red","","chaser",this));
                 }
 	},
 
