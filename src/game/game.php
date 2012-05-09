@@ -21,7 +21,6 @@ void 	      setFeedback(feedback);
 
 var Game = new Class(
 {
-
         initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds)
         {
 		/************ NAME *******/
@@ -49,7 +48,7 @@ var Game = new Class(
                 this.mShapeArray = new Array();
 
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.getName(),"violet","","hud");
+                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.mName,"violet","","hud");
               	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","hud");
         },
 	
@@ -58,11 +57,6 @@ var Game = new Class(
 	setFeedback: function(feedback)
 	{
 		this.mFeedbackHud.setText(feedback);
-	},
-
-	getName: function()
-	{
-		return this.mName;
 	},
 
 	getControlObject: function()
@@ -76,11 +70,6 @@ var Game = new Class(
 		this.mShapeArray.push(shape);
 	},
 	
-	addToShapeCollidableArray: function(shape)
-	{
-		this.mShapeCollidableArray.push(shape);
-	},
-
         update: function()
         {
                 if (this.mOn)
