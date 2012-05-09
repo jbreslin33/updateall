@@ -48,25 +48,6 @@ Extends: Game,
 
 	},
 
-  	getRandomSpawnPosition: function()
-        {
-		//get the size of the playing field
-                var xSize = this.mRightBounds - this.mLeftBounds;
-                var ySize = this.mBottomBounds - this.mTopBounds;
-               
-		//get point that would fall in the size range from above 
-		var point2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
-
-		//now add the left and top bounds so that it is on the games actual field	
-		point2D.mX += this.mLeftBounds;	
-		point2D.mY += this.mTopBounds;
-
-		//check for collision and do again if neccesary		
-		
-		return point2D;
-        },
-
-
 	createShapes: function()
 	{
 		//control object
