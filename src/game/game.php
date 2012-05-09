@@ -48,19 +48,6 @@ var Game = new Class(
 		//shape Array
                 this.mShapeArray = new Array();
 
-                //shapes
-                this.mPositionXArray = new Array();
-                this.mPositionYArray = new Array();
-
-                this.mSlotPositionXArray = new Array();
-                this.mSlotPositionYArray = new Array();
-                
-                //proposed positions    
-		this.mPositionProposed = new Point2D(0,0);
-
-                //fill possible spawnPosition Arrays
-                this.fillSpawnPositionArrays();
-		
 		/***************** HUD ****************/
                 this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.getName(),"violet","","hud");
               	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","hud");
@@ -132,46 +119,6 @@ var Game = new Class(
 	
 	},
 
-        setUniqueSpawnPosition: function()
-        {
-                //get random spawn element
-                this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
-                this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
-
-                for (r= 0; r < this.mShapeArray.length; r++)
-                {
-                        if (this.mPositionXArray[this.mPositionProposed.mX] == this.mShapeArray[r].mPosition.mX && this.mPositionYArray[this.mPositionProposed.mY] == this.mShapeArray[r].mPosition.mY)
-                        {
-                                r = 0;
-                                this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
-                        }
-                        if (r > 0)
-                        {       
-                                if (
-                                Math.abs(this.mPositionXArray[this.mPositionProposed.mX] - this.mShapeArray[r-1].mPosition.mX) > 350 
-                                        ||
-                                Math.abs(this.mPositionYArray[this.mPositionProposed.mY] - this.mShapeArray[r-1].mPosition.mY) > 350                        
-                                ) 
-                                {
-                                        r = 0;
-                                        this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
-                                }
-                                if (
-                                Math.abs(this.mPositionXArray[this.mPositionProposed.mX] - this.mControlObject.mPosition.mX) < 100 
-                                        && 
-                                Math.abs(this.mPositionYArray[this.mPositionProposed.mY] - this.mControlObject.mPosition.mY) < 100                  
-                                ) 
-                                {
-                                        r = 0;
-                                        this.mPositionProposed.mX = Math.floor(Math.random()*this.mPositionXArray.length);
-                                        this.mPositionProposed.mY = Math.floor(Math.random()*this.mPositionYArray.length);
-                                }
-                        }
-                }
-        },
-	
 	/****************************** PROTECTED ***************************************/
 
 	checkKeys: (function()
@@ -229,19 +176,6 @@ var Game = new Class(
                 {
                         this.mControlObject.mKey.mX = 0;
                         this.mControlObject.mKey.mY = 0;
-                }
-        }).protect(),
-
-        fillSpawnPositionArrays: (function()
-        {
-                for (i=this.mLeftBounds + 50 / 2; i <= this.mRightBounds - 50 / 2; i = i + 50)
-                {       
-                        this.mPositionXArray.push(i);   
-                }
-        
-                for (i=this.mTopBounds + 50 / 2; i <= this.mBottomBounds - 50 / 2; i = i + 50)
-                {       
-                        this.mPositionYArray.push(i);   
                 }
         }).protect(),
 

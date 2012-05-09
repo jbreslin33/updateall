@@ -35,9 +35,8 @@ Extends: Game,
 		//create quiz shapes
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
-                        this.setUniqueSpawnPosition();
-                        this.addToShapeArray(new ShapeRelative("",50,50,this.mPositionXArray[this.mPositionProposed.mX],this.mPositionYArray[this.mPositionProposed.mY],i,"yellow","","question",this));
-			
+			randPos = this.getRandomSpawnPosition();
+                        this.addToShapeArray(new ShapeRelative("",50,50,randPos.mX,randPos.mY,i,"yellow","","question",this));
                 }
 
                 //create walls
@@ -56,9 +55,8 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-			p = this.getRandomSpawnPosition();
-                          
-			this.addToShapeArray(new ShapeAI("",50,50,p.mX,p.mY,"","red","","chaser",this));
+			randPos = this.getRandomSpawnPosition();
+			this.addToShapeArray(new ShapeAI("",50,50,randPos.mX,randPos.mY,"","red","","chaser",this));
                 }
 	},
 
