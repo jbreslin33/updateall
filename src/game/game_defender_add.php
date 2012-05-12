@@ -167,6 +167,59 @@ Extends: Game,
                         //this deletes and then recreates everthing.
                         this.resetGame();
                 }
+ 	}).protect(),
+
+ 	checkKeys: (function()
+        {
+		this.parent();
+
+                //space
+                if (mApplication.mKeySpace == true)
+                {
+		//	this.mControlObject.setText("s");
+                }
+
+                if (mApplication.mKey0 == true)
+                {
+			this.mControlObject.setText("0");
+                }
+                if (mApplication.mKey1 == true)
+                {
+			this.mControlObject.setText("1");
+                }
+                if (mApplication.mKey2 == true)
+                {
+			this.mControlObject.setText("2");
+                }
+                if (mApplication.mKey3 == true)
+                {
+			this.mControlObject.setText("3");
+                }
+                if (mApplication.mKey4 == true)
+                {
+			this.mControlObject.setText("4");
+                }
+                if (mApplication.mKey5 == true)
+                {
+			this.mControlObject.setText("5");
+                }
+                if (mApplication.mKey6 == true)
+                {
+			this.mControlObject.setText("6");
+                }
+                if (mApplication.mKey7 == true)
+                {
+			this.mControlObject.setText("7");
+                }
+                if (mApplication.mKey8 == true)
+                {
+			this.mControlObject.setText("8");
+                }
+                if (mApplication.mKey9 == true)
+                {
+			this.mControlObject.setText("9");
+                }
+
  	}).protect()
 
 });

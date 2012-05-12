@@ -18,7 +18,7 @@ var Application = new Class(
                 this.mKeyUp = false;
                 this.mKeyDown = false;
                 this.mKeyStop = false;
-
+		this.mKeySpace = false;
 
         },
 
@@ -49,6 +49,51 @@ var Application = new Class(
                 {
                         mApplication.mKeyDown = true;
                 }
+                if (event.key == 'space')
+                {
+                        mApplication.mKeySpace = true;
+                }
+		if (event.key == '0')
+                {
+                        mApplication.mKey0 = true;
+                }
+                if (event.key == '1')
+                {
+                        mApplication.mKey1 = true;
+                }
+                if (event.key == '2')
+                {
+                        mApplication.mKey2 = true;
+                }
+                if (event.key == '3')
+                {
+                        mApplication.mKey3 = true;
+                }
+                if (event.key == '4')
+                {
+                        mApplication.mKey4 = true;
+                }
+                if (event.key == '5')
+                {
+                        mApplication.mKey5 = true;
+                }
+                if (event.key == '6')
+                {
+                        mApplication.mKey6 = true;
+                }
+                if (event.key == '7')
+                {
+                        mApplication.mKey7 = true;
+                }
+                if (event.key == '8')
+                {
+                        mApplication.mKey8 = true;
+                }
+                if (event.key == '9')
+                {
+                        mApplication.mKey9 = true;
+                }
+
         },
         
         keyUp: function(event)
@@ -68,6 +113,50 @@ var Application = new Class(
                 if (event.key == 'down')
                 {
                         mApplication.mKeyDown = false;
+                }
+                if (event.key == 'space')
+                {
+                        mApplication.mKeySpace = false;
+                }
+                if (event.key == '0')
+                {
+                        mApplication.mKey0 = false;
+                }
+                if (event.key == '1')
+                {
+                        mApplication.mKey1 = false;
+                }
+                if (event.key == '2')
+                {
+                        mApplication.mKey2 = false;
+                }
+                if (event.key == '3')
+                {
+                        mApplication.mKey3 = false;
+                }
+                if (event.key == '4')
+                {
+                        mApplication.mKey4 = false;
+                }
+                if (event.key == '5')
+                {
+                        mApplication.mKey5 = false;
+                }
+                if (event.key == '6')
+                {
+                        mApplication.mKey6 = false;
+                }
+                if (event.key == '7')
+                {
+                        mApplication.mKey7 = false;
+                }
+                if (event.key == '8')
+                {
+                        mApplication.mKey8 = false;
+                }
+                if (event.key == '9')
+                {
+                        mApplication.mKey9 = false;
                 }
         }
 });
