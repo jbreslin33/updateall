@@ -29,12 +29,8 @@ Extends: Game,
 
  	getOpenPoint2D: (function()
         {
-		var isOpen = false;
-
-		while (isOpen == false)
+		while (true)
 		{
-			//try or try again with new randomPosition		
-	
                        	//let's get a random open space...
                        	//get the size of the playing field
                        	var xSize = this.mRightBounds - this.mLeftBounds;
@@ -68,12 +64,13 @@ Extends: Game,
 					}
                         	}
                 	}
+			
+			//we have an open point	
 			if (isCollision == false)
 			{
 				return randomPoint2D;
 			}
       		} 
-
  
         }).protect(),
 
