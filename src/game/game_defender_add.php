@@ -1,9 +1,9 @@
-var GameDungeonCount = new Class(
+var GameDefenderAdd = new Class(
 {
 
 Extends: Game,
 
-        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers, scoreNeeded, countBy, startNumber, endNumber)
+        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers, scoreNeeded, startNumber, endNumber)
         {
 
                 //application
@@ -13,7 +13,7 @@ Extends: Game,
                 this.mNumberOfChasers = numberOfChasers;
 
 		//the quiz
-        	this.mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber);
+        	this.mQuiz = new QuizAdd(scoreNeeded,startNumber,endNumber);
 
         },
 
@@ -21,10 +21,6 @@ Extends: Game,
         update: function()
         {
                 this.parent();
-          
-		//door entered?
-                this.checkForDoorEntered();
-
         },
 
 	createWorld: function()
@@ -40,11 +36,13 @@ Extends: Game,
                 this.createShapes();
 		
 		//create quiz shapes
- 		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
+ /*	
+		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
 			var openPoint = this.getOpenPoint2D(50,4);
 		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
                 }
+*/
 	},
 
 	createShapes: function()
@@ -98,18 +96,9 @@ Extends: Game,
 
         createRightWall: function()
         {
-                var greenDoorCount = 0; 
                 for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + 50)
                 {
-                        if (greenDoorCount == 0 || greenDoorCount == 1)
-                        {
-                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","green","","wall",this));
-                        }       
-                        else
-                        {       
-                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","black","","wall",this));
-                        }
-                        greenDoorCount++;
+                        this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","black","","wall",this));
                 }
         
         },
@@ -134,33 +123,12 @@ Extends: Game,
         {
                 if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
                 {
-                        //open the doors
-                        for (i=0; i < this.mShapeArray.length; i++)
-                        {
-                                if (this.mShapeArray[i].mBackgroundColor == 'green')
-                                {
-                                        this.mShapeArray[i].setBackgroundColor('white');
-                                }
-                        }
+                        this.mOn = false;
+			this.setFeedback("YOU WIN!!!");
+                        window.location = "../database/goto_next_math_level.php"
                 }
         },
 
-        checkForDoorEntered: function()
-        {
-                if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
-                {
-                        if (this.mControlObject.mPosition.mX > this.mRightBounds - 50 / 2 &&
-                        this.mControlObject.mPosition.mY > this.mTopBounds &&
-                        this.mControlObject.mPosition.mY < this.mTopBounds + 50 * 2)
-
-                        {
-                                this.mOn = false;
-				this.setFeedback("YOU WIN!!!");
-                                window.location = "../database/goto_next_math_level.php"
-                        }
-                }
-        },
-	
 	evaluateCollision: (function(col1,col2)
         {
 	        this.parent(col1,col2);
