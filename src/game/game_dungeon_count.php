@@ -27,7 +27,7 @@ Extends: Game,
 
         },
 
- 	getOpenPoint: (function()
+ 	getOpenPoint2D: (function()
         {
 		var isOpen = false;
 
@@ -41,11 +41,11 @@ Extends: Game,
                        	var ySize = this.mBottomBounds - this.mTopBounds;
 
                        	//get point that would fall in the size range from above
-                        var rpoint2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
+                        var randomPoint2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
 
                         //now add the left and top bounds so that it is on the games actual field
-                        rpoint2D.mX += this.mLeftBounds;
-                        rpoint2D.mY += this.mTopBounds;
+                        randomPoint2D.mX += this.mLeftBounds;
+                        randomPoint2D.mY += this.mTopBounds;
 		
 			//we now need to see if we can make it thru all shapes without a collision
 			var isCollision = false;	
@@ -56,8 +56,8 @@ Extends: Game,
                                 	var x1 = this.mShapeArray[s].mPosition.mX;
                                 	var y1 = this.mShapeArray[s].mPosition.mY;
  
-                                	var x2 = rpoint2D.mX;              
-                                	var y2 = rpoint2D.mY;              
+                                	var x2 = randomPoint2D.mX;              
+                                	var y2 = randomPoint2D.mY;              
                 
                                 	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
                                 	var collisionDistance = this.mShapeArray[s].mCollisionDistance * 2;
@@ -70,7 +70,7 @@ Extends: Game,
                 	}
 			if (isCollision == false)
 			{
-				return rpoint2D;
+				return randomPoint2D;
 			}
       		} 
 
@@ -93,7 +93,7 @@ Extends: Game,
 		//create quiz shapes
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
-			var openPoint = this.getOpenPoint();
+			var openPoint = this.getOpenPoint2D();
 		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
                 }
 	},
