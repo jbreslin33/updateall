@@ -27,7 +27,7 @@ Extends: Game,
 
         },
 
- 	getOpenPoint2D: (function()
+ 	getOpenPoint2D: (function(newShapeWidth)
         {
 		while (true)
 		{
@@ -56,7 +56,8 @@ Extends: Game,
                                 	var y2 = randomPoint2D.mY;              
                 
                                 	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
-                                	var collisionDistance = this.mShapeArray[s].mCollisionDistance * 2;
+					var collisionDistanceOfNewShape = newShapeWidth * 6.5;
+                                	var collisionDistance = this.mShapeArray[s].mCollisionDistance + collisionDistanceOfNewShape;
                                                 
                                 	if (distSQ < collisionDistance) 
                                 	{
@@ -90,7 +91,7 @@ Extends: Game,
 		//create quiz shapes
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
-			var openPoint = this.getOpenPoint2D();
+			var openPoint = this.getOpenPoint2D(50);
 		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
                 }
 	},
@@ -103,8 +104,8 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-			//i am passing in 0,0 for spawn becuase random is going to take over inside....
-			//this.addToShapeArray(new ShapeAI("",50,50,0,0,"","red","","chaser",this));
+			var openPoint = this.getOpenPoint2D(50);
+			this.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",this));
                 }
 	},
 
