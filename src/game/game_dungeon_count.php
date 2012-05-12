@@ -26,18 +26,60 @@ Extends: Game,
                 this.checkForDoorEntered();
 
         },
+
+ 	getOpenPoint: (function()
+        {
+		var isOpen = false;
+
+		while (isOpen == false)
+		{
+			//try or try again with new randomPosition		
+	
+                       	//let's get a random open space...
+                       	//get the size of the playing field
+                       	var xSize = this.mRightBounds - this.mLeftBounds;
+                       	var ySize = this.mBottomBounds - this.mTopBounds;
+
+                       	//get point that would fall in the size range from above
+                        var rpoint2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
+
+                        //now add the left and top bounds so that it is on the games actual field
+                        rpoint2D.mX += this.mLeftBounds;
+                        rpoint2D.mY += this.mTopBounds;
+		
+			//we now need to see if we can make it thru all shapes without a collision
+			var isCollision = false;	
+			for (s = 0; s < this.mShapeArray.length; s++)
+                	{
+                        	if (this.mShapeArray[s].mCollidable ==  true)
+                        	{
+                                	var x1 = this.mShapeArray[s].mPosition.mX;
+                                	var y1 = this.mShapeArray[s].mPosition.mY;
+ 
+                                	var x2 = rpoint2D.mX;              
+                                	var y2 = rpoint2D.mY;              
+                
+                                	var distSQ = Math.pow(x1-x2,2) + Math.pow(y1-y2,2);
+                                	var collisionDistance = this.mShapeArray[s].mCollisionDistance * 2;
+                                                
+                                	if (distSQ < collisionDistance) 
+                                	{
+                               			isCollision = true; 
+					}
+                        	}
+                	}
+			if (isCollision == false)
+			{
+				return rpoint2D;
+			}
+      		} 
+
+ 
+        }).protect(),
+
 	
 	createWorld: function()
 	{
-                //create Shapes
-                this.createShapes();
-
-		//create quiz shapes
- 		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
-                {
-			randPos = this.getRandomSpawnPosition();
-                        this.addToShapeArray(new ShapeRelative("",50,50,randPos.mX,randPos.mY,i,"yellow","","question",this));
-                }
 
                 //create walls
                 this.createLeftWall();
@@ -45,6 +87,15 @@ Extends: Game,
                 this.createTopWall();
                 this.createBottomWall();
 
+                //create Shapes
+                this.createShapes();
+		
+		//create quiz shapes
+ 		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
+                {
+			var openPoint = this.getOpenPoint();
+		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
+                }
 	},
 
 	createShapes: function()
@@ -55,8 +106,8 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-			randPos = this.getRandomSpawnPosition();
-			this.addToShapeArray(new ShapeAI("",50,50,randPos.mX,randPos.mY,"","red","","chaser",this));
+			//i am passing in 0,0 for spawn becuase random is going to take over inside....
+			//this.addToShapeArray(new ShapeAI("",50,50,0,0,"","red","","chaser",this));
                 }
 	},
 
