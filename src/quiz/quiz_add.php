@@ -16,28 +16,23 @@ void setEndNumber(endNumber);
 
 ****************************************/
 
-var QuizCount = new Class(
+var QuizAdd = new Class(
 {
 
 Extends: Quiz,
         
-	initialize: function(scoreNeeded,countBy,startNumber,endNumber)
+	initialize: function(scoreNeeded,startNumber,endNumber)
         {
 		//parent
 		this.parent(scoreNeeded);
 
 		//countBy
-		this.mCount = 0;
-		this.mCountBy = countBy;
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
         },
 
 	reset: function()
 	{
-                //count
-                this.mCount = this.mStartNumber;
-	
 		this.parent();	
 	},
 
@@ -46,9 +41,7 @@ Extends: Quiz,
 	{
 		if (answer == this.mAnswer)
 		{
-                	this.mCount = this.mCount + this.mCountBy;  //add to count
                         this.incrementScore();
-
 			return true;
 		}
 		else
@@ -57,22 +50,24 @@ Extends: Quiz,
 		}
 	},
 
-	//questions
         newQuestion: function()
         {
                 //set question
-                this.mQuestion = this.mCount;
-
-		this.mQuestionHud.setText("Question: " + this.mQuestion);
+                //this.mQuestion = this.mCount;
+		//needs to be random
+		//this.mQuestion
+		//this.mQuestionHud.setText("Question: " + this.mQuestion);
 
 		//a new question needs a new answer
-       		this.newAnswer();
+       		//this.newAnswer();
 	},
 
         //new answer
         newAnswer: function()
         {
-                this.mAnswer = this.mCount + this.mCountBy;
+                //this.mAnswer = this.mCount + this.mCountBy;
+		//this needs to be random
+		this.mAnswer = 1;
         }
 
 });

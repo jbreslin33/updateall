@@ -84,7 +84,7 @@ var bottomBounds = <?php echo $bottomBounds; ?>;
 <script type="text/javascript" src="../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
-<script type="text/javascript" src="../quiz/quiz_count.php"></script>
+<script type="text/javascript" src="../quiz/quiz_add.php"></script>
 
 </head>
 
