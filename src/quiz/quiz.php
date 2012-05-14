@@ -39,7 +39,6 @@ var Quiz = new Class(
 		/******************** HUD ********************/
                 this.mScoreHud       = new Shape("",140,50,0,150,"Score: " + this.getScore(),"pink","","hud");
                 this.mScoreNeededHud = new Shape("",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","hud");
-                this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
         },
 
 	reset: function()
@@ -49,9 +48,6 @@ var Quiz = new Class(
 		
 		//reset marker
 		this.mMarker = 0;
-		
-		//update hud	
-		this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 	},
 
 	//submit answer
