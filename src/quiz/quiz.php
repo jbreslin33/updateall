@@ -28,21 +28,13 @@ var Quiz = new Class(
         {
 		//Question and Answer Array
 		this.mQuestionArray = new Array();
-		this.mQuestionArray[0] = 0;	
-		this.mAnswerArray   = new Array();
-		this.mAnswerArray[0] = 0;	
 			
-	
 		//score
                 this.mScore = 0;
                 this.mScoreNeeded = scoreNeeded;
 
 		//question
 		this.mMarker = 0;
-		this.mQuestion = 0;
-
-		//answer
-		this.mAnswer = 0;
 
 		/******************** HUD ********************/
                 this.mScoreHud       = new Shape("",140,50,0,150,"Score: " + this.getScore(),"pink","","hud");
@@ -55,12 +47,11 @@ var Quiz = new Class(
         	//score
                 this.setScore(0);
 		
-                //question	
-                this.mQuestion = this.mQuestionArray[0];
-		this.mQuestionHud.setText("Question: " + this.mQuestion);
-
-                //answer
-                this.newAnswer();
+		//reset marker
+		this.mMarker = 0;
+		
+		//update hud	
+		this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 	},
 
 	//submit answer
@@ -70,6 +61,7 @@ var Quiz = new Class(
 		{
                         this.incrementScore();
 			this.mMarker++;
+			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 			return true;
 		}
 		else
@@ -78,32 +70,9 @@ var Quiz = new Class(
 		}
 	},
 
-	//questions
-        newQuestion: function()
-        {
-                //set question
-                this.mQuestion = this.mQuestionArray[this.mMarker];
-
-		this.mQuestionHud.setText("Question: " + this.mQuestion);
-
-		//a new question needs a new answer
-       		this.newAnswer();
-	},
-
 	getQuestion: function()
 	{
-		return this.mQuestion;
-	},
-
-        //new answer
-        newAnswer: function()
-        {
-                this.mAnswer = this.mAnswerArray[this.mMarker];
-        },
-
-	getAnswer: function()
-	{
-		return this.mAnswer;
+		return this.mQuestionArray[this.mMarker];
 	},
 
 	getScore: function()
@@ -130,7 +99,6 @@ var Quiz = new Class(
 
 	incrementScore: function()
 	{
-
 		this.mScore++;
 		this.mScoreHud.setText("Score: " + this.mScore);
 	}

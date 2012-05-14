@@ -84,7 +84,7 @@ Extends: Game,
 		this.mQuiz.reset();
 
 		//set text of control object
-		this.mControlObject.setText(this.mQuiz.getQuestion());
+		this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
 
 	},
 
@@ -174,9 +174,6 @@ Extends: Game,
 
                                 //feedback
                                 this.setFeedback("Correct!");
-
-                                //get a new question
-                                this.mQuiz.newQuestion();
 
                                 //set text of control object
                                 col1.setText(this.mQuiz.mCount);

@@ -36,13 +36,13 @@ Extends: Game,
                 this.createShapes();
 		
 		//create quiz shapes
- /*	
-		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
+	
+		for (i = 0; i <= 10; i++)
                 {
 			var openPoint = this.getOpenPoint2D(50,4);
 		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
                 }
-*/
+
 	},
 
 	createShapes: function()
@@ -82,7 +82,7 @@ Extends: Game,
 		this.mQuiz.reset();
 
 		//set text of control object
-		this.mControlObject.setText(this.mQuiz.getQuestion());
+		this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
 
 	},
 
@@ -142,9 +142,6 @@ Extends: Game,
 
                                 //feedback
                                 this.setFeedback("Correct!");
-
-                                //get a new question
-                                this.mQuiz.newQuestion();
 
                                 //set text of control object
                                 col1.setText(this.mQuiz.mCount);
