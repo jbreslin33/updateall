@@ -48,7 +48,6 @@ var Quiz = new Class(
 
 	//submit answer
 	submitAnswer: function(answer)
-
 	{
         	if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
 		{
@@ -66,7 +65,8 @@ var Quiz = new Class(
         	this.incrementScore();
 		this.mMarker++;
 	},
-		
+	
+	//returns question object	
 	getQuestion: function()
 	{
 		return this.mQuestionArray[this.mMarker];
