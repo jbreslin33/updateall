@@ -3,22 +3,18 @@ public methods
 ----------------
 
 //get methods
-answer      getAnswer(); returns current answer
 score       getScore(); //returns current score
 scoreNeeded getScoreNeeded();
 
 //set methods
-void setAnswers(arrayOfAnswers);
 void setScore();
-void setQuestions(arrayOfQuestions);
 void setScoreNeeded(scoreNeeded);
+void setQuestions(arrayOfQuestions);
 
-void addQuestion(question,answer); //question answer pair to add to end of question/answer arrays.
-
-void randomizeQuestions();
 void incrementScore();
-
 bool submitAnswer(answer);  //returns whether answer is correct
+void addQuestion(question); //question answer pair to add to end of question/answer arrays.
+void randomizeQuestions();
 
 ****************************************/
 
@@ -52,12 +48,11 @@ var Quiz = new Class(
 
 	//submit answer
 	submitAnswer: function(answer)
+
 	{
-		if (answer == this.mAnswer)
+        	if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
 		{
-                        this.incrementScore();
-			this.mMarker++;
-			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+			this.correctAnswer();	
 			return true;
 		}
 		else
@@ -65,7 +60,13 @@ var Quiz = new Class(
 			return false;
 		}
 	},
-
+	
+	correctAnswer: function()
+	{
+        	this.incrementScore();
+		this.mMarker++;
+	},
+		
 	getQuestion: function()
 	{
 		return this.mQuestionArray[this.mMarker];

@@ -32,6 +32,11 @@ Extends: Quiz,
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
 
+		for (i = this.mStartNumber; i <= this.mEndNumber; i = i + this.mCountBy)
+		{
+			this.mQuestionArray.push(new Question(i,i + this.mCountBy));
+		}
+/*
 		this.mQuestion1 = new Question(0,1);
 		this.mQuestion2 = new Question(1,2);
 		this.mQuestion3 = new Question(2,3);
@@ -53,7 +58,7 @@ Extends: Quiz,
 		this.mQuestionArray.push(this.mQuestion8);
 		this.mQuestionArray.push(this.mQuestion9);
 		this.mQuestionArray.push(this.mQuestion10);
-
+*/
 		/******************** HUD ********************/
                 this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
 
@@ -61,13 +66,14 @@ Extends: Quiz,
 
 	reset: function()
 	{
-                //count
+		this.parent();	
+                
+		//count
                 this.mCount = this.mStartNumber;
  	
 	  	//update hud
                 this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 	
-		this.parent();	
 	},
 
 	//submit answer
@@ -75,11 +81,9 @@ Extends: Quiz,
 	{
 		if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
 		{
-
-			this.mMarker++;
-                	this.mCount = this.mCount + this.mCountBy;  //add to count
-                        this.incrementScore();
+			this.correctAnswer();	
 			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+			
 			return true;
 		}
 		else

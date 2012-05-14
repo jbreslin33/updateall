@@ -176,7 +176,7 @@ Extends: Game,
                                 this.setFeedback("Correct!");
 
                                 //set text of control object
-                                col1.setText(this.mQuiz.mCount);
+                                col1.setText(this.mQuiz.getQuestion().getQuestion());
                         }
                         else
                         {
