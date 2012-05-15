@@ -52,8 +52,6 @@ var Quiz = new Class(
 	//submit answer
 	submitAnswer: function(answer)
 	{
-		mApplication.log('useranswer=' + answer)
-		mApplication.log('realanswer=' + this.mQuestionArray[this.mMarker].getAnswer());
         	if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
 		{
 			this.correctAnswer();	
