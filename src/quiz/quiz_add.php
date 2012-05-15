@@ -29,46 +29,21 @@ Extends: Quiz,
 		//countBy
                 this.mStartNumber = startNumber;
                 this.mEndNumber = endNumber;
-        },
 
-	reset: function()
-	{
-		this.parent();	
-	},
-
-	//submit answer
-	submitAnswer: function(answer)
-	{
-		if (answer == this.mAnswer)
-		{
-                        this.incrementScore();
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	},
-
-        newQuestion: function()
-        {
-                //set question
-                //this.mQuestion = this.mCount;
-		//needs to be random
-		//this.mQuestion
-		//this.mQuestionHud.setText("Question: " + this.mQuestion);
-
-		//a new question needs a new answer
-       		//this.newAnswer();
-	},
-
-        //new answer
-        newAnswer: function()
-        {
-                //this.mAnswer = this.mCount + this.mCountBy;
-		//this needs to be random
-		this.mAnswer = 1;
+		//questions
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
+		this.mQuestionArray.push(new Question("4 + 3",7));
         }
+	
+
 
 });
 

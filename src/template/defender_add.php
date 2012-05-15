@@ -80,9 +80,11 @@ var bottomBounds = <?php echo $bottomBounds; ?>;
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../shape/shape_relative.php"></script>
+<script type="text/javascript" src="../shape/shape_defender.php"></script>
 <script type="text/javascript" src="../shape/shape_center.php"></script>
 <script type="text/javascript" src="../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
+<script type="text/javascript" src="../question/question.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
 <script type="text/javascript" src="../quiz/quiz_add.php"></script>
 

@@ -36,11 +36,10 @@ Extends: Game,
                 this.createShapes();
 		
 		//create quiz shapes
-	
 		for (i = 0; i <= 10; i++)
                 {
 			var openPoint = this.getOpenPoint2D(50,4);
-		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
+		  	this.addToShapeArray(new ShapeDefender("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getQuestion(i)));
                 }
 
 	},
@@ -77,13 +76,8 @@ Extends: Game,
 			}
 		}
 
-
 		//let's reset all quiz stuff right here.
 		this.mQuiz.reset();
-
-		//set text of control object
-		this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
-
 	},
 
    	createLeftWall: function()
@@ -135,16 +129,18 @@ Extends: Game,
 		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-                        if (this.mQuiz.submitAnswer(col2.mInnerHTML))
-                        {
+                        
+			//if (this.mQuiz.submitAnswer(col1.mInnerHTML,col2.mQuestion.getAnswer()))
+                       	if (col1.mInnerHTML == col2.mQuestion.getAnswer()) 
+			{
+				//call quiz correct Answer yourself
+				this.mQuiz.correctAnswer();
+	
                                 col2.mCollisionOn = false;
                                 col2.setVisibility(false);
 
                                 //feedback
                                 this.setFeedback("Correct!");
-
-                                //set text of control object
-                                col1.setText(this.mQuiz.mCount);
                         }
                         else
                         {

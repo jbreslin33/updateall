@@ -37,18 +37,23 @@ var Quiz = new Class(
                 this.mScoreNeededHud = new Shape("",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","hud");
         },
 
-	reset: function()
+	//returns question object	
+	getQuestion: function()
 	{
-        	//score
-                this.setScore(0);
-		
-		//reset marker
-		this.mMarker = 0;
+		return this.mQuestionArray[this.mMarker];
 	},
 
+	//returns question object	
+	getQuestion: function(i)
+	{
+		return this.mQuestionArray[i];
+	},
+	
 	//submit answer
 	submitAnswer: function(answer)
 	{
+		mApplication.log('useranswer=' + answer)
+		mApplication.log('realanswer=' + this.mQuestionArray[this.mMarker].getAnswer());
         	if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
 		{
 			this.correctAnswer();	
@@ -66,12 +71,6 @@ var Quiz = new Class(
 		this.mMarker++;
 	},
 	
-	//returns question object	
-	getQuestion: function()
-	{
-		return this.mQuestionArray[this.mMarker];
-	},
-
 	getScore: function()
 	{
 		return this.mScore;
@@ -98,8 +97,16 @@ var Quiz = new Class(
 	{
 		this.mScore++;
 		this.mScoreHud.setText("Score: " + this.mScore);
-	}
+	},
 
+	reset: function()
+	{
+        	//score
+                this.setScore(0);
+		
+		//reset marker
+		this.mMarker = 0;
+	}
 });
 
 

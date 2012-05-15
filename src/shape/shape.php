@@ -34,6 +34,8 @@ var Shape = new Class(
         initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message)
         {
                 
+		this.mQuestion;
+
 		//speed
 		this.mSpeed = .1;
 		
@@ -117,6 +119,11 @@ var Shape = new Class(
         },
 
 /************** SET METHODS ************************/
+	setQuestion: function(question)
+	{
+		this.mQuestion = question;
+	},	
+
 
 	setPosition: function(x,y)
 	{
