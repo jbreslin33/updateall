@@ -50,6 +50,12 @@ Extends: Quiz,
 	
 	},
 
+	correctAnswer: function()
+	{
+		this.parent();
+		this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+	},
+
 	//submit answer
 	submitAnswer: function(answer)
 	{

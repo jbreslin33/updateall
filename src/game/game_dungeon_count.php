@@ -169,9 +169,12 @@ Extends: Game,
 		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-                        if (this.mQuiz.submitAnswer(col2.mInnerHTML))
+			if (col1.mInnerHTML == col2.mQuestion.getQuestion())
+                        //if (this.mQuiz.submitAnswer(col2.mInnerHTML))
                         {
-                                col2.mCollisionOn = false;
+                         
+				this.mQuiz.correctAnswer();
+			       col2.mCollisionOn = false;
                                 col2.setVisibility(false);
 
                                 //feedback
