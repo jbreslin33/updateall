@@ -48,20 +48,6 @@ Extends: Game,
         
 	},
 	
-	evaluateCollision: (function(col1,col2)
-        {
-	        this.parent(col1,col2);
-		
-		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
-                {
-	                //feedback
-                        this.setFeedback("Try again.");
-
-                        //this deletes and then recreates everthing.
-                        this.resetGame();
-                }
- 	}).protect()
-
 });
 
 

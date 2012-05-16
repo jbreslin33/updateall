@@ -247,6 +247,15 @@ var Game = new Class(
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
 
+               	//if you get hit with a chaser then reset game or maybe lose a life 
+		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
+                {
+                        //feedback
+                        this.setFeedback("Try again.");
+
+                        //this deletes and then recreates everthing.
+                        this.resetGame();
+                }
 	}).protect(),
 
 	getOpenPoint2D: function(newShapeWidth,spreadFactor)
