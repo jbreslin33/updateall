@@ -42,9 +42,6 @@ Extends: Quiz,
 		this.mQuestionArray.push(new Question("2 + 1",3));
 		this.mQuestionArray.push(new Question("0 + 3",3));
         }
-	
-
-
 });
 
 
