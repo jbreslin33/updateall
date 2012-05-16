@@ -32,9 +32,6 @@ Extends: Game,
 
                 //create Shapes
                 this.createShapes();
-		
-		//the quiz
-        	this.mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber,this);
 	},
 
 	createShapes: function()

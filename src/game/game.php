@@ -240,7 +240,7 @@ var Game = new Class(
 
 	}).protect(),
 
-	getOpenPoint2D: (function(newShapeWidth,spreadFactor)
+	getOpenPoint2D: function(newShapeWidth,spreadFactor)
         {
                 while (true)
                 {
@@ -286,7 +286,7 @@ var Game = new Class(
                         }
                 } 
  
-        }).protect()
+        }
 
 });
 

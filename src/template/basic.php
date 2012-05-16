@@ -122,6 +122,9 @@ window.addEvent('domready', function()
 
 	//call thes "virtual methods"
 	mGame.createWorld();
+
+	mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber,mGame);
+	mGame.mQuiz = mQuiz;
 	mGame.resetGame();
 
         //start updating
