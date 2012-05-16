@@ -38,7 +38,7 @@ Extends: Game,
 		//create quiz shapes
 		for (i = 0; i <= 9; i++)
                 {
-			var openPoint = this.getOpenPoint2D(50,4);
+			var openPoint = this.getOpenPoint2D(-400,400,-300,300,50,4);
 		  	this.addToShapeArray(new ShapeQuestion("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getSpecificQuestion(i)));
                 }
 
@@ -52,7 +52,7 @@ Extends: Game,
 	
                 for (i = 0; i < this.mNumberOfChasers; i++)
                 {
-			var openPoint = this.getOpenPoint2D(50,4);
+			var openPoint = this.getOpenPoint2D(-400,400,-300,300,50,4);
 			this.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",this));
                 }
 	},

@@ -258,7 +258,7 @@ var Game = new Class(
                 }
 	}).protect(),
 
-	getOpenPoint2D: function(newShapeWidth,spreadFactor)
+	getOpenPoint2D: function(xMin,xMax,yMin,yMax,newShapeWidth,spreadFactor)
         {
                 while (true)
                 {

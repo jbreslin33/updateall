@@ -127,7 +127,7 @@ window.addEvent('domready', function()
                 
         for (i = 0; i < numberOfChasers; i++)
         {
-        	var openPoint = mGame.getOpenPoint2D(50,4);
+        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 mGame.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",mGame));
         }
 
