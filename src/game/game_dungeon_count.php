@@ -170,7 +170,6 @@ Extends: Game,
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
 			if (col1.mInnerHTML == col2.mQuestion.getQuestion())
-                        //if (this.mQuiz.submitAnswer(col2.mInnerHTML))
                         {
                          
 				this.mQuiz.correctAnswer();

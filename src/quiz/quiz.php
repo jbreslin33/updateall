@@ -12,7 +12,6 @@ void setScoreNeeded(scoreNeeded);
 void setQuestions(arrayOfQuestions);
 
 void incrementScore();
-bool submitAnswer(answer);  //returns whether answer is correct
 void addQuestion(question); //question answer pair to add to end of question/answer arrays.
 void randomizeQuestions();
 
@@ -47,20 +46,6 @@ var Quiz = new Class(
 	getSpecificQuestion: function(i)
 	{
 		return this.mQuestionArray[i];
-	},
-	
-	//submit answer
-	submitAnswer: function(answer)
-	{
-        	if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
-		{
-			this.correctAnswer();	
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	},
 	
 	correctAnswer: function()

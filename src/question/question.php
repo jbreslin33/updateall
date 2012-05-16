@@ -10,8 +10,6 @@ question    getQuestion(); //returns current score
 void setAnswer(answer);
 void setQuestion(question);
 
-bool submitAnswer(answer);  //returns whether answer is correct
-
 ****************************************/
 
 var Question = new Class(
@@ -25,19 +23,6 @@ var Question = new Class(
 		this.mAnswer = answer;
         },
 
-	//submit answer
-	submitAnswer: function(answer)
-	{
-		if (answer == this.mAnswer)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	},
-	
 	setQuestion: function(question)
 	{
 		mQuestion = question;

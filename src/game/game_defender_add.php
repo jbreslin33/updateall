@@ -129,8 +129,6 @@ Extends: Game,
 		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-                        
-			//if (this.mQuiz.submitAnswer(col1.mInnerHTML,col2.mQuestion.getAnswer()))
                        	if (col1.mInnerHTML == col2.mQuestion.getAnswer()) 
 			{
 				//call quiz correct Answer yourself

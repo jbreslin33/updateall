@@ -54,22 +54,6 @@ Extends: Quiz,
 	{
 		this.parent();
 		this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
-	},
-
-	//submit answer
-	submitAnswer: function(answer)
-	{
-		if (this.mQuestionArray[this.mMarker].submitAnswer(answer))
-		{
-			this.correctAnswer();	
-			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
-			
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
 
 });
