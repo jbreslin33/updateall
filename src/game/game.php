@@ -51,7 +51,28 @@ var Game = new Class(
                 this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.mName,"violet","","hud");
               	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","hud");
         },
-	
+
+ 	resetGame: function()
+        {
+                //reset collidable to true
+                for (i=0; i < this.mShapeArray.length; i++)
+                {
+                        //set every shape to spawn position
+                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
+                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPositionSpawn.mY;
+                        this.mShapeArray[i].setVisibility(true);
+                }
+
+                for (i=0; i < this.mShapeArray.length; i++)
+                {
+                        if (this.mShapeArray[i].mCollidable == true)
+                        {
+                                this.mShapeArray[i].mCollisionOn = true;
+                        }
+                }
+
+        },
+
 	/*********************** PUBLIC ***************************/
 
 	setFeedback: function(feedback)
@@ -181,12 +202,6 @@ var Game = new Class(
         }).protect(),
 
         isEndOfGame: (function()
-        {
-        
-	}).protect(),
-
-        //reset
-        resetGame: (function()
         {
         
 	}).protect(),

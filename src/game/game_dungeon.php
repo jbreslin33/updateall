@@ -12,6 +12,11 @@ Extends: Game,
                 this.mNumberOfChasers = numberOfChasers;
         },
 
+	resetGame: function()
+	{
+		this.parent();
+	},
+
         //update
         update: function()
         {
@@ -20,27 +25,6 @@ Extends: Game,
 		//door entered?
                 this.checkForDoorEntered();
         },
-
-	resetGame: function()
-	{
-		//reset collidable to true
-                for (i=0; i < this.mShapeArray.length; i++)
-                {
-                        //set every shape to spawn position
-                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
-                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPositionSpawn.mY;
-                        this.mShapeArray[i].setVisibility(true);
-                }
-
-                for (i=0; i < this.mShapeArray.length; i++)
-		{
-			if (this.mShapeArray[i].mCollidable == true)
-			{
-                		this.mShapeArray[i].mCollisionOn = true;
-			}
-		}
-
-	},
 
 	openTheDoors: function()
 	{
