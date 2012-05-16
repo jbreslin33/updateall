@@ -124,6 +124,24 @@ window.addEvent('domready', function()
 	//call thes "virtual methods"
 	mGame.createWorld();
 
+	//create walls
+	mGame.createWall(50,50,"black",-400,300);
+	mGame.createWall(50,50,"black",-400,250);
+	mGame.createWall(50,50,"black",-400,200);
+	mGame.createWall(50,50,"black",-400,150);
+	mGame.createWall(50,50,"black",-400,100);
+	mGame.createWall(50,50,"black",-400,50);
+	mGame.createWall(50,50,"black",-400,0);
+	mGame.createWall(50,50,"black",-400,-50);
+	mGame.createWall(50,50,"black",-400,-100);
+	mGame.createWall(50,50,"black",-400,-150);
+	mGame.createWall(50,50,"black",-400,-200);
+	mGame.createWall(50,50,"black",-400,-250);
+	mGame.createWall(50,50,"black",-400,-300);
+
+//createWall: function(width,lecolor,spawnX,spawnY)
+
+
 	mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber,mGame);
 	mGame.mQuiz = mQuiz;
 	mGame.resetGame();

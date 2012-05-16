@@ -25,7 +25,7 @@ Extends: Game,
 	{
 
                 //create walls
-                this.createLeftWall();
+       //         this.createLeftWall(50,"black");
                 this.createRightWall();
                 this.createTopWall();
                 this.createBottomWall();
@@ -68,14 +68,19 @@ Extends: Game,
 
 	},
 
-   	createLeftWall: function()
+	createWall: function(width,length,color,spawnX,spawnY)
+	{
+        	this.addToShapeArray(new ShapeRelative("",width,length,spawnX,spawnY,"",color,"","wall",this));
+	},
+/*
+   	createLeftWall: function(width,color,pointA,pointB)
         {
                 for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
                 {
-                        this.addToShapeArray(new ShapeRelative("",50,50,this.mLeftBounds,i,"","black","","wall",this));
+                        this.addToShapeArray(new ShapeRelative("",width,width,this.mLeftBounds,i,"",color,"","wall",this));
                 }
         },
-
+*/
         createRightWall: function()
         {
                 var greenDoorCount = 0; 
