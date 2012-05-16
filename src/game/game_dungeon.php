@@ -119,7 +119,7 @@ Extends: Game,
 
         checkForScoreNeeded: function()
         {
-                if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
+       		if (this.mQuiz.isQuizComplete()) 
                 {
                         //open the doors
                         for (i=0; i < this.mShapeArray.length; i++)
@@ -158,7 +158,7 @@ Extends: Game,
                         {
                          
 				this.mQuiz.correctAnswer();
-			       col2.mCollisionOn = false;
+			       	col2.mCollisionOn = false;
                                 col2.setVisibility(false);
 
                                 //feedback

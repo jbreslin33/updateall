@@ -69,6 +69,18 @@ var Quiz = new Class(
 		return this.mScoreNeeded;
 	},
 
+	isQuizComplete: function()
+	{
+		if (this.getScore() >= this.getScoreNeeded())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	},
+
 	setScore: function(score)
 	{
 		this.mScore = score;
