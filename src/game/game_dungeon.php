@@ -23,13 +23,6 @@ Extends: Game,
 
 	createWorld: function()
 	{
-
-                //create walls
-       //         this.createLeftWall(50,"black");
-                this.createRightWall();
-                this.createTopWall();
-                this.createBottomWall();
-
                 //create Shapes
                 this.createShapes();
 	},
@@ -67,53 +60,6 @@ Extends: Game,
 		}
 
 	},
-
-	createWall: function(width,length,color,spawnX,spawnY)
-	{
-        	this.addToShapeArray(new ShapeRelative("",width,length,spawnX,spawnY,"",color,"","wall",this));
-	},
-/*
-   	createLeftWall: function(width,color,pointA,pointB)
-        {
-                for (i = this.mTopBounds + 50; i <= this.mBottomBounds - 50; i = i + 50)
-                {
-                        this.addToShapeArray(new ShapeRelative("",width,width,this.mLeftBounds,i,"",color,"","wall",this));
-                }
-        },
-*/
-        createRightWall: function()
-        {
-                var greenDoorCount = 0; 
-                for (i = this.mTopBounds; i <= this.mBottomBounds; i = i + 50)
-                {
-                        if (greenDoorCount == 0 || greenDoorCount == 1)
-                        {
-                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","green","","wall",this));
-                        }       
-                        else
-                        {       
-                                this.addToShapeArray(new ShapeRelative("",50,50,this.mRightBounds,i,"","black","","wall",this));
-                        }
-                        greenDoorCount++;
-                }
-        
-        },
-
-        createTopWall: function()
-        {
-                for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
-                {
-                        this.addToShapeArray(new ShapeRelative("",50,50,i,this.mTopBounds,"","black","","wall",this));
-                }
-        },
-
-        createBottomWall: function()
-        {
-                for (i = this.mLeftBounds + 50; i <= this.mRightBounds - 50; i = i + 50)
-                {
-                        this.addToShapeArray(new ShapeRelative("",50,50,i,this.mBottomBounds,"","black","","wall",this));
-                }
-        },
 
 	openTheDoors: function()
 	{

@@ -108,6 +108,12 @@ var Game = new Class(
 	
 	},
 
+	createWall: function(width,length,color,spawnX,spawnY)
+        {
+                this.addToShapeArray(new ShapeRelative("",width,length,spawnX,spawnY,"",color,"","wall",this));
+        },
+
+
 	/****************************** PROTECTED ***************************************/
 
 	checkKeys: (function()
