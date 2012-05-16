@@ -103,11 +103,6 @@ var Game = new Class(
                 }
         },
 
-	createWorld: function()
-	{
-	
-	},
-
 	createWall: function(width,length,color,spawnX,spawnY)
         {
                 this.addToShapeArray(new ShapeRelative("",width,length,spawnX,spawnY,"",color,"","wall",this));
@@ -174,13 +169,6 @@ var Game = new Class(
                 }
         }).protect(),
 
-
-        createShapes: (function()
-        {
-        	//control object
-                this.mControlObject = new ShapeCollidable(this,"",50,50,100,100,"","blue","","middle","controlObject");
-        }).protect(),
-        
         saveOldPositions: (function()
         {
                 //save old positions

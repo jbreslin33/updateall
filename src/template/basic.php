@@ -122,7 +122,16 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
 	//call thes "virtual methods"
-	mGame.createWorld();
+//	mGame.createWorld();
+	//control object
+        mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);
+                mGame.addToShapeArray(mGame.mControlObject);
+                
+                for (i = 0; i < numberOfChasers; i++)
+                {
+                        var openPoint = mGame.getOpenPoint2D(50,4);
+                        mGame.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",mGame));
+                }
 
 	//create walls
 	//left

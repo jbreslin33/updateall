@@ -21,25 +21,6 @@ Extends: Game,
                 this.checkForDoorEntered();
         },
 
-	createWorld: function()
-	{
-                //create Shapes
-                this.createShapes();
-	},
-
-	createShapes: function()
-	{
-		//control object
-                this.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",this);
-		this.addToShapeArray(this.mControlObject);
-		mApplication.log('chaser');	
-                for (i = 0; i < this.mNumberOfChasers; i++)
-                {
-			var openPoint = this.getOpenPoint2D(50,4);
-			this.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",this));
-                }
-	},
-
 	resetGame: function()
 	{
 		//reset collidable to true
