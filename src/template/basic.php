@@ -118,7 +118,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers, scoreNeeded, countBy, startNumber, endNumber);
+        mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
 	//call thes "virtual methods"
 	mGame.createWorld();
