@@ -36,6 +36,11 @@ var Quiz = new Class(
                 this.mScoreNeededHud = new Shape("",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","hud");
         },
 
+	createQuiz: function()
+	{
+
+	},
+
 	//returns question object	
 	getQuestion: function()
 	{

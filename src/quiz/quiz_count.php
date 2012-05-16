@@ -21,10 +21,12 @@ var QuizCount = new Class(
 
 Extends: Quiz,
         
-	initialize: function(scoreNeeded,countBy,startNumber,endNumber)
+	initialize: function(scoreNeeded,countBy,startNumber,endNumber,game)
         {
 		//parent
 		this.parent(scoreNeeded);
+
+		this.mGame = game;
 
 		//countBy
 		this.mCountBy = countBy;
@@ -36,10 +38,25 @@ Extends: Quiz,
 			this.mQuestionArray.push(new Question(i,i + this.mCountBy));
 		}
 		
+		count = 0;
+                for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
+                {
+                        var openPoint = this.mGame.getOpenPoint2D(50,4);
+                        this.mGame.addToShapeArray(new ShapeAnswer("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this.mGame,this.getSpecificQuestion(count)));
+                        count++;
+                }
+	
+
+	
 		/******************** HUD ********************/
                 this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
 
         },
+	
+	createQuiz: function()
+	{
+
+	},
 
 	reset: function()
 	{

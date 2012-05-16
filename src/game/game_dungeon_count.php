@@ -12,8 +12,6 @@ Extends: Game,
                 //chasers
                 this.mNumberOfChasers = numberOfChasers;
 
-		//the quiz
-        	this.mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber);
 
         },
 
@@ -39,7 +37,11 @@ Extends: Game,
                 //create Shapes
                 this.createShapes();
 		
+		//the quiz
+        	this.mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber,this);
+		
 		//create quiz shapes
+/*
 		count = 0;
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
@@ -47,6 +49,7 @@ Extends: Game,
 		  	this.addToShapeArray(new ShapeAnswer("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getSpecificQuestion(count)));
 			count++;
                 }
+*/
 	},
 
 	createShapes: function()
