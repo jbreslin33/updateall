@@ -40,10 +40,12 @@ Extends: Game,
                 this.createShapes();
 		
 		//create quiz shapes
+		count = 0;
  		for (i = this.mQuiz.mStartNumber + this.mQuiz.mCountBy; i <= this.mQuiz.mEndNumber; i = i + this.mQuiz.mCountBy)
                 {
 			var openPoint = this.getOpenPoint2D(50,4);
-		  	this.addToShapeArray(new ShapeRelative("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this));
+		  	this.addToShapeArray(new ShapeAnswer("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getSpecificQuestion(count)));
+			count++;
                 }
 	},
 
