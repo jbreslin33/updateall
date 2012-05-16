@@ -66,13 +66,14 @@ Extends: Game,
 			}
 		}
 
-
 		//let's reset all quiz stuff right here.
-		this.mQuiz.reset();
+                if (this.mQuiz)
+		{ 
+			this.mQuiz.reset();
 
-		//set text of control object
-		this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
-
+			//set text of control object
+			this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
+		}
 	},
 
    	createLeftWall: function()
@@ -117,35 +118,45 @@ Extends: Game,
                 }
         },
 
-        checkForScoreNeeded: function()
-        {
-       		if (this.mQuiz.isQuizComplete()) 
+	openTheDoors: function()
+	{
+ 		//open the doors
+                for (i=0; i < this.mShapeArray.length; i++)
                 {
-                        //open the doors
-                        for (i=0; i < this.mShapeArray.length; i++)
+                	if (this.mShapeArray[i].mBackgroundColor == 'green')
                         {
-                                if (this.mShapeArray[i].mBackgroundColor == 'green')
-                                {
-                                        this.mShapeArray[i].setBackgroundColor('white');
-                                }
+                        	this.mShapeArray[i].setBackgroundColor('white');
                         }
                 }
+	},
+
+        isEndOfGame: function()
+        {
+       		if (this.mQuiz)
+		{	
+			if (this.mQuiz.isQuizComplete()) 
+                	{
+              			this.openTheDoors(); 
+                	}
+		}
         },
 
         checkForDoorEntered: function()
         {
-                if (this.mQuiz.getScore() == this.mQuiz.getScoreNeeded())
-                {
-                        if (this.mControlObject.mPosition.mX > this.mRightBounds - 50 / 2 &&
-                        this.mControlObject.mPosition.mY > this.mTopBounds &&
-                        this.mControlObject.mPosition.mY < this.mTopBounds + 50 * 2)
-
-                        {
-                                this.mOn = false;
-				this.setFeedback("YOU WIN!!!");
-                                window.location = "../database/goto_next_math_level.php"
-                        }
-                }
+		if (this.mQuiz)
+		{
+                	if (this.mQuiz.isQuizComplete())
+                	{
+                        	if (this.mControlObject.mPosition.mX > this.mRightBounds - 50 / 2 &&
+                        	this.mControlObject.mPosition.mY > this.mTopBounds &&
+                        	this.mControlObject.mPosition.mY < this.mTopBounds + 50 * 2)
+                        	{
+                                	this.mOn = false;
+					this.setFeedback("YOU WIN!!!");
+                                	window.location = "../database/goto_next_math_level.php"
+                        	}
+                	}
+		}
         },
 	
 	evaluateCollision: (function(col1,col2)
@@ -156,16 +167,21 @@ Extends: Game,
 		{
 			if (col1.mInnerHTML == col2.mQuestion.getQuestion())
                         {
-                         
-				this.mQuiz.correctAnswer();
-			       	col2.mCollisionOn = false;
+                        	if (this.mQuiz)
+				{ 
+					this.mQuiz.correctAnswer();
+			       	}	
+				col2.mCollisionOn = false;
                                 col2.setVisibility(false);
 
                                 //feedback
                                 this.setFeedback("Correct!");
 
                                 //set text of control object
-                                col1.setText(this.mQuiz.getQuestion().getQuestion());
+                        	if (this.mQuiz)
+				{ 
+                                	col1.setText(this.mQuiz.getQuestion().getQuestion());
+				}
                         }
                         else
                         {

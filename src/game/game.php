@@ -95,7 +95,7 @@ var Game = new Class(
 			this.checkForCollisions();
 
                 	//check for end game
-                	this.checkForScoreNeeded();
+                	this.isEndOfGame();
         
                 	//save old positions
                 	this.saveOldPositions();
@@ -186,7 +186,7 @@ var Game = new Class(
                 }
         }).protect(),
 
-        checkForScoreNeeded: (function()
+        isEndOfGame: (function()
         {
         
 	}).protect(),
