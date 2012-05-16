@@ -44,7 +44,7 @@ var Quiz = new Class(
 	},
 
 	//returns question object	
-	getQuestion: function(i)
+	getSpecificQuestion: function(i)
 	{
 		return this.mQuestionArray[i];
 	},

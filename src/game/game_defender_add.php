@@ -39,7 +39,7 @@ Extends: Game,
 		for (i = 0; i <= 9; i++)
                 {
 			var openPoint = this.getOpenPoint2D(50,4);
-		  	this.addToShapeArray(new ShapeDefender("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getQuestion(i)));
+		  	this.addToShapeArray(new ShapeDefender("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this,this.mQuiz.getSpecificQuestion(i)));
                 }
 
 	},
