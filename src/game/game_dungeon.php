@@ -1,4 +1,4 @@
-var GameDungeonCount = new Class(
+var GameDungeon = new Class(
 {
 
 Extends: Game,

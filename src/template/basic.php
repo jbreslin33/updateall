@@ -88,7 +88,7 @@ var collisionDistance = <?php echo $collisionDistance; ?>;
 
 <script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/game_dungeon_count.php"></script>
+<script type="text/javascript" src="../game/game_dungeon.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../shape/shape_relative.php"></script>
@@ -118,7 +118,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameDungeonCount(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
+        mGame = new GameDungeon(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
 
 	//call thes "virtual methods"
 	mGame.createWorld();
