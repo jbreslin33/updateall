@@ -32,7 +32,6 @@ if ($num > 0)
         $endNumber = $row[3];
 }
 
-
 ?>
 
 <script language="javascript">
