@@ -48,7 +48,6 @@ var nextLevel = <?php echo $nextLevel; ?>;
 
 <script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/game_dungeon.php"></script>
 <script type="text/javascript" src="../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>

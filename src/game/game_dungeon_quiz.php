@@ -1,13 +1,26 @@
 var GameDungeonQuiz = new Class(
 {
 
-Extends: GameDungeon,
+Extends: Game,
 
         initialize: function(skill)
         {
                 //application
                 this.parent(skill);
         },
+
+ 	openTheDoors: function()
+        {
+                //open the doors
+                for (i=0; i < this.mShapeArray.length; i++)
+                {
+                        if (this.mShapeArray[i].mBackgroundColor == 'green')
+                        {
+                                this.mShapeArray[i].setBackgroundColor('white');
+                        }
+                }
+        },
+
 
 	resetGame: function()
 	{
