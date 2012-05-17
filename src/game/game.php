@@ -21,7 +21,7 @@ void 	      setFeedback(feedback);
 
 var Game = new Class(
 {
-        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds)
+        initialize: function(name)
         {
 		/************ NAME *******/
 		this.mName = name;

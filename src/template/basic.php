@@ -119,13 +119,15 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameDungeonQuiz(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
+        mGame = new GameDungeonQuiz(name);
 
 	//control object
         mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);
         mGame.addToShapeArray(mGame.mControlObject);
+
+	chasers = 1;
                 
-        for (i = 0; i < numberOfChasers; i++)
+        for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 mGame.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",mGame));

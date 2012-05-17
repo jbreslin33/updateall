@@ -3,10 +3,10 @@ var GameDungeonQuiz = new Class(
 
 Extends: GameDungeon,
 
-        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers)
+        initialize: function(name)
         {
                 //application
-                this.parent(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers);
+                this.parent(name);
         },
 
 	resetGame: function()

@@ -3,13 +3,10 @@ var GameDungeon = new Class(
 
 Extends: Game,
 
-        initialize: function(name, leftBounds, rightBounds, topBounds, bottomBounds, numberOfChasers)
+        initialize: function(name)
         {
                 //application
-                this.parent(name, leftBounds, rightBounds, topBounds, bottomBounds);
-
-                //chasers
-                this.mNumberOfChasers = numberOfChasers;
+                this.parent(name);
         },
 
 	resetGame: function()
