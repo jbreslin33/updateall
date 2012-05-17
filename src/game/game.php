@@ -108,9 +108,6 @@ var Game = new Class(
 
 			//collision Detection
 			this.checkForCollisions();
-
-                	//check for end game
-                	this.isEndOfGame();
         
                 	//save old positions
                 	this.saveOldPositions();
@@ -195,11 +192,6 @@ var Game = new Class(
                 }
         }).protect(),
 
-        isEndOfGame: (function()
-        {
-        
-	}).protect(),
-
 	checkForCollisions: (function()
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
@@ -241,15 +233,6 @@ var Game = new Class(
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
 
-               	//if you get hit with a chaser then reset game or maybe lose a life 
-		if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
-                {
-                        //feedback
-                        this.setFeedback("Try again.");
-
-                        //this deletes and then recreates everthing.
-                        this.resetGame();
-                }
 	}).protect(),
 
 	getOpenPoint2D: function(xMin,xMax,yMin,yMax,newShapeWidth,spreadFactor)

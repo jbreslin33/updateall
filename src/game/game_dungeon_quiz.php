@@ -9,18 +9,25 @@ Extends: Game,
                 this.parent(skill);
         },
 
- 	openTheDoors: function()
-        {
-                //open the doors
-                for (i=0; i < this.mShapeArray.length; i++)
-                {
-                        if (this.mShapeArray[i].mBackgroundColor == 'green')
-                        {
-                                this.mShapeArray[i].setBackgroundColor('white');
+	update: function()
+	{
+		this.parent();
+
+		if (this.mQuiz)
+		{
+			if (this.mQuiz.isQuizComplete())
+			{
+		                //open the doors
+                		for (i=0; i < this.mShapeArray.length; i++)
+                		{
+                        		if (this.mShapeArray[i].mBackgroundColor == 'green')
+                        		{
+                                		this.mShapeArray[i].setBackgroundColor('white');
+					}
+				}
                         }
                 }
         },
-
 
 	resetGame: function()
 	{
@@ -36,21 +43,21 @@ Extends: Game,
 		}
 	},
 
-        isEndOfGame: function()
-        {
-       		if (this.mQuiz)
-		{	
-			if (this.mQuiz.isQuizComplete()) 
-                	{
-              			this.openTheDoors(); 
-                	}
-		}
-        },
-	
 	evaluateCollision: (function(col1,col2)
         {
 	        this.parent(col1,col2);
-		
+
+		//if you get hit with a chaser then reset game or maybe lose a life 
+                if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
+                {
+                        //feedback
+                        this.setFeedback("Try again.");
+
+                        //this deletes and then recreates everthing.
+                        this.resetGame();
+                }
+
+		//you ran into a question shape lets resolve it	
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
 			if (col1.mInnerHTML == col2.mQuestion.getQuestion())
@@ -80,7 +87,8 @@ Extends: Game,
                                 this.resetGame();
                         }
                 }
-		
+
+		//exit room to next level when you complete quiz		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
 		{
 			if (col2.mBackgroundColor == 'white')
