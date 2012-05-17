@@ -13,19 +13,14 @@ Extends: Game,
 	{
 		this.parent();
 
-		if (this.mQuiz)
-		{
-			if (this.mQuiz.isQuizComplete())
-			{
-		                //open the doors
-                		for (i=0; i < this.mShapeArray.length; i++)
-                		{
-                        		if (this.mShapeArray[i].mBackgroundColor == 'green')
-                        		{
-                                		this.mShapeArray[i].setBackgroundColor('white');
-					}
-				}
-                        }
+ 		if (this.mQuiz)
+        	{
+        		if (this.mQuiz.isQuizComplete())
+                	{
+                        	this.mOn = false;
+                               	this.setFeedback("YOU WIN!!!");
+                               	window.location = "../database/goto_next_math_level.php"
+			}
                 }
         },
 
@@ -42,11 +37,7 @@ Extends: Game,
 			this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
 		}
 	},
-/*
- if (col1.mMessage == "controlObject" && col2.mMessage == "question")
-                {
-                        if (col1.mInnerHTML == col2.mQuestion.getAnswer()) 
-*/
+	
 	evaluateCollision: (function(col1,col2)
         {
 	        this.parent(col1,col2);
@@ -64,7 +55,6 @@ Extends: Game,
 		//you ran into a question shape lets resolve it	
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-			//if (col1.mInnerHTML == col2.mQuestion.getQuestion())
                         if (col1.mInnerHTML == col2.mQuestion.getAnswer()) 
                         {
                         	if (this.mQuiz)
@@ -76,12 +66,6 @@ Extends: Game,
 
                                 //feedback
                                 this.setFeedback("Correct!");
-
-                                //set text of control object
-                        	if (this.mQuiz)
-				{ 
-                                	col1.setText(this.mQuiz.getQuestion().getQuestion());
-				}
                         }
                         else
                         {
@@ -93,28 +77,6 @@ Extends: Game,
                         }
                 }
 
-		//exit room to next level when you complete quiz		
-		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
-		{
-			if (col2.mBackgroundColor == 'white')
-			{
-				if (this.mQuiz)
-				{
-                			if (this.mQuiz.isQuizComplete())
-					{
-						//this should just check for collision on certail block on wall for now i will hardcode
-                        			if (this.mControlObject.mPosition.mX > 400 - 50 / 2 &&
-                        			this.mControlObject.mPosition.mY > -300 &&
-                        			this.mControlObject.mPosition.mY < -300 + 50 * 2)
-                        			{
-                                			this.mOn = false;
-							this.setFeedback("YOU WIN!!!");
-                                			window.location = "../database/goto_next_math_level.php"
-						}
-                        		}
-				}
-			}
-		}
  	}).protect(),
 
 	checkKeys: (function()
