@@ -14,7 +14,7 @@ include("../database/db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, speed from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -29,7 +29,6 @@ $startNumber = 0;
 $endNumber = 0;
 $tickLength = 0;
 $nextLevel = 0;
-$speed = 0;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -48,7 +47,6 @@ if ($num > 0)
         $endNumber = $row[4];
         $tickLength = $row[5];
 	$nextLevel = $row[6];
-	$speed = $row[7];
 	
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
@@ -64,7 +62,6 @@ var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
 var tickLength = <?php echo $tickLength; ?>;
 var nextLevel = <?php echo $nextLevel; ?>;
-var speed = <?php echo $speed; ?>;
 
 </script>
 
