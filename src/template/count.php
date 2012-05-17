@@ -13,8 +13,8 @@ include("../database/db_connect.php");
 //db connection
 $conn = dbConnect();
 
-//query
-$query = "select name, score_needed, count_by, start_number, end_number, next_level from math_games where level = ";
+//query the level table
+$query = "select skill, next_level from levels where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -22,11 +22,7 @@ $query .= ";";
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //game variables to fill from db
-$name = "";
-$scoreNeeded = 0;
-$countBy = 0;
-$startNumber = 0;
-$endNumber = 0;
+$skill = "";
 $nextLevel = 0;
 
 //get numer of rows
@@ -39,21 +35,48 @@ if ($num > 0)
         $row = pg_fetch_row($result);
 
         //fill php vars from db
-        $name = $row[0];
-        $scoreNeeded = $row[1];
-        $countBy = $row[2];
-        $startNumber = $row[3];
-        $endNumber = $row[4];
-	$nextLevel = $row[5];
+        $skill = $row[0];
+	$nextLevel = $row[1];
 	
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
+
+//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
+$query = "select score_needed, count_by, start_number, end_number from math_games where level = ";
+$query .= $_SESSION["math_game_level"];
+$query .= ";";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//game variables to fill from db
+$scoreNeeded = 0;
+$countBy = 0;
+$startNumber = 0;
+$endNumber = 0;
+
+//get numer of rows
+$num = pg_num_rows($result);
+
+// if there is a row then id exists it better be unique!
+if ($num > 0)
+{
+        //get row
+        $row = pg_fetch_row($result);
+
+        //fill php vars from db
+        $scoreNeeded = $row[0];
+        $countBy = $row[1];
+        $startNumber = $row[2];
+        $endNumber = $row[3];
+}
+
 
 ?>
 
 <script language="javascript">
 
-var name = "<?php echo $name; ?>";
+var skill = "<?php echo $skill; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
@@ -95,7 +118,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameDungeonQuiz(name);
+        mGame = new GameDungeonQuiz(skill);
 
 	//control object
         mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);

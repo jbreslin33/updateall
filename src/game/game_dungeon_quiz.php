@@ -3,10 +3,10 @@ var GameDungeonQuiz = new Class(
 
 Extends: GameDungeon,
 
-        initialize: function(name)
+        initialize: function(skill)
         {
                 //application
-                this.parent(name);
+                this.parent(skill);
         },
 
 	resetGame: function()
@@ -40,9 +40,10 @@ Extends: GameDungeon,
 		{
                 	if (this.mQuiz.isQuizComplete())
                 	{
-                        	if (this.mControlObject.mPosition.mX > this.mRightBounds - 50 / 2 &&
-                        	this.mControlObject.mPosition.mY > this.mTopBounds &&
-                        	this.mControlObject.mPosition.mY < this.mTopBounds + 50 * 2)
+				//this should just check for collision on certail block on wall for now i will hardcode
+                        	if (this.mControlObject.mPosition.mX > 400 - 50 / 2 &&
+                        	this.mControlObject.mPosition.mY > -300 &&
+                        	this.mControlObject.mPosition.mY < -300 + 50 * 2)
                         	{
                                 	this.mOn = false;
 					this.setFeedback("YOU WIN!!!");

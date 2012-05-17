@@ -21,10 +21,10 @@ void 	      setFeedback(feedback);
 
 var Game = new Class(
 {
-        initialize: function(name)
+        initialize: function(skill)
         {
 		/************ NAME *******/
-		this.mName = name;
+		this.mSkill = skill;
 
 		/************** On_Off **********/
                 this.mOn = true;
@@ -42,7 +42,7 @@ var Game = new Class(
                 this.mShapeArray = new Array();
 
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.mName,"violet","","hud");
+                this.mGameNameHud    = new Shape("",140,50,0,0,"" + this.mSkill,"violet","","hud");
               	this.mFeedbackHud    = new Shape("",140,50,0,50,"HAV FUN!","pink","","hud");
         },
 

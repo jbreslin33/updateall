@@ -33,7 +33,7 @@ else
 //--------------------------url----------------------
 
 //query string
-$query = "select url from math_games where level = ";
+$query = "select url from levels where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 

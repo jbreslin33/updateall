@@ -3,10 +3,10 @@ var GameDungeon = new Class(
 
 Extends: Game,
 
-        initialize: function(name)
+        initialize: function(skill)
         {
                 //application
-                this.parent(name);
+                this.parent(skill);
         },
 
 	resetGame: function()
