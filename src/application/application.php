@@ -19,6 +19,16 @@ var Application = new Class(
                 this.mKeyDown = false;
                 this.mKeyStop = false;
 		this.mKeySpace = false;
+		this.mKey0 = false;
+		this.mKey1 = false;
+		this.mKey2 = false;
+		this.mKey3 = false;
+		this.mKey4 = false;
+		this.mKey5 = false;
+		this.mKey6 = false;
+		this.mKey7 = false;
+		this.mKey8 = false;
+		this.mKey9 = false;
 
         },
 
