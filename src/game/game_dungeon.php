@@ -18,9 +18,6 @@ Extends: Game,
         update: function()
         {
                 this.parent();
-          
-		//door entered?
-//                this.checkForDoorEntered();
         },
 
 	openTheDoors: function()
