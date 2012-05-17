@@ -264,15 +264,15 @@ var Game = new Class(
                 {
                         //let's get a random open space...
                         //get the size of the playing field
-                        var xSize = this.mRightBounds - this.mLeftBounds;
-                        var ySize = this.mBottomBounds - this.mTopBounds;
+                        var xSize = xMax - xMin;
+                        var ySize = yMax - yMin;
 
                         //get point that would fall in the size range from above
                         var randomPoint2D = new Point2D( Math.floor( Math.random()*xSize) , Math.floor(Math.random()*ySize));
 
                         //now add the left and top bounds so that it is on the games actual field
-                        randomPoint2D.mX += this.mLeftBounds;
-                        randomPoint2D.mY += this.mTopBounds;
+                        randomPoint2D.mX += xMin;
+                        randomPoint2D.mY += yMin;
 
                         //we now need to see if we can make it thru all shapes without a collision
                         var isCollision = false;
