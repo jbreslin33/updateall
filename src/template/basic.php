@@ -14,7 +14,7 @@ include("../database/db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, number_of_chasers, speed, left_bounds, right_bounds, top_bounds, bottom_bounds, collision_distance from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level, speed from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -29,13 +29,7 @@ $startNumber = 0;
 $endNumber = 0;
 $tickLength = 0;
 $nextLevel = 0;
-$numberOfChasers = 0;
 $speed = 0;
-$leftBounds;
-$rightBounds;
-$topBounds;
-$bottomBounds;
-$collisionDistance;
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -54,13 +48,7 @@ if ($num > 0)
         $endNumber = $row[4];
         $tickLength = $row[5];
 	$nextLevel = $row[6];
-	$numberOfChasers = $row[7];
-	$speed = $row[8];
-	$leftBounds = $row[9];
-	$rightBounds = $row[10];
-	$topBounds = $row[11];
-	$bottomBounds = $row[12];
-	$collisionDistance = $row[13];
+	$speed = $row[7];
 	
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
@@ -76,13 +64,7 @@ var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
 var tickLength = <?php echo $tickLength; ?>;
 var nextLevel = <?php echo $nextLevel; ?>;
-var numberOfChasers = <?php echo $numberOfChasers; ?>;
 var speed = <?php echo $speed; ?>;
-var leftBounds = <?php echo $leftBounds; ?>;
-var rightBounds = <?php echo $rightBounds; ?>;
-var topBounds = <?php echo $topBounds; ?>;
-var bottomBounds = <?php echo $bottomBounds; ?>;
-var collisionDistance = <?php echo $collisionDistance; ?>;
 
 </script>
 

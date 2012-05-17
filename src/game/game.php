@@ -26,12 +26,6 @@ var Game = new Class(
 		/************ NAME *******/
 		this.mName = name;
 
-		/************ DIMENSIONS *******/
-                this.mLeftBounds = leftBounds;
-                this.mRightBounds = rightBounds;
-                this.mTopBounds = topBounds;
-                this.mBottomBounds = bottomBounds;
-		
 		/************** On_Off **********/
                 this.mOn = true;
                 
