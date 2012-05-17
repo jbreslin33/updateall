@@ -14,7 +14,7 @@ include("../database/db_connect.php");
 $conn = dbConnect();
 
 //query
-$query = "select name, score_needed, count_by, start_number, end_number, tick_length, next_level from math_games where level = ";
+$query = "select name, score_needed, count_by, start_number, end_number, next_level from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
@@ -27,7 +27,6 @@ $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
 $endNumber = 0;
-$tickLength = 0;
 $nextLevel = 0;
 
 //get numer of rows
@@ -45,8 +44,7 @@ if ($num > 0)
         $countBy = $row[2];
         $startNumber = $row[3];
         $endNumber = $row[4];
-        $tickLength = $row[5];
-	$nextLevel = $row[6];
+	$nextLevel = $row[5];
 	
 	$_SESSION["math_game_next_level"] = $nextLevel;
 }
@@ -60,7 +58,6 @@ var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
-var tickLength = <?php echo $tickLength; ?>;
 var nextLevel = <?php echo $nextLevel; ?>;
 
 </script>
