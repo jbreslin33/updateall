@@ -20,7 +20,7 @@ Extends: Game,
                 this.parent();
           
 		//door entered?
-                this.checkForDoorEntered();
+//                this.checkForDoorEntered();
         },
 
 	openTheDoors: function()
