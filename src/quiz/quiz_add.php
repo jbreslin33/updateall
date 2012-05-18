@@ -36,6 +36,9 @@ Extends: Quiz,
 		this.mAddendMax = addendMax;
                 this.mNumberOfAddends = numberOfAddends;
 
+		mApplication.log('min:' + this.mAddendMin);
+		mApplication.log('max:' + this.mAddendMax);
+
 		for (i = 0; i <= this.mScoreNeeded; i++)
 		{
 			seed = addendMax - addendMin;

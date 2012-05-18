@@ -27,9 +27,9 @@ if ($num > 0)
 
         //fill php vars from db
         $scoreNeeded = $row[0];
-        $addendMin = $row[1];
-        $addendMax = $row[2];
-        $numberOfAddends = $row[3];
+        $numberOfAddends = $row[1];
+        $addendMin = $row[2];
+        $addendMax = $row[3];
 }
 
 ?>
