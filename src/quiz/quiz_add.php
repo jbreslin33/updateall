@@ -44,11 +44,6 @@ Extends: Quiz,
                 }
         },
 	
-	reset: function()
-	{
-		this.parent();	
-	},
-
 	correctAnswer: function()
 	{
 		this.incrementScore();
