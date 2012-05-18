@@ -83,6 +83,10 @@ window.addEvent('domready', function()
         mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);
         mGame.addToShapeArray(mGame.mControlObject);
 
+
+        var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+        mGame.addToShapeArray(new ShapeRelative("../../images/helicopter/helicopter_forward.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
+
 	chasers = 1;
                 
         for (i = 0; i < chasers; i++)
