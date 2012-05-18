@@ -84,15 +84,15 @@ window.addEvent('domready', function()
         mGame.addToShapeArray(mGame.mControlObject);
 
 
-        var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-        mGame.addToShapeArray(new ShapeRelative("../../images/helicopter/helicopter_forward.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
+        //var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+        //mGame.addToShapeArray(new ShapeRelative("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
 
-	chasers = 1;
+	chasers = 4;
                 
         for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI("",50,50,openPoint.mX,openPoint.mY,"","red","","chaser",mGame));
+                mGame.addToShapeArray(new ShapeAI("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
         }
 
 	//create walls
