@@ -11,18 +11,19 @@ Extends: Game,
 
 	update: function()
 	{
+		this.parent();
 
  		if (this.mQuiz)
         	{
+			
         		if (this.mQuiz.isQuizComplete())
                 	{
+				mApplication.log('complete');
                         	this.mOn = false;
                                	this.setFeedback("YOU WIN!!!");
                                	window.location = "../database/goto_next_math_level.php"
 			}
                 }
-		
-		this.parent();
         },
 
 	resetGame: function()

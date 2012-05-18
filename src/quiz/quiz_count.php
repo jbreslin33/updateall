@@ -53,11 +53,6 @@ Extends: Quiz,
 
         },
 	
-	createQuiz: function()
-	{
-
-	},
-
 	reset: function()
 	{
 		this.parent();	

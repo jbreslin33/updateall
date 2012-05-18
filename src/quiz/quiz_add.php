@@ -24,12 +24,9 @@ Extends: Quiz,
 		this.mAddendMax = addendMax;
                 this.mNumberOfAddends = numberOfAddends;
 
-		mApplication.log('min:' + this.mAddendMin);
-		mApplication.log('max:' + this.mAddendMax);
-
 		for (i = 0; i < this.mScoreNeeded; i++)
 		{
-			seed = addendMax - addendMin;
+			seed = addendMax - addendMin + 1;
 			result1 = Math.floor(Math.random()*seed);
 			result2 = Math.floor(Math.random()*seed);
 			addend1 = result1 + addendMin;
@@ -45,32 +42,16 @@ Extends: Quiz,
                         this.mGame.addToShapeArray(new ShapeQuestion("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this.mGame,this.getSpecificQuestion(count)));
                         count++;
                 }
-	
-
-	
-		/******************** HUD ********************/
-                this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
-
         },
 	
-	createQuiz: function()
-	{
-
-	},
-
 	reset: function()
 	{
 		this.parent();	
-                
-	  	//update hud
-                this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
-	
 	},
 
 	correctAnswer: function()
 	{
-		this.parent();
-		this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+		this.incrementScore();
 	}
 
 });
