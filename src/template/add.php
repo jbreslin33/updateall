@@ -37,8 +37,8 @@ echo "</script>";
 
 <script language="javascript">
 
-var name = "<?php echo $name; ?>";
-var url = "<?php echo $url; ?>";
+//var name = "<?php echo $name; ?>";
+//var url = "<?php echo $url; ?>";
 
 </script>
 <script type="text/javascript" src="../math/point2D.php"></script>
@@ -68,7 +68,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameChooserQuiz(name);
+        mGame = new GameChooserQuiz("Game Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
