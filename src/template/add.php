@@ -77,7 +77,7 @@ window.addEvent('domready', function()
         mGame = new GameDefenderQuiz(skill);
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"","center","",50,50,100,100,"","blue","","controlObject",mGame);
+        mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	chasers = 4;
