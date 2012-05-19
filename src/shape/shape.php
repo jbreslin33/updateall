@@ -123,14 +123,26 @@ var Shape = new Class(
 		{
 			this.mPosition.mX = this.mMount.mPosition.mX;
 			this.mPosition.mY = this.mMount.mPosition.mY;
+			//offset
+			this.mPosition.mX += this.mMountOffsetX;
+			this.mPosition.mY += this.mMountOffsetY;
 		} 
                 	
 		this.draw();
         },
 
-	mount: function(mount)
+	mount: function(mount,offsetX,offsetY)
 	{
+		this.mCollidable = false;
+		this.mCollisionOn = false;
 		this.mMount = mount;
+		this.mMountOffsetX = offsetX;
+		this.mMountOffsetY = offsetY;
+	},
+
+	unMount: function()
+	{
+		this.mMount = 0;
 	},
 
 /************** SET METHODS ************************/

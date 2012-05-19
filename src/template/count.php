@@ -92,7 +92,7 @@ window.addEvent('domready', function()
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	//do the mount	
-	mounteeboy.mount(mGame.mControlObject);
+	mounteeboy.mount(mGame.mControlObject,-20,-25);
 
 	mGame.mControlObject.setBackgroundColor("transparent");
 
