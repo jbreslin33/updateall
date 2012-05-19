@@ -105,6 +105,12 @@ var Shape = new Class(
                 	this.mMesh = document.createElement("p");
                         this.mMesh.innerHTML = this.mInnerHTML;
                 }
+		
+		if (this.mOnClick != "")
+		{
+			this.mMesh = document.createElement("b");
+			this.mMesh.innerHTML = this.mInnerHTML;
+		}
 
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
