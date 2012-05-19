@@ -201,6 +201,11 @@ var Shape = new Class(
 
 /*********** GET METHODS *************/
 
+	getQuestion: function()
+	{
+		return this.mQuestion;
+	},
+
 /*********** PROTECTED MEMBER METHODS *************/
 
 	protectScrollBars: (function(x,y)

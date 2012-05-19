@@ -79,19 +79,18 @@ window.addEvent('domready', function()
 
 	
 	//the picture control object
-        var mounteeboy = new Shape(mGame,"center","","../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","");
- 	mGame.addToShapeArray(mounteeboy);
-	mounteeboy.mCollidable = false;
-	mounteeboy.mCollisionOn = false; 
+//        var mounteeboy = new Shape(mGame,"center","","../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","");
+ //	mGame.addToShapeArray(mounteeboy);
+//	mounteeboy.mCollidable = false;
+//	mounteeboy.mCollisionOn = false; 
 	
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","transparent","","controlObject");
-        mGame.addToShapeArray(mGame.mControlObject);
 	
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); mGame.addToShapeArray(mGame.mControlObject); 
 	//do the mount	
-	mounteeboy.mount(mGame.mControlObject,-20,-25);
+	//mounteeboy.mount(mGame.mControlObject,-20,-25);
 
-	mGame.mControlObject.setBackgroundColor("transparent");
+	//mGame.mControlObject.setBackgroundColor("transparent");
 
 	chasers = 6;
 	for (i = 0; i < chasers; i++)

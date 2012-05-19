@@ -22,6 +22,12 @@ var Question = new Class(
 		//answer
 		this.mAnswer = answer;
         },
+	
+	set: function(question,answer)
+	{
+		this.mQuestion = question;
+		this.mAnswer = answer;
+	},
 
 	setQuestion: function(question)
 	{
