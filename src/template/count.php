@@ -50,9 +50,6 @@ var nextLevel = <?php echo $nextLevel; ?>;
 <script type="text/javascript" src="../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
-<script type="text/javascript" src="../shape/shape_relative.php"></script>
-<script type="text/javascript" src="../shape/shape_answer.php"></script>
-<script type="text/javascript" src="../shape/shape_center.php"></script>
 <script type="text/javascript" src="../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../question/question.php"></script>
@@ -82,13 +79,13 @@ window.addEvent('domready', function()
 
 	
 	//the picture control object
-        var mounteeboy = new ShapeCenter("../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","",mGame);
+        var mounteeboy = new Shape(mGame,"center","","../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","");
  	mGame.addToShapeArray(mounteeboy);
 	mounteeboy.mCollidable = false;
 	mounteeboy.mCollisionOn = false; 
 	
 	//control object
-	mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","transparent","","controlObject",mGame);
+	mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","transparent","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	//do the mount	
@@ -100,7 +97,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
+                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
 
 	//create walls

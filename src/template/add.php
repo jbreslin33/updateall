@@ -50,9 +50,6 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 <script type="text/javascript" src="../game/game_defender_quiz.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
-<script type="text/javascript" src="../shape/shape_relative.php"></script>
-<script type="text/javascript" src="../shape/shape_question.php"></script>
-<script type="text/javascript" src="../shape/shape_center.php"></script>
 <script type="text/javascript" src="../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../question/question.php"></script>
@@ -80,19 +77,14 @@ window.addEvent('domready', function()
         mGame = new GameDefenderQuiz(skill);
 
 	//control object
-        mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);
+        mGame.mControlObject = new Shape(mGame,"","center","",50,50,100,100,"","blue","","controlObject",mGame);
         mGame.addToShapeArray(mGame.mControlObject);
-
-
-        //var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-        //mGame.addToShapeArray(new ShapeRelative("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
-
+	
 	chasers = 4;
-                
         for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
+                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
 
 	//create walls

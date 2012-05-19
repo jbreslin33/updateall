@@ -39,7 +39,7 @@ Extends: Quiz,
                 for (i = 0; i < this.mScoreNeeded; i++)
                 {
                         var openPoint = this.mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                        this.mGame.addToShapeArray(new ShapeQuestion("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this.mGame,this.getSpecificQuestion(count)));
+                        this.mGame.addToShapeArray(new Shape(this.mGame,"relative",this.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
                         count++;
                 }
         },

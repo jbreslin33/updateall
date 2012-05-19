@@ -42,14 +42,14 @@ Extends: Quiz,
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         var openPoint = this.mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                        this.mGame.addToShapeArray(new ShapeAnswer("",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question",this.mGame,this.getSpecificQuestion(count)));
+                        this.mGame.addToShapeArray(new Shape(this.mGame,"relative",this.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
                         count++;
                 }
 	
 
 	
 		/******************** HUD ********************/
-                this.mQuestionHud    = new Shape("",140,50,0,250,"Question:","violet","","hud");
+                this.mQuestionHud    = new Shape("","","","",140,50,0,250,"Question:","violet","","hud");
 
         },
 	

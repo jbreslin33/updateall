@@ -1,11 +1,11 @@
 var ShapeAI = new Class(
 {
 
-Extends: ShapeRelative,
+Extends: Shape,
 
-        initialize: function(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message,game)
+        initialize: function(game,drawType,question,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message)
         {
-        	this.parent(src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message,game);
+        	this.parent(game,drawType,question,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message);
 		
 		//ai
                 this.mAiCounter = 0;
