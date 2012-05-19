@@ -21,6 +21,7 @@ echo "<script language=\"javascript\">";
 echo "var name = new Array();";
 echo "var url = new Array();";
 echo "</script>";
+
 $counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
@@ -31,15 +32,13 @@ while ($row = pg_fetch_array($result))
 	echo "<script language=\"javascript\">";
 	
 	echo "name[$counter] = \"$name\";";
-echo "</script>";
-$counter++;
+	echo "url[$counter] = \"$url\";";
+	echo "</script>";
+	$counter++;
 }
 
 ?>
 
-<script language="javascript">
-
-</script>
 <script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
 <script type="text/javascript" src="../game/game_chooser_quiz.php"></script>
