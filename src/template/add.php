@@ -23,6 +23,11 @@ while ($row = pg_fetch_array($result))
         //fill php vars from db
         $name = $row[0];
         $url = $row[1];
+
+echo "<script language=\"javascript\">";
+
+echo "</script>";
+
 }
 
 ?>
