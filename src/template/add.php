@@ -17,6 +17,9 @@ $url = 0;
 //get numer of rows
 $numberOfRows = pg_num_rows($result);
 
+echo "<script language=\"javascript\">";
+
+echo "</script>";
 // if there is a row then id exists it better be unique!
 while ($row = pg_fetch_array($result)) 
 {
