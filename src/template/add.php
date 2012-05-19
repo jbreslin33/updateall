@@ -30,7 +30,7 @@ while ($row = pg_fetch_array($result))
 
 	echo "<script language=\"javascript\">";
 	
-	echo "name[$counter] = $name;";
+	echo "name[$counter] = \"$name\";";
 echo "</script>";
 $counter++;
 }
