@@ -10,10 +10,6 @@ $query .= ";";
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-//game variables to fill from db
-$name = 0;
-$url = 0;
-
 //get numer of rows
 $numberOfRows = pg_num_rows($result);
 
