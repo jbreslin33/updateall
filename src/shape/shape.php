@@ -35,6 +35,9 @@ var Shape = new Class(
         {
                 
 		this.mQuestion;
+		
+		//mountee
+		this.mMount;
 
 		//speed
 		this.mSpeed = .1;
@@ -114,9 +117,21 @@ var Shape = new Class(
                 //update position
                 this.mPosition.mX += this.mVelocity.mX;
                 this.mPosition.mY += this.mVelocity.mY;
-                
-                this.draw();
+              
+		//update mount
+		if (this.mMount)
+		{
+			this.mPosition.mX = this.mMount.mPosition.mX;
+			this.mPosition.mY = this.mMount.mPosition.mY;
+		} 
+                	
+		this.draw();
         },
+
+	mount: function(mount)
+	{
+		this.mMount = mount;
+	},
 
 /************** SET METHODS ************************/
 	setQuestion: function(question)

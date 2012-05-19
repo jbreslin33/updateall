@@ -79,13 +79,20 @@ window.addEvent('domready', function()
 	//the game
         mGame = new GameDungeonQuiz(skill);
 
+	//the picture control object
+        var mounteeboy = new ShapeCenter("../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","",mGame);
+ 	mGame.addToShapeArray(mounteeboy);
+	mounteeboy.mCollidable = false;
+	mounteeboy.mCollisionOn = false; 
+
 	//control object
-        mGame.mControlObject = new ShapeCenter("",50,50,100,100,"","blue","","controlObject",mGame);
+	mGame.mControlObject = new ShapeCenter("",1,1,100,100,"","blue","","controlObject",mGame);
         mGame.addToShapeArray(mGame.mControlObject);
+	//mGame.mControlObject.mount(mounteeboy);
+	mounteeboy.mount(mGame.mControlObject);
 
 	chasers = 6;
-                
-        for (i = 0; i < chasers; i++)
+	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 mGame.addToShapeArray(new ShapeAI("../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser",mGame));
