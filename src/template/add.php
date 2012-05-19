@@ -29,7 +29,8 @@ while ($row = pg_fetch_array($result))
         $url = $row[1];
 
 echo "<script language=\"javascript\">";
-	echo "name[" + $counter + "];";	
+//	echo "var temp = $counter;";
+	echo "name[$counter] = $name;";
 echo "</script>";
 $counter++;
 }
