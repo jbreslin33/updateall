@@ -15,15 +15,11 @@ $name = 0;
 $url = 0;
 
 //get numer of rows
-$num = pg_num_rows($result);
+$numberOfRows = pg_num_rows($result);
 
 // if there is a row then id exists it better be unique!
 while ($row = pg_fetch_array($result)) 
-//if ($num > 0)
 {
-        //get row
-        //$row = pg_fetch_row($result);
-
         //fill php vars from db
         $name = $row[0];
         $url = $row[1];
