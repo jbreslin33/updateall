@@ -29,8 +29,7 @@ while ($row = pg_fetch_array($result))
         $url = $row[1];
 
 echo "<script language=\"javascript\">";
-//	echo "name["; 
-	
+	echo "name[" + $counter + "];";	
 echo "</script>";
 $counter++;
 }
@@ -38,9 +37,6 @@ $counter++;
 ?>
 
 <script language="javascript">
-
-//var name = "<?php echo $name; ?>";
-//var url = "<?php echo $url; ?>";
 
 </script>
 <script type="text/javascript" src="../math/point2D.php"></script>
