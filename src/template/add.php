@@ -21,7 +21,7 @@ echo "<script language=\"javascript\">";
 echo "var name = new Array();";
 echo "var url = new Array();";
 echo "</script>";
-
+$counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
@@ -29,9 +29,10 @@ while ($row = pg_fetch_array($result))
         $url = $row[1];
 
 echo "<script language=\"javascript\">";
-
+//	echo "name["; 
+	
 echo "</script>";
-
+$counter++;
 }
 
 ?>
