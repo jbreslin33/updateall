@@ -39,7 +39,7 @@ Extends: Game,
 			this.mQuiz.reset();
 
 			//set text of control object
-			this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
+			//this.mControlObject.setText(this.mQuiz.getQuestion().getQuestion());
 		}
 	},
 
@@ -75,7 +75,7 @@ Extends: Game,
                                 //set text of control object
                         	if (this.mQuiz)
 				{ 
-                                	col1.setText(this.mQuiz.getQuestion().getQuestion());
+                                	//col1.setText(this.mQuiz.getQuestion().getQuestion());
 				}
                         }
                         else

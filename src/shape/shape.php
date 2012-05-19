@@ -41,7 +41,9 @@ var Shape = new Class(
 		this.mDrawType = drawType;
 
 		//we are all about questions and answers in this program so everyone contains a question pointer whether you use it or not.	
-		this.mQuestion = question;
+		this.mQuestion = question; // the question object that contains a question and answer.
+		this.mShowQuestionObject = true; //even if we have a valid question object we can shut off showing it.
+		this.mShowQuestion = true; //toggles between question or answer text from question object
 		
 		//mountee
 		this.mMount;
@@ -245,6 +247,21 @@ var Shape = new Class(
 			this.drawRelative();
 		}
 
+		if (this.mQuestion)
+		{
+			if (this.mShowQuestionObject == true)
+			{
+				if (this.mShowQuestion == true)	
+				{
+					this.setText(this.mQuestion.getQuestion());
+				}
+				else
+				{
+					this.setText(this.mQuestion.getAnswer());
+				}
+			}
+		}
+		
   	}).protect(),
 
 	drawCenter: (function()
