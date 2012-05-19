@@ -18,9 +18,10 @@ $url = 0;
 $numberOfRows = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
-
+echo "var name = new Array();";
+echo "var url = new Array();";
 echo "</script>";
-// if there is a row then id exists it better be unique!
+
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
