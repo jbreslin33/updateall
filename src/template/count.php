@@ -3,7 +3,7 @@
 include("../template/header.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
-$query = "select score_needed, count_by, start_number, end_number from math_games where level = ";
+$query = "select score_needed, count_by, start_number, end_number from math_count_levels where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
