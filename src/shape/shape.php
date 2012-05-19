@@ -198,6 +198,23 @@ var Shape = new Class(
 	{
 		this.mMessage = message;
 	},
+	
+	showQuestionObject: function(toggle)
+	{
+		this.mShowQuestionObject = toggle;
+	},
+	
+	showQuestion: function(toggle)
+	{
+		if (toggle)
+		{
+			this.mShowQuestion = true;
+		}
+		else
+		{
+			this.mShowQuestion = false;
+		}
+	},
 
 /*********** GET METHODS *************/
 

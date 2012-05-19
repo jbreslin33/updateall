@@ -35,14 +35,17 @@ Extends: Quiz,
 
 		for (i = this.mStartNumber; i <= this.mEndNumber; i = i + this.mCountBy)
 		{
-			this.mQuestionArray.push(new Question(i,i + this.mCountBy));
+			var question = new Question(i, i + this.mCountBy); 	
+			this.mQuestionArray.push(question);
 		}
 		
 		count = 0;
                 for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
                 {
                         var openPoint = this.mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                        this.mGame.addToShapeArray(new Shape(this.mGame,"relative",this.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+			var shape;
+                        this.mGame.addToShapeArray(shape = new Shape(this.mGame,"relative",this.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+			shape.showQuestion(false);
                         count++;
                 }
 	
