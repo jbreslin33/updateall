@@ -6,7 +6,7 @@ include("../template/header_chooser.php");
 
 <script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/subject_chooser.php"></script>
+<script type="text/javascript" src="../game/game_chooser.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
@@ -31,7 +31,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new SubjectChooser("Subject Chooser");
+        mGame = new GameChooser("Subject Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
@@ -109,10 +109,10 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
-	var questionMath = new Question("Math","game_chooser_math.php");      
+	var questionMath = new Question("Math","../template/chooser.php?table_name=math_games");      
        	mQuiz.mQuestionArray.push(questionMath);
 	
-	var questionEnglish = new Question("English","game_chooser_english.php");      
+	var questionEnglish = new Question("English","../template/chooser.php?table_name=english_games");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
         count = 0;

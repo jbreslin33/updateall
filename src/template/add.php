@@ -39,7 +39,7 @@ while ($row = pg_fetch_array($result))
 
 <script type="text/javascript" src="../math/point2D.php"></script>
 <script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/game_chooser_quiz.php"></script>
+<script type="text/javascript" src="../game/game_chooser.php"></script>
 <script type="text/javascript" src="../application/application.php"></script>
 <script type="text/javascript" src="../shape/shape.php"></script>
 <script type="text/javascript" src="../div/div.php"></script>
@@ -64,7 +64,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameChooserQuiz("Game Chooser");
+        mGame = new GameChooser("Game Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");

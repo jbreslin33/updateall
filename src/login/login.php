@@ -5,7 +5,7 @@
 	$conn = dbConnect();
 	
 	//query string 	
- 	$query = "select id from users where username = '";
+ 	$query = "select id, math_level, english_level from users where username = '";
 	$query .= $_POST["username"];
 	$query .= "' "; 
    	$query .= "and ";
@@ -30,12 +30,16 @@
 	{
 		//get the id from user table	
 		$id = pg_Result($result, 0, 'id');
+		$mathLevel = pg_Result($result, 0, 'math_level');
+		$englishLevel = pg_Result($result, 0, 'english_level');
 		
 		//set login var to yes	
 	  	$_SESSION["Login"] = "YES";
           
-		//set user id to be used later			
+		//set user id, and subject levels to be used later			
 		$_SESSION["id"] = $id;  	
+		$_SESSION["math_level"] = $mathLevel;  	
+		$_SESSION["english_level"] = $englishLevel;  	
 
 		//send user to his game_url		
 		header("Location: ../template/chooser_subject.php");
