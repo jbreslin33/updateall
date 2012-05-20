@@ -30,14 +30,14 @@ else
 	header("Location: ../login/login_form.php");
 }
 
-//--------------------------url----------------------
+//--------------------------get the table_name----------------------
 
 //query string
-$query = "select url from levels where level = ";
+$query = "select table_name from levels where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
-//get db restult for url
+//get db restult for table_name 
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //get numer of rows 
@@ -47,9 +47,9 @@ $num = pg_num_rows($result);
 if ($num > 0)
 {
 	$row = pg_fetch_row($result);
-	$_SESSION["url"] = $row[0];
+	$_SESSION["table_name"] = $row[0];
 
-	header("Location: ../template/$row[0]");
+	header("Location: ../template/game_chooser.php");
 }
 else
 {
