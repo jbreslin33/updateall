@@ -1,6 +1,6 @@
 <?php 
 //standard header for most games i hope. it handles some basic html and level db call
-include("../template/math/headers/header_math.php");
+include("../headers/header_math.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select score_needed, number_of_addends, addend_min, addend_max from math_add_levels where level = ";
@@ -45,15 +45,15 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 
 </script>
 
-<script type="text/javascript" src="../math/point2D.php"></script>
-<script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/game_defender_quiz.php"></script>
-<script type="text/javascript" src="../application/application.php"></script>
-<script type="text/javascript" src="../shape/shape.php"></script>
-<script type="text/javascript" src="../shape/shape_ai.php"></script>
-<script type="text/javascript" src="../div/div.php"></script>
-<script type="text/javascript" src="../question/question.php"></script>
-<script type="text/javascript" src="../quiz/quiz.php"></script>
+<script type="text/javascript" src="../../../math/point2D.php"></script>
+<script type="text/javascript" src="../../../game/game.php"></script>
+<script type="text/javascript" src="../../../game/game_defender_quiz.php"></script>
+<script type="text/javascript" src="../../../application/application.php"></script>
+<script type="text/javascript" src="../../../shape/shape.php"></script>
+<script type="text/javascript" src="../../../shape/shape_ai.php"></script>
+<script type="text/javascript" src="../../../div/div.php"></script>
+<script type="text/javascript" src="../../../question/question.php"></script>
+<script type="text/javascript" src="../../../quiz/quiz.php"></script>
 
 </head>
 
@@ -83,7 +83,7 @@ window.addEvent('domready', function()
         for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
+                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
 
 	//create walls
