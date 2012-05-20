@@ -76,8 +76,9 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); 
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/monster/red_monster.png",50,50,100,100,"","","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
+	mGame.mControlObject.showQuestionObject(false);
 
 	//numberMount to go on top let's make it small and draw it on top 
 	var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",25,25,100,100,"","orange","","numberMountee");	
