@@ -38,7 +38,7 @@
 		$_SESSION["id"] = $id;  	
 
 		//send user to his game_url		
-		header("Location: ../game/game_chooser.php");
+		header("Location: ../template/chooser_subject.php");
 	}
 	else
 	{

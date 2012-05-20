@@ -9,7 +9,7 @@ $conn = dbConnect();
 //------math game level-----------------------------------------------
 
 //query string
-$query = "select math_game_level from users where id = ";
+$query = "select math_level from users where id = ";
 $query .= $_SESSION["id"];
 $query .= ";";
 
@@ -23,7 +23,7 @@ $num = pg_num_rows($result);
 if ($num > 0)
 {
 	$row = pg_fetch_row($result);
-	$_SESSION["math_game_level"] = $row[0];	
+	$_SESSION["math_level"] = $row[0];	
 	header("Location: ../template/chooser_game_math.php");
 }
 else

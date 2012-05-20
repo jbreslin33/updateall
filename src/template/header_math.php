@@ -14,8 +14,8 @@ include("../database/db_connect.php");
 $conn = dbConnect();
 
 //query the level table
-$query = "select skill, next_level from levels where level = ";
-$query .= $_SESSION["math_game_level"];
+$query = "select skill, next_level from math_levels where level = ";
+$query .= $_SESSION["math_level"];
 $query .= ";";
 
 //get db result
@@ -38,6 +38,6 @@ if ($num > 0)
         $skill = $row[0];
 	$nextLevel = $row[1];
 	
-	$_SESSION["math_game_next_level"] = $nextLevel;
+	$_SESSION["math_next_level"] = $nextLevel;
 }
 ?>

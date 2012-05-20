@@ -1,10 +1,10 @@
 <?php 
 //standard header for most games i hope. it handles some basic html and level db call
-include("../template/header.php");
+include("../template/header_math.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select score_needed, number_of_addends, addend_min, addend_max from math_add_levels where level = ";
-$query .= $_SESSION["math_game_level"];
+$query .= $_SESSION["math_level"];
 $query .= ";";
 
 //get db result
