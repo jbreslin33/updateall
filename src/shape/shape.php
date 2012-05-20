@@ -46,7 +46,8 @@ var Shape = new Class(
 		this.mShowQuestion = true; //toggles between question or answer text from question object
 		
 		//mountee
-		this.mMount;
+		this.mMountee;
+		this.mMounter
 
 		//speed
 		this.mSpeed = .1;
@@ -133,11 +134,13 @@ var Shape = new Class(
                 this.mPosition.mX += this.mVelocity.mX;
                 this.mPosition.mY += this.mVelocity.mY;
               
-		//update mount
-		if (this.mMount)
+		//if you have a mounter then move with the mounter with offset
+		if (this.mMounter)
 		{
-			this.mPosition.mX = this.mMount.mPosition.mX;
-			this.mPosition.mY = this.mMount.mPosition.mY;
+			//set this shape to position of it's mounter
+			this.mPosition.mX = this.mMounter.mPosition.mX;
+			this.mPosition.mY = this.mMounter.mPosition.mY;
+
 			//offset
 			this.mPosition.mX += this.mMountOffsetX;
 			this.mPosition.mY += this.mMountOffsetY;
@@ -146,18 +149,25 @@ var Shape = new Class(
 		this.draw();
         },
 
-	mount: function(mount,offsetX,offsetY)
+	mount: function(mountee,offsetX,offsetY)
+	{
+		this.mMountee = mountee;
+
+		this.mMountee.mountedBy(this,offsetX,offsetY);
+	},
+
+	mountedBy: function(mounter,offsetX,offsetY)
 	{
 		this.mCollidable = false;
 		this.mCollisionOn = false;
-		this.mMount = mount;
+		this.mMounter = mounter;
 		this.mMountOffsetX = offsetX;
 		this.mMountOffsetY = offsetY;
 	},
 
 	unMount: function()
 	{
-		this.mMount = 0;
+		this.mMountee = 0;
 	},
 
 /************** SET METHODS ************************/
