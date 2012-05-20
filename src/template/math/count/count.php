@@ -75,6 +75,11 @@ window.addEvent('domready', function()
 	//the game
         mGame = new GameDungeonQuiz(skill);
 
+	//floor
+        var floor = new Shape(mGame,"relative","","../../../../images/tiles/stone.png",200,200,0,0,"","","","");
+	mGame.addToShapeArray(floor);
+	floor.mCollidable = false;
+
 	//control object
 	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
@@ -94,6 +99,7 @@ window.addEvent('domready', function()
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
+
 
 	//create walls
 	//left

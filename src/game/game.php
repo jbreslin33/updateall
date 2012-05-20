@@ -203,6 +203,8 @@ var Game = new Class(
  
                         	for (i = 0; i < this.mShapeArray.length; i++)
                         	{
+				if (this.mShapeArray[i].mCollidable ==  true)
+				{
                                         if (this.mShapeArray[i].mCollisionOn == true && this.mShapeArray[s].mCollisionOn == true)
                                         {
                                                 if (this.mShapeArray[i] == this.mShapeArray[s])
@@ -221,6 +223,7 @@ var Game = new Class(
                                                 }
                                         }
                         	}
+				}
 			}
                 }
 	}).protect(),
