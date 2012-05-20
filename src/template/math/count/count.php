@@ -76,7 +76,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/monster/red_monster.png",50,50,100,100,"","","","controlObject"); 
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
 	mGame.mControlObject.showQuestionObject(false);
 
@@ -88,11 +88,11 @@ window.addEvent('domready', function()
 	mGame.mControlObject.mount(numberMountee,-5,-60);
 	numberMountee.setBackgroundColor("transparent");
 
-	chasers = 0;
+	chasers = 8;
 	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","",50,50,openPoint.mX,openPoint.mY,"","red","","chaser"));
+                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
 
 	//create walls
