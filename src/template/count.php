@@ -54,7 +54,6 @@ var nextLevel = <?php echo $nextLevel; ?>;
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../question/question.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
-<script type="text/javascript" src="../quiz/quiz_count.php"></script>
 
 </head>
 
@@ -186,6 +185,9 @@ window.addEvent('domready', function()
                 shape.showQuestion(false);
                 count++;
         }
+
+        /******************** HUD ********************/
+        mQuiz.mQuestionHud    = new Shape("","","","",140,50,0,250,"Question:","violet","","hud");
 
 	mGame.resetGame();
 

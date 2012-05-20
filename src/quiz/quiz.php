@@ -34,6 +34,7 @@ var Quiz = new Class(
 		/******************** HUD ********************/
                 this.mScoreHud       = new Shape("","","","",140,50,0,150,"Score: " + this.getScore(),"pink","","hud");
                 this.mScoreNeededHud = new Shape("","","","",140,50,0,200,"Score Needed: " + this.getScoreNeeded(),"violet","","hud");
+		this.mQuestionHud;
         },
 
 	//returns question object	
@@ -52,6 +53,10 @@ var Quiz = new Class(
 	{
         	this.incrementScore();
 		this.mMarker++;
+               	if (this.mQuestionHud)
+		{ 
+			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+		}
 	},
 	
 	getScore: function()
@@ -101,7 +106,14 @@ var Quiz = new Class(
 		
 		//reset marker
 		this.mMarker = 0;
+                
+		//update hud
+               	if (this.mQuestionHud)
+		{ 
+			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+		}
 	}
+
 });
 
 
