@@ -31,7 +31,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new SubjectChooser("Game Chooser");
+        mGame = new SubjectChooser("Subject Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
