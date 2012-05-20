@@ -54,7 +54,6 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../question/question.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
-<script type="text/javascript" src="../quiz/quiz_add.php"></script>
 
 </head>
 
@@ -156,8 +155,28 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",350,-300);
         mGame.createWall(50,50,"black",400,-300);
 
-	mQuiz = new QuizAdd(scoreNeeded,addendMin,addendMax,numberOfAddends,mGame);
+	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
+	
+        for (i = 0; i < scoreNeeded; i++)
+        {
+                seed = addendMax - addendMin + 1;
+                result1 = Math.floor(Math.random()*seed);
+                result2 = Math.floor(Math.random()*seed);
+                addend1 = result1 + addendMin;
+                addend2 = result2 + addendMin;
+                answer = addend1 + addend2;
+                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, answer));
+        }
+                
+        count = 0;
+        for (i = 0; i < scoreNeeded; i++)
+        {
+                var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+                mGame.addToShapeArray(new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+                count++;
+        }
+
 	mGame.resetGame();
 
         //start updating

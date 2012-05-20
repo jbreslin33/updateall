@@ -54,7 +54,6 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 <script type="text/javascript" src="../div/div.php"></script>
 <script type="text/javascript" src="../question/question.php"></script>
 <script type="text/javascript" src="../quiz/quiz.php"></script>
-<script type="text/javascript" src="../quiz/quiz_add.php"></script>
 
 </head>
 
