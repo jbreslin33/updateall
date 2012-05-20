@@ -40,7 +40,7 @@ Extends: Game,
 
 			//set the control objects question object
 			this.mControlObject.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
-			if (this.mMountee)
+			if (this.mControlObject.mMountee)
 			{	
 				this.mControlObject.mMountee.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
 			}

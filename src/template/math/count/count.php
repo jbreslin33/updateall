@@ -76,7 +76,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 	
 	//control object
-	var numberMountee = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","orange","","numberMountee");	
+	var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",50,50,100,100,"","orange","","numberMountee");	
 	mGame.addToShapeArray(numberMountee); 
 
 	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); 
