@@ -24,32 +24,7 @@ if ($num > 0)
 {
 	$row = pg_fetch_row($result);
 	$_SESSION["math_game_level"] = $row[0];	
-}
-else
-{
-	header("Location: ../login/login_form.php");
-}
-
-//--------------------------get the table_name----------------------
-
-//query string
-$query = "select table_name from levels where level = ";
-$query .= $_SESSION["math_game_level"];
-$query .= ";";
-
-//get db restult for table_name 
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows 
-$num = pg_num_rows($result);
-
-// if there is a row then id exists it better be unique!
-if ($num > 0)
-{
-	$row = pg_fetch_row($result);
-	$_SESSION["table_name"] = $row[0];
-
-	header("Location: ../template/game_chooser.php");
+	header("Location: ../template/chooser_game_math.php");
 }
 else
 {

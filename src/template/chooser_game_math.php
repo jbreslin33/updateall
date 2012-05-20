@@ -2,14 +2,8 @@
 //standard header for most games i hope. it handles some basic html and level db call
 include("../template/header_game_chooser.php");
 
-//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
-//$query = "select name, url from math_add_games where level = ";
-//$query .= $_SESSION["math_game_level"];
-//$query .= ";";
-
-$query = "select name, url from ";
-$query .= $_SESSION["table_name"];
-$query .= " where level = ";
+//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
+$query = "select name, url from math_games where level = ";
 $query .= $_SESSION["math_game_level"];
 $query .= ";";
 
