@@ -14,8 +14,10 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 $numberOfRows = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
 echo "var name = new Array();";
 echo "var url = new Array();";
+
 echo "</script>";
 
 $counter = 0;
@@ -139,6 +141,42 @@ window.addEvent('domready', function()
 
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
+
+	//create quiz items
+/*
+ 	for (i = this.mStartNumber; i <= this.mEndNumber; i = i + this.mCountBy)
+                {
+                        var question = new Question(i, i + this.mCountBy);      
+                        this.mQuestionArray.push(question);
+                }
+                
+                count = 0;
+                for (i = this.mStartNumber + this.mCountBy; i <= this.mEndNumber; i = i + this.mCountBy)
+                {
+                        var openPoint = this.mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+                        var shape;
+                        this.mGame.addToShapeArray(shape = new Shape(this.mGame,"relative",this.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+                        shape.showQuestion(false);
+                        count++;
+                }
+*/
+ 	for (i = 0; i < numberOfRows; i++)
+        {
+        	var question = new Question(name[i],url[i]);      
+                mQuiz.mQuestionArray.push(question);
+                }
+                
+                count = 0;
+                for (i = 0; i < numberOfRows; i++)
+                {
+                        var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+                        var shape;
+                        mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+                        //shape.showQuestion(false);
+                        count++;
+                }
+
+	//end create quiz items
 
 	mGame.resetGame();
 
