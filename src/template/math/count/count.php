@@ -74,21 +74,17 @@ window.addEvent('domready', function()
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
-
-
-	
-	//the picture control object
-//        var mounteeboy = new Shape(mGame,"center","","../../images/helicopter/helicopter_forward.png",50,50,100,100,"","","","");
- //	mGame.addToShapeArray(mounteeboy);
-//	mounteeboy.mCollidable = false;
-//	mounteeboy.mCollisionOn = false; 
 	
 	//control object
-	
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); mGame.addToShapeArray(mGame.mControlObject); 
+	var numberMountee = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","orange","","numberMountee");	
+	mGame.addToShapeArray(numberMountee); 
+
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); 
+	mGame.addToShapeArray(mGame.mControlObject); 
+
 	//do the mount	
 	//mounteeboy.mount(mGame.mControlObject,-20,-25);
-
+	mGame.mControlObject.mount(numberMountee,-20,-25);
 	//mGame.mControlObject.setBackgroundColor("transparent");
 
 	chasers = 0;

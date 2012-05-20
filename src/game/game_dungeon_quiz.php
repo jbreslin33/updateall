@@ -83,7 +83,7 @@ Extends: Game,
 					col1.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
 					if (col1.mMountee)
 					{
-						col1.mMountee.set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
+						col1.mMountee.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
 					}
 				}
                         }
