@@ -85,7 +85,7 @@ window.addEvent('domready', function()
 	mGame.addToShapeArray(numberMountee); 
 	
 	//do the mount	
-	mGame.mControlObject.mount(numberMountee,0,0);
+	mGame.mControlObject.mount(numberMountee,-5,-60);
 	numberMountee.setBackgroundColor("transparent");
 
 	chasers = 0;
