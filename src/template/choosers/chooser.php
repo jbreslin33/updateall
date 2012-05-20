@@ -1,59 +1,63 @@
 <?php 
 //standard header for most games i hope. it handles some basic html and level db call
-include("../template/header_math.php");
+include("headers/header_chooser.php");
 
-//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
-$query = "select score_needed, number_of_addends, addend_min, addend_max from math_add_levels where level = ";
-$query .= $_SESSION["math_level"];
+//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
+$tableName = $_GET['table_name'];
+$gameLevel = 0;
+if ($tableName == "math_games")
+{
+	$gameLevel = $_SESSION["math_level"];
+}
+if ($tableName == "english_games")
+{
+	$gameLevel = $_SESSION["english_level"];
+}
+
+$query = "select name, url from ";
+$query .= $tableName; 
+$query .= " where level = ";
+$query .= $gameLevel;
 $query .= ";";
-
+echo $query;
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-//game variables to fill from db
-$scoreNeeded = 0;
-$addendMin = 0;
-$addendMax = 0;
-$numberOfAddends = 0;
-
 //get numer of rows
-$num = pg_num_rows($result);
+$numberOfRows = pg_num_rows($result);
 
-// if there is a row then id exists it better be unique!
-if ($num > 0)
+echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
+echo "var gameName = new Array();";
+echo "var url = new Array();";
+
+echo "</script>";
+
+$counter = 0;
+while ($row = pg_fetch_array($result)) 
 {
-        //get row
-        $row = pg_fetch_row($result);
-
         //fill php vars from db
-        $scoreNeeded = $row[0];
-        $numberOfAddends = $row[1];
-        $addendMin = $row[2];
-        $addendMax = $row[3];
+        $gameName = $row[0];
+        $url = $row[1];
+
+	echo "<script language=\"javascript\">";
+	
+	echo "gameName[$counter] = \"$gameName\";";
+	echo "url[$counter] = \"$url\";";
+	echo "</script>";
+	$counter++;
 }
 
 ?>
 
-<script language="javascript">
-
-var skill = "<?php echo $skill; ?>";
-var nextLevel = <?php echo $nextLevel; ?>;
-var scoreNeeded = <?php echo $scoreNeeded; ?>;
-var addendMin = <?php echo $addendMin; ?>;
-var addendMax = <?php echo $addendMax; ?>;
-var numberOfAddends = <?php echo $numberOfAddends; ?>;
-
-</script>
-
-<script type="text/javascript" src="../math/point2D.php"></script>
-<script type="text/javascript" src="../game/game.php"></script>
-<script type="text/javascript" src="../game/game_defender_quiz.php"></script>
-<script type="text/javascript" src="../application/application.php"></script>
-<script type="text/javascript" src="../shape/shape.php"></script>
-<script type="text/javascript" src="../shape/shape_ai.php"></script>
-<script type="text/javascript" src="../div/div.php"></script>
-<script type="text/javascript" src="../question/question.php"></script>
-<script type="text/javascript" src="../quiz/quiz.php"></script>
+<script type="text/javascript" src="../../math/point2D.php"></script>
+<script type="text/javascript" src="../../game/game.php"></script>
+<script type="text/javascript" src="../../game/game_chooser.php"></script>
+<script type="text/javascript" src="../../application/application.php"></script>
+<script type="text/javascript" src="../../shape/shape.php"></script>
+<script type="text/javascript" src="../../div/div.php"></script>
+<script type="text/javascript" src="../../question/question.php"></script>
+<script type="text/javascript" src="../../quiz/quiz.php"></script>
 
 </head>
 
@@ -73,19 +77,12 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	//the game
-        mGame = new GameDefenderQuiz(skill);
+        mGame = new GameChooser("Game Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
-	chasers = 4;
-        for (i = 0; i < chasers; i++)
-        {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
-        }
-
 	//create walls
 	//left
 	mGame.createWall(50,50,"black",-400,300);
@@ -155,33 +152,34 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",350,-300);
         mGame.createWall(50,50,"black",400,-300);
 
-	mQuiz = new Quiz(scoreNeeded);
+	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
-	
-        for (i = 0; i < scoreNeeded; i++)
+
+	//create quiz items
+ 	for (i = 0; i < numberOfRows; i++)
         {
-                seed = addendMax - addendMin + 1;
-                result1 = Math.floor(Math.random()*seed);
-                result2 = Math.floor(Math.random()*seed);
-                addend1 = result1 + addendMin;
-                addend2 = result2 + addendMin;
-                answer = addend1 + addend2;
-                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, answer));
+		var question = new Question(gameName[i],url[i]);      
+                mQuiz.mQuestionArray.push(question);
         }
                 
         count = 0;
-        for (i = 0; i < scoreNeeded; i++)
+        for (i = 0; i < numberOfRows; i++)
         {
-                var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
-                count++;
+        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+                var shape;
+                mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+                //shape.showQuestion(false);
+               	count++;
         }
+
+	//end create quiz items
 
 	mGame.resetGame();
 
         //start updating
         mGame.update();
 }
+
 );
 
 window.onresize = function(event)

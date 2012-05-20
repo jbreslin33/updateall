@@ -42,7 +42,7 @@
 		$_SESSION["english_level"] = $englishLevel;  	
 
 		//send user to his game_url		
-		header("Location: ../template/chooser_subject.php");
+		header("Location: ../template/choosers/chooser_subject.php");
 	}
 	else
 	{
