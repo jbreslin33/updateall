@@ -74,18 +74,18 @@ window.addEvent('domready', function()
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
-	
-	//control object
-	var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",50,50,100,100,"","orange","","numberMountee");	
-	mGame.addToShapeArray(numberMountee); 
 
+	//control object
 	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"",50,50,100,100,"","blue","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
 
+	//numberMount to go on top let's make it small and draw it on top 
+	var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",25,25,100,100,"","orange","","numberMountee");	
+	mGame.addToShapeArray(numberMountee); 
+	
 	//do the mount	
-	//mounteeboy.mount(mGame.mControlObject,-20,-25);
-	mGame.mControlObject.mount(numberMountee,-20,-25);
-	//mGame.mControlObject.setBackgroundColor("transparent");
+	mGame.mControlObject.mount(numberMountee,0,0);
+	numberMountee.setBackgroundColor("transparent");
 
 	chasers = 0;
 	for (i = 0; i < chasers; i++)

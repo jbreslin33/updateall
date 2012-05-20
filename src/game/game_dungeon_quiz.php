@@ -64,7 +64,8 @@ Extends: Game,
 		//you ran into a question shape lets resolve it	
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-			if (col1.mInnerHTML == col2.mQuestion.getQuestion())
+			//if (col1.mInnerHTML == col2.mQuestion.getQuestion())
+			if (col1.mQuestion.getQuestion() == col2.mQuestion.getQuestion())
                         {
                         	if (this.mQuiz)
 				{ 
