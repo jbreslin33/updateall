@@ -15,7 +15,7 @@ $numberOfRows = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
-echo "var name = new Array();";
+echo "var gameName = new Array();";
 echo "var url = new Array();";
 
 echo "</script>";
@@ -24,12 +24,12 @@ $counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
-        $name = $row[0];
+        $gameName = $row[0];
         $url = $row[1];
 
 	echo "<script language=\"javascript\">";
 	
-	echo "name[$counter] = \"$name\";";
+	echo "gameName[$counter] = \"$gameName\";";
 	echo "url[$counter] = \"$url\";";
 	echo "</script>";
 	$counter++;
@@ -162,7 +162,7 @@ window.addEvent('domready', function()
 */
  	for (i = 0; i < numberOfRows; i++)
         {
-        	var question = new Question(name[i],url[i]);      
+		var question = new Question(gameName[i],url[i]);      
                 mQuiz.mQuestionArray.push(question);
                 }
                 
