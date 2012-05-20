@@ -168,8 +168,25 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",350,-300);
         mGame.createWall(50,50,"black",400,-300);
 
-	mQuiz = new QuizCount(scoreNeeded,countBy,startNumber,endNumber,mGame);
+	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
+
+	for (i = startNumber; i <= endNumber; i = i + countBy)
+        {
+                        var question = new Question(i, i + countBy);      
+                        mQuiz.mQuestionArray.push(question);
+        }
+                
+        count = 0;
+        for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
+        {
+        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+                var shape;
+               	mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+                shape.showQuestion(false);
+                count++;
+        }
+
 	mGame.resetGame();
 
         //start updating
