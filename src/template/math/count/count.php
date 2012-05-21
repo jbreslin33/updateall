@@ -191,7 +191,7 @@ window.addEvent('domready', function()
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+               	mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/chest.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
