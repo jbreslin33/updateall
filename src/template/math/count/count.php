@@ -195,10 +195,11 @@ window.addEvent('domready', function()
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",1,1,100,100,"","orange","","numberMountee");       
+                var numberMountee = new Shape(mGame,   "center",mQuiz.getSpecificQuestion(count),"",1,1,100,100,"","orange","","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
-        
-                //do the mount  
+                numberMountee.showQuestion(false);
+                
+		//do the mount  
                 shape.mount(numberMountee,-5,-60);
                 numberMountee.setBackgroundColor("transparent");
 
