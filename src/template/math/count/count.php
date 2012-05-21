@@ -76,9 +76,15 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//floor
-        var floor = new Shape(mGame,"relative","","../../../../images/tiles/stone.png",200,200,0,0,"","","","");
-	mGame.addToShapeArray(floor);
-	floor.mCollidable = false;
+	for(x = -400; x < 400; x = x + 50)
+	{
+		for(y = -300; y < 300; y = y + 50)
+		{
+        		var floor = new Shape(mGame,"relative","","../../../../images/tiles/stone.png",50,50,x,y,"","","","");
+			mGame.addToShapeArray(floor);
+			floor.mCollidable = false;
+		}
+	} 
 
 	//control object
 	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
@@ -97,7 +103,8 @@ window.addEvent('domready', function()
 	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
+                var aishape = new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser");
+		mGame.addToShapeArray(aishape);
         }
 
 
@@ -175,8 +182,8 @@ window.addEvent('domready', function()
 
 	for (i = startNumber; i <= endNumber; i = i + countBy)
         {
-                        var question = new Question(i, i + countBy);      
-                        mQuiz.mQuestionArray.push(question);
+        	var question = new Question(i, i + countBy);      
+                mQuiz.mQuestionArray.push(question);
         }
                 
         count = 0;
@@ -186,6 +193,15 @@ window.addEvent('domready', function()
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
                 shape.showQuestion(false);
+
+		//numberMount to go on top let's make it small and draw it on top 
+                var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",1,1,100,100,"","orange","","numberMountee");       
+                mGame.addToShapeArray(numberMountee); 
+        
+                //do the mount  
+                shape.mount(numberMountee,-5,-60);
+                numberMountee.setBackgroundColor("transparent");
+
                 count++;
         }
 
