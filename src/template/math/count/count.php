@@ -57,7 +57,7 @@ var nextLevel = <?php echo $nextLevel; ?>;
 
 </head>
 
-<body>
+<body bgcolor="grey">
 
 <script language="javascript">
 var mGame;
@@ -76,6 +76,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//floor
+	/*
 	for(x = -400; x < 400; x = x + 50)
 	{
 		for(y = -300; y < 300; y = y + 50)
@@ -85,7 +86,7 @@ window.addEvent('domready', function()
 			floor.mCollidable = false;
 		}
 	} 
-
+	*/
 	//control object
 	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
