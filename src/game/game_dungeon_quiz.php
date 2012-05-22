@@ -112,7 +112,6 @@ Extends: Game,
 					{
                                 		this.mOn = false;
 						this.setFeedback("YOU WIN!!!");
-                                		//window.location = "../../../database/goto_next_math_level.php"
                                 		window.location = col2.getQuestion().getAnswer(); 
                         		}
 				}
