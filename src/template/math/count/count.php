@@ -99,7 +99,7 @@ window.addEvent('domready', function()
 	mGame.mControlObject.mount(numberMountee,-5,-60);
 	numberMountee.setBackgroundColor("transparent");
 
-	chasers = 8;
+	chasers = 0;
 	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
@@ -130,14 +130,18 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",400,200);
         mGame.createWall(50,50,"black",400,150);
         mGame.createWall(50,50,"black",400,100);
-        mGame.createWall(50,50,"black",400,50);
-        mGame.createWall(50,50,"black",400,0);
+       
+	//create door	
+	var door = new Shape(mGame,"relative",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"","green","","wall");	
+	mGame.addToShapeArray(door);
+        
+	mGame.createWall(50,50,"black",400,0);
         mGame.createWall(50,50,"black",400,-50);
         mGame.createWall(50,50,"black",400,-100);
         mGame.createWall(50,50,"black",400,-150);
         mGame.createWall(50,50,"black",400,-200);
-        mGame.createWall(50,50,"green",400,-250);
-        mGame.createWall(50,50,"green",400,-300);
+        mGame.createWall(50,50,"black",400,-250);
+        mGame.createWall(50,50,"black",400,-300);
 
 	//bottom
         mGame.createWall(50,50,"black",-400,300);

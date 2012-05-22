@@ -193,6 +193,12 @@ var Shape = new Class(
 		{
 			this.mDiv.mDiv.style.visibility = 'hidden';
 		}
+	
+		//how about your mounted shapes	
+		if (this.mMountee)
+		{
+			this.mMountee.setVisibility(b);
+		}
 	},		
 
 	setText: function(t)

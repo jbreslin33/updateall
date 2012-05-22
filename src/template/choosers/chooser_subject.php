@@ -115,14 +115,8 @@ window.addEvent('domready', function()
 	var questionEnglish = new Question("English","chooser.php?table_name=english_games");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
-        count = 0;
-        for (i = 0; i < 2; i++)
-        {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                var shape;
-                mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
-               	count++;
-        }
+        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,0,0,"","yellow","","question"));
+        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,50,50,"","yellow","","question"));
 
 	//end create quiz items
 

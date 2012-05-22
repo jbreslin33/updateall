@@ -64,38 +64,41 @@ Extends: Game,
 		//you ran into a question shape lets resolve it	
 		if (col1.mMessage == "controlObject" && col2.mMessage == "question")
 		{
-			//if (col1.mInnerHTML == col2.mQuestion.getQuestion())
-			if (col1.mQuestion.getQuestion() == col2.mQuestion.getQuestion())
-                        {
-                        	if (this.mQuiz)
-				{ 
-					this.mQuiz.correctAnswer();
-			       	}	
-				col2.mCollisionOn = false;
-                                col2.setVisibility(false);
+			if (col1.mMountee)
+			{
+				if (col1.mMountee.mQuestion.getQuestion() == col2.mQuestion.getQuestion())
+                        	{
+                        		if (this.mQuiz)
+					{ 
+						this.mQuiz.correctAnswer();
+			       		}	
+					col2.mCollisionOn = false;
+                                	col2.setVisibility(false);
+					
 
-                                //feedback
-                                this.setFeedback("Correct!");
+                                	//feedback
+                                	this.setFeedback("Correct!");
 
-                                //set text of control object
-                        	if (this.mQuiz)
-				{ 
-					//set the control objects question object
-					col1.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
-					if (col1.mMountee)
-					{
-						col1.mMountee.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
+                                	//set text of control object
+                        		if (this.mQuiz)
+					{ 
+						//set the control objects question object
+						col1.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
+						if (col1.mMountee)
+						{
+							col1.mMountee.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
+						}
 					}
-				}
-                        }
-                        else
-                        {
-                                //feedback
-                                this.setFeedback("Try again.");
+                        	}
+                        	else
+                        	{
+                                	//feedback
+                                	this.setFeedback("Try again.");
 
-                                //this deletes and then recreates everthing.
-                                this.resetGame();
-                        }
+                                	//this deletes and then recreates everthing.
+                                	this.resetGame();
+                        	}
+			}
                 }
 
 		//exit room to next level when you complete quiz		
@@ -107,15 +110,10 @@ Extends: Game,
 				{
                 			if (this.mQuiz.isQuizComplete())
 					{
-						//this should just check for collision on certail block on wall for now i will hardcode
-                        			if (this.mControlObject.mPosition.mX > 400 - 50 / 2 &&
-                        			this.mControlObject.mPosition.mY > -300 &&
-                        			this.mControlObject.mPosition.mY < -300 + 50 * 2)
-                        			{
-                                			this.mOn = false;
-							this.setFeedback("YOU WIN!!!");
-                                			window.location = "../database/goto_next_math_level.php"
-						}
+                                		this.mOn = false;
+						this.setFeedback("YOU WIN!!!");
+                                		//window.location = "../../../database/goto_next_math_level.php"
+                                		window.location = col2.getQuestion().getAnswer(); 
                         		}
 				}
 			}
