@@ -88,7 +88,7 @@ window.addEvent('domready', function()
 	} 
 	*/
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard2.png",50,50,100,100,"","","","controlObject"); 
 	mGame.addToShapeArray(mGame.mControlObject); 
 	mGame.mControlObject.showQuestionObject(false);
 
