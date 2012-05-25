@@ -92,7 +92,7 @@ var Animation = new Class(
 		if (this.mAnimationArray[this.mAnimation])
 		{
 			//then switch to it if we are not already there.
-			if (this.mSrc != this.mAnimationArray[this.mAnimation])
+			if (this.mShape.mSrc != this.mAnimationArray[this.mAnimation])
 			{
 				this.mShape.setSrc(this.mAnimationArray[this.mAnimation]);
 			}	

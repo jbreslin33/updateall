@@ -162,6 +162,7 @@ var Shape = new Class(
                 if (this.mSrc)
                 {
                         //image to attach to our div "vessel"
+			this.mSrc = src;
                         this.mMesh.src  = src;
                         this.mMesh.style.width = this.mWidth+'px'; 
                         this.mMesh.style.height = this.mHeight+'px'; 
@@ -169,6 +170,7 @@ var Shape = new Class(
 		else
 		{
                         //image to attach to our div "vessel"
+			this.mSrc = src;
                         this.mMesh  = document.createElement("IMG");
                         this.mMesh.src  = src;
                         this.mMesh.style.width = this.mWidth+'px'; 
