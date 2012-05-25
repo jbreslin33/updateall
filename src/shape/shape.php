@@ -37,6 +37,9 @@ var Shape = new Class(
 		//game so you can know of your world
 		this.mGame = game;
 
+		//animation 
+		this.mAnimation;
+
 		//drawType
 		this.mDrawType = drawType;
 
@@ -145,9 +148,34 @@ var Shape = new Class(
 			this.mPosition.mX += this.mMountOffsetX;
 			this.mPosition.mY += this.mMountOffsetY;
 		} 
-                	
+        	
+		if (this.mAnimation)
+		{	
+			this.mAnimation.update(delta);        	
+		}
 		this.draw();
         },
+
+	setSrc: function(src)
+	{
+                //create clientImage
+                if (this.mSrc)
+                {
+                        //image to attach to our div "vessel"
+                        this.mMesh.src  = src;
+                        this.mMesh.style.width = this.mWidth+'px'; 
+                        this.mMesh.style.height = this.mHeight+'px'; 
+                }
+		else
+		{
+                        //image to attach to our div "vessel"
+                        this.mMesh  = document.createElement("IMG");
+                        this.mMesh.src  = src;
+                        this.mMesh.style.width = this.mWidth+'px'; 
+                        this.mMesh.style.height = this.mHeight+'px'; 
+
+		}
+	},
 
 	mount: function(mountee,offsetX,offsetY)
 	{
@@ -274,6 +302,7 @@ var Shape = new Class(
 
 	draw: (function()
 	{
+		//DRAW TYPES
        		if (this.mDrawType == "")
 		{ 
 	        	//center image relative to position
@@ -304,7 +333,7 @@ var Shape = new Class(
 					this.setText(this.mQuestion.getAnswer());
 				}
 			}
-		}
+		} 
 		
   	}).protect(),
 

@@ -49,6 +49,7 @@ var nextLevel = <?php echo $nextLevel; ?>;
 <script type="text/javascript" src="../../../game/game.php"></script>
 <script type="text/javascript" src="../../../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../../../application/application.php"></script>
+<script type="text/javascript" src="../../../animation/animation.php"></script>
 <script type="text/javascript" src="../../../shape/shape.php"></script>
 <script type="text/javascript" src="../../../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../../../div/div.php"></script>
@@ -75,20 +76,22 @@ window.addEvent('domready', function()
 	//the game
         mGame = new GameDungeonQuiz(skill);
 
-	//floor
-	/*
-	for(x = -400; x < 400; x = x + 50)
-	{
-		for(y = -300; y < 300; y = y + 50)
-		{
-        		var floor = new Shape(mGame,"relative","","../../../../images/tiles/stone.png",50,50,x,y,"","","","");
-			mGame.addToShapeArray(floor);
-			floor.mCollidable = false;
-		}
-	} 
-	*/
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard2.png",50,50,100,100,"","","","controlObject"); 
+	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
+
+	//set animation instance
+	mGame.mControlObject.mAnimation = new Animation(mGame.mControlObject);
+
+	mGame.mControlObject.mAnimation.mAnimationArray[0] = "../../../../images/characters/wizard2.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[1] = "../../../../images/monster/red_monster.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[2] = "../../../../images/characters/wizard2.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[3] = "../../../../images/tiles/stone.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[4] = "../../../../images/characters/wizard2.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[5] = "../../../../images/characters/wizard2.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[6] = "../../../../images/characters/wizard2.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[7] = "../../../../images/treasure/chest.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[8] = "../../../../images/characters/arrow_animated_east.gif";
+
 	mGame.addToShapeArray(mGame.mControlObject); 
 	mGame.mControlObject.showQuestionObject(false);
 
