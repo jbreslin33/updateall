@@ -25,6 +25,8 @@ Extends: Animation,
 
 		//animation Array
 		this.mAnimationAdvanced = 0;
+		this.mAnimationAdvancedDelay = 10;
+		this.mAnimationAdvancedDelayCounter = 0;
         },
 
 /******************** PUBLIC METHODS *************/
@@ -108,6 +110,13 @@ Extends: Animation,
 			}
 		}
 		//move to next advanced animation for next frame
-		this.mAnimationAdvanced++;
+		//wait for a delay so animations don't play too fast
+		if (this.mAnimationAdvancedDelayCounter > this.mAnimationAdvancedDelay)
+		{
+			this.mAnimationAdvancedDelayCounter = 0;
+			this.mAnimationAdvanced++;
+		}
+		//increment the advanced delay counter
+		this.mAnimationAdvancedDelayCounter++;
 	}
 });
