@@ -45,7 +45,7 @@ var Animation = new Class(
 		//now we have to loop thru based on timer and mAnimationArray[]
 		if (this.mShape.mKey.mX == 0 && this.mShape.mKey.mY == 0)
 		{
-			this.mAnimation = 0;
+			//this.mAnimation = 0;
 		}
 		//north 
 		if (this.mShape.mKey.mX == 0 && this.mShape.mKey.mY == -1)
