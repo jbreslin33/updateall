@@ -24,8 +24,7 @@ Extends: Animation,
 		this.parent(shape);
 
 		//animation Array
-		this.mAnimation = 0;
-		this.mAnimationArray = new Array(); //at this point it looks like we would have 9 or 0-8 with 0 idle and 1 north and 8 north west.
+		this.mAnimationAdvanced = 0;
         },
 
 /******************** PUBLIC METHODS *************/
@@ -89,14 +88,26 @@ Extends: Animation,
 	
 	animate: function(delta)
 	{
-		//if that animation exists 	
+		//if that animation array exists 	
 		if (this.mAnimationArray[this.mAnimation])
 		{
-			//then switch to it if we are not already there.
-			if (this.mShape.mSrc != this.mAnimationArray[this.mAnimation])
+			//if animation is out of array length set back to 0
+			if (this.mAnimationAdvanced >= this.mAnimationArray[this.mAnimation].length)
 			{
-				this.mShape.setSrc(this.mAnimationArray[this.mAnimation]);
-			}	
+				this.mAnimationAdvanced = 0;
+			}
+		
+			//if advanced animation exists	
+			if (this.mAnimationArray[this.mAnimation][this.mAnimationAdvanced])
+			{
+				//then switch to it if we are not already there.
+				if (this.mShape.mSrc != this.mAnimationArray[this.mAnimation][this.mAnimationAdvanced])
+				{
+					this.mShape.setSrc(this.mAnimationArray[this.mAnimation][this.mAnimationAdvanced]);
+				}	
+			}
 		}
+		//move to next advanced animation for next frame
+		this.mAnimationAdvanced++;
 	}
 });
