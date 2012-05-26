@@ -80,7 +80,7 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(mGame,"center","","",50,50,0,0,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	//create walls
@@ -165,9 +165,9 @@ window.addEvent('domready', function()
         count = 0;
         for (i = 0; i < numberOfRows; i++)
         {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
                 var shape;
-                mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+		x = i * 50;
+                mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,x,50,i,"yellow","","question"));
                 //shape.showQuestion(false);
                	count++;
         }

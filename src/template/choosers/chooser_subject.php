@@ -34,7 +34,7 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Subject Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(mGame,"center","","",50,50,0,0,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	//create walls
@@ -115,7 +115,7 @@ window.addEvent('domready', function()
 	var questionEnglish = new Question("English","chooser.php?table_name=english_games");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
-        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,0,0,"","yellow","","question"));
+        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,0,50,"","yellow","","question"));
         mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,50,50,"","yellow","","question"));
 
 	//end create quiz items
