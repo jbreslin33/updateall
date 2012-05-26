@@ -82,15 +82,15 @@ window.addEvent('domready', function()
 	//set animation instance
 	mGame.mControlObject.mAnimation = new Animation(mGame.mControlObject);
 
-	mGame.mControlObject.mAnimation.mAnimationArray[0] = "../../../../images/characters/arrow_north.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[0] = "../../../../images/characters/wizard_north.png";
 	mGame.mControlObject.mAnimation.mAnimationArray[1] = "../../../../images/characters/wizard_north.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[2] = "../../../../images/characters/arrow_north_east.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[2] = "../../../../images/characters/wizard_north_east.png";
 	mGame.mControlObject.mAnimation.mAnimationArray[3] = "../../../../images/characters/wizard_east.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[4] = "../../../../images/characters/arrow_south_east.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[4] = "../../../../images/characters/wizard_south_east.png";
 	mGame.mControlObject.mAnimation.mAnimationArray[5] = "../../../../images/characters/wizard_south.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[6] = "../../../../images/characters/arrow_south_west.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[6] = "../../../../images/characters/wizard_south_west.png";
 	mGame.mControlObject.mAnimation.mAnimationArray[7] = "../../../../images/characters/wizard_west.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[8] = "../../../../images/characters/arrow_north_west.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[8] = "../../../../images/characters/wizard_north_west.png";
 
 	mGame.addToShapeArray(mGame.mControlObject); 
 	mGame.mControlObject.showQuestionObject(false);
