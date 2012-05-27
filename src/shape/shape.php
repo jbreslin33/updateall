@@ -223,14 +223,20 @@ var Shape = new Class(
 
 	setVisibility: function(b)
 	{
-/*
 		if (b)
 		{
-			this.mDiv.mDiv.style.visibility = 'visible';
+			
+			if (this.mDiv.mDiv.style.visibility != 'visible')
+			{
+				this.mDiv.mDiv.style.visibility = 'visible';
+			}
 		}
 		else
 		{
-			this.mDiv.mDiv.style.visibility = 'hidden';
+			if (this.mDiv.mDiv.style.visibility != 'hidden')
+			{
+				this.mDiv.mDiv.style.visibility = 'hidden';
+			}
 		}
 	
 		//how about your mounted shapes	
@@ -238,20 +244,20 @@ var Shape = new Class(
 		{
 			this.mMountee.setVisibility(b);
 		}
-*/
+
 	},		
 
 	setText: function(t)
 	{
 
-		//if (this.mInnerHTML != t)
-		//{
+		if (this.mInnerHTML != t)
+		{
         		this.mInnerHTML = t;	
 			if (this.mSrc == "")
 			{
 				this.mMesh.innerHTML = this.mInnerHTML;
 			}
-		//}
+		}
 	},
 
 	setBackgroundColor: function(c)
