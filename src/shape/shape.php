@@ -292,6 +292,19 @@ var Shape = new Class(
 	{
 		return this.mQuestion;
 	},
+	
+	getVisibility: function()
+	{
+		if (this.mDiv.mDiv.style.visibility == 'visible')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	},
 
 /*********** PROTECTED MEMBER METHODS *************/
 
@@ -302,7 +315,11 @@ var Shape = new Class(
                         y + this.mHeight + 13 > mApplication.mWindow.y)
                 {
                         this.setPosition(0,0);
-                        this.setVisibility(false);
+			
+			if (this.getVisibility())
+			{
+                        	this.setVisibility(false);
+			}
                 }
   	}).protect(),
  	
