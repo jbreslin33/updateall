@@ -29,7 +29,6 @@ Extends: Game,
 		{
                         if (this.mQuiz)
 			{ 
-				mApplication.log('complete');
                        		this.mOn = false;
                              	this.setFeedback("YOU CHOSE WELL!!!");
 				window.location = col2.mQuestion.getAnswer();

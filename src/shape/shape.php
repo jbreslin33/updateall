@@ -209,12 +209,21 @@ var Shape = new Class(
 
 	setPosition: function(x,y)
 	{
-		this.mDiv.mDiv.style.left = x+'px';
-		this.mDiv.mDiv.style.top = y+'px';
+		modx = x+'px';	
+		mody = y+'px';
+		if (modx != x)
+		{
+			this.mDiv.mDiv.style.left = modx;
+		}
+		if (mody != y)
+		{
+			this.mDiv.mDiv.style.top = mody;
+		}	
 	},
 
 	setVisibility: function(b)
 	{
+/*
 		if (b)
 		{
 			this.mDiv.mDiv.style.visibility = 'visible';
@@ -229,15 +238,20 @@ var Shape = new Class(
 		{
 			this.mMountee.setVisibility(b);
 		}
+*/
 	},		
 
 	setText: function(t)
 	{
-        	this.mInnerHTML = t;	
-		if (this.mSrc == "")
-		{
-			this.mMesh.innerHTML = this.mInnerHTML;
-		}
+
+		//if (this.mInnerHTML != t)
+		//{
+        		this.mInnerHTML = t;	
+			if (this.mSrc == "")
+			{
+				this.mMesh.innerHTML = this.mInnerHTML;
+			}
+		//}
 	},
 
 	setBackgroundColor: function(c)
