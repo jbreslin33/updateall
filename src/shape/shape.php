@@ -225,7 +225,6 @@ var Shape = new Class(
 	{
 		if (b)
 		{
-			
 			if (this.mDiv.mDiv.style.visibility != 'visible')
 			{
 				this.mDiv.mDiv.style.visibility = 'visible';
@@ -249,7 +248,6 @@ var Shape = new Class(
 
 	setText: function(t)
 	{
-
 		if (this.mInnerHTML != t)
 		{
         		this.mInnerHTML = t;	
