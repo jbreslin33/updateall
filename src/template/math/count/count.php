@@ -108,8 +108,7 @@ window.addEvent('domready', function()
 	mGame.mControlObject.showQuestionObject(false);
 
 	//numberMount to go on top let's make it small and draw it on top 
-	//var numberMountee = new Shape(mGame,"",new Question(1,0),"",1,1,300,300,,"orange","0","numberMountee");	
-	  var numberMountee = new Shape(mGame,"",new Question(1,0),"",1,1,300,300,"0","orange","","numberMountee");  
+	var numberMountee = new Shape(mGame,"",new Question(1,0),"",1,1,300,300,startNumber,"orange","","numberMountee");  
 	mGame.addToShapeArray(numberMountee); 
 	
 	//do the mount	
@@ -125,7 +124,7 @@ window.addEvent('domready', function()
         }
 
 
-	var door = new Shape(mGame,"",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
+	var door = new Shape(mGame,"",new Question("DOOR","../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
 	mGame.addToShapeArray(door);
         
 	mQuiz = new Quiz(scoreNeeded);
