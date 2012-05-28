@@ -350,6 +350,7 @@ var Shape = new Class(
 	        	//center image relative to position
                 	var posX = this.mPosition.mX - (this.mWidth / 2);
                 	var posY = this.mPosition.mY - (this.mHeight / 2);
+                	this.setPosition(posX,posY);
 	
 			this.protectScrollBars(posX,posY);
 		}
@@ -389,6 +390,7 @@ var Shape = new Class(
                 var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
                 var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
 
+                this.sortGameVisibility(posX,posY);
                 this.setPosition(posX,posY);
   	}).protect(),
 

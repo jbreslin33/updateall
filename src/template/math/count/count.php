@@ -78,7 +78,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//control object
-	mGame.mControlObject = new Shape(mGame,"center",new Question(1,0),"../../../../images/characters/wizard.png",50,50,100,100,"","","","controlObject"); 
+	mGame.mControlObject = new Shape(mGame,"",new Question(1,0),"../../../../images/characters/wizard.png",50,50,400,300,"","","","controlObject"); 
 
 	//set animation instance
 	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -108,7 +108,7 @@ window.addEvent('domready', function()
 	mGame.mControlObject.showQuestionObject(false);
 
 	//numberMount to go on top let's make it small and draw it on top 
-	var numberMountee = new Shape(mGame,   "center",new Question(1,0),"",1,1,100,100,"","orange","","numberMountee");	
+	var numberMountee = new Shape(mGame,"",new Question(1,0),"",1,1,300,300,"","orange","","numberMountee");	
 	mGame.addToShapeArray(numberMountee); 
 	
 	//do the mount	
@@ -118,27 +118,28 @@ window.addEvent('domready', function()
 	chasers = 0;
 	for (i = 0; i < chasers; i++)
         {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                var aishape = new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser");
+        	var openPoint = mGame.getOpenPoint2D(0,800,0,600,50,4);
+                var aishape = new ShapeAI(mGame,"","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser");
 		mGame.addToShapeArray(aishape);
         }
 
 
 	//create walls
 	//left
-	mGame.createWall(50,50,"black",-400,300);
-	mGame.createWall(50,50,"black",-400,250);
-	mGame.createWall(50,50,"black",-400,200);
-	mGame.createWall(50,50,"black",-400,150);
-	mGame.createWall(50,50,"black",-400,100);
-	mGame.createWall(50,50,"black",-400,50);
-	mGame.createWall(50,50,"black",-400,0);
-	mGame.createWall(50,50,"black",-400,-50);
-	mGame.createWall(50,50,"black",-400,-100);
-	mGame.createWall(50,50,"black",-400,-150);
-	mGame.createWall(50,50,"black",-400,-200);
-	mGame.createWall(50,50,"black",-400,-250);
-	mGame.createWall(50,50,"black",-400,-300);
+/*
+	mGame.createWall(50,50,"black",0,300);
+	mGame.createWall(50,50,"black",0,250);
+	mGame.createWall(50,50,"black",0,200);
+	mGame.createWall(50,50,"black",0,150);
+	mGame.createWall(50,50,"black",0,100);
+	mGame.createWall(50,50,"black",0,50);
+	mGame.createWall(50,50,"black",0,0);
+	mGame.createWall(50,50,"black",0,-50);
+	mGame.createWall(50,50,"black",0,-100);
+	mGame.createWall(50,50,"black",0,-150);
+	mGame.createWall(50,50,"black",0,-200);
+	mGame.createWall(50,50,"black",0,-250);
+	mGame.createWall(50,50,"black",0,-300);
 
   	//right
         mGame.createWall(50,50,"black",400,300);
@@ -148,7 +149,7 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",400,100);
        
 	//create door	
-	var door = new Shape(mGame,"relative",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"","green","","wall");	
+	var door = new Shape(mGame,"",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"","green","","wall");	
 	mGame.addToShapeArray(door);
         
 	mGame.createWall(50,50,"black",400,0);
@@ -196,7 +197,7 @@ window.addEvent('domready', function()
         mGame.createWall(50,50,"black",300,-300);
         mGame.createWall(50,50,"black",350,-300);
         mGame.createWall(50,50,"black",400,-300);
-
+*/
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
@@ -209,13 +210,13 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
+        	var openPoint = mGame.getOpenPoint2D(0,800,0,600,50,4);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
+               	mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(mGame,   "relative",mQuiz.getSpecificQuestion(count),"",1,1,100,100,"","orange","","numberMountee");       
+                var numberMountee = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"",1,1,100,100,"","orange","","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
                 

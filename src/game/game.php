@@ -192,7 +192,7 @@ var Game = new Class(
                         this.mShapeArray[i].mPositionOld.mY = this.mShapeArray[i].mPosition.mY;
                 }
         }).protect(),
-
+	
 	checkForCollisions: (function()
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
