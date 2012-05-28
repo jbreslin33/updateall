@@ -72,9 +72,6 @@ var Shape = new Class(
 		//keys
 		this.mKey = new Point2D(0,0);
                 
-		//html	
-		this.mInnerHTML = innerHTML; 
-                
 		//background
 		this.mBackgroundColor = backgroundColor;
                 
@@ -106,13 +103,13 @@ var Shape = new Class(
 		if (this.mSrc == "")//create paragraph
                 {
                 	this.mMesh = document.createElement("p");
-                        this.mMesh.innerHTML = this.mInnerHTML;
+                        this.mMesh.innerHTML = innerHTML;
                 }
 		
 		if (this.mOnClick != "")
 		{
 			this.mMesh = document.createElement("b");
-			this.mMesh.innerHTML = this.mInnerHTML;
+			this.mMesh.innerHTML = innerHTML;
 		}
 
                 //back to div   
@@ -247,12 +244,11 @@ var Shape = new Class(
 
 	setText: function(t)
 	{
-		if (this.mInnerHTML != t)
+		if (this.mMesh.innerHTML != t)
 		{
-        		this.mInnerHTML = t;	
 			if (this.mSrc == "")
 			{
-				this.mMesh.innerHTML = this.mInnerHTML;
+				this.mMesh.innerHTML = t;
 			}
 		}
 	},
