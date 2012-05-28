@@ -1,6 +1,6 @@
 <?php 
 //standard header for most games i hope. it handles some basic html and level db call
-include("headers/header_chooser.php");
+include("../headers/header.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
 $tableName = $_GET['table_name'];

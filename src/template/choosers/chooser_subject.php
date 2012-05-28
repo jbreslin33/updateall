@@ -1,6 +1,6 @@
 <?php 
 //standard header for most games i hope. it handles some basic html and level db call
-include("headers/header_chooser.php");
+include("../headers/header.php");
 
 ?>
 
@@ -48,8 +48,6 @@ window.addEvent('domready', function()
                
         mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,400,350,"","yellow","","question"));
         mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,450,350,"","yellow","","question"));
-
-	//end create quiz items
 
 	mGame.resetGame();
 
