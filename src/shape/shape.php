@@ -7,7 +7,6 @@ void update(deltaTime); //update the the shape using the delta time of game upda
 
 void setPosition(x,y) //
 void setText(text);  //set text inside shape
-void setVisibility(bool) //can you see it or not
 void setBackgroundColor(color);
 void setMessage(message);
  
@@ -328,12 +327,18 @@ var Shape = new Class(
                 if (this.mCollisionOn == true)
                 {
                         this.setPosition(x,y);
-                        this.setVisibility(true);
+			if (this.getVisibility() == false) 
+			{
+                        	this.setVisibility(true);
+			}
                 }
                 else
                 {
                         this.setPosition(0,0);
-                        this.setVisibility(false);
+			if (this.getVisibility() == true) 
+			{
+                        	this.setVisibility(false);
+			}
                 }
   	}).protect(),
 
