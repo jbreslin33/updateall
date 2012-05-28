@@ -36,6 +36,9 @@ var Shape = new Class(
 		//game so you can know of your world
 		this.mGame = game;
 
+		//outOfViewPort
+		this.mOutOfViewPort = true;
+
 		//animation 
 		this.mAnimation;
 
@@ -316,37 +319,28 @@ var Shape = new Class(
 			{
                         	this.setVisibility(false);
 			}
+			this.mOutOfViewPort = true;
                 }
+		else
+		{
+			if (this.mOutOfViewPort == true)
+			{
+				if (this.getVisibility() == false)
+				{
+                        		this.setVisibility(true);
+				}
+				this.mOutOfViewPort = false;
+			}
+		}
   	}).protect(),
  	
-	sortGameVisibility: (function(x,y)
-        {
-                if (this.mCollisionOn == true)
-                {
-                        this.setPosition(x,y);
-			if (this.getVisibility() == false) 
-			{
-                        	this.setVisibility(true);
-			}
-                }
-                else
-                {
-                        this.setPosition(0,0);
-			if (this.getVisibility() == true) 
-			{
-                        	this.setVisibility(false);
-			}
-                }
-  	}).protect(),
-
 	draw: function()
 	{
         	//center image relative to position
                	var posX = this.mPosition.mX - (this.mWidth / 2);
                	var posY = this.mPosition.mY - (this.mHeight / 2);
                	this.setPosition(posX,posY);
-	
-                this.sortGameVisibility(posX,posY);
+
 		this.protectScrollBars(posX,posY);
 
 		if (this.mQuestion)
@@ -364,6 +358,4 @@ var Shape = new Class(
 			}
 		} 
 		
-  	}
-});
-
+  	} }); 
