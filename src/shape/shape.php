@@ -39,9 +39,6 @@ var Shape = new Class(
 		//animation 
 		this.mAnimation;
 
-		//drawType
-		this.mDrawType = drawType;
-
 		//we are all about questions and answers in this program so everyone contains a question pointer whether you use it or not.	
 		this.mQuestion = question; // the question object that contains a question and answer.
 		this.mShowQuestionObject = true; //even if we have a valid question object we can shut off showing it.
@@ -342,26 +339,15 @@ var Shape = new Class(
                 }
   	}).protect(),
 
-	draw: (function()
+	draw: function()
 	{
-		//DRAW TYPES
-       		if (this.mDrawType == "")
-		{ 
-	        	//center image relative to position
-                	var posX = this.mPosition.mX - (this.mWidth / 2);
-                	var posY = this.mPosition.mY - (this.mHeight / 2);
-                	this.setPosition(posX,posY);
+        	//center image relative to position
+               	var posX = this.mPosition.mX - (this.mWidth / 2);
+               	var posY = this.mPosition.mY - (this.mHeight / 2);
+               	this.setPosition(posX,posY);
 	
-			this.protectScrollBars(posX,posY);
-		}
-		if(this.mDrawType == "center")
-		{
-			this.drawCenter();
-		}
-		if (this.mDrawType == "relative")
-		{
-			this.drawRelative();
-		}
+                this.sortGameVisibility(posX,posY);
+		this.protectScrollBars(posX,posY);
 
 		if (this.mQuestion)
 		{
@@ -378,35 +364,6 @@ var Shape = new Class(
 			}
 		} 
 		
-  	}).protect(),
-
-	drawCenter: (function()
-        {
-                //center image relative to position
-                //get the offset from control object
-                var xdiff = this.mPosition.mX - this.mGame.getControlObject().mPosition.mX;
-                var ydiff = this.mPosition.mY - this.mGame.getControlObject().mPosition.mY;
-
-                var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
-
-                this.sortGameVisibility(posX,posY);
-                this.setPosition(posX,posY);
-  	}).protect(),
-
-	drawRelative: (function()
-        {
-                //get the offset from control object
-                var xdiff = this.mPosition.mX - this.mGame.getControlObject().mPosition.mX;
-                var ydiff = this.mPosition.mY - this.mGame.getControlObject().mPosition.mY;
-
-                //center image relative to position
-                var posX = xdiff + (mApplication.mWindow.x / 2) - (this.mWidth / 2);
-                var posY = ydiff + (mApplication.mWindow.y / 2) - (this.mHeight / 2);
-
-                this.sortGameVisibility(posX,posY);
-                this.protectScrollBars(posX,posY);
-  	}).protect()
-
+  	}
 });
 

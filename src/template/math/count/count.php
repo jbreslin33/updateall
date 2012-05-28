@@ -124,80 +124,9 @@ window.addEvent('domready', function()
         }
 
 
-	//create walls
-	//left
-/*
-	mGame.createWall(50,50,"black",0,300);
-	mGame.createWall(50,50,"black",0,250);
-	mGame.createWall(50,50,"black",0,200);
-	mGame.createWall(50,50,"black",0,150);
-	mGame.createWall(50,50,"black",0,100);
-	mGame.createWall(50,50,"black",0,50);
-	mGame.createWall(50,50,"black",0,0);
-	mGame.createWall(50,50,"black",0,-50);
-	mGame.createWall(50,50,"black",0,-100);
-	mGame.createWall(50,50,"black",0,-150);
-	mGame.createWall(50,50,"black",0,-200);
-	mGame.createWall(50,50,"black",0,-250);
-	mGame.createWall(50,50,"black",0,-300);
-
-  	//right
-        mGame.createWall(50,50,"black",400,300);
-        mGame.createWall(50,50,"black",400,250);
-        mGame.createWall(50,50,"black",400,200);
-        mGame.createWall(50,50,"black",400,150);
-        mGame.createWall(50,50,"black",400,100);
-       
-	//create door	
-	var door = new Shape(mGame,"",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"","green","","wall");	
+	var door = new Shape(mGame,"",new Question("","../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
 	mGame.addToShapeArray(door);
         
-	mGame.createWall(50,50,"black",400,0);
-        mGame.createWall(50,50,"black",400,-50);
-        mGame.createWall(50,50,"black",400,-100);
-        mGame.createWall(50,50,"black",400,-150);
-        mGame.createWall(50,50,"black",400,-200);
-        mGame.createWall(50,50,"black",400,-250);
-        mGame.createWall(50,50,"black",400,-300);
-
-	//bottom
-        mGame.createWall(50,50,"black",-400,300);
-        mGame.createWall(50,50,"black",-350,300);
-        mGame.createWall(50,50,"black",-300,300);
-        mGame.createWall(50,50,"black",-250,300);
-        mGame.createWall(50,50,"black",-200,300);
-        mGame.createWall(50,50,"black",-150,300);
-        mGame.createWall(50,50,"black",-100,300);
-        mGame.createWall(50,50,"black",-50,300);
-        mGame.createWall(50,50,"black",0,300);
-        mGame.createWall(50,50,"black",50,300);
-        mGame.createWall(50,50,"black",100,300);
-        mGame.createWall(50,50,"black",150,300);
-        mGame.createWall(50,50,"black",200,300);
-        mGame.createWall(50,50,"black",250,300);
-        mGame.createWall(50,50,"black",300,300);
-        mGame.createWall(50,50,"black",350,300);
-        mGame.createWall(50,50,"black",400,300);
-
-	//top
-        mGame.createWall(50,50,"black",-400,-300);
-        mGame.createWall(50,50,"black",-350,-300);
-        mGame.createWall(50,50,"black",-300,-300);
-        mGame.createWall(50,50,"black",-250,-300);
-        mGame.createWall(50,50,"black",-200,-300);
-        mGame.createWall(50,50,"black",-150,-300);
-        mGame.createWall(50,50,"black",-100,-300);
-        mGame.createWall(50,50,"black",-50,-300);
-        mGame.createWall(50,50,"black",0,-300);
-        mGame.createWall(50,50,"black",50,-300);
-        mGame.createWall(50,50,"black",100,-300);
-        mGame.createWall(50,50,"black",150,-300);
-        mGame.createWall(50,50,"black",200,-300);
-        mGame.createWall(50,50,"black",250,-300);
-        mGame.createWall(50,50,"black",300,-300);
-        mGame.createWall(50,50,"black",350,-300);
-        mGame.createWall(50,50,"black",400,-300);
-*/
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 

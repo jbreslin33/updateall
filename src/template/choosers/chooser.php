@@ -80,78 +80,9 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"center","","",50,50,0,0,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(mGame,"","","",50,50,400,300,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
-	//create walls
-	//left
-	mGame.createWall(50,50,"black",-400,300);
-	mGame.createWall(50,50,"black",-400,250);
-	mGame.createWall(50,50,"black",-400,200);
-	mGame.createWall(50,50,"black",-400,150);
-	mGame.createWall(50,50,"black",-400,100);
-	mGame.createWall(50,50,"black",-400,50);
-	mGame.createWall(50,50,"black",-400,0);
-	mGame.createWall(50,50,"black",-400,-50);
-	mGame.createWall(50,50,"black",-400,-100);
-	mGame.createWall(50,50,"black",-400,-150);
-	mGame.createWall(50,50,"black",-400,-200);
-	mGame.createWall(50,50,"black",-400,-250);
-	mGame.createWall(50,50,"black",-400,-300);
-
-  	//right
-        mGame.createWall(50,50,"black",400,300);
-        mGame.createWall(50,50,"black",400,250);
-        mGame.createWall(50,50,"black",400,200);
-        mGame.createWall(50,50,"black",400,150);
-        mGame.createWall(50,50,"black",400,100);
-        mGame.createWall(50,50,"black",400,50);
-        mGame.createWall(50,50,"black",400,0);
-        mGame.createWall(50,50,"black",400,-50);
-        mGame.createWall(50,50,"black",400,-100);
-        mGame.createWall(50,50,"black",400,-150);
-        mGame.createWall(50,50,"black",400,-200);
-        mGame.createWall(50,50,"black",400,-250);
-        mGame.createWall(50,50,"black",400,-300);
-
-	//bottom
-        mGame.createWall(50,50,"black",-400,300);
-        mGame.createWall(50,50,"black",-350,300);
-        mGame.createWall(50,50,"black",-300,300);
-        mGame.createWall(50,50,"black",-250,300);
-        mGame.createWall(50,50,"black",-200,300);
-        mGame.createWall(50,50,"black",-150,300);
-        mGame.createWall(50,50,"black",-100,300);
-        mGame.createWall(50,50,"black",-50,300);
-        mGame.createWall(50,50,"black",0,300);
-        mGame.createWall(50,50,"black",50,300);
-        mGame.createWall(50,50,"black",100,300);
-        mGame.createWall(50,50,"black",150,300);
-        mGame.createWall(50,50,"black",200,300);
-        mGame.createWall(50,50,"black",250,300);
-        mGame.createWall(50,50,"black",300,300);
-        mGame.createWall(50,50,"black",350,300);
-        mGame.createWall(50,50,"black",400,300);
-
-	//top
-        mGame.createWall(50,50,"black",-400,-300);
-        mGame.createWall(50,50,"black",-350,-300);
-        mGame.createWall(50,50,"black",-300,-300);
-        mGame.createWall(50,50,"black",-250,-300);
-        mGame.createWall(50,50,"black",-200,-300);
-        mGame.createWall(50,50,"black",-150,-300);
-        mGame.createWall(50,50,"black",-100,-300);
-        mGame.createWall(50,50,"black",-50,-300);
-        mGame.createWall(50,50,"black",0,-300);
-        mGame.createWall(50,50,"black",50,-300);
-        mGame.createWall(50,50,"black",100,-300);
-        mGame.createWall(50,50,"black",150,-300);
-        mGame.createWall(50,50,"black",200,-300);
-        mGame.createWall(50,50,"black",250,-300);
-        mGame.createWall(50,50,"black",300,-300);
-        mGame.createWall(50,50,"black",350,-300);
-        mGame.createWall(50,50,"black",400,-300);
-
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
@@ -163,11 +94,11 @@ window.addEvent('domready', function()
         }
                 
         count = 0;
-        for (i = 0; i < numberOfRows; i++)
+        for (i = 0; i < numberOfRows; i++ )
         {
                 var shape;
-		x = i * 50;
-                mGame.addToShapeArray(shape = new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,x,50,i,"yellow","","question"));
+		x = i * 50 + 400;
+                mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"",50,50,x,350,"","yellow","","question"));
                 //shape.showQuestion(false);
                	count++;
         }

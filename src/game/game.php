@@ -117,7 +117,10 @@ var Game = new Class(
 
 	createWall: function(width,length,color,spawnX,spawnY)
         {
-                this.addToShapeArray(new Shape(this,"relative","","",width,length,spawnX,spawnY,"",color,"","wall",this));
+                var s = new Shape(this,"","","",width,length,spawnX,spawnY,"",color,"","wall",this);
+		s.mCollidable = false;
+		s.mCollisionOn = false;
+                this.addToShapeArray(s);
         },
 
 

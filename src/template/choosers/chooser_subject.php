@@ -34,78 +34,9 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Subject Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"center","","",50,50,0,0,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(mGame,"","","",50,50,400,300,"","blue","","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
-	//create walls
-	//left
-	mGame.createWall(50,50,"black",-400,300);
-	mGame.createWall(50,50,"black",-400,250);
-	mGame.createWall(50,50,"black",-400,200);
-	mGame.createWall(50,50,"black",-400,150);
-	mGame.createWall(50,50,"black",-400,100);
-	mGame.createWall(50,50,"black",-400,50);
-	mGame.createWall(50,50,"black",-400,0);
-	mGame.createWall(50,50,"black",-400,-50);
-	mGame.createWall(50,50,"black",-400,-100);
-	mGame.createWall(50,50,"black",-400,-150);
-	mGame.createWall(50,50,"black",-400,-200);
-	mGame.createWall(50,50,"black",-400,-250);
-	mGame.createWall(50,50,"black",-400,-300);
-
-  	//right
-        mGame.createWall(50,50,"black",400,300);
-        mGame.createWall(50,50,"black",400,250);
-        mGame.createWall(50,50,"black",400,200);
-        mGame.createWall(50,50,"black",400,150);
-        mGame.createWall(50,50,"black",400,100);
-        mGame.createWall(50,50,"black",400,50);
-        mGame.createWall(50,50,"black",400,0);
-        mGame.createWall(50,50,"black",400,-50);
-        mGame.createWall(50,50,"black",400,-100);
-        mGame.createWall(50,50,"black",400,-150);
-        mGame.createWall(50,50,"black",400,-200);
-        mGame.createWall(50,50,"black",400,-250);
-        mGame.createWall(50,50,"black",400,-300);
-
-	//bottom
-        mGame.createWall(50,50,"black",-400,300);
-        mGame.createWall(50,50,"black",-350,300);
-        mGame.createWall(50,50,"black",-300,300);
-        mGame.createWall(50,50,"black",-250,300);
-        mGame.createWall(50,50,"black",-200,300);
-        mGame.createWall(50,50,"black",-150,300);
-        mGame.createWall(50,50,"black",-100,300);
-        mGame.createWall(50,50,"black",-50,300);
-        mGame.createWall(50,50,"black",0,300);
-        mGame.createWall(50,50,"black",50,300);
-        mGame.createWall(50,50,"black",100,300);
-        mGame.createWall(50,50,"black",150,300);
-        mGame.createWall(50,50,"black",200,300);
-        mGame.createWall(50,50,"black",250,300);
-        mGame.createWall(50,50,"black",300,300);
-        mGame.createWall(50,50,"black",350,300);
-        mGame.createWall(50,50,"black",400,300);
-
-	//top
-        mGame.createWall(50,50,"black",-400,-300);
-        mGame.createWall(50,50,"black",-350,-300);
-        mGame.createWall(50,50,"black",-300,-300);
-        mGame.createWall(50,50,"black",-250,-300);
-        mGame.createWall(50,50,"black",-200,-300);
-        mGame.createWall(50,50,"black",-150,-300);
-        mGame.createWall(50,50,"black",-100,-300);
-        mGame.createWall(50,50,"black",-50,-300);
-        mGame.createWall(50,50,"black",0,-300);
-        mGame.createWall(50,50,"black",50,-300);
-        mGame.createWall(50,50,"black",100,-300);
-        mGame.createWall(50,50,"black",150,-300);
-        mGame.createWall(50,50,"black",200,-300);
-        mGame.createWall(50,50,"black",250,-300);
-        mGame.createWall(50,50,"black",300,-300);
-        mGame.createWall(50,50,"black",350,-300);
-        mGame.createWall(50,50,"black",400,-300);
-
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
@@ -115,8 +46,8 @@ window.addEvent('domready', function()
 	var questionEnglish = new Question("English","chooser.php?table_name=english_games");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
-        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,0,50,"","yellow","","question"));
-        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,50,50,"","yellow","","question"));
+        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,400,350,"","yellow","","question"));
+        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,450,350,"","yellow","","question"));
 
 	//end create quiz items
 
