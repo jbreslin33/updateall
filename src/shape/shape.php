@@ -347,7 +347,7 @@ var Shape = new Class(
 		}
 	
 		//make sure we dont' get scrollbars showing up when things move off view port	
-		this.protectScrollBars(this.mPositionRender.mX,this.mPositionRender.mY);
+		this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
 
 		if (this.mQuestion)
 		{

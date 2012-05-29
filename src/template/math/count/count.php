@@ -36,6 +36,8 @@ if ($num > 0)
 
 <script language="javascript">
 
+
+
 var skill = "<?php echo $skill; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
@@ -44,6 +46,15 @@ var endNumber = <?php echo $endNumber; ?>;
 var nextLevel = <?php echo $nextLevel; ?>;
 
 </script>
+
+<style type="text/css">
+
+body
+{
+overflow:hidden;
+}
+
+</style>
 
 <script type="text/javascript" src="../../../math/point2D.php"></script>
 <script type="text/javascript" src="../../../game/game.php"></script>
@@ -56,6 +67,8 @@ var nextLevel = <?php echo $nextLevel; ?>;
 <script type="text/javascript" src="../../../div/div.php"></script>
 <script type="text/javascript" src="../../../question/question.php"></script>
 <script type="text/javascript" src="../../../quiz/quiz.php"></script>
+
+
 
 </head>
 
