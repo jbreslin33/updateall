@@ -205,16 +205,16 @@ var Shape = new Class(
 
 	setPosition: function(x,y)
 	{
-		modx = x+'px';	
-		mody = y+'px';
-		if (modx != x)
+		if (x != this.mPosition.mX)
 		{
+			modx = x+'px';	
 			this.mDiv.mDiv.style.left = modx;
 		}
-		if (mody != y)
+		if (y != this.mPosition.mY)
 		{
+			mody = y+'px';	
 			this.mDiv.mDiv.style.top = mody;
-		}	
+		}
 	},
 
 	setVisibility: function(b)
