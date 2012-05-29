@@ -47,13 +47,6 @@ var nextLevel = <?php echo $nextLevel; ?>;
 
 </script>
 
-<style type="text/css">
-
-body
-{
-overflow:hidden;
-}
-
 </style>
 
 <script type="text/javascript" src="../../../math/point2D.php"></script>
