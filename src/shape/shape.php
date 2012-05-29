@@ -65,6 +65,8 @@ var Shape = new Class(
 		this.mPosition      = new Point2D(spawnX,spawnY);
 		this.mPositionOld   = new Point2D(spawnX,spawnY);
 		this.mPositionSpawn = new Point2D(spawnX,spawnY);
+		this.mPositionRender = new Point2D(spawnX,spawnY);
+		this.mPositionRenderOld = new Point2D(spawnX,spawnY);
 
 		//velocity 
 		this.mVelocity = new Point2D(0,0);
@@ -202,18 +204,10 @@ var Shape = new Class(
 		this.mQuestion = question;
 	},	
 
-	renderPosition: function()
+	hape: function()
 	{
-        	//center image relative to position
-               	posX = this.mPosition.mX - (this.mWidth / 2);
-               	posY = this.mPosition.mY - (this.mHeight / 2);
-		
-		modx = posX+'px';	
-		this.mDiv.mDiv.style.left = modx;
-		
-		mody = posY+'px';	
-		this.mDiv.mDiv.style.top = mody;
-	},
+	},	
+
 
 	setPosition: function(x,y)
 	{
@@ -336,9 +330,24 @@ var Shape = new Class(
  	
 	draw: function()
 	{
-		this.renderPosition();
+        	//center image relative to position set it to mPositionRender
+               	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
+               	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
 
-		this.protectScrollBars(posX,posY);
+		//check for new values if so change render of div	
+		if (this.mPositionRenderOld.mX != this.mPositionRender.mX)
+		{
+			modx = this.mPositionRender.mX+'px';	
+			this.mDiv.mDiv.style.left = modx;
+		}	
+		if (this.mPositionRenderOld.mY != this.mPositionRender.mY)
+		{
+			mody = this.mPositionRender.mY+'px';	
+			this.mDiv.mDiv.style.top = mody;
+		}
+	
+		//make sure we dont' get scrollbars showing up when things move off view port	
+		this.protectScrollBars(this.mPositionRender.mX,this.mPositionRender.mY);
 
 		if (this.mQuestion)
 		{
