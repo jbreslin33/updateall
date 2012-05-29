@@ -202,19 +202,23 @@ var Shape = new Class(
 		this.mQuestion = question;
 	},	
 
+	renderPosition: function()
+	{
+        	//center image relative to position
+               	posX = this.mPosition.mX - (this.mWidth / 2);
+               	posY = this.mPosition.mY - (this.mHeight / 2);
+		
+		modx = posX+'px';	
+		this.mDiv.mDiv.style.left = modx;
+		
+		mody = posY+'px';	
+		this.mDiv.mDiv.style.top = mody;
+	},
 
 	setPosition: function(x,y)
 	{
-		if (x != this.mPosition.mX)
-		{
-			modx = x+'px';	
-			this.mDiv.mDiv.style.left = modx;
-		}
-		if (y != this.mPosition.mY)
-		{
-			mody = y+'px';	
-			this.mDiv.mDiv.style.top = mody;
-		}
+		this.mPosition.mX = x;
+		this.mPosition.mY = y;
 	},
 
 	setVisibility: function(b)
@@ -332,10 +336,7 @@ var Shape = new Class(
  	
 	draw: function()
 	{
-        	//center image relative to position
-               	var posX = this.mPosition.mX - (this.mWidth / 2);
-               	var posY = this.mPosition.mY - (this.mHeight / 2);
-               	this.setPosition(posX,posY);
+		this.renderPosition();
 
 		this.protectScrollBars(posX,posY);
 
