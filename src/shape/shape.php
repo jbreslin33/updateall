@@ -22,7 +22,6 @@ message getMessage();
 protected methods
 ----------------------
 
-void protectScrollBars(x,y);
 void sortGameVisibility(x,y);
 void draw();
 
@@ -307,11 +306,14 @@ var Shape = new Class(
                 if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
                         y + this.mHeight + 13 > mApplication.mWindow.y)
                 {
-                        this.setPosition(0,0);
-			
+			//set the render position so that we leave mPosition alone.
+			this.mPositionRender.mX = 0;		
+			this.mPositionRender.mY = 0;		
+	
 			if (this.getVisibility())
 			{
                         	this.setVisibility(false);
+	
 			}
 			this.mOutOfViewPort = true;
                 }
@@ -323,17 +325,12 @@ var Shape = new Class(
 				{
                         		this.setVisibility(true);
 				}
-				this.mOutOfViewPort = false;
 			}
 		}
   	}).protect(),
- 	
-	draw: function()
-	{
-        	//center image relative to position set it to mPositionRender
-               	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
-               	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
 
+	render: function()
+	{
 		//check for new values if so change render of div	
 		if (this.mPositionRenderOld.mX != this.mPositionRender.mX)
 		{
@@ -345,9 +342,19 @@ var Shape = new Class(
 			mody = this.mPositionRender.mY+'px';	
 			this.mDiv.mDiv.style.top = mody;
 		}
-	
+	},
+ 	
+	draw: function()
+	{
+        	//center image relative to position set it to mPositionRender
+               	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
+               	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
+
+
 		//make sure we dont' get scrollbars showing up when things move off view port	
-		//this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
+		this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
+		
+		this.render();
 
 		if (this.mQuestion)
 		{
