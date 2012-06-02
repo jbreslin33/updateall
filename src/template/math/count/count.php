@@ -121,8 +121,17 @@ window.addEvent('domready', function()
 	var numberMountee = new Shape(1,1,300,300,mGame,new Question(1,0),"","orange","numberMountee");  
 	mGame.addToShapeArray(numberMountee); 
 	
-	//do the mount	
-	mGame.mControlObject.mount(numberMountee,-5,-60);
+	//do the mount  
+	//ie is showing this too high	
+	if (navigator.appName == "Microsoft Internet Explorer")
+	{
+		mGame.mControlObject.mount(numberMountee,-5,-41);
+	}	
+	else
+	{
+		mGame.mControlObject.mount(numberMountee,-5,-58);
+       	} 
+
 	numberMountee.setBackgroundColor("transparent");
 
 	chasers = 0;
@@ -160,8 +169,17 @@ window.addEvent('domready', function()
                 numberMountee.showQuestion(false);
                 
 		//do the mount  
-                shape.mount(numberMountee,-5,-60);
-                numberMountee.setBackgroundColor("transparent");
+		//ie is showing this too high	
+		if (navigator.appName == "Microsoft Internet Explorer")
+		{
+			shape.mount(numberMountee,-5,-41);
+		}	
+		else
+		{
+			shape.mount(numberMountee,-5,-58);
+              	} 
+
+		numberMountee.setBackgroundColor("transparent");
 
                 count++;
         }
