@@ -162,10 +162,10 @@ window.addEvent('domready', function()
                 count++;
         }
 	/******************* BOUNDARY WALLS ***********/
-        northBounds = new Shape("","","","",600,10,190,0,"","black","","boundary");
-        //eastBounds  = new Shape("","","","",10,400,190,0,"","black","","boundary");
-        southBounds = new Shape("","","","",600,10,190,400,"","black","","boundary");
-        westBounds  = new Shape("","","","",10,400,190,0,"","black","","boundary");
+        northBounds = new Shape("","","","",690, 10,100,  0,"","black","","boundary");
+        eastBounds  = new Shape("","","","",10 ,410,790,  0,"","black","","boundary");
+        southBounds = new Shape("","","","",690, 10,100,400,"","black","","boundary");
+        westBounds  = new Shape("","","","", 10,400,100,  0,"","black","","boundary");
 
 
         /******************** HUD ********************/
