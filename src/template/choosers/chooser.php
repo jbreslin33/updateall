@@ -80,7 +80,7 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"","","",50,50,400,300,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	mQuiz = new Quiz(1);
@@ -98,7 +98,7 @@ window.addEvent('domready', function()
         {
                 var shape;
 		x = i * 50 + 400;
-                mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"",50,50,x,350,"","yellow","","question"));
+                mGame.addToShapeArray(shape = new Shape(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),"","yellow","question"));
                 //shape.showQuestion(false);
                	count++;
         }

@@ -88,7 +88,7 @@ window.addEvent('domready', function()
         mGame = new GameDungeonQuiz(skill);
 
 	//control object
-	mGame.mControlObject = new Shape(mGame,"",new Question(1,0),"../../../../images/characters/wizard.png",50,50,400,300,"","","","controlObject"); 
+	mGame.mControlObject = new Shape(50,50,400,300,mGame,new Question(1,0),"../../../../images/characters/wizard.png","","controlObject"); 
 
 	//set animation instance
 	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -118,7 +118,7 @@ window.addEvent('domready', function()
 	mGame.mControlObject.showQuestionObject(false);
 
 	//numberMount to go on top let's make it small and draw it on top 
-	var numberMountee = new Shape(mGame,"",new Question(1,0),"",1,1,300,300,startNumber,"orange","","numberMountee");  
+	var numberMountee = new Shape(1,1,300,300,mGame,new Question(1,0),"","orange","numberMountee");  
 	mGame.addToShapeArray(numberMountee); 
 	
 	//do the mount	
@@ -129,12 +129,12 @@ window.addEvent('domready', function()
 	for (i = 0; i < chasers; i++)
         {
         	var openPoint = mGame.getOpenPoint2D(0,800,0,600,50,4);
-                var aishape = new ShapeAI(mGame,"","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser");
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
         }
 
 
-	var door = new Shape(mGame,"",new Question(mGame,"../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
+	var door = new Shape(50,50,400,50,mGame,new Question("../../../database/goto_next_math_level.php",""),"","green","wall");	
 	mGame.addToShapeArray(door);
         
 	mQuiz = new Quiz(scoreNeeded);
@@ -151,11 +151,11 @@ window.addEvent('domready', function()
         {
         	var openPoint = mGame.getOpenPoint2D(150,750,50,350,50,4);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"",1,1,100,100,"","orange","","numberMountee");       
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
                 
@@ -166,14 +166,15 @@ window.addEvent('domready', function()
                 count++;
         }
 	/******************* BOUNDARY WALLS ***********/
-        northBounds = new Shape("","","","",690, 10,100,  0,"","black","","boundary");
-        eastBounds  = new Shape("","","","",10 ,410,790,  0,"","black","","boundary");
-        southBounds = new Shape("","","","",690, 10,100,400,"","black","","boundary");
-        westBounds  = new Shape("","","","", 10,400,100,  0,"","black","","boundary");
+        northBounds = new Shape(690, 10,100,  0,"","","","black","boundary");
+        eastBounds  = new Shape(10 ,410,790,  0,"","","","black","boundary");
+        southBounds = new Shape(690, 10,100,400,"","","","black","boundary");
+        westBounds  = new Shape(10,400,100,  0,"","","","black","boundary");
 
 
         /******************** HUD ********************/
-        mQuiz.mQuestionHud    = new Shape("","","","",100,50,0,250,"Question:","violet","","hud");
+	q = new Question("Question:","");	
+        mQuiz.mQuestionHud    = new Shape(100,50,0,250,"",q,"","violet","hud");
 
 	mGame.resetGame();
 

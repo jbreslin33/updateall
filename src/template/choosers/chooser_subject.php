@@ -34,7 +34,7 @@ window.addEvent('domready', function()
         mGame = new GameChooser("Subject Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(mGame,"","","",50,50,400,300,"","blue","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	mQuiz = new Quiz(1);
@@ -46,8 +46,8 @@ window.addEvent('domready', function()
 	var questionEnglish = new Question("English","chooser.php?table_name=english_games");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
-        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionMath,"",50,50,400,350,"","yellow","","question"));
-        mGame.addToShapeArray(shape = new Shape(mGame,"relative",questionEnglish,"",50,50,450,350,"","yellow","","question"));
+        mGame.addToShapeArray(shape = new Shape(50,50,400,350,mGame,questionMath,"","yellow","question"));
+        mGame.addToShapeArray(shape = new Shape(50,50,450,350,mGame,questionEnglish,"","yellow","question"));
 
 	mGame.resetGame();
 

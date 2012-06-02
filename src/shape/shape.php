@@ -29,7 +29,7 @@ void draw();
 
 var Shape = new Class(
 {
-        initialize: function(game,drawType,question,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message)
+        initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
                
 		//game so you can know of your world
@@ -77,7 +77,7 @@ var Shape = new Class(
 		this.mBackgroundColor = backgroundColor;
                 
 		//onclick	
-		this.mOnClick = onClick;
+		this.mOnClick;
               
                 //create the movable div that will be used to move image around.        
 		this.mDiv = new Div(this);
@@ -104,15 +104,8 @@ var Shape = new Class(
 		if (this.mSrc == "")//create paragraph
                 {
                 	this.mMesh = document.createElement("p");
-                        this.mMesh.innerHTML = innerHTML;
                 }
 		
-		if (this.mOnClick != "")
-		{
-			this.mMesh = document.createElement("b");
-			this.mMesh.innerHTML = innerHTML;
-		}
-
                 //back to div   
                 this.mDiv.mDiv.appendChild(this.mMesh);
        
@@ -212,11 +205,6 @@ var Shape = new Class(
 	{
 		this.mQuestion = question;
 	},	
-
-	hape: function()
-	{
-	},	
-
 
 	setPosition: function(x,y)
 	{
@@ -333,6 +321,7 @@ var Shape = new Class(
 		
 		this.render();
 
+		//do we need to change text this frame?
 		if (this.mQuestion)
 		{
 			if (this.mShowQuestionObject == true)
