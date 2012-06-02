@@ -50,6 +50,7 @@ var nextLevel = <?php echo $nextLevel; ?>;
 </style>
 
 <script type="text/javascript" src="../../../math/point2D.php"></script>
+<script type="text/javascript" src="../../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../../game/game.php"></script>
 <script type="text/javascript" src="../../../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../../../application/application.php"></script>
@@ -75,7 +76,10 @@ window.addEvent('domready', function()
 {
 	//application to handle time and input
         mApplication = new Application();
-        
+
+	//bounds
+	mBounds = new Bounds(0,790,400,100);       
+ 
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
