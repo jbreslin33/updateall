@@ -9,22 +9,25 @@ void set(x,y);
 
 ****************************************/
 
-var Point2D = new Class(
+var Bounds = new Class(
 {
-        initialize: function(x,y)
+        initialize: function(north,east,south,west)
         {
 		//coordinates
-		this.mX = x;
-		this.mY = y;
+		this.mNorth = north;
+		this.mEast  = east;
+		this.mSouth = south;
+		this.mWest  = west;
         },
 
-	set: function(x,y)
+	set: function(north,east,south,west)
 	{
         	//set coordinates 
-                this.mX = x;
-		this.mY = y;	
+                this.mNorth = north;
+		this.mEast  = east;	
+		this.mSouth = south;	
+		this.mWest  = west;	
 	}
-
 });
 
 
