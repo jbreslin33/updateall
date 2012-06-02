@@ -4,7 +4,7 @@ public methods
 Animation: Needs 8 animations to work. Plug in images to all 8 directions. They can of course be the same image. If so it won't waste time
 switching them as if we have a check for that.
 
-void update(deltaTime); //update the the shape using the delta time of game update
+void update(); //update the the shape using the delta time of game update
 
 //get methods
 
@@ -32,7 +32,7 @@ var Animation = new Class(
 
 /****** UTILITY METHODS ******************/
 
-        update: function(delta)
+        update: function()
         {
 		//animation--let's play a certain animation base on velocity. but for now let's do it on keystroke?
 		//scratch that. velocity should determine if run or walk animation is played.
@@ -84,10 +84,10 @@ var Animation = new Class(
 			this.mAnimation = 8;
 		}
 
-		this.animate(delta);
+		this.animate();
 	},
 	
-	animate: function(delta)
+	animate: function()
 	{
 		//if that animation exists 	
 		if (this.mAnimationArray[this.mAnimation])

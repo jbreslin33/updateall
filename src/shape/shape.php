@@ -124,12 +124,15 @@ var Shape = new Class(
 
 /****** UTILITY METHODS ******************/
 
-        update: function(delta)
-        {
+	updateVelocity: function(delta)
+	{
                 //update Velocity
                 this.mVelocity.mX = this.mKey.mX * delta * this.mSpeed;
                 this.mVelocity.mY = this.mKey.mY * delta * this.mSpeed;
-
+	},
+	
+	updatePosition: function()
+	{
                 //update position
                 this.mPosition.mX += this.mVelocity.mX;
                 this.mPosition.mY += this.mVelocity.mY;
@@ -145,13 +148,20 @@ var Shape = new Class(
 			this.mPosition.mX += this.mMountOffsetX;
 			this.mPosition.mY += this.mMountOffsetY;
 		} 
-        	
+	},
+
+	updateAnimation: function()
+	{
 		if (this.mAnimation)
 		{	
-			this.mAnimation.update(delta);        	
+			this.mAnimation.update();        	
 		}
+	},
+
+	updateScreen: function()
+	{
 		this.draw();
-        },
+	},
 
 	setSrc: function(src)
 	{
@@ -299,7 +309,7 @@ var Shape = new Class(
 	},
 
 /*********** PROTECTED MEMBER METHODS *************/
-
+/*
 	protectScrollBars: (function(x,y)
 	{
                 //if off screen then hide it so we don't have scroll bars mucking up controls
@@ -328,6 +338,8 @@ var Shape = new Class(
 			}
 		}
   	}).protect(),
+*/
+
 
 	render: function()
 	{
@@ -352,7 +364,7 @@ var Shape = new Class(
 
 
 		//make sure we dont' get scrollbars showing up when things move off view port	
-		this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
+		//this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
 		
 		this.render();
 

@@ -3,7 +3,7 @@ public methods
 ----------------------
 AnimationAdvanced: Handles rotating thru a series of images at intervals. 
 
-void update(deltaTime); //update the the shape using the delta time of game update
+void update(); //update the the shape using the delta time of game update
 
 //get methods
 
@@ -33,7 +33,7 @@ Extends: Animation,
 
 /****** UTILITY METHODS ******************/
 
-        update: function(delta)
+        update: function()
         {
 		//animation--let's play a certain animation base on velocity. but for now let's do it on keystroke?
 		//scratch that. velocity should determine if run or walk animation is played.
@@ -85,10 +85,10 @@ Extends: Animation,
 			this.mAnimation = 8;
 		}
 
-		this.animate(delta);
+		this.animate();
 	},
 	
-	animate: function(delta)
+	animate: function()
 	{
 		//if that animation array exists 	
 		if (this.mAnimationArray[this.mAnimation])

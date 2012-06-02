@@ -103,7 +103,14 @@ var Game = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].update(this.mDeltaTime);
+                        	this.mShapeArray[i].updateVelocity(this.mDeltaTime);
+                        	this.mShapeArray[i].updatePosition();
+                        	this.mShapeArray[i].updateAnimation();
+                        	this.mShapeArray[i].updateScreen();
+
+				//i think i should move their mPosition which does nothing. then i can do a check here
+
+				//then i can "render" them.	
                 	}
 
 			//collision Detection
@@ -114,6 +121,36 @@ var Game = new Class(
 			var t=setTimeout("mGame.update()",32)
                 }
         },
+
+	protectScrollBars: function(x,y)
+        {
+                //if off screen then hide it so we don't have scroll bars mucking up controls
+                if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
+                        y + this.mHeight + 13 > mApplication.mWindow.y)
+                {
+                        //set the render position so that we leave mPosition alone.
+                        this.mPositionRender.mX = 0;
+                        this.mPositionRender.mY = 0;
+
+                        if (this.getVisibility())
+                        {
+                                this.setVisibility(false);
+
+                        }
+                        this.mOutOfViewPort = true;
+                }
+                else
+                {
+                        if (this.mOutOfViewPort == true)
+                        {
+                                if (this.getVisibility() == false)
+                                {
+                                        this.setVisibility(true);
+                                }
+                        }
+                }
+        },
+
 
 	createWall: function(width,length,color,spawnX,spawnY)
         {
