@@ -123,7 +123,7 @@ window.addEvent('domready', function()
 	
 	//do the mount  
 	//ie is showing this too high	
-	if (navigator.appName == "Microsoft Internet Explorer")
+	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
 	{
 		mGame.mControlObject.mount(numberMountee,-5,-41);
 	}	
@@ -158,7 +158,7 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(150,750,50,350,50,4);
+        	var openPoint = mGame.getOpenPoint2D(150,750,50,350,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
@@ -170,7 +170,7 @@ window.addEvent('domready', function()
                 
 		//do the mount  
 		//ie is showing this too high	
-		if (navigator.appName == "Microsoft Internet Explorer")
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
 		{
 			shape.mount(numberMountee,-5,-41);
 		}	
