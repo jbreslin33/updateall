@@ -130,7 +130,7 @@ window.addEvent('domready', function()
         }
 
 
-	var door = new Shape(mGame,"",new Question("DOOR","../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
+	var door = new Shape(mGame,"",new Question(mGame,"../../../database/goto_next_math_level.php"),"",50,50,400,50,"DOOR","green","","wall");	
 	mGame.addToShapeArray(door);
         
 	mQuiz = new Quiz(scoreNeeded);
@@ -145,7 +145,7 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(0,800,0,600,50,4);
+        	var openPoint = mGame.getOpenPoint2D(200,800,0,400,50,4);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
                 shape.showQuestion(false);
@@ -161,9 +161,15 @@ window.addEvent('domready', function()
 
                 count++;
         }
+	/******************* BOUNDARY WALLS ***********/
+        northBounds = new Shape("","","","",600,10,190,0,"","black","","boundary");
+        //eastBounds  = new Shape("","","","",10,400,190,0,"","black","","boundary");
+        southBounds = new Shape("","","","",600,10,190,400,"","black","","boundary");
+        westBounds  = new Shape("","","","",10,400,190,0,"","black","","boundary");
+
 
         /******************** HUD ********************/
-        mQuiz.mQuestionHud    = new Shape("","","","",140,50,0,250,"Question:","violet","","hud");
+        mQuiz.mQuestionHud    = new Shape("","","","",100,50,0,250,"Question:","violet","","hud");
 
 	mGame.resetGame();
 

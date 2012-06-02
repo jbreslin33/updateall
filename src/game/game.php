@@ -42,8 +42,8 @@ var Game = new Class(
                 this.mShapeArray = new Array();
 
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape("","","","",140,50,0,0,"" + this.mSkill,"violet","","hud");
-              	this.mFeedbackHud    = new Shape("","","","",140,50,0,50,"HAV FUN!","pink","","hud");
+                this.mGameNameHud    = new Shape("","","","",100,50,0,0,"" + this.mSkill,"violet","","hud");
+              	this.mFeedbackHud    = new Shape("","","","",100,50,0,50,"HAV FUN!","pink","","hud");
         },
 
  	resetGame: function()
