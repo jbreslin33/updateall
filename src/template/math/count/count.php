@@ -145,7 +145,7 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(200,800,0,400,50,4);
+        	var openPoint = mGame.getOpenPoint2D(150,750,50,350,50,4);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(mGame,"",mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png",50,50,openPoint.mX,openPoint.mY,i,"","","question"));
                 shape.showQuestion(false);
