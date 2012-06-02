@@ -200,41 +200,27 @@ var Game = new Class(
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
                 {
-			if (this.mShapeArray[s].mCollidable ==  true)
+			if (this.mShapeArray[s].mCollidable ==  true && this.mShapeArray[s].mCollisionOn == true && this.mShapeArray[s] != this.mControlObject)
 			{
                         	var x1 = this.mShapeArray[s].mPosition.mX;
                         	var y1 = this.mShapeArray[s].mPosition.mY;
- 
-                        	for (i = 0; i < this.mShapeArray.length; i++)
-                        	{
-				if (this.mShapeArray[i].mCollidable ==  true)
-				{
-                                        if (this.mShapeArray[i].mCollisionOn == true && this.mShapeArray[s].mCollisionOn == true)
-                                        {
-                                                if (this.mShapeArray[i] == this.mShapeArray[s])
-                                                {
-                                                        continue;
-                                                }
-                                                var x2 = this.mShapeArray[i].mPosition.mX;              
-                                                var y2 = this.mShapeArray[i].mPosition.mY;              
+
+                        	var x2 = this.mControlObject.mPosition.mX;
+                        	var y2 = this.mControlObject.mPosition.mY;
                 
-                                                var addend1 = x1 - x2;
-						addend1 = addend1 * addend1;
+                                var addend1 = x1 - x2;
+				addend1 = addend1 * addend1;
 
-                                                var addend2 = y1 - y2;
-						addend2 = addend2 * addend2;
+                                var addend2 = y1 - y2;
+				addend2 = addend2 * addend2;
 
-                                                var distSQ = addend1 + addend2;
+                                var distSQ = addend1 + addend2;
 						
-                                                var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[i].mCollisionDistance;
-                                                
-                                                if (distSQ < collisionDistance) 
-                                                {
-                                                        this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[i]);                      
-                                                }
-                                        }
-                        	}
-				}
+                                var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mControlObject.mCollisionDistance;
+                                if (distSQ < collisionDistance) 
+                                {
+                                	this.evaluateCollision(this.mControlObject,this.mShapeArray[s])
+                                }
 			}
                 }
 	}).protect(),
