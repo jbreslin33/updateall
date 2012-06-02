@@ -122,45 +122,6 @@ var Game = new Class(
                 }
         },
 
-	protectScrollBars: function(x,y)
-        {
-                //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
-                        y + this.mHeight + 13 > mApplication.mWindow.y)
-                {
-                        //set the render position so that we leave mPosition alone.
-                        this.mPositionRender.mX = 0;
-                        this.mPositionRender.mY = 0;
-
-                        if (this.getVisibility())
-                        {
-                                this.setVisibility(false);
-
-                        }
-                        this.mOutOfViewPort = true;
-                }
-                else
-                {
-                        if (this.mOutOfViewPort == true)
-                        {
-                                if (this.getVisibility() == false)
-                                {
-                                        this.setVisibility(true);
-                                }
-                        }
-                }
-        },
-
-
-	createWall: function(width,length,color,spawnX,spawnY)
-        {
-                var s = new Shape(this,"","","",width,length,spawnX,spawnY,"",color,"","wall",this);
-		s.mCollidable = false;
-		s.mCollisionOn = false;
-                this.addToShapeArray(s);
-        },
-
-
 	/****************************** PROTECTED ***************************************/
 	
 

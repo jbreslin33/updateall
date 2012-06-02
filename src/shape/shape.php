@@ -309,38 +309,7 @@ var Shape = new Class(
 	},
 
 /*********** PROTECTED MEMBER METHODS *************/
-/*
-	protectScrollBars: (function(x,y)
-	{
-                //if off screen then hide it so we don't have scroll bars mucking up controls
-                if (x + this.mWidth  + 3 > mApplication.mWindow.x ||
-                        y + this.mHeight + 13 > mApplication.mWindow.y)
-                {
-			//set the render position so that we leave mPosition alone.
-			this.mPositionRender.mX = 0;		
-			this.mPositionRender.mY = 0;		
 	
-			if (this.getVisibility())
-			{
-                        	this.setVisibility(false);
-	
-			}
-			this.mOutOfViewPort = true;
-                }
-		else
-		{
-			if (this.mOutOfViewPort == true)
-			{
-				if (this.getVisibility() == false)
-				{
-                        		this.setVisibility(true);
-				}
-			}
-		}
-  	}).protect(),
-*/
-
-
 	render: function()
 	{
 		//check for new values if so change render of div	
@@ -361,10 +330,6 @@ var Shape = new Class(
         	//center image relative to position set it to mPositionRender
                	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
                	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
-
-
-		//make sure we dont' get scrollbars showing up when things move off view port	
-		//this.protectScrollBars(this.mPosition.mX,this.mPosition.mY);
 		
 		this.render();
 
