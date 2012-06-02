@@ -106,15 +106,15 @@ var Game = new Class(
                         	this.mShapeArray[i].updateVelocity(this.mDeltaTime);
                         	this.mShapeArray[i].updatePosition();
                         	this.mShapeArray[i].updateAnimation();
-                        	this.mShapeArray[i].updateScreen();
-
-				//i think i should move their mPosition which does nothing. then i can do a check here
-
-				//then i can "render" them.	
                 	}
-
+			
 			//collision Detection
 			this.checkForCollisions();
+
+                	for (i = 0; i < this.mShapeArray.length; i++)
+			{
+                        	this.mShapeArray[i].updateScreen();
+			}	
         
                 	//save old positions
                 	this.saveOldPositions();
