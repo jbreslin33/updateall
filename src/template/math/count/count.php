@@ -134,7 +134,7 @@ window.addEvent('domready', function()
         }
 
 
-	var door = new Shape(50,50,400,50,mGame,new Question("../../../database/goto_next_math_level.php",""),"","green","wall");	
+	var door = new Shape(50,50,400,50,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
 	mGame.addToShapeArray(door);
         
 	mQuiz = new Quiz(scoreNeeded);
