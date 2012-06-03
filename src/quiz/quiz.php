@@ -46,10 +46,7 @@ var Quiz = new Class(
 	{
         	this.incrementScore();
 		this.mMarker++;
-               	if (this.mQuestionHud)
-		{ 
-			this.mSouthBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
-		}
+		southBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 	},
 	
 	getScore: function()
@@ -100,11 +97,8 @@ var Quiz = new Class(
 		//reset marker
 		this.mMarker = 0;
                 
-		//update hud
-               	if (this.mQuestionHud)
-		{ 
-			southBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
-		}
+		//update question 
+		southBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 	}
 
 });

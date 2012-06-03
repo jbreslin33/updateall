@@ -106,12 +106,26 @@ window.addEvent('domready', function()
 	northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
 	northBoundsGameName.setText('Game : ' + skill);		
 
-	eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
+	eastBounds  = new Shape         ( 10, 50,790, 40,"","","","#F8CDF8","boundary");
+	eastBounds  = new Shape         ( 10, 50,790, 90,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,790,140,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,790,190,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,790,240,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,790,290,"","","","#F3A8F3","boundary");
+	eastBounds  = new Shape         ( 10, 50,790,340,"","","","#F19BF1","boundary");
+	eastBounds  = new Shape         ( 10, 20,790,390,"","","","#F08EF0","boundary");
         
-	southBoundsQuestion = new Shape (800, 40,  0,410,"","","","DeepPink","boundary");
+	southBoundsQuestion = new Shape (800, 40,  0,410,"","","","violet","boundary");
         
 
-	westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
+	westBounds  = new Shape         ( 10, 50,  0, 40,"","","","#F8CDF8","boundary");
+	westBounds  = new Shape         ( 10, 50,  0, 90,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,140,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,190,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,240,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,290,"","","","#F3A8F3","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,340,"","","","#F19BF1","boundary");
+	westBounds  = new Shape         ( 10, 20,  0,390,"","","","#F08EF0","boundary");
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
