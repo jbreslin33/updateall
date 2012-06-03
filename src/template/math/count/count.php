@@ -205,11 +205,12 @@ window.addEvent('domready', function()
 	var northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
 	northBoundsGameName.setText('Game : ' + skill);		
 
-	var eastBounds  = new Shape         ( 10,410,790, 40,"","","","DeepPink","boundary");
-        var southBounds = new Shape         (690, 40,100,400,"","","","DeepPink","boundary");
+	var eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
+        
+	var southBoundsQuestion = new Shape (690, 40,100,410,"","","","DeepPink","boundary");
         
 
-	var westBounds  = new Shape         ( 10,400,  0, 40,"","","","DeepPink","boundary");
+	var westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
 
 
         /******************** HUD ********************/
