@@ -105,7 +105,7 @@ window.addEvent('domready', function()
 	northBoundsScoreNeeded.setText('Score Needed : ');		
         
 	northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
-	northBoundsGameName.setText('Game : ' + skill);		
+	northBoundsGameName.setText(skill);		
 
 	eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
 	eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
