@@ -195,8 +195,14 @@ window.addEvent('domready', function()
 
         var northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
 	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
+        
+	var northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
+	northBoundsScore.setText('Score : ');		
 
-        var northBoundsGameName = new Shape (440, 40,360,  0,"","","","LawnGreen","boundary");
+	var northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
+	northBoundsScoreNeeded.setText('Score Needed : ');		
+        
+	var northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
 	northBoundsGameName.setText('Game : ' + skill);		
 
 	var eastBounds  = new Shape         ( 10,410,790, 40,"","","","DeepPink","boundary");
