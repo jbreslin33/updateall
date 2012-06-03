@@ -87,9 +87,36 @@ window.addEvent('domready', function()
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 	
+	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+        northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
+	northBoundsABCANDYOU.setText('ABCANDYOU');		
+
+        northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
+	northBoundsUser.setText('User : ' + username);		
+
+        northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
+	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
+        
+	northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
+	northBoundsScore.setText('Score : ');		
+
+	northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
+	northBoundsScoreNeeded.setText('Score Needed : ');		
+        
+	northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
+	northBoundsGameName.setText('Game : ' + skill);		
+
+	eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
+        
+	southBoundsQuestion = new Shape (800, 40,  0,410,"","","","DeepPink","boundary");
+        
+
+	westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
+	
 	//the game
         mGame = new GameDungeonQuiz(skill);
 
+	
 	//control object
 	mGame.mControlObject = new Shape(50,50,400,300,mGame,new Question(1,0),"../../../../images/characters/wizard.png","","controlObject"); 
 
@@ -186,36 +213,7 @@ window.addEvent('domready', function()
 
                 count++;
         }
-	/******************* BOUNDARY WALLS ***********/
-        var northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
-	northBoundsABCANDYOU.setText('ABCANDYOU');		
-
-        var northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
-	northBoundsUser.setText('User : ' + username);		
-
-        var northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
-	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
-        
-	var northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
-	northBoundsScore.setText('Score : ');		
-
-	var northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
-	northBoundsScoreNeeded.setText('Score Needed : ');		
-        
-	var northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
-	northBoundsGameName.setText('Game : ' + skill);		
-
-	var eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
-        
-	var southBoundsQuestion = new Shape (690, 40,100,410,"","","","DeepPink","boundary");
-        
-
-	var westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
-
-
-        /******************** HUD ********************/
-	//q = new Question("Question:","");	
-        //mQuiz.mQuestionHud    = new Shape(100,100,0,310,"",q,"","violet","hud");
+	
 
 	mGame.resetGame();
 

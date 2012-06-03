@@ -7,8 +7,6 @@ score       getScore(); //returns current score
 scoreNeeded getScoreNeeded();
 
 //set methods
-void setScore();
-void setScoreNeeded(scoreNeeded);
 void setQuestions(arrayOfQuestions);
 
 void incrementScore();
@@ -30,13 +28,6 @@ var Quiz = new Class(
 
 		//question
 		this.mMarker = 0;
-
-		/******************** HUD ********************/
-                this.mScoreHud       = new Shape(100,60,0,230,mGame,"","","cyan","hud");
-                //this.mScoreNeededHud = new Shape(100,40,0,270,mGame,"","","#B799CD","hud");
-		//this.setScoreNeeded(this.mScoreNeeded);
-			
-		this.mQuestionHud;
         },
 
 	//returns question object	
@@ -57,7 +48,7 @@ var Quiz = new Class(
 		this.mMarker++;
                	if (this.mQuestionHud)
 		{ 
-			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+			this.mSouthBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 		}
 	},
 	
@@ -86,20 +77,19 @@ var Quiz = new Class(
 	setScore: function(score)
 	{
 		this.mScore = score;
-		this.mScoreHud.setText("Score: " + this.mScore + '\n' + 'Score Needed:' + this.mScoreNeeded);
+		northBoundsScore.setText("Score: " + this.mScore);
 	},
 
 	setScoreNeeded: function(scoreNeeded)
 	{
 		this.mScoreNeeded = scoreNeeded;
-		this.mScoreNeededHud.setText("Needed: " + this.mScoreNeeded);
+		northBoundsScoreNeeded.setText("Needed: " + this.mScoreNeeded);
 	},
 
 	incrementScore: function()
 	{
 		this.mScore++;
-		this.mScoreHud.setText("Score:       " + this.mScore + '\n' + 'Score Needed:' + this.mScoreNeeded);
-		//this.mScoreHud.setText("Score: " + this.mScore);
+		northBoundsScore.setText("Score : " + this.mScore);
 	},
 
 	reset: function()
@@ -113,7 +103,7 @@ var Quiz = new Class(
 		//update hud
                	if (this.mQuestionHud)
 		{ 
-			this.mQuestionHud.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
+			southBoundsQuestion.setText("Question: " + this.mQuestionArray[this.mMarker].getQuestion());
 		}
 	}
 

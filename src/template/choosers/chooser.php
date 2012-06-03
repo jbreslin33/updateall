@@ -5,6 +5,7 @@ include("../headers/header.php");
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
 $tableName = $_GET['table_name'];
 $gameLevel = 0;
+
 if ($tableName == "math_games")
 {
 	$gameLevel = $_SESSION["math_level"];
@@ -13,6 +14,8 @@ if ($tableName == "english_games")
 {
 	$gameLevel = $_SESSION["english_level"];
 }
+
+
 
 $query = "select name, url from ";
 $query .= $tableName; 
@@ -48,7 +51,17 @@ while ($row = pg_fetch_array($result))
 	$counter++;
 }
 
+//game variables to fill from db
+$username = $_SESSION["username"];
+
 ?>
+
+<script language="javascript">
+
+var username = "<?php echo $username; ?>";
+var gamelevel = "<?php echo $gamelevel; ?>";
+
+</script>
 
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
@@ -75,6 +88,33 @@ window.addEvent('domready', function()
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
+
+	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+        northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
+        northBoundsABCANDYOU.setText('ABCANDYOU');
+
+        northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
+        northBoundsUser.setText('User : ' + username);
+
+        northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
+        northBoundsMathLevel.setText('Math Level : ' + gamelevel);
+
+        northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
+        northBoundsScore.setText('Score : ');
+
+        northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
+        northBoundsScoreNeeded.setText('Score Needed : ');
+
+        northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
+        northBoundsGameName.setText('Game : Game Chooser');
+
+        eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
+
+        southBoundsQuestion = new Shape (800, 40,  0,410,"","","","DeepPink","boundary");
+
+
+        westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
+
 	
 	//the game
         mGame = new GameChooser("Game Chooser");

@@ -40,12 +40,6 @@ var Game = new Class(
                 
 		//shape Array
                 this.mShapeArray = new Array();
-
-		/***************** HUD ****************/
-       //         this.mGameNameHud    = new Shape(100,75,0,80,"","","","yellow","hud");
-	//	this.mGameNameHud.setText(this.mSkill);
-		//this.mFeedbackHud    = new Shape(100,75,0,250,"","","","LawnGreen","hud");
-		//this.mFeedbackHud.setText("Have Fun!");
         },
 
  	resetGame: function()
@@ -70,12 +64,6 @@ var Game = new Class(
         },
 
 	/*********************** PUBLIC ***************************/
-
-	setFeedback: function(feedback)
-	{
-		this.mFeedbackHud.setText(feedback);
-	},
-
 	getControlObject: function()
 	{
 		return this.mControlObject;

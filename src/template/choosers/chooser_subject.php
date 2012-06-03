@@ -2,7 +2,17 @@
 //standard header for most games i hope. it handles some basic html and level db call
 include("../headers/header.php");
 
+//game variables to fill from db
+$username = $_SESSION["username"];
+
 ?>
+
+<script language="javascript">
+
+var username = "<?php echo $username; ?>";
+
+</script>
+
 
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
@@ -17,6 +27,8 @@ include("../headers/header.php");
 
 <body>
 
+
+
 <script language="javascript">
 var mGame;
 var mApplication;
@@ -29,6 +41,33 @@ window.addEvent('domready', function()
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
+
+	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+        northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
+        northBoundsABCANDYOU.setText('ABCANDYOU');
+
+        northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
+        northBoundsUser.setText('User : ' + username);
+
+        northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
+        northBoundsMathLevel.setText('Level :');
+
+        northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
+        northBoundsScore.setText('Score : ');
+
+        northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
+        northBoundsScoreNeeded.setText('Score Needed : ');
+
+        northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
+        northBoundsGameName.setText('Game : Subject Chooser');
+
+        eastBounds  = new Shape         ( 10,370,790, 40,"","","","DeepPink","boundary");
+
+        southBoundsQuestion = new Shape (800, 40,  0,410,"","","","DeepPink","boundary");
+
+
+        westBounds  = new Shape         ( 10,370,  0, 40,"","","","DeepPink","boundary");
+
 	
 	//the game
         mGame = new GameChooser("Subject Chooser");
