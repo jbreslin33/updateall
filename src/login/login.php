@@ -38,6 +38,7 @@
           
 		//set user id, and subject levels to be used later			
 		$_SESSION["id"] = $id;  	
+		$_SESSION["username"] = $_POST["username"];  	
 		$_SESSION["math_level"] = $mathLevel;  	
 		$_SESSION["english_level"] = $englishLevel;  	
 

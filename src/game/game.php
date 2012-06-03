@@ -42,9 +42,9 @@ var Game = new Class(
                 this.mShapeArray = new Array();
 
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape(100,75,0,0,"","","","red","hud");
+                this.mGameNameHud    = new Shape(100,75,0,80,"","","","LawnGreen","hud");
 		this.mGameNameHud.setText(this.mSkill);
-		this.mFeedbackHud    = new Shape(100,75,0,75,"","","","yellow","hud");
+		this.mFeedbackHud    = new Shape(100,75,0,155,"","","","cyan","hud");
 		this.mFeedbackHud.setText("Have Fun!");
         },
 

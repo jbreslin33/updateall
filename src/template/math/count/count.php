@@ -11,6 +11,7 @@ $query .= ";";
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //game variables to fill from db
+$username = $_SESSION["username"];
 $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
@@ -37,7 +38,7 @@ if ($num > 0)
 <script language="javascript">
 
 
-
+var username = "<?php echo $username; ?>";
 var skill = "<?php echo $skill; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
@@ -83,6 +84,13 @@ window.addEvent('domready', function()
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
+
+	//id and abc and you hud
+	mAbcAndYouHud = new Shape(100,40,0,0,"","","","red","hud");		
+	mAbcAndYouHud.setText("abcandyou.com");		
+	
+	mIdHud = new Shape(100,40,0,40,"","","","orange","hud");		
+	mIdHud.setText('User: ' + username);		
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
@@ -192,7 +200,7 @@ window.addEvent('domready', function()
 
         /******************** HUD ********************/
 	q = new Question("Question:","");	
-        mQuiz.mQuestionHud    = new Shape(100,75,0,300,"",q,"","violet","hud");
+        mQuiz.mQuestionHud    = new Shape(100,50,350,300,"",q,"","violet","hud");
 
 	mGame.resetGame();
 
