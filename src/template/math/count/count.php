@@ -187,7 +187,8 @@ window.addEvent('domready', function()
         }
 
 
-	var door = new Shape(50,50,400,50,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
+       	var openPoint = mGame.getOpenPoint2D(30,770,80,370,50,7);
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
 	mGame.addToShapeArray(door);
         
 	mQuiz = new Quiz(scoreNeeded);
@@ -202,7 +203,7 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(150,750,50,350,50,7);
+        	var openPoint = mGame.getOpenPoint2D(30,770,80,370,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
