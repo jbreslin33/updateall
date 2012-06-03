@@ -43,9 +43,10 @@ var Game = new Class(
 
 		/***************** HUD ****************/
 		q = new Question(this.mSkill,"");	
-                this.mGameNameHud    = new Shape(100,50,0,0,"",q,"","violet","hud");
+                this.mGameNameHud    = new Shape(100,50,50,25,"",q,"","violet","hud");
 		q2 = new Question("HAVE FUN!","");
-              	this.mFeedbackHud    = new Shape(100,50,0,50,"",q2,"","pink","hud");
+              	this.mShapeArray.push(this.mGameNameHud);
+		this.mFeedbackHud    = new Shape(100,50,0,50,"",q2,"","pink","hud");
         },
 
  	resetGame: function()

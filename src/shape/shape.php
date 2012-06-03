@@ -336,5 +336,14 @@ var Shape = new Class(
 				}
 			}
 		} 
+/*
+		if (this.mMesh.innerHTML != t)
+		{
+			if (this.mSrc == "")
+			{
+				this.mMesh.innerHTML = t;
+			}
+		}
+*/		
 		
   	} }); 
