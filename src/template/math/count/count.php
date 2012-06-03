@@ -86,12 +86,6 @@ window.addEvent('domready', function()
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
-
-
-
-	
-	//mIdHud = new Shape(100,40,0,120,"","","","orange","hud");		
-	//mIdHud.setText('User: ' + username);		
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
@@ -205,13 +199,11 @@ window.addEvent('domready', function()
         var northBoundsGameName = new Shape (440, 40,360,  0,"","","","LawnGreen","boundary");
 	northBoundsGameName.setText('Game : ' + skill);		
 
+	var eastBounds  = new Shape         ( 10,410,790, 40,"","","","DeepPink","boundary");
+        var southBounds = new Shape         (690, 40,100,400,"","","","DeepPink","boundary");
+        
 
-
-	//northBounds.setText('ABCANDYOU' + '.....User:' + username + '.....Math Level:' + mathlevel + '.....Game Name:' + skill);		
-	
-	var eastBounds  = new Shape(10 ,410,790, 40,"","","","DeepPink","boundary");
-        var southBounds = new Shape(690, 40,100,400,"","","","DeepPink","boundary");
-        var westBounds  = new Shape(10,400,100,  40,"","","","DeepPink","boundary");
+	var westBounds  = new Shape         ( 10,400,  0, 40,"","","","DeepPink","boundary");
 
 
         /******************** HUD ********************/
