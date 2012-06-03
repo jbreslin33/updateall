@@ -88,44 +88,45 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 	
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
-        northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
+	var y = 35;
+        northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
 	northBoundsABCANDYOU.setText('ABCANDYOU');		
 
-        northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
+        northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
 	northBoundsUser.setText('User : ' + username);		
 
-        northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
+        northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
 	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
         
-	northBoundsScore = new Shape    (120, 40,360,  0,"","","","LawnGreen","boundary");
+	northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
 	northBoundsScore.setText('Score : ');		
 
-	northBoundsScoreNeeded = new Shape    (120, 40,480,  0,"","","","cyan","boundary");
+	northBoundsScoreNeeded = new Shape    (120, y,480,  0,"","","","cyan","boundary");
 	northBoundsScoreNeeded.setText('Score Needed : ');		
         
-	northBoundsGameName = new Shape (200, 40,600,  0,"","","","#DBCCE6","boundary");
+	northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
 	northBoundsGameName.setText('Game : ' + skill);		
 
-	eastBounds  = new Shape         ( 10, 50,790, 40,"","","","#F8CDF8","boundary");
-	eastBounds  = new Shape         ( 10, 50,790, 90,"","","","#F6C0F6","boundary");
-	eastBounds  = new Shape         ( 10, 50,790,140,"","","","#F5B4F5","boundary");
-	eastBounds  = new Shape         ( 10, 50,790,190,"","","","#F6C0F6","boundary");
-	eastBounds  = new Shape         ( 10, 50,790,240,"","","","#F5B4F5","boundary");
-	eastBounds  = new Shape         ( 10, 50,790,290,"","","","#F3A8F3","boundary");
-	eastBounds  = new Shape         ( 10, 50,790,340,"","","","#F19BF1","boundary");
-	eastBounds  = new Shape         ( 10, 20,790,390,"","","","#F08EF0","boundary");
+	eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
+	eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,135,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,185,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,235,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,285,"","","","#F3A8F3","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,335,"","","","#F19BF1","boundary");
+	eastBounds  = new Shape         ( 10, 20,760,385,"","","","#F08EF0","boundary");
         
-	southBoundsQuestion = new Shape (800, 40,  0,410,"","","","violet","boundary");
+	southBoundsQuestion = new Shape (770, y,  0,405,"","","","violet","boundary");
         
 
-	westBounds  = new Shape         ( 10, 50,  0, 40,"","","","#F8CDF8","boundary");
-	westBounds  = new Shape         ( 10, 50,  0, 90,"","","","#F6C0F6","boundary");
-	westBounds  = new Shape         ( 10, 50,  0,140,"","","","#F5B4F5","boundary");
-	westBounds  = new Shape         ( 10, 50,  0,190,"","","","#F6C0F6","boundary");
-	westBounds  = new Shape         ( 10, 50,  0,240,"","","","#F5B4F5","boundary");
-	westBounds  = new Shape         ( 10, 50,  0,290,"","","","#F3A8F3","boundary");
-	westBounds  = new Shape         ( 10, 50,  0,340,"","","","#F19BF1","boundary");
-	westBounds  = new Shape         ( 10, 20,  0,390,"","","","#F08EF0","boundary");
+	westBounds  = new Shape         ( 10, 50,  0, 35,"","","","#F8CDF8","boundary");
+	westBounds  = new Shape         ( 10, 50,  0, 85,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,135,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,185,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,235,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,285,"","","","#F3A8F3","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,335,"","","","#F19BF1","boundary");
+	westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
@@ -181,13 +182,13 @@ window.addEvent('domready', function()
 	chasers = 0;
 	for (i = 0; i < chasers; i++)
         {
-        	var openPoint = mGame.getOpenPoint2D(0,800,0,600,50,4);
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
         }
 
 
-       	var openPoint = mGame.getOpenPoint2D(30,770,80,370,50,7);
+       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
 	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
 	mGame.addToShapeArray(door);
         
@@ -203,7 +204,7 @@ window.addEvent('domready', function()
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
-        	var openPoint = mGame.getOpenPoint2D(30,770,80,370,50,7);
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
