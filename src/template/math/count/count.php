@@ -159,7 +159,7 @@ window.addEvent('domready', function()
 
 	for (i = startNumber; i <= endNumber; i = i + countBy)
         {
-        	var question = new Question(i, i + countBy);      
+        	var question = new Question('What number comes after ' + i + '?', i + countBy);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
@@ -200,7 +200,7 @@ window.addEvent('domready', function()
 
         /******************** HUD ********************/
 	q = new Question("Question:","");	
-        mQuiz.mQuestionHud    = new Shape(100,50,350,300,"",q,"","violet","hud");
+        mQuiz.mQuestionHud    = new Shape(100,100,0,310,"",q,"","violet","hud");
 
 	mGame.resetGame();
 
