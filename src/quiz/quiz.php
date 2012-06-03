@@ -33,9 +33,12 @@ var Quiz = new Class(
 
 		/******************** HUD ********************/
 		q = new Question("Score: " + this.getScore(),"");
-		q2 = new Question("Score Needed: " + this.getScoreNeeded(),"");
                 this.mScoreHud       = new Shape(100,50,0,150,mGame,q,"","pink","hud");
+		
+		//q2 = new Question("Score Needed: " + this.getScoreNeeded(),"");
                 this.mScoreNeededHud = new Shape(100,50,0,200,mGame,q2,"","violet","hud");
+		this.setScoreNeeded(this.mScoreNeeded);
+			
 		this.mQuestionHud;
         },
 
