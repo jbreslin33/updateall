@@ -192,7 +192,7 @@ window.addEvent('domready', function()
 
         /******************** HUD ********************/
 	q = new Question("Question:","");	
-        mQuiz.mQuestionHud    = new Shape(100,50,0,250,"",q,"","violet","hud");
+        mQuiz.mQuestionHud    = new Shape(100,75,0,300,"",q,"","violet","hud");
 
 	mGame.resetGame();
 
