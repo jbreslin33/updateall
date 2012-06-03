@@ -42,10 +42,10 @@ var Game = new Class(
                 this.mShapeArray = new Array();
 
 		/***************** HUD ****************/
-                this.mGameNameHud    = new Shape(100,75,0,80,"","","","yellow","hud");
-		this.mGameNameHud.setText(this.mSkill);
-		this.mFeedbackHud    = new Shape(100,75,0,155,"","","","LawnGreen","hud");
-		this.mFeedbackHud.setText("Have Fun!");
+       //         this.mGameNameHud    = new Shape(100,75,0,80,"","","","yellow","hud");
+	//	this.mGameNameHud.setText(this.mSkill);
+		//this.mFeedbackHud    = new Shape(100,75,0,250,"","","","LawnGreen","hud");
+		//this.mFeedbackHud.setText("Have Fun!");
         },
 
  	resetGame: function()

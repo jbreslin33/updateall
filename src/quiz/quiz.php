@@ -32,9 +32,9 @@ var Quiz = new Class(
 		this.mMarker = 0;
 
 		/******************** HUD ********************/
-                this.mScoreHud       = new Shape(100,40,0,230,mGame,"","","cyan","hud");
-                this.mScoreNeededHud = new Shape(100,40,0,270,mGame,"","","#B799CD","hud");
-		this.setScoreNeeded(this.mScoreNeeded);
+                this.mScoreHud       = new Shape(100,60,0,230,mGame,"","","cyan","hud");
+                //this.mScoreNeededHud = new Shape(100,40,0,270,mGame,"","","#B799CD","hud");
+		//this.setScoreNeeded(this.mScoreNeeded);
 			
 		this.mQuestionHud;
         },
@@ -86,7 +86,7 @@ var Quiz = new Class(
 	setScore: function(score)
 	{
 		this.mScore = score;
-		this.mScoreHud.setText("Score: " + this.mScore);
+		this.mScoreHud.setText("Score: " + this.mScore + '\n' + 'Score Needed:' + this.mScoreNeeded);
 	},
 
 	setScoreNeeded: function(scoreNeeded)
@@ -98,7 +98,8 @@ var Quiz = new Class(
 	incrementScore: function()
 	{
 		this.mScore++;
-		this.mScoreHud.setText("Score: " + this.mScore);
+		this.mScoreHud.setText("Score:       " + this.mScore + '\n' + 'Score Needed:' + this.mScoreNeeded);
+		//this.mScoreHud.setText("Score: " + this.mScore);
 	},
 
 	reset: function()

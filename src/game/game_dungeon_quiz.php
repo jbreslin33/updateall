@@ -55,7 +55,7 @@ Extends: Game,
                 if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
                         //feedback
-                        this.setFeedback("Try again.");
+                        //this.setFeedback("Try again.");
 
                         //this deletes and then recreates everthing.
                         this.resetGame();
@@ -77,7 +77,7 @@ Extends: Game,
 					
 
                                 	//feedback
-                                	this.setFeedback("Correct!");
+                                	//this.setFeedback("Correct!");
 
                                 	//set text of control object
                         		if (this.mQuiz)
@@ -93,7 +93,7 @@ Extends: Game,
                         	else
                         	{
                                 	//feedback
-                                	this.setFeedback("Try again.");
+                                	//this.setFeedback("Try again.");
 
                                 	//this deletes and then recreates everthing.
                                 	this.resetGame();
@@ -111,7 +111,7 @@ Extends: Game,
                 			if (this.mQuiz.isQuizComplete())
 					{
                                 		this.mOn = false;
-						this.setFeedback("YOU WIN!!!");
+						//this.setFeedback("YOU WIN!!!");
                                 		window.location = col2.getQuestion().getAnswer(); 
                         		}
 				}

@@ -30,7 +30,7 @@ Extends: Game,
                         if (this.mQuiz)
 			{ 
                        		this.mOn = false;
-                             	this.setFeedback("YOU CHOSE WELL!!!");
+                             	//this.setFeedback("YOU CHOSE WELL!!!");
 				window.location = col2.mQuestion.getAnswer();
 				
 			}	

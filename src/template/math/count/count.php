@@ -12,6 +12,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //game variables to fill from db
 $username = $_SESSION["username"];
+$mathlevel = $_SESSION["math_level"];
 $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
@@ -39,6 +40,7 @@ if ($num > 0)
 
 
 var username = "<?php echo $username; ?>";
+var mathlevel = "<?php echo $mathlevel; ?>";
 var skill = "<?php echo $skill; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
@@ -85,12 +87,11 @@ window.addEvent('domready', function()
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 
-	//id and abc and you hud
-	mAbcAndYouHud = new Shape(100,40,0,0,"","","","red","hud");		
-	mAbcAndYouHud.setText("abcandyou.com");		
+
+
 	
-	mIdHud = new Shape(100,40,0,40,"","","","orange","hud");		
-	mIdHud.setText('User: ' + username);		
+	//mIdHud = new Shape(100,40,0,120,"","","","orange","hud");		
+	//mIdHud.setText('User: ' + username);		
 	
 	//the game
         mGame = new GameDungeonQuiz(skill);
@@ -192,15 +193,30 @@ window.addEvent('domready', function()
                 count++;
         }
 	/******************* BOUNDARY WALLS ***********/
-        northBounds = new Shape(690, 10,100,  0,"","","","black","boundary");
-        eastBounds  = new Shape(10 ,410,790,  0,"","","","black","boundary");
-        southBounds = new Shape(690, 10,100,400,"","","","black","boundary");
-        westBounds  = new Shape(10,400,100,  0,"","","","black","boundary");
+        var northBoundsABCANDYOU = new Shape(120, 40,  0,  0,"","","","red","boundary");
+	northBoundsABCANDYOU.setText('ABCANDYOU');		
+
+        var northBoundsUser = new Shape     (120, 40,120,  0,"","","","orange","boundary");
+	northBoundsUser.setText('User : ' + username);		
+
+        var northBoundsMathLevel = new Shape(120, 40,240,  0,"","","","yellow","boundary");
+	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
+
+        var northBoundsGameName = new Shape (440, 40,360,  0,"","","","LawnGreen","boundary");
+	northBoundsGameName.setText('Game : ' + skill);		
+
+
+
+	//northBounds.setText('ABCANDYOU' + '.....User:' + username + '.....Math Level:' + mathlevel + '.....Game Name:' + skill);		
+	
+	var eastBounds  = new Shape(10 ,410,790, 40,"","","","DeepPink","boundary");
+        var southBounds = new Shape(690, 40,100,400,"","","","DeepPink","boundary");
+        var westBounds  = new Shape(10,400,100,  40,"","","","DeepPink","boundary");
 
 
         /******************** HUD ********************/
-	q = new Question("Question:","");	
-        mQuiz.mQuestionHud    = new Shape(100,100,0,310,"",q,"","violet","hud");
+	//q = new Question("Question:","");	
+        //mQuiz.mQuestionHud    = new Shape(100,100,0,310,"",q,"","violet","hud");
 
 	mGame.resetGame();
 
