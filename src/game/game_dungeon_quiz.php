@@ -68,6 +68,7 @@ Extends: Game,
 			{
 				if (col1.mMountee.mQuestion.getQuestion() == col2.mQuestion.getQuestion())
                         	{
+					mApplication.log("controlOjbectcol1 and questioncol2");
                         		if (this.mQuiz)
 					{ 
 						this.mQuiz.correctAnswer();
@@ -92,6 +93,7 @@ Extends: Game,
                         	}
                         	else
                         	{
+					mApplication.log("the else is called 2");
                                 	//feedback
                                 	//this.setFeedback("Try again.");
 
