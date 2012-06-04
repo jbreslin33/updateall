@@ -185,42 +185,48 @@ var Game = new Class(
                         this.mShapeArray[i].mPositionRenderOld.mY = this.mShapeArray[i].mPositionRender.mY;
                 }
         }).protect(),
-	
+
+	//this is still ineffiecient because it is checking to see if one coin is colliding with another. when neither is moving.	
 	checkForCollisions: (function()
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
                 {
 			if (this.mShapeArray[s].mCollidable ==  true && this.mShapeArray[s].mCollisionOn == true)
 			{
-				for (c = 0; c < this.mShapeArray.length; c++)
-				{
-					if (this.mShapeArray[c] == this.mShapeArray[s])
+			   	//this should now only loop the first for loop thru objects that have moved. which i think will improve efficiency 
+			    	if (this.mShapeArray[s].mPosition.mX != this.mShapeArray[s].mPositionOld.mX ||
+			        this.mShapeArray[s].mPosition.mY != this.mShapeArray[s].mPositionOld.mY)
+			    	{
+					for (c = 0; c < this.mShapeArray.length; c++)
 					{
-						continue;
-					}
-					if (this.mShapeArray[c].mCollidable ==  true && this.mShapeArray[c].mCollisionOn == true)
-					{
-                        			var x1 = this.mShapeArray[s].mPosition.mX;
-                        			var y1 = this.mShapeArray[s].mPosition.mY;
+						if (this.mShapeArray[c] == this.mShapeArray[s])
+						{
+							continue;
+						}
+						if (this.mShapeArray[c].mCollidable ==  true && this.mShapeArray[c].mCollisionOn == true)
+						{
+                        				var x1 = this.mShapeArray[s].mPosition.mX;
+                        				var y1 = this.mShapeArray[s].mPosition.mY;
 
-                        			var x2 = this.mShapeArray[c].mPosition.mX;
-                        			var y2 = this.mShapeArray[c].mPosition.mY;
+                        				var x2 = this.mShapeArray[c].mPosition.mX;
+                        				var y2 = this.mShapeArray[c].mPosition.mY;
                 
-                                		var addend1 = x1 - x2;
-						addend1 = addend1 * addend1;
+                                			var addend1 = x1 - x2;
+							addend1 = addend1 * addend1;
 
-                                		var addend2 = y1 - y2;
-						addend2 = addend2 * addend2;
+                                			var addend2 = y1 - y2;
+							addend2 = addend2 * addend2;
 
-                                		var distSQ = addend1 + addend2;
+                                			var distSQ = addend1 + addend2;
 						
-                                		var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[c].mCollisionDistance;
-                                		if (distSQ < collisionDistance) 
-                                		{
-                                			this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
-                                		}
+                                			var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[c].mCollisionDistance;
+                                			if (distSQ < collisionDistance) 
+                                			{
+                                				this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
+                                			}
+						}
 					}
-				}
+			   	}
 			}
                 }
 	}).protect(),
