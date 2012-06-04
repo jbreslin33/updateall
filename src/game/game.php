@@ -96,6 +96,7 @@ var Game = new Class(
                         	this.mShapeArray[i].updateVelocity(this.mDeltaTime);
                         	this.mShapeArray[i].updatePosition();
                         	this.mShapeArray[i].updateAnimation();
+				this.checkForOutOfBounds(this.mShapeArray[i]);
                 	}
 			
 			//collision Detection
@@ -241,9 +242,24 @@ var Game = new Class(
 
 	}).protect(),
 
-	checkForOutOfBounds: function()
+	checkForOutOfBounds: function(shape)
 	{
-		//if (
+		if (shape.mPosition.mY < mBounds.mNorth)
+		{
+			shape.mPosition.mY = mBounds.mNorth;
+		}	
+		if (shape.mPosition.mX > mBounds.mEast)
+		{
+			shape.mPosition.mX = mBounds.mEast;
+		}	
+		if (shape.mPosition.mY > mBounds.mSouth)
+		{
+			shape.mPosition.mY = mBounds.mSouth;
+		}	
+		if (shape.mPosition.mX < mBounds.mWest)
+		{
+			shape.mPosition.mX = mBounds.mWest;
+		}	
 	},
 
 	getOpenPoint2D: function(xMin,xMax,yMin,yMax,newShapeWidth,spreadFactor)
