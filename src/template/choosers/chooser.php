@@ -139,6 +139,9 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
+	var dummyQuestion = new Question("Run over one the games.");
+        mQuiz.mQuestionArray.push(dummyQuestion);
+
 	//create quiz items
  	for (i = 0; i < numberOfRows; i++)
         {
@@ -146,8 +149,8 @@ window.addEvent('domready', function()
                 mQuiz.mQuestionArray.push(question);
         }
                 
-        count = 0;
-        for (i = 0; i < numberOfRows; i++ )
+        count = 1;
+        for (i = 1; i < numberOfRows + 1; i++ )
         {
                 var shape;
 		x = i * 50 + 400;

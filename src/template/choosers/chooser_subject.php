@@ -94,6 +94,9 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
+	var dummyQuestion = new Question("Run over one the subjects.");
+       	mQuiz.mQuestionArray.push(dummyQuestion);
+
 	var questionMath = new Question("Math","chooser.php?table_name=math_games");      
        	mQuiz.mQuestionArray.push(questionMath);
 	
