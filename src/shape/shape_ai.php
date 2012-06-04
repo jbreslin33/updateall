@@ -11,6 +11,16 @@ Extends: Shape,
                 this.mAiCounter = 0;
                 this.mAiCounterDelay = 10;
         },
+
+ 	updateVelocity: function(delta)
+        {
+       		this.update(); 
+
+
+	        //update Velocity
+                this.mVelocity.mX = this.mKey.mX * delta * this.mSpeed;
+                this.mVelocity.mY = this.mKey.mY * delta * this.mSpeed;
+        },
         
         update: function(delta)
         {
@@ -22,7 +32,7 @@ Extends: Shape,
                 }
                 this.mAiCounter++;
        
-		this.parent(delta);
+		//this.parent(delta);
         },
 
 	ai: function()

@@ -179,7 +179,7 @@ window.addEvent('domready', function()
 
 	numberMountee.setBackgroundColor("transparent");
 
-	chasers = 0;
+	chasers = 3;
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
