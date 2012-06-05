@@ -130,57 +130,10 @@ window.addEvent('domready', function()
 	westBounds  = new Shape         ( 10, 50,  0,335,"","","","#F19BF1","boundary");
 	westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 	
-	//the game
+	//GAME
         mGame = new GameDungeonQuiz(skill);
 
-	
-	//control object
-	mGame.mControlObject = new Shape(50,50,400,300,mGame,new Question(1,0),"../../../../images/characters/wizard.png","","controlObject"); 
-
-	//set animation instance
-	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-
-	mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
-	mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
-	
-	mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "../../../../images/characters/wizard_north.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "../../../../images/characters/wizard_north.png";
-//	mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "../../../../images/characters/wizard_south.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "../../../../images/characters/wizard_north_east.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "../../../../images/characters/wizard_east.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "../../../../images/characters/wizard_south_east.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "../../../../images/characters/wizard_south.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "../../../../images/characters/wizard_south_west.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "../../../../images/characters/wizard_west.png";
-	mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "../../../../images/characters/wizard_north_west.png";
-
-	mGame.addToShapeArray(mGame.mControlObject); 
-	mGame.mControlObject.showQuestionObject(false);
-
-	//numberMount to go on top let's make it small and draw it on top 
-	var numberMountee = new Shape(100,50,300,300,mGame,new Question(1,0),"","orange","numberMountee");  
-	mGame.addToShapeArray(numberMountee); 
-	
-	//do the mount  
-	//ie is showing this too high	
-	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-	{
-		mGame.mControlObject.mount(numberMountee,-5,-41);
-	}	
-	else
-	{
-		mGame.mControlObject.mount(numberMountee,-5,-58);
-       	} 
-
-	numberMountee.setBackgroundColor("transparent");
-
+	//CHASERS
 	chasers = 3;
 	for (i = 0; i < chasers; i++)
         {
@@ -189,14 +142,16 @@ window.addEvent('domready', function()
 		mGame.addToShapeArray(aishape);
         }
 
-
+	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
 	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
 	mGame.addToShapeArray(door);
-        
+       
+	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
+	//QUESTIONS
  	for (i = 0; i < scoreNeeded; i++)
         {
                 seed = addendMax - addendMin + 1;
@@ -205,9 +160,10 @@ window.addEvent('domready', function()
                 addend1 = result1 + addendMin;
                 addend2 = result2 + addendMin;
                 answer = addend1 + addend2;
-                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, answer));
+                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, "" + answer + ""));
         }
 
+	//QUESTION SHAPES
         count = 0;
 	for (i = 0; i <= scoreNeeded; i++)
         {
@@ -236,6 +192,55 @@ window.addEvent('domready', function()
 
                 count++;
         }
+
+
+	//CONTROL OBJECT
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
+
+        //set animation instance
+        mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+
+        mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
+
+        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "../../../../images/characters/wizard_north.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "../../../../images/characters/wizard_north.png";
+//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "../../../../images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "../../../../images/characters/wizard_north_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "../../../../images/characters/wizard_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "../../../../images/characters/wizard_south_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "../../../../images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "../../../../images/characters/wizard_south_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "../../../../images/characters/wizard_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "../../../../images/characters/wizard_north_west.png";
+
+        mGame.addToShapeArray(mGame.mControlObject);
+        mGame.mControlObject.showQuestionObject(false);
+
+        //numberMount to go on top let's make it small and draw it on top
+        var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+        mGame.addToShapeArray(numberMountee);
+
+        //do the mount
+        //ie is showing this too high
+        if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+        {
+                mGame.mControlObject.mount(numberMountee,-5,-41);
+        }
+        else
+        {
+                mGame.mControlObject.mount(numberMountee,-5,-58);
+        }
+
+        numberMountee.setBackgroundColor("transparent");
+
 	
 
 	mGame.resetGame();
