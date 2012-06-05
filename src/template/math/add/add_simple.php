@@ -197,17 +197,19 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-	//for (i = startNumber; i <= endNumber; i = i + countBy)
-        for (i = 0; i <= 10; i++)
+ 	for (i = 0; i < scoreNeeded; i++)
         {
-        	var question = new Question('What number comes after ' + i + '?', i);      
-                mQuiz.mQuestionArray.push(question);
+                seed = addendMax - addendMin + 1;
+                result1 = Math.floor(Math.random()*seed);
+                result2 = Math.floor(Math.random()*seed);
+                addend1 = result1 + addendMin;
+                addend2 = result2 + addendMin;
+                answer = addend1 + addend2;
+                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, answer));
         }
-                
-        count = 0;
-        //for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
-        for (i = 0; i <= 10; i++)
 
+        count = 0;
+	for (i = 0; i <= scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
