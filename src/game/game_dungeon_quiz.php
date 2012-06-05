@@ -66,7 +66,7 @@ Extends: Game,
 		{
 			if (col1.mMountee)
 			{
-				if (col1.mMountee.mQuestion.getQuestion() == col2.mQuestion.getQuestion())
+				if (col1.mMountee.mQuestion.getAnswer() == col2.mQuestion.getAnswer())
                         	{
 					mApplication.log("controlOjbectcol1 and questioncol2");
                         		if (this.mQuiz)
