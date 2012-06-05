@@ -56,7 +56,6 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 <script type="text/javascript" src="../../../math/point2D.php"></script>
 <script type="text/javascript" src="../../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../../game/game.php"></script>
-//<script type="text/javascript" src="../../../game/game_defender_quiz.php"></script>
 <script type="text/javascript" src="../../../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../../../application/application.php"></script>
 <script type="text/javascript" src="../../../animation/animation.php"></script>
@@ -66,8 +65,6 @@ var numberOfAddends = <?php echo $numberOfAddends; ?>;
 <script type="text/javascript" src="../../../div/div.php"></script>
 <script type="text/javascript" src="../../../question/question.php"></script>
 <script type="text/javascript" src="../../../quiz/quiz.php"></script>
-
-
 
 </head>
 
@@ -79,17 +76,15 @@ var mApplication;
 
 window.addEvent('domready', function()
 {
-	//application to handle time and input
+	//APPLICATION application to handle time and input
         mApplication = new Application();
-
-	//bounds
-        mBounds = new Bounds(60,735,380,35);
  
-        //keys
+        //KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 	
-	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+	//BOUNDS AND HUD COMBO
+        mBounds = new Bounds(60,735,380,35);
 	var y = 35;
         northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
 	northBoundsABCANDYOU.setText('ABCANDYOU');		
@@ -120,7 +115,6 @@ window.addEvent('domready', function()
         
 	southBoundsQuestion = new Shape (770, y,  0,405,"","","","violet","boundary");
         
-
 	westBounds  = new Shape         ( 10, 50,  0, 35,"","","","#F8CDF8","boundary");
 	westBounds  = new Shape         ( 10, 50,  0, 85,"","","","#F6C0F6","boundary");
 	westBounds  = new Shape         ( 10, 50,  0,135,"","","","#F5B4F5","boundary");
@@ -144,7 +138,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");
 	mGame.addToShapeArray(door);
        
 	//QUIZ 
@@ -165,7 +159,7 @@ window.addEvent('domready', function()
 
 	//QUESTION SHAPES
         count = 0;
-	for (i = 0; i <= scoreNeeded; i++)
+	for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
@@ -192,7 +186,6 @@ window.addEvent('domready', function()
 
                 count++;
         }
-
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
@@ -241,11 +234,10 @@ window.addEvent('domready', function()
 
         numberMountee.setBackgroundColor("transparent");
 
-	
-
+	//RESET GAME TO START
 	mGame.resetGame();
 
-        //start updating
+        //START UPDATING
         mGame.update();
 }
 );
