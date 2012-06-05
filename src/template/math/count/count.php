@@ -77,17 +77,15 @@ var mApplication;
 
 window.addEvent('domready', function()
 {
-	//application to handle time and input
+	//APPLICATION
         mApplication = new Application();
-
-	//bounds
-        mBounds = new Bounds(60,735,380,35);
  
-        //keys
+        //KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 	
-	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+	//BOUNDS AND HUD COMBO
+        mBounds = new Bounds(60,735,380,35);
 	var y = 35;
         northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
 	northBoundsABCANDYOU.setText('ABCANDYOU');		
@@ -117,7 +115,6 @@ window.addEvent('domready', function()
 	eastBounds  = new Shape         ( 10, 20,760,385,"","","","#F08EF0","boundary");
         
 	southBoundsQuestion = new Shape (770, y,  0,405,"","","","violet","boundary");
-        
 
 	westBounds  = new Shape         ( 10, 50,  0, 35,"","","","#F8CDF8","boundary");
 	westBounds  = new Shape         ( 10, 50,  0, 85,"","","","#F6C0F6","boundary");
@@ -142,7 +139,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");
 	mGame.addToShapeArray(door);
        
 	//QUIZ 
@@ -233,9 +230,10 @@ window.addEvent('domready', function()
 
         numberMountee.setBackgroundColor("transparent");
 
+	//RESET GAME TO START
 	mGame.resetGame();
 
-        //start updating
+        //START UPDATING
         mGame.update();
 }
 );
