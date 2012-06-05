@@ -7,14 +7,18 @@ $query = "select score_needed, number_of_addends, addend_min, addend_max from ma
 $query .= $_SESSION["math_level"];
 $query .= ";";
 
+
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //game variables to fill from db
+$username = $_SESSION["username"];
+$mathlevel = $_SESSION["math_level"];
 $scoreNeeded = 0;
 $addendMin = 0;
 $addendMax = 0;
 $numberOfAddends = 0;
+
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -25,7 +29,7 @@ if ($num > 0)
         //get row
         $row = pg_fetch_row($result);
 
-        //fill php vars from db
+	//fill php vars from db
         $scoreNeeded = $row[0];
         $numberOfAddends = $row[1];
         $addendMin = $row[2];
@@ -36,28 +40,38 @@ if ($num > 0)
 
 <script language="javascript">
 
+var username = "<?php echo $username; ?>";
+var mathlevel = "<?php echo $mathlevel; ?>";
 var skill = "<?php echo $skill; ?>";
-var nextLevel = <?php echo $nextLevel; ?>;
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
+var nextLevel = <?php echo $nextLevel; ?>;
 var addendMin = <?php echo $addendMin; ?>;
 var addendMax = <?php echo $addendMax; ?>;
 var numberOfAddends = <?php echo $numberOfAddends; ?>;
 
 </script>
 
+</style>
+
 <script type="text/javascript" src="../../../math/point2D.php"></script>
+<script type="text/javascript" src="../../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../../game/game.php"></script>
-<script type="text/javascript" src="../../../game/game_defender_quiz.php"></script>
+//<script type="text/javascript" src="../../../game/game_defender_quiz.php"></script>
+<script type="text/javascript" src="../../../game/game_dungeon_quiz.php"></script>
 <script type="text/javascript" src="../../../application/application.php"></script>
+<script type="text/javascript" src="../../../animation/animation.php"></script>
+<script type="text/javascript" src="../../../animation/animation_advanced.php"></script>
 <script type="text/javascript" src="../../../shape/shape.php"></script>
 <script type="text/javascript" src="../../../shape/shape_ai.php"></script>
 <script type="text/javascript" src="../../../div/div.php"></script>
 <script type="text/javascript" src="../../../question/question.php"></script>
 <script type="text/javascript" src="../../../quiz/quiz.php"></script>
 
+
+
 </head>
 
-<body>
+<body bgcolor="grey">
 
 <script language="javascript">
 var mGame;
@@ -67,115 +81,160 @@ window.addEvent('domready', function()
 {
 	//application to handle time and input
         mApplication = new Application();
-        
+
+	//bounds
+        mBounds = new Bounds(60,735,380,35);
+ 
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 	
-	//the game
-        mGame = new GameDefenderQuiz(skill);
+	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+	var y = 35;
+        northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
+	northBoundsABCANDYOU.setText('ABCANDYOU');		
 
-	//control object
-        mGame.mControlObject = new Shape(mGame,"center","","",50,50,100,100,"","blue","","controlObject");
-        mGame.addToShapeArray(mGame.mControlObject);
+        northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
+	northBoundsUser.setText('User : ' + username);		
+
+        northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
+	northBoundsMathLevel.setText('Math Level : ' + mathlevel);		
+        
+	northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
+	northBoundsScore.setText('Score : ');		
+
+	northBoundsScoreNeeded = new Shape    (120, y,480,  0,"","","","cyan","boundary");
+	northBoundsScoreNeeded.setText('Score Needed : ');		
+        
+	northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
+	northBoundsGameName.setText(skill);		
+
+	eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
+	eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,135,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,185,"","","","#F6C0F6","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,235,"","","","#F5B4F5","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,285,"","","","#F3A8F3","boundary");
+	eastBounds  = new Shape         ( 10, 50,760,335,"","","","#F19BF1","boundary");
+	eastBounds  = new Shape         ( 10, 20,760,385,"","","","#F08EF0","boundary");
+        
+	southBoundsQuestion = new Shape (770, y,  0,405,"","","","violet","boundary");
+        
+
+	westBounds  = new Shape         ( 10, 50,  0, 35,"","","","#F8CDF8","boundary");
+	westBounds  = new Shape         ( 10, 50,  0, 85,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,135,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,185,"","","","#F6C0F6","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,235,"","","","#F5B4F5","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,285,"","","","#F3A8F3","boundary");
+	westBounds  = new Shape         ( 10, 50,  0,335,"","","","#F19BF1","boundary");
+	westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 	
-	chasers = 4;
-        for (i = 0; i < chasers; i++)
+	//the game
+        mGame = new GameDungeonQuiz(skill);
+
+	
+	//control object
+	mGame.mControlObject = new Shape(50,50,400,300,mGame,new Question(1,0),"../../../../images/characters/wizard.png","","controlObject"); 
+
+	//set animation instance
+	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+
+	mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
+	mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
+	
+	mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "../../../../images/characters/wizard_north.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "../../../../images/characters/wizard_north.png";
+//	mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "../../../../images/characters/wizard_south.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "../../../../images/characters/wizard_north_east.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "../../../../images/characters/wizard_east.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "../../../../images/characters/wizard_south_east.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "../../../../images/characters/wizard_south.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "../../../../images/characters/wizard_south_west.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "../../../../images/characters/wizard_west.png";
+	mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "../../../../images/characters/wizard_north_west.png";
+
+	mGame.addToShapeArray(mGame.mControlObject); 
+	mGame.mControlObject.showQuestionObject(false);
+
+	//numberMount to go on top let's make it small and draw it on top 
+	var numberMountee = new Shape(100,50,300,300,mGame,new Question(1,0),"","orange","numberMountee");  
+	mGame.addToShapeArray(numberMountee); 
+	
+	//do the mount  
+	//ie is showing this too high	
+	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+	{
+		mGame.mControlObject.mount(numberMountee,-5,-41);
+	}	
+	else
+	{
+		mGame.mControlObject.mount(numberMountee,-5,-58);
+       	} 
+
+	numberMountee.setBackgroundColor("transparent");
+
+	chasers = 3;
+	for (i = 0; i < chasers; i++)
         {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
+		mGame.addToShapeArray(aishape);
         }
 
-	//create walls
-	//left
-	mGame.createWall(50,50,"black",-400,300);
-	mGame.createWall(50,50,"black",-400,250);
-	mGame.createWall(50,50,"black",-400,200);
-	mGame.createWall(50,50,"black",-400,150);
-	mGame.createWall(50,50,"black",-400,100);
-	mGame.createWall(50,50,"black",-400,50);
-	mGame.createWall(50,50,"black",-400,0);
-	mGame.createWall(50,50,"black",-400,-50);
-	mGame.createWall(50,50,"black",-400,-100);
-	mGame.createWall(50,50,"black",-400,-150);
-	mGame.createWall(50,50,"black",-400,-200);
-	mGame.createWall(50,50,"black",-400,-250);
-	mGame.createWall(50,50,"black",-400,-300);
 
-  	//right
-        mGame.createWall(50,50,"black",400,300);
-        mGame.createWall(50,50,"black",400,250);
-        mGame.createWall(50,50,"black",400,200);
-        mGame.createWall(50,50,"black",400,150);
-        mGame.createWall(50,50,"black",400,100);
-        mGame.createWall(50,50,"black",400,50);
-        mGame.createWall(50,50,"black",400,0);
-        mGame.createWall(50,50,"black",400,-50);
-        mGame.createWall(50,50,"black",400,-100);
-        mGame.createWall(50,50,"black",400,-150);
-        mGame.createWall(50,50,"black",400,-200);
-        mGame.createWall(50,50,"black",400,-250);
-        mGame.createWall(50,50,"black",400,-300);
-
-	//bottom
-        mGame.createWall(50,50,"black",-400,300);
-        mGame.createWall(50,50,"black",-350,300);
-        mGame.createWall(50,50,"black",-300,300);
-        mGame.createWall(50,50,"black",-250,300);
-        mGame.createWall(50,50,"black",-200,300);
-        mGame.createWall(50,50,"black",-150,300);
-        mGame.createWall(50,50,"black",-100,300);
-        mGame.createWall(50,50,"black",-50,300);
-        mGame.createWall(50,50,"black",0,300);
-        mGame.createWall(50,50,"black",50,300);
-        mGame.createWall(50,50,"black",100,300);
-        mGame.createWall(50,50,"black",150,300);
-        mGame.createWall(50,50,"black",200,300);
-        mGame.createWall(50,50,"black",250,300);
-        mGame.createWall(50,50,"black",300,300);
-        mGame.createWall(50,50,"black",350,300);
-        mGame.createWall(50,50,"black",400,300);
-
-	//top
-        mGame.createWall(50,50,"black",-400,-300);
-        mGame.createWall(50,50,"black",-350,-300);
-        mGame.createWall(50,50,"black",-300,-300);
-        mGame.createWall(50,50,"black",-250,-300);
-        mGame.createWall(50,50,"black",-200,-300);
-        mGame.createWall(50,50,"black",-150,-300);
-        mGame.createWall(50,50,"black",-100,-300);
-        mGame.createWall(50,50,"black",-50,-300);
-        mGame.createWall(50,50,"black",0,-300);
-        mGame.createWall(50,50,"black",50,-300);
-        mGame.createWall(50,50,"black",100,-300);
-        mGame.createWall(50,50,"black",150,-300);
-        mGame.createWall(50,50,"black",200,-300);
-        mGame.createWall(50,50,"black",250,-300);
-        mGame.createWall(50,50,"black",300,-300);
-        mGame.createWall(50,50,"black",350,-300);
-        mGame.createWall(50,50,"black",400,-300);
-
+       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");	
+	mGame.addToShapeArray(door);
+        
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-        for (i = 0; i < scoreNeeded; i++)
+	//for (i = startNumber; i <= endNumber; i = i + countBy)
+        for (i = 0; i <= 10; i++)
         {
-       		seed = addendMax - addendMin + 1;
-                result1 = Math.floor(Math.random()*seed);
-                result2 = Math.floor(Math.random()*seed);
-                addend1 = result1 + addendMin;
-                addend2 = result2 + addendMin;
-                answer = addend1 + addend2;
-                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, answer));
-	}
+        	var question = new Question('What number comes after ' + i + '?', i);      
+                mQuiz.mQuestionArray.push(question);
+        }
                 
         count = 0;
-        for (i = 0; i < scoreNeeded; i++)
+        //for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
+        for (i = 0; i <= 10; i++)
+
         {
-        	var openPoint = mGame.getOpenPoint2D(-400,400,-300,300,50,4);
-                mGame.addToShapeArray(new Shape(mGame,"relative",mQuiz.getSpecificQuestion(count),"",50,50,openPoint.mX,openPoint.mY,i,"yellow","","question"));
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var shape;
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
+                shape.showQuestion(false);
+
+		//numberMount to go on top let's make it small and draw it on top 
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
+                mGame.addToShapeArray(numberMountee); 
+                numberMountee.showQuestion(false);
+                
+		//do the mount  
+		//ie is showing this too high	
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+		{
+			shape.mount(numberMountee,-5,-41);
+		}	
+		else
+		{
+			shape.mount(numberMountee,-5,-58);
+              	} 
+
+		numberMountee.setBackgroundColor("transparent");
+
                 count++;
-	}
+        }
+	
 
 	mGame.resetGame();
 
