@@ -84,7 +84,7 @@ Extends: Game,
                         		if (this.mQuiz)
 					{ 
 						//set the control objects question object
-						col1.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
+						col1.getQuestion().setQuestion(this.mQuiz.getQuestion());
 						if (col1.mMountee)
 						{
 							col1.mMountee.getQuestion().set(this.mQuiz.getQuestion().getQuestion(),this.mQuiz.getQuestion().getAnswer());
