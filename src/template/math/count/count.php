@@ -81,7 +81,7 @@ window.addEvent('domready', function()
         mApplication = new Application();
 
 	//bounds
-	mBounds = new Bounds(0,790,405,10);       
+        mBounds = new Bounds(60,735,380,35);
  
         //keys
         document.addEvent("keydown", mApplication.keyDown);

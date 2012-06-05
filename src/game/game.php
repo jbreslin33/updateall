@@ -96,7 +96,13 @@ var Game = new Class(
                         	this.mShapeArray[i].updateVelocity(this.mDeltaTime);
                         	this.mShapeArray[i].updatePosition();
                         	this.mShapeArray[i].updateAnimation();
-				this.checkForOutOfBounds(this.mShapeArray[i]);
+				if (this.mShapeArray[i].mMounter)
+				{
+				}	
+				else
+				{	
+					this.checkForOutOfBounds(this.mShapeArray[i]);
+				}
                 	}
 			
 			//collision Detection

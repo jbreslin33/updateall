@@ -64,6 +64,7 @@ var gamelevel = "<?php echo $gameLevel; ?>";
 </script>
 
 <script type="text/javascript" src="../../math/point2D.php"></script>
+<script type="text/javascript" src="../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
 <script type="text/javascript" src="../../game/game_chooser.php"></script>
 <script type="text/javascript" src="../../application/application.php"></script>
@@ -84,6 +85,9 @@ window.addEvent('domready', function()
 {
 	//application to handle time and input
         mApplication = new Application();
+
+	//bounds
+        mBounds = new Bounds(60,735,380,35);
         
         //keys
         document.addEvent("keydown", mApplication.keyDown);
