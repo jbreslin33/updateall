@@ -38,7 +38,6 @@ if ($num > 0)
 
 <script language="javascript">
 
-
 var username = "<?php echo $username; ?>";
 var mathlevel = "<?php echo $mathlevel; ?>";
 var skill = "<?php echo $skill; ?>";
@@ -64,8 +63,6 @@ var nextLevel = <?php echo $nextLevel; ?>;
 <script type="text/javascript" src="../../../div/div.php"></script>
 <script type="text/javascript" src="../../../question/question.php"></script>
 <script type="text/javascript" src="../../../quiz/quiz.php"></script>
-
-
 
 </head>
 

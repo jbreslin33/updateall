@@ -7,7 +7,6 @@ $query = "select score_needed, number_of_addends, addend_min, addend_max from ma
 $query .= $_SESSION["math_level"];
 $query .= ";";
 
-
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
@@ -18,7 +17,6 @@ $scoreNeeded = 0;
 $addendMin = 0;
 $addendMax = 0;
 $numberOfAddends = 0;
-
 
 //get numer of rows
 $num = pg_num_rows($result);
@@ -146,7 +144,7 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS
- 	for (i = 0; i < scoreNeeded; i++)
+ 	for (i = 0; i <= scoreNeeded; i++)
         {
                 seed = addendMax - addendMin + 1;
                 result1 = Math.floor(Math.random()*seed);
