@@ -25,6 +25,14 @@ document.getElementById("wizard").style.top  = y + 'px';
 
 function update()
 {
+	//get time since epoch and set lasttime
+	e = new Date();
+        lastTimeSinceEpoch = this.mTimeSinceEpoch;
+        timeSinceEpoch = e.getTime();
+
+        //set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
+        deltaTime = timeSinceEpoch - lastTimeSinceEpoch;
+
 	// update position
 	x++;
 
