@@ -15,18 +15,25 @@ DIV.movable { position:absolute; }
 
 var int=self.setInterval("clock()",1000);
 
-document.getElementById("wizard").style.top  = '200px';
-document.getElementById("wizard").style.left = '0px';
+
+x = 0; 
+y = 200;
+
+document.getElementById("wizard").style.left = x + 'px';
+document.getElementById("wizard").style.top  = y + 'px';
+
+
 
 function clock()
 {
-	var d=new Date();
-  	var t=d.toLocaleTimeString();
-  	document.getElementById("clock").value=t;
-
+//	var d=new Date();
+ // 	var t=d.toLocaleTimeString();
+  //	document.getElementById("clock").value=t;
+	
 	//move wizard
-	document.getElementById("wizard").style.top  = '200px';
-	document.getElementById("wizard").style.left = '0px';
+	x++;
+	document.getElementById("wizard").style.left = x + 'px';
+	document.getElementById("wizard").style.top  = y + 'px';
 }
 
 
