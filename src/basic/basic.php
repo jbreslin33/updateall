@@ -1,12 +1,18 @@
 <html>
 <body>
 
-<h1>My First Web Page</h1>
-
-<script type="text/javascript">
-document.write("<p>My First JavaScript</p>");
+<input type="text" id="clock" />
+<script language=javascript>
+var int=self.setInterval("clock()",1000);
+function clock()
+  {
+  var d=new Date();
+  var t=d.toLocaleTimeString();
+  document.getElementById("clock").value=t;
+  }
 </script>
+
+<button onclick="int=window.clearInterval(int)">Stop</button>
 
 </body>
 </html> 
-
