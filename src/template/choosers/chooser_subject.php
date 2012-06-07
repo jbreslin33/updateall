@@ -114,7 +114,7 @@ window.addEvent('domready', function()
 	mGame.resetGame();
 
         //start updating
-   	var t=setInterval("mGame.update()",1)
+   	var t=setInterval("mGame.update()",10)
 }
 
 );

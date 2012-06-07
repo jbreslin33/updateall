@@ -9,11 +9,16 @@ DIV.movable { position:absolute; }
 
 <script language=javascript>
 
-var int=self.setInterval("update()",3);
+var int=self.setInterval("update()",10);
 
-//positions
+/**************** POSITIONS ************/
 x = 0; 
 y = 200;
+
+/**************** TIME ************/
+timeSinceEpoch = 0;
+lastTimeSinceEpoch = 0;
+deltaTime = 0;
 
 document.getElementById("wizard").style.left = x + 'px';
 document.getElementById("wizard").style.top  = y + 'px';
