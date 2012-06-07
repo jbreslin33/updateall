@@ -2,45 +2,33 @@
 <body>
 
 <style>
-
 DIV.movable { position:absolute; }
-
 </style>
-
-<input type="text" id="clock" />
 
 <div id="wizard" class="movable"><img src="wizard_north.png" /></div>
 
 <script language=javascript>
 
-var int=self.setInterval("clock()",1000);
+var int=self.setInterval("update()",100);
 
-
+//positions
 x = 0; 
 y = 200;
 
 document.getElementById("wizard").style.left = x + 'px';
 document.getElementById("wizard").style.top  = y + 'px';
 
-
-
-function clock()
+function update()
 {
-//	var d=new Date();
- // 	var t=d.toLocaleTimeString();
-  //	document.getElementById("clock").value=t;
-	
-	//move wizard
+	// update position
 	x++;
+
+	//render	
 	document.getElementById("wizard").style.left = x + 'px';
 	document.getElementById("wizard").style.top  = y + 'px';
 }
 
-
-
 </script>
-
-<button onclick="int=window.clearInterval(int)">Stop</button>
 
 </body>
 </html> 
