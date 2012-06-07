@@ -115,7 +115,7 @@ var Game = new Class(
         
                 	//save old positions
                 	this.saveOldPositions();
-			var t=setTimeout("mGame.update()",32)
+			//var t=setTimeout("mGame.update()",32)
                 }
         },
 
