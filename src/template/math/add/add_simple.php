@@ -152,7 +152,7 @@ window.addEvent('domready', function()
                 addend1 = result1 + addendMin;
                 addend2 = result2 + addendMin;
                 answer = addend1 + addend2;
-                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2, "" + answer + ""));
+                mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2 + ' =', "" + answer + ""));
         }
 
 	//QUESTION SHAPES
