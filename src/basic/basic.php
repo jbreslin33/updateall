@@ -9,7 +9,7 @@ DIV.movable { position:absolute; }
 
 <script language=javascript>
 
-var int=self.setInterval("update()",100);
+var int=self.setInterval("update()",3);
 
 //positions
 x = 0; 
