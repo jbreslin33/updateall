@@ -103,6 +103,10 @@ var Application = new Class(
                 {
                         mApplication.mKey9 = true;
                 }
+                if (event.key == 'u')
+                {
+                        window.location = "../../database/user.php";
+                }
 
         },
         
