@@ -125,20 +125,6 @@ window.addEvent('domready', function()
 	//GAME
         mGame = new GameDungeonQuiz(skill);
 
-	//CHASERS
-	chasers = 3;
-	for (i = 0; i < chasers; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
-		mGame.addToShapeArray(aishape);
-        }
-
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"","green","wall");
-	mGame.addToShapeArray(door);
-       
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
@@ -154,37 +140,7 @@ window.addEvent('domready', function()
                 answer = addend1 + addend2;
                 mQuiz.mQuestionArray.push(new Question(addend1 + ' + ' + addend2 + ' =', "" + answer + ""));
         }
-
-	//QUESTION SHAPES
-        count = 0;
-	for (i = 0; i < scoreNeeded; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
-                shape.showQuestion(false);
-
-		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
-                mGame.addToShapeArray(numberMountee); 
-                numberMountee.showQuestion(false);
-                
-		//do the mount  
-		//ie is showing this too high	
-		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-		{
-			shape.mount(numberMountee,-5,-41);
-		}	
-		else
-		{
-			shape.mount(numberMountee,-5,-58);
-              	} 
-
-		numberMountee.setBackgroundColor("transparent");
-
-                count++;
-        }
-
+	
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
 
@@ -231,6 +187,50 @@ window.addEvent('domready', function()
         }
 
         numberMountee.setBackgroundColor("transparent");
+
+	//DOOR
+       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"../../../../images/doors/door_closed.png","","wall");
+	mGame.addToShapeArray(door);
+       
+	//QUESTION SHAPES
+        count = 0;
+	for (i = 0; i < scoreNeeded; i++)
+        {
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var shape;
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
+                shape.showQuestion(false);
+
+		//numberMount to go on top let's make it small and draw it on top 
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
+                mGame.addToShapeArray(numberMountee); 
+                numberMountee.showQuestion(false);
+                
+		//do the mount  
+		//ie is showing this too high	
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+		{
+			shape.mount(numberMountee,-5,-41);
+		}	
+		else
+		{
+			shape.mount(numberMountee,-5,-58);
+              	} 
+
+		numberMountee.setBackgroundColor("transparent");
+
+                count++;
+        }
+
+	//CHASERS
+	chasers = 3;
+	for (i = 0; i < chasers; i++)
+        {
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
+		mGame.addToShapeArray(aishape);
+        }
 
 	//RESET GAME TO START
 	mGame.resetGame();
