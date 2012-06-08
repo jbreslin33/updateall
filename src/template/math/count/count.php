@@ -181,7 +181,8 @@ window.addEvent('domready', function()
         }
 	
  	//CONTROL OBJECT
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        mGame.mControlObject = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
