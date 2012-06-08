@@ -183,20 +183,10 @@ window.addEvent('domready', function()
 
         numberMountee.setBackgroundColor("transparent");
 
-	//CHASERS
-	chasers = 3;
-	for (i = 0; i < chasers; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
-		mGame.addToShapeArray(aishape);
-        }
-
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
 	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"../../../../images/doors/door_closed.png","","wall");
 	mGame.addToShapeArray(door);
-       
                
 	//QUESTION SHAPES 
         count = 0;
@@ -228,6 +218,15 @@ window.addEvent('domready', function()
                 count++;
         }
 	
+	//CHASERS
+	chasers = 3;
+	for (i = 0; i < chasers; i++)
+        {
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
+		mGame.addToShapeArray(aishape);
+        }
+
 	//RESET GAME TO START
 	mGame.resetGame();
 
