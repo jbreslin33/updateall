@@ -9,36 +9,63 @@ DIV.movable { position:absolute; }
 
 <script language=javascript>
 
-var int=self.setInterval("update()",10);
 
 /**************** POSITIONS ************/
-x = 0; 
-y = 200;
+var xPosition = 0; 
+var yPosition = 200;
+
+/**************** VELOCITY ************/
+var xVelocity = 0;
+var yVelocity = 0;
+
+/**************** SPEED ************/
+var speed = .1;
 
 /**************** TIME ************/
-timeSinceEpoch = 0;
-lastTimeSinceEpoch = 0;
-deltaTime = 0;
+var timeSinceEpoch = 0;
+var lastTimeSinceEpoch = 0;
+var deltaTime = 0;
 
-document.getElementById("wizard").style.left = x + 'px';
-document.getElementById("wizard").style.top  = y + 'px';
+/**************** SET INITIAL POSITION AND INITIALIZE TIME SINCE EPOCH************/
+document.getElementById("wizard").style.left = xPosition + 'px';
+document.getElementById("wizard").style.top  = yPosition + 'px';
 
+t = new Date();
+timeSinceEpoch = t.getTime();
+
+/**************** START UPDATING ************/
+var int=self.setInterval("update()",100);
+
+/**************** UPDATE ************/
 function update()
 {
+	//set key
+	xKey = 1;
+	yKey = 0;
+
 	//get time since epoch and set lasttime
 	e = new Date();
-        lastTimeSinceEpoch = this.mTimeSinceEpoch;
+        lastTimeSinceEpoch = timeSinceEpoch;
         timeSinceEpoch = e.getTime();
-
-        //set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
+        
+	//set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
         deltaTime = timeSinceEpoch - lastTimeSinceEpoch;
 
-	// update position
-	x++;
+	//update velocity
+	xVelocity = xKey * deltaTime * speed; 
+	yVelocity = yKey * deltaTime * speed; 
 
-	//render	
-	document.getElementById("wizard").style.left = x + 'px';
-	document.getElementById("wizard").style.top  = y + 'px';
+	// update position based on current velocity 
+	xPosition += xVelocity;
+	yPosition += yVelocity;
+
+	//modify for style position 
+	modx = xPosition+'px';
+	mody = yPosition+'px';
+
+	//render at new position	
+	document.getElementById("wizard").style.left = modx;
+	document.getElementById("wizard").style.top  = mody;
 }
 
 </script>
