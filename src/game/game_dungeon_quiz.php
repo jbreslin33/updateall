@@ -20,9 +20,9 @@ Extends: Game,
 		                //open the doors
                 		for (i=0; i < this.mShapeArray.length; i++)
                 		{
-                        		if (this.mShapeArray[i].mBackgroundColor == 'green')
+                        		if (this.mShapeArray[i].mSrc == "../../../../images/doors/door_closed.png")
                         		{
-                                		this.mShapeArray[i].setBackgroundColor('white');
+                                		this.mShapeArray[i].setSrc("../../../../images/doors/door_open.png");
 					}
 				}
                         }
@@ -94,7 +94,7 @@ Extends: Game,
 		//exit room to next level when you complete quiz		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
 		{
-			if (col2.mBackgroundColor == 'white')
+			if (col2.mSrc == "../../../../images/doors/door_open.png")
 			{
 				if (this.mQuiz)
 				{
