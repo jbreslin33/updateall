@@ -2,8 +2,42 @@
 //standard header for most games i hope. it handles some basic html and level db call
 include("../headers/header.php");
 
+//query the db for subjects
+$query = "select id, subject from subjects;";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
+
+echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
+echo "var id = new Array();";
+echo "var subject = new Array();";
+
+echo "</script>";
+
+$counter = 0;
+while ($row = pg_fetch_array($result)) 
+{
+        //fill php vars from db
+        $id = $row[0];
+        $subject = $row[1];
+
+        echo "<script language=\"javascript\">";
+        
+        echo "id[$counter] = \"$id\";";
+        echo "subject[$counter] = \"$subject\";";
+        echo "</script>";
+        $counter++;
+}
+
 //game variables to fill from db
 $username = $_SESSION["username"];
+
+
 
 ?>
 
@@ -17,7 +51,7 @@ var username = "<?php echo $username; ?>";
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
-<script type="text/javascript" src="../../game/game_chooser.php"></script>
+<script type="text/javascript" src="../../game/subject_chooser.php"></script>
 <script type="text/javascript" src="../../application/application.php"></script>
 <script type="text/javascript" src="../../shape/shape.php"></script>
 <script type="text/javascript" src="../../div/div.php"></script>
@@ -90,7 +124,7 @@ window.addEvent('domready', function()
         westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 
 	//the game
-        mGame = new GameChooser("Subject Chooser");
+        mGame = new SubjectChooser("Subject Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
@@ -102,14 +136,35 @@ window.addEvent('domready', function()
 	var dummyQuestion = new Question("Run over one the subjects.");
        	mQuiz.mQuestionArray.push(dummyQuestion);
 
-	var questionMath = new Question("Math","chooser.php?subject_id=1");      
-       	mQuiz.mQuestionArray.push(questionMath);
+
+	//var questionMath = new Question("Math","chooser.php?subject_id=1");      
+       	//mQuiz.mQuestionArray.push(questionMath);
 	
-	var questionEnglish = new Question("English","chooser.php?subject_id=2");      
-       	mQuiz.mQuestionArray.push(questionEnglish);
+	//var questionEnglish = new Question("English","chooser.php?subject_id=2");      
+       	//mQuiz.mQuestionArray.push(questionEnglish);
                
-        mGame.addToShapeArray(shape = new Shape(50,50,400,350,mGame,questionMath,"","yellow","question"));
-        mGame.addToShapeArray(shape = new Shape(50,50,450,350,mGame,questionEnglish,"","yellow","question"));
+        //mGame.addToShapeArray(shape = new Shape(50,50,400,350,mGame,questionMath,"","yellow","question"));
+        //mGame.addToShapeArray(shape = new Shape(50,50,450,350,mGame,questionEnglish,"","yellow","question"));
+	
+
+	//create quiz items
+        for (i = 0; i < numberOfRows; i++)
+        {
+                var question = new Question(subject[i],id[i]);      
+                mQuiz.mQuestionArray.push(question);
+        }
+                
+        count = 1;
+        for (i = 1; i < numberOfRows + 1; i++ )
+        {
+                var shape;
+                x = i * 50 + 400;
+                mGame.addToShapeArray(shape = new Shape(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),"","yellow","question"));
+                count++;
+        }
+
+
+
 
 	mGame.resetGame();
 
