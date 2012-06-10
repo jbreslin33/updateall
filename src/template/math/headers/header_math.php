@@ -14,9 +14,19 @@ include("../../../database/db_connect.php");
 $conn = dbConnect();
 
 //query the level table
-$query = "select skill, next_level from math_levels where level = ";
+//$query = "select skill, next_level from levels where level = ";
+//$query .= $_SESSION["math_level"];
+//$query .= " and subject_id = "
+//$query .= $_SESSION["subject_id"];
+//$query .= ";";
+//query the level table
+$query = "select skill, next_level from levels where level = ";
 $query .= $_SESSION["math_level"];
+$query .= " and subject_id = ";
+$query .= $_SESSION["subject_id"];
 $query .= ";";
+
+echo $query;
 
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());

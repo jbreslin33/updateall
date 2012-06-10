@@ -3,25 +3,26 @@
 include("../headers/header.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
-$tableName = $_GET['table_name'];
-$gameLevel = 0;
+$_SESSION["subject_id"] = $_GET['subject_id']; 
+$level = 0;
 
-if ($tableName == "math_games")
+if ($_SESSION["subject_id"] == 1)
 {
-	$gameLevel = $_SESSION["math_level"];
+	$level = $_SESSION["math_level"];
 }
-if ($tableName == "english_games")
+if ($_SESSION["subject_id"] == 2)
 {
-	$gameLevel = $_SESSION["english_level"];
+	$level = $_SESSION["english_level"];
 }
 
 
 
-$query = "select name, url from ";
-$query .= $tableName; 
-$query .= " where level = ";
-$query .= $gameLevel;
+$query = "select name, url from games where level = ";
+$query .= $level;
+$query .= " and subject_id = ";
+$query .= $_SESSION["subject_id"];
 $query .= ";";
+
 echo $query;
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());

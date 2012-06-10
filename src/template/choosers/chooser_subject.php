@@ -102,10 +102,10 @@ window.addEvent('domready', function()
 	var dummyQuestion = new Question("Run over one the subjects.");
        	mQuiz.mQuestionArray.push(dummyQuestion);
 
-	var questionMath = new Question("Math","chooser.php?table_name=math_games");      
+	var questionMath = new Question("Math","chooser.php?subject_id=1");      
        	mQuiz.mQuestionArray.push(questionMath);
 	
-	var questionEnglish = new Question("English","chooser.php?table_name=english_games");      
+	var questionEnglish = new Question("English","chooser.php?subject_id=2");      
        	mQuiz.mQuestionArray.push(questionEnglish);
                
         mGame.addToShapeArray(shape = new Shape(50,50,400,350,mGame,questionMath,"","yellow","question"));
