@@ -14,7 +14,10 @@
 	// insert into users......
 	$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-	//then send to login_form.php to login, later send message....
+	//then send to login_form.php to login, later send message.... actually it's later now and you need to take them directly to site.
+
 	header("Location: ../login/login_form.php");
+
+
 ?>
 

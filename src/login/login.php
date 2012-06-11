@@ -41,9 +41,11 @@
 		$_SESSION["username"] = $_POST["username"];  	
 		$_SESSION["math_level"] = $mathLevel;  	
 		$_SESSION["english_level"] = $englishLevel;  	
-
+	//i will set this soon but first we need a roles table.	$_SESSION["teacher"] = 
 		//send user to his game_url		
-		header("Location: ../template/choosers/chooser_subject.php");
+		//header("Location: ../template/choosers/chooser_subject.php");
+		//instead send to here if teacher and directlty to game chooser if student.........
+		header("Location: ../template/main/main.php");
 	}
 	else
 	{

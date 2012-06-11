@@ -8,6 +8,7 @@ DROP TABLE subtraction;
 DROP TABLE levels;
 DROP TABLE games;
 DROP TABLE subjects;
+DROP TABLE roles;
 DROP TABLE users;
 
 SET statement_timeout = 0;
@@ -52,6 +53,30 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 insert into users (username,password) values ('v2001','p'); 
 insert into users (username,password) values ('v2002','p'); 
 
+
+--------------------roles---------------------------------------
+CREATE TABLE roles (
+    id integer NOT NULL PRIMARY KEY,
+    role text NOT NULL UNIQUE
+);
+ALTER TABLE public.roles OWNER TO postgres;
+
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER TABLE public.roles_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
+insert into roles (role) values ('Administrator'); 
+insert into roles (role) values ('Teacher'); 
+insert into roles (role) values ('Student'); 
+insert into roles (role) values ('Guest'); 
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
