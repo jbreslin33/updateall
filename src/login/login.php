@@ -5,7 +5,7 @@
 	$conn = dbConnect();
 	
 	//query string 	
- 	$query = "select id, math_level, english_level from users where username = '";
+ 	$query = "select id, math_level, english_level, role_id from users where username = '";
 	$query .= $_POST["username"];
 	$query .= "' "; 
    	$query .= "and ";
@@ -32,6 +32,7 @@
 		$id = pg_Result($result, 0, 'id');
 		$mathLevel = pg_Result($result, 0, 'math_level');
 		$englishLevel = pg_Result($result, 0, 'english_level');
+		$roleId = pg_Result($result, 0, 'role_id');
 		
 		//set login var to yes	
 	  	$_SESSION["Login"] = "YES";
@@ -41,11 +42,32 @@
 		$_SESSION["username"] = $_POST["username"];  	
 		$_SESSION["math_level"] = $mathLevel;  	
 		$_SESSION["english_level"] = $englishLevel;  	
-	//i will set this soon but first we need a roles table.	$_SESSION["teacher"] = 
-		//send user to his game_url		
-		//header("Location: ../template/choosers/chooser_subject.php");
-		//instead send to here if teacher and directlty to game chooser if student.........
-		header("Location: ../template/main/main.php");
+		$_SESSION["role_id"] = $roleId;  	
+	
+
+		//administrator
+		if ($_SESSION["role_id"] == 1) 
+		{
+	
+		}
+		
+		//teacher
+		if ($_SESSION["role_id"] == 2) 
+		{
+			header("Location: ../template/main/main.php");
+		}
+		
+		//student
+		if ($_SESSION["role_id"] == 3) 
+		{
+			header("Location: ../template/choosers/chooser_subject.php");
+		}
+		
+		//guest
+		if ($_SESSION["role_id"] == 4) 
+		{
+	
+		}
 	}
 	else
 	{

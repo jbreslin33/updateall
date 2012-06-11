@@ -8,8 +8,8 @@ DROP TABLE subtraction;
 DROP TABLE levels;
 DROP TABLE games;
 DROP TABLE subjects;
-DROP TABLE roles;
 DROP TABLE users;
+DROP TABLE roles;
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -28,30 +28,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 
---------------------users---------------------------------------
-CREATE TABLE users (
-    id integer NOT NULL PRIMARY KEY,
-    username text NOT NULL UNIQUE,
-    password text NOT NULL,
-    math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL
-);
-ALTER TABLE public.users OWNER TO postgres;
-
-CREATE SEQUENCE users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-insert into users (username,password) values ('v2001','p'); 
-insert into users (username,password) values ('v2002','p'); 
 
 
 --------------------roles---------------------------------------
@@ -77,6 +53,33 @@ insert into roles (role) values ('Administrator');
 insert into roles (role) values ('Teacher'); 
 insert into roles (role) values ('Student'); 
 insert into roles (role) values ('Guest'); 
+
+--------------------users---------------------------------------
+CREATE TABLE users (
+    id integer NOT NULL PRIMARY KEY,
+    username text NOT NULL UNIQUE,
+    password text NOT NULL,
+    math_level integer DEFAULT 1 NOT NULL,
+    english_level integer DEFAULT 1 NOT NULL,
+    role_id integer NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES roles(id)
+);
+ALTER TABLE public.users OWNER TO postgres;
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+insert into users (username,password,role_id) values ('vis','p',2); 
+insert into users (username,password,role_id) values ('vis1','p',3); 
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
