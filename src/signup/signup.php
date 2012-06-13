@@ -15,9 +15,16 @@
 
         $wordCount = str_word_count($usernameString);
 
-	if ($wordCount > 1)
+	if ($wordCount != 1)
 	{
-        	header("Location: ../signup/signup_nospace.php");
+		if ($wordCount == 0)
+		{
+        		header("Location: ../signup/signup_noname.php");
+		}
+		if ($wordCount > 1)
+		{
+        		header("Location: ../signup/signup_nospace.php");
+		}
 	}
 
 	else
