@@ -60,10 +60,19 @@ CREATE TABLE users (
     username text NOT NULL UNIQUE,
     password text NOT NULL,
     math_level integer DEFAULT 1 NOT NULL,
+    math_teacher_id integer,
     english_level integer DEFAULT 1 NOT NULL,
+    english_teacher_id integer,
     role_id integer NOT NULL,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
+    admin_id integer,
+    teacher_id integer,
+    FOREIGN KEY (math_teacher_id) REFERENCES users(id),
+    FOREIGN KEY (english_teacher_id) REFERENCES users(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id),
+    FOREIGN KEY (admin_id) REFERENCES users(id),
+    FOREIGN KEY (teacher_id) REFERENCES users(id)
 );
+
 ALTER TABLE public.users OWNER TO postgres;
 
 CREATE SEQUENCE users_id_seq
@@ -78,8 +87,26 @@ ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
-insert into users (username,password,role_id) values ('vis','p',2); 
-insert into users (username,password,role_id) values ('vis1','p',3); 
+--admin=1,teacher=2,student=3,guest=4
+--create admin anselm 
+insert into users (username,password,role_id) values ('anselm','p',2); 
+--create admin vis 
+insert into users (username,password,role_id) values ('vis','p',3); 
+
+--create teachers anselm 
+insert into users (username,password,role_id,admin_id) values ('kmary.anselm','p',3,1); 
+--create teachers vis 
+insert into users (username,password,role_id,admin_id) values ('jroache.vis','p',3,2); 
+
+--create students anselm 
+insert into users (username,password,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p',3,3,3,1,3); 
+--create students vis 
+insert into users (username,password,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p',4,4,3,2,4); 
+
+--create guest
+insert into users (username,password,role_id) values ('guest','p',4); 
+
+
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
@@ -102,7 +129,6 @@ ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq':
 
 insert into subjects (subject) values ('Math');
 insert into subjects (subject) values ('English');
-
 
 --------------------levels---------------------------------------
 CREATE TABLE levels (
