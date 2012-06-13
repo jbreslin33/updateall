@@ -32,20 +32,25 @@
 	else
 	{
 		//check for no numbers
-		/*
-		$usernameArray = str_split(usernameString);
-		$arraySize = count($usernameArray);
-	
+		//let's first convert to arrray
+		$stringArray = str_split($usernameString);	
+
+		$arraySize = count($stringArray);
 		for ($i=0; $i < $arraySize; $i++)
 		{
-			if ($usernameArray[$i] == '')
+			if ($stringArray[$i] == '2')
 			{
-                        	header("Location: ../template/signup/signup_username_no_spaces.php");
+				$noNumbers = false;
 			}
-		}
-		*/
 
-		if ($noNumbers)
+		}
+
+		if ($noNumbers == false)
+		{
+        		header("Location: ../signup/signup_nonumbers.php");
+		}
+
+		else	
 		{
 
 			//db connection
