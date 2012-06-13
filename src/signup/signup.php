@@ -9,6 +9,34 @@
 	$_SESSION["username"] = $_POST["username"];
 	$_SESSION["password"] = $_POST["password"];
 
+
+	$usernameString = $_SESSION["username"];
+
+
+        $wordCount = str_word_count($usernameString);
+
+	if ($wordCount > 1)
+	{
+        	header("Location: ../signup/signup_username_no_spaces.php?wordCount=$wordCount");
+	}
+
+	else
+	{
+
+	//check for one word username	
+/*
+	$usernameArray = str_split(usernameString);
+	$arraySize = count($usernameArray);
+	
+	for ($i=0; $i < $arraySize; $i++)
+	{
+		if ($usernameArray[$i] == '')
+		{
+                        header("Location: ../template/signup/signup_username_no_spaces.php");
+		}
+	}
+*/
+
 	//db connection
 	$conn = dbConnect();
 	
@@ -96,5 +124,6 @@
                 //send user back to login form
                 header("Location: login_form.php");
         }
+}
 ?>
 
