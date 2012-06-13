@@ -17,7 +17,7 @@
 
 	if ($wordCount > 1)
 	{
-        	header("Location: ../signup/signup_username_no_spaces.php?wordCount=$wordCount");
+        	header("Location: ../signup/signup_nospace.php");
 	}
 
 	else
