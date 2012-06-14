@@ -104,8 +104,7 @@ CREATE TABLE counting (
     score_needed integer DEFAULT 10 NOT NULL,
     start_number integer NOT NULL,
     end_number integer NOT NULL,
-    count_by integer DEFAULT 1 NOT NULL,
-    subject_id integer NOT NULL
+    count_by integer DEFAULT 1 NOT NULL
 );
 
 --------------------addition---------------------------------------
@@ -264,7 +263,6 @@ ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY users.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
 ALTER TABLE levels ADD PRIMARY KEY (level,subject_id);
-    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --GAMES
 ALTER TABLE public.games OWNER TO postgres;
@@ -273,7 +271,6 @@ ALTER SEQUENCE games_id_seq OWNED BY users.id;
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 ALTER TABLE games ADD PRIMARY KEY (id);
 ALTER TABLE games ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
-    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
@@ -281,7 +278,6 @@ ALTER TABLE public.counting_id_seq OWNER TO postgres;
 ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
 ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
 ALTER TABLE counting ADD PRIMARY KEY (id);
-    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --ADDITION
 ALTER TABLE public.addition OWNER TO postgres;
@@ -388,17 +384,16 @@ insert into games (level,name,url,subject_id) values (9,'Count','../../template/
 insert into games (level,name,url,subject_id) values (10,'Count','../../template/math/count/count.php',1);
 
 --COUNTING
-
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (1,10,0,10,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (2,10,10,20,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (3,10,20,30,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (4,10,30,40,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (5,10,40,50,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (6,10,50,60,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (7,10,60,70,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (8,10,70,80,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (9,10,80,90,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (10,10,90,100,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (1,10,0,10,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (2,10,10,20,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (3,10,20,30,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (4,10,30,40,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (5,10,40,50,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (6,10,50,60,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (7,10,60,70,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (8,10,70,80,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (9,10,80,90,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (10,10,90,100,1);
 
 
 --------------------REVOKE AND GRANT---------------------------------------
