@@ -161,8 +161,6 @@ ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
-insert into subjects (subject) values ('Math');
-insert into subjects (subject) values ('English');
 
 
 
@@ -190,19 +188,6 @@ ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY users.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
 
---math
-insert into levels(level,next_level,skill,subject_id) values (1,2,'Count from 0 to 10',1);       
-insert into levels(level,next_level,skill,subject_id) values (2,3,'Count from 10 to 20',1);       
-insert into levels(level,next_level,skill,subject_id) values (3,4,'Count from 20 to 30',1);       
-insert into levels(level,next_level,skill,subject_id) values (4,5,'Count from 30 to 40',1);       
-insert into levels(level,next_level,skill,subject_id) values (5,6,'Count from 40 to 50',1);       
-insert into levels(level,next_level,skill,subject_id) values (6,7,'Count from 50 to 60',1);       
-insert into levels(level,next_level,skill,subject_id) values (7,8,'Count from 60 to 70',1);       
-insert into levels(level,next_level,skill,subject_id) values (8,9,'Count from 70 to 80',1);       
-insert into levels(level,next_level,skill,subject_id) values (9,10,'Count from 80 to 90',1);       
-insert into levels(level,next_level,skill,subject_id) values (10,11,'Count from 90 to 100',1);       
---english
-insert into levels(level,next_level,skill,subject_id) values (1,2,'Recognize and A',2);       
 
 
 --------------------games---------------------------------------
@@ -227,17 +212,6 @@ ALTER TABLE public.games_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_id_seq OWNED BY users.id;
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 
-insert into games (level,name,url,subject_id) values (1,'Dungeon Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (1,'Racing Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (2,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (3,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (4,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (5,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (6,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (7,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (8,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (9,'Count','../../template/math/count/count.php',1);
-insert into games (level,name,url,subject_id) values (10,'Count','../../template/math/count/count.php',1);
 
 
 --------------------counting---------------------------------------
@@ -264,16 +238,6 @@ ALTER TABLE public.counting_id_seq OWNER TO postgres;
 ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
 ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
 
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (1,10,0,10,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (2,10,10,20,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (3,10,20,30,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (4,10,30,40,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (5,10,40,50,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (6,10,50,60,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (7,10,60,70,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (8,10,70,80,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (9,10,80,90,1,1);
-insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (10,10,90,100,1,1);
 
 
 --------------------addition---------------------------------------
@@ -384,6 +348,51 @@ insert into users (username,password,first_name,last_name,english_teacher_id,mat
 --create guest
 insert into users (username,password,role_id) values ('guest','p',4); 
 
+--SUBJECTS
+insert into subjects (subject) values ('Math');
+insert into subjects (subject) values ('English');
+
+--LEVELS
+--math
+insert into levels(level,next_level,skill,subject_id) values (1,2,'Count from 0 to 10',1);       
+insert into levels(level,next_level,skill,subject_id) values (2,3,'Count from 10 to 20',1);       
+insert into levels(level,next_level,skill,subject_id) values (3,4,'Count from 20 to 30',1);       
+insert into levels(level,next_level,skill,subject_id) values (4,5,'Count from 30 to 40',1);       
+insert into levels(level,next_level,skill,subject_id) values (5,6,'Count from 40 to 50',1);       
+insert into levels(level,next_level,skill,subject_id) values (6,7,'Count from 50 to 60',1);       
+insert into levels(level,next_level,skill,subject_id) values (7,8,'Count from 60 to 70',1);       
+insert into levels(level,next_level,skill,subject_id) values (8,9,'Count from 70 to 80',1);       
+insert into levels(level,next_level,skill,subject_id) values (9,10,'Count from 80 to 90',1);       
+insert into levels(level,next_level,skill,subject_id) values (10,11,'Count from 90 to 100',1);       
+--english
+insert into levels(level,next_level,skill,subject_id) values (1,2,'Recognize and A',2);       
+
+
+--GAMES
+insert into games (level,name,url,subject_id) values (1,'Dungeon Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (1,'Racing Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (2,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (3,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (4,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (5,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (6,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (7,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (8,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (9,'Count','../../template/math/count/count.php',1);
+insert into games (level,name,url,subject_id) values (10,'Count','../../template/math/count/count.php',1);
+
+--COUNTING
+
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (1,10,0,10,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (2,10,10,20,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (3,10,20,30,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (4,10,30,40,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (5,10,40,50,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (6,10,50,60,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (7,10,60,70,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (8,10,70,80,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (9,10,80,90,1,1);
+insert into counting (level,score_needed,start_number,end_number,count_by,subject_id) values (10,10,90,100,1,1);
 
 
 --------------------REVOKE AND GRANT---------------------------------------
