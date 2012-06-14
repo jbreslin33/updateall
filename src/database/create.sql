@@ -70,42 +70,14 @@ CREATE TABLE users (
     role_id integer NOT NULL,
 
     admin_id integer,
-    teacher_id integer,
-
-    FOREIGN KEY (math_teacher_id) REFERENCES users(id),
---  FOREIGN KEY (math_group_id) REFERENCES groups(id),
-    FOREIGN KEY (english_teacher_id) REFERENCES users(id),
---  FOREIGN KEY (english_group_id) REFERENCES groups(id),
-    FOREIGN KEY (role_id) REFERENCES roles(id),
-    FOREIGN KEY (admin_id) REFERENCES users(id),
-    FOREIGN KEY (teacher_id) REFERENCES users(id)
+    teacher_id integer
 );
-
-
-
-
-
-
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
     id integer NOT NULL PRIMARY KEY,
     subject text NOT NULL UNIQUE
 );
-ALTER TABLE public.subjects OWNER TO postgres;
-
-CREATE SEQUENCE subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE CACHE 1; 
-ALTER TABLE public.subjects_id_seq OWNER TO postgres;
-
-ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
-ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
-
-
-
 
 --------------------levels---------------------------------------
 CREATE TABLE levels (
@@ -265,6 +237,14 @@ CREATE SEQUENCE users_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--SUBJECTS
+CREATE SEQUENCE subjects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE 
+    CACHE 1; 
+
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
@@ -291,6 +271,20 @@ ALTER TABLE public.users OWNER TO postgres;
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+--    FOREIGN KEY (math_teacher_id) REFERENCES users(id),
+--  FOREIGN KEY (math_group_id) REFERENCES groups(id),
+ --   FOREIGN KEY (english_teacher_id) REFERENCES users(id),
+--  FOREIGN KEY (english_group_id) REFERENCES groups(id),
+  --  FOREIGN KEY (role_id) REFERENCES roles(id),
+   -- FOREIGN KEY (admin_id) REFERENCES users(id),
+    --FOREIGN KEY (teacher_id) REFERENCES users(id)
+
+--SUBJECTS
+ALTER TABLE public.subjects OWNER TO postgres;
+ALTER TABLE public.subjects_id_seq OWNER TO postgres;
+ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
+ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
 --------------------INSERT---------------------------------------
 --ROLES
