@@ -7,9 +7,10 @@ DROP TABLE addition;
 DROP TABLE subtraction;
 DROP TABLE levels;
 DROP TABLE games;
-DROP TABLE groups;
+DROP TABLE grade_level;
 DROP TABLE subjects;
 DROP TABLE users;
+DROP TABLE groups;
 DROP TABLE roles;
 
 SET statement_timeout = 0;
@@ -55,22 +56,56 @@ insert into roles (role) values ('Teacher');
 insert into roles (role) values ('Student'); 
 insert into roles (role) values ('Guest'); 
 
+--------------------groups---------------------------------------
+CREATE TABLE groups (
+    id integer NOT NULL PRIMARY KEY,
+    description text NOT NULL UNIQUE
+);
+ALTER TABLE public.groups OWNER TO postgres;
+
+CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER TABLE public.groups_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
+ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+
+insert into groups (description) values ('Room 33 Math');
+insert into groups (description) values ('Room 34 Math');
+insert into groups (description) values ('Cora Trailer 10AM MATH');
+
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL PRIMARY KEY,
+
     username text NOT NULL UNIQUE,
     password text NOT NULL,
+
     first_name text,
     last_name text,
+
     math_level integer DEFAULT 1 NOT NULL,
     math_teacher_id integer,
+    math_group_id integer,
+
     english_level integer DEFAULT 1 NOT NULL,
     english_teacher_id integer,
+    english_group_id integer,
+
     role_id integer NOT NULL,
+
     admin_id integer,
     teacher_id integer,
+
     FOREIGN KEY (math_teacher_id) REFERENCES users(id),
+    FOREIGN KEY (math_group_id) REFERENCES groups(id),
     FOREIGN KEY (english_teacher_id) REFERENCES users(id),
+    FOREIGN KEY (english_group_id) REFERENCES groups(id),
     FOREIGN KEY (role_id) REFERENCES roles(id),
     FOREIGN KEY (admin_id) REFERENCES users(id),
     FOREIGN KEY (teacher_id) REFERENCES users(id)
@@ -122,9 +157,7 @@ CREATE SEQUENCE subjects_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
+    NO MAXVALUE CACHE 1; 
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
@@ -133,30 +166,49 @@ ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq':
 insert into subjects (subject) values ('Math');
 insert into subjects (subject) values ('English');
 
---------------------groups---------------------------------------
-CREATE TABLE groups (
-    id integer NOT NULL PRIMARY KEY,
-    description text NOT NULL UNIQUE,
-    teacher_id integer,
-    FOREIGN KEY (teacher_id) REFERENCES users(id)
-);
-ALTER TABLE public.groups OWNER TO postgres;
 
-CREATE SEQUENCE groups_id_seq
+--------------------grade_level---------------------------------------
+
+CREATE TABLE grade_level (
+    id integer NOT NULL PRIMARY KEY,
+    description text NOT NULL UNIQUE
+);
+ALTER TABLE public.grade_level OWNER TO postgres;
+
+CREATE SEQUENCE grade_level_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-ALTER TABLE public.groups_id_seq OWNER TO postgres;
+ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
 
-ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
-ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
+ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id_seq'::regclass);
 
-insert into groups (description,teacher_id) values ('Room 33 Math',4);
-insert into groups (description,teacher_id) values ('Room 34 Math',4);
-insert into groups (description,teacher_id) values ('Cora Trailer 10AM MATH',3);
+insert into grade_level (description) values ('PK0');
+insert into grade_level (description) values ('PK1');
+insert into grade_level (description) values ('PK2');
+insert into grade_level (description) values ('PK3');
+insert into grade_level (description) values ('PK4');
+insert into grade_level (description) values ('K');
+insert into grade_level (description) values ('Grade 1');
+insert into grade_level (description) values ('Grade 2');
+insert into grade_level (description) values ('Grade 3');
+insert into grade_level (description) values ('Grade 4');
+insert into grade_level (description) values ('Grade 5');
+insert into grade_level (description) values ('Grade 6');
+insert into grade_level (description) values ('Grade 7');
+insert into grade_level (description) values ('Grade 8');
+insert into grade_level (description) values ('Grade 9');
+insert into grade_level (description) values ('Grade 10');
+insert into grade_level (description) values ('Grade 11');
+insert into grade_level (description) values ('Grade 12');
+insert into grade_level (description) values ('Grade 13');
+insert into grade_level (description) values ('Grade 14');
+insert into grade_level (description) values ('Grade 15');
+insert into grade_level (description) values ('Grade 16');
 
 --------------------levels---------------------------------------
 CREATE TABLE levels (
