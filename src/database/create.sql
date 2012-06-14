@@ -61,11 +61,11 @@ CREATE TABLE users (
 
     math_level integer DEFAULT 1 NOT NULL,
     math_teacher_id integer,
---  math_group_id integer,
+    math_group_id integer,
 
     english_level integer DEFAULT 1 NOT NULL,
     english_teacher_id integer,
---  english_group_id integer,
+    english_group_id integer,
 
     role_id integer NOT NULL,
 
@@ -272,6 +272,7 @@ ALTER TABLE public.games_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_id_seq OWNED BY users.id;
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 ALTER TABLE games ADD PRIMARY KEY (id);
+ALTER TABLE games ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
     --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --COUNTING
