@@ -8,9 +8,9 @@ DROP TABLE subtraction;
 DROP TABLE levels;
 DROP TABLE games;
 DROP TABLE subjects;
-DROP TABLE users;
-DROP TABLE groups;
 DROP TABLE grade_level;
+DROP TABLE groups;
+DROP TABLE users;
 DROP TABLE roles;
 
 SET statement_timeout = 0;
@@ -77,8 +77,7 @@ ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id
 CREATE TABLE groups (
     id integer NOT NULL PRIMARY KEY,
     teacher_id integer,
-    description text NOT NULL UNIQUE,
-    FOREIGN KEY (teacher_id) REFERENCES users(id)
+    description text NOT NULL UNIQUE
 );
 ALTER TABLE public.groups OWNER TO postgres;
 
@@ -107,11 +106,11 @@ CREATE TABLE users (
 
     math_level integer DEFAULT 1 NOT NULL,
     math_teacher_id integer,
-    math_group_id integer,
+--  math_group_id integer,
 
     english_level integer DEFAULT 1 NOT NULL,
     english_teacher_id integer,
-    english_group_id integer,
+--  english_group_id integer,
 
     role_id integer NOT NULL,
 
@@ -119,9 +118,9 @@ CREATE TABLE users (
     teacher_id integer,
 
     FOREIGN KEY (math_teacher_id) REFERENCES users(id),
-    FOREIGN KEY (math_group_id) REFERENCES groups(id),
+--  FOREIGN KEY (math_group_id) REFERENCES groups(id),
     FOREIGN KEY (english_teacher_id) REFERENCES users(id),
-    FOREIGN KEY (english_group_id) REFERENCES groups(id),
+--  FOREIGN KEY (english_group_id) REFERENCES groups(id),
     FOREIGN KEY (role_id) REFERENCES roles(id),
     FOREIGN KEY (admin_id) REFERENCES users(id),
     FOREIGN KEY (teacher_id) REFERENCES users(id)
@@ -288,7 +287,9 @@ ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 
 
+
 --------------------ALTER---------------------------------------
+--ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --------------------INSERT---------------------------------------
 
