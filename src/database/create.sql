@@ -38,20 +38,20 @@ CREATE TABLE roles (
 
 --------------------grade_level---------------------------------------
 CREATE TABLE grade_level (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     description text NOT NULL UNIQUE
 );
 
 --------------------groups---------------------------------------
 CREATE TABLE groups (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     teacher_id integer,
     description text NOT NULL UNIQUE
 );
 
 --------------------users---------------------------------------
 CREATE TABLE users (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
 
     username text NOT NULL UNIQUE,
     password text NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE users (
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     subject text NOT NULL UNIQUE
 );
 
@@ -90,7 +90,7 @@ CREATE TABLE levels (
 
 --------------------games---------------------------------------
 CREATE TABLE games (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     level integer NOT NULL,
     name text NOT NULL,
     url text NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE games (
 
 --------------------counting---------------------------------------
 CREATE TABLE counting (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     start_number integer NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE counting (
 
 --------------------addition---------------------------------------
 CREATE TABLE addition (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     addend_min integer NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE addition (
 
 --------------------subtraction---------------------------------------
 CREATE TABLE subtraction (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     minuend_min integer NOT NULL,
@@ -223,7 +223,7 @@ ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 ALTER TABLE roles ADD PRIMARY KEY (id);
 
---ROLES
+--GRADE_LEVELS
 ALTER TABLE public.grade_level OWNER TO postgres;
 ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
@@ -234,12 +234,14 @@ ALTER TABLE public.groups OWNER TO postgres;
 ALTER TABLE public.groups_id_seq OWNER TO postgres;
 ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+ALTER TABLE groups ADD PRIMARY KEY (id);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE users ADD PRIMARY KEY (id);
 
 --    FOREIGN KEY (math_teacher_id) REFERENCES users(id),
 --  FOREIGN KEY (math_group_id) REFERENCES groups(id),
@@ -254,13 +256,14 @@ ALTER TABLE public.subjects OWNER TO postgres;
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
+ALTER TABLE subjects ADD PRIMARY KEY (id);
 
 --LEVELS
 ALTER TABLE public.levels OWNER TO postgres;
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY users.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-    --PRIMARY KEY (level,subject_id),
+ALTER TABLE levels ADD PRIMARY KEY (level,subject_id);
     --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --GAMES
@@ -268,6 +271,7 @@ ALTER TABLE public.games OWNER TO postgres;
 ALTER TABLE public.games_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_id_seq OWNED BY users.id;
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+ALTER TABLE games ADD PRIMARY KEY (id);
     --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --COUNTING
@@ -275,6 +279,7 @@ ALTER TABLE public.counting OWNER TO postgres;
 ALTER TABLE public.counting_id_seq OWNER TO postgres;
 ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
 ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
+ALTER TABLE counting ADD PRIMARY KEY (id);
     --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --ADDITION
@@ -282,12 +287,14 @@ ALTER TABLE public.addition OWNER TO postgres;
 ALTER TABLE public.addition_id_seq OWNER TO postgres;
 ALTER SEQUENCE addition_id_seq OWNED BY users.id;
 ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
+ALTER TABLE addition ADD PRIMARY KEY (id);
 
 --SUBTRACTION
 ALTER TABLE public.subtraction OWNER TO postgres;
 ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
 ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
+ALTER TABLE subtraction ADD PRIMARY KEY (id);
 
 --------------------INSERT---------------------------------------
 --ROLES
