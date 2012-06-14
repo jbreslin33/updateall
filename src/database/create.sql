@@ -7,6 +7,7 @@ DROP TABLE addition;
 DROP TABLE subtraction;
 DROP TABLE levels;
 DROP TABLE games;
+DROP TABLE groups;
 DROP TABLE subjects;
 DROP TABLE users;
 DROP TABLE roles;
@@ -126,11 +127,36 @@ CREATE SEQUENCE subjects_id_seq
 
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 
-ALTER SEQUENCE subjects_id_seq OWNED BY users.id;
+ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
 insert into subjects (subject) values ('Math');
 insert into subjects (subject) values ('English');
+
+--------------------groups---------------------------------------
+CREATE TABLE groups (
+    id integer NOT NULL PRIMARY KEY,
+    description text NOT NULL UNIQUE,
+    teacher_id integer,
+    FOREIGN KEY (teacher_id) REFERENCES users(id)
+);
+ALTER TABLE public.groups OWNER TO postgres;
+
+CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER TABLE public.groups_id_seq OWNER TO postgres;
+
+ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
+ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+
+insert into groups (description,teacher_id) values ('Room 33 Math',4);
+insert into groups (description,teacher_id) values ('Room 34 Math',4);
+insert into groups (description,teacher_id) values ('Cora Trailer 10AM MATH',3);
 
 --------------------levels---------------------------------------
 CREATE TABLE levels (
