@@ -30,27 +30,11 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 
-
-
 --------------------roles---------------------------------------
 CREATE TABLE roles (
     id integer NOT NULL PRIMARY KEY,
     role text NOT NULL UNIQUE
 );
-ALTER TABLE public.roles OWNER TO postgres;
-
-CREATE SEQUENCE roles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER TABLE public.roles_id_seq OWNER TO postgres;
-
-ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
-ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
-
 
 --------------------grade_level---------------------------------------
 
@@ -68,7 +52,6 @@ CREATE SEQUENCE grade_level_id_seq
     CACHE 1;
 
 ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
-
 ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
 ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id_seq'::regclass);
 
@@ -288,8 +271,25 @@ ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id
 
 
 
+----------------------CREATE SEQUENCES-------------------------
+--ROLES
+CREATE SEQUENCE roles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+
+--ROLES
+ALTER TABLE public.roles OWNER TO postgres;
+ALTER TABLE public.roles_id_seq OWNER TO postgres;
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+
 
 --------------------INSERT---------------------------------------
 
