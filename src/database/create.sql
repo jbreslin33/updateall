@@ -51,10 +51,6 @@ ALTER TABLE public.roles_id_seq OWNER TO postgres;
 ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 
-insert into roles (role) values ('Administrator'); 
-insert into roles (role) values ('Teacher'); 
-insert into roles (role) values ('Student'); 
-insert into roles (role) values ('Guest'); 
 
 --------------------grade_level---------------------------------------
 
@@ -76,28 +72,6 @@ ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
 ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id_seq'::regclass);
 
-insert into grade_level (description) values ('PK0');
-insert into grade_level (description) values ('PK1');
-insert into grade_level (description) values ('PK2');
-insert into grade_level (description) values ('PK3');
-insert into grade_level (description) values ('PK4');
-insert into grade_level (description) values ('K');
-insert into grade_level (description) values ('Grade 1');
-insert into grade_level (description) values ('Grade 2');
-insert into grade_level (description) values ('Grade 3');
-insert into grade_level (description) values ('Grade 4');
-insert into grade_level (description) values ('Grade 5');
-insert into grade_level (description) values ('Grade 6');
-insert into grade_level (description) values ('Grade 7');
-insert into grade_level (description) values ('Grade 8');
-insert into grade_level (description) values ('Grade 9');
-insert into grade_level (description) values ('Grade 10');
-insert into grade_level (description) values ('Grade 11');
-insert into grade_level (description) values ('Grade 12');
-insert into grade_level (description) values ('Grade 13');
-insert into grade_level (description) values ('Grade 14');
-insert into grade_level (description) values ('Grade 15');
-insert into grade_level (description) values ('Grade 16');
 
 --------------------groups---------------------------------------
 CREATE TABLE groups (
@@ -120,9 +94,6 @@ ALTER TABLE public.groups_id_seq OWNER TO postgres;
 ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 
---insert into groups (description) values ('Room 33 Math');
---insert into groups (description) values ('Room 34 Math');
---insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --------------------users---------------------------------------
 CREATE TABLE users (
@@ -170,24 +141,6 @@ ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
---admin=1,teacher=2,student=3,guest=4
---create admin anselm 
-insert into users (username,password,first_name,last_name,role_id) values ('anselm','p','Father','Foley',1); 
---create admin vis 
-insert into users (username,password,first_name,last_name,role_id) values ('vis','p','Dolores','Egner',1); 
-
---create teachers anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_id) values ('kmary.anselm','p','Sally','Berg',2,1); 
---create teachers vis 
-insert into users (username,password,first_name,last_name,role_id,admin_id) values ('jroache.vis','p','James','Roache',2,2); 
-
---create students anselm 
-insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,3,3,1,3); 
---create students vis 
-insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',4,4,3,2,4); 
-
---create guest
-insert into users (username,password,role_id) values ('guest','p',4); 
 
 
 
@@ -369,6 +322,69 @@ CREATE SEQUENCE subtraction_id_seq
 ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
 ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
+
+
+--------------------ALTER---------------------------------------
+
+--------------------INSERT---------------------------------------
+
+--ROLES
+insert into roles (role) values ('Administrator'); 
+insert into roles (role) values ('Teacher'); 
+insert into roles (role) values ('Student'); 
+insert into roles (role) values ('Guest'); 
+
+--GRADE_LEVEL
+insert into grade_level (description) values ('PK0');
+insert into grade_level (description) values ('PK1');
+insert into grade_level (description) values ('PK2');
+insert into grade_level (description) values ('PK3');
+insert into grade_level (description) values ('PK4');
+insert into grade_level (description) values ('K');
+insert into grade_level (description) values ('Grade 1');
+insert into grade_level (description) values ('Grade 2');
+insert into grade_level (description) values ('Grade 3');
+insert into grade_level (description) values ('Grade 4');
+insert into grade_level (description) values ('Grade 5');
+insert into grade_level (description) values ('Grade 6');
+insert into grade_level (description) values ('Grade 7');
+insert into grade_level (description) values ('Grade 8');
+insert into grade_level (description) values ('Grade 9');
+insert into grade_level (description) values ('Grade 10');
+insert into grade_level (description) values ('Grade 11');
+insert into grade_level (description) values ('Grade 12');
+insert into grade_level (description) values ('Grade 13');
+insert into grade_level (description) values ('Grade 14');
+insert into grade_level (description) values ('Grade 15');
+insert into grade_level (description) values ('Grade 16');
+
+--GROUPS
+insert into groups (description) values ('Room 33 Math');
+insert into groups (description) values ('Room 34 Math');
+insert into groups (description) values ('Cora Trailer 10AM MATH');
+
+--SUBJECTS
+
+--admin=1,teacher=2,student=3,guest=4
+--create admin anselm 
+insert into users (username,password,first_name,last_name,role_id) values ('anselm','p','Father','Foley',1); 
+--create admin vis 
+insert into users (username,password,first_name,last_name,role_id) values ('vis','p','Dolores','Egner',1); 
+
+--create teachers anselm 
+insert into users (username,password,first_name,last_name,role_id,admin_id) values ('kmary.anselm','p','Sally','Berg',2,1); 
+--create teachers vis 
+insert into users (username,password,first_name,last_name,role_id,admin_id) values ('jroache.vis','p','James','Roache',2,2); 
+
+--create students anselm 
+insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,3,3,1,3); 
+--create students vis 
+insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',4,4,3,2,4); 
+
+--create guest
+insert into users (username,password,role_id) values ('guest','p',4); 
+
+
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
