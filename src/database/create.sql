@@ -32,7 +32,7 @@ SET default_with_oids = false;
 
 --------------------roles---------------------------------------
 CREATE TABLE roles (
-    id integer NOT NULL PRIMARY KEY,
+    id integer NOT NULL,
     role text NOT NULL UNIQUE
 );
 
@@ -221,6 +221,7 @@ ALTER TABLE public.roles OWNER TO postgres;
 ALTER TABLE public.roles_id_seq OWNER TO postgres;
 ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
+ALTER TABLE roles ADD PRIMARY KEY (id);
 
 --ROLES
 ALTER TABLE public.grade_level OWNER TO postgres;
