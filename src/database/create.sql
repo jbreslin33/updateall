@@ -85,9 +85,7 @@ CREATE TABLE levels (
     level integer NOT NULL,
     next_level integer NOT NULL,
     skill text NOT NULL,
-    subject_id integer NOT NULL,
-    PRIMARY KEY (level,subject_id),
-    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+    subject_id integer NOT NULL
 );
 
 --------------------games---------------------------------------
@@ -96,13 +94,8 @@ CREATE TABLE games (
     level integer NOT NULL,
     name text NOT NULL,
     url text NOT NULL,
-    subject_id integer NOT NULL,
-    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+    subject_id integer NOT NULL
 );
-
-
-
-
 
 --------------------counting---------------------------------------
 CREATE TABLE counting (
@@ -112,21 +105,8 @@ CREATE TABLE counting (
     start_number integer NOT NULL,
     end_number integer NOT NULL,
     count_by integer DEFAULT 1 NOT NULL,
-    subject_id integer NOT NULL,
-    FOREIGN KEY (subject_id) REFERENCES subjects(id)
+    subject_id integer NOT NULL
 );
-ALTER TABLE public.counting OWNER TO postgres;
-
---auto key
-CREATE SEQUENCE counting_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER TABLE public.counting_id_seq OWNER TO postgres;
-ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
-ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
 
 --------------------addition---------------------------------------
 CREATE TABLE addition (
@@ -137,18 +117,7 @@ CREATE TABLE addition (
     addend_max integer NOT NULL,
     number_of_addends integer DEFAULT 2 NOT NULL
 );
-ALTER TABLE public.addition OWNER TO postgres;
 
---auto key
-CREATE SEQUENCE addition_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER TABLE public.addition_id_seq OWNER TO postgres;
-ALTER SEQUENCE addition_id_seq OWNED BY users.id;
-ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
 
 --------------------subtraction---------------------------------------
 CREATE TABLE subtraction (
@@ -162,20 +131,6 @@ CREATE TABLE subtraction (
     number_of_subtrahends integer DEFAULT 1 NOT NULL,
     negative_difference boolean DEFAULT false NOT NULL
 );
-ALTER TABLE public.subtraction OWNER TO postgres;
-
---auto key
-CREATE SEQUENCE subtraction_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
-ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
-ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
-
-
 
 ----------------------CREATE SEQUENCES-------------------------
 --ROLES
@@ -234,6 +189,30 @@ CREATE SEQUENCE games_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--COUNTING
+CREATE SEQUENCE counting_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--ADDITION
+CREATE SEQUENCE addition_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--SUBTRACTION
+CREATE SEQUENCE subtraction_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
@@ -280,12 +259,34 @@ ALTER TABLE public.levels OWNER TO postgres;
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY users.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+    --PRIMARY KEY (level,subject_id),
+    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
 
 --GAMES
 ALTER TABLE public.games OWNER TO postgres;
 ALTER TABLE public.games_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_id_seq OWNED BY users.id;
 ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
+
+--COUNTING
+ALTER TABLE public.counting OWNER TO postgres;
+ALTER TABLE public.counting_id_seq OWNER TO postgres;
+ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
+ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
+    --FOREIGN KEY (subject_id) REFERENCES subjects(id)
+
+--ADDITION
+ALTER TABLE public.addition OWNER TO postgres;
+ALTER TABLE public.addition_id_seq OWNER TO postgres;
+ALTER SEQUENCE addition_id_seq OWNED BY users.id;
+ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
+
+--SUBTRACTION
+ALTER TABLE public.subtraction OWNER TO postgres;
+ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
+ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
+ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 
 --------------------INSERT---------------------------------------
 --ROLES
