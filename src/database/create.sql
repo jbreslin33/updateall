@@ -89,21 +89,6 @@ CREATE TABLE levels (
     PRIMARY KEY (level,subject_id),
     FOREIGN KEY (subject_id) REFERENCES subjects(id)
 );
-ALTER TABLE public.levels OWNER TO postgres;
-
-CREATE SEQUENCE levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-ALTER TABLE public.levels_id_seq OWNER TO postgres;
-
-ALTER SEQUENCE levels_id_seq OWNED BY users.id;
-ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-
-
 
 --------------------games---------------------------------------
 CREATE TABLE games (
@@ -114,18 +99,8 @@ CREATE TABLE games (
     subject_id integer NOT NULL,
     FOREIGN KEY (subject_id) REFERENCES subjects(id)
 );
-ALTER TABLE public.games OWNER TO postgres;
 
---auto key
-CREATE SEQUENCE games_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-ALTER TABLE public.games_id_seq OWNER TO postgres;
-ALTER SEQUENCE games_id_seq OWNED BY users.id;
-ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
 
 
 
@@ -152,8 +127,6 @@ CREATE SEQUENCE counting_id_seq
 ALTER TABLE public.counting_id_seq OWNER TO postgres;
 ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
 ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
-
-
 
 --------------------addition---------------------------------------
 CREATE TABLE addition (
@@ -245,6 +218,22 @@ CREATE SEQUENCE subjects_id_seq
     NO MAXVALUE 
     CACHE 1; 
 
+--LEVELS
+CREATE SEQUENCE levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GAMES
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
@@ -285,6 +274,18 @@ ALTER TABLE public.subjects OWNER TO postgres;
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
+
+--LEVELS
+ALTER TABLE public.levels OWNER TO postgres;
+ALTER TABLE public.levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_id_seq OWNED BY users.id;
+ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+
+--GAMES
+ALTER TABLE public.games OWNER TO postgres;
+ALTER TABLE public.games_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_id_seq OWNED BY users.id;
+ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 
 --------------------INSERT---------------------------------------
 --ROLES
