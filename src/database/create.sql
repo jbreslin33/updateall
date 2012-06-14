@@ -59,6 +59,8 @@ CREATE TABLE users (
     id integer NOT NULL PRIMARY KEY,
     username text NOT NULL UNIQUE,
     password text NOT NULL,
+    first_name text,
+    last_name text,
     math_level integer DEFAULT 1 NOT NULL,
     math_teacher_id integer,
     english_level integer DEFAULT 1 NOT NULL,
@@ -89,19 +91,19 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into users (username,password,role_id) values ('anselm','p',2); 
+insert into users (username,password,first_name,last_name,role_id) values ('anselm','p','Father','Foley',1); 
 --create admin vis 
-insert into users (username,password,role_id) values ('vis','p',3); 
+insert into users (username,password,first_name,last_name,role_id) values ('vis','p','Dolores','Egner',1); 
 
 --create teachers anselm 
-insert into users (username,password,role_id,admin_id) values ('kmary.anselm','p',3,1); 
+insert into users (username,password,first_name,last_name,role_id,admin_id) values ('kmary.anselm','p','Sally','Berg',2,1); 
 --create teachers vis 
-insert into users (username,password,role_id,admin_id) values ('jroache.vis','p',3,2); 
+insert into users (username,password,first_name,last_name,role_id,admin_id) values ('jroache.vis','p','James','Roache',2,2); 
 
 --create students anselm 
-insert into users (username,password,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p',3,3,3,1,3); 
+insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,3,3,1,3); 
 --create students vis 
-insert into users (username,password,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p',4,4,3,2,4); 
+insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',4,4,3,2,4); 
 
 --create guest
 insert into users (username,password,role_id) values ('guest','p',4); 
