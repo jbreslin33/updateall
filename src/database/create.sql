@@ -245,6 +245,9 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 ALTER TABLE users ADD PRIMARY KEY (id);
 --ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES levels(subject_id_level_key);
+ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
+ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
     --id integer NOT NULL,
     --level integer NOT NULL,
