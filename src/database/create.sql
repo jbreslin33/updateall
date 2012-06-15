@@ -51,11 +51,11 @@ CREATE TABLE groups (
 
 --------------------levels---------------------------------------
 CREATE TABLE levels (
-    id integer NOT NULL,
+    --id integer NOT NULL,
+    subject_id integer NOT NULL,
     level integer NOT NULL,
     next_level integer NOT NULL,
-    skill text NOT NULL,
-    subject_id integer NOT NULL
+    skill text NOT NULL
 );
 
 --------------------users---------------------------------------
@@ -152,12 +152,12 @@ CREATE SEQUENCE groups_id_seq
     CACHE 1;
 
 --LEVELS
-CREATE SEQUENCE levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+--CREATE SEQUENCE levels_id_seq
+ --   START WITH 1
+  --  INCREMENT BY 1
+   -- NO MINVALUE
+    --NO MAXVALUE
+    --CACHE 1;
 
 --USERS
 CREATE SEQUENCE users_id_seq
@@ -232,13 +232,13 @@ ALTER TABLE groups ADD PRIMARY KEY (id);
 
 --LEVELS
 ALTER TABLE public.levels OWNER TO postgres;
-ALTER TABLE public.levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
-ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-ALTER TABLE levels ADD PRIMARY KEY (id);
+--ALTER TABLE public.levels_id_seq OWNER TO postgres;
+--ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
+--ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+--ALTER TABLE levels ADD PRIMARY KEY (id);
 --ALTER TABLE levels ADD level_subject_id UNIQUE (level, subject_id);
 --ALTER TABLE distributors ADD CONSTRAINT dist_id_zipcode_key UNIQUE (dist_id, zipcode);
-ALTER TABLE levels ADD CONSTRAINT subject_id_level_key UNIQUE (subject_id, level);
+ALTER TABLE levels ADD CONSTRAINT subject_id_level_key PRIMARY KEY (subject_id, level);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
