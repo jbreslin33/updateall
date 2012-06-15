@@ -60,12 +60,7 @@ CREATE TABLE users (
     last_name text,
 
     math_level integer DEFAULT 1 NOT NULL,
-    math_teacher_id integer,
-    math_group_id integer,
-
     english_level integer DEFAULT 1 NOT NULL,
-    english_teacher_id integer,
-    english_group_id integer,
 
     role_id integer NOT NULL,
 
@@ -242,14 +237,6 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 ALTER TABLE users ADD PRIMARY KEY (id);
 
---    FOREIGN KEY (math_teacher_id) REFERENCES users(id),
---  FOREIGN KEY (math_group_id) REFERENCES groups(id),
- --   FOREIGN KEY (english_teacher_id) REFERENCES users(id),
---  FOREIGN KEY (english_group_id) REFERENCES groups(id),
-  --  FOREIGN KEY (role_id) REFERENCES roles(id),
-   -- FOREIGN KEY (admin_id) REFERENCES users(id),
-    --FOREIGN KEY (teacher_id) REFERENCES users(id)
-
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
@@ -329,8 +316,7 @@ insert into groups (description) values ('Room 33 Math');
 insert into groups (description) values ('Room 34 Math');
 insert into groups (description) values ('Cora Trailer 10AM MATH');
 
---SUBJECTS
-
+--USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
 insert into users (username,password,first_name,last_name,role_id) values ('anselm','p','Father','Foley',1); 
@@ -343,9 +329,9 @@ insert into users (username,password,first_name,last_name,role_id,admin_id) valu
 insert into users (username,password,first_name,last_name,role_id,admin_id) values ('jroache.vis','p','James','Roache',2,2); 
 
 --create students anselm 
-insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,3,3,1,3); 
+insert into users (username,password,first_name,last_name,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,1,3); 
 --create students vis 
-insert into users (username,password,first_name,last_name,english_teacher_id,math_teacher_id,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',4,4,3,2,4); 
+insert into users (username,password,first_name,last_name,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',3,2,4); 
 
 --create guest
 insert into users (username,password,role_id) values ('guest','p',4); 
