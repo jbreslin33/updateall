@@ -236,7 +236,9 @@ ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
 ALTER TABLE levels ADD PRIMARY KEY (id);
-ALTER TABLE levels ADD UNIQUE (level, subject_id);
+--ALTER TABLE levels ADD level_subject_id UNIQUE (level, subject_id);
+--ALTER TABLE distributors ADD CONSTRAINT dist_id_zipcode_key UNIQUE (dist_id, zipcode);
+ALTER TABLE levels ADD CONSTRAINT subject_id_level_key UNIQUE (subject_id, level);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
@@ -244,7 +246,7 @@ ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 ALTER TABLE users ADD PRIMARY KEY (id);
---ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES levels(level);
+--ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES levels(level_subject_id);
 
     --id integer NOT NULL,
     --level integer NOT NULL,
