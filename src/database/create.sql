@@ -235,7 +235,7 @@ ALTER TABLE public.levels OWNER TO postgres;
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-ALTER TABLE levels ADD PRIMARY KEY (id);
+ALTER TABLE levels ADD PRIMARY KEY (level,subject_id);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
