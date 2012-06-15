@@ -48,7 +48,10 @@ CREATE TABLE groups (
     teacher_id integer,
     description text NOT NULL UNIQUE
 );
-
+--i am thinking we might want to go back to 
+--having math_levels table, english_levels table
+--this is going to require some codeding changes elsewhere but it should not be
+--hard...
 --------------------levels---------------------------------------
 CREATE TABLE levels (
     id integer NOT NULL,
