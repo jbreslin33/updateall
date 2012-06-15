@@ -2,16 +2,16 @@
 -- PostgreSQL database dump
 --
 
-DROP TABLE counting;
-DROP TABLE addition;
-DROP TABLE subtraction;
-DROP TABLE levels;
-DROP TABLE games;
-DROP TABLE subjects;
-DROP TABLE grade_level;
-DROP TABLE groups;
-DROP TABLE users;
-DROP TABLE roles;
+DROP TABLE counting cascade;
+DROP TABLE addition cascade;
+DROP TABLE subtraction cascade;
+DROP TABLE games cascade;
+DROP TABLE subjects cascade;
+DROP TABLE grade_level cascade;
+DROP TABLE groups cascade;
+DROP TABLE users cascade;
+DROP TABLE levels cascade;
+DROP TABLE roles cascade;
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -49,6 +49,15 @@ CREATE TABLE groups (
     description text NOT NULL UNIQUE
 );
 
+--------------------levels---------------------------------------
+CREATE TABLE levels (
+    id integer NOT NULL,
+    level integer NOT NULL,
+    next_level integer NOT NULL,
+    skill text NOT NULL,
+    subject_id integer NOT NULL
+);
+
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL,
@@ -74,14 +83,6 @@ CREATE TABLE subjects (
     subject text NOT NULL UNIQUE
 );
 
---------------------levels---------------------------------------
-CREATE TABLE levels (
-    id integer NOT NULL,
-    level integer NOT NULL,
-    next_level integer NOT NULL,
-    skill text NOT NULL,
-    subject_id integer NOT NULL
-);
 
 --------------------games---------------------------------------
 CREATE TABLE games (
@@ -151,6 +152,14 @@ CREATE SEQUENCE groups_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--LEVELS
+CREATE SEQUENCE levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --USERS
 CREATE SEQUENCE users_id_seq
     START WITH 1
@@ -167,13 +176,6 @@ CREATE SEQUENCE subjects_id_seq
     NO MAXVALUE 
     CACHE 1; 
 
---LEVELS
-CREATE SEQUENCE levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 --GAMES
 CREATE SEQUENCE games_id_seq
@@ -230,12 +232,33 @@ ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 ALTER TABLE groups ADD PRIMARY KEY (id);
 
+--LEVELS
+ALTER TABLE public.levels OWNER TO postgres;
+ALTER TABLE public.levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
+ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+ALTER TABLE levels ADD PRIMARY KEY (id);
+
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 ALTER TABLE users ADD PRIMARY KEY (id);
+--ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES levels(id);
+
+    --id integer NOT NULL,
+    --level integer NOT NULL,
+    --next_level integer NOT NULL,
+    --skill text NOT NULL,
+    --subject_id integer NOT NULL
+--    math_level integer DEFAULT 1 NOT NULL,
+ --   english_level integer DEFAULT 1 NOT NULL,
+
+  --  role_id integer NOT NULL,
+
+   -- admin_id integer,
+    --teacher_id integer
 
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
@@ -244,12 +267,6 @@ ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 ALTER TABLE subjects ADD PRIMARY KEY (id);
 
---LEVELS
-ALTER TABLE public.levels OWNER TO postgres;
-ALTER TABLE public.levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE levels_id_seq OWNED BY users.id;
-ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-ALTER TABLE levels ADD PRIMARY KEY (level,subject_id);
 
 --GAMES
 ALTER TABLE public.games OWNER TO postgres;
