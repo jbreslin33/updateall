@@ -83,7 +83,6 @@ CREATE TABLE subjects (
     subject text NOT NULL UNIQUE
 );
 
-
 --------------------games---------------------------------------
 CREATE TABLE games (
     id integer NOT NULL,
@@ -175,7 +174,6 @@ CREATE SEQUENCE subjects_id_seq
     NO MINVALUE
     NO MAXVALUE 
     CACHE 1; 
-
 
 --GAMES
 CREATE SEQUENCE games_id_seq
