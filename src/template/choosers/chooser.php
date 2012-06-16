@@ -5,19 +5,21 @@ include("../headers/header.php");
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
 $_SESSION["subject_id"] = $_GET['subject_id']; 
 $level = 0;
-
+$game_table_name = "";
 if ($_SESSION["subject_id"] == 1)
 {
 	$level = $_SESSION["math_level"];
+	$game_table_name = "math_games";
 }
 if ($_SESSION["subject_id"] == 2)
 {
 	$level = $_SESSION["english_level"];
+	$game_table_name = "english_games";
 }
 
-
-
-$query = "select name, url from math_games where level = ";
+$query = "select name, url from ";
+$query .= $game_table_name;
+$query .= " where level = ";
 $query .= $level;
 //$query .= " and subject_id = ";
 //$query .= $_SESSION["subject_id"];
