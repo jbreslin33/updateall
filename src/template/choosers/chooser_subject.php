@@ -8,7 +8,6 @@ $query = "select id, subject from subjects;";
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-
 //get numer of rows
 $numberOfRows = pg_num_rows($result);
 
@@ -37,8 +36,6 @@ while ($row = pg_fetch_array($result))
 //game variables to fill from db
 $username = $_SESSION["username"];
 
-
-
 ?>
 
 <script language="javascript">
@@ -46,7 +43,6 @@ $username = $_SESSION["username"];
 var username = "<?php echo $username; ?>";
 
 </script>
-
 
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../bounds/bounds.php"></script>
@@ -62,12 +58,9 @@ var username = "<?php echo $username; ?>";
 
 <body>
 
-
-
 <script language="javascript">
 var mGame;
 var mApplication;
-
 
 window.addEvent('domready', function()
 {
@@ -80,7 +73,6 @@ window.addEvent('domready', function()
         //keys
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
-
 
  /******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
@@ -113,7 +105,6 @@ window.addEvent('domready', function()
 
         southBoundsQuestion = new Shape (770, y,  0,405,"","","","violet","boundary");
 
-
         westBounds  = new Shape         ( 10, 50,  0, 35,"","","","#F8CDF8","boundary");
         westBounds  = new Shape         ( 10, 50,  0, 85,"","","","#F6C0F6","boundary");
         westBounds  = new Shape         ( 10, 50,  0,135,"","","","#F5B4F5","boundary");
@@ -145,7 +136,6 @@ window.addEvent('domready', function()
                
         //mGame.addToShapeArray(shape = new Shape(50,50,400,350,mGame,questionMath,"","yellow","question"));
         //mGame.addToShapeArray(shape = new Shape(50,50,450,350,mGame,questionEnglish,"","yellow","question"));
-	
 
 	//create quiz items
         for (i = 0; i < numberOfRows; i++)
@@ -162,9 +152,6 @@ window.addEvent('domready', function()
                 mGame.addToShapeArray(shape = new Shape(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),"","yellow","question"));
                 count++;
         }
-
-
-
 
 	mGame.resetGame();
 
