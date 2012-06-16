@@ -17,10 +17,10 @@ if ($_SESSION["subject_id"] == 2)
 
 
 
-$query = "select name, url from games where level = ";
+$query = "select name, url from math_games where level = ";
 $query .= $level;
-$query .= " and subject_id = ";
-$query .= $_SESSION["subject_id"];
+//$query .= " and subject_id = ";
+//$query .= $_SESSION["subject_id"];
 $query .= ";";
 
 echo $query;
