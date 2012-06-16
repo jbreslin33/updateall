@@ -14,16 +14,8 @@ include("../../../database/db_connect.php");
 $conn = dbConnect();
 
 //query the level table
-//$query = "select skill, next_level from levels where level = ";
-//$query .= $_SESSION["math_level"];
-//$query .= " and subject_id = "
-//$query .= $_SESSION["subject_id"];
-//$query .= ";";
-//query the level table
 $query = "select skill, next_level from math_levels where level = ";
 $query .= $_SESSION["math_level"];
-//$query .= " and subject_id = ";
-//$query .= $_SESSION["subject_id"];
 $query .= ";";
 
 echo $query;
