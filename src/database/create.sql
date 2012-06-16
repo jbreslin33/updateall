@@ -153,14 +153,6 @@ CREATE SEQUENCE groups_id_seq
     NO MAXVALUE
     CACHE 1;
 
---LEVELS
---CREATE SEQUENCE levels_id_seq
- --   START WITH 1
- --   INCREMENT BY 1
-  --  NO MINVALUE
-   -- NO MAXVALUE
-    --CACHE 1;
-
 --USERS
 CREATE SEQUENCE users_id_seq
     START WITH 1
@@ -234,12 +226,6 @@ ALTER TABLE groups ADD PRIMARY KEY (id);
 
 --LEVELS
 ALTER TABLE public.levels OWNER TO postgres;
---ALTER TABLE public.levels_id_seq OWNER TO postgres;
---ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
---ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
---ALTER TABLE levels ADD PRIMARY KEY (id);
---ALTER TABLE levels ADD CONSTRAINT subject_id_level_key UNIQUE (subject_id, level);
---ALTER TABLE levels ADD PRIMARY KEY subject_id_level_key (subject_id, level);
 ALTER TABLE levels ADD PRIMARY KEY (subject_id, level);
 
 --USERS
@@ -253,26 +239,12 @@ ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
 ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
 ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
-    --id integer NOT NULL,
-    --level integer NOT NULL,
-    --next_level integer NOT NULL,
-    --skill text NOT NULL,
-    --subject_id integer NOT NULL
---    math_level integer DEFAULT 1 NOT NULL,
- --   english_level integer DEFAULT 1 NOT NULL,
-
-  --  role_id integer NOT NULL,
-
-   -- admin_id integer,
-    --teacher_id integer
-
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 ALTER TABLE subjects ADD PRIMARY KEY (id);
-
 
 --GAMES
 ALTER TABLE public.games OWNER TO postgres;
@@ -378,7 +350,6 @@ insert into levels(level,next_level,skill,subject_id) values (10,11,'Count from 
 --english
 insert into levels(level,next_level,skill,subject_id) values (1,2,'Recognize and A',2);       
 
-
 --GAMES
 insert into games (level,name,url,subject_id) values (1,'Dungeon Count','../../template/math/count/count.php',1);
 insert into games (level,name,url,subject_id) values (1,'Racing Count','../../template/math/count/count.php',1);
@@ -404,13 +375,11 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 insert into counting (level,score_needed,start_number,end_number,count_by) values (9,10,80,90,1);
 insert into counting (level,score_needed,start_number,end_number,count_by) values (10,10,90,100,1);
 
-
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
-
 
 --
 -- PostgreSQL database dump complete
