@@ -92,7 +92,8 @@ CREATE TABLE users (
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
     id integer NOT NULL,
-    subject text NOT NULL UNIQUE
+    subject text NOT NULL UNIQUE,
+    game_table text NOT NULL UNIQUE
 );
 
 --------------------math_games---------------------------------------
@@ -325,8 +326,8 @@ insert into groups (description) values ('Room 34 Math');
 insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --SUBJECTS
-insert into subjects (subject) values ('Math');
-insert into subjects (subject) values ('English');
+insert into subjects (subject,game_table) values ('Math','math_games');
+insert into subjects (subject,game_table) values ('English','english_games');
 
 --math_levels
 insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
