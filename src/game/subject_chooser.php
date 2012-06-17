@@ -30,7 +30,9 @@ Extends: Game,
                         if (this.mQuiz)
 			{ 
                        		this.mOn = false;
-				window.location = "chooser.php?subject_id=" + col2.mQuestion.getAnswer();
+				//window.location = "chooser.php?subject_id=" + col2.mQuestion.getAnswer();
+				//send to specific subject game chooser url
+				window.location = col2.mQuestion.getAnswer();
 				
 			}	
                 }

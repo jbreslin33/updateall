@@ -42,7 +42,7 @@ $username = $_SESSION["username"];
 
 <body>
 <p1>WELCOME TO THE MAIN PAGE<p1>
-<a href="../choosers/chooser_subject.php">Play Game</a> 
+<a href="../subject/chooser.php">Play Game</a> 
 <script language="javascript">
 window.addEvent('domready', function()
 {

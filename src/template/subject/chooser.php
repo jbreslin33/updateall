@@ -1,38 +1,10 @@
 <?php 
-//this chooser file should handle all game choosing. it just needs 2 pieces of information. 
-//table to query for games ie. math_games or english_games
-//and
-//level of subject
-//we should simply pass these in.
 //standard header for most games i hope. it handles some basic html and level db call
 include("../headers/header.php");
 
-//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level. that day hath arrived
-$_SESSION["subject_id"] = $_GET['subject_id']; 
-//$_SESSION["game_table"] = $_GET['game_table']; 
-//$_SESSION["subjectsubject_id"] = $_GET['subject_id']; 
-$level = 0;
-$game_table_name = "";
-if ($_SESSION["subject_id"] == 1)
-{
-	$level = $_SESSION["math_level"];
-	$game_table_name = "math_games";
-}
-if ($_SESSION["subject_id"] == 2)
-{
-	$level = $_SESSION["english_level"];
-	$game_table_name = "english_games";
-}
+//query the db for subjects
+$query = "select url, subject from subjects;";
 
-$query = "select name, url from ";
-$query .= $game_table_name;
-$query .= " where level = ";
-$query .= $level;
-//$query .= " and subject_id = ";
-//$query .= $_SESSION["subject_id"];
-$query .= ";";
-
-echo $query;
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
@@ -41,8 +13,8 @@ $numberOfRows = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
-echo "var gameName = new Array();";
 echo "var url = new Array();";
+echo "var subject = new Array();";
 
 echo "</script>";
 
@@ -50,15 +22,15 @@ $counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
-        $gameName = $row[0];
-        $url = $row[1];
+        $url = $row[0];
+        $subject = $row[1];
 
-	echo "<script language=\"javascript\">";
-	
-	echo "gameName[$counter] = \"$gameName\";";
-	echo "url[$counter] = \"$url\";";
-	echo "</script>";
-	$counter++;
+        echo "<script language=\"javascript\">";
+        
+        echo "url[$counter] = \"$url\";";
+        echo "subject[$counter] = \"$subject\";";
+        echo "</script>";
+        $counter++;
 }
 
 //game variables to fill from db
@@ -69,14 +41,13 @@ $username = $_SESSION["username"];
 <script language="javascript">
 
 var username = "<?php echo $username; ?>";
-var gamelevel = "<?php echo $gameLevel; ?>";
 
 </script>
 
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
-<script type="text/javascript" src="../../game/game_chooser.php"></script>
+<script type="text/javascript" src="../../game/subject_chooser.php"></script>
 <script type="text/javascript" src="../../application/application.php"></script>
 <script type="text/javascript" src="../../shape/shape.php"></script>
 <script type="text/javascript" src="../../div/div.php"></script>
@@ -95,7 +66,7 @@ window.addEvent('domready', function()
 {
 	//application to handle time and input
         mApplication = new Application();
-
+	
 	//bounds
         mBounds = new Bounds(60,735,380,35);
         
@@ -103,7 +74,7 @@ window.addEvent('domready', function()
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 
- 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
+ /******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
         northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
         northBoundsABCANDYOU.setText('ABCANDYOU');
@@ -112,7 +83,7 @@ window.addEvent('domready', function()
         northBoundsUser.setText('User : ' + username);
 
         northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
-        northBoundsMathLevel.setText('Math Level : ' + gamelevel);
+        northBoundsMathLevel.setText('Level : ');
 
         northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
         northBoundsScore.setText('Score : ');
@@ -121,7 +92,7 @@ window.addEvent('domready', function()
         northBoundsScoreNeeded.setText('Score Needed : ');
 
         northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
-        northBoundsGameName.setText('Game Chooser');
+        northBoundsGameName.setText('Choose Subject');
 
         eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
         eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
@@ -144,7 +115,7 @@ window.addEvent('domready', function()
         westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 
 	//the game
-        mGame = new GameChooser("Game Chooser");
+        mGame = new SubjectChooser("Subject Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
@@ -153,13 +124,13 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(1);
 	mGame.mQuiz = mQuiz;
 
-	var dummyQuestion = new Question("Run over one the games.");
-        mQuiz.mQuestionArray.push(dummyQuestion);
+	var dummyQuestion = new Question("Run over one the subjects.");
+       	mQuiz.mQuestionArray.push(dummyQuestion);
 
 	//create quiz items
- 	for (i = 0; i < numberOfRows; i++)
+        for (i = 0; i < numberOfRows; i++)
         {
-		var question = new Question(gameName[i],url[i]);      
+                var question = new Question(subject[i],url[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
@@ -167,18 +138,15 @@ window.addEvent('domready', function()
         for (i = 1; i < numberOfRows + 1; i++ )
         {
                 var shape;
-		x = i * 50 + 400;
+                x = i * 50 + 400;
                 mGame.addToShapeArray(shape = new Shape(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),"","yellow","question"));
-                //shape.showQuestion(false);
-               	count++;
+                count++;
         }
-
-	//end create quiz items
 
 	mGame.resetGame();
 
         //start updating
-        var t=setInterval("mGame.update()",32)
+   	var t=setInterval("mGame.update()",10)
 }
 
 );

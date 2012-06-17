@@ -51,11 +51,6 @@ CREATE TABLE groups (
     description text NOT NULL UNIQUE
 );
 
---i am thinking we might want to go back to 
---having math_levels table, english_levels table
---this is going to require some codeding changes elsewhere but it should not be
---hard...
-
 --------------------math_levels---------------------------------------
 CREATE TABLE math_levels (
     level integer NOT NULL,
@@ -93,7 +88,8 @@ CREATE TABLE users (
 CREATE TABLE subjects (
     id integer NOT NULL,
     subject text NOT NULL UNIQUE,
-    game_table text NOT NULL UNIQUE
+    game_table text NOT NULL UNIQUE,
+    url text NOT NULL UNIQUE
 );
 
 --------------------math_games---------------------------------------
@@ -326,8 +322,8 @@ insert into groups (description) values ('Room 34 Math');
 insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --SUBJECTS
-insert into subjects (subject,game_table) values ('Math','math_games');
-insert into subjects (subject,game_table) values ('English','english_games');
+insert into subjects (subject,game_table,url) values ('Math','math_games','../math/chooser.php');
+insert into subjects (subject,game_table,url) values ('English','english_games','../english/chooser.php');
 
 --math_levels
 insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
