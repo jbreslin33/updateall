@@ -44,12 +44,6 @@ CREATE TABLE grade_level (
     description text NOT NULL UNIQUE
 );
 
---------------------groups---------------------------------------
-CREATE TABLE groups (
-    id integer NOT NULL,
-    teacher_id integer,
-    description text NOT NULL UNIQUE
-);
 
 --------------------math_levels---------------------------------------
 CREATE TABLE math_levels (
@@ -65,24 +59,6 @@ CREATE TABLE english_levels (
     skill text NOT NULL
 );
 
---------------------users---------------------------------------
-CREATE TABLE users (
-    id integer NOT NULL,
-
-    username text NOT NULL UNIQUE,
-    password text NOT NULL,
-
-    first_name text,
-    last_name text,
-
-    math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL,
-
-    role_id integer NOT NULL,
-
-    admin_id integer,
-    teacher_id integer
-);
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
@@ -137,6 +113,32 @@ CREATE TABLE subtraction (
     negative_difference boolean DEFAULT false NOT NULL
 );
 
+--------------------users---------------------------------------
+CREATE TABLE users (
+    id integer NOT NULL,
+
+    username text NOT NULL UNIQUE,
+    password text NOT NULL,
+
+    first_name text,
+    last_name text,
+
+    math_level integer DEFAULT 1 NOT NULL,
+    english_level integer DEFAULT 1 NOT NULL,
+
+    role_id integer NOT NULL,
+
+    admin_id integer,
+    teacher_id integer
+);
+
+--------------------groups---------------------------------------
+CREATE TABLE groups (
+    id integer NOT NULL,
+    teacher_id integer,
+    description text NOT NULL UNIQUE
+);
+
 ----------------------CREATE SEQUENCES-------------------------
 --ROLES
 CREATE SEQUENCE roles_id_seq
@@ -148,22 +150,6 @@ CREATE SEQUENCE roles_id_seq
 
 --GRADE_LEVEL
 CREATE SEQUENCE grade_level_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GROUPS
-CREATE SEQUENCE groups_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---USERS
-CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -194,6 +180,22 @@ CREATE SEQUENCE subtraction_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--USERS
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GROUPS
+CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
@@ -210,13 +212,6 @@ ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
 ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id_seq'::regclass);
 
---GROUPS
-ALTER TABLE public.groups OWNER TO postgres;
-ALTER TABLE public.groups_id_seq OWNER TO postgres;
-ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
-ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
-ALTER TABLE groups ADD PRIMARY KEY (id);
-
 --MATH_LEVELS
 ALTER TABLE public.math_levels OWNER TO postgres;
 ALTER TABLE math_levels ADD PRIMARY KEY (level);
@@ -224,18 +219,6 @@ ALTER TABLE math_levels ADD PRIMARY KEY (level);
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels OWNER TO postgres;
 ALTER TABLE english_levels ADD PRIMARY KEY (level);
-
---USERS
-ALTER TABLE public.users OWNER TO postgres;
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-ALTER TABLE users ADD PRIMARY KEY (id);
-ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
-ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
-ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
-ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
@@ -272,6 +255,25 @@ ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 ALTER TABLE subtraction ADD PRIMARY KEY (id);
 
+--USERS
+ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+ALTER TABLE users ADD PRIMARY KEY (id);
+ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
+ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
+ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
+ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+
+--GROUPS
+ALTER TABLE public.groups OWNER TO postgres;
+ALTER TABLE public.groups_id_seq OWNER TO postgres;
+ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
+ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+ALTER TABLE groups ADD PRIMARY KEY (id);
+
 --------------------INSERT---------------------------------------
 --ROLES
 insert into roles (role) values ('Administrator'); 
@@ -302,11 +304,6 @@ insert into grade_level (description) values ('Grade 13');
 insert into grade_level (description) values ('Grade 14');
 insert into grade_level (description) values ('Grade 15');
 insert into grade_level (description) values ('Grade 16');
-
---GROUPS
-insert into groups (description) values ('Room 33 Math');
-insert into groups (description) values ('Room 34 Math');
-insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --SUBJECTS
 insert into subjects (subject,url) values ('Math','../math/chooser.php');
@@ -371,6 +368,11 @@ insert into users (username,password,first_name,last_name,role_id,admin_id,teach
 
 --create guest
 insert into users (username,password,role_id) values ('guest','p',4); 
+
+--GROUPS
+insert into groups (description) values ('Room 33 Math');
+insert into groups (description) values ('Room 34 Math');
+insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
