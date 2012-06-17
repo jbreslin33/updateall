@@ -9,6 +9,7 @@ DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_level cascade;
+DROP TABLE venues cascade;
 DROP TABLE users cascade;
 DROP TABLE groups_sessions cascade;
 DROP TABLE groups_users cascade;
@@ -132,6 +133,7 @@ CREATE TABLE users (
 --------------------groups---------------------------------------
 CREATE TABLE groups (
     id integer NOT NULL,
+    admin_id integer,
     teacher_id integer,
     description text NOT NULL UNIQUE
 );
@@ -145,8 +147,16 @@ CREATE TABLE groups_users (
 --------------------groups_sessions--------------------------------------
 CREATE TABLE groups_sessions (
     group_id integer NOT NULL,
-    begin_session timestamp NOT NULL,
-    end_session timestamp NOT NULL
+    begin_session_time timestamp NOT NULL,
+    end_session_time timestamp NOT NULL,
+    venue_id integer NOT NULL
+);
+
+--------------------venues--------------------------------------
+CREATE TABLE venues (
+    id integer NOT NULL,
+    admin_id integer NOT NULL,
+    venue_name text NOT NULL
 );
 
 ----------------------CREATE SEQUENCES-------------------------
@@ -176,6 +186,14 @@ CREATE SEQUENCE users_id_seq
 
 --GROUPS
 CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--VENUES
+CREATE SEQUENCE venues_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -250,6 +268,24 @@ ALTER TABLE public.groups_id_seq OWNER TO postgres;
 ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 ALTER TABLE groups ADD PRIMARY KEY (id);
+ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+
+--GROUPS_USERS
+ALTER TABLE public.groups_users OWNER TO postgres;
+ALTER TABLE groups_users ADD PRIMARY KEY (group_id,user_id);
+
+--GROUPS_SESSIONS
+ALTER TABLE public.groups_sessions OWNER TO postgres;
+ALTER TABLE groups_sessions ADD PRIMARY KEY (group_id,begin_session_time,venue_id);
+
+--VENUES
+ALTER TABLE public.venues OWNER TO postgres;
+ALTER TABLE public.venues_id_seq OWNER TO postgres;
+ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
+ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
+ALTER TABLE venues ADD PRIMARY KEY (id);
+ALTER TABLE venues ADD FOREIGN KEY (admin_id) REFERENCES users(id);
 
 --------------------INSERT---------------------------------------
 --ROLES
@@ -347,9 +383,9 @@ insert into users (username,password,first_name,last_name,role_id,admin_id,teach
 insert into users (username,password,role_id) values ('guest','p',4); 
 
 --GROUPS
-insert into groups (description) values ('Room 33 Math');
-insert into groups (description) values ('Room 34 Math');
-insert into groups (description) values ('Cora Trailer 10AM MATH');
+--insert into groups (description) values ('Room 33 Math');
+--insert into groups (description) values ('Room 34 Math');
+--insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
