@@ -44,7 +44,6 @@ CREATE TABLE grade_level (
     description text NOT NULL UNIQUE
 );
 
-
 --------------------math_levels---------------------------------------
 CREATE TABLE math_levels (
     level integer NOT NULL,
@@ -58,7 +57,6 @@ CREATE TABLE english_levels (
     next_level integer NOT NULL,
     skill text NOT NULL
 );
-
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
