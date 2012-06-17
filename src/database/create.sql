@@ -10,6 +10,8 @@ DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_level cascade;
 DROP TABLE users cascade;
+DROP TABLE groups_sessions cascade;
+DROP TABLE groups_users cascade;
 DROP TABLE groups cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
@@ -132,6 +134,19 @@ CREATE TABLE groups (
     id integer NOT NULL,
     teacher_id integer,
     description text NOT NULL UNIQUE
+);
+
+--------------------groups_users---------------------------------------
+CREATE TABLE groups_users (
+    group_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+--------------------groups_sessions--------------------------------------
+CREATE TABLE groups_sessions (
+    group_id integer NOT NULL,
+    begin_session timestamp NOT NULL,
+    end_session timestamp NOT NULL
 );
 
 ----------------------CREATE SEQUENCES-------------------------
