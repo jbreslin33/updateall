@@ -80,7 +80,6 @@ CREATE TABLE english_games (
 
 --------------------counting---------------------------------------
 CREATE TABLE counting (
-    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     start_number integer NOT NULL,
@@ -90,7 +89,6 @@ CREATE TABLE counting (
 
 --------------------addition---------------------------------------
 CREATE TABLE addition (
-    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     addend_min integer NOT NULL,
@@ -100,7 +98,6 @@ CREATE TABLE addition (
 
 --------------------subtraction---------------------------------------
 CREATE TABLE subtraction (
-    id integer NOT NULL,
     level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     minuend_min integer NOT NULL,
@@ -148,30 +145,6 @@ CREATE SEQUENCE roles_id_seq
 
 --GRADE_LEVEL
 CREATE SEQUENCE grade_level_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---COUNTING
-CREATE SEQUENCE counting_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---ADDITION
-CREATE SEQUENCE addition_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---SUBTRACTION
-CREATE SEQUENCE subtraction_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -234,24 +207,15 @@ ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(leve
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
-ALTER TABLE public.counting_id_seq OWNER TO postgres;
-ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
-ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
-ALTER TABLE counting ADD PRIMARY KEY (id);
+ALTER TABLE counting ADD PRIMARY KEY (level);
 
 --ADDITION
 ALTER TABLE public.addition OWNER TO postgres;
-ALTER TABLE public.addition_id_seq OWNER TO postgres;
-ALTER SEQUENCE addition_id_seq OWNED BY users.id;
-ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
-ALTER TABLE addition ADD PRIMARY KEY (id);
+ALTER TABLE addition ADD PRIMARY KEY (level);
 
 --SUBTRACTION
 ALTER TABLE public.subtraction OWNER TO postgres;
-ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
-ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
-ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
-ALTER TABLE subtraction ADD PRIMARY KEY (id);
+ALTER TABLE subtraction ADD PRIMARY KEY (level);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
