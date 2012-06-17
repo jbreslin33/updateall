@@ -86,9 +86,7 @@ CREATE TABLE users (
 
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
-    id integer NOT NULL,
     subject text NOT NULL UNIQUE,
-    game_table text NOT NULL UNIQUE,
     url text NOT NULL UNIQUE
 );
 
@@ -172,14 +170,6 @@ CREATE SEQUENCE users_id_seq
     NO MAXVALUE
     CACHE 1;
 
---SUBJECTS
-CREATE SEQUENCE subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE 
-    CACHE 1; 
-
 --COUNTING
 CREATE SEQUENCE counting_id_seq
     START WITH 1
@@ -249,10 +239,7 @@ ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
-ALTER TABLE public.subjects_id_seq OWNER TO postgres;
-ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
-ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
-ALTER TABLE subjects ADD PRIMARY KEY (id);
+ALTER TABLE subjects ADD PRIMARY KEY (subject);
 
 --MATH_GAMES
 ALTER TABLE public.math_games OWNER TO postgres;
@@ -322,8 +309,8 @@ insert into groups (description) values ('Room 34 Math');
 insert into groups (description) values ('Cora Trailer 10AM MATH');
 
 --SUBJECTS
-insert into subjects (subject,game_table,url) values ('Math','math_games','../math/chooser.php');
-insert into subjects (subject,game_table,url) values ('English','english_games','../english/chooser.php');
+insert into subjects (subject,url) values ('Math','../math/chooser.php');
+insert into subjects (subject,url) values ('English','../english/chooser.php');
 
 --math_levels
 insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
