@@ -9,9 +9,9 @@ DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_level cascade;
+DROP TABLE groups_sessions cascade;
 DROP TABLE venues cascade;
 DROP TABLE users cascade;
-DROP TABLE groups_sessions cascade;
 DROP TABLE groups_users cascade;
 DROP TABLE groups cascade;
 DROP TABLE math_levels cascade;
@@ -144,6 +144,13 @@ CREATE TABLE groups_users (
     user_id integer NOT NULL
 );
 
+--------------------venues--------------------------------------
+CREATE TABLE venues (
+    id integer NOT NULL,
+    admin_id integer NOT NULL,
+    venue_name text NOT NULL
+);
+
 --------------------groups_sessions--------------------------------------
 CREATE TABLE groups_sessions (
     group_id integer NOT NULL,
@@ -152,12 +159,6 @@ CREATE TABLE groups_sessions (
     venue_id integer NOT NULL
 );
 
---------------------venues--------------------------------------
-CREATE TABLE venues (
-    id integer NOT NULL,
-    admin_id integer NOT NULL,
-    venue_name text NOT NULL
-);
 
 ----------------------CREATE SEQUENCES-------------------------
 --ROLES
@@ -275,10 +276,6 @@ ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 ALTER TABLE public.groups_users OWNER TO postgres;
 ALTER TABLE groups_users ADD PRIMARY KEY (group_id,user_id);
 
---GROUPS_SESSIONS
-ALTER TABLE public.groups_sessions OWNER TO postgres;
-ALTER TABLE groups_sessions ADD PRIMARY KEY (group_id,begin_session_time,venue_id);
-
 --VENUES
 ALTER TABLE public.venues OWNER TO postgres;
 ALTER TABLE public.venues_id_seq OWNER TO postgres;
@@ -286,6 +283,11 @@ ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
 ALTER TABLE venues ADD PRIMARY KEY (id);
 ALTER TABLE venues ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+
+--GROUPS_SESSIONS
+ALTER TABLE public.groups_sessions OWNER TO postgres;
+ALTER TABLE groups_sessions ADD PRIMARY KEY (group_id,begin_session_time,venue_id);
+ALTER TABLE groups_sessions ADD FOREIGN KEY (venue_id) REFERENCES venues(id);
 
 --------------------INSERT---------------------------------------
 --ROLES
