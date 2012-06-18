@@ -15,7 +15,7 @@ include("../headers/header.php");
 
 <h2>Enter information regarding book</h2>
 <ul>
-<form name="insert" action="users.php" method="POST" >
+<form name="insert" action="insert_user.php" method="POST" >
 <li>Book ID:</li><li><input type="text" name="bookid" /></li>
 <li>Book Name:</li><li><input type="text" name="book_name" /></li>
 <li>Author:</li><li><input type="text" name="author" /></li>
