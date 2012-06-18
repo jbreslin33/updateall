@@ -401,6 +401,11 @@ insert into venues (admin_id,venue_name) values (2,'room 34');
 insert into venues (admin_id,venue_name) values (2,'room 33');
 insert into venues (admin_id,venue_name) values (2,'room 32');
 
+--------------------groups_sessions--------------------------------------
+
+--GROUPS_SESSIONS
+insert into groups_sessions (group_id,begin_session_time,end_session_time,venue_id) values (1,'1999-01-08 04:05:06','1999-01-08 04:05:06',1);
+
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
