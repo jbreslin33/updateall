@@ -159,7 +159,6 @@ CREATE TABLE groups_sessions (
     venue_id integer NOT NULL
 );
 
-
 ----------------------CREATE SEQUENCES-------------------------
 --ROLES
 CREATE SEQUENCE roles_id_seq
@@ -394,6 +393,13 @@ insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade Soci
 insert into groups_users (group_id,user_id) values (1,5);
 insert into groups_users (group_id,user_id) values (2,6);
 
+--VENUES
+insert into venues (admin_id,venue_name) values (1,'annex 1');
+insert into venues (admin_id,venue_name) values (1,'annex 2');
+insert into venues (admin_id,venue_name) values (1,'annex 3');
+insert into venues (admin_id,venue_name) values (2,'room 34');
+insert into venues (admin_id,venue_name) values (2,'room 33');
+insert into venues (admin_id,venue_name) values (2,'room 32');
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
