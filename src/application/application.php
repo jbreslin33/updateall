@@ -107,6 +107,10 @@ var Application = new Class(
                 {
                         window.location = "../../main/main.php";
                 }
+                if (event.key == 'e')
+                {
+                        window.location = "../../edit/edit.php";
+                }
 
         },
         
