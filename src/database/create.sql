@@ -11,9 +11,9 @@ DROP TABLE subjects cascade;
 DROP TABLE grade_level cascade;
 DROP TABLE groups_sessions cascade;
 DROP TABLE venues cascade;
+DROP TABLE groups cascade;
 DROP TABLE users cascade;
 DROP TABLE groups_users cascade;
-DROP TABLE groups cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE roles cascade;
@@ -133,9 +133,9 @@ CREATE TABLE users (
 --------------------groups---------------------------------------
 CREATE TABLE groups (
     id integer NOT NULL,
-    admin_id integer,
-    teacher_id integer,
-    description text NOT NULL UNIQUE
+    admin_id integer NOT NULL,
+    teacher_id integer NOT NULL,
+    description text NOT NULL
 );
 
 --------------------groups_users---------------------------------------
@@ -269,8 +269,8 @@ ALTER TABLE public.groups_id_seq OWNER TO postgres;
 ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 ALTER TABLE groups ADD PRIMARY KEY (id);
-ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+ALTER TABLE groups ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --GROUPS_USERS
 ALTER TABLE public.groups_users OWNER TO postgres;
@@ -385,10 +385,20 @@ insert into users (username,password,first_name,last_name,role_id,admin_id,teach
 insert into users (username,password,role_id) values ('guest','p',4); 
 
 --GROUPS
---insert into groups (description) values ('Room 33 Math');
---insert into groups (description) values ('Room 34 Math');
---insert into groups (description) values ('Cora Trailer 10AM MATH');
+insert into groups (admin_id,teacher_id,description) values (1,3,'5th grade math');
+insert into groups (admin_id,teacher_id,description) values (1,3,'5th grade English');
+insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade math');
+insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade Social Studies');
 
+--------------------groups---------------------------------------
+/*
+CREATE TABLE groups (
+    id integer NOT NULL,
+    admin_id integer,
+    teacher_id integer,
+    description text NOT NULL UNIQUE
+);
+*/
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
