@@ -390,15 +390,11 @@ insert into groups (admin_id,teacher_id,description) values (1,3,'5th grade Engl
 insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade math');
 insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade Social Studies');
 
---------------------groups---------------------------------------
-/*
-CREATE TABLE groups (
-    id integer NOT NULL,
-    admin_id integer,
-    teacher_id integer,
-    description text NOT NULL UNIQUE
-);
-*/
+--GROUPS_USERS
+insert into groups_users (group_id,user_id) values (1,5);
+insert into groups_users (group_id,user_id) values (2,6);
+
+
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
