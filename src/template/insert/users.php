@@ -13,15 +13,16 @@ include("../headers/header.php");
 <a href="../select/users.php">SHOW MY STUDENTS</a> 
 
 
-<h2>Enter information regarding book</h2>
+<h2>Enter User information:</h2>
 <ul>
 <form name="insert" action="insert_user.php" method="POST" >
-<li>Book ID:</li><li><input type="text" name="bookid" /></li>
-<li>Book Name:</li><li><input type="text" name="book_name" /></li>
-<li>Author:</li><li><input type="text" name="author" /></li>
-<li>Publisher:</li><li><input type="text" name="publisher" /></li>
-<li>Date of publication:</li><li><input type="text" name="dop" /></li>
-<li>Price (USD):</li><li><input type="text" name="price" /></li>
+<li>username:</li><li><input type="text" name="username" /></li>
+<li>password:</li><li><input type="text" name="password" /></li>
+<li>first_name:</li><li><input type="text" name="first_name" /></li>
+<li>last_name:</li><li><input type="text" name="last_name" /></li>
+<li>role_id:</li><li><input type="text" name="role_id" /></li>
+<li>admin_id:</li><li><input type="text" name="admin_id" /></li>
+<li>teacher_id:</li><li><input type="text" name="teacher_id" /></li>
 <li><input type="submit" /></li>
 </form>
 </ul>
