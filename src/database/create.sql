@@ -286,6 +286,7 @@ ALTER TABLE venues ADD FOREIGN KEY (admin_id) REFERENCES users(id);
 --GROUPS_SESSIONS
 ALTER TABLE public.groups_sessions OWNER TO postgres;
 ALTER TABLE groups_sessions ADD PRIMARY KEY (group_id,begin_session_time,venue_id);
+ALTER TABLE groups_sessions ADD FOREIGN KEY (group_id) REFERENCES groups(id);
 ALTER TABLE groups_sessions ADD FOREIGN KEY (venue_id) REFERENCES venues(id);
 
 --------------------INSERT---------------------------------------
