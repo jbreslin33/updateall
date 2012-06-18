@@ -11,7 +11,7 @@ include("../headers/header.php");
 <a href="../main/main.php">MAIN PAGE</a> 
 <a href="../edit/edit.php">EDIT PAGE</a> 
 <a href="../select/users.php">SHOW MY STUDENTS</a> 
-<a href="../insert/users.php">ADD USERS</a> 
+<a href="../insert/bulk_user_add.php">ADD USERS</a> 
 
 <script language="javascript">
 window.addEvent('domready', function()
