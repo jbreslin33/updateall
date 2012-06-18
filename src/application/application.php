@@ -102,14 +102,22 @@ var Application = new Class(
                 if (event.key == '9')
                 {
                         mApplication.mKey9 = true;
-                }
-                if (event.key == 'u')
+               	} 
+		if (event.key == 'm')
                 {
                         window.location = "../../template/main/main.php";
                 }
                 if (event.key == 'e')
                 {
                         window.location = "../../template/edit/edit.php";
+                }
+                if (event.key == 'u')
+                {
+                        window.location = "../../template/insert/users.php";
+                }
+                if (event.key == 's')
+                {
+                        window.location = "../../template/select/users.php";
                 }
 
         },
