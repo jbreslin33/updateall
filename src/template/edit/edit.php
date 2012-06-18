@@ -6,8 +6,9 @@ include("../headers/header.php");
 </head>
 
 <body>
-<p1>WELCOME TO THE MAIN PAGE<p1>
+<p1>WELCOME TO THE EDIT PAGE<p1>
 <a href="../subject/chooser.php">Play Game</a> 
+<a href="../main/main.php">MAIN PAGE</a> 
 <a href="../edit/edit.php">EDIT PAGE</a> 
 <script language="javascript">
 window.addEvent('domready', function()

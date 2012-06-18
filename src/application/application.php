@@ -105,11 +105,11 @@ var Application = new Class(
                 }
                 if (event.key == 'u')
                 {
-                        window.location = "../../main/main.php";
+                        window.location = "../../template/main/main.php";
                 }
                 if (event.key == 'e')
                 {
-                        window.location = "../../edit/edit.php";
+                        window.location = "../../template/edit/edit.php";
                 }
 
         },
