@@ -122,7 +122,7 @@
                 		//student
                 		if ($_SESSION["role_id"] == 3) 
                 		{
-                        		header("Location: ../template/choosers/chooser_subject.php");
+                        		header("Location: ../template/subject/chooser.php");
                 		}
                 
                 		//guest

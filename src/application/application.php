@@ -105,7 +105,7 @@ var Application = new Class(
                 }
                 if (event.key == 'u')
                 {
-                        window.location = "../../database/user.php";
+                        window.location = "../../main/main.php";
                 }
 
         },
