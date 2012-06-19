@@ -17,6 +17,7 @@ DROP TABLE groups_users cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE roles cascade;
+DROP TABLE passwords cascade;
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -34,6 +35,11 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+
+--------------------passwords---------------------------------------
+CREATE TABLE passwords (
+    password text  
+);
 
 --------------------roles---------------------------------------
 CREATE TABLE roles (
@@ -203,6 +209,10 @@ CREATE SEQUENCE venues_id_seq
 --------------------ALTER---------------------------------------
 --ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
+--PASSWORDS
+ALTER TABLE public.passwords OWNER TO postgres;
+ALTER TABLE passwords ADD PRIMARY KEY (password);
+
 --ROLES
 ALTER TABLE public.roles OWNER TO postgres;
 ALTER TABLE public.roles_id_seq OWNER TO postgres;
@@ -290,6 +300,74 @@ ALTER TABLE groups_sessions ADD FOREIGN KEY (group_id) REFERENCES groups(id);
 ALTER TABLE groups_sessions ADD FOREIGN KEY (venue_id) REFERENCES venues(id);
 
 --------------------INSERT---------------------------------------
+--PASSWORDS
+insert into passwords (password) values ('apple'); 
+insert into passwords (password) values ('ant'); 
+insert into passwords (password) values ('ape'); 
+insert into passwords (password) values ('art'); 
+insert into passwords (password) values ('at'); 
+insert into passwords (password) values ('as'); 
+insert into passwords (password) values ('and'); 
+insert into passwords (password) values ('aim'); 
+insert into passwords (password) values ('bat'); 
+insert into passwords (password) values ('be'); 
+insert into passwords (password) values ('bee'); 
+insert into passwords (password) values ('been'); 
+insert into passwords (password) values ('beet'); 
+insert into passwords (password) values ('but'); 
+insert into passwords (password) values ('bird'); 
+insert into passwords (password) values ('cat'); 
+insert into passwords (password) values ('can'); 
+insert into passwords (password) values ('cent'); 
+insert into passwords (password) values ('cry'); 
+insert into passwords (password) values ('dog'); 
+insert into passwords (password) values ('do'); 
+insert into passwords (password) values ('dip'); 
+insert into passwords (password) values ('duck'); 
+insert into passwords (password) values ('eat'); 
+insert into passwords (password) values ('far'); 
+insert into passwords (password) values ('feet'); 
+insert into passwords (password) values ('fly'); 
+insert into passwords (password) values ('go'); 
+insert into passwords (password) values ('get'); 
+insert into passwords (password) values ('gone'); 
+insert into passwords (password) values ('he'); 
+insert into passwords (password) values ('here'); 
+insert into passwords (password) values ('hen'); 
+insert into passwords (password) values ('hat'); 
+insert into passwords (password) values ('help'); 
+insert into passwords (password) values ('hit'); 
+insert into passwords (password) values ('i'); 
+insert into passwords (password) values ('it'); 
+insert into passwords (password) values ('jump'); 
+insert into passwords (password) values ('lip'); 
+insert into passwords (password) values ('low'); 
+insert into passwords (password) values ('mom'); 
+insert into passwords (password) values ('mat'); 
+insert into passwords (password) values ('no'); 
+insert into passwords (password) values ('not'); 
+insert into passwords (password) values ('oh'); 
+insert into passwords (password) values ('pen'); 
+insert into passwords (password) values ('pat'); 
+insert into passwords (password) values ('pick'); 
+insert into passwords (password) values ('park'); 
+insert into passwords (password) values ('run'); 
+insert into passwords (password) values ('rat'); 
+insert into passwords (password) values ('rip'); 
+insert into passwords (password) values ('sat'); 
+insert into passwords (password) values ('see'); 
+insert into passwords (password) values ('sip'); 
+insert into passwords (password) values ('sun'); 
+insert into passwords (password) values ('sit'); 
+insert into passwords (password) values ('tip'); 
+insert into passwords (password) values ('top'); 
+insert into passwords (password) values ('turn'); 
+insert into passwords (password) values ('van'); 
+insert into passwords (password) values ('want'); 
+insert into passwords (password) values ('you'); 
+insert into passwords (password) values ('yoyo'); 
+insert into passwords (password) values ('zip'); 
+
 --ROLES
 insert into roles (role) values ('Administrator'); 
 insert into roles (role) values ('Teacher'); 
