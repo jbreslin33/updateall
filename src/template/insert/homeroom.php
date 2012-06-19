@@ -17,8 +17,8 @@ $admin_username = $_SESSION["username"];
 //$newHomeRoomDescription = "HOME ROOM "; 
 //$newHomeRoomDescription .= $home_roomExtensionNumber;
 
-//$query = "insert into home_rooms (admin_id,teacher_id,description) values ('$admin_id','$admin_id','HOME ROOM');
-//$result = pg_query($query);
+$query = "insert into home_rooms (admin_id,teacher_id,description) values ('$admin_id','$admin_id','HOME ROOM');";
+$result = pg_query($query);
 
 
 
