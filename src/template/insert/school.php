@@ -1,7 +1,12 @@
 <?php 
 include("../headers/header.php");
 
+$number_of_home_rooms = $_POST["number_of_home_rooms"];
 $number_of_students = $_POST["number_of_students"];
+
+for ($h = 0; $h < $number_of_home_rooms; $h++)
+{ 
+
 
 
 for ($i = 0; $i < $number_of_students; $i++)
@@ -35,6 +40,10 @@ $query = "INSERT INTO users (username,password,role_id,admin_id,teacher_id) VALU
 '$admin_id')";
 
 $result = pg_query($query);
+
+}
+
+
 }
 //go to success page
 header("Location: ../edit/edit.php");
