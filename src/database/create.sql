@@ -12,6 +12,7 @@ DROP TABLE grade_level cascade;
 DROP TABLE groups_sessions cascade;
 DROP TABLE venues cascade;
 DROP TABLE groups cascade;
+DROP TABLE home_rooms cascade;
 DROP TABLE users cascade;
 DROP TABLE groups_users cascade;
 DROP TABLE math_levels cascade;
@@ -144,6 +145,14 @@ CREATE TABLE groups (
     description text NOT NULL
 );
 
+--------------------home_rooms---------------------------------------
+CREATE TABLE home_rooms (
+    id integer NOT NULL,
+    admin_id integer NOT NULL,
+    teacher_id integer NOT NULL,
+    description text NOT NULL
+);
+
 --------------------groups_users---------------------------------------
 CREATE TABLE groups_users (
     group_id integer NOT NULL,
@@ -192,6 +201,15 @@ CREATE SEQUENCE users_id_seq
 
 --GROUPS
 CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--HOME_ROOMS
+
+CREATE SEQUENCE home_rooms_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -280,6 +298,15 @@ ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::reg
 ALTER TABLE groups ADD PRIMARY KEY (id);
 ALTER TABLE groups ADD FOREIGN KEY (admin_id) REFERENCES users(id);
 ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+
+--HOME_ROOMS
+ALTER TABLE public.home_rooms OWNER TO postgres;
+ALTER TABLE public.home_rooms_id_seq OWNER TO postgres;
+ALTER SEQUENCE home_rooms_id_seq OWNED BY home_rooms.id;
+ALTER TABLE ONLY home_rooms ALTER COLUMN id SET DEFAULT nextval('home_rooms_id_seq'::regclass);
+ALTER TABLE home_rooms ADD PRIMARY KEY (id);
+ALTER TABLE home_rooms ADD FOREIGN KEY (admin_id) REFERENCES users(id);
+ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --GROUPS_USERS
 ALTER TABLE public.groups_users OWNER TO postgres;
