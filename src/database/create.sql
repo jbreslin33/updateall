@@ -9,13 +9,9 @@ DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_level cascade;
-DROP TABLE groups_sessions cascade;
-DROP TABLE venues cascade;
-DROP TABLE groups cascade;
 DROP TABLE home_rooms_users cascade;
 DROP TABLE home_rooms cascade;
 DROP TABLE users cascade;
-DROP TABLE groups_users cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE roles cascade;
@@ -121,9 +117,7 @@ CREATE TABLE subtraction (
 
 --------------------users---------------------------------------
 CREATE TABLE users (
-    id integer NOT NULL,
-
-    username text NOT NULL UNIQUE,
+    username text, 
     password text NOT NULL,
 
     first_name text,
@@ -134,51 +128,22 @@ CREATE TABLE users (
 
     role_id integer NOT NULL,
 
-    admin_id integer,
-    teacher_id integer
-);
-
---------------------groups---------------------------------------
-CREATE TABLE groups (
-    id integer NOT NULL,
-    admin_id integer NOT NULL,
-    teacher_id integer NOT NULL,
-    description text NOT NULL
+    admin_username text NOT NULL,
+    teacher_username text NOT NULL 
 );
 
 --------------------home_rooms---------------------------------------
 CREATE TABLE home_rooms (
-    admin_id integer NOT NULL,
+    admin_username text NOT NULL,
     description text NOT NULL,
-    teacher_id integer NOT NULL
-);
-
---------------------groups_users---------------------------------------
-CREATE TABLE groups_users (
-    group_id integer NOT NULL,
-    user_id integer NOT NULL
+    teacher_username text NOT NULL
 );
 
 --------------------home_rooms_users---------------------------------------
 CREATE TABLE home_rooms_users (
-    admin_id integer NOT NULL,
+    admin_username text NOT NULL,
     description text NOT NULL,
-    user_id integer NOT NULL
-);
-
---------------------venues--------------------------------------
-CREATE TABLE venues (
-    id integer NOT NULL,
-    admin_id integer NOT NULL,
-    venue_name text NOT NULL
-);
-
---------------------groups_sessions--------------------------------------
-CREATE TABLE groups_sessions (
-    group_id integer NOT NULL,
-    begin_session_time timestamp NOT NULL,
-    end_session_time timestamp NOT NULL,
-    venue_id integer NOT NULL
+    student_username text NOT NULL
 );
 
 ----------------------CREATE SEQUENCES-------------------------
@@ -192,30 +157,6 @@ CREATE SEQUENCE roles_id_seq
 
 --GRADE_LEVEL
 CREATE SEQUENCE grade_level_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---USERS
-CREATE SEQUENCE users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GROUPS
-CREATE SEQUENCE groups_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---VENUES
-CREATE SEQUENCE venues_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -278,54 +219,24 @@ ALTER TABLE subtraction ADD PRIMARY KEY (level);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-ALTER TABLE users ADD PRIMARY KEY (id);
+ALTER TABLE users ADD PRIMARY KEY (username);
 ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
 ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
 ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
-ALTER TABLE users ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-ALTER TABLE users ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
-
---GROUPS
-ALTER TABLE public.groups OWNER TO postgres;
-ALTER TABLE public.groups_id_seq OWNER TO postgres;
-ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
-ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
-ALTER TABLE groups ADD PRIMARY KEY (id);
-ALTER TABLE groups ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
+ALTER TABLE users ADD FOREIGN KEY (admin_username) REFERENCES users(username);
+ALTER TABLE users ADD FOREIGN KEY (teacher_username) REFERENCES users(username);
 
 --HOME_ROOMS
 ALTER TABLE public.home_rooms OWNER TO postgres;
-ALTER TABLE home_rooms ADD PRIMARY KEY (admin_id,description);
-ALTER TABLE home_rooms ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
-
---GROUPS_USERS
-ALTER TABLE public.groups_users OWNER TO postgres;
-ALTER TABLE groups_users ADD PRIMARY KEY (group_id,user_id);
+ALTER TABLE home_rooms ADD PRIMARY KEY (admin_username,description);
+ALTER TABLE home_rooms ADD FOREIGN KEY (admin_username) REFERENCES users(username);
+ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_username) REFERENCES users(username);
 
 --HOME_ROOMS_USERS
 ALTER TABLE public.home_rooms_users OWNER TO postgres;
-ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin_id,description,user_id);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin_id,description) REFERENCES home_rooms(admin_id,description);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
-
---VENUES
-ALTER TABLE public.venues OWNER TO postgres;
-ALTER TABLE public.venues_id_seq OWNER TO postgres;
-ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
-ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
-ALTER TABLE venues ADD PRIMARY KEY (id);
-ALTER TABLE venues ADD FOREIGN KEY (admin_id) REFERENCES users(id);
-
---GROUPS_SESSIONS
-ALTER TABLE public.groups_sessions OWNER TO postgres;
-ALTER TABLE groups_sessions ADD PRIMARY KEY (group_id,begin_session_time,venue_id);
-ALTER TABLE groups_sessions ADD FOREIGN KEY (group_id) REFERENCES groups(id);
-ALTER TABLE groups_sessions ADD FOREIGN KEY (venue_id) REFERENCES venues(id);
+ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin_username,description,student_username);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin_username,description) REFERENCES home_rooms(admin_username,description);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (student_username) REFERENCES users(username);
 
 --------------------INSERT---------------------------------------
 --PASSWORDS
@@ -473,45 +384,22 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into users (username,password,first_name,last_name,role_id) values ('anselm','p','Father','Foley',1); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('anselm','p','Father','Foley',1,'anselm','anselm'); 
 --create admin vis 
-insert into users (username,password,first_name,last_name,role_id) values ('vis','p','Dolores','Egner',1); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('vis','p','Dolores','Egner',1,'vis','vis'); 
 
 --create teachers anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_id) values ('kmary.anselm','p','Sally','Berg',2,1); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('kmary.anselm','p','Sally','Berg',2,'anselm','anselm'); 
 --create teachers vis 
-insert into users (username,password,first_name,last_name,role_id,admin_id) values ('jroache.vis','p','James','Roache',2,2); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('jroache.vis','p','James','Roache',2,'vis','vis'); 
 
 --create students anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_id,teacher_id) values ('1.anselm','p','Willard','Lackman',3,1,3); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('1.anselm','p','Willard','Lackman',3,'anselm','anselm'); 
 --create students vis 
-insert into users (username,password,first_name,last_name,role_id,admin_id,teacher_id) values ('1.vis','p','Luke','Breslin',3,2,4); 
+insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('1.vis','p','Luke','Breslin',3,'vis','vis'); 
 
 --create guest
-insert into users (username,password,role_id) values ('guest','p',4); 
-
---GROUPS
-insert into groups (admin_id,teacher_id,description) values (1,3,'5th grade math');
-insert into groups (admin_id,teacher_id,description) values (1,3,'5th grade English');
-insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade math');
-insert into groups (admin_id,teacher_id,description) values (2,4,'5th grade Social Studies');
-
---GROUPS_USERS
-insert into groups_users (group_id,user_id) values (1,5);
-insert into groups_users (group_id,user_id) values (2,6);
-
---VENUES
-insert into venues (admin_id,venue_name) values (1,'annex 1');
-insert into venues (admin_id,venue_name) values (1,'annex 2');
-insert into venues (admin_id,venue_name) values (1,'annex 3');
-insert into venues (admin_id,venue_name) values (2,'room 34');
-insert into venues (admin_id,venue_name) values (2,'room 33');
-insert into venues (admin_id,venue_name) values (2,'room 32');
-
---------------------groups_sessions--------------------------------------
-
---GROUPS_SESSIONS
-insert into groups_sessions (group_id,begin_session_time,end_session_time,venue_id) values (1,'1999-01-08 04:05:06','1999-01-08 04:05:06',1);
+insert into users (username,password,role_id,admin_username,teacher_username) values ('guest','p',4,'guest','guest'); 
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
