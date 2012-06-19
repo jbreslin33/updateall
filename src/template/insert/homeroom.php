@@ -7,15 +7,15 @@ $admin_id = $_SESSION["id"];
 $admin_username = $_SESSION["username"]; 
 
 //next we need to know what user we are up to for this admin
-//$query = "select * from home_rooms where admin_id = $admin_id;";
-//$result = pg_query($query);
-//$numberOfRows = pg_num_rows($result);
+$query = "select * from home_rooms where admin_id = $admin_id;";
+$result = pg_query($query);
+$numberOfRows = pg_num_rows($result);
 
 //add number of rows + 1 to get next number. This is based off the premise that we do not EVER delete user rows only deactivate them. 
-//$home_roomExtensionNumber = $numberOfRows + 1;
+$home_roomExtensionNumber = $numberOfRows + 1;
 //now let's combine admin username and userExtensionNumber to come up with a new username.
-//$newHomeRoomDescription = "HOME ROOM "; 
-//$newHomeRoomDescription .= $home_roomExtensionNumber;
+$newHomeRoomDescription = "HOME ROOM "; 
+$newHomeRoomDescription .= $home_roomExtensionNumber;
 
 $query = "insert into home_rooms (admin_id,teacher_id,description) values ('$admin_id','$admin_id','HOME ROOM');";
 $result = pg_query($query);
