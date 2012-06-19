@@ -50,8 +50,21 @@ $query = "INSERT INTO users (username,password,role_id,admin_id,teacher_id) VALU
 
 $result = pg_query($query);
 
+
+/*
+CREATE TABLE home_rooms_users (
+    admin_id integer NOT NULL,
+    description text NOT NULL,
+    user_id integer NOT NULL
+);
+*/
+
+//now we have to get id of user we just created
+
+
+
 //insert student into home_rooms_users
-//$query = "insert into home_rooms_users (user_id,home_room_id) values ('$admin_id','$admin_id','$newHomeRoomDescription') where description = '$newHomeRoomDescription';";
+//$query = "insert into home_rooms_users (admin_id,description,user_id) values ('$admin_id','$admin_id','$newHomeRoomDescription') where description = '$newHomeRoomDescription';";
 //$result = pg_query($query);
 
 }
