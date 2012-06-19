@@ -5,7 +5,7 @@
 	$conn = dbConnect();
 	
 	//query string 	
- 	$query = "select id, math_level, english_level, role_id from users where username = '";
+ 	$query = "select math_level, english_level, role_id from users where username = '";
 	$query .= $_POST["username"];
 	$query .= "' "; 
    	$query .= "and ";
@@ -29,7 +29,6 @@
 	if ($num > 0)
 	{
 		//get the id from user table	
-		$id = pg_Result($result, 0, 'id');
 		$mathLevel = pg_Result($result, 0, 'math_level');
 		$englishLevel = pg_Result($result, 0, 'english_level');
 		$roleId = pg_Result($result, 0, 'role_id');
@@ -38,7 +37,6 @@
 	  	$_SESSION["Login"] = "YES";
           
 		//set user id, and subject levels to be used later			
-		$_SESSION["id"] = $id;  	
 		$_SESSION["username"] = $_POST["username"];  	
 		$_SESSION["math_level"] = $mathLevel;  	
 		$_SESSION["english_level"] = $englishLevel;  	
@@ -48,7 +46,7 @@
 		//administrator
 		if ($_SESSION["role_id"] == 1) 
 		{
-	
+			header("Location: ../template/main/main.php");
 		}
 		
 		//teacher
@@ -66,7 +64,7 @@
 		//guest
 		if ($_SESSION["role_id"] == 4) 
 		{
-	
+			header("Location: ../template/subject/chooser.php");
 		}
 	}
 	else

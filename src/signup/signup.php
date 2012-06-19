@@ -57,11 +57,16 @@
 			$conn = dbConnect();
 	
 			//query string 	
-			$query = "INSERT INTO users(username, password, role_id) VALUES ('";
+			$query = "INSERT INTO users(username, password, role_id, admin_username, teacher_username) VALUES ('";
 			$query .= $_SESSION["username"];
-			$query .= "', '"; 
+			$query .= "','"; 
 			$query .= $_SESSION["password"];
-			$query .= "',1"; 
+			$query .= "',1,"; 
+			$query .= "'"; 
+			$query .= $_SESSION["username"];
+			$query .= "','"; 
+			$query .= $_SESSION["username"];
+			$query .= "'"; 
 			$query .= ");";      	
 
 			// insert into users......
@@ -70,12 +75,12 @@
 
 			//ok let's act like we are logging in.....
 			//query string  
-        		$query = "select id, math_level, english_level, role_id from users where username = '";
-        		$query .= $_POST["username"];
+        		$query = "select math_level, english_level, role_id from users where username = '";
+        		$query .= $_SESSION["username"];
         		$query .= "' "; 
         		$query .= "and ";
         		$query .= "password = '";               
-        		$query .= $_POST["password"];
+        		$query .= $_SESSION["password"];
         		$query .= "';";         
 
         		//get db result
@@ -92,7 +97,6 @@
         		if ($num > 0)
         		{
                 		//get the id from user table    
-                		$id = pg_Result($result, 0, 'id');
                 		$mathLevel = pg_Result($result, 0, 'math_level');
                 		$englishLevel = pg_Result($result, 0, 'english_level');
                 		$roleId = pg_Result($result, 0, 'role_id');
@@ -100,9 +104,7 @@
                 		//set login var to yes  
                 		$_SESSION["Login"] = "YES";
           
-                		//set user id, and subject levels to be used later                      
-                		$_SESSION["id"] = $id;          
-                		$_SESSION["username"] = $_POST["username"];     
+                		//set user and subject levels to be used later                      
                 		$_SESSION["math_level"] = $mathLevel;   
                 		$_SESSION["english_level"] = $englishLevel;     
                 		$_SESSION["role_id"] = $roleId;         
