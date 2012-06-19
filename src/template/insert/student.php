@@ -8,26 +8,16 @@ include("../headers/header.php");
                 $_SESSION["english_level"] = $englishLevel;
                 $_SESSION["role_id"] = $roleId;
 */
+
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
 $result = pg_query($query);
 $num = pg_num_rows($result);
-
 $randomNumber = rand(0,$num);
+$password = pg_fetch_result($result, $randomNumber, password);
 
-        //get row
-        //$row = pg_fetch_row($result);
+//next we need to know what user we are up to for this admin
 
-//$val = pg_fetch_result($res, 1, 0);
-$val = pg_fetch_result($result, $randomNumber, password);
-
-        //fill php vars from db
-//        $scoreNeeded = $row[0];
- //       $countBy = $row[1];
-  //      $startNumber = $row[2];
-   //     $endNumber = $row[3];
-//}
-echo $val;
 /*
 $query = "insert into users (username,password,first_name,last_name,role_id,admin_id,teacher_id) values (";
 
