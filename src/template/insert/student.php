@@ -37,7 +37,8 @@ $query = "INSERT INTO users (username,password,role_id,admin_id,teacher_id) VALU
 
 $result = pg_query($query);
 
-
+//go to success page
+header("Location: ../edit/edit.php");
 
 ?>
 </head>
