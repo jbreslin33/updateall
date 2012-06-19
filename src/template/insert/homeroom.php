@@ -1,7 +1,10 @@
 <?php 
 include("../headers/header.php");
 
-for ($i = 0; $i < 50; $i++)
+$number_of_students = $_POST["number_of_students"];
+
+
+for ($i = 0; $i < $number_of_students; $i++)
 {
 
 //we first need some info, we need to know the username of admin, id of admin

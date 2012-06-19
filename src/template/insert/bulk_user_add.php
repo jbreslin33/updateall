@@ -17,7 +17,7 @@ include("../headers/header.php");
 <h2>Add Users:</h2>
 <a href="../insert/student.php">ADD STUDENT</a> 
 <br>
-<a href="../insert/homeroom.php">ADD HOME ROOM</a> 
+<a href="../insert/homeroom_size.php">ADD HOME ROOM</a> 
 <br>
 <a href="../insert/teacher.php">ADD TEACHER</a> 
 <br>
