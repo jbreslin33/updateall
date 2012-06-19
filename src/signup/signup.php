@@ -61,7 +61,7 @@
 			$query .= $_SESSION["username"];
 			$query .= "', '"; 
 			$query .= $_SESSION["password"];
-			$query .= "',2"; 
+			$query .= "',1"; 
 			$query .= ");";      	
 
 			// insert into users......
@@ -110,7 +110,7 @@
                 		//administrator
                 		if ($_SESSION["role_id"] == 1) 
                 		{
-        
+                        		header("Location: ../template/main/main.php");
                 		}
                 
                 		//teacher
@@ -128,7 +128,7 @@
                 		//guest
                 		if ($_SESSION["role_id"] == 4) 
                 		{
-        
+                        		header("Location: ../template/subject/chooser.php");
                 		}
         		}
         		else
