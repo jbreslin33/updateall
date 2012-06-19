@@ -21,7 +21,7 @@ include("../headers/header.php");
 <br>
 <a href="../insert/teacher.php">ADD TEACHER</a> 
 <br>
-<a href="../insert/school.php">ADD SCHOOL</a> 
+<a href="../insert/school_size.php">ADD SCHOOL</a> 
 
 
 </body>

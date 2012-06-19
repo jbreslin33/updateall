@@ -13,12 +13,16 @@ include("../headers/header.php");
 <a href="../select/users.php">SHOW MY STUDENTS</a> 
 
 
-<h2>Enter Homeroom Size:</h2>
+<h2>Enter School Information :</h2>
 <ul>
 <form name="insert" action="homeroom.php" method="POST" >
+<h4>Number of Home Rooms:</h4>
+<input type="text" value="25" name="number_of_home_rooms" />
+<br>
+<h4>Number of Students Per Home Room:</h4>
 <input type="text" value="35" name="number_of_students" />
 <br>
-<input type="submit" value="Create Home Room" />
+<input type="submit" value="Create School" />
 </form>
 </ul>
 
