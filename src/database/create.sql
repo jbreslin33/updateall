@@ -148,10 +148,9 @@ CREATE TABLE groups (
 
 --------------------home_rooms---------------------------------------
 CREATE TABLE home_rooms (
-    id integer NOT NULL,
     admin_id integer NOT NULL,
-    teacher_id integer NOT NULL,
-    description text NOT NULL
+    description text NOT NULL,
+    teacher_id integer NOT NULL
 );
 
 --------------------groups_users---------------------------------------
@@ -162,7 +161,8 @@ CREATE TABLE groups_users (
 
 --------------------home_rooms_users---------------------------------------
 CREATE TABLE home_rooms_users (
-    home_room_id integer NOT NULL,
+    admin_id integer NOT NULL,
+    description text NOT NULL,
     user_id integer NOT NULL
 );
 
@@ -208,14 +208,6 @@ CREATE SEQUENCE users_id_seq
 
 --GROUPS
 CREATE SEQUENCE groups_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---HOME_ROOMS
-CREATE SEQUENCE home_rooms_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -307,10 +299,7 @@ ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
 --HOME_ROOMS
 ALTER TABLE public.home_rooms OWNER TO postgres;
-ALTER TABLE public.home_rooms_id_seq OWNER TO postgres;
-ALTER SEQUENCE home_rooms_id_seq OWNED BY home_rooms.id;
-ALTER TABLE ONLY home_rooms ALTER COLUMN id SET DEFAULT nextval('home_rooms_id_seq'::regclass);
-ALTER TABLE home_rooms ADD PRIMARY KEY (id);
+ALTER TABLE home_rooms ADD PRIMARY KEY (admin_id,description);
 ALTER TABLE home_rooms ADD FOREIGN KEY (admin_id) REFERENCES users(id);
 ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 
@@ -320,8 +309,8 @@ ALTER TABLE groups_users ADD PRIMARY KEY (group_id,user_id);
 
 --HOME_ROOMS_USERS
 ALTER TABLE public.home_rooms_users OWNER TO postgres;
-ALTER TABLE home_rooms_users ADD PRIMARY KEY (home_room_id,user_id);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (home_room_id) REFERENCES home_rooms(id);
+ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin_id,description,user_id);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin_id,description) REFERENCES home_rooms(admin_id,description);
 ALTER TABLE home_rooms_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --VENUES

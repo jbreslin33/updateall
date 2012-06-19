@@ -49,6 +49,11 @@ $query = "INSERT INTO users (username,password,role_id,admin_id,teacher_id) VALU
 '$admin_id')";
 
 $result = pg_query($query);
+
+//insert student into home_rooms_users
+//$query = "insert into home_rooms_users (user_id,home_room_id) values ('$admin_id','$admin_id','$newHomeRoomDescription') where description = '$newHomeRoomDescription';";
+//$result = pg_query($query);
+
 }
 //go to success page
 header("Location: ../edit/edit.php");
