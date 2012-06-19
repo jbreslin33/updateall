@@ -12,6 +12,7 @@ DROP TABLE grade_level cascade;
 DROP TABLE groups_sessions cascade;
 DROP TABLE venues cascade;
 DROP TABLE groups cascade;
+DROP TABLE home_rooms_users cascade;
 DROP TABLE home_rooms cascade;
 DROP TABLE users cascade;
 DROP TABLE groups_users cascade;
@@ -159,6 +160,12 @@ CREATE TABLE groups_users (
     user_id integer NOT NULL
 );
 
+--------------------home_rooms_users---------------------------------------
+CREATE TABLE home_rooms_users (
+    home_room_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
 --------------------venues--------------------------------------
 CREATE TABLE venues (
     id integer NOT NULL,
@@ -208,7 +215,6 @@ CREATE SEQUENCE groups_id_seq
     CACHE 1;
 
 --HOME_ROOMS
-
 CREATE SEQUENCE home_rooms_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -311,6 +317,12 @@ ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
 --GROUPS_USERS
 ALTER TABLE public.groups_users OWNER TO postgres;
 ALTER TABLE groups_users ADD PRIMARY KEY (group_id,user_id);
+
+--HOME_ROOMS_USERS
+ALTER TABLE public.home_rooms_users OWNER TO postgres;
+ALTER TABLE home_rooms_users ADD PRIMARY KEY (home_room_id,user_id);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (home_room_id) REFERENCES home_rooms(id);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --VENUES
 ALTER TABLE public.venues OWNER TO postgres;
