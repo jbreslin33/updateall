@@ -17,16 +17,13 @@ $home_roomExtensionNumber = $numberOfRows + 1;
 $newHomeRoomDescription = "HOME ROOM "; 
 $newHomeRoomDescription .= $home_roomExtensionNumber;
 
-$query = "insert into home_rooms (admin_id,teacher_id,description) values ('$admin_id','$admin_id','HOME ROOM');";
+$query = "insert into home_rooms (admin_id,teacher_id,description) values ('$admin_id','$admin_id','$newHomeRoomDescription');";
 $result = pg_query($query);
-
-
 
 $number_of_students = $_POST["number_of_students"];
 
 for ($i = 0; $i < $number_of_students; $i++)
 {
-
 
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
