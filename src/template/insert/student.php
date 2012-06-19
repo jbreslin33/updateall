@@ -2,13 +2,6 @@
 include("../headers/header.php");
 
 //we first need some info, we need to know the username of admin, id of admin
-/* $_SESSION["id"] = $id;
-                $_SESSION["username"] = $_POST["username"];
-                $_SESSION["math_level"] = $mathLevel;
-                $_SESSION["english_level"] = $englishLevel;
-                $_SESSION["role_id"] = $roleId;
-*/
-
 $admin_id = $_SESSION["id"];
 $admin_username = $_SESSION["username"]; 
 
@@ -30,7 +23,7 @@ $newUsername = $userExtensionNumber;
 $newUsername .= ".";
 $newUsername .= $admin_username; 
 
-
+//let's actually add the user
 $query = "INSERT INTO users (username,password,role_id,admin_id,teacher_id) VALUES ('$newUsername','$password',
 3,'$admin_id',
 '$admin_id')";
@@ -42,11 +35,5 @@ header("Location: ../edit/edit.php");
 
 ?>
 </head>
-
-<body>
-
-
-
-</body>
 </html>
 
