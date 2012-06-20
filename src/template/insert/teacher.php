@@ -1,5 +1,6 @@
 <?php 
 include("../headers/header.php");
+include("../links/links.php");
 
 //we first need some info, we need to know the username of admin 
 $admin = $_SESSION["username"]; 
@@ -35,7 +36,7 @@ $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
 //go to success page
-header("Location: ../edit/edit.php");
+header("Location: ../select/teacher.php");
 
 ?>
 </head>

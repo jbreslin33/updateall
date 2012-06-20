@@ -107,19 +107,6 @@ var Application = new Class(
                 {
                         window.location = "../../template/main/main.php";
                 }
-                if (event.key == 'e')
-                {
-                        window.location = "../../template/edit/edit.php";
-                }
-                if (event.key == 'u')
-                {
-                        window.location = "../../template/insert/users.php";
-                }
-                if (event.key == 's')
-                {
-                        window.location = "../../template/select/users.php";
-                }
-
         },
         
         keyUp: function(event)

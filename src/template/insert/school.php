@@ -1,5 +1,6 @@
 <?php 
 include("../headers/header.php");
+include("../links/links.php");
 
 //before we loop we need a home_room
 //we first need some info, we need to know the username of admin 
@@ -72,7 +73,7 @@ dbErrorCheck($conn,$result);
 }
 
 //go to success page
-header("Location: ../edit/edit.php");
+header("Location: ../select/school.php");
 
 ?>
 </head>

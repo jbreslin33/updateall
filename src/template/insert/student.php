@@ -34,7 +34,7 @@ $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
 //go to success page
-header("Location: ../edit/edit.php");
+header("Location: ../select/student.php");
 
 ?>
 </head>
