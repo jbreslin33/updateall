@@ -36,7 +36,7 @@ $query = "select username from users where admin_username = '$admin_username';";
 $result = pg_query($query);
 $numberOfRows = pg_num_rows($result);
 //add number of rows + 1 to get next number. This is based off the premise that we do not EVER delete user rows only deactivate them. 
-$userExtensionNumber = $numberOfRows + 1;
+$userExtensionNumber = $numberOfRows;
 //now let's combine admin username and userExtensionNumber to come up with a new username.
 $newUsername = $userExtensionNumber;
 $newUsername .= ".";
