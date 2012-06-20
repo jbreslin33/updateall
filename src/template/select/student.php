@@ -1,5 +1,7 @@
 <?php 
 include("../headers/header.php");
+include("../links/links.php");
+
 echo "My Students";
 
 //we first need some info, we need to know the username of admin 
