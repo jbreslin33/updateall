@@ -212,7 +212,7 @@ ALTER TABLE home_rooms ADD FOREIGN KEY (teacher) REFERENCES users(username);
 --HOME_ROOMS_USERS
 ALTER TABLE public.home_rooms_users OWNER TO postgres;
 ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin,description,student);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin,description) REFERENCES home_rooms(admin,description);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin,description) REFERENCES home_rooms(admin,description) ON UPDATE CASCADE;
 ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin) REFERENCES users(username);
 ALTER TABLE home_rooms_users ADD FOREIGN KEY (student) REFERENCES users(username);
 
