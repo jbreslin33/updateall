@@ -6,7 +6,7 @@ include("../headers/header.php");
 $admin = $_SESSION["username"]; 
 
 //next we need to know what user we are up to for this admin
-$query = "select * from home_rooms where admin = $admin;";
+$query = "select * from home_rooms where admin = '$admin';";
 $result = pg_query($query);
 $numberOfRows = pg_num_rows($result);
 
