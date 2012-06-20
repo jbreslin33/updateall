@@ -8,7 +8,8 @@ echo "My Students";
 $admin = $_SESSION["username"]; 
 
 //first we need all the passwords then we can pick one at random
-$query = "select * from users;";
+$admin = $_SESSION["username"];
+$query = "select * from users where admin = '$admin';";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
