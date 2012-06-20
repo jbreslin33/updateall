@@ -54,8 +54,8 @@ $result = pg_query($query);
 
 
 //insert student into home_rooms_users
-//$query = "insert into home_rooms_users (admin_id,description,user_id) values ('$admin_id','$admin_id','$newHomeRoomDescription') where description = '$newHomeRoomDescription';";
-//$result = pg_query($query);
+$query = "insert into home_rooms_users (admin_username,description,student_username) values ('$admin_username','$newHomeRoomDescription','$newUsername');";
+$result = pg_query($query);
 
 }
 //go to success page
