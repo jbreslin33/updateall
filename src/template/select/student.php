@@ -1,5 +1,8 @@
 <?php 
 include("../headers/header.php");
+echo "My Students";
+
+/*
 
 //we first need some info, we need to know the username of admin 
 $admin = $_SESSION["username"]; 
@@ -35,7 +38,7 @@ dbErrorCheck($conn,$result);
 
 //go to success page
 header("Location: ../edit/edit.php");
-
+*/
 ?>
 </head>
 </html>
