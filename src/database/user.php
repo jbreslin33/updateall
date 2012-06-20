@@ -38,7 +38,7 @@ session_start();
 
 <h1>This is the user page!</h1>
 
-<a href="http://abcandyou.com/~jbreslin/updateall/src/template/choosers/chooser_subject.php">
+<a href="http://abcandyou.com/~jbreslin/updateall/src/template/subjects/chooser.php">
 main screen
 </a>
 
