@@ -13,6 +13,8 @@ for ($h = 0; $h < $number_of_home_rooms; $h++)
 //next we need to know what user we are up to for this admin
 $query = "select * from home_rooms where admin = '$admin';";
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
+
 $numberOfRows = pg_num_rows($result);
 
 //add number of rows + 1 to get next number. This is based off the premise that we do not EVER delete user rows only deactivate them. 
@@ -24,6 +26,7 @@ $newHomeRoomDescription .= $home_roomExtensionNumber;
 //insert a home_room
 $query = "insert into home_rooms (admin,teacher,description) values ('$admin','$admin','$newHomeRoomDescription');";
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
 
 for ($i = 0; $i < $number_of_students; $i++)
 {
@@ -31,6 +34,8 @@ for ($i = 0; $i < $number_of_students; $i++)
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
+
 $numberOfRows = pg_num_rows($result);
 $randomNumber = rand(0,$numberOfRows);
 $password = pg_fetch_result($result, $randomNumber, password);
@@ -38,6 +43,8 @@ $password = pg_fetch_result($result, $randomNumber, password);
 //next we need to know what user we are up to for this admin
 $query = "select username from users where admin = '$admin';";
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
+
 $numberOfRows = pg_num_rows($result);
 //add number of rows + 1 to get next number. This is based off the premise that we do not EVER delete user rows only deactivate them. 
 $userExtensionNumber = $numberOfRows;
@@ -52,10 +59,13 @@ $query = "INSERT INTO users (username,password,role,admin,teacher) VALUES ('$new
 '$admin')";
 
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
+
 
 //insert student into home_rooms_users
 $query = "insert into home_rooms_users (admin,description,student) values ('$admin','$newHomeRoomDescription','$newUsername');";
 $result = pg_query($query);
+dbErrorCheck($conn,$result);
 
 }
 
