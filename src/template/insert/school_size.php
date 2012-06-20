@@ -15,7 +15,7 @@ include("../headers/header.php");
 
 <h2>Enter School Information :</h2>
 <ul>
-<form name="insert" action="homeroom.php" method="POST" >
+<form name="insert" action="school.php" method="POST" >
 <h4>Number of Home Rooms:</h4>
 <input type="text" value="25" name="number_of_home_rooms" />
 <br>
