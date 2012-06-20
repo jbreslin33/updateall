@@ -57,11 +57,11 @@
 			$conn = dbConnect();
 	
 			//query string 	
-			$query = "INSERT INTO users(username, password, role_id, admin_username, teacher_username) VALUES ('";
+			$query = "INSERT INTO users(username, password, role, admin, teacher) VALUES ('";
 			$query .= $_SESSION["username"];
 			$query .= "','"; 
 			$query .= $_SESSION["password"];
-			$query .= "',1,"; 
+			$query .= "','Admin',"; 
 			$query .= "'"; 
 			$query .= $_SESSION["username"];
 			$query .= "','"; 
@@ -75,7 +75,7 @@
 
 			//ok let's act like we are logging in.....
 			//query string  
-        		$query = "select math_level, english_level, role_id from users where username = '";
+        		$query = "select math_level, english_level, role from users where username = '";
         		$query .= $_SESSION["username"];
         		$query .= "' "; 
         		$query .= "and ";
@@ -99,7 +99,7 @@
                 		//get the id from user table    
                 		$mathLevel = pg_Result($result, 0, 'math_level');
                 		$englishLevel = pg_Result($result, 0, 'english_level');
-                		$roleId = pg_Result($result, 0, 'role_id');
+                		$roleId = pg_Result($result, 0, 'role');
                 
                 		//set login var to yes  
                 		$_SESSION["Login"] = "YES";
@@ -107,28 +107,28 @@
                 		//set user and subject levels to be used later                      
                 		$_SESSION["math_level"] = $mathLevel;   
                 		$_SESSION["english_level"] = $englishLevel;     
-                		$_SESSION["role_id"] = $roleId;         
+                		$_SESSION["role"] = $roleId;         
         
                 		//administrator
-                		if ($_SESSION["role_id"] == 1) 
+                		if ($_SESSION["role"] == "Admin") 
                 		{
                         		header("Location: ../template/main/main.php");
                 		}
                 
                 		//teacher
-                		if ($_SESSION["role_id"] == 2) 
+                		if ($_SESSION["role"] == "Teacher") 
                 		{
                         		header("Location: ../template/main/main.php");
                 		}
                 
                 		//student
-                		if ($_SESSION["role_id"] == 3) 
+                		if ($_SESSION["role"] == "Student") 
                 		{
                         		header("Location: ../template/subject/chooser.php");
                 		}
                 
                 		//guest
-                		if ($_SESSION["role_id"] == 4) 
+                		if ($_SESSION["role"] == "Guest") 
                 		{
                         		header("Location: ../template/subject/chooser.php");
                 		}

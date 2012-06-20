@@ -8,7 +8,7 @@ DROP TABLE subtraction cascade;
 DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
-DROP TABLE grade_level cascade;
+DROP TABLE grade_levels cascade;
 DROP TABLE home_rooms_users cascade;
 DROP TABLE home_rooms cascade;
 DROP TABLE users cascade;
@@ -41,14 +41,12 @@ CREATE TABLE passwords (
 
 --------------------roles---------------------------------------
 CREATE TABLE roles (
-    id integer NOT NULL,
-    role text NOT NULL UNIQUE
+    role text 
 );
 
 --------------------grade_level---------------------------------------
-CREATE TABLE grade_level (
-    id integer NOT NULL,
-    description text NOT NULL UNIQUE
+CREATE TABLE grade_levels (
+    grade_level text 
 );
 
 --------------------math_levels---------------------------------------
@@ -126,62 +124,41 @@ CREATE TABLE users (
     math_level integer DEFAULT 1 NOT NULL,
     english_level integer DEFAULT 1 NOT NULL,
 
-    role_id integer NOT NULL,
+    role text NOT NULL,
 
-    admin_username text NOT NULL,
-    teacher_username text NOT NULL 
+    admin text NOT NULL,
+    teacher text NOT NULL 
 );
 
 --------------------home_rooms---------------------------------------
 CREATE TABLE home_rooms (
-    admin_username text NOT NULL,
+    admin text NOT NULL,
     description text NOT NULL,
-    teacher_username text NOT NULL
+    teacher text NOT NULL
 );
 
 --------------------home_rooms_users---------------------------------------
 CREATE TABLE home_rooms_users (
-    admin_username text NOT NULL,
-    description text NOT NULL,
-    student_username text NOT NULL
+    admin text,
+    description text,
+    student text
 );
 
 ----------------------CREATE SEQUENCES-------------------------
---ROLES
-CREATE SEQUENCE roles_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GRADE_LEVEL
-CREATE SEQUENCE grade_level_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+-- for better or for worse i got rid of all sequences and i am using natural pks
 
 --------------------ALTER---------------------------------------
---ALTER TABLE groups ADD FOREIGN KEY (teacher_id) REFERENCES users(id);
-
 --PASSWORDS
 ALTER TABLE public.passwords OWNER TO postgres;
 ALTER TABLE passwords ADD PRIMARY KEY (password);
 
 --ROLES
 ALTER TABLE public.roles OWNER TO postgres;
-ALTER TABLE public.roles_id_seq OWNER TO postgres;
-ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
-ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
-ALTER TABLE roles ADD PRIMARY KEY (id);
+ALTER TABLE roles ADD PRIMARY KEY (role);
 
 --GRADE_LEVELS
-ALTER TABLE public.grade_level OWNER TO postgres;
-ALTER TABLE public.grade_level_id_seq OWNER TO postgres;
-ALTER SEQUENCE grade_level_id_seq OWNED BY grade_level.id;
-ALTER TABLE ONLY grade_level ALTER COLUMN id SET DEFAULT nextval('grade_level_id_seq'::regclass);
+ALTER TABLE public.grade_levels OWNER TO postgres;
+ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
 
 --MATH_LEVELS
 ALTER TABLE public.math_levels OWNER TO postgres;
@@ -222,21 +199,22 @@ ALTER TABLE public.users OWNER TO postgres;
 ALTER TABLE users ADD PRIMARY KEY (username);
 ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
 ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
-ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES roles(id);
-ALTER TABLE users ADD FOREIGN KEY (admin_username) REFERENCES users(username);
-ALTER TABLE users ADD FOREIGN KEY (teacher_username) REFERENCES users(username);
+ALTER TABLE users ADD FOREIGN KEY (role) REFERENCES roles(role);
+ALTER TABLE users ADD FOREIGN KEY (admin) REFERENCES users(username);
+ALTER TABLE users ADD FOREIGN KEY (teacher) REFERENCES users(username);
 
 --HOME_ROOMS
 ALTER TABLE public.home_rooms OWNER TO postgres;
-ALTER TABLE home_rooms ADD PRIMARY KEY (admin_username,description);
-ALTER TABLE home_rooms ADD FOREIGN KEY (admin_username) REFERENCES users(username);
-ALTER TABLE home_rooms ADD FOREIGN KEY (teacher_username) REFERENCES users(username);
+ALTER TABLE home_rooms ADD PRIMARY KEY (admin,description);
+ALTER TABLE home_rooms ADD FOREIGN KEY (admin) REFERENCES users(username);
+ALTER TABLE home_rooms ADD FOREIGN KEY (teacher) REFERENCES users(username);
 
 --HOME_ROOMS_USERS
 ALTER TABLE public.home_rooms_users OWNER TO postgres;
-ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin_username,description,student_username);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin_username,description) REFERENCES home_rooms(admin_username,description);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (student_username) REFERENCES users(username);
+ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin,description,student);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin,description) REFERENCES home_rooms(admin,description);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin) REFERENCES users(username);
+ALTER TABLE home_rooms_users ADD FOREIGN KEY (student) REFERENCES users(username);
 
 --------------------INSERT---------------------------------------
 --PASSWORDS
@@ -308,34 +286,20 @@ insert into passwords (password) values ('yoyo');
 insert into passwords (password) values ('zip'); 
 
 --ROLES
-insert into roles (role) values ('Administrator'); 
+insert into roles (role) values ('Admin'); 
 insert into roles (role) values ('Teacher'); 
 insert into roles (role) values ('Student'); 
 insert into roles (role) values ('Guest'); 
 
 --GRADE_LEVEL
-insert into grade_level (description) values ('PK0');
-insert into grade_level (description) values ('PK1');
-insert into grade_level (description) values ('PK2');
-insert into grade_level (description) values ('PK3');
-insert into grade_level (description) values ('PK4');
-insert into grade_level (description) values ('K');
-insert into grade_level (description) values ('Grade 1');
-insert into grade_level (description) values ('Grade 2');
-insert into grade_level (description) values ('Grade 3');
-insert into grade_level (description) values ('Grade 4');
-insert into grade_level (description) values ('Grade 5');
-insert into grade_level (description) values ('Grade 6');
-insert into grade_level (description) values ('Grade 7');
-insert into grade_level (description) values ('Grade 8');
-insert into grade_level (description) values ('Grade 9');
-insert into grade_level (description) values ('Grade 10');
-insert into grade_level (description) values ('Grade 11');
-insert into grade_level (description) values ('Grade 12');
-insert into grade_level (description) values ('Grade 13');
-insert into grade_level (description) values ('Grade 14');
-insert into grade_level (description) values ('Grade 15');
-insert into grade_level (description) values ('Grade 16');
+insert into grade_levels (grade_level) values ('PK3');
+insert into grade_levels (grade_level) values ('PK4');
+insert into grade_levels (grade_level) values ('K');
+insert into grade_levels (grade_level) values ('1');
+insert into grade_levels (grade_level) values ('2');
+insert into grade_levels (grade_level) values ('3');
+insert into grade_levels (grade_level) values ('4');
+insert into grade_levels (grade_level) values ('5');
 
 --SUBJECTS
 insert into subjects (subject,url) values ('Math','../math/chooser.php');
@@ -384,22 +348,22 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('anselm','p','Father','Foley',1,'anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('anselm','p','Father','Foley','Admin','anselm','anselm'); 
 --create admin vis 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('vis','p','Dolores','Egner',1,'vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('vis','p','Dolores','Egner','Admin','vis','vis'); 
 
 --create teachers anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('kmary.anselm','p','Sally','Berg',2,'anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('kmary.anselm','p','Sally','Berg','Teacher','anselm','anselm'); 
 --create teachers vis 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('jroache.vis','p','James','Roache',2,'vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('jroache.vis','p','James','Roache','Teacher','vis','vis'); 
 
 --create students anselm 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('1.anselm','p','Willard','Lackman',3,'anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('1.anselm','p','Willard','Lackman','Student','anselm','anselm'); 
 --create students vis 
-insert into users (username,password,first_name,last_name,role_id,admin_username,teacher_username) values ('1.vis','p','Luke','Breslin',3,'vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin,teacher) values ('1.vis','p','Luke','Breslin','Student','vis','vis'); 
 
 --create guest
-insert into users (username,password,role_id,admin_username,teacher_username) values ('guest','p',4,'guest','guest'); 
+insert into users (username,password,role,admin,teacher) values ('guest','p','Guest','guest','guest'); 
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
