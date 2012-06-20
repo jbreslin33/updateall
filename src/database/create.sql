@@ -1,7 +1,6 @@
 --
 -- PostgreSQL database dump
 --
-
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
@@ -16,6 +15,7 @@ DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE roles cascade;
 DROP TABLE passwords cascade;
+DROP TABLE error_log cascade; 
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -33,6 +33,13 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+
+--------------------error_log---------------------------------------
+CREATE TABLE error_log (
+    error text,
+    error_time timestamp,
+    username text
+);
 
 --------------------passwords---------------------------------------
 CREATE TABLE passwords (
