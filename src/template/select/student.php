@@ -2,14 +2,12 @@
 include("../headers/header.php");
 echo "My Students";
 
-
-
 //we first need some info, we need to know the username of admin 
 $admin = $_SESSION["username"]; 
 
 //first we need all the passwords then we can pick one at random
 $admin = $_SESSION["username"];
-$query = "select * from users where admin = '$admin';";
+$query = "select * from users where admin = '$admin' and role = 'Student';";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
