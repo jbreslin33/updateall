@@ -7,7 +7,7 @@ include("../links/links.php");
 $admin = $_SESSION["username"]; 
 
 //next we need to know what user we are up to for this admin
-$query = "select * from home_rooms where admin = '$admin';";
+$query = "select * from homerooms where admin = '$admin';";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
@@ -19,7 +19,7 @@ $home_roomExtensionNumber = $numberOfRows + 1;
 $newHomeRoomDescription = "HOME ROOM "; 
 $newHomeRoomDescription .= $home_roomExtensionNumber;
 
-$query = "insert into homerooms (admin,teacher,description) values ('$admin','$admin','$newHomeRoomDescription');";
+$query = "insert into homerooms (admin,teacher,homeroom) values ('$admin','$admin','$newHomeRoomDescription');";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
@@ -52,7 +52,7 @@ $newUsername .= $admin;
 
 //let's get the id of homeroom
 //next we need to know what user we are up to for this admin
-$query = "select id from home_rooms where admin = '$admin' and homeroom = '$newHomeRoomDescription';";
+$query = "select id from homerooms where admin = '$admin' and homeroom = '$newHomeRoomDescription';";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 $homeroom_id = pg_fetch_result($result,0, id);

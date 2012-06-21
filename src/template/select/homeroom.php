@@ -9,7 +9,7 @@ $admin = $_SESSION["username"];
 
 //first we need all the passwords then we can pick one at random
 $admin = $_SESSION["username"];
-$query = "select description, teacher from home_rooms where admin = '$admin';";
+$query = "select homeroom, teacher from homerooms where admin = '$admin';";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
@@ -18,7 +18,7 @@ $numrows = pg_numrows($result);
 
 <table border="1">
   <tr>
-   <th>Description</th>
+   <th>Home Room</th>
    <th>Teacher</th>
   </tr>
 
@@ -28,7 +28,7 @@ $numrows = pg_numrows($result);
    for($ri = 0; $ri < $numrows; $ri++) {
     echo "<tr>\n";
     $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["description"], "</td>
+    echo " <td>", $row["homeroom"], "</td>
    <td>", $row["teacher"], "</td>
   </tr>
   ";
