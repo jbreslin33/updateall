@@ -3,8 +3,8 @@ include("../headers/header.php");
 include("../links/links.php");
 
 //before we loop we need a home_room
-//we first need some info, we need to know the username of admin
-$admin = $_SESSION["username"];
+//we first need some info, we need to know the username of admin 
+$admin = $_SESSION["username"]; 
 $number_of_home_rooms = $_POST["number_of_home_rooms"];
 $number_of_students = $_POST["number_of_students"];
 
@@ -65,13 +65,14 @@ $homeroom_id = pg_fetch_result($result,0, id);
 //let's actually add the user
 $query = "INSERT INTO users (username,password,role,admin,homeroom_id) VALUES ('$newUsername','$password',
 'Student','$admin',
-'$homeroom_id)";
+$homeroom_id)";
 
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
 }
 }
+
 //go to success page
 header("Location: ../select/school.php");
 
