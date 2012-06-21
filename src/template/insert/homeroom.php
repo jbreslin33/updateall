@@ -19,7 +19,7 @@ $home_roomExtensionNumber = $numberOfRows + 1;
 $newHomeRoomDescription = "HOME ROOM "; 
 $newHomeRoomDescription .= $home_roomExtensionNumber;
 
-$query = "insert into home_rooms (admin,teacher,description) values ('$admin','$admin','$newHomeRoomDescription');";
+$query = "insert into homerooms (admin,teacher,description) values ('$admin','$admin','$newHomeRoomDescription');";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
@@ -50,19 +50,20 @@ $newUsername = $userExtensionNumber;
 $newUsername .= ".";
 $newUsername .= $admin; 
 
+//let's get the id of homeroom
+//next we need to know what user we are up to for this admin
+$query = "select id from home_rooms where admin = '$admin' and homeroom = '$newHomeRoomDescription';";
+$result = pg_query($query);
+dbErrorCheck($conn,$result);
+$homeroom_id = pg_fetch_result($result,0, id);
+
 //let's actually add the user
-$query = "INSERT INTO users (username,password,role,admin,teacher) VALUES ('$newUsername','$password',
+$query = "INSERT INTO users (username,password,role,admin,homeroom_id) VALUES ('$newUsername','$password',
 'Student','$admin',
-'$admin')";
+'$homeroom_id)";
 
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
-
-//insert student into home_rooms_users
-$query = "insert into home_rooms_users (admin,description,student) values ('$admin','$newHomeRoomDescription','$newUsername');";
-$result = pg_query($query);
-dbErrorCheck($conn,$result);
-
 
 }
 //go to success page

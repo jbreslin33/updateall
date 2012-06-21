@@ -8,8 +8,7 @@ DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_levels cascade;
-DROP TABLE home_rooms_users cascade;
-DROP TABLE home_rooms cascade;
+DROP TABLE homerooms cascade;
 DROP TABLE users cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
@@ -134,94 +133,133 @@ CREATE TABLE users (
     role text NOT NULL,
 
     admin text NOT NULL,
-    teacher text NOT NULL 
+    homeroom_id integer 
 );
 
---------------------home_rooms---------------------------------------
-CREATE TABLE home_rooms (
+--------------------homerooms---------------------------------------
+CREATE TABLE homerooms (
+    id integer NOT NULL,
     admin text NOT NULL,
-    description text NOT NULL,
+    homeroom text NOT NULL,
     teacher text NOT NULL
 );
 
---------------------home_rooms_users---------------------------------------
-CREATE TABLE home_rooms_users (
-    admin text,
-    description text,
-    student text
-);
-
 ----------------------CREATE SEQUENCES-------------------------
--- for better or for worse i got rid of all sequences and i am using natural pks
+-- for better or for worse i got rid of all sequences and i am using natural pks except for HOME ROOMS
 
---------------------ALTER---------------------------------------
+--HOME_ROOMS
+CREATE SEQUENCE homerooms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--------------------ALTER OWNER---------------------------------------
 --PASSWORDS
 ALTER TABLE public.passwords OWNER TO postgres;
-ALTER TABLE passwords ADD PRIMARY KEY (password);
 
 --ROLES
 ALTER TABLE public.roles OWNER TO postgres;
-ALTER TABLE roles ADD PRIMARY KEY (role);
 
 --GRADE_LEVELS
 ALTER TABLE public.grade_levels OWNER TO postgres;
-ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
 
 --MATH_LEVELS
 ALTER TABLE public.math_levels OWNER TO postgres;
-ALTER TABLE math_levels ADD PRIMARY KEY (level);
 
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels OWNER TO postgres;
-ALTER TABLE english_levels ADD PRIMARY KEY (level);
 
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
-ALTER TABLE subjects ADD PRIMARY KEY (subject);
 
 --MATH_GAMES
 ALTER TABLE public.math_games OWNER TO postgres;
-ALTER TABLE math_games ADD PRIMARY KEY (level,url);
-ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
 
 --ENGLISH_GAMES
 ALTER TABLE public.english_games OWNER TO postgres;
-ALTER TABLE english_games ADD PRIMARY KEY (level,url);
-ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(level);
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
-ALTER TABLE counting ADD PRIMARY KEY (level);
 
 --ADDITION
 ALTER TABLE public.addition OWNER TO postgres;
-ALTER TABLE addition ADD PRIMARY KEY (level);
 
 --SUBTRACTION
 ALTER TABLE public.subtraction OWNER TO postgres;
-ALTER TABLE subtraction ADD PRIMARY KEY (level);
 
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
+
+--HOME_ROOMS
+ALTER TABLE public.homerooms OWNER TO postgres;
+
+--------------------ALTER SEQUENCE---------------------------------------
+--HOME_ROOMS
+ALTER TABLE public.homerooms_id_seq OWNER TO postgres;
+ALTER SEQUENCE homerooms_id_seq OWNED BY homerooms.id;
+ALTER TABLE ONLY homerooms ALTER COLUMN id SET DEFAULT nextval('homerooms_id_seq'::regclass);
+
+--------------------PRIMARY KEYS---------------------------------------
+--PASSWORDS
+ALTER TABLE passwords ADD PRIMARY KEY (password);
+
+--ROLES
+ALTER TABLE roles ADD PRIMARY KEY (role);
+
+--GRADE_LEVELS
+ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
+
+--MATH_LEVELS
+ALTER TABLE math_levels ADD PRIMARY KEY (level);
+
+--ENGLISH_LEVELS
+ALTER TABLE english_levels ADD PRIMARY KEY (level);
+
+--SUBJECTS
+ALTER TABLE subjects ADD PRIMARY KEY (subject);
+
+--MATH_GAMES
+ALTER TABLE math_games ADD PRIMARY KEY (level,url);
+
+--ENGLISH_GAMES
+ALTER TABLE english_games ADD PRIMARY KEY (level,url);
+
+--COUNTING
+ALTER TABLE counting ADD PRIMARY KEY (level);
+
+--ADDITION
+ALTER TABLE addition ADD PRIMARY KEY (level);
+
+--SUBTRACTION
+ALTER TABLE subtraction ADD PRIMARY KEY (level);
+
+--USERS
 ALTER TABLE users ADD PRIMARY KEY (username);
+
+--HOME_ROOMS
+ALTER TABLE homerooms ADD PRIMARY KEY (id);
+
+--------------------------------FOREIGN KEYS----------------------------
+
+--MATH_GAMES
+ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
+
+--ENGLISH_GAMES
+ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(level);
+
+--HOME_ROOMS
+ALTER TABLE homerooms ADD FOREIGN KEY (admin) REFERENCES users(username);
+
+--USERS
 ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
 ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
 ALTER TABLE users ADD FOREIGN KEY (role) REFERENCES roles(role);
 ALTER TABLE users ADD FOREIGN KEY (admin) REFERENCES users(username);
-ALTER TABLE users ADD FOREIGN KEY (teacher) REFERENCES users(username);
+ALTER TABLE users ADD FOREIGN KEY (homeroom_id) REFERENCES homerooms(id);
 
---HOME_ROOMS
-ALTER TABLE public.home_rooms OWNER TO postgres;
-ALTER TABLE home_rooms ADD PRIMARY KEY (admin,description);
-ALTER TABLE home_rooms ADD FOREIGN KEY (admin) REFERENCES users(username);
-ALTER TABLE home_rooms ADD FOREIGN KEY (teacher) REFERENCES users(username);
-
---HOME_ROOMS_USERS
-ALTER TABLE public.home_rooms_users OWNER TO postgres;
-ALTER TABLE home_rooms_users ADD PRIMARY KEY (admin,description,student);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin,description) REFERENCES home_rooms(admin,description) ON UPDATE CASCADE;
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (admin) REFERENCES users(username);
-ALTER TABLE home_rooms_users ADD FOREIGN KEY (student) REFERENCES users(username);
 
 --------------------INSERT---------------------------------------
 --PASSWORDS
@@ -355,22 +393,22 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('anselm','p','Father','Foley','Admin','anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('anselm','p','Father','Foley','Admin','anselm'); 
 --create admin vis 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('vis','p','Dolores','Egner','Admin','vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('vis','p','Dolores','Egner','Admin','vis'); 
 
 --create teachers anselm 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('kmary.anselm','p','Sally','Berg','Teacher','anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('kmary.anselm','p','Sally','Berg','Teacher','anselm'); 
 --create teachers vis 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('jroache.vis','p','James','Roache','Teacher','vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('jroache.vis','p','James','Roache','Teacher','vis'); 
 
 --create students anselm 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('1.anselm','p','Willard','Lackman','Student','anselm','anselm'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('1.anselm','p','Willard','Lackman','Student','anselm'); 
 --create students vis 
-insert into users (username,password,first_name,last_name,role,admin,teacher) values ('1.vis','p','Luke','Breslin','Student','vis','vis'); 
+insert into users (username,password,first_name,last_name,role,admin) values ('1.vis','p','Luke','Breslin','Student','vis'); 
 
 --create guest
-insert into users (username,password,role,admin,teacher) values ('guest','p','Guest','guest','guest'); 
+insert into users (username,password,role,admin) values ('guest','p','Guest','guest'); 
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;

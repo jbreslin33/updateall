@@ -9,7 +9,7 @@ $admin = $_SESSION["username"];
 
 //first we need all the passwords then we can pick one at random
 $admin = $_SESSION["username"];
-$query = "select username, password, last_name, first_name, math_level, english_level from users where admin = '$admin' and role = 'Teacher';";
+$query = "select username, password, last_name, first_name, homeroom_id, math_level, english_level from users where admin = '$admin' and role = 'Teacher';";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
@@ -22,6 +22,7 @@ $numrows = pg_numrows($result);
    <th>Password</th>
    <th>Last name</th>
    <th>First name</th>
+   <th>HomeRoom ID</th>
    <th>Math Level</th>
    <th>English Level</th>
   </tr>
@@ -36,6 +37,7 @@ $numrows = pg_numrows($result);
    <td>", $row["password"], "</td>
    <td>", $row["last_name"], "</td>
    <td>", $row["first_name"], "</td>
+   <td>", $row["homeroom_id"], "</td>
    <td>", $row["math_level"], "</td>
    <td>", $row["english_level"], "</td>
   </tr>

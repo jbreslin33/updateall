@@ -27,9 +27,9 @@ $newUsername .= ".";
 $newUsername .= $admin; 
 
 //let's actually add the user
-$query = "INSERT INTO users (username,password,role,admin,teacher) VALUES ('$newUsername','$password',
-'Student','$admin',
-'$admin')";
+$query = "INSERT INTO users (username,password,role,admin) VALUES ('$newUsername','$password',
+'Student','$admin'
+)";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 

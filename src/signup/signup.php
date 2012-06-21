@@ -57,14 +57,12 @@
 			$conn = dbConnect();
 	
 			//query string 	
-			$query = "INSERT INTO users(username, password, role, admin, teacher) VALUES ('";
+			$query = "INSERT INTO users(username, password, role, admin) VALUES ('";
 			$query .= $_SESSION["username"];
 			$query .= "','"; 
 			$query .= $_SESSION["password"];
 			$query .= "','Admin',"; 
 			$query .= "'"; 
-			$query .= $_SESSION["username"];
-			$query .= "','"; 
 			$query .= $_SESSION["username"];
 			$query .= "'"; 
 			$query .= ");";      	

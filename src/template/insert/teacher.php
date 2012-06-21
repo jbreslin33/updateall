@@ -1,13 +1,12 @@
 <?php 
 include("../headers/header.php");
-include("../links/links.php");
 
 //we first need some info, we need to know the username of admin 
 $admin = $_SESSION["username"]; 
 
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
-$result = pg_query($query);
+$result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 
 $numberOfRows = pg_num_rows($result);
@@ -28,10 +27,9 @@ $newUsername .= ".";
 $newUsername .= $admin; 
 
 //let's actually add the user
-$query = "INSERT INTO users (username,password,role,admin,teacher) VALUES ('$newUsername','$password',
-'Teacher','$admin',
-'$admin')";
-
+$query = "INSERT INTO users (username,password,role,admin) VALUES ('$newUsername','$password',
+'Teacher','$admin'
+)";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
