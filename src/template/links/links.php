@@ -26,10 +26,10 @@
 <a href="../insert/teacher.php">INSERT TEACHER</a>
 <br>
 
-<a href="../insert/homeroom.php">INSERT HOMEROOM</a>
+<a href="../insert/homeroom_size.php">INSERT HOMEROOM</a>
 <br>
 
-<a href="../insert/school.php">INSERT SCHOOL</a>
+<a href="../insert/school_size.php">INSERT SCHOOL</a>
 <br>
 <br>
 

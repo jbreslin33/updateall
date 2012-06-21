@@ -60,7 +60,7 @@ $homeroom_id = pg_fetch_result($result,0, id);
 //let's actually add the user
 $query = "INSERT INTO users (username,password,role,admin,homeroom_id) VALUES ('$newUsername','$password',
 'Student','$admin',
-'$homeroom_id)";
+$homeroom_id)";
 
 $result = pg_query($query);
 dbErrorCheck($conn,$result);

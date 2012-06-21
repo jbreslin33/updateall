@@ -3,8 +3,8 @@ include("../headers/header.php");
 include("../links/links.php");
 
 //before we loop we need a home_room
-//we first need some info, we need to know the username of admin 
-$admin = $_SESSION["username"]; 
+//we first need some info, we need to know the username of admin
+$admin = $_SESSION["username"];
 $number_of_home_rooms = $_POST["number_of_home_rooms"];
 $number_of_students = $_POST["number_of_students"];
 
@@ -12,7 +12,7 @@ for ($h = 0; $h < $number_of_home_rooms; $h++)
 {
 
 //next we need to know what user we are up to for this admin
-$query = "select * from home_rooms where admin = '$admin';";
+$query = "select * from homerooms where admin = '$admin';";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
@@ -24,10 +24,11 @@ $home_roomExtensionNumber = $numberOfRows + 1;
 $newHomeRoomDescription = "HOME ROOM "; 
 $newHomeRoomDescription .= $home_roomExtensionNumber;
 
-//insert a home_room
-$query = "insert into home_rooms (admin,teacher,description) values ('$admin','$admin','$newHomeRoomDescription');";
+$query = "insert into homerooms (admin,teacher,homeroom) values ('$admin','$admin','$newHomeRoomDescription');";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
+
+$number_of_students = $_POST["number_of_students"];
 
 for ($i = 0; $i < $number_of_students; $i++)
 {
@@ -54,24 +55,23 @@ $newUsername = $userExtensionNumber;
 $newUsername .= ".";
 $newUsername .= $admin; 
 
+//let's get the id of homeroom
+//next we need to know what user we are up to for this admin
+$query = "select id from homerooms where admin = '$admin' and homeroom = '$newHomeRoomDescription';";
+$result = pg_query($query);
+dbErrorCheck($conn,$result);
+$homeroom_id = pg_fetch_result($result,0, id);
+
 //let's actually add the user
-$query = "INSERT INTO users (username,password,role,admin,teacher) VALUES ('$newUsername','$password',
+$query = "INSERT INTO users (username,password,role,admin,homeroom_id) VALUES ('$newUsername','$password',
 'Student','$admin',
-'$admin')";
+'$homeroom_id)";
 
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
-
-//insert student into home_rooms_users
-$query = "insert into home_rooms_users (admin,description,student) values ('$admin','$newHomeRoomDescription','$newUsername');";
-$result = pg_query($query);
-dbErrorCheck($conn,$result);
-
 }
-
 }
-
 //go to success page
 header("Location: ../select/school.php");
 
