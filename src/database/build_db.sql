@@ -11,8 +11,8 @@ DROP TABLE grade_levels cascade;
 --DROP TABLE homerooms cascade;
 DROP TABLE schools cascade;
 DROP TABLE admins cascade;
-DROP TABLE students cascade;
 DROP TABLE teachers cascade;
+DROP TABLE students cascade;
 DROP TABLE users cascade;
 DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
@@ -128,41 +128,44 @@ CREATE TABLE subtraction (
     negative_difference boolean DEFAULT false NOT NULL
 );
 
+
+--------------------schools---------------------------------------
+CREATE TABLE schools (
+    id integer NOT NULL,
+    name text 
+);
+
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL,
     username text, 
     password text NOT NULL,
-
     first_name text,
-    last_name text
-);
-
---------------------schools---------------------------------------
-CREATE TABLE schools (
-    id integer NOT NULL,
-    user_id integer
+    last_name text,
+    school_id integer NOT NULL
 );
 
 --------------------admins---------------------------------------
 CREATE TABLE admins (
     id integer NOT NULL,
-    user_id integer
+    user_id integer,
+    school_id integer NOT NULL
+);
+
+--------------------teachers---------------------------------------
+CREATE TABLE teachers (
+    id integer NOT NULL,
+    user_id integer,  
+    school_id integer NOT NULL
 );
 
 --------------------students---------------------------------------
 CREATE TABLE students (
     id integer NOT NULL,
     user_id integer, 
-
     math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL
-);
-
---------------------teacher---------------------------------------
-CREATE TABLE teachers (
-    id integer NOT NULL,
-    user_id integer  
+    english_level integer DEFAULT 1 NOT NULL,
+    school_id integer NOT NULL
 );
 
 --------------------homerooms---------------------------------------
@@ -515,7 +518,7 @@ ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(leve
 --ALTER TABLE users ADD FOREIGN KEY (homeroom_id) REFERENCES homerooms(id);
 
 --SCHOOLS
-ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
+--ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --ADMINS
 ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
@@ -652,19 +655,26 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into users (username,password,first_name,last_name) values ('anselm','p','Father','Foley'); 
+insert into schools (name) values ('anselm');
+--username in this is the base username from school, subsequent users will use the username value from
+--schools table and extend it with .
+insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
+insert into admins (user_id,school_id) values (1,1); 
+insert into teachers (user_id,school_id) values (1,1); 
+insert into students (user_id,math_level,english_level,school_id) values (1,1,1,1); 
+
 --create admin vis 
-insert into users (username,password,first_name,last_name) values ('vis','p','Dolores','Egner'); 
+--insert into users (username,password,first_name,last_name) values ('vis','p','Dolores','Egner'); 
 
 --create teachers anselm 
-insert into users (username,password,first_name,last_name) values ('kmary.anselm','p','Sally','Berg'); 
+--insert into users (username,password,first_name,last_name) values ('kmary.anselm','p','Sally','Berg'); 
 --create teachers vis 
-insert into users (username,password,first_name,last_name) values ('jroache.vis','p','James','Roache'); 
+--insert into users (username,password,first_name,last_name) values ('jroache.vis','p','James','Roache'); 
 
 --create students anselm 
-insert into users (username,password,first_name,last_name) values ('1.anselm','p','Willard','Lackman'); 
+--insert into users (username,password,first_name,last_name) values ('1.anselm','p','Willard','Lackman'); 
 --create students vis 
-insert into users (username,password,first_name,last_name) values ('1.vis','p','Luke','Breslin'); 
+--insert into users (username,password,first_name,last_name) values ('1.vis','p','Luke','Breslin'); 
 
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;

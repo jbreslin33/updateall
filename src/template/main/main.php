@@ -3,6 +3,11 @@
 include("../headers/header.php");
 include("../links/links.php");
 
+echo $_SESSION["id"];
+echo $_SESSION["username"];
+echo $_SESSION["math_level"];
+echo $_SESSION["english_level"];
+
 ?>
 
 </html>
