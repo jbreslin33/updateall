@@ -9,13 +9,14 @@ DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_levels cascade;
 --DROP TABLE homerooms cascade;
+DROP TABLE schools cascade;
 DROP TABLE admins cascade;
 DROP TABLE students cascade;
 DROP TABLE teachers cascade;
 DROP TABLE users cascade;
 DROP TABLE math_levels cascade;
+DROP TABLE students_math_levels cascade;
 DROP TABLE english_levels cascade;
-DROP TABLE roles cascade;
 DROP TABLE passwords cascade;
 DROP TABLE error_log cascade; 
 
@@ -138,11 +139,18 @@ CREATE TABLE users (
     last_name text
 );
 
---------------------admin---------------------------------------
+--------------------schools---------------------------------------
+CREATE TABLE schools (
+    id integer NOT NULL,
+    user_id integer
+);
+
+--------------------admins---------------------------------------
 CREATE TABLE admins (
     id integer NOT NULL,
     user_id integer
 );
+
 
 --------------------students---------------------------------------
 CREATE TABLE students (
@@ -272,6 +280,14 @@ CREATE SEQUENCE users_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--SCHOOLS
+CREATE SEQUENCE schools_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --ADMINS
 CREATE SEQUENCE admins_id_seq
     START WITH 1
@@ -339,6 +355,9 @@ ALTER TABLE public.subtraction OWNER TO postgres;
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
 
+--SCHOOLS
+ALTER TABLE public.schools OWNER TO postgres;
+
 --ADMINS
 ALTER TABLE public.admins OWNER TO postgres;
 
@@ -382,20 +401,40 @@ ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
---USERS
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+--MATH_GAMES
+ALTER TABLE public.math_games_id_seq OWNER TO postgres;
+ALTER SEQUENCE math_games_id_seq OWNED BY math_games.id;
+ALTER TABLE ONLY math_games ALTER COLUMN id SET DEFAULT nextval('math_games_id_seq'::regclass);
+
+--ENGLISH_GAMES
+ALTER TABLE public.english_games_id_seq OWNER TO postgres;
+ALTER SEQUENCE english_games_id_seq OWNED BY english_games.id;
+ALTER TABLE ONLY english_games ALTER COLUMN id SET DEFAULT nextval('english_games_id_seq'::regclass);
+
+--COUNTING
+ALTER TABLE public.counting_id_seq OWNER TO postgres;
+ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
+ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
+
+--ADDITION
+ALTER TABLE public.addition_id_seq OWNER TO postgres;
+ALTER SEQUENCE addition_id_seq OWNED BY addition.id;
+ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
+
+--SUBTRACTION
+ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
+ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
+ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 
 --USERS
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
---USERS
-ALTER TABLE public.users_id_seq OWNER TO postgres;
-ALTER SEQUENCE users_id_seq OWNED BY users.id;
-ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+--SCHOOLS
+ALTER TABLE public.schools_id_seq OWNER TO postgres;
+ALTER SEQUENCE schools_id_seq OWNED BY schools.id;
+ALTER TABLE ONLY schools ALTER COLUMN id SET DEFAULT nextval('schools_id_seq'::regclass);
 
 --ADMINS
 ALTER TABLE public.admins_id_seq OWNER TO postgres;
@@ -420,9 +459,6 @@ ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq':
 --------------------PRIMARY KEYS---------------------------------------
 --PASSWORDS
 ALTER TABLE passwords ADD PRIMARY KEY (password);
-
---ROLES
-ALTER TABLE roles ADD PRIMARY KEY (role);
 
 --GRADE_LEVELS
 ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
@@ -454,6 +490,9 @@ ALTER TABLE subtraction ADD PRIMARY KEY (level);
 --USERS
 ALTER TABLE users ADD PRIMARY KEY (id);
 
+--SCHOOLS
+ALTER TABLE schools ADD PRIMARY KEY (id);
+
 --ADMINS
 ALTER TABLE admins ADD PRIMARY KEY (id);
 
@@ -480,9 +519,11 @@ ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(leve
 --USERS
 --ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
 --ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
---ALTER TABLE users ADD FOREIGN KEY (role) REFERENCES roles(role);
 --ALTER TABLE users ADD FOREIGN KEY (admin) REFERENCES users(username);
 --ALTER TABLE users ADD FOREIGN KEY (homeroom_id) REFERENCES homerooms(id);
+
+--SCHOOLS
+ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --ADMINS
 ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
@@ -561,12 +602,6 @@ insert into passwords (password) values ('want');
 insert into passwords (password) values ('you'); 
 insert into passwords (password) values ('yoyo'); 
 insert into passwords (password) values ('zip'); 
-
---ROLES
-insert into roles (role) values ('Admin'); 
-insert into roles (role) values ('Teacher'); 
-insert into roles (role) values ('Student'); 
-insert into roles (role) values ('Guest'); 
 
 --GRADE_LEVEL
 insert into grade_levels (grade_level) values ('PK3');
