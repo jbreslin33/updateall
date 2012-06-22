@@ -2,14 +2,11 @@
 include("../headers/header.php");
 include("../links/links.php");
 
-echo "My Students";
+echo "My Students, well not really it's everybody in the whole db's students...for now until we do a join";
 
-//we first need some info, we need to know the username of admin 
-$admin = $_SESSION["username"]; 
-
-//first we need all the passwords then we can pick one at random
-$admin = $_SESSION["username"];
-$query = "select username, password, last_name, first_name, homeroom_id, math_level, english_level from users where admin = '$admin' and role = 'Student';";
+$query = "select id, math_level, english_level from students;";
+//$query .= $_SESSION["school_id"];
+//$query .= ";";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
@@ -18,11 +15,7 @@ $numrows = pg_numrows($result);
 
 <table border="1">
   <tr>
-   <th>Username</th>
-   <th>Password</th>
-   <th>Last name</th>
-   <th>First name</th>
-   <th>HomeRoom ID</th>
+   <th>id</th>
    <th>Math Level</th>
    <th>English Level</th>
   </tr>
@@ -33,11 +26,7 @@ $numrows = pg_numrows($result);
    for($ri = 0; $ri < $numrows; $ri++) {
     echo "<tr>\n";
     $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["username"], "</td>
-   <td>", $row["password"], "</td>
-   <td>", $row["last_name"], "</td>
-   <td>", $row["first_name"], "</td>
-   <td>", $row["homeroom_id"], "</td>
+    echo " <td>", $row["id"], "</td>
    <td>", $row["math_level"], "</td>
    <td>", $row["english_level"], "</td>
   </tr>

@@ -28,15 +28,44 @@ $newUsername .= ".";
 $newUsername .= $admin; 
 
 //let's actually add the user
-$query = "INSERT INTO users (username,password,role,admin) VALUES ('$newUsername','$password',
-'Student','$admin'
-)";
+$query = "INSERT INTO users (username,password,school_id) VALUES ('$newUsername','$password',";
+$query .= $school_id;
+$query .= ");";
+
+
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
-//go to success page
-header("Location: ../select/student.php");
+//now we need to add to students table as well
+$query = "select id from users where username = '$newUsername';";
+$result = pg_query($query);
+dbErrorCheck($conn,$result);
 
+//get numer of rows
+$num = pg_num_rows($result);
+
+// if there is a row then the username and password pair exists
+if ($num > 0)
+{
+	//get the id from user table
+        $new_id = pg_Result($result, 0, 'id');
+
+}
+else
+{
+	echo "no student id";
+}
+
+//now we need to insert into students table
+//let's actually add the user
+$query = "INSERT INTO students (user_id) VALUES (";
+$query .= $school_id;
+$query .= ");";
+
+$result = pg_query($query);
+dbErrorCheck($conn,$result);
+	//go to success page
+	header("Location: ../select/student.php");
 ?>
 </head>
 </html>

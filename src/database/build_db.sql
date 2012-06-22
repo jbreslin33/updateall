@@ -148,15 +148,13 @@ CREATE TABLE users (
 --------------------admins---------------------------------------
 CREATE TABLE admins (
     id integer NOT NULL,
-    user_id integer,
-    school_id integer NOT NULL
+    user_id integer
 );
 
 --------------------teachers---------------------------------------
 CREATE TABLE teachers (
     id integer NOT NULL,
-    user_id integer,  
-    school_id integer NOT NULL
+    user_id integer  
 );
 
 --------------------students---------------------------------------
@@ -164,8 +162,7 @@ CREATE TABLE students (
     id integer NOT NULL,
     user_id integer, 
     math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL,
-    school_id integer NOT NULL
+    english_level integer DEFAULT 1 NOT NULL
 );
 
 --------------------homerooms---------------------------------------
@@ -659,9 +656,9 @@ insert into schools (name) values ('anselm');
 --username in this is the base username from school, subsequent users will use the username value from
 --schools table and extend it with .
 insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
-insert into admins (user_id,school_id) values (1,1); 
-insert into teachers (user_id,school_id) values (1,1); 
-insert into students (user_id,math_level,english_level,school_id) values (1,1,1,1); 
+insert into admins (user_id) values (1); 
+insert into teachers (user_id) values (1); 
+insert into students (user_id,math_level,english_level) values (1,1,1); 
 
 --create admin vis 
 --insert into users (username,password,first_name,last_name) values ('vis','p','Dolores','Egner'); 
