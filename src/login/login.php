@@ -54,6 +54,37 @@
 		header("Location: login_form.php");
 	}
 
+	//----------------SCHOOL CHECK----------------------------------------------
+	//query string 	
+ 	$query = "select name from schools where id = ";
+	$query .= $_SESSION["school_id"];
+	$query .= ";";      	
+
+	//get db result
+	$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+        dbErrorCheck($conn,$result);
+
+	//get numer of rows
+   	$num = pg_num_rows($result);
+	
+	if ($num > 0)
+	{
+		//we are a school
+		$_SESSION["is_school"] = "TRUE";  	
+		
+		//get the id from user table	
+		$school_name = pg_Result($result, 0, 'name');
+		
+		//set user id, and subject levels to be used later			
+		$_SESSION["school_name"] = $school_name;  	
+	}
+	else
+	{
+		//we are not a school
+		$_SESSION["is_school"] = "FALSE";  	
+		$_SESSION["school_name"] = "";  	
+	}	
+	
 	//----------------STUDENT CHECK----------------------------------------------
 	//is this user a student? if so let's set some session vars
 	//query string 	

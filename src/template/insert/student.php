@@ -3,6 +3,7 @@ include("../headers/header.php");
 
 //we first need some info, we need to know the username of admin 
 $admin = $_SESSION["username"]; 
+$school_id = $_SESSION["school_id"]; 
 
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
@@ -14,7 +15,7 @@ $randomNumber = rand(0,$numberOfRows);
 $password = pg_fetch_result($result, $randomNumber, password);
 
 //next we need to know what user we are up to for this admin
-$query = "select username from users where admin = '$admin';";
+$query = "select username from users where school_id = $school_id;";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 

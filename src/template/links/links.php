@@ -2,6 +2,9 @@
 echo "<p1>STATS:<p1>";
 echo "<br>";
 echo "<br>";
+echo "school_name: ";
+echo $_SESSION["school_name"];
+echo "<br>";
 echo "id: ";
 echo $_SESSION["id"];
 echo "<br>";
