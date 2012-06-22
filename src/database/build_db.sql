@@ -15,7 +15,6 @@ DROP TABLE students cascade;
 DROP TABLE teachers cascade;
 DROP TABLE users cascade;
 DROP TABLE math_levels cascade;
-DROP TABLE students_math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE passwords cascade;
 DROP TABLE error_log cascade; 
@@ -151,7 +150,6 @@ CREATE TABLE admins (
     user_id integer
 );
 
-
 --------------------students---------------------------------------
 CREATE TABLE students (
     id integer NOT NULL,
@@ -160,12 +158,6 @@ CREATE TABLE students (
     math_level integer DEFAULT 1 NOT NULL,
     english_level integer DEFAULT 1 NOT NULL
 );
-
------------------------students_math_levels-------------------
-CREATE TABLE students_math_levels (
-    student_id integer,
-    level_id integer NOT NULL
-); 
 
 --------------------teacher---------------------------------------
 CREATE TABLE teachers (
