@@ -43,7 +43,7 @@ dbErrorCheck($conn,$result);
 
 //get numer of rows
 $num = pg_num_rows($result);
-
+$new_id;
 // if there is a row then the username and password pair exists
 if ($num > 0)
 {
@@ -59,7 +59,7 @@ else
 //now we need to insert into students table
 //let's actually add the user
 $query = "INSERT INTO students (user_id) VALUES (";
-$query .= $school_id;
+$query .= $new_id;
 $query .= ");";
 
 $result = pg_query($query);
