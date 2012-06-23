@@ -7,6 +7,7 @@
 	
 	//set username and password
 	$_SESSION["username"] = $_POST["username"];
+	$_SESSION["school_name"] = $_POST["username"];
 	$_SESSION["password"] = $_POST["password"];
 
         $username = $_SESSION["username"];
@@ -119,8 +120,8 @@
 				
 			//--------------------INSERT INTO SCHOOL----------------
 			//query string 	
-			$query = "INSERT INTO schools (name) VALUES ('";
-			$query .= $_SESSION["username"];
+			$query = "INSERT INTO schools (school_name) VALUES ('";
+			$query .= $_SESSION["school_name"];
 			$query .= "'"; 
 			$query .= ");";      	
 
@@ -130,8 +131,8 @@
  			
 			//----------------SCHOOL CHECK----------------------------------------------
         		//query string
-        		$query = "select id from schools where name = '";
-        		$query .= $_SESSION["username"];
+        		$query = "select id from schools where school_name = '";
+        		$query .= $_SESSION["school_name"];
         		$query .= "';";
 
         		//get db result
@@ -150,7 +151,6 @@
                 		$school_id = pg_Result($result, 0, 'id');
 
                 		//set user id, and subject levels to be used later
-                		$_SESSION["school_name"] = $username;
                 		$_SESSION["school_id"] = $school_id;
         		}
         		else
@@ -211,7 +211,6 @@
                 		$_SESSION["id"] = $id;
                 		$_SESSION["first_name"] = $first_name;
                 		$_SESSION["last_name"] = $last_name;
-                		$_SESSION["school_id"] = $school_id;
 
                 		//header("Location: ../template/main/main.php");
         		}

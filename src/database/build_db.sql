@@ -132,7 +132,7 @@ CREATE TABLE subtraction (
 --------------------schools---------------------------------------
 CREATE TABLE schools (
     id integer NOT NULL,
-    name text NOT NULL UNIQUE 
+    school_name text NOT NULL UNIQUE 
 );
 
 --------------------users---------------------------------------
@@ -652,7 +652,7 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into schools (name) values ('anselm');
+insert into schools (school_name) values ('anselm');
 --username in this is the base username from school, subsequent users will use the username value from
 --schools table and extend it with .
 insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
