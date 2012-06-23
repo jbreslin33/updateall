@@ -2,7 +2,7 @@
 include("../headers/header.php");
 
 //we first need some info, we need to know the username of admin 
-$admin = $_SESSION["username"]; 
+$school_name = $_SESSION["school_name"]; 
 $school_id = $_SESSION["school_id"]; 
 
 //first we need all the passwords then we can pick one at random
@@ -14,7 +14,7 @@ $numberOfRows = pg_num_rows($result);
 $randomNumber = rand(0,$numberOfRows);
 $password = pg_fetch_result($result, $randomNumber, password);
 
-//next we need to know what user we are up to for this admin
+//next we need to know what user we are up to for this school 
 $query = "select username from users where school_id = $school_id;";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
@@ -22,10 +22,10 @@ dbErrorCheck($conn,$result);
 $numberOfRows = pg_num_rows($result);
 //add number of rows + 1 to get next number. This is based off the premise that we do not EVER delete user rows only deactivate them. 
 $userExtensionNumber = $numberOfRows;
-//now let's combine admin username and userExtensionNumber to come up with a new username.
+//now let's combine school_name and userExtensionNumber to come up with a new username.
 $newUsername = $userExtensionNumber;
 $newUsername .= ".";
-$newUsername .= $admin; 
+$newUsername .= $school_name; 
 
 //let's actually add the user
 $query = "INSERT INTO users (username,password,school_id) VALUES ('$newUsername','$password',";

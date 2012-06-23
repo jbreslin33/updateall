@@ -2,15 +2,12 @@
 include("../headers/header.php");
 include("../links/links.php");
 
-echo "My Students, well not really it's everybody in the whole db's students...for now until we do a join";
+echo "<b><u>My Students:<u><b><br>";
 
-//$query = "select id, math_level, english_level from students;";
 $query = "select * from students join users on students.user_id = users.id where users.school_id = ";
 $query .= $_SESSION["school_id"];
 $query .= ";";
 
-//$query .= $_SESSION["school_id"];
-//$query .= ";";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
