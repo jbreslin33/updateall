@@ -39,11 +39,47 @@
 		$arraySize = count($stringArray);
 		for ($i=0; $i < $arraySize; $i++)
 		{
+			if ($stringArray[$i] == '0')
+			{
+				$noNumbers = false;
+			}
+			if ($stringArray[$i] == '1')
+			{
+				$noNumbers = false;
+			}
 			if ($stringArray[$i] == '2')
 			{
 				$noNumbers = false;
 			}
+			if ($stringArray[$i] == '3')
+			{
+				$noNumbers = false;
+			}
+			if ($stringArray[$i] == '4')
+			{
+				$noNumbers = false;
+			}
+			if ($stringArray[$i] == '5')
+			{
+				$noNumbers = false;
+			}
 
+			if ($stringArray[$i] == '6')
+			{
+				$noNumbers = false;
+			}
+			if ($stringArray[$i] == '7')
+			{
+				$noNumbers = false;
+			}
+			if ($stringArray[$i] == '8')
+			{
+				$noNumbers = false;
+			}	
+			if ($stringArray[$i] == '9')
+			{
+				$noNumbers = false;
+			}
 		}
 
 		if ($noNumbers == false)
