@@ -53,9 +53,33 @@
 
 		else	
 		{
-
 			//db connection
 			$conn = dbConnect();
+			
+			//check if this guy exists already
+			//----------------USER CHECK----------------------------------------------
+                        //query string
+                        $query = "select id, first_name, last_name, school_id from users where username = '";
+                        $query .= $_POST["username"];
+                        $query .= "' ";
+                        $query .= "and ";
+                        $query .= "password = '";
+                        $query .= $_POST["password"];
+                        $query .= "';";
+
+                        //get db result
+                        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+                        dbErrorCheck($conn,$result);
+
+                        //get numer of rows
+                        $num = pg_num_rows($result);
+
+                        // if there is a row then the username and password pair exists
+                        if ($num > 0)
+                        {
+        			header("Location: ../signup/signup_nametaken.php");
+			}
+
 				
 			//--------------------INSERT INTO SCHOOL----------------
 			//query string 	
@@ -133,7 +157,7 @@
         		$num = pg_num_rows($result);
 
         		//start new session
-        		session_start();
+        		//session_start();
 
         		// if there is a row then the username and password pair exists
         		if ($num > 0)
