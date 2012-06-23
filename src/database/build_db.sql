@@ -132,13 +132,13 @@ CREATE TABLE subtraction (
 --------------------schools---------------------------------------
 CREATE TABLE schools (
     id integer NOT NULL,
-    name text 
+    name text NOT NULL UNIQUE 
 );
 
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL,
-    username text, 
+    username text NOT NULL UNIQUE, 
     password text NOT NULL,
     first_name text,
     last_name text,
