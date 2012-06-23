@@ -8,7 +8,7 @@ DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_levels cascade;
---DROP TABLE homerooms cascade;
+DROP TABLE homerooms cascade;
 DROP TABLE schools cascade;
 DROP TABLE admins cascade;
 DROP TABLE teachers cascade;
@@ -166,14 +166,14 @@ CREATE TABLE students (
 );
 
 --------------------homerooms---------------------------------------
-/*
 CREATE TABLE homerooms (
     id integer NOT NULL,
-    admin text NOT NULL,
-    homeroom text NOT NULL,
-    teacher text NOT NULL
+    school_id integer NOT NULL,
+    homeroom_name text NOT NULL,
+    teacher_id integer
 );
-*/
+ 
+
 ----------------------CREATE SEQUENCES-------------------------
 -- for better or for worse i got rid of all sequences and i am using natural pks except for HOME ROOMS
 --ERROR_LOG
@@ -305,12 +305,12 @@ CREATE SEQUENCE teachers_id_seq
     CACHE 1;
 
 --HOME_ROOMS
---CREATE SEQUENCE homerooms_id_seq
- --   START WITH 1
-  --  INCREMENT BY 1
-   -- NO MINVALUE
-    --NO MAXVALUE
-    --CACHE 1;
+CREATE SEQUENCE homerooms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --------------------ALTER OWNER---------------------------------------
@@ -360,7 +360,7 @@ ALTER TABLE public.students OWNER TO postgres;
 ALTER TABLE public.teachers OWNER TO postgres;
 
 --HOME_ROOMS
---ALTER TABLE public.homerooms OWNER TO postgres;
+ALTER TABLE public.homerooms OWNER TO postgres;
 
 --------------------ALTER SEQUENCE---------------------------------------
 --ERROR_LOG
@@ -444,9 +444,9 @@ ALTER SEQUENCE teachers_id_seq OWNED BY teachers.id;
 ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq'::regclass);
 
 --HOME_ROOMS
---ALTER TABLE public.homerooms_id_seq OWNER TO postgres;
---ALTER SEQUENCE homerooms_id_seq OWNED BY homerooms.id;
---ALTER TABLE ONLY homerooms ALTER COLUMN id SET DEFAULT nextval('homerooms_id_seq'::regclass);
+ALTER TABLE public.homerooms_id_seq OWNER TO postgres;
+ALTER SEQUENCE homerooms_id_seq OWNED BY homerooms.id;
+ALTER TABLE ONLY homerooms ALTER COLUMN id SET DEFAULT nextval('homerooms_id_seq'::regclass);
 
 --------------------PRIMARY KEYS---------------------------------------
 --PASSWORDS
@@ -495,7 +495,7 @@ ALTER TABLE students ADD PRIMARY KEY (id);
 ALTER TABLE teachers ADD PRIMARY KEY (id);
 
 --HOME_ROOMS
---ALTER TABLE homerooms ADD PRIMARY KEY (id);
+ALTER TABLE homerooms ADD PRIMARY KEY (id);
 
 --------------------------------FOREIGN KEYS----------------------------
 
@@ -506,7 +506,8 @@ ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
 ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(level);
 
 --HOME_ROOMS
---ALTER TABLE homerooms ADD FOREIGN KEY () REFERENCES users(username);
+ALTER TABLE homerooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
+ALTER TABLE homerooms ADD FOREIGN KEY (teacher_id) REFERENCES teachers(id);
 
 --USERS
 --ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
