@@ -147,8 +147,10 @@ else
 }
 
 //now we need to insert into students table
-$query = "INSERT INTO students (user_id) VALUES (";
+$query = "INSERT INTO students (user_id,teacher_id) VALUES (";
 $query .= $new_id;
+$query .= ",";
+$query .= $new_teacher_id;
 $query .= ");";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
