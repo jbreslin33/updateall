@@ -10,10 +10,10 @@ include("../links/links.php");
 <h2>Enter School Information :</h2>
 <ul>
 <form name="insert" action="school.php" method="POST" >
-<h4>Number of Home Rooms:</h4>
-<input type="text" value="25" name="number_of_home_rooms" />
+<h4>Number of Classes:</h4> 
+<input type="text" value="25" name="number_of_classes" />
 <br>
-<h4>Number of Students Per Home Room:</h4>
+<h4>Approximate Number of Students Per Class:</h4>
 <input type="text" value="35" name="number_of_students" />
 <br>
 <input type="submit" value="Create School" />
