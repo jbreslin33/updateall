@@ -4,7 +4,7 @@ include("../links/links.php");
 
 echo "<b><u>My Teachers:<u><b><br>";
 
-$query = "select * from teachers join users on teachers.user_id = users.id where users.school_id = ";
+$query = "select teachers.user_id, teachers.id from teachers join users on teachers.user_id = users.id where users.school_id = ";
 $query .= $_SESSION["school_id"];
 $query .= ";";
 
@@ -16,8 +16,8 @@ $numrows = pg_numrows($result);
 
 <table border="1">
   <tr>
-   <th>id</th>
-   <th>user_id</th>
+   <th>USER ID</th>
+   <th>TEACHER</th>
   </tr>
 
 <?
@@ -26,8 +26,8 @@ $numrows = pg_numrows($result);
    for($ri = 0; $ri < $numrows; $ri++) {
     echo "<tr>\n";
     $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["id"], "</td>
-   <td>", $row["user_id"], "</td>
+    echo " <td>", $row["user_id"], "</td>
+   <td>", $row["id"], "</td>
   </tr>
   ";
    }
