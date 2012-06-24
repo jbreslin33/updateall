@@ -19,6 +19,7 @@ $numrows = pg_numrows($result);
    <th>id</th>
    <th>Math Level</th>
    <th>English Level</th>
+   <th>Teacher ID</th>
   </tr>
 
 <?
@@ -30,6 +31,7 @@ $numrows = pg_numrows($result);
     echo " <td>", $row["id"], "</td>
    <td>", $row["math_level"], "</td>
    <td>", $row["english_level"], "</td>
+   <td>", $row["teacher_id"], "</td>
   </tr>
   ";
    }
