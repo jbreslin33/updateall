@@ -5,6 +5,15 @@ include("../headers/header.php");
 $school_name = $_SESSION["school_name"]; 
 $school_id = $_SESSION["school_id"]; 
 
+
+//--------------- ADD STUDENTS---------------------------
+
+$number_of_students = $_POST["number_of_students"];
+
+for ($i = 0; $i < $number_of_students; $i++)
+{
+
+
 //first we need all the passwords then we can pick one at random
 $query = "select password from passwords;";
 $result = pg_query($conn,$query);
@@ -63,15 +72,11 @@ $query .= ");";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
 
-//now we need to insert into teachers table
-$query = "INSERT INTO teachers (user_id) VALUES (";
-$query .= $new_id;
-$query .= ");";
-$result = pg_query($query);
-dbErrorCheck($conn,$result);
+}
+//--------------- END ADD STUDENTS---------------------------
 
 //go to success page
-header("Location: ../select/teacher.php");
+header("Location: ../select/student.php");
 
 ?>
 </head>

@@ -60,7 +60,7 @@ echo "<br>";
 <a href="../insert/teacher.php">INSERT TEACHER</a>
 <br>
 
-<a href="../insert/class.php">INSERT CLASS</a>
+<a href="../insert/class_size.php">INSERT CLASS</a>
 <br>
 
 <a href="../insert/homeroom_size.php">INSERT HOMEROOM</a>
