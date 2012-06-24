@@ -60,6 +60,9 @@ echo "<br>";
 <a href="../insert/teacher.php">INSERT TEACHER</a>
 <br>
 
+<a href="../insert/class.php">INSERT CLASS</a>
+<br>
+
 <a href="../insert/homeroom_size.php">INSERT HOMEROOM</a>
 <br>
 
@@ -75,6 +78,9 @@ echo "<br>";
 <br>
 
 <a href="../select/teacher.php">SELECT TEACHER</a>
+<br>
+
+<a href="../select/class.php">SELECT CLASS</a>
 <br>
 
 <a href="../select/homeroom.php">SELECT HOMEROOM</a>
