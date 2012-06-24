@@ -35,6 +35,7 @@ $query = "INSERT INTO users (username,password,school_id) VALUES ('$newUsername'
 $query .= $school_id;
 $query .= ");";
 $result = pg_query($query);
+
 //now we need to add to students table as well
 $query = "select id from users where username = '$newUsername';";
 $result = pg_query($query);
@@ -62,6 +63,29 @@ $query .= $new_id;
 $query .= ");";
 $result = pg_query($query);
 dbErrorCheck($conn,$result);
+
+//now we need the id from teacher table so we can use it on student inserts below
+$query = "select id from teachers where user_id = $new_id;";
+$result = pg_query($query);
+dbErrorCheck($conn,$result);
+
+//get numer of rows
+$num = pg_num_rows($result);
+$new_teacher_id;
+
+// if there is a row then the username and password pair exists
+if ($num > 0)
+{
+        //get the id from user table
+        $new_teacher_id = pg_Result($result, 0, 'id');
+
+}
+else
+{
+        echo "no teacher id";
+}
+
+
 
 //--------------- END ADD TEACHER---------------------------
 
