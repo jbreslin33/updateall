@@ -9,7 +9,6 @@ DROP TABLE english_games cascade;
 DROP TABLE subjects cascade;
 DROP TABLE grade_levels cascade;
 DROP TABLE rooms cascade;
-DROP TABLE schools cascade;
 DROP TABLE admins cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
@@ -18,6 +17,7 @@ DROP TABLE math_levels cascade;
 DROP TABLE english_levels cascade;
 DROP TABLE passwords cascade;
 DROP TABLE error_log cascade; 
+DROP TABLE schools cascade;
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -171,8 +171,7 @@ CREATE TABLE students (
 CREATE TABLE rooms (
     id integer NOT NULL,
     school_id integer NOT NULL,
-    room_name text NOT NULL,
-    teacher_id integer
+    room text NOT NULL
 );
 
 ----------------------CREATE SEQUENCES-------------------------
@@ -505,15 +504,12 @@ ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
 --ENGLISH_GAMES
 ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(level);
 
---HOME_ROOMS
+--ROOMS
 ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
-ALTER TABLE rooms ADD FOREIGN KEY (teacher_id) REFERENCES teachers(id);
+ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --USERS
---ALTER TABLE users ADD FOREIGN KEY (math_level) REFERENCES math_levels(level);
---ALTER TABLE users ADD FOREIGN KEY (english_level) REFERENCES english_levels(level);
---ALTER TABLE users ADD FOREIGN KEY (admin) REFERENCES users(username);
---ALTER TABLE users ADD FOREIGN KEY (homeroom_id) REFERENCES homerooms(id);
+ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 
 --SCHOOLS
 --ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
