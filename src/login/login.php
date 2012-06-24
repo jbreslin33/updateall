@@ -56,7 +56,7 @@
 
 	//----------------SCHOOL CHECK----------------------------------------------
 	//query string 	
- 	$query = "select name from schools where id = ";
+ 	$query = "select school_name from schools where id = ";
 	$query .= $_SESSION["school_id"];
 	$query .= ";";      	
 
@@ -73,7 +73,7 @@
 		$_SESSION["is_school"] = "TRUE";  	
 		
 		//get the id from user table	
-		$school_name = pg_Result($result, 0, 'name');
+		$school_name = pg_Result($result, 0, 'school_name');
 		
 		//set user id, and subject levels to be used later			
 		$_SESSION["school_name"] = $school_name;  	
