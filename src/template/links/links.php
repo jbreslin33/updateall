@@ -54,7 +54,10 @@ echo "<br>";
 <p1>INSERT:<p1>
 <br>
 
-<a href="../insert/student.php">INSERT STUDENT</a>
+<a href="../insert/student_number.php">INSERT STUDENT WITH NUMBER USERNAME</a>
+<br>
+
+<a href="../insert/student_word.php">INSERT STUDENT WITH WORD USERNAME</a>
 <br>
 
 <a href="../insert/teacher.php">INSERT TEACHER</a>
