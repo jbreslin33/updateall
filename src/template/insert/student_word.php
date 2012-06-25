@@ -49,7 +49,6 @@ if ($num > 0)
 {
 	//get the id from user table
         $new_id = pg_Result($result, 0, 'id');
-
 }
 else
 {
