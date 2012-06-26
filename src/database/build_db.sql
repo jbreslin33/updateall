@@ -138,11 +138,11 @@ CREATE TABLE schools (
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL,
-    username text NOT NULL UNIQUE, 
-    password text NOT NULL,
+    username text, 
+    password text,
     first_name text,
     last_name text,
-    school_id integer NOT NULL
+    school_id integer NOT NULL 
 );
 
 --------------------admins---------------------------------------
@@ -510,6 +510,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --USERS
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
+ALTER TABLE rooms ADD UNIQUE (username,school_id);
 
 --SCHOOLS
 --ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);

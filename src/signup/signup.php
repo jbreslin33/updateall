@@ -103,15 +103,11 @@
 			//db connection
 			$conn = dbConnect();
 			
-			//check if this guy exists already
-			//----------------USER CHECK----------------------------------------------
+			//check if this school exists already
+			//----------------check for school existence-----------------------------------
                         //query string
-                        $query = "select id, first_name, last_name, school_id from users where username = '";
+                        $query = "select school_name from schools where school_name = '";
                         $query .= $_POST["username"];
-                        $query .= "' ";
-                        $query .= "and ";
-                        $query .= "password = '";
-                        $query .= $_POST["password"];
                         $query .= "';";
 
                         //get db result
