@@ -6,7 +6,7 @@
 </head>
 
 <body>
-	<p><b> TO SIGN UP USERNAME MUST NOT CONTAIN SPACES</p></b>
+	<p><b> TO SIGN UP USERNAME MUST NOT CONTAIN PERIODS </p></b>
 	<p><b> SIGN UP: </p></b>
 	
 	<form method="post" action="../signup/signup.php">

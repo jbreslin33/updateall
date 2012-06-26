@@ -13,79 +13,89 @@
         $username = $_SESSION["username"];
 
 	$usernameString = $_SESSION["username"];
+	$passwordString = $_SESSION["username"];
 
-	$noNumbers = true;
+	$number = false;
+	$period = false;
+	$space =  false;
 
-        $wordCount = str_word_count($usernameString);
-
-	if ($wordCount != 1)
-	{
-		if ($wordCount == 0)
-		{
-        		header("Location: ../signup/signup_noname.php");
-		}
-		if ($wordCount > 1)
-		{
-        		header("Location: ../signup/signup_nospace.php");
-		}
-	}
-
-
-	else
-	{
 		//check for no numbers
 		//let's first convert to arrray
 		$stringArray = str_split($usernameString);	
 
 		$arraySize = count($stringArray);
+
 		for ($i=0; $i < $arraySize; $i++)
 		{
+
+			if ($stringArray[$i] == ' ')
+			{
+				$space = true;
+			}
+			if ($stringArray[$i] == '.')
+			{
+				$period = true;
+			}
 			if ($stringArray[$i] == '0')
 			{
-				$noNumbers = false;
+				$number = true; 
 			}
 			if ($stringArray[$i] == '1')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '2')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '3')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '4')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '5')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
-
 			if ($stringArray[$i] == '6')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '7')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 			if ($stringArray[$i] == '8')
 			{
-				$noNumbers = false;
+				$number = true;
 			}	
 			if ($stringArray[$i] == '9')
 			{
-				$noNumbers = false;
+				$number = true;
 			}
 		}
 
-		if ($noNumbers == false)
+		if ($number || $period || $space || $username == '')
 		{
-        		header("Location: ../signup/signup_nonumbers.php");
+			if ($space)
+			{
+        			header("Location: ../signup/signup_nospaces.php");
+			}
+			if ($number)
+			{
+        			header("Location: ../signup/signup_nonumbers.php");
+			}
+			if ($period)
+			{
+        			header("Location: ../signup/signup_noperiods.php");
+			}
+			if ($username == '')
+			{
+        			header("Location: ../signup/signup_nousername.php");
+			}
 		}
 
 		else	
@@ -347,6 +357,6 @@
         		pg_close();
 
 		}
-	}
+//	}
 ?>
 

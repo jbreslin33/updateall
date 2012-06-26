@@ -1371,10 +1371,10 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 insert into schools (school_name) values ('anselm');
 --username in this is the base username from school, subsequent users will use the username value from
 --schools table and extend it with .
-insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
-insert into admins (user_id) values (1); 
-insert into teachers (user_id) values (1); 
-insert into students (user_id,math_level,english_level) values (1,1,1); 
+--insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
+--insert into admins (user_id) values (1); 
+--insert into teachers (user_id) values (1); 
+--insert into students (user_id,math_level,english_level) values (1,1,1); 
 
 --create admin vis 
 --insert into users (username,password,first_name,last_name) values ('vis','p','Dolores','Egner'); 
