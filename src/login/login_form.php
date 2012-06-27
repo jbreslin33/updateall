@@ -29,6 +29,22 @@
 	{
 		echo "No user try again.";
 	}
+	if ($mess == "user")
+	{
+		echo "we have a user.";
+	}
+	if ($mess == "no_admin")
+	{
+		echo "No admin try again.";
+	}
+	if ($mess == "no_teacher")
+	{
+		echo "No teacher try again.";
+	}
+	if ($mess == "no_student")
+	{
+		echo "No student try again.";
+	}
 
 ?>
 	<p><b> PLEASE LOGIN: </p></b>
