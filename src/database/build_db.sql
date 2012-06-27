@@ -510,7 +510,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --USERS
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
-ALTER TABLE rooms ADD UNIQUE (username,school_id);
+ALTER TABLE users ADD UNIQUE (username,school_id);
 
 --SCHOOLS
 --ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
@@ -1369,7 +1369,7 @@ insert into counting (level,score_needed,start_number,end_number,count_by) value
 --USERS
 --admin=1,teacher=2,student=3,guest=4
 --create admin anselm 
-insert into schools (school_name) values ('anselm');
+--insert into schools (school_name) values ('anselm');
 --username in this is the base username from school, subsequent users will use the username value from
 --schools table and extend it with .
 --insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 

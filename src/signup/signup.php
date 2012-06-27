@@ -131,7 +131,7 @@
 			$query .= "'"; 
 			$query .= ");";      	
 
-			// insert into users......
+			// insert into schools......
 			$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
         		dbErrorCheck($conn,$result);
  			
@@ -168,9 +168,7 @@
 
 			//--------------------INSERT INTO USERS----------------
                         //query string
-                        $query = "INSERT INTO users (username, password, school_id) VALUES ('";
-                        $query .= $_SESSION["username"];
-                        $query .= "','";
+                        $query = "INSERT INTO users (password, school_id) VALUES ('";
                         $query .= $_SESSION["password"];
                         $query .= "',";
 			$query .= $school_id;
@@ -183,13 +181,10 @@
   			
 			//----------------USER CHECK----------------------------------------------
         		//query string
-        		$query = "select id, first_name, last_name, school_id from users where username = '";
-        		$query .= $_POST["username"];
-        		$query .= "' ";
-        		$query .= "and ";
-        		$query .= "password = '";
-        		$query .= $_POST["password"];
-        		$query .= "';";
+        		$query = "select id, first_name, last_name, school_id from users where school_id = ";
+        		$query .= $school_id;
+        		$query .= " and ";
+        		$query .= "username = '';";
 
         		//get db result
         		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
@@ -208,13 +203,11 @@
                 		$id = pg_Result($result, 0, 'id');
                 		$first_name = pg_Result($result, 0, 'first_name');
                 		$last_name = pg_Result($result, 0, 'last_name');
-                		$school_id = pg_Result($result, 0, 'school_id');
 
                 		//set login var to yes
                 		$_SESSION["Login"] = "YES";
 
                 		//set user id, and subject levels to be used later
-                		$_SESSION["id"] = $id;
                 		$_SESSION["first_name"] = $first_name;
                 		$_SESSION["last_name"] = $last_name;
 
@@ -226,7 +219,7 @@
                 		$_SESSION ["Login"] = "NO";
 
                 		//send user back to login form
-                		header("Location: login_form.php");
+                		header("Location: ../login/login_form.php");
         		}
 
 			//--------------------INSERT INTO ADMINS----------------
