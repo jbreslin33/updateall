@@ -6,6 +6,23 @@
 </head>
 
 <body>
+<?php
+      $mess = $_GET["message"];
+	
+	if ($mess == "no_periods")
+	{
+		echo "No Periods";
+	}
+	if ($mess == "one_period")
+	{
+		echo "one period";
+	}
+	if ($mess == "too_many_periods")
+	{
+		echo "No username should contain 2 periods. Try again.";
+	}
+
+?>
 	<p><b> PLEASE LOGIN: </p></b>
 	<form method="post" action="login.php">
 
