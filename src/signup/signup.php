@@ -205,6 +205,7 @@
                 		$_SESSION["Login"] = "YES";
 
                 		//set user id, and subject levels to be used later
+                		$_SESSION["is_user"] = "TRUE"; 
                 		$_SESSION["user_id"] = $id;
                 		$_SESSION["first_name"] = $first_name;
                 		$_SESSION["last_name"] = $last_name;
