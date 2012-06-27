@@ -21,10 +21,6 @@ for ($i=0; $i < $arraySize; $i++)
         }
 }
 
-
-$school_name;
-$username;
-
 $before_period = true;
 $before_period_array = "";
 $after_period_array = "";
@@ -74,7 +70,39 @@ if ($period_count == 2)
         echo $_SESSION["school_name"];
 	echo "<br>"; 
         echo $_SESSION["username"];
+	
 
-	pg_close();
+//first we need school_id regardless of whether this user is a school or not so we can check if they 
+//exist
+        //query string  
+        $query = "select id from schools where school_name = '";
+        $query .= $_SESSION["school_name"];
+        $query .= "';";          
+
+        //get db result
+        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+        dbErrorCheck($conn,$result);
+
+        //get numer of rows
+        $num = pg_num_rows($result);
+        
+        if ($num > 0)
+        {
+                
+                //get the id from user table    
+                $school_id = pg_Result($result, 0, 'id');
+                
+                //set user id, and subject levels to be used later                      
+                $_SESSION["school_id"] = $school_id;        
+        }
+        else
+        {
+                //no record
+		header("Location: login_form.php?message=no_school");	
+	}
+
+
+
+pg_close();
 ?>
 

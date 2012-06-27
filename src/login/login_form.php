@@ -21,6 +21,10 @@
 	{
 		echo "No username should contain 2 periods. Try again.";
 	}
+	if ($mess == "no_school")
+	{
+		echo "No School, try again.";
+	}
 
 ?>
 	<p><b> PLEASE LOGIN: </p></b>
