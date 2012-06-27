@@ -1,6 +1,9 @@
 <?php 
 include("../headers/header.php");
 
+session_start();
+
+
 //we first need some info, we need to know the username of admin 
 $school_name = $_SESSION["school_name"]; 
 $school_id = $_SESSION["school_id"]; 
