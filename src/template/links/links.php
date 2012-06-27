@@ -1,4 +1,8 @@
 <?php
+  //start new session
+  session_start();
+
+
 echo "<p1>STATS:<p1>";
 echo "<br>";
 echo "<br>";
