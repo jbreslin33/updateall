@@ -5,6 +5,7 @@
 	$conn = dbConnect();
 
 $usernameString = $_POST["username"];
+$_SESSION["password"] = $_POST["password"];
 
 //first let's check amount of periods 
 $stringArray = str_split($usernameString);
@@ -29,7 +30,7 @@ $after_period_array = "";
 if ($period_count == 0)
 {
 	$_SESSION["school_name"] = $_POST["username"];
-	$_SESSION["username"] = "";
+	$_SESSION["username"] = "root";
 }
 
 //non school attempt
@@ -101,6 +102,41 @@ if ($period_count == 2)
 		header("Location: login_form.php?message=no_school");	
 	}
 
+//now we have a valid school_id to query users table to see if they exist and then set sessions
+	//query string
+        $query = "select id, first_name, last_name from users where school_id = ";
+        $query .= $_SESSION["school_id"];
+        $query .= " and username = '";
+        $query .= $_SESSION["username"];
+        $query .= " and password = '";
+        $query .= $_SESSION["password"];
+        $query .= "';";
+
+        //get db result
+        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+        dbErrorCheck($conn,$result);
+
+        //get numer of rows
+        $num = pg_num_rows($result);
+
+        if ($num > 0)
+        {
+
+                //get the id from user table
+                $school_id = pg_Result($result, 0, 'id');
+                $first_name = pg_Result($result, 0, 'first_name');
+                $last_name = pg_Result($result, 0, 'last_name');
+
+                //set user id, and subject levels to be used later
+                $_SESSION["school_id"] = $school_id;
+                $_SESSION["first_name"] = $first_name;
+                $_SESSION["last_name"] = $last_name;
+        }
+        else
+        {
+                //no record
+                header("Location: login_form.php?message=no_user");
+        }
 
 
 pg_close();

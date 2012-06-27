@@ -5,15 +5,12 @@
         //start new session     
         session_start();
 	
-	//set username and password
-	$_SESSION["username"] = $_POST["username"];
-	$_SESSION["school_name"] = $_POST["username"];
+	//set school_name, username and password
+	$_SESSION["username"] = "root";
+	$_SESSION["school_name"] = $_POST["schoolname"];
 	$_SESSION["password"] = $_POST["password"];
 
-        $username = $_SESSION["username"];
-
-	$usernameString = $_SESSION["username"];
-	$passwordString = $_SESSION["username"];
+	$schoolnameString = $_SESSION["school_name"];
 
 	$number = false;
 	$period = false;
@@ -21,7 +18,7 @@
 
 		//check for no numbers
 		//let's first convert to arrray
-		$stringArray = str_split($usernameString);	
+		$stringArray = str_split($schoolnameString);	
 
 		$arraySize = count($stringArray);
 
@@ -78,7 +75,7 @@
 			}
 		}
 
-		if ($number || $period || $space || $username == '')
+		if ($number || $period || $space || $_SESSION["school_name"] == '')
 		{
 			if ($space)
 			{
@@ -92,7 +89,7 @@
 			{
         			header("Location: ../signup/signup_noperiods.php");
 			}
-			if ($username == '')
+			if ($_SESSION["school_name"] == '')
 			{
         			header("Location: ../signup/signup_nousername.php");
 			}
@@ -107,7 +104,7 @@
 			//----------------check for school existence-----------------------------------
                         //query string
                         $query = "select school_name from schools where school_name = '";
-                        $query .= $_POST["username"];
+                        $query .= $_POST["school_name"];
                         $query .= "';";
 
                         //get db result
@@ -168,7 +165,9 @@
 
 			//--------------------INSERT INTO USERS----------------
                         //query string
-                        $query = "INSERT INTO users (password, school_id) VALUES ('";
+                        $query = "INSERT INTO users (username, password, school_id) VALUES ('";
+                        $query .= $_SESSION["username"];
+                        $query .= "',";
                         $query .= $_SESSION["password"];
                         $query .= "',";
 			$query .= $school_id;
@@ -184,7 +183,7 @@
         		$query = "select id, first_name, last_name from users where school_id = ";
         		$query .= $school_id;
         		$query .= " and ";
-        		$query .= "username is null;";
+        		$query .= "username = 'root';";
 
         		//get db result
         		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
