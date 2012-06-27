@@ -108,7 +108,7 @@ if ($period_count == 2)
         $query .= $_SESSION["school_id"];
         $query .= " and username = '";
         $query .= $_SESSION["username"];
-        $query .= " and password = '";
+        $query .= "' and password = '";
         $query .= $_SESSION["password"];
         $query .= "';";
 
@@ -131,6 +131,7 @@ if ($period_count == 2)
                 $_SESSION["school_id"] = $school_id;
                 $_SESSION["first_name"] = $first_name;
                 $_SESSION["last_name"] = $last_name;
+                header("Location: ../template/main/main.php");
         }
         else
         {

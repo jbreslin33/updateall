@@ -167,7 +167,7 @@
                         //query string
                         $query = "INSERT INTO users (username, password, school_id) VALUES ('";
                         $query .= $_SESSION["username"];
-                        $query .= "',";
+                        $query .= "','";
                         $query .= $_SESSION["password"];
                         $query .= "',";
 			$query .= $school_id;
