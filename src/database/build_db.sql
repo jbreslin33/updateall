@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+--check login is not working or something on login.... actually i am not setting im pretty damn sure now as i deleted it.
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
@@ -509,20 +510,22 @@ ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --USERS
-ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 ALTER TABLE users ADD UNIQUE (username,school_id);
+ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 
 --SCHOOLS
---ALTER TABLE schools ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --ADMINS
+ALTER TABLE admins ADD UNIQUE (user_id);
 ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --STUDENTS
-ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE students ADD UNIQUE (user_id);
+ALTER TABLE students ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --TEACHERS
-ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE teachers ADD UNIQUE (user_id);
+ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --------------------INSERT---------------------------------------
 --PASSWORDS

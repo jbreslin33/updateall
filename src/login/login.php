@@ -75,6 +75,8 @@ if ($period_count == 2)
 	echo "<br>"; 
         echo $_SESSION["username"];
 	
+//let's set a var that will be false if there was a problem..
+$problem = "";
 
 //first we need school_id regardless of whether this user is a school or not so we can check if they 
 //exist
@@ -104,7 +106,7 @@ if ($period_count == 2)
         else
         {
                 //no record
-		//header("Location: login_form.php?message=no_school");	
+		$problem = "no_school";	
 	}
 
 //now we have a valid school_id to query users table to see if they exist and then set sessions
@@ -136,6 +138,9 @@ if ($period_count == 2)
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["first_name"] = $first_name;
                 $_SESSION["last_name"] = $last_name;
+		
+		//set login var to yes  
+                $_SESSION["Login"] = "YES";
 
 		echo "<br>";
                 echo $_SESSION["user_id"];
@@ -147,8 +152,11 @@ if ($period_count == 2)
         }
         else
         {
+		//set login var to yes  
+                $_SESSION["Login"] = "NO";
+
                 //no record
-                header("Location: login_form.php?message=no_user");
+		$problem = "no_user";	
         }
 
 //now we need to select the rest of the tables now not we have a legit user so we can properly fill out session vars and thus overwrite old values.
@@ -179,7 +187,7 @@ if ($period_count == 2)
                         {
                                 //we are not an admin
                                 $_SESSION["is_admin"] = "FALSE";
-		//		header("Location: login_form.php?message=no_admin");	
+				$problem = "no_admin";	
                         }
 
                         //----------------TEACHER CHECK----------------------------------------------
@@ -209,7 +217,7 @@ if ($period_count == 2)
                         {
                                 //we are not a teacher
                                 $_SESSION["is_teacher"] = "FALSE";
-		//		header("Location: login_form.php?message=no_teacher");	
+				$problem = "no_teacher";	
                         }
   //----------------STUDENT CHECK----------------------------------------------
                         //is this user a student? if so let's set some session vars
@@ -248,10 +256,16 @@ if ($period_count == 2)
                                 $_SESSION["is_student"] = "FALSE";
                                 $_SESSION["math_level"] = "";
                                 $_SESSION["english_level"] = "";
-		//		header("Location: login_form.php?message=no_student");	
+				$problem = "no_student";	
                         }
-
+	if ($problem == "")
+	{
                 header("Location: ../template/main/main.php");
+	}
+	else
+	{
+                header("Location: login_form.php?message=$problem");
+	}
 pg_close();
 ?>
 
