@@ -94,7 +94,6 @@
         			header("Location: ../signup/signup_nousername.php");
 			}
 		}
-
 		else	
 		{
 			//db connection
@@ -119,7 +118,8 @@
                         {
         			header("Location: ../signup/signup_nametaken.php");
 			}
-
+			else
+			{
 				
 			//--------------------INSERT INTO SCHOOL----------------
 			//query string 	
@@ -349,7 +349,7 @@
 
         		//--------------------------------------------------------------
         		header("Location: ../template/main/main.php");
-
+		}	
         		//close db connection as we have the only var we needed - the id
         		pg_close();
 
