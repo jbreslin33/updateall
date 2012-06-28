@@ -105,23 +105,23 @@
 	{
 		if ($taken)
 		{
-        		header("Location: ../signup/signup_nametaken.php");
+        		header("Location: ../signup/signup_form.php?message=name_taken");
 		}
 		if ($space)
 		{
-        		header("Location: ../signup/signup_nospaces.php");
+        		header("Location: ../signup/signup_form.php?message=no_spaces");
 		}
 		if ($number)
 		{
-        		header("Location: ../signup/signup_nonumbers.php");
+        		header("Location: ../signup/signup_form.php?message=no_numbers");
 		}
 		if ($period)
 		{
-        		header("Location: ../signup/signup_noperiods.php");
+        		header("Location: ../signup/signup_form.php?message=no_periods");
 		}
 		if ($_SESSION["school_name"] == '')
 		{
-        		header("Location: ../signup/signup_nousername.php");
+        		header("Location: ../signup/signup_form.php?message=no_name");
 		}
 	}
 	else	

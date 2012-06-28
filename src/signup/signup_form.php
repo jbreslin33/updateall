@@ -6,23 +6,6 @@
 </head>
 
 <body>
-    header("Location: ../signup/signup_form.php?message=name_taken");
-                }
-                if ($space)
-                {
-                        header("Location: ../signup/signup_form.php?message=no_spaces");
-                }
-                if ($number)
-                {
-                        header("Location: ../signup/signup_form.php?message=no_numbers");
-                }
-                if ($period)
-                {
-                        header("Location: ../signup/signup_form.php?message=no_periods");
-                }
-                if ($_SESSION["school_name"] == '')
-                {
-                        header("Location: ../signup/signup_form.php?message=no_name");
 
 <?php
       	$mess = $_GET["message"];
@@ -42,6 +25,10 @@
         if ($mess == "no_name")
         {
                 echo "You forgot a username. Please fill one out.";
+        }
+        if ($mess == "no_spaces")
+        {
+                echo "You cannot have spaces in username. Please try again.";
         }
 ?>
 	<p><b> SIGN UP: </p></b>
