@@ -165,6 +165,7 @@
        		{
                		//we are not a school
                		$_SESSION["is_school"] = "FALSE";
+               		$_SESSION["school_id"] = 0;
                		$_SESSION["school_name"] = "";
        		}
 
@@ -218,6 +219,7 @@
        		{
                		//set login cookie to no
                		$_SESSION ["Login"] = "NO";
+               		$_SESSION["user_id"] = 0;
        		}
 
 		//--------------------INSERT INTO ADMINS----------------
@@ -285,6 +287,7 @@
        		{
                		//we are not a student
                		$_SESSION["is_student"] = "FALSE";
+               		$_SESSION["student_id"] = 0;
                		$_SESSION["math_level"] = "";
                		$_SESSION["english_level"] = "";
        		}
@@ -316,6 +319,7 @@
        		{
                		//we are not an admin
                		$_SESSION["is_admin"] = "FALSE";
+               		$_SESSION["admin_id"] = 0;
        		}
 
        		//----------------TEACHER CHECK----------------------------------------------
@@ -345,6 +349,7 @@
        		{
                		//we are not a teacher
                		$_SESSION["is_teacher"] = "FALSE";
+               		$_SESSION["teacher_id"] = 0;
        		}
 
        		//--------------------------------------------------------------

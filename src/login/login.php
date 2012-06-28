@@ -39,30 +39,26 @@ if ($period_count == 0)
 //non school attempt
 if ($period_count == 1)
 {
-
-
-for ($i=0; $i < $arraySize; $i++)
-{
+	for ($i=0; $i < $arraySize; $i++)
+	{
         
-	if ($stringArray[$i] == '.')
-        {
-                $before_period = false;
-		continue;
-        }
+		if ($stringArray[$i] == '.')
+        	{
+                	$before_period = false;
+			continue;
+        	}
 
-        if ($before_period)
-	{
-		$before_period_array .= $stringArray[$i];		
+        	if ($before_period)
+		{
+			$before_period_array .= $stringArray[$i];		
+		}
+		else
+		{
+			$after_period_array .= $stringArray[$i];		
+		}
 	}
-	else
-	{
-		$after_period_array .= $stringArray[$i];		
-	}
-}
 	$_SESSION["school_name"] = $after_period_array;
 	$_SESSION["username"] = $before_period_array;
-
-
 }
 
 //invalid attempt
@@ -71,10 +67,6 @@ if ($period_count == 2)
 	header("Location: login_form.php?message=too_many_periods");	
 }
 
-        echo $_SESSION["school_name"];
-	echo "<br>"; 
-        echo $_SESSION["username"];
-	
 //let's set a var that will be false if there was a problem..
 $problem = "";
 
@@ -100,12 +92,11 @@ $problem = "";
                 
                 //set user id, and subject levels to be used later                      
                 $_SESSION["school_id"] = $school_id;        
-		echo "<br>";
-                echo $_SESSION["school_id"];        
         }
         else
         {
                 //no record
+                $_SESSION["school_id"] = 0;        
 		$problem = "no_school";	
 	}
 
@@ -142,18 +133,12 @@ $problem = "";
 		//set login var to yes  
                 $_SESSION["Login"] = "YES";
 
-		echo "<br>";
-                echo $_SESSION["user_id"];
-		echo "<br>";
-                echo $_SESSION["first_name"];
-		echo "<br>";
-                echo $_SESSION["last_name"];
-		echo "<br>";
         }
         else
         {
 		//set login var to yes  
                 $_SESSION["Login"] = "NO";
+                $_SESSION["user_id"] = 0;
 
                 //no record
 		$problem = "no_user";	
@@ -187,7 +172,7 @@ $problem = "";
                         {
                                 //we are not an admin
                                 $_SESSION["is_admin"] = "FALSE";
-				$problem = "no_admin";	
+                                $_SESSION["admin_id"] = 0;
                         }
 
                         //----------------TEACHER CHECK----------------------------------------------
@@ -216,8 +201,8 @@ $problem = "";
                         else
                         {
                                 //we are not a teacher
+                                $_SESSION["teacher_id"] = 0;
                                 $_SESSION["is_teacher"] = "FALSE";
-				$problem = "no_teacher";	
                         }
   //----------------STUDENT CHECK----------------------------------------------
                         //is this user a student? if so let's set some session vars
@@ -247,16 +232,14 @@ $problem = "";
                                 $_SESSION["student_id"] = $student_id;
                                 $_SESSION["math_level"] = $mathLevel;
                                 $_SESSION["english_level"] = $englishLevel;
-				echo "student id:";
-				echo $_SESSION["student_id"];
                         }
                         else
                         {
                                 //we are not a student
                                 $_SESSION["is_student"] = "FALSE";
+                                $_SESSION["student_id"] = 0;
                                 $_SESSION["math_level"] = "";
                                 $_SESSION["english_level"] = "";
-				$problem = "no_student";	
                         }
 	if ($problem == "")
 	{
