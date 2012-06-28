@@ -7,7 +7,11 @@ DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
 DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
+
+DROP TABLE level_advancement cascade;
+DROP TABLE levels cascade;
 DROP TABLE subjects cascade;
+
 DROP TABLE grade_levels cascade;
 DROP TABLE rooms cascade;
 DROP TABLE admins cascade;
@@ -78,6 +82,24 @@ CREATE TABLE subjects (
     id integer NOT NULL,
     subject text NOT NULL UNIQUE,
     url text NOT NULL UNIQUE
+);
+
+--------------------levels---------------------------------------
+CREATE TABLE levels (
+    id integer NOT NULL,
+    subject_id integer NOT NULL,
+    level integer NOT NULL,
+    next_level integer NOT NULL,
+    skill text NOT NULL
+);
+
+--------------------level_advancement---------------------------------------
+CREATE TABLE level_advancement (
+    id integer NOT NULL,
+    subject_id integer NOT NULL,
+    level integer NOT NULL,
+    student_id integer NOT NULL,
+    advancement_time timestamp
 );
 
 --------------------math_games---------------------------------------
