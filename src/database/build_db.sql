@@ -571,6 +571,63 @@ ALTER TABLE teachers ADD UNIQUE (user_id);
 ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --------------------INSERT---------------------------------------
+
+
+--GRADE_LEVEL
+insert into grade_levels (grade_level) values ('PK3');
+insert into grade_levels (grade_level) values ('PK4');
+insert into grade_levels (grade_level) values ('K');
+insert into grade_levels (grade_level) values ('1');
+insert into grade_levels (grade_level) values ('2');
+insert into grade_levels (grade_level) values ('3');
+insert into grade_levels (grade_level) values ('4');
+insert into grade_levels (grade_level) values ('5');
+
+--SUBJECTS
+insert into subjects (subject,url) values ('Math','../math/chooser.php');
+insert into subjects (subject,url) values ('English','../english/chooser.php');
+
+--math_levels
+insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
+insert into math_levels(level,next_level,skill) values (2,3,'Count from 10 to 20');       
+insert into math_levels(level,next_level,skill) values (3,4,'Count from 20 to 30');       
+insert into math_levels(level,next_level,skill) values (4,5,'Count from 30 to 40');       
+insert into math_levels(level,next_level,skill) values (5,6,'Count from 40 to 50');       
+insert into math_levels(level,next_level,skill) values (6,7,'Count from 50 to 60');       
+insert into math_levels(level,next_level,skill) values (7,8,'Count from 60 to 70');       
+insert into math_levels(level,next_level,skill) values (8,9,'Count from 70 to 80');       
+insert into math_levels(level,next_level,skill) values (9,10,'Count from 80 to 90');       
+insert into math_levels(level,next_level,skill) values (10,11,'Count from 90 to 100');       
+
+--english_levels
+insert into english_levels(level,next_level,skill) values (1,2,'Recognize and A');       
+
+--MATH_GAMES
+insert into math_games (level,name,url) values (1,'Dungeon Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (1,'Racing Count','../../template/math/count/racing.php');
+insert into math_games (level,name,url) values (2,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (3,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (4,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (5,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (6,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (7,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (8,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (9,'Count','../../template/math/count/count.php');
+insert into math_games (level,name,url) values (10,'Count','../../template/math/count/count.php');
+
+--COUNTING
+insert into counting (level,score_needed,start_number,end_number,count_by) values (1,10,0,10,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (2,10,10,20,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (3,10,20,30,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (4,10,30,40,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (5,10,40,50,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (6,10,50,60,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (7,10,60,70,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (8,10,70,80,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (9,10,80,90,1);
+insert into counting (level,score_needed,start_number,end_number,count_by) values (10,10,90,100,1);
+
+
 --PASSWORDS
 --3 letter easy words
 insert into passwords (password) values ('ahh'); 
@@ -1356,86 +1413,6 @@ insert into passwords (password) values ('zip');
 insert into passwords (password) values ('zoa'); 
 insert into passwords (password) values ('zuz'); 
 insert into passwords (password) values ('zzz'); 
-
-
---GRADE_LEVEL
-insert into grade_levels (grade_level) values ('PK3');
-insert into grade_levels (grade_level) values ('PK4');
-insert into grade_levels (grade_level) values ('K');
-insert into grade_levels (grade_level) values ('1');
-insert into grade_levels (grade_level) values ('2');
-insert into grade_levels (grade_level) values ('3');
-insert into grade_levels (grade_level) values ('4');
-insert into grade_levels (grade_level) values ('5');
-
---SUBJECTS
-insert into subjects (subject,url) values ('Math','../math/chooser.php');
-insert into subjects (subject,url) values ('English','../english/chooser.php');
-
---math_levels
-insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
-insert into math_levels(level,next_level,skill) values (2,3,'Count from 10 to 20');       
-insert into math_levels(level,next_level,skill) values (3,4,'Count from 20 to 30');       
-insert into math_levels(level,next_level,skill) values (4,5,'Count from 30 to 40');       
-insert into math_levels(level,next_level,skill) values (5,6,'Count from 40 to 50');       
-insert into math_levels(level,next_level,skill) values (6,7,'Count from 50 to 60');       
-insert into math_levels(level,next_level,skill) values (7,8,'Count from 60 to 70');       
-insert into math_levels(level,next_level,skill) values (8,9,'Count from 70 to 80');       
-insert into math_levels(level,next_level,skill) values (9,10,'Count from 80 to 90');       
-insert into math_levels(level,next_level,skill) values (10,11,'Count from 90 to 100');       
-
---english_levels
-insert into english_levels(level,next_level,skill) values (1,2,'Recognize and A');       
-
---MATH_GAMES
-insert into math_games (level,name,url) values (1,'Dungeon Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (1,'Racing Count','../../template/math/count/racing.php');
-insert into math_games (level,name,url) values (2,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (3,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (4,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (5,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (6,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (7,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (8,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (9,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (10,'Count','../../template/math/count/count.php');
-
---COUNTING
-insert into counting (level,score_needed,start_number,end_number,count_by) values (1,10,0,10,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (2,10,10,20,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (3,10,20,30,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (4,10,30,40,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (5,10,40,50,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (6,10,50,60,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (7,10,60,70,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (8,10,70,80,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (9,10,80,90,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (10,10,90,100,1);
-
---USERS
---admin=1,teacher=2,student=3,guest=4
---create admin anselm 
---insert into schools (school_name) values ('anselm');
---username in this is the base username from school, subsequent users will use the username value from
---schools table and extend it with .
---insert into users (username,password,first_name,last_name,school_id) values ('anselm','p','Father','Foley',1); 
---insert into admins (user_id) values (1); 
---insert into teachers (user_id) values (1); 
---insert into students (user_id,math_level,english_level) values (1,1,1); 
-
---create admin vis 
---insert into users (username,password,first_name,last_name) values ('vis','p','Dolores','Egner'); 
-
---create teachers anselm 
---insert into users (username,password,first_name,last_name) values ('kmary.anselm','p','Sally','Berg'); 
---create teachers vis 
---insert into users (username,password,first_name,last_name) values ('jroache.vis','p','James','Roache'); 
-
---create students anselm 
---insert into users (username,password,first_name,last_name) values ('1.anselm','p','Willard','Lackman'); 
---create students vis 
---insert into users (username,password,first_name,last_name) values ('1.vis','p','Luke','Breslin'); 
-
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
