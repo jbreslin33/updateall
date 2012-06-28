@@ -5,8 +5,12 @@
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
+
 DROP TABLE math_games cascade;
 DROP TABLE english_games cascade;
+
+DROP TABLE games cascade;
+DROP TABLE games_attempts cascade;
 
 DROP TABLE level_advancement cascade;
 DROP TABLE levels cascade;
@@ -116,6 +120,23 @@ CREATE TABLE english_games (
     level integer NOT NULL,
     url text NOT NULL,
     name text NOT NULL
+);
+
+--------------------games---------------------------------------
+CREATE TABLE games (
+    id integer NOT NULL,
+    subject_id integer NOT NULL,
+    level integer NOT NULL,
+    url text NOT NULL,
+    name text NOT NULL
+);
+
+--------------------games_attempts---------------------------------------
+CREATE TABLE games_attempts (
+    id integer NOT NULL,
+    game_id integer NOT NULL,
+    user_id integer NOT NULL,
+    game_attempt_time timestamp
 );
 
 --------------------counting---------------------------------------
