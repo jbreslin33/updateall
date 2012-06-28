@@ -93,7 +93,7 @@
         $num = pg_num_rows($result);
 
         // if there is a row then the username and password pair exists
-        if ($num > 0)
+        if ($num == 1)
         {
 		$taken = true;
 	}
@@ -102,7 +102,8 @@
 	{
 		if ($taken)
 		{
-        		header("Location: ../signup/signup_nametaken.php");
+			echo "dup";
+        		//header("Location: ../login/login_form.php");
 		}
 		if ($space)
 		{
@@ -123,6 +124,7 @@
 	}
 	else	
 	{
+			echo "about to do insert and should not be";
 				
 		//--------------------INSERT INTO SCHOOL----------------
 		//query string 	
@@ -346,7 +348,7 @@
        		}
 
        		//--------------------------------------------------------------
-       		header("Location: ../template/main/main.php");
+       		//header("Location: ../template/main/main.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();
