@@ -105,8 +105,7 @@
 	{
 		if ($taken)
 		{
-			echo "dup";
-        		//header("Location: ../login/login_form.php");
+        		header("Location: ../signup/signup_nametaken.php");
 		}
 		if ($space)
 		{
@@ -127,8 +126,6 @@
 	}
 	else	
 	{
-			echo "about to do insert and should not be";
-				
 		//--------------------INSERT INTO SCHOOL----------------
 		//query string 	
 		$query = "INSERT INTO schools (school_name) VALUES ('";
@@ -351,7 +348,7 @@
        		}
 
        		//--------------------------------------------------------------
-       		//header("Location: ../template/main/main.php");
+       		header("Location: ../template/main/main.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();
