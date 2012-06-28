@@ -82,7 +82,7 @@
 	//----------------check for school existence-----------------------------------
         //query string
         $query = "select school_name from schools where school_name = '";
-        $query .= $_POST["school_name"];
+        $query .= $_SESSION["school_name"];
         $query .= "';";
 
         //get db result
@@ -91,6 +91,9 @@
 
        	//get numer of rows
         $num = pg_num_rows($result);
+	echo "num:";
+	echo $num; 
+	echo "<br>";
 
         // if there is a row then the username and password pair exists
         if ($num == 1)
