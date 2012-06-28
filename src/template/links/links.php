@@ -24,7 +24,10 @@ include("stats.php");
 <br>
 
 <?php
-include("inserts.php");
+if ($_SESSION["is_admin"] == "TRUE")
+{
+	include("inserts.php");
+}
  ?>
 
 <?php
