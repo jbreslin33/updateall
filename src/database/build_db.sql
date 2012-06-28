@@ -135,7 +135,7 @@ CREATE TABLE games (
 CREATE TABLE games_attempts (
     id integer NOT NULL,
     game_id integer NOT NULL,
-    user_id integer NOT NULL,
+    student_id integer NOT NULL,
     game_attempt_time timestamp
 );
 
