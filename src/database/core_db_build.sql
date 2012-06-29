@@ -12,7 +12,6 @@ DROP TABLE english_games cascade;
 DROP TABLE games cascade;
 DROP TABLE games_attempts cascade;
 
-
 DROP TABLE standards cascade;
 DROP TABLE clusters cascade;
 DROP TABLE domains cascade;
@@ -111,6 +110,7 @@ CREATE TABLE clusters (
 CREATE TABLE standards (
     id integer NOT NULL,
     standard text NOT NULL,
+    standard_code text NOT NULL,
     cluster_id integer NOT NULL 
 );
 
@@ -710,6 +710,10 @@ insert into domains (domain,subject_id) values ('Counting and Cardinality',1);
 --CLUSTERS
 insert into clusters (cluster,domain_id,grade_level_id) values ('Know number names and the count sequence.',1,1);
 
+--STANDARDS
+insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1);
+insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
+sequence (instead of having to begin at 1).','2',1);
 
 
 --math_levels
