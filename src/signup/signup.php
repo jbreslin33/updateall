@@ -222,16 +222,6 @@
                		$_SESSION["user_id"] = 0;
        		}
 
-		//--------------------INSERT INTO ADMINS----------------
-                //query string
-                $query = "INSERT INTO admins (user_id) VALUES (";
-                $query .= $_SESSION["user_id"];
-                $query .= ");";
-
-                // insert into users......
-                $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-                dbErrorCheck($conn,$result);
-
                 //--------------------INSERT INTO TEACHERS----------------
                 //query string
                 $query = "INSERT INTO teachers (user_id) VALUES (";
@@ -290,36 +280,6 @@
                		$_SESSION["student_id"] = 0;
                		$_SESSION["math_level"] = "";
                		$_SESSION["english_level"] = "";
-       		}
-
-  		//-------------------ADMIN CHECK-------------------------------------------
-       		//is this user an admin ? if so let's set some session vars
-       		//query string
-       		$query = "select id from admins where user_id = ";
-       		$query .= $_SESSION["user_id"];
-       		$query .= ";";
-
-       		//get db result
-       		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-       		dbErrorCheck($conn,$result);
-
-       		//get numer of rows
-       		$num = pg_num_rows($result);
-
-       		if ($num > 0)
-       		{
-               		//get the id from user table
-               		$admin_id = pg_Result($result, 0, 'id');
-                		
-			//we are an admin
-               		$_SESSION["admin_id"] = $admin_id;
-               		$_SESSION["is_admin"] = "TRUE";
-       		}
-       		else
-       		{
-               		//we are not an admin
-               		$_SESSION["is_admin"] = "FALSE";
-               		$_SESSION["admin_id"] = 0;
        		}
 
        		//----------------TEACHER CHECK----------------------------------------------

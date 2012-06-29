@@ -145,36 +145,6 @@ $problem = "";
         }
 
 //now we need to select the rest of the tables now not we have a legit user so we can properly fill out session vars and thus overwrite old values.
- //-------------------ADMIN CHECK-------------------------------------------
-                        //is this user an admin ? if so let's set some session vars
-                        //query string
-                        $query = "select id from admins where user_id = ";
-                        $query .= $_SESSION["user_id"];
-                        $query .= ";";
-
-                        //get db result
-                        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-                        dbErrorCheck($conn,$result);
-
-                        //get numer of rows
-                        $num = pg_num_rows($result);
-
-                        if ($num > 0)
-                        {
-                                //get the id from user table
-                                $admin_id = pg_Result($result, 0, 'id');
-
-                                //we are an admin
-                                $_SESSION["admin_id"] = $admin_id;
-                                $_SESSION["is_admin"] = "TRUE";
-                        }
-                        else
-                        {
-                                //we are not an admin
-                                $_SESSION["is_admin"] = "FALSE";
-                                $_SESSION["admin_id"] = 0;
-                        }
-
                         //----------------TEACHER CHECK----------------------------------------------
                         //is this user a teacher ? if so let's set some session vars
                         //query string

@@ -43,16 +43,6 @@ echo "<br>";
 echo "<br>";
 
 
-echo "is_admin: ";
-echo $_SESSION["is_admin"];
-echo "<br>";
-
-echo "admin_id: ";
-echo $_SESSION["admin_id"];
-echo "<br>";
-echo "<br>";
-
-
 echo "is_teacher: ";
 echo $_SESSION["is_teacher"];
 echo "<br>";
