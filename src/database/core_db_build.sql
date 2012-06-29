@@ -686,18 +686,31 @@ ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --GRADE_LEVEL
-insert into grade_levels (grade_level) values ('PK3');
-insert into grade_levels (grade_level) values ('PK4');
 insert into grade_levels (grade_level) values ('K');
 insert into grade_levels (grade_level) values ('1');
 insert into grade_levels (grade_level) values ('2');
 insert into grade_levels (grade_level) values ('3');
 insert into grade_levels (grade_level) values ('4');
 insert into grade_levels (grade_level) values ('5');
+insert into grade_levels (grade_level) values ('6');
+insert into grade_levels (grade_level) values ('7');
+insert into grade_levels (grade_level) values ('8');
+insert into grade_levels (grade_level) values ('9');
+insert into grade_levels (grade_level) values ('10');
+insert into grade_levels (grade_level) values ('11');
+insert into grade_levels (grade_level) values ('12');
 
 --SUBJECTS
 insert into subjects (subject,url) values ('Math','../math/chooser.php');
 insert into subjects (subject,url) values ('English','../english/chooser.php');
+
+--DOMAINS
+insert into domains (domain,subject_id) values ('Counting and Cardinality',1);
+
+--CLUSTERS
+insert into clusters (cluster,domain_id,grade_level_id) values ('Know number names and the count sequence.',1,1);
+
+
 
 --math_levels
 insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
