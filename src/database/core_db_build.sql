@@ -13,9 +13,9 @@ DROP TABLE games cascade;
 DROP TABLE games_attempts cascade;
 
 
-DROP TABLE domains cascade;
-DROP TABLE clusters cascade;
 DROP TABLE standards cascade;
+DROP TABLE clusters cascade;
+DROP TABLE domains cascade;
 
 DROP TABLE level_transaction cascade;
 DROP TABLE levels cascade;
@@ -78,7 +78,6 @@ CREATE TABLE english_levels (
     next_level integer NOT NULL,
     skill text NOT NULL
 );
-
 
 --------------------grade_levels---------------------------------------
 CREATE TABLE grade_levels (
@@ -238,6 +237,7 @@ CREATE TABLE rooms (
 );
 
 ----------------------CREATE SEQUENCES-------------------------
+
 -- for better or for worse i got rid of all sequences and i am using natural pks except for HOME ROOMS
 --ERROR_LOG
 CREATE SEQUENCE error_log_id_seq
@@ -249,6 +249,30 @@ CREATE SEQUENCE error_log_id_seq
 
 --PASSWORDS
 CREATE SEQUENCE passwords_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--DOMAINS
+CREATE SEQUENCE domains_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--CLUSTERS
+CREATE SEQUENCE clusters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--STANDARDS
+CREATE SEQUENCE standards_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -278,6 +302,15 @@ CREATE SEQUENCE levels_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+--LEVEL_TRANSACTION
+CREATE SEQUENCE level_transaction_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 
 --ENGLISH_LEVELS
 CREATE SEQUENCE english_levels_id_seq
@@ -379,14 +412,23 @@ CREATE SEQUENCE rooms_id_seq
 --PASSWORDS
 ALTER TABLE public.passwords OWNER TO postgres;
 
---GRADE_LEVELS
-ALTER TABLE public.grade_levels OWNER TO postgres;
+--DOMAINS
+ALTER TABLE public.passwords OWNER TO postgres;
+
+--CLUSTERS
+ALTER TABLE public.passwords OWNER TO postgres;
+
+--STANDARDS
+ALTER TABLE public.passwords OWNER TO postgres;
 
 --MATH_LEVELS
 ALTER TABLE public.math_levels OWNER TO postgres;
 
 --LEVELS
 ALTER TABLE public.levels OWNER TO postgres;
+
+--LEVEL_TRANSACTION
+ALTER TABLE public.level_transaction OWNER TO postgres;
 
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels OWNER TO postgres;
@@ -435,6 +477,27 @@ ALTER TABLE public.passwords_id_seq OWNER TO postgres;
 ALTER SEQUENCE passwords_id_seq OWNED BY passwords.id;
 ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq'::regclass);
 
+--DOMAINS
+ALTER TABLE public.domains_id_seq OWNER TO postgres;
+ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
+ALTER TABLE ONLY domains ALTER COLUMN id SET DEFAULT nextval('domains_id_seq'::regclass);
+
+--CLUSTERS
+ALTER TABLE public.clusters_id_seq OWNER TO postgres;
+ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
+ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
+
+--STANDARDS
+ALTER TABLE public.standards_id_seq OWNER TO postgres;
+ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
+ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
+
+--PASSWORDS
+ALTER TABLE public.passwords_id_seq OWNER TO postgres;
+ALTER SEQUENCE passwords_id_seq OWNED BY passwords.id;
+ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq'::regclass);
+
+
 --GRADE_LEVELS
 ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
@@ -449,6 +512,11 @@ ALTER TABLE ONLY math_levels ALTER COLUMN id SET DEFAULT nextval('math_levels_id
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+
+--LEVEL_TRANSACTION
+ALTER TABLE public.level_transaction_id_seq OWNER TO postgres;
+ALTER SEQUENCE level_transaction_id_seq OWNED BY level_transaction.id;
+ALTER TABLE ONLY level_transaction ALTER COLUMN id SET DEFAULT nextval('level_transaction_id_seq'::regclass);
 
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels_id_seq OWNER TO postgres;
@@ -514,8 +582,17 @@ ALTER TABLE ONLY rooms ALTER COLUMN id SET DEFAULT nextval('rooms_id_seq'::regcl
 --PASSWORDS
 ALTER TABLE passwords ADD PRIMARY KEY (password);
 
+--DOMAINS
+ALTER TABLE domains ADD PRIMARY KEY (id);
+
+--CLUSTERS
+ALTER TABLE clusters ADD PRIMARY KEY (id);
+
+--STANDARDS
+ALTER TABLE standards ADD PRIMARY KEY (id);
+
 --GRADE_LEVELS
-ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
+ALTER TABLE grade_levels ADD PRIMARY KEY (id);
 
 --MATH_LEVELS
 ALTER TABLE math_levels ADD PRIMARY KEY (level);
@@ -523,11 +600,14 @@ ALTER TABLE math_levels ADD PRIMARY KEY (level);
 --LEVELS
 ALTER TABLE levels ADD PRIMARY KEY (id);
 
+--LEVEL_TRANSACTION
+ALTER TABLE level_transaction ADD PRIMARY KEY (id);
+
 --ENGLISH_LEVELS
 ALTER TABLE english_levels ADD PRIMARY KEY (level);
 
 --SUBJECTS
-ALTER TABLE subjects ADD PRIMARY KEY (subject);
+ALTER TABLE subjects ADD PRIMARY KEY (id);
 
 --MATH_GAMES
 ALTER TABLE math_games ADD PRIMARY KEY (level,url);
@@ -556,13 +636,27 @@ ALTER TABLE students ADD PRIMARY KEY (id);
 --TEACHERS
 ALTER TABLE teachers ADD PRIMARY KEY (id);
 
---HOME_ROOMS
+--ROOMS
 ALTER TABLE rooms ADD PRIMARY KEY (id);
 
 --------------------------------FOREIGN KEYS----------------------------
 
 --LEVELS
 --ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--DOMAINS
+ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--CLUSTERS
+ALTER TABLE clusters ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id);
+
+--STANDARDS
+ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+
+--LEVEL_TRANSACTION
+ALTER TABLE level_transaction ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE level_transaction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --MATH_GAMES
 ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
