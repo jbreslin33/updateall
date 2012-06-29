@@ -12,7 +12,7 @@ DROP TABLE english_games cascade;
 DROP TABLE games cascade;
 DROP TABLE games_attempts cascade;
 
-DROP TABLE level_advancement cascade;
+DROP TABLE level_transaction cascade;
 DROP TABLE levels cascade;
 DROP TABLE subjects cascade;
 
