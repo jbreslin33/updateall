@@ -118,7 +118,7 @@ CREATE TABLE standards (
 --------------------levels---------------------------------------
 CREATE TABLE levels (
     id integer NOT NULL,
-    level integer NOT NULL, 
+    level double precision NOT NULL, 
     standard_id integer NOT NULL,
     skill text NOT NULL 
 );
@@ -618,7 +618,7 @@ insert into math_levels(level,next_level,skill) values (9,10,'Count from 80 to 9
 insert into math_levels(level,next_level,skill) values (10,11,'Count from 90 to 100');       
 
 --levels
-insert into levels(standard_id,level,skill) values (1,1,'Count from 0 to 10');       
+insert into levels(standard_id,level,skill) values (1,1.000024,'Count from 0 to 10');       
 insert into levels(standard_id,level,skill) values (1,2,'Count from 10 to 20');       
 insert into levels(standard_id,level,skill) values (1,3,'Count from 20 to 30');       
 insert into levels(standard_id,level,skill) values (1,4,'Count from 30 to 40');       
