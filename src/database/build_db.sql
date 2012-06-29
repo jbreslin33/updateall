@@ -252,6 +252,14 @@ CREATE SEQUENCE math_levels_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--LEVELS
+CREATE SEQUENCE levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --ENGLISH_LEVELS
 CREATE SEQUENCE english_levels_id_seq
     START WITH 1
@@ -366,6 +374,9 @@ ALTER TABLE public.grade_levels OWNER TO postgres;
 --MATH_LEVELS
 ALTER TABLE public.math_levels OWNER TO postgres;
 
+--LEVELS
+ALTER TABLE public.levels OWNER TO postgres;
+
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels OWNER TO postgres;
 
@@ -425,6 +436,11 @@ ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_
 ALTER TABLE public.math_levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE math_levels_id_seq OWNED BY math_levels.id;
 ALTER TABLE ONLY math_levels ALTER COLUMN id SET DEFAULT nextval('math_levels_id_seq'::regclass);
+
+--LEVELS
+ALTER TABLE public.levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
+ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
 
 --ENGLISH_LEVELS
 ALTER TABLE public.english_levels_id_seq OWNER TO postgres;
@@ -501,6 +517,9 @@ ALTER TABLE grade_levels ADD PRIMARY KEY (grade_level);
 --MATH_LEVELS
 ALTER TABLE math_levels ADD PRIMARY KEY (level);
 
+--LEVELS
+ALTER TABLE levels ADD PRIMARY KEY (id);
+
 --ENGLISH_LEVELS
 ALTER TABLE english_levels ADD PRIMARY KEY (level);
 
@@ -541,6 +560,9 @@ ALTER TABLE teachers ADD PRIMARY KEY (id);
 ALTER TABLE rooms ADD PRIMARY KEY (id);
 
 --------------------------------FOREIGN KEYS----------------------------
+
+--LEVELS
+--ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
 
 --MATH_GAMES
 ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
@@ -598,6 +620,18 @@ insert into math_levels(level,next_level,skill) values (7,8,'Count from 60 to 70
 insert into math_levels(level,next_level,skill) values (8,9,'Count from 70 to 80');       
 insert into math_levels(level,next_level,skill) values (9,10,'Count from 80 to 90');       
 insert into math_levels(level,next_level,skill) values (10,11,'Count from 90 to 100');       
+
+--levels
+insert into levels(subject_id,level,next_level,skill) values (1,1,2,'Count from 0 to 10');       
+insert into levels(subject_id,level,next_level,skill) values (1,2,3,'Count from 10 to 20');       
+insert into levels(subject_id,level,next_level,skill) values (1,3,4,'Count from 20 to 30');       
+insert into levels(subject_id,level,next_level,skill) values (1,4,5,'Count from 30 to 40');       
+insert into levels(subject_id,level,next_level,skill) values (1,5,6,'Count from 40 to 50');       
+insert into levels(subject_id,level,next_level,skill) values (1,6,7,'Count from 50 to 60');       
+insert into levels(subject_id,level,next_level,skill) values (1,7,8,'Count from 60 to 70');       
+insert into levels(subject_id,level,next_level,skill) values (1,8,9,'Count from 70 to 80');       
+insert into levels(subject_id,level,next_level,skill) values (1,9,10,'Count from 80 to 90');       
+insert into levels(subject_id,level,next_level,skill) values (1,10,11,'Count from 90 to 100');       
 
 --english_levels
 insert into english_levels(level,next_level,skill) values (1,2,'Recognize and A');       
