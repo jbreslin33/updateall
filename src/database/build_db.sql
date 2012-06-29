@@ -18,7 +18,6 @@ DROP TABLE subjects cascade;
 
 DROP TABLE grade_levels cascade;
 DROP TABLE rooms cascade;
-DROP TABLE admins cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
 DROP TABLE users cascade;
@@ -189,12 +188,6 @@ CREATE TABLE users (
     school_id integer NOT NULL 
 );
 
---------------------admins---------------------------------------
-CREATE TABLE admins (
-    id integer NOT NULL,
-    user_id integer
-);
-
 --------------------teachers---------------------------------------
 CREATE TABLE teachers (
     id integer NOT NULL,
@@ -332,14 +325,6 @@ CREATE SEQUENCE schools_id_seq
     NO MAXVALUE
     CACHE 1;
 
---ADMINS
-CREATE SEQUENCE admins_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
 --STUDENTS
 CREATE SEQUENCE students_id_seq
     START WITH 1
@@ -403,9 +388,6 @@ ALTER TABLE public.users OWNER TO postgres;
 
 --SCHOOLS
 ALTER TABLE public.schools OWNER TO postgres;
-
---ADMINS
-ALTER TABLE public.admins OWNER TO postgres;
 
 --STUDENTS
 ALTER TABLE public.students OWNER TO postgres;
@@ -487,11 +469,6 @@ ALTER TABLE public.schools_id_seq OWNER TO postgres;
 ALTER SEQUENCE schools_id_seq OWNED BY schools.id;
 ALTER TABLE ONLY schools ALTER COLUMN id SET DEFAULT nextval('schools_id_seq'::regclass);
 
---ADMINS
-ALTER TABLE public.admins_id_seq OWNER TO postgres;
-ALTER SEQUENCE admins_id_seq OWNED BY admins.id;
-ALTER TABLE ONLY admins ALTER COLUMN id SET DEFAULT nextval('admins_id_seq'::regclass);
-
 --STUDENTS
 ALTER TABLE public.students_id_seq OWNER TO postgres;
 ALTER SEQUENCE students_id_seq OWNED BY students.id;
@@ -547,9 +524,6 @@ ALTER TABLE users ADD PRIMARY KEY (id);
 --SCHOOLS
 ALTER TABLE schools ADD PRIMARY KEY (id);
 
---ADMINS
-ALTER TABLE admins ADD PRIMARY KEY (id);
-
 --STUDENTS
 ALTER TABLE students ADD PRIMARY KEY (id);
 
@@ -579,10 +553,6 @@ ALTER TABLE users ADD UNIQUE (username,school_id);
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 
 --SCHOOLS
-
---ADMINS
-ALTER TABLE admins ADD UNIQUE (user_id);
-ALTER TABLE admins ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --STUDENTS
 ALTER TABLE students ADD UNIQUE (user_id);
