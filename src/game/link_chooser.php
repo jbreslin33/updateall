@@ -1,4 +1,4 @@
-var GameChooser = new Class(
+var LinkChooser = new Class(
 {
 
 Extends: Game,
@@ -30,7 +30,8 @@ Extends: Game,
                         if (this.mQuiz)
 			{ 
                        		this.mOn = false;
-                             	//this.setFeedback("YOU CHOSE WELL!!!");
+				
+				//this will send you to answer page...
 				window.location = col2.mQuestion.getAnswer();
 				
 			}	

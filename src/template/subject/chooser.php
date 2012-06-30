@@ -47,7 +47,7 @@ var username = "<?php echo $username; ?>";
 <script type="text/javascript" src="../../math/point2D.php"></script>
 <script type="text/javascript" src="../../bounds/bounds.php"></script>
 <script type="text/javascript" src="../../game/game.php"></script>
-<script type="text/javascript" src="../../game/subject_chooser.php"></script>
+<script type="text/javascript" src="../../game/link_chooser.php"></script>
 <script type="text/javascript" src="../../application/application.php"></script>
 <script type="text/javascript" src="../../shape/shape.php"></script>
 <script type="text/javascript" src="../../div/div.php"></script>
@@ -115,7 +115,7 @@ window.addEvent('domready', function()
         westBounds  = new Shape         ( 10, 20,  0,385,"","","","#F08EF0","boundary");
 
 	//the game
-        mGame = new SubjectChooser("Subject Chooser");
+        mGame = new LinkChooser("Subject Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
