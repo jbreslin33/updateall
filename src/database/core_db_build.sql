@@ -392,6 +392,24 @@ CREATE SEQUENCE rooms_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--PERMISSIONS
+CREATE SEQUENCE permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--PERMISSIONS_USERS
+CREATE SEQUENCE permissions_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--==================================================================
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -522,6 +540,12 @@ ALTER TABLE public.teachers OWNER TO postgres;
 --ROOMS
 --ALTER TABLE public.rooms OWNER TO postgres;
 
+--PERMISSIONS
+--ALTER TABLE public.permissions OWNER TO postgres;
+
+--PERMISSIONS_USERS
+--ALTER TABLE public.permissions_users OWNER TO postgres;
+
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -637,6 +661,17 @@ ALTER TABLE public.rooms_id_seq OWNER TO postgres;
 ALTER SEQUENCE rooms_id_seq OWNED BY rooms.id;
 ALTER TABLE ONLY rooms ALTER COLUMN id SET DEFAULT nextval('rooms_id_seq'::regclass);
 
+--PERMISSIONS
+ALTER TABLE public.permissions_id_seq OWNER TO postgres;
+ALTER SEQUENCE permissions_id_seq OWNED BY permissions.id;
+ALTER TABLE ONLY permissions ALTER COLUMN id SET DEFAULT nextval('permissions_id_seq'::regclass);
+
+--PERMISSIONS_USERS
+ALTER TABLE public.permissions_users_id_seq OWNER TO postgres;
+ALTER SEQUENCE permissions_users_id_seq OWNED BY permissions_users.id;
+ALTER TABLE ONLY permissions_users ALTER COLUMN id SET DEFAULT nextval('permissions_users_id_seq'::regclass);
+
+
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
@@ -742,6 +777,13 @@ ALTER TABLE teachers ADD PRIMARY KEY (id);
 --ROOMS
 ALTER TABLE rooms ADD PRIMARY KEY (id);
 
+--PERMISSIONS
+ALTER TABLE permissions ADD PRIMARY KEY (id);
+
+--PERMISSIONS_USERS
+ALTER TABLE permissions_users ADD PRIMARY KEY (id);
+
+
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
@@ -835,6 +877,11 @@ ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
+--PERMISSIONS
+
+--PERMISSIONS_USERS
+ALTER TABLE permissions_users ADD FOREIGN KEY (permission_id) REFERENCES permissions(id);
+ALTER TABLE permissions_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -917,6 +964,10 @@ ALTER TABLE users ADD UNIQUE (username,school_id);
 
 --ROOMS
 ALTER TABLE rooms ADD UNIQUE (school_id,room);
+
+--PERMISSIONS
+
+--PERMISSIONS_USERS
 
 
 --==================================================================
@@ -1015,6 +1066,11 @@ sequence (instead of having to begin at 1).','2',1);
 --TEACHERS
 
 --STUDENTS
+
+--PERMISSIONS
+insert into permissions(permission) values ('INSERT');       
+
+--PERMISSIONS_USERS
 
 
 --==================================================================
