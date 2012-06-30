@@ -177,7 +177,7 @@ $problem = "";
   //----------------STUDENT CHECK----------------------------------------------
                         //is this user a student? if so let's set some session vars
                         //query string
-                        $query = "select id, math_level, english_level from students where user_id = ";
+                        $query = "select id from students where user_id = ";
                         $query .= $_SESSION["user_id"];
                         $query .= ";";
 
@@ -195,21 +195,15 @@ $problem = "";
 
                                 //get the id from user table
                                 $student_id = pg_Result($result, 0, 'id');
-                                $mathLevel = pg_Result($result, 0, 'math_level');
-                                $englishLevel = pg_Result($result, 0, 'english_level');
 
                                 //set user id, and subject levels to be used later
                                 $_SESSION["student_id"] = $student_id;
-                                $_SESSION["math_level"] = $mathLevel;
-                                $_SESSION["english_level"] = $englishLevel;
                         }
                         else
                         {
                                 //we are not a student
                                 $_SESSION["is_student"] = "FALSE";
                                 $_SESSION["student_id"] = 0;
-                                $_SESSION["math_level"] = "";
-                                $_SESSION["english_level"] = "";
                         }
 	if ($problem == "")
 	{
