@@ -4,7 +4,7 @@ include("../links/links.php");
 
 echo "<b><u>My Students:<u><b><br>";
 
-$query = "select students.user_id, students.id, users.username, users.password, users.first_name, users.last_name, students.math_level, students.english_level from students join users on students.user_id = users.id where users.school_id = ";
+$query = "select students.user_id, students.id, users.username, users.password, users.first_name, users.last_name from students join users on students.user_id = users.id where users.school_id = ";
 $query .= $_SESSION["school_id"];
 $query .= ";";
 
@@ -22,8 +22,6 @@ $numrows = pg_numrows($result);
    <th>PASSWORD</th>
    <th>FIRST NAME</th>
    <th>LAST NAME</th>
-   <th>MATH LEVEL</th>
-   <th>ENGLISH LEVEL</th>
   </tr>
 
 <?
@@ -38,8 +36,6 @@ $numrows = pg_numrows($result);
    <td>", $row["password"], "</td>
    <td>", $row["first_name"], "</td>
    <td>", $row["last_name"], "</td>
-   <td>", $row["math_level"], "</td>
-   <td>", $row["english_level"], "</td>
   </tr>
   ";
    }

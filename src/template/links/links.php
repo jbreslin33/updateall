@@ -24,7 +24,7 @@ include("stats.php");
 <br>
 
 <?php
-if ($_SESSION["is_admin"] == "TRUE")
+if ($_SESSION["username"] == "root")
 {
 	include("inserts.php");
 }

@@ -61,12 +61,6 @@ echo "student_id: ";
 echo $_SESSION["student_id"];
 echo "<br>";
 
-echo "english_level: ";
-echo $_SESSION["english_level"];
-echo "<br>";
-
-echo "math_level: ";
-echo $_SESSION["math_level"];
 echo "<br>";
 echo "<br>";
 echo "<br>";
