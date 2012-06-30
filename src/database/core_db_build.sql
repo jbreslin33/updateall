@@ -173,8 +173,8 @@ CREATE TABLE students (
 --ROOMS
 CREATE TABLE rooms (
     id integer NOT NULL,
-    school_id integer NOT NULL,
-    room text NOT NULL
+    room text NOT NULL,
+    school_id integer NOT NULL
 );
 
 --==================================================================
@@ -185,16 +185,16 @@ CREATE TABLE rooms (
 CREATE TABLE levels (
     id integer NOT NULL,
     level double precision NOT NULL, 
-    standard_id integer NOT NULL,
-    skill text NOT NULL 
+    skill text NOT NULL,
+    standard_id integer NOT NULL
 );
 
 --LEVELS_TRANSACTIONS
 CREATE TABLE levels_transactions (
     id integer NOT NULL,
+    advancement_time timestamp,
     level_id integer NOT NULL,
-    student_id integer NOT NULL,
-    advancement_time timestamp
+    student_id integer NOT NULL
 );
 
 --COUNTING
@@ -252,11 +252,11 @@ CREATE TABLE games_levels (
 --GAMES_ATTEMPTS
 CREATE TABLE games_attempts (
     id integer NOT NULL,
+    game_attempt_time_start timestamp,
+    game_attempt_time_end timestamp,
     game_id integer NOT NULL,
     student_id integer NOT NULL,
-    level_id integer NOT NULL, --should this be standard_id?
-    game_attempt_time_start timestamp,
-    game_attempt_time_end timestamp
+    level_id integer NOT NULL --should this be standard_id?
 );
 
 
