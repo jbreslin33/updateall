@@ -939,9 +939,17 @@ ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 --**************************************************************
 --**************************************************************
 
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
 
---------------------INSERT---------------------------------------
+--PASSWORDS !!!!!!!!!!!! LISTED BELOW BECAUSE THEY ARE HUGE !!!!!!!!!
 
+--ERROR_LOG
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
 
 --GRADE_LEVEL
 insert into grade_levels (grade_level) values ('K');
@@ -973,7 +981,24 @@ insert into standards (standard,standard_code,cluster_id) values ('Count to 100 
 insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2',1);
 
---levels
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
+
+--SCHOOLS
+
+--USERS
+
+--TEACHERS
+
+--STUDENTS
+
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
+--LEVELS
 insert into levels(standard_id,level,skill) values (1,1.000024,'Count from 0 to 10');       
 insert into levels(standard_id,level,skill) values (1,2,'Count from 10 to 20');       
 insert into levels(standard_id,level,skill) values (1,3,'Count from 20 to 30');       
@@ -986,9 +1011,7 @@ insert into levels(standard_id,level,skill) values (1,9,'Count from 80 to 90');
 insert into levels(standard_id,level,skill) values (1,10,'Count from 90 to 100');       
 insert into levels(standard_id,level,skill) values (2,1,'Recognize an A');       
 
---GAMES
-insert into games (game,url) values ('Dungeon','../../template/math/count/count.php');
-insert into games (game,url) values ('Racing','../../template/math/count/racing.php');
+--LEVELS_TRANSACTIONS
 
 --COUNTING
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
@@ -1002,6 +1025,29 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,80,90,1,9);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,10);
 
+--ADDITION
+
+--SUBTRACTION
+
+
+--==================================================================
+--================= GAMES ====================================
+--==================================================================
+
+--GAMES
+insert into games (game,url) values ('Dungeon','../../template/math/count/count.php');
+insert into games (game,url) values ('Racing','../../template/math/count/racing.php');
+
+--GAMES_LEVELS
+
+--GAMES_ATTEMPTS
+
+
+
+
+
+
+--(CONTINUED PASSWORDS).......
 
 --PASSWORDS
 --3 letter easy words
