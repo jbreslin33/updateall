@@ -26,6 +26,8 @@ DROP TABLE levels cascade;
 --====================== PEOPLE  =============================
 --==================================================================
 
+DROP TABLE permissions_users cascade;
+DROP TABLE permissions cascade;
 DROP TABLE rooms cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
@@ -140,6 +142,8 @@ CREATE TABLE standards (
 --================= PEOPLE  ====================================
 --==================================================================
 
+
+
 --SCHOOLS
 CREATE TABLE schools (
     id integer NOT NULL,
@@ -175,6 +179,19 @@ CREATE TABLE rooms (
     id integer NOT NULL,
     room text NOT NULL,
     school_id integer NOT NULL
+);
+
+--PERMISSIONS
+CREATE TABLE permissions (
+    id integer NOT NULL,
+    permission text NOT NULL UNIQUE 
+);
+
+--PERMISSIONS_USERS
+CREATE TABLE permissions_users (
+    id integer NOT NULL,
+    permission_id integer NOT NULL,
+    user_id integer NOT NULL  
 );
 
 --==================================================================
