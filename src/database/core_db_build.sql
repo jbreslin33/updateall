@@ -47,7 +47,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --==================================================================
---=========================== HELPER TABLES ========================
+--=========================== HELPER  ========================
 --==================================================================
 
 --------------------error_log---------------------------------------
@@ -65,7 +65,7 @@ CREATE TABLE passwords (
 );
 
 --==================================================================
---==================== CORE CURRICULUM TABLES ========================
+--==================== CORE CURRICULUM  ========================
 --==================================================================
 
 --------------------grade_levels---------------------------------------
@@ -77,8 +77,7 @@ CREATE TABLE grade_levels (
 --------------------subjects---------------------------------------
 CREATE TABLE subjects (
     id integer NOT NULL,
-    subject text NOT NULL,
-    url text NOT NULL
+    subject text NOT NULL
 );
 
 --------------------domains---------------------------------------
@@ -105,7 +104,7 @@ CREATE TABLE standards (
 );
 
 --==================================================================
---====================== LEARNING TABLES =============================
+--====================== LEARNING  =============================
 --==================================================================
 
 --------------------levels---------------------------------------
@@ -181,7 +180,9 @@ CREATE TABLE games_attempts (
     id integer NOT NULL,
     game_id integer NOT NULL,
     student_id integer NOT NULL,
-    game_attempt_time timestamp
+    level_id integer NOT NULL, --should this be standard_id?
+    game_attempt_time_start timestamp,
+    game_attempt_time_end timestamp
 );
 
 --------------------schools---------------------------------------
@@ -191,7 +192,7 @@ CREATE TABLE schools (
 );
 
 --==================================================================
---================= PEOPLE TABLES ====================================
+--================= PEOPLE  ====================================
 --==================================================================
 
 --------------------users---------------------------------------
@@ -227,9 +228,17 @@ CREATE TABLE rooms (
     room text NOT NULL
 );
 
-----------------------CREATE SEQUENCES-------------------------
+--****************************************************************
+--***************************************************************
+--******************  CREATE SEQUENCES *************************
+--**************************************************************
+--**************************************************************
 
--- for better or for worse i got rid of all sequences and i am using natural pks except for HOME ROOMS
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
 --ERROR_LOG
 CREATE SEQUENCE error_log_id_seq
     START WITH 1
@@ -240,6 +249,18 @@ CREATE SEQUENCE error_log_id_seq
 
 --PASSWORDS
 CREATE SEQUENCE passwords_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--SUBJECTS
+CREATE SEQUENCE subjects_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -278,6 +299,10 @@ CREATE SEQUENCE grade_levels_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
 --LEVELS
 CREATE SEQUENCE levels_id_seq
     START WITH 1
@@ -288,30 +313,6 @@ CREATE SEQUENCE levels_id_seq
 
 --LEVELS_TRANSACTIONS
 CREATE SEQUENCE levels_transactions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---SUBJECTS
-CREATE SEQUENCE subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GAMES
-CREATE SEQUENCE games_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GAMES_LEVELS
-CREATE SEQUENCE games_levels_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -341,6 +342,31 @@ CREATE SEQUENCE subtraction_id_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GAMES_LEVELS
+CREATE SEQUENCE games_levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
 
 --USERS
 CREATE SEQUENCE users_id_seq
@@ -651,8 +677,8 @@ insert into grade_levels (grade_level) values ('11');
 insert into grade_levels (grade_level) values ('12');
 
 --SUBJECTS
-insert into subjects (subject,url) values ('Math','../math/chooser.php');
-insert into subjects (subject,url) values ('English','../english/chooser.php');
+insert into subjects (subject) values ('Math');
+insert into subjects (subject) values ('English');
 
 --DOMAINS
 insert into domains (domain,subject_id) values ('Counting and Cardinality',1);
