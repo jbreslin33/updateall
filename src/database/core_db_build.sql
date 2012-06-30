@@ -136,6 +136,12 @@ CREATE TABLE standards (
 --================= PEOPLE  ====================================
 --==================================================================
 
+--------------------schools---------------------------------------
+CREATE TABLE schools (
+    id integer NOT NULL,
+    school_name text NOT NULL UNIQUE 
+);
+
 --------------------users---------------------------------------
 CREATE TABLE users (
     id integer NOT NULL,
@@ -146,25 +152,17 @@ CREATE TABLE users (
     school_id integer NOT NULL 
 );
 
---------------------schools---------------------------------------
-CREATE TABLE schools (
-    id integer NOT NULL,
-    school_name text NOT NULL UNIQUE 
-);
-
 --------------------teachers---------------------------------------
 CREATE TABLE teachers (
     id integer NOT NULL,
-    user_id integer,  
+    user_id integer UNIQUE,  
     room_id integer
 );
 
 --------------------students---------------------------------------
 CREATE TABLE students (
     id integer NOT NULL,
-    user_id integer, 
-    math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL,
+    user_id integer UNIQUE, 
     teacher_id integer 
 );
 
