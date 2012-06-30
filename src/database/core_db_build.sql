@@ -1,14 +1,15 @@
---
--- PostgreSQL database dump
---
---check login is not working or something on login.... actually i am not setting im pretty damn sure now as i deleted it.
+--****************************************************************
+--***************************************************************
+--******************  DROP TABLES *************************
+--**************************************************************
+--**************************************************************
 
-
+--==================================================================
+--====================== GAMES  =============================
+--==================================================================
 DROP TABLE games_levels cascade;
-
 DROP TABLE games_attempts cascade;
 DROP TABLE games cascade;
-
 
 --==================================================================
 --====================== LEARNING  =============================
@@ -19,7 +20,6 @@ DROP TABLE subtraction cascade;
 DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
 
-
 --==================================================================
 --====================== PEOPLE  =============================
 --==================================================================
@@ -28,7 +28,6 @@ DROP TABLE teachers cascade;
 DROP TABLE students cascade;
 DROP TABLE users cascade;
 DROP TABLE schools cascade;
-
 
 --==================================================================
 --=========================== CORE CURRICULUM  ========================
@@ -47,6 +46,12 @@ DROP TABLE error_log cascade;
 
 
 
+--****************************************************************
+--***************************************************************
+--******************  POSTGRESQL SETTINGS *************************
+--**************************************************************
+--**************************************************************
+
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
@@ -63,61 +68,45 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
---==================================================================
---=========================== HELPER  ========================
---==================================================================
-
---------------------error_log---------------------------------------
-CREATE TABLE error_log (
-    id integer NOT NULL,
-    error text,
-    error_time timestamp,
-    username text
-);
-
---------------------passwords---------------------------------------
-CREATE TABLE passwords (
-    id integer NOT NULL,
-    password text UNIQUE 
-);
+--****************************************************************
+--***************************************************************
+--******************  CREATE TABLES *************************
+--**************************************************************
+--**************************************************************
 
 --==================================================================
---==================== CORE CURRICULUM  ========================
+--===================== GAMES =====================================
 --==================================================================
 
---------------------grade_levels---------------------------------------
-CREATE TABLE grade_levels (
+--------------------games---------------------------------------
+CREATE TABLE games (
     id integer NOT NULL,
-    grade_level text  
+    game text NOT NULL,
+    url text NOT NULL
 );
 
---------------------subjects---------------------------------------
-CREATE TABLE subjects (
+--------------------games_levels---------------------------------------
+CREATE TABLE games_levels (
     id integer NOT NULL,
-    subject text NOT NULL
+    url text NOT NULL,
+    game_id integer NOT NULL,
+    level_id integer NOT NULL
 );
 
---------------------domains---------------------------------------
-CREATE TABLE domains (
+--------------------games_attempts---------------------------------------
+CREATE TABLE games_attempts (
     id integer NOT NULL,
-    domain text NOT NULL,
-    subject_id integer NOT NULL
+    game_id integer NOT NULL,
+    student_id integer NOT NULL,
+    level_id integer NOT NULL, --should this be standard_id?
+    game_attempt_time_start timestamp,
+    game_attempt_time_end timestamp
 );
 
---------------------clusters---------------------------------------
-CREATE TABLE clusters (
+--------------------schools---------------------------------------
+CREATE TABLE schools (
     id integer NOT NULL,
-    cluster text NOT NULL,
-    domain_id integer NOT NULL,
-    grade_level_id integer NOT NULL
-);
-
---------------------standards---------------------------------------
-CREATE TABLE standards (
-    id integer NOT NULL,
-    standard text NOT NULL,
-    standard_code text NOT NULL,
-    cluster_id integer NOT NULL 
+    school_name text NOT NULL UNIQUE 
 );
 
 --==================================================================
@@ -174,41 +163,6 @@ CREATE TABLE subtraction (
 );
 
 --==================================================================
---===================== GAMES =====================================
---==================================================================
-
---------------------games---------------------------------------
-CREATE TABLE games (
-    id integer NOT NULL,
-    game text NOT NULL,
-    url text NOT NULL
-);
-
---------------------games_levels---------------------------------------
-CREATE TABLE games_levels (
-    id integer NOT NULL,
-    url text NOT NULL,
-    game_id integer NOT NULL,
-    level_id integer NOT NULL
-);
-
---------------------games_attempts---------------------------------------
-CREATE TABLE games_attempts (
-    id integer NOT NULL,
-    game_id integer NOT NULL,
-    student_id integer NOT NULL,
-    level_id integer NOT NULL, --should this be standard_id?
-    game_attempt_time_start timestamp,
-    game_attempt_time_end timestamp
-);
-
---------------------schools---------------------------------------
-CREATE TABLE schools (
-    id integer NOT NULL,
-    school_name text NOT NULL UNIQUE 
-);
-
---==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
 
@@ -244,6 +198,65 @@ CREATE TABLE rooms (
     school_id integer NOT NULL,
     room text NOT NULL
 );
+
+--==================================================================
+--==================== CORE CURRICULUM  ========================
+--==================================================================
+
+--------------------grade_levels---------------------------------------
+CREATE TABLE grade_levels (
+    id integer NOT NULL,
+    grade_level text  
+);
+
+--------------------subjects---------------------------------------
+CREATE TABLE subjects (
+    id integer NOT NULL,
+    subject text NOT NULL
+);
+
+--------------------domains---------------------------------------
+CREATE TABLE domains (
+    id integer NOT NULL,
+    domain text NOT NULL,
+    subject_id integer NOT NULL
+);
+
+--------------------clusters---------------------------------------
+CREATE TABLE clusters (
+    id integer NOT NULL,
+    cluster text NOT NULL,
+    domain_id integer NOT NULL,
+    grade_level_id integer NOT NULL
+);
+
+--------------------standards---------------------------------------
+CREATE TABLE standards (
+    id integer NOT NULL,
+    standard text NOT NULL,
+    standard_code text NOT NULL,
+    cluster_id integer NOT NULL 
+);
+
+--==================================================================
+--=========================== HELPER  ========================
+--==================================================================
+
+--------------------error_log---------------------------------------
+CREATE TABLE error_log (
+    id integer NOT NULL,
+    error text,
+    error_time timestamp,
+    username text
+);
+
+--------------------passwords---------------------------------------
+CREATE TABLE passwords (
+    id integer NOT NULL,
+    password text UNIQUE 
+);
+
+
 
 --****************************************************************
 --***************************************************************
@@ -425,7 +438,11 @@ CREATE SEQUENCE rooms_id_seq
     NO MAXVALUE
     CACHE 1;
 
---------------------ALTER OWNER---------------------------------------
+--****************************************************************
+--***************************************************************
+--****************** ALTER OWNER  *************************
+--**************************************************************
+--**************************************************************
 --PASSWORDS
 ALTER TABLE public.passwords OWNER TO postgres;
 
