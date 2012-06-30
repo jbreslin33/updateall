@@ -46,6 +46,9 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+--==================================================================
+--=========================== HELPER TABLES ========================
+--==================================================================
 
 --------------------error_log---------------------------------------
 CREATE TABLE error_log (
@@ -60,6 +63,10 @@ CREATE TABLE passwords (
     id integer NOT NULL,
     password text UNIQUE 
 );
+
+--==================================================================
+--==================== CORE CURRICULUM TABLES ========================
+--==================================================================
 
 --------------------grade_levels---------------------------------------
 CREATE TABLE grade_levels (
@@ -97,6 +104,10 @@ CREATE TABLE standards (
     cluster_id integer NOT NULL 
 );
 
+--==================================================================
+--====================== LEARNING TABLES =============================
+--==================================================================
+
 --------------------levels---------------------------------------
 CREATE TABLE levels (
     id integer NOT NULL,
@@ -111,33 +122,6 @@ CREATE TABLE levels_transactions (
     level_id integer NOT NULL,
     student_id integer NOT NULL,
     advancement_time timestamp
-);
-
---this should contain (1,'HelicopterChase');
---this should contain (1,'Dungeon');
-
---------------------games---------------------------------------
-CREATE TABLE games (
-    id integer NOT NULL,
-    game text NOT NULL,
-    url text NOT NULL
-);
-
---this is what you grab for user to select from...it will combine a generic game with some answers(levels...
---------------------games_levels---------------------------------------
-CREATE TABLE games_levels (
-    id integer NOT NULL,
-    url text NOT NULL,
-    game_id integer NOT NULL,
-    level_id integer NOT NULL
-);
-
---------------------games_attempts---------------------------------------
-CREATE TABLE games_attempts (
-    id integer NOT NULL,
-    game_id integer NOT NULL,
-    student_id integer NOT NULL,
-    game_attempt_time timestamp
 );
 
 --------------------counting---------------------------------------
@@ -173,12 +157,42 @@ CREATE TABLE subtraction (
     level_id integer NOT NULL
 );
 
+--==================================================================
+--===================== GAMES =====================================
+--==================================================================
+
+--------------------games---------------------------------------
+CREATE TABLE games (
+    id integer NOT NULL,
+    game text NOT NULL,
+    url text NOT NULL
+);
+
+--------------------games_levels---------------------------------------
+CREATE TABLE games_levels (
+    id integer NOT NULL,
+    url text NOT NULL,
+    game_id integer NOT NULL,
+    level_id integer NOT NULL
+);
+
+--------------------games_attempts---------------------------------------
+CREATE TABLE games_attempts (
+    id integer NOT NULL,
+    game_id integer NOT NULL,
+    student_id integer NOT NULL,
+    game_attempt_time timestamp
+);
 
 --------------------schools---------------------------------------
 CREATE TABLE schools (
     id integer NOT NULL,
     school_name text NOT NULL UNIQUE 
 );
+
+--==================================================================
+--================= PEOPLE TABLES ====================================
+--==================================================================
 
 --------------------users---------------------------------------
 CREATE TABLE users (
