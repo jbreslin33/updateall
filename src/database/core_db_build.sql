@@ -1076,7 +1076,7 @@ insert into permissions(permission) values ('INSERT');
 --==================================================================
 
 --LEVELS
-insert into levels(standard_id,level,skill) values (1,1.000024,'Count from 0 to 10');       
+insert into levels(standard_id,level,skill) values (1,1,'Count from 0 to 10');       
 insert into levels(standard_id,level,skill) values (1,2,'Count from 10 to 20');       
 insert into levels(standard_id,level,skill) values (1,3,'Count from 20 to 30');       
 insert into levels(standard_id,level,skill) values (1,4,'Count from 30 to 40');       
@@ -1086,7 +1086,9 @@ insert into levels(standard_id,level,skill) values (1,7,'Count from 60 to 70');
 insert into levels(standard_id,level,skill) values (1,8,'Count from 70 to 80');       
 insert into levels(standard_id,level,skill) values (1,9,'Count from 80 to 90');       
 insert into levels(standard_id,level,skill) values (1,10,'Count from 90 to 100');       
-insert into levels(standard_id,level,skill) values (2,1,'Recognize an A');       
+
+insert into levels(standard_id,level,skill) values (2,1,'Count Forward from Random num...');       
+
 
 --LEVELS_TRANSACTIONS
 
@@ -1116,9 +1118,9 @@ insert into games (game,url) values ('Dungeon','../../template/math/count/count.
 insert into games (game,url) values ('Racing','../../template/math/count/racing.php');
 
 --GAMES_LEVELS
+insert into games_levels (level_id,game_id,url) values  (1,1,'../../template/math/count.php');
 
 --GAMES_ATTEMPTS
-
 
 
 
