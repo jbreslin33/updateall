@@ -7,6 +7,7 @@
 --==================================================================
 --====================== GAMES  =============================
 --==================================================================
+
 DROP TABLE games_levels cascade;
 DROP TABLE games_attempts cascade;
 DROP TABLE games cascade;
@@ -14,6 +15,7 @@ DROP TABLE games cascade;
 --==================================================================
 --====================== LEARNING  =============================
 --==================================================================
+
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
@@ -23,6 +25,7 @@ DROP TABLE levels cascade;
 --==================================================================
 --====================== PEOPLE  =============================
 --==================================================================
+
 DROP TABLE rooms cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
@@ -32,6 +35,7 @@ DROP TABLE schools cascade;
 --==================================================================
 --=========================== CORE CURRICULUM  ========================
 --==================================================================
+
 DROP TABLE standards cascade;
 DROP TABLE clusters cascade;
 DROP TABLE domains cascade;
@@ -41,9 +45,9 @@ DROP TABLE subjects cascade;
 --==================================================================
 --=========================== HELPER  ========================
 --==================================================================
+
 DROP TABLE passwords cascade;
 DROP TABLE error_log cascade; 
-
 
 
 --****************************************************************
@@ -78,7 +82,7 @@ SET default_with_oids = false;
 --=========================== HELPER  ========================
 --==================================================================
 
---------------------error_log---------------------------------------
+--ERROR_LOG
 CREATE TABLE error_log (
     id integer NOT NULL,
     error text,
@@ -86,7 +90,7 @@ CREATE TABLE error_log (
     username text
 );
 
---------------------passwords---------------------------------------
+--PASSWORDS
 CREATE TABLE passwords (
     id integer NOT NULL,
     password text UNIQUE 
@@ -96,26 +100,26 @@ CREATE TABLE passwords (
 --==================== CORE CURRICULUM  ========================
 --==================================================================
 
---------------------grade_levels---------------------------------------
+--GRADE_LEVELS
 CREATE TABLE grade_levels (
     id integer NOT NULL,
     grade_level text  
 );
 
---------------------subjects---------------------------------------
+--SUBJECTS
 CREATE TABLE subjects (
     id integer NOT NULL,
     subject text NOT NULL
 );
 
---------------------domains---------------------------------------
+--DOMAINS
 CREATE TABLE domains (
     id integer NOT NULL,
     domain text NOT NULL,
     subject_id integer NOT NULL
 );
 
---------------------clusters---------------------------------------
+--CLUSTERS
 CREATE TABLE clusters (
     id integer NOT NULL,
     cluster text NOT NULL,
@@ -123,7 +127,7 @@ CREATE TABLE clusters (
     grade_level_id integer NOT NULL
 );
 
---------------------standards---------------------------------------
+--STANDARDS
 CREATE TABLE standards (
     id integer NOT NULL,
     standard text NOT NULL,
@@ -136,13 +140,13 @@ CREATE TABLE standards (
 --================= PEOPLE  ====================================
 --==================================================================
 
---------------------schools---------------------------------------
+--SCHOOLS
 CREATE TABLE schools (
     id integer NOT NULL,
     school_name text NOT NULL UNIQUE 
 );
 
---------------------users---------------------------------------
+--USERS
 CREATE TABLE users (
     id integer NOT NULL,
     username text, 
@@ -152,21 +156,21 @@ CREATE TABLE users (
     school_id integer NOT NULL 
 );
 
---------------------teachers---------------------------------------
+--TEACHERS
 CREATE TABLE teachers (
     id integer NOT NULL,
     user_id integer UNIQUE,  
     room_id integer
 );
 
---------------------students---------------------------------------
+--STUDENTS
 CREATE TABLE students (
     id integer NOT NULL,
     user_id integer UNIQUE, 
     teacher_id integer 
 );
 
---------------------rooms---------------------------------------
+--ROOMS
 CREATE TABLE rooms (
     id integer NOT NULL,
     school_id integer NOT NULL,
@@ -174,10 +178,10 @@ CREATE TABLE rooms (
 );
 
 --==================================================================
---====================== LEARNING  =============================
+--====================== LEVELS  =============================
 --==================================================================
 
---------------------levels---------------------------------------
+--LEVELS
 CREATE TABLE levels (
     id integer NOT NULL,
     level double precision NOT NULL, 
@@ -185,7 +189,7 @@ CREATE TABLE levels (
     skill text NOT NULL 
 );
 
---------------------levels_transactions---------------------------------------
+--LEVELS_TRANSACTIONS
 CREATE TABLE levels_transactions (
     id integer NOT NULL,
     level_id integer NOT NULL,
@@ -193,7 +197,7 @@ CREATE TABLE levels_transactions (
     advancement_time timestamp
 );
 
---------------------counting---------------------------------------
+--COUNTING
 CREATE TABLE counting (
     id integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
@@ -203,7 +207,7 @@ CREATE TABLE counting (
     level_id integer NOT NULL
 );
 
---------------------addition---------------------------------------
+--ADDITION
 CREATE TABLE addition (
     id integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
@@ -213,7 +217,7 @@ CREATE TABLE addition (
     level_id integer NOT NULL
 );
 
---------------------subtraction---------------------------------------
+--SUBTRACTION
 CREATE TABLE subtraction (
     id integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
@@ -230,14 +234,14 @@ CREATE TABLE subtraction (
 --===================== GAMES =====================================
 --==================================================================
 
---------------------games---------------------------------------
+--GAMES
 CREATE TABLE games (
     id integer NOT NULL,
     game text NOT NULL,
     url text NOT NULL
 );
 
---------------------games_levels---------------------------------------
+--GAMES_LEVELS
 CREATE TABLE games_levels (
     id integer NOT NULL,
     url text NOT NULL,
@@ -245,7 +249,7 @@ CREATE TABLE games_levels (
     level_id integer NOT NULL
 );
 
---------------------games_attempts---------------------------------------
+--GAMES_ATTEMPTS
 CREATE TABLE games_attempts (
     id integer NOT NULL,
     game_id integer NOT NULL,
@@ -465,6 +469,7 @@ ALTER TABLE public.error_log OWNER TO postgres;
 --==================================================================
 --================= CORE CURRICULUM  ====================================
 --==================================================================
+
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
 
@@ -484,6 +489,7 @@ ALTER TABLE public.standards OWNER TO postgres;
 --==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
+
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
 
