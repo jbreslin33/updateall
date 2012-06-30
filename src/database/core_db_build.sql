@@ -560,6 +560,7 @@ ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq
 --==================================================================
 --================= CORE CURRICULUM  ====================================
 --==================================================================
+
 --GRADE_LEVELS
 ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
@@ -589,6 +590,7 @@ ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq
 --==================================================================
 --================= PEOPLE   ====================================
 --==================================================================
+
 --USERS
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
@@ -617,6 +619,7 @@ ALTER TABLE ONLY rooms ALTER COLUMN id SET DEFAULT nextval('rooms_id_seq'::regcl
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
+
 --LEVELS
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
@@ -663,9 +666,31 @@ ALTER SEQUENCE games_attempts_id_seq OWNED BY games_attempts.id;
 ALTER TABLE ONLY games_attempts ALTER COLUMN id SET DEFAULT nextval('games_attempts_id_seq'::regclass);
 
 
---------------------PRIMARY KEYS---------------------------------------
+--****************************************************************
+--***************************************************************
+--****************** PRIMARY KEY  *************************
+--**************************************************************
+--**************************************************************
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
 --PASSWORDS
 ALTER TABLE passwords ADD PRIMARY KEY (password);
+
+--ERROR_LOG
+ALTER TABLE error_log ADD PRIMARY KEY (id);
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--SUBJECTS
+ALTER TABLE subjects ADD PRIMARY KEY (id);
+
+--GRADE_LEVELS
+ALTER TABLE grade_levels ADD PRIMARY KEY (id);
 
 --DOMAINS
 ALTER TABLE domains ADD PRIMARY KEY (id);
@@ -676,32 +701,10 @@ ALTER TABLE clusters ADD PRIMARY KEY (id);
 --STANDARDS
 ALTER TABLE standards ADD PRIMARY KEY (id);
 
---GRADE_LEVELS
-ALTER TABLE grade_levels ADD PRIMARY KEY (id);
 
---LEVELS
-ALTER TABLE levels ADD PRIMARY KEY (id);
-
---LEVELS_TRANSACTIONS
-ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
-
---SUBJECTS
-ALTER TABLE subjects ADD PRIMARY KEY (id);
-
---GAMES
-ALTER TABLE games ADD PRIMARY KEY (id);
-
---GAMES_LEVELS
-ALTER TABLE games_levels ADD PRIMARY KEY (id);
-
---COUNTING
-ALTER TABLE counting ADD PRIMARY KEY (id);
-
---ADDITION
-ALTER TABLE addition ADD PRIMARY KEY (id);
-
---SUBTRACTION
-ALTER TABLE subtraction ADD PRIMARY KEY (id);
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
 
 --USERS
 ALTER TABLE users ADD PRIMARY KEY (id);
@@ -718,10 +721,64 @@ ALTER TABLE teachers ADD PRIMARY KEY (id);
 --ROOMS
 ALTER TABLE rooms ADD PRIMARY KEY (id);
 
---------------------------------FOREIGN KEYS----------------------------
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
 
 --LEVELS
---ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+ALTER TABLE levels ADD PRIMARY KEY (id);
+
+--LEVELS_TRANSACTIONS
+ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
+
+--COUNTING
+ALTER TABLE counting ADD PRIMARY KEY (id);
+
+--ADDITION
+ALTER TABLE addition ADD PRIMARY KEY (id);
+
+--SUBTRACTION
+ALTER TABLE subtraction ADD PRIMARY KEY (id);
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+ALTER TABLE games ADD PRIMARY KEY (id);
+
+--GAMES_LEVELS
+ALTER TABLE games_levels ADD PRIMARY KEY (id);
+
+--GAMES_ATTEMPTS
+ALTER TABLE games_attempts ADD PRIMARY KEY (id);
+
+
+--****************************************************************
+--***************************************************************
+--****************** FOREIGN KEY  *************************
+--**************************************************************
+--**************************************************************
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
+--PASSWORDS
+--NO FOREIGN KEY
+
+--ERROR_LOG
+--NO FOREIGN KEY
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--GRADE_LEVELS
+--NO FOREIGN KEY
+
+--SUBJECTS
+--NO FOREIGN KEY
 
 --DOMAINS
 ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
@@ -733,24 +790,17 @@ ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id
 --STANDARDS
 ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 
---LEVELS_TRANSACTIONS
-ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
-ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
---GAMES
---ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
-
---GAMES_LEVELS
-ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
-ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
-
---ROOMS
-ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
-ALTER TABLE rooms ADD UNIQUE (school_id,room);
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
 
 --USERS
 ALTER TABLE users ADD UNIQUE (username,school_id);
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
+
+--SCHOOLS
+--NO FOREIGN KEY
 
 --STUDENTS
 ALTER TABLE students ADD UNIQUE (user_id);
@@ -759,6 +809,139 @@ ALTER TABLE students ADD FOREIGN KEY (user_id) REFERENCES users(id);
 --TEACHERS
 ALTER TABLE teachers ADD UNIQUE (user_id);
 ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+--ROOMS
+ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
+ALTER TABLE rooms ADD UNIQUE (school_id,room);
+
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
+--LEVELS
+--ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--LEVELS_TRANSACTIONS
+ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--COUNTING
+--NO FOREIGN KEY
+
+--ADDITION
+--NO FOREIGN KEY
+
+--SUBTRACTION
+--NO FOREIGN KEY
+
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+--ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--GAMES_LEVELS
+ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
+
+--GAMES_ATTEMPTS
+ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
+ALTER TABLE games_attempts ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+
+--****************************************************************
+--***************************************************************
+--****************** UNIQUE CONSTRAINT  *************************
+--**************************************************************
+--**************************************************************
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
+--PASSWORDS
+
+--ERROR_LOG
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--GRADE_LEVELS
+
+--SUBJECTS
+
+--DOMAINS
+
+--CLUSTERS
+
+--STANDARDS
+
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
+
+--USERS
+ALTER TABLE users ADD UNIQUE (username,school_id);
+
+--SCHOOLS
+
+--STUDENTS
+
+--TEACHERS
+
+--ROOMS
+ALTER TABLE rooms ADD UNIQUE (school_id,room);
+
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
+--LEVELS
+--ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--LEVELS_TRANSACTIONS
+ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--COUNTING
+--NO FOREIGN KEY
+
+--ADDITION
+--NO FOREIGN KEY
+
+--SUBTRACTION
+--NO FOREIGN KEY
+
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+--ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--GAMES_LEVELS
+ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
+
+--GAMES_ATTEMPTS
+ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
+ALTER TABLE games_attempts ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+
+--****************************************************************
+--***************************************************************
+--****************** INSERTS  *************************
+--**************************************************************
+--**************************************************************
+
 
 --------------------INSERT---------------------------------------
 
