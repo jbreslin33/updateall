@@ -75,38 +75,104 @@ SET default_with_oids = false;
 --**************************************************************
 
 --==================================================================
---===================== GAMES =====================================
+--=========================== HELPER  ========================
 --==================================================================
 
---------------------games---------------------------------------
-CREATE TABLE games (
+--------------------error_log---------------------------------------
+CREATE TABLE error_log (
     id integer NOT NULL,
-    game text NOT NULL,
-    url text NOT NULL
+    error text,
+    error_time timestamp,
+    username text
 );
 
---------------------games_levels---------------------------------------
-CREATE TABLE games_levels (
+--------------------passwords---------------------------------------
+CREATE TABLE passwords (
     id integer NOT NULL,
-    url text NOT NULL,
-    game_id integer NOT NULL,
-    level_id integer NOT NULL
+    password text UNIQUE 
 );
 
---------------------games_attempts---------------------------------------
-CREATE TABLE games_attempts (
+--==================================================================
+--==================== CORE CURRICULUM  ========================
+--==================================================================
+
+--------------------grade_levels---------------------------------------
+CREATE TABLE grade_levels (
     id integer NOT NULL,
-    game_id integer NOT NULL,
-    student_id integer NOT NULL,
-    level_id integer NOT NULL, --should this be standard_id?
-    game_attempt_time_start timestamp,
-    game_attempt_time_end timestamp
+    grade_level text  
+);
+
+--------------------subjects---------------------------------------
+CREATE TABLE subjects (
+    id integer NOT NULL,
+    subject text NOT NULL
+);
+
+--------------------domains---------------------------------------
+CREATE TABLE domains (
+    id integer NOT NULL,
+    domain text NOT NULL,
+    subject_id integer NOT NULL
+);
+
+--------------------clusters---------------------------------------
+CREATE TABLE clusters (
+    id integer NOT NULL,
+    cluster text NOT NULL,
+    domain_id integer NOT NULL,
+    grade_level_id integer NOT NULL
+);
+
+--------------------standards---------------------------------------
+CREATE TABLE standards (
+    id integer NOT NULL,
+    standard text NOT NULL,
+    standard_code text NOT NULL,
+    cluster_id integer NOT NULL 
+);
+
+
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
+
+--------------------users---------------------------------------
+CREATE TABLE users (
+    id integer NOT NULL,
+    username text, 
+    password text,
+    first_name text,
+    last_name text,
+    school_id integer NOT NULL 
 );
 
 --------------------schools---------------------------------------
 CREATE TABLE schools (
     id integer NOT NULL,
     school_name text NOT NULL UNIQUE 
+);
+
+--------------------teachers---------------------------------------
+CREATE TABLE teachers (
+    id integer NOT NULL,
+    user_id integer,  
+    room_id integer
+);
+
+--------------------students---------------------------------------
+CREATE TABLE students (
+    id integer NOT NULL,
+    user_id integer, 
+    math_level integer DEFAULT 1 NOT NULL,
+    english_level integer DEFAULT 1 NOT NULL,
+    teacher_id integer 
+);
+
+--------------------rooms---------------------------------------
+CREATE TABLE rooms (
+    id integer NOT NULL,
+    school_id integer NOT NULL,
+    room text NOT NULL
 );
 
 --==================================================================
@@ -163,97 +229,32 @@ CREATE TABLE subtraction (
 );
 
 --==================================================================
---================= PEOPLE  ====================================
+--===================== GAMES =====================================
 --==================================================================
 
---------------------users---------------------------------------
-CREATE TABLE users (
+--------------------games---------------------------------------
+CREATE TABLE games (
     id integer NOT NULL,
-    username text, 
-    password text,
-    first_name text,
-    last_name text,
-    school_id integer NOT NULL 
+    game text NOT NULL,
+    url text NOT NULL
 );
 
---------------------teachers---------------------------------------
-CREATE TABLE teachers (
+--------------------games_levels---------------------------------------
+CREATE TABLE games_levels (
     id integer NOT NULL,
-    user_id integer,  
-    room_id integer
+    url text NOT NULL,
+    game_id integer NOT NULL,
+    level_id integer NOT NULL
 );
 
---------------------students---------------------------------------
-CREATE TABLE students (
+--------------------games_attempts---------------------------------------
+CREATE TABLE games_attempts (
     id integer NOT NULL,
-    user_id integer, 
-    math_level integer DEFAULT 1 NOT NULL,
-    english_level integer DEFAULT 1 NOT NULL,
-    teacher_id integer 
-);
-
---------------------rooms---------------------------------------
-CREATE TABLE rooms (
-    id integer NOT NULL,
-    school_id integer NOT NULL,
-    room text NOT NULL
-);
-
---==================================================================
---==================== CORE CURRICULUM  ========================
---==================================================================
-
---------------------grade_levels---------------------------------------
-CREATE TABLE grade_levels (
-    id integer NOT NULL,
-    grade_level text  
-);
-
---------------------subjects---------------------------------------
-CREATE TABLE subjects (
-    id integer NOT NULL,
-    subject text NOT NULL
-);
-
---------------------domains---------------------------------------
-CREATE TABLE domains (
-    id integer NOT NULL,
-    domain text NOT NULL,
-    subject_id integer NOT NULL
-);
-
---------------------clusters---------------------------------------
-CREATE TABLE clusters (
-    id integer NOT NULL,
-    cluster text NOT NULL,
-    domain_id integer NOT NULL,
-    grade_level_id integer NOT NULL
-);
-
---------------------standards---------------------------------------
-CREATE TABLE standards (
-    id integer NOT NULL,
-    standard text NOT NULL,
-    standard_code text NOT NULL,
-    cluster_id integer NOT NULL 
-);
-
---==================================================================
---=========================== HELPER  ========================
---==================================================================
-
---------------------error_log---------------------------------------
-CREATE TABLE error_log (
-    id integer NOT NULL,
-    error text,
-    error_time timestamp,
-    username text
-);
-
---------------------passwords---------------------------------------
-CREATE TABLE passwords (
-    id integer NOT NULL,
-    password text UNIQUE 
+    game_id integer NOT NULL,
+    student_id integer NOT NULL,
+    level_id integer NOT NULL, --should this be standard_id?
+    game_attempt_time_start timestamp,
+    game_attempt_time_end timestamp
 );
 
 
@@ -263,7 +264,6 @@ CREATE TABLE passwords (
 --******************  CREATE SEQUENCES *************************
 --**************************************************************
 --**************************************************************
-
 
 --==================================================================
 --================= HELPER  ====================================
@@ -330,71 +330,6 @@ CREATE SEQUENCE grade_levels_id_seq
     CACHE 1;
 
 --==================================================================
---================= LEVELS  ====================================
---==================================================================
-
---LEVELS
-CREATE SEQUENCE levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---LEVELS_TRANSACTIONS
-CREATE SEQUENCE levels_transactions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---COUNTING
-CREATE SEQUENCE counting_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---ADDITION
-CREATE SEQUENCE addition_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---SUBTRACTION
-CREATE SEQUENCE subtraction_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---==================================================================
---================= GAMES  ====================================
---==================================================================
-
---GAMES
-CREATE SEQUENCE games_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GAMES_LEVELS
-CREATE SEQUENCE games_levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
 
@@ -438,13 +373,105 @@ CREATE SEQUENCE rooms_id_seq
     NO MAXVALUE
     CACHE 1;
 
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
+--LEVELS
+CREATE SEQUENCE levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--LEVELS_TRANSACTIONS
+CREATE SEQUENCE levels_transactions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--COUNTING
+CREATE SEQUENCE counting_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--ADDITION
+CREATE SEQUENCE addition_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--SUBTRACTION
+CREATE SEQUENCE subtraction_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+CREATE SEQUENCE games_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GAMES_LEVELS
+CREATE SEQUENCE games_levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GAMES_ATTEMPTS
+CREATE SEQUENCE games_attempts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
 --****************************************************************
 --***************************************************************
 --****************** ALTER OWNER  *************************
 --**************************************************************
 --**************************************************************
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
 --PASSWORDS
 ALTER TABLE public.passwords OWNER TO postgres;
+
+--ERROR_LOG
+ALTER TABLE public.error_log OWNER TO postgres;
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+--SUBJECTS
+ALTER TABLE public.subjects OWNER TO postgres;
+
+--GRADE_LEVELS
+ALTER TABLE public.grade_levels OWNER TO postgres;
 
 --DOMAINS
 ALTER TABLE public.domains OWNER TO postgres;
@@ -455,30 +482,10 @@ ALTER TABLE public.clusters OWNER TO postgres;
 --STANDARDS
 ALTER TABLE public.standards OWNER TO postgres;
 
---LEVELS
-ALTER TABLE public.levels OWNER TO postgres;
 
---LEVELS_TRANSACTIONS
-ALTER TABLE public.levels_transactions OWNER TO postgres;
-
---SUBJECTS
-ALTER TABLE public.subjects OWNER TO postgres;
-
---GAMES
-ALTER TABLE public.games OWNER TO postgres;
-
---GAMES_LEVELS
-ALTER TABLE public.games_levels OWNER TO postgres;
-
---COUNTING
-ALTER TABLE public.counting OWNER TO postgres;
-
---ADDITION
-ALTER TABLE public.addition OWNER TO postgres;
-
---SUBTRACTION
-ALTER TABLE public.subtraction OWNER TO postgres;
-
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
 --USERS
 ALTER TABLE public.users OWNER TO postgres;
 
@@ -494,7 +501,51 @@ ALTER TABLE public.teachers OWNER TO postgres;
 --ROOMS
 --ALTER TABLE public.rooms OWNER TO postgres;
 
---------------------ALTER SEQUENCE---------------------------------------
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+
+--LEVELS
+ALTER TABLE public.levels OWNER TO postgres;
+
+--LEVELS_TRANSACTIONS
+ALTER TABLE public.levels_transactions OWNER TO postgres;
+
+--COUNTING
+ALTER TABLE public.counting OWNER TO postgres;
+
+--ADDITION
+ALTER TABLE public.addition OWNER TO postgres;
+
+--SUBTRACTION
+ALTER TABLE public.subtraction OWNER TO postgres;
+
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+ALTER TABLE public.games OWNER TO postgres;
+
+--GAMES_LEVELS
+ALTER TABLE public.games_levels OWNER TO postgres;
+
+--GAMES_ATTEMPTS
+ALTER TABLE public.games_attempts OWNER TO postgres;
+
+
+--****************************************************************
+--***************************************************************
+--****************** ALTER SEQUENCE  *************************
+--**************************************************************
+--**************************************************************
+
+--==================================================================
+--================= HELPER  ====================================
+--==================================================================
+
 --ERROR_LOG
 ALTER TABLE public.error_log_id_seq OWNER TO postgres;
 ALTER SEQUENCE error_log_id_seq OWNED BY error_log.id;
@@ -504,6 +555,20 @@ ALTER TABLE ONLY error_log ALTER COLUMN id SET DEFAULT nextval('error_log_id_seq
 ALTER TABLE public.passwords_id_seq OWNER TO postgres;
 ALTER SEQUENCE passwords_id_seq OWNED BY passwords.id;
 ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq'::regclass);
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+--GRADE_LEVELS
+ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
+ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
+
+--SUBJECTS
+ALTER TABLE public.subjects_id_seq OWNER TO postgres;
+ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
+ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
 --DOMAINS
 ALTER TABLE public.domains_id_seq OWNER TO postgres;
@@ -520,56 +585,10 @@ ALTER TABLE public.standards_id_seq OWNER TO postgres;
 ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
 ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
 
---PASSWORDS
-ALTER TABLE public.passwords_id_seq OWNER TO postgres;
-ALTER SEQUENCE passwords_id_seq OWNED BY passwords.id;
-ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq'::regclass);
 
---GRADE_LEVELS
-ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
-ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
-
---LEVELS
-ALTER TABLE public.levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
-ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
-
---LEVELS_TRANSACTIONS
-ALTER TABLE public.levels_transactions_id_seq OWNER TO postgres;
-ALTER SEQUENCE levels_transactions_id_seq OWNED BY levels_transactions.id;
-ALTER TABLE ONLY levels_transactions ALTER COLUMN id SET DEFAULT nextval('levels_transactions_id_seq'::regclass);
-
---SUBJECTS
-ALTER TABLE public.subjects_id_seq OWNER TO postgres;
-ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
-ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
-
---GAMES
-ALTER TABLE public.games_id_seq OWNER TO postgres;
-ALTER SEQUENCE games_id_seq OWNED BY games.id;
-ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
-
---GAMES_LEVELS
-ALTER TABLE public.games_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE games_levels_id_seq OWNED BY games_levels.id;
-ALTER TABLE ONLY games_levels ALTER COLUMN id SET DEFAULT nextval('games_levels_id_seq'::regclass);
-
---COUNTING
-ALTER TABLE public.counting_id_seq OWNER TO postgres;
-ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
-ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
-
---ADDITION
-ALTER TABLE public.addition_id_seq OWNER TO postgres;
-ALTER SEQUENCE addition_id_seq OWNED BY addition.id;
-ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
-
---SUBTRACTION
-ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
-ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
-ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
-
+--==================================================================
+--================= PEOPLE   ====================================
+--==================================================================
 --USERS
 ALTER TABLE public.users_id_seq OWNER TO postgres;
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
@@ -594,6 +613,55 @@ ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq':
 ALTER TABLE public.rooms_id_seq OWNER TO postgres;
 ALTER SEQUENCE rooms_id_seq OWNED BY rooms.id;
 ALTER TABLE ONLY rooms ALTER COLUMN id SET DEFAULT nextval('rooms_id_seq'::regclass);
+
+--==================================================================
+--================= LEVELS  ====================================
+--==================================================================
+--LEVELS
+ALTER TABLE public.levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
+ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
+
+--LEVELS_TRANSACTIONS
+ALTER TABLE public.levels_transactions_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_transactions_id_seq OWNED BY levels_transactions.id;
+ALTER TABLE ONLY levels_transactions ALTER COLUMN id SET DEFAULT nextval('levels_transactions_id_seq'::regclass);
+
+--COUNTING
+ALTER TABLE public.counting_id_seq OWNER TO postgres;
+ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
+ALTER TABLE ONLY counting ALTER COLUMN id SET DEFAULT nextval('counting_id_seq'::regclass);
+
+--ADDITION
+ALTER TABLE public.addition_id_seq OWNER TO postgres;
+ALTER SEQUENCE addition_id_seq OWNED BY addition.id;
+ALTER TABLE ONLY addition ALTER COLUMN id SET DEFAULT nextval('addition_id_seq'::regclass);
+
+--SUBTRACTION
+ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
+ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
+ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
+
+
+--==================================================================
+--================= GAMES  ====================================
+--==================================================================
+
+--GAMES
+ALTER TABLE public.games_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_id_seq OWNED BY games.id;
+ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
+
+--GAMES_LEVELS
+ALTER TABLE public.games_levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_levels_id_seq OWNED BY games_levels.id;
+ALTER TABLE ONLY games_levels ALTER COLUMN id SET DEFAULT nextval('games_levels_id_seq'::regclass);
+
+--GAMES_ATTEMPTS
+ALTER TABLE public.games_attempts_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_attempts_id_seq OWNED BY games_attempts.id;
+ALTER TABLE ONLY games_attempts ALTER COLUMN id SET DEFAULT nextval('games_attempts_id_seq'::regclass);
+
 
 --------------------PRIMARY KEYS---------------------------------------
 --PASSWORDS
