@@ -2,9 +2,6 @@
 -- PostgreSQL database dump
 --
 --check login is not working or something on login.... actually i am not setting im pretty damn sure now as i deleted it.
-DROP TABLE counting cascade;
-DROP TABLE addition cascade;
-DROP TABLE subtraction cascade;
 
 
 DROP TABLE games_levels cascade;
@@ -13,15 +10,25 @@ DROP TABLE games_attempts cascade;
 DROP TABLE games cascade;
 
 
-
+--==================================================================
+--====================== LEARNING  =============================
+--==================================================================
+DROP TABLE counting cascade;
+DROP TABLE addition cascade;
+DROP TABLE subtraction cascade;
 DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
 
+
+--==================================================================
+--====================== PEOPLE  =============================
+--==================================================================
 DROP TABLE rooms cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
 DROP TABLE users cascade;
 DROP TABLE schools cascade;
+
 
 --==================================================================
 --=========================== CORE CURRICULUM  ========================
