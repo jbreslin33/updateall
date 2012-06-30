@@ -1,4 +1,4 @@
-var GameDungeonQuiz = new Class(
+var Dungeon = new Class(
 {
 
 Extends: Game,

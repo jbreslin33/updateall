@@ -1,4 +1,4 @@
-var GameDefenderQuiz = new Class(
+var Helicopter = new Class(
 {
 
 Extends: Game,
