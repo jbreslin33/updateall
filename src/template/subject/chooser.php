@@ -94,7 +94,7 @@ window.addEvent('domready', function()
 	//create quiz items
         for (i = 0; i < numberOfRows; i++)
         {
-                var question = new Question(subject[i],id[i]);      
+                var question = new Question(subject[i],'../game/chooser/chooser.php?subject=' + id[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
