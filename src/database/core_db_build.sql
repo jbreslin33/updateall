@@ -142,8 +142,6 @@ CREATE TABLE standards (
 --================= PEOPLE  ====================================
 --==================================================================
 
-
-
 --SCHOOLS
 CREATE TABLE schools (
     id integer NOT NULL,
