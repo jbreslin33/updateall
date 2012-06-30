@@ -6,17 +6,18 @@ DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
 
-DROP TABLE math_games cascade;
-DROP TABLE english_games cascade;
 
-DROP TABLE games cascade;
+DROP TABLE games_levels cascade;
+
 DROP TABLE games_attempts cascade;
+DROP TABLE games cascade;
 
 DROP TABLE standards cascade;
 DROP TABLE clusters cascade;
 DROP TABLE domains cascade;
 
-DROP TABLE level_transaction cascade;
+
+DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
 DROP TABLE subjects cascade;
 
@@ -25,8 +26,6 @@ DROP TABLE rooms cascade;
 DROP TABLE teachers cascade;
 DROP TABLE students cascade;
 DROP TABLE users cascade;
-DROP TABLE math_levels cascade;
-DROP TABLE english_levels cascade;
 DROP TABLE passwords cascade;
 DROP TABLE error_log cascade; 
 DROP TABLE schools cascade;
@@ -60,22 +59,6 @@ CREATE TABLE error_log (
 CREATE TABLE passwords (
     id integer NOT NULL,
     password text UNIQUE 
-);
-
---------------------math_levels---------------------------------------
-CREATE TABLE math_levels (
-    id integer NOT NULL,
-    level integer NOT NULL,
-    next_level integer NOT NULL,
-    skill text NOT NULL
-);
-
---------------------english_levels---------------------------------------
-CREATE TABLE english_levels (
-    id integer NOT NULL,
-    level integer NOT NULL,
-    next_level integer NOT NULL,
-    skill text NOT NULL
 );
 
 --------------------grade_levels---------------------------------------
@@ -122,37 +105,31 @@ CREATE TABLE levels (
     skill text NOT NULL 
 );
 
---------------------level_transaction---------------------------------------
-CREATE TABLE level_transaction (
+--------------------levels_transactions---------------------------------------
+CREATE TABLE levels_transactions (
     id integer NOT NULL,
     level_id integer NOT NULL,
     student_id integer NOT NULL,
     advancement_time timestamp
 );
 
---------------------math_games---------------------------------------
-CREATE TABLE math_games (
-    id integer NOT NULL,
-    level integer NOT NULL,
-    url text NOT NULL,
-    name text NOT NULL
-);
-
---------------------english_games---------------------------------------
-CREATE TABLE english_games (
-    id integer NOT NULL,
-    level integer NOT NULL,
-    url text NOT NULL,
-    name text NOT NULL
-);
+--this should contain (1,'HelicopterChase');
+--this should contain (1,'Dungeon');
 
 --------------------games---------------------------------------
 CREATE TABLE games (
     id integer NOT NULL,
-    subject_id integer NOT NULL,
-    level integer NOT NULL,
+    game text NOT NULL,
+    url text NOT NULL
+);
+
+--this is what you grab for user to select from...it will combine a generic game with some answers(levels...
+--------------------games_levels---------------------------------------
+CREATE TABLE games_levels (
+    id integer NOT NULL,
     url text NOT NULL,
-    name text NOT NULL
+    game_id integer NOT NULL,
+    level_id integer NOT NULL
 );
 
 --------------------games_attempts---------------------------------------
@@ -166,34 +143,34 @@ CREATE TABLE games_attempts (
 --------------------counting---------------------------------------
 CREATE TABLE counting (
     id integer NOT NULL,
-    level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     start_number integer NOT NULL,
     end_number integer NOT NULL,
-    count_by integer DEFAULT 1 NOT NULL
+    count_by integer DEFAULT 1 NOT NULL,
+    level_id integer NOT NULL
 );
 
 --------------------addition---------------------------------------
 CREATE TABLE addition (
     id integer NOT NULL,
-    level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     addend_min integer NOT NULL,
     addend_max integer NOT NULL,
-    number_of_addends integer DEFAULT 2 NOT NULL
+    number_of_addends integer DEFAULT 2 NOT NULL,
+    level_id integer NOT NULL
 );
 
 --------------------subtraction---------------------------------------
 CREATE TABLE subtraction (
     id integer NOT NULL,
-    level integer NOT NULL,
     score_needed integer DEFAULT 10 NOT NULL,
     minuend_min integer NOT NULL,
     minuend_max integer NOT NULL,
     subtrahend_min integer NOT NULL,
     subtrahend_max integer NOT NULL,
     number_of_subtrahends integer DEFAULT 1 NOT NULL,
-    negative_difference boolean DEFAULT false NOT NULL
+    negative_difference boolean DEFAULT false NOT NULL,
+    level_id integer NOT NULL
 );
 
 
@@ -287,14 +264,6 @@ CREATE SEQUENCE grade_levels_id_seq
     NO MAXVALUE
     CACHE 1;
 
---MATH_LEVELS
-CREATE SEQUENCE math_levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
 --LEVELS
 CREATE SEQUENCE levels_id_seq
     START WITH 1
@@ -303,17 +272,8 @@ CREATE SEQUENCE levels_id_seq
     NO MAXVALUE
     CACHE 1;
 
---LEVEL_TRANSACTION
-CREATE SEQUENCE level_transaction_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---ENGLISH_LEVELS
-CREATE SEQUENCE english_levels_id_seq
+--LEVELS_TRANSACTIONS
+CREATE SEQUENCE levels_transactions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -328,16 +288,16 @@ CREATE SEQUENCE subjects_id_seq
     NO MAXVALUE
     CACHE 1;
 
---MATH_GAMES
-CREATE SEQUENCE math_games_id_seq
+--GAMES
+CREATE SEQUENCE games_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
---ENGLISH_GAMES
-CREATE SEQUENCE english_games_id_seq
+--GAMES_LEVELS
+CREATE SEQUENCE games_levels_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -413,34 +373,28 @@ CREATE SEQUENCE rooms_id_seq
 ALTER TABLE public.passwords OWNER TO postgres;
 
 --DOMAINS
-ALTER TABLE public.passwords OWNER TO postgres;
+ALTER TABLE public.domains OWNER TO postgres;
 
 --CLUSTERS
-ALTER TABLE public.passwords OWNER TO postgres;
+ALTER TABLE public.clusters OWNER TO postgres;
 
 --STANDARDS
-ALTER TABLE public.passwords OWNER TO postgres;
-
---MATH_LEVELS
-ALTER TABLE public.math_levels OWNER TO postgres;
+ALTER TABLE public.standards OWNER TO postgres;
 
 --LEVELS
 ALTER TABLE public.levels OWNER TO postgres;
 
---LEVEL_TRANSACTION
-ALTER TABLE public.level_transaction OWNER TO postgres;
-
---ENGLISH_LEVELS
-ALTER TABLE public.english_levels OWNER TO postgres;
+--LEVELS_TRANSACTIONS
+ALTER TABLE public.levels_transactions OWNER TO postgres;
 
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
 
---MATH_GAMES
-ALTER TABLE public.math_games OWNER TO postgres;
+--GAMES
+ALTER TABLE public.games OWNER TO postgres;
 
---ENGLISH_GAMES
-ALTER TABLE public.english_games OWNER TO postgres;
+--GAMES_LEVELS
+ALTER TABLE public.games_levels OWNER TO postgres;
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
@@ -497,46 +451,35 @@ ALTER TABLE public.passwords_id_seq OWNER TO postgres;
 ALTER SEQUENCE passwords_id_seq OWNED BY passwords.id;
 ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq'::regclass);
 
-
 --GRADE_LEVELS
 ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
 ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
-
---MATH_LEVELS
-ALTER TABLE public.math_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE math_levels_id_seq OWNED BY math_levels.id;
-ALTER TABLE ONLY math_levels ALTER COLUMN id SET DEFAULT nextval('math_levels_id_seq'::regclass);
 
 --LEVELS
 ALTER TABLE public.levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_id_seq OWNED BY levels.id;
 ALTER TABLE ONLY levels ALTER COLUMN id SET DEFAULT nextval('levels_id_seq'::regclass);
 
---LEVEL_TRANSACTION
-ALTER TABLE public.level_transaction_id_seq OWNER TO postgres;
-ALTER SEQUENCE level_transaction_id_seq OWNED BY level_transaction.id;
-ALTER TABLE ONLY level_transaction ALTER COLUMN id SET DEFAULT nextval('level_transaction_id_seq'::regclass);
-
---ENGLISH_LEVELS
-ALTER TABLE public.english_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE english_levels_id_seq OWNED BY english_levels.id;
-ALTER TABLE ONLY english_levels ALTER COLUMN id SET DEFAULT nextval('english_levels_id_seq'::regclass);
+--LEVELS_TRANSACTIONS
+ALTER TABLE public.levels_transactions_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_transactions_id_seq OWNED BY levels_transactions.id;
+ALTER TABLE ONLY levels_transactions ALTER COLUMN id SET DEFAULT nextval('levels_transactions_id_seq'::regclass);
 
 --SUBJECTS
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
---MATH_GAMES
-ALTER TABLE public.math_games_id_seq OWNER TO postgres;
-ALTER SEQUENCE math_games_id_seq OWNED BY math_games.id;
-ALTER TABLE ONLY math_games ALTER COLUMN id SET DEFAULT nextval('math_games_id_seq'::regclass);
+--GAMES
+ALTER TABLE public.games_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_id_seq OWNED BY games.id;
+ALTER TABLE ONLY games ALTER COLUMN id SET DEFAULT nextval('games_id_seq'::regclass);
 
---ENGLISH_GAMES
-ALTER TABLE public.english_games_id_seq OWNER TO postgres;
-ALTER SEQUENCE english_games_id_seq OWNED BY english_games.id;
-ALTER TABLE ONLY english_games ALTER COLUMN id SET DEFAULT nextval('english_games_id_seq'::regclass);
+--GAMES_LEVELS
+ALTER TABLE public.games_levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_levels_id_seq OWNED BY games_levels.id;
+ALTER TABLE ONLY games_levels ALTER COLUMN id SET DEFAULT nextval('games_levels_id_seq'::regclass);
 
 --COUNTING
 ALTER TABLE public.counting_id_seq OWNER TO postgres;
@@ -573,7 +516,7 @@ ALTER TABLE public.teachers_id_seq OWNER TO postgres;
 ALTER SEQUENCE teachers_id_seq OWNED BY teachers.id;
 ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq'::regclass);
 
---HOME_ROOMS
+--ROOMS
 ALTER TABLE public.rooms_id_seq OWNER TO postgres;
 ALTER SEQUENCE rooms_id_seq OWNED BY rooms.id;
 ALTER TABLE ONLY rooms ALTER COLUMN id SET DEFAULT nextval('rooms_id_seq'::regclass);
@@ -594,35 +537,29 @@ ALTER TABLE standards ADD PRIMARY KEY (id);
 --GRADE_LEVELS
 ALTER TABLE grade_levels ADD PRIMARY KEY (id);
 
---MATH_LEVELS
-ALTER TABLE math_levels ADD PRIMARY KEY (level);
-
 --LEVELS
 ALTER TABLE levels ADD PRIMARY KEY (id);
 
---LEVEL_TRANSACTION
-ALTER TABLE level_transaction ADD PRIMARY KEY (id);
-
---ENGLISH_LEVELS
-ALTER TABLE english_levels ADD PRIMARY KEY (level);
+--LEVELS_TRANSACTIONS
+ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
 
 --SUBJECTS
 ALTER TABLE subjects ADD PRIMARY KEY (id);
 
---MATH_GAMES
-ALTER TABLE math_games ADD PRIMARY KEY (level,url);
+--GAMES
+ALTER TABLE games ADD PRIMARY KEY (id);
 
---ENGLISH_GAMES
-ALTER TABLE english_games ADD PRIMARY KEY (level,url);
+--GAMES_LEVELS
+ALTER TABLE games_levels ADD PRIMARY KEY (id);
 
 --COUNTING
-ALTER TABLE counting ADD PRIMARY KEY (level);
+ALTER TABLE counting ADD PRIMARY KEY (id);
 
 --ADDITION
-ALTER TABLE addition ADD PRIMARY KEY (level);
+ALTER TABLE addition ADD PRIMARY KEY (id);
 
 --SUBTRACTION
-ALTER TABLE subtraction ADD PRIMARY KEY (level);
+ALTER TABLE subtraction ADD PRIMARY KEY (id);
 
 --USERS
 ALTER TABLE users ADD PRIMARY KEY (id);
@@ -654,15 +591,16 @@ ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id
 --STANDARDS
 ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 
---LEVEL_TRANSACTION
-ALTER TABLE level_transaction ADD FOREIGN KEY (student_id) REFERENCES students(id);
-ALTER TABLE level_transaction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+--LEVELS_TRANSACTIONS
+ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
---MATH_GAMES
-ALTER TABLE math_games ADD FOREIGN KEY (level) REFERENCES math_levels(level);
+--GAMES
+--ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
---ENGLISH_GAMES
-ALTER TABLE english_games ADD FOREIGN KEY (level) REFERENCES english_levels(level);
+--GAMES_LEVELS
+ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
 
 --ROOMS
 ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);
@@ -671,8 +609,6 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --USERS
 ALTER TABLE users ADD UNIQUE (username,school_id);
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
-
---SCHOOLS
 
 --STUDENTS
 ALTER TABLE students ADD UNIQUE (user_id);
@@ -715,19 +651,6 @@ insert into standards (standard,standard_code,cluster_id) values ('Count to 100 
 insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2',1);
 
-
---math_levels
-insert into math_levels(level,next_level,skill) values (1,2,'Count from 0 to 10');       
-insert into math_levels(level,next_level,skill) values (2,3,'Count from 10 to 20');       
-insert into math_levels(level,next_level,skill) values (3,4,'Count from 20 to 30');       
-insert into math_levels(level,next_level,skill) values (4,5,'Count from 30 to 40');       
-insert into math_levels(level,next_level,skill) values (5,6,'Count from 40 to 50');       
-insert into math_levels(level,next_level,skill) values (6,7,'Count from 50 to 60');       
-insert into math_levels(level,next_level,skill) values (7,8,'Count from 60 to 70');       
-insert into math_levels(level,next_level,skill) values (8,9,'Count from 70 to 80');       
-insert into math_levels(level,next_level,skill) values (9,10,'Count from 80 to 90');       
-insert into math_levels(level,next_level,skill) values (10,11,'Count from 90 to 100');       
-
 --levels
 insert into levels(standard_id,level,skill) values (1,1.000024,'Count from 0 to 10');       
 insert into levels(standard_id,level,skill) values (1,2,'Count from 10 to 20');       
@@ -739,34 +662,23 @@ insert into levels(standard_id,level,skill) values (1,7,'Count from 60 to 70');
 insert into levels(standard_id,level,skill) values (1,8,'Count from 70 to 80');       
 insert into levels(standard_id,level,skill) values (1,9,'Count from 80 to 90');       
 insert into levels(standard_id,level,skill) values (1,10,'Count from 90 to 100');       
+insert into levels(standard_id,level,skill) values (2,1,'Recognize an A');       
 
---english_levels
-insert into english_levels(level,next_level,skill) values (1,2,'Recognize and A');       
-
---MATH_GAMES
-insert into math_games (level,name,url) values (1,'Dungeon Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (1,'Racing Count','../../template/math/count/racing.php');
-insert into math_games (level,name,url) values (2,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (3,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (4,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (5,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (6,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (7,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (8,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (9,'Count','../../template/math/count/count.php');
-insert into math_games (level,name,url) values (10,'Count','../../template/math/count/count.php');
+--GAMES
+insert into games (game,url) values ('Dungeon','../../template/math/count/count.php');
+insert into games (game,url) values ('Racing','../../template/math/count/racing.php');
 
 --COUNTING
-insert into counting (level,score_needed,start_number,end_number,count_by) values (1,10,0,10,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (2,10,10,20,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (3,10,20,30,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (4,10,30,40,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (5,10,40,50,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (6,10,50,60,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (7,10,60,70,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (8,10,70,80,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (9,10,80,90,1);
-insert into counting (level,score_needed,start_number,end_number,count_by) values (10,10,90,100,1);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,2);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,20,30,1,3);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,30,40,1,4);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,5);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,6);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,7);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,8);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,80,90,1,9);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,10);
 
 
 --PASSWORDS
