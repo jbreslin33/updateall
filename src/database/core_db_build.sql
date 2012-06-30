@@ -818,20 +818,20 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --==================================================================
 
 --LEVELS
---ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+--ALTER TABLE levels ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 
 --LEVELS_TRANSACTIONS
 ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
 ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --COUNTING
---NO FOREIGN KEY
+ALTER TABLE counting ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --ADDITION
---NO FOREIGN KEY
+ALTER TABLE addition ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --SUBTRACTION
---NO FOREIGN KEY
+ALTER TABLE subtraction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 
 --==================================================================
@@ -922,7 +922,6 @@ ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id)
 --==================================================================
 
 --GAMES
---ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --GAMES_LEVELS
 ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
