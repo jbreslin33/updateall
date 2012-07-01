@@ -22,6 +22,26 @@ else
 	$_SESSION["domain_id"] = 0;
 }
 
+query = "select clusters.id from clusters join domains on clusters.domain_id = domains.id where domains.id = ";
+$query .= $_SESSION["domain_id"];
+$query .= ";";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
+
+if ($numberOfRows > 0)
+{
+        $_SESSION["cluster_id"] = pg_Result($result, 0, 'clusters.id');
+}
+else
+{
+        $_SESSION["cluster_id"] = 0;
+}
+
+
 
 query = "select standards.id from standards join clusters on standards.cluster_id = clusters.id where clusters.id = ";
 $query .= $_SESSION["cluster_id"];
@@ -43,24 +63,12 @@ else
 }
 
 
-query = "select clusters.id from clusters join domains on clusters.domain_id = domains.id where domains.id = ";
-$query .= $_SESSION["domain_id"];
-$query .= ";";
 
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
 
-if ($numberOfRows > 0)
-{
-        $_SESSION["cluster_id"] = pg_Result($result, 0, 'clusters.id');
-}
-else
-{
-        $_SESSION["cluster_id"] = 0;
-}
+
+
+
 
 
 
