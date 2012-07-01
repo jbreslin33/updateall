@@ -1117,7 +1117,7 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into games (game,url) values ('Dungeon','../../games/dungeon.php');
 
 --GAMES_LEVELS
-insert into games_levels (level_id,game_id,url) values  (1,1,'../../template/math/count.php');
+insert into games_levels (level_id,game_id,url) values  (1,1,'../../template/math/count/count.php');
 
 --GAMES_ATTEMPTS
 
