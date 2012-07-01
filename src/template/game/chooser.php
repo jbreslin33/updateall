@@ -2,8 +2,8 @@
 include("../headers/header.php");
 
 //$_SESSION["subject_id"] = $_GET["subject"];
-
-$query = "select id, url, game_id from games_levels where level_id = ";
+//do a join here.... to find
+$query = "select game_id, url, id from games_levels where level_id = ";
 $query .= "1";
 $query .= ";";
 
