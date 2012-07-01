@@ -84,6 +84,26 @@ else
 
 
 
+query = "select levels.id from levels join standards on levels.standard_id = standards.id where standards.id = ";
+$query .= $_SESSION["standard_id"];
+$query .= ";";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
+
+if ($numberOfRows > 0)
+{
+        $_SESSION["level_id"] = pg_Result($result, 0, 'levels.id');
+}
+else
+{
+        $_SESSION["level_id"] = 0;
+}
+
+
 
 
 
