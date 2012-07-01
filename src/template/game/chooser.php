@@ -1,10 +1,6 @@
 <?php 
 include("../headers/header.php");
 
-//$_SESSION["subject_id"] = $_GET["subject"];
-//do a join here.... to find
-
-
 /******* get the level... ***************/
 $query = "select game_id, url, id from games_levels where level_id = ";
 $query .= "1";
@@ -24,12 +20,12 @@ echo "var b = new Array();";
 echo "</script>";
 
 $counter = 0;
-for ($i = 0; $i < $numberOfRows; $i++) 
+while ($row = pg_fetch_row($result))
 {
         //fill php vars from db
-	$a = pg_Result($result, 0, 'game_id');
-	$b = pg_Result($result, 0, 'url');
-/*
+	$game_id = $row[0];
+	$b = $row[1];
+
 	//what if right here i did another query to find game name
 	$queryGameName = "select game from games where id = ";
 	$queryGameName .= $game_id;
@@ -40,12 +36,13 @@ for ($i = 0; $i < $numberOfRows; $i++)
 
 	//get numer of rows
 	$numberOfRowsGameName = pg_num_rows($resultGameName);
-	
-	if ($numberOfRowsGameName > 0)
+
+	$a = "sevi";	
+	while ($row = pg_fetch_row($resultGameName))
 	{	
-		$a = pg_Result($result, 0, 'game');
+		$a = $row[0];
 	}
-*/
+
 
 	echo "<script language=\"javascript\">";
 	
