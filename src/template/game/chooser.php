@@ -10,7 +10,11 @@ $query .= ";";
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
+
 echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
 echo "var a = new Array();";
 echo "var b = new Array();";
 
