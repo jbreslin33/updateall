@@ -1,104 +1,18 @@
 <?php 
 include("../headers/header.php");
 
-$_SESSION["subject_id"] = $_GET["subject"];
+//$_SESSION["subject_id"] = $_GET["subject"];
 
-query = "select domains.id from domains join subjects on domains.subject_id = subjects.id where subjects.id = ";
-$query .= $_SESSION["subject_id"];
+$query = "select id, url, game_id from games_levels where level_id = ";
+$query .= "1";
 $query .= ";";
 
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-if ($numberOfRows > 0)
-{
-	$_SESSION["domain_id"] = pg_Result($result, 0, 'domains.id');
-}
-else
-{
-	$_SESSION["domain_id"] = 0;
-}
-
-query = "select clusters.id from clusters join domains on clusters.domain_id = domains.id where domains.id = ";
-$query .= $_SESSION["domain_id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-if ($numberOfRows > 0)
-{
-        $_SESSION["cluster_id"] = pg_Result($result, 0, 'clusters.id');
-}
-else
-{
-        $_SESSION["cluster_id"] = 0;
-}
-
-
-
-query = "select standards.id from standards join clusters on standards.cluster_id = clusters.id where clusters.id = ";
-$query .= $_SESSION["cluster_id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-if ($numberOfRows > 0)
-{
-        $_SESSION["standard_id"] = pg_Result($result, 0, 'standards.id');
-}
-else
-{
-        $_SESSION["standard_id"] = 0;
-}
-
-
-query = "select levels.id from levels join standards on levels.standard_id = standards.id where standards.id = ";
-$query .= $_SESSION["standard_id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-if ($numberOfRows > 0)
-{
-        $_SESSION["level_id"] = pg_Result($result, 0, 'levels.id');
-}
-else
-{
-        $_SESSION["level_id"] = 0;
-}
-
-
-query = "select id, url, game_id from games_levels where level_id = ";
-$query .= $_SESSION["level_id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-
 
 echo "<script language=\"javascript\">";
-echo "var numberOfRows = $numberOfRows;";
-echo "var game_id = new Array();";
-echo "var url = new Array();";
+echo "var a = new Array();";
+echo "var b = new Array();";
 
 echo "</script>";
 
@@ -106,13 +20,13 @@ $counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
-        $game_id = $row[0];
-        $url = $row[1];
+        $a = $row[0];
+        $b = $row[1];
 
 	echo "<script language=\"javascript\">";
 	
-	echo "game_id[$counter] = \"$game_id\";";
-	echo "url[$counter] = \"$url\";";
+	echo "a[$counter] = \"$a\";";
+	echo "b[$counter] = \"$b\";";
 	echo "</script>";
 	$counter++;
 }
@@ -178,7 +92,7 @@ window.addEvent('domready', function()
 	//create quiz items
  	for (i = 0; i < numberOfRows; i++)
         {
-		var question = new Question(game_id[i],url[i]);      
+		var question = new Question(a[i],b[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
