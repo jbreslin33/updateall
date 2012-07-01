@@ -105,18 +105,22 @@ else
 
 
 
+query = "select id, url, game_id from games_levels where level_id = ";
+$query .= $_SESSION["level_id"];
+$query .= ";";
 
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-
-
-
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
 
 
 
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
-echo "var id = new Array();";
-echo "var domain = new Array();";
+echo "var game_id = new Array();";
+echo "var url = new Array();";
 
 echo "</script>";
 
@@ -124,13 +128,13 @@ $counter = 0;
 while ($row = pg_fetch_array($result)) 
 {
         //fill php vars from db
-        $id = $row[0];
-        $domain = $row[1];
+        $game_id = $row[0];
+        $url = $row[1];
 
 	echo "<script language=\"javascript\">";
 	
-	echo "id[$counter] = \"$id\";";
-	echo "domain[$counter] = \"$domain\";";
+	echo "game_id[$counter] = \"$game_id\";";
+	echo "url[$counter] = \"$url\";";
 	echo "</script>";
 	$counter++;
 }
@@ -196,7 +200,7 @@ window.addEvent('domready', function()
 	//create quiz items
  	for (i = 0; i < numberOfRows; i++)
         {
-		var question = new Question(id[i],domain[i]);      
+		var question = new Question(game_id[i],url[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
