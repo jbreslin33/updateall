@@ -29,6 +29,23 @@ for ($i = 0; $i < $numberOfRows; $i++)
         //fill php vars from db
 	$a = pg_Result($result, 0, 'game_id');
 	$b = pg_Result($result, 0, 'url');
+/*
+	//what if right here i did another query to find game name
+	$queryGameName = "select game from games where id = ";
+	$queryGameName .= $game_id;
+	$queryGameName .= ";";  
+
+	//get db result
+	$resultGameName = pg_query($conn,$queryGameName) or die('Could not connect: ' . pg_last_error());
+
+	//get numer of rows
+	$numberOfRowsGameName = pg_num_rows($resultGameName);
+	
+	if ($numberOfRowsGameName > 0)
+	{	
+		$a = pg_Result($result, 0, 'game');
+	}
+*/
 
 	echo "<script language=\"javascript\">";
 	
