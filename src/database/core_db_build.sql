@@ -310,50 +310,6 @@ CREATE SEQUENCE passwords_id_seq
     CACHE 1;
 
 --==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---SUBJECTS
-CREATE SEQUENCE subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---DOMAINS
-CREATE SEQUENCE domains_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---CLUSTERS
-CREATE SEQUENCE clusters_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---STANDARDS
-CREATE SEQUENCE standards_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---GRADE_LEVELS
-CREATE SEQUENCE grade_levels_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
 
@@ -413,8 +369,50 @@ CREATE SEQUENCE permissions_users_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
 --==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--SUBJECTS
+CREATE SEQUENCE subjects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--DOMAINS
+CREATE SEQUENCE domains_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--CLUSTERS
+CREATE SEQUENCE clusters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--STANDARDS
+CREATE SEQUENCE standards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--GRADE_LEVELS
+CREATE SEQUENCE grade_levels_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -506,25 +504,6 @@ ALTER TABLE public.passwords OWNER TO postgres;
 --ERROR_LOG
 ALTER TABLE public.error_log OWNER TO postgres;
 
---==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---SUBJECTS
-ALTER TABLE public.subjects OWNER TO postgres;
-
---GRADE_LEVELS
-ALTER TABLE public.grade_levels OWNER TO postgres;
-
---DOMAINS
-ALTER TABLE public.domains OWNER TO postgres;
-
---CLUSTERS
-ALTER TABLE public.clusters OWNER TO postgres;
-
---STANDARDS
-ALTER TABLE public.standards OWNER TO postgres;
-
 
 --==================================================================
 --================= PEOPLE  ====================================
@@ -550,6 +529,26 @@ ALTER TABLE public.teachers OWNER TO postgres;
 
 --PERMISSIONS_USERS
 --ALTER TABLE public.permissions_users OWNER TO postgres;
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--SUBJECTS
+ALTER TABLE public.subjects OWNER TO postgres;
+
+--GRADE_LEVELS
+ALTER TABLE public.grade_levels OWNER TO postgres;
+
+--DOMAINS
+ALTER TABLE public.domains OWNER TO postgres;
+
+--CLUSTERS
+ALTER TABLE public.clusters OWNER TO postgres;
+
+--STANDARDS
+ALTER TABLE public.standards OWNER TO postgres;
 
 
 --==================================================================
@@ -608,36 +607,6 @@ ALTER TABLE ONLY passwords ALTER COLUMN id SET DEFAULT nextval('passwords_id_seq
 
 
 --==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---GRADE_LEVELS
-ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
-ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
-
---SUBJECTS
-ALTER TABLE public.subjects_id_seq OWNER TO postgres;
-ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
-ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
-
---DOMAINS
-ALTER TABLE public.domains_id_seq OWNER TO postgres;
-ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
-ALTER TABLE ONLY domains ALTER COLUMN id SET DEFAULT nextval('domains_id_seq'::regclass);
-
---CLUSTERS
-ALTER TABLE public.clusters_id_seq OWNER TO postgres;
-ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
-ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
-
---STANDARDS
-ALTER TABLE public.standards_id_seq OWNER TO postgres;
-ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
-ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
-
-
---==================================================================
 --================= PEOPLE   ====================================
 --==================================================================
 
@@ -675,6 +644,36 @@ ALTER TABLE ONLY permissions ALTER COLUMN id SET DEFAULT nextval('permissions_id
 ALTER TABLE public.permissions_users_id_seq OWNER TO postgres;
 ALTER SEQUENCE permissions_users_id_seq OWNED BY permissions_users.id;
 ALTER TABLE ONLY permissions_users ALTER COLUMN id SET DEFAULT nextval('permissions_users_id_seq'::regclass);
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--GRADE_LEVELS
+ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
+ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
+ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
+
+--SUBJECTS
+ALTER TABLE public.subjects_id_seq OWNER TO postgres;
+ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
+ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
+
+--DOMAINS
+ALTER TABLE public.domains_id_seq OWNER TO postgres;
+ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
+ALTER TABLE ONLY domains ALTER COLUMN id SET DEFAULT nextval('domains_id_seq'::regclass);
+
+--CLUSTERS
+ALTER TABLE public.clusters_id_seq OWNER TO postgres;
+ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
+ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
+
+--STANDARDS
+ALTER TABLE public.standards_id_seq OWNER TO postgres;
+ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
+ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
 
 
 --==================================================================
@@ -744,26 +743,6 @@ ALTER TABLE passwords ADD PRIMARY KEY (password);
 ALTER TABLE error_log ADD PRIMARY KEY (id);
 
 --==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---SUBJECTS
-ALTER TABLE subjects ADD PRIMARY KEY (id);
-
---GRADE_LEVELS
-ALTER TABLE grade_levels ADD PRIMARY KEY (id);
-
---DOMAINS
-ALTER TABLE domains ADD PRIMARY KEY (id);
-
---CLUSTERS
-ALTER TABLE clusters ADD PRIMARY KEY (id);
-
---STANDARDS
-ALTER TABLE standards ADD PRIMARY KEY (id);
-
-
---==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
 
@@ -787,6 +766,26 @@ ALTER TABLE permissions ADD PRIMARY KEY (id);
 
 --PERMISSIONS_USERS
 ALTER TABLE permissions_users ADD PRIMARY KEY (id);
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--SUBJECTS
+ALTER TABLE subjects ADD PRIMARY KEY (id);
+
+--GRADE_LEVELS
+ALTER TABLE grade_levels ADD PRIMARY KEY (id);
+
+--DOMAINS
+ALTER TABLE domains ADD PRIMARY KEY (id);
+
+--CLUSTERS
+ALTER TABLE clusters ADD PRIMARY KEY (id);
+
+--STANDARDS
+ALTER TABLE standards ADD PRIMARY KEY (id);
 
 
 --==================================================================
@@ -838,26 +837,6 @@ ALTER TABLE games_attempts ADD PRIMARY KEY (id);
 --ERROR_LOG
 --NO FOREIGN KEY
 
---==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---GRADE_LEVELS
---NO FOREIGN KEY
-
---SUBJECTS
---NO FOREIGN KEY
-
---DOMAINS
-ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
-
---CLUSTERS
-ALTER TABLE clusters ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
-ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id);
-
---STANDARDS
-ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
-
 
 --==================================================================
 --================= PEOPLE  ====================================
@@ -887,6 +866,28 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --PERMISSIONS_USERS
 ALTER TABLE permissions_users ADD FOREIGN KEY (permission_id) REFERENCES permissions(id);
 ALTER TABLE permissions_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--GRADE_LEVELS
+--NO FOREIGN KEY
+
+--SUBJECTS
+--NO FOREIGN KEY
+
+--DOMAINS
+ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--CLUSTERS
+ALTER TABLE clusters ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id);
+
+--STANDARDS
+ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -940,19 +941,6 @@ ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --ERROR_LOG
 
---==================================================================
---================= CORE CURRICULUM  ====================================
---==================================================================
-
---GRADE_LEVELS
-
---SUBJECTS
-
---DOMAINS
-
---CLUSTERS
-
---STANDARDS
 
 --==================================================================
 --================= PEOPLE  ====================================
@@ -973,6 +961,21 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --PERMISSIONS
 
 --PERMISSIONS_USERS
+
+
+--==================================================================
+--================= CORE CURRICULUM  ====================================
+--==================================================================
+
+--GRADE_LEVELS
+
+--SUBJECTS
+
+--DOMAINS
+
+--CLUSTERS
+
+--STANDARDS
 
 
 --==================================================================
@@ -1025,6 +1028,23 @@ ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 --PASSWORDS !!!!!!!!!!!! LISTED BELOW BECAUSE THEY ARE HUGE !!!!!!!!!
 
 --ERROR_LOG
+
+--==================================================================
+--================= PEOPLE  ====================================
+--==================================================================
+
+--SCHOOLS
+
+--USERS
+
+--TEACHERS
+
+--STUDENTS
+
+--PERMISSIONS
+insert into permissions(permission) values ('INSERT');       
+
+--PERMISSIONS_USERS
 
 --==================================================================
 --================= CORE CURRICULUM  ====================================
@@ -1127,23 +1147,6 @@ insert into standards (standard,standard_code,cluster_id) values ('Understand th
 insert into standards (standard,standard_code,cluster_id) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a',2);
 
 insert into standards (standard,standard_code,cluster_id) values ('With prompting and support, ask and answer questions about key details in a text.','1',3);
-
---==================================================================
---================= PEOPLE  ====================================
---==================================================================
-
---SCHOOLS
-
---USERS
-
---TEACHERS
-
---STUDENTS
-
---PERMISSIONS
-insert into permissions(permission) values ('INSERT');       
-
---PERMISSIONS_USERS
 
 
 --==================================================================
