@@ -6,7 +6,7 @@ include("../headers/header.php");
 
 
 /******* join games and games_levels  ***************/
-$query = "select games.game, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
+$query = "select games.game, games_levels.url, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
 $query .= $_SESSION["level_id"];
 $query .= ";";
 
@@ -19,7 +19,7 @@ $numberOfRows = pg_num_rows($result);
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
 echo "var game_name = new Array();";
-echo "var game_id = new Array();";
+echo "var url = new Array();";
 
 echo "</script>";
 
@@ -28,12 +28,12 @@ while ($row = pg_fetch_row($result))
 {
         //fill php vars from db
 	$game_name = $row[0];
-	$game_id = $row[1];
+	$url = $row[1];
 
 	echo "<script language=\"javascript\">";
 	
 	echo "game_name[$counter] = \"$game_name\";";
-	echo "game_id[$counter] = \"$game_id\";";
+	echo "url[$counter] = \"$url\";";
 	echo "</script>";
 	$counter++;
 }
@@ -101,7 +101,7 @@ window.addEvent('domready', function()
 	//create quiz items
  	for (i = 0; i < numberOfRows; i++)
         {
-		var question = new Question(game_name[i],game_id[i]);      
+		var question = new Question(game_name[i],url[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
