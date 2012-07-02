@@ -29,11 +29,12 @@ while ($row = pg_fetch_row($result))
         //fill php vars from db
 	$game_name = $row[0];
 	$url = $row[1];
+	$game_id = $row[2];
 
 	echo "<script language=\"javascript\">";
 	
 	echo "game_name[$counter] = \"$game_name\";";
-	echo "url[$counter] = \"$url\";";
+	echo "url[$counter] = \"$url?game_id=$row[2]\";";
 	echo "</script>";
 	$counter++;
 }
