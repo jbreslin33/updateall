@@ -207,8 +207,10 @@ $problem = "";
                         }
 
 //---------------------------------------FIND LEVEL---------------------------
-$query = "select LAST(level_id) AS last_level_id from levels_transactions where student_id = ";
+//this query could be more efficient maybe
+$query = "select advancement_time, level_id from levels_transactions where student_id = ";
 $query .= $_SESSION["student_id"];
+$query .= " ORDER BY advancement_time LIMIT 1";
 $query .= ";";
 
  //get db result
