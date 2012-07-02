@@ -259,7 +259,7 @@ CREATE TABLE subtraction (
 --GAMES
 CREATE TABLE games (
     id integer NOT NULL,
-    game text NOT NULL,
+    game text NOT NULL UNIQUE,
     url text NOT NULL
 );
 
@@ -434,6 +434,14 @@ CREATE SEQUENCE levels_transactions_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--LEVELS_STANDARDS
+CREATE SEQUENCE levels_standards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --COUNTING
 CREATE SEQUENCE counting_id_seq
     START WITH 1
@@ -560,6 +568,9 @@ ALTER TABLE public.levels OWNER TO postgres;
 
 --LEVELS_TRANSACTIONS
 ALTER TABLE public.levels_transactions OWNER TO postgres;
+
+--LEVELS_STANDARDS
+ALTER TABLE public.levels_standards OWNER TO postgres;
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
@@ -690,6 +701,11 @@ ALTER TABLE public.levels_transactions_id_seq OWNER TO postgres;
 ALTER SEQUENCE levels_transactions_id_seq OWNED BY levels_transactions.id;
 ALTER TABLE ONLY levels_transactions ALTER COLUMN id SET DEFAULT nextval('levels_transactions_id_seq'::regclass);
 
+--LEVELS_STANDARDS
+ALTER TABLE public.levels_standards_id_seq OWNER TO postgres;
+ALTER SEQUENCE levels_standards_id_seq OWNED BY levels_standards.id;
+ALTER TABLE ONLY levels_standards ALTER COLUMN id SET DEFAULT nextval('levels_standards_id_seq'::regclass);
+
 --COUNTING
 ALTER TABLE public.counting_id_seq OWNER TO postgres;
 ALTER SEQUENCE counting_id_seq OWNED BY counting.id;
@@ -798,6 +814,9 @@ ALTER TABLE levels ADD PRIMARY KEY (id);
 --LEVELS_TRANSACTIONS
 ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
 
+--LEVELS_STANDARDS
+ALTER TABLE levels_standards ADD PRIMARY KEY (id);
+
 --COUNTING
 ALTER TABLE counting ADD PRIMARY KEY (id);
 
@@ -843,11 +862,9 @@ ALTER TABLE games_attempts ADD PRIMARY KEY (id);
 --==================================================================
 
 --USERS
-ALTER TABLE users ADD UNIQUE (username,school_id);
 ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 
 --SCHOOLS
---NO FOREIGN KEY
 
 --STUDENTS
 ALTER TABLE students ADD UNIQUE (user_id);
@@ -873,10 +890,8 @@ ALTER TABLE permissions_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 --==================================================================
 
 --GRADE_LEVELS
---NO FOREIGN KEY
 
 --SUBJECTS
---NO FOREIGN KEY
 
 --DOMAINS
 ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
@@ -900,6 +915,10 @@ ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
 ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
+--LEVELS_STANDARDS
+ALTER TABLE levels_standards ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels_standards ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+
 --COUNTING
 ALTER TABLE counting ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
@@ -915,11 +934,10 @@ ALTER TABLE subtraction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 --==================================================================
 
 --GAMES
---ALTER TABLE games ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --GAMES_LEVELS
-ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
+ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --GAMES_ATTEMPTS
 ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
@@ -983,20 +1001,16 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --==================================================================
 
 --LEVELS
---ALTER TABLE levels ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
 
 --LEVELS_TRANSACTIONS
-ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
-ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--LEVELS_STANDARDS
 
 --COUNTING
---NO FOREIGN KEY
 
 --ADDITION
---NO FOREIGN KEY
 
 --SUBTRACTION
---NO FOREIGN KEY
 
 
 --==================================================================
@@ -1006,13 +1020,8 @@ ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id)
 --GAMES
 
 --GAMES_LEVELS
-ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
-ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
 
 --GAMES_ATTEMPTS
-ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
-ALTER TABLE games_attempts ADD FOREIGN KEY (student_id) REFERENCES students(id);
-ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 
 --****************************************************************
