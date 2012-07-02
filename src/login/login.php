@@ -1,11 +1,11 @@
 <?php include("../database/db_connect.php"); ?>
 
 <?php
-	//db connection
-	$conn = dbConnect();
+//db connection
+$conn = dbConnect();
 
-	//start new session
-        session_start();
+//start new session
+session_start();
 
 $usernameString = $_POST["username"];
 $_SESSION["password"] = $_POST["password"];

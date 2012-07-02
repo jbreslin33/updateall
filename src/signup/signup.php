@@ -207,7 +207,10 @@
                		//set login var to yes
                		$_SESSION["Login"] = "YES";
 
-               		//set user id, and subject levels to be used later
+               		//set level to 0 since this is new user
+               		$_SESSION["Level"] = 0;
+               		
+			//set user id, and subject levels to be used later
                		$_SESSION["is_user"] = "TRUE"; 
                		$_SESSION["user_id"] = $id;
        		}

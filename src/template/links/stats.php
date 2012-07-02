@@ -60,6 +60,12 @@ echo "<br>";
 echo "student_id: ";
 echo $_SESSION["student_id"];
 echo "<br>";
+echo "<br>";
+
+
+echo "Level: ";
+echo $_SESSION["Level"];
+echo "<br>";
 
 echo "<br>";
 echo "<br>";
