@@ -1,7 +1,32 @@
 <?php 
 include("../headers/header.php");
 
+
 /******* get the level... ***************/
+$query = "select LAST(level_id) AS last_level_id from levels_transactions where student_id = ";
+$query .= $_SESSION["student_id"];
+$query .= ";";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//get numer of rows
+$numberOfRows = pg_num_rows($result);
+
+//$_SESSION["last_level
+
+if ($numberOfRows == 0) {
+	//no transaction yet, they are at defacto level zero so we should send them to first level above zero
+}
+else
+{
+	//let's find out
+}
+
+
+
+
+/******* get the game_id... ***************/
 $query = "select game_id, url, id from games_levels where level_id = ";
 $query .= "1";
 $query .= ";";

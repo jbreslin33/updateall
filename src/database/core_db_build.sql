@@ -13,12 +13,13 @@ DROP TABLE games_attempts cascade;
 DROP TABLE games cascade;
 
 --==================================================================
---====================== LEARNING  =============================
+--====================== LEVELS  =============================
 --==================================================================
 
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
+DROP TABLE levels_standards cascade;
 DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
 
@@ -200,8 +201,7 @@ CREATE TABLE permissions_users (
 CREATE TABLE levels (
     id integer NOT NULL,
     level double precision NOT NULL, 
-    skill text NOT NULL,
-    standard_id integer NOT NULL
+    description text NOT NULL
 );
 
 --LEVELS_TRANSACTIONS
@@ -210,6 +210,13 @@ CREATE TABLE levels_transactions (
     advancement_time timestamp,
     level_id integer NOT NULL,
     student_id integer NOT NULL
+);
+
+--LEVELS_STANDARDS
+CREATE TABLE levels_standards (
+    id integer NOT NULL,
+    level_id integer NOT NULL,
+    standard_id integer NOT NULL
 );
 
 --COUNTING
@@ -1041,9 +1048,30 @@ insert into grade_levels (grade_level) values ('12');
 --SUBJECTS
 insert into subjects (subject) values ('Math');
 insert into subjects (subject) values ('English');
+insert into subjects (subject) values ('History/Social Studies');
+insert into subjects (subject) values ('Science');
+insert into subjects (subject) values ('Technical');
 
 --DOMAINS
 insert into domains (domain,subject_id) values ('Counting and Cardinality',1);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Reading',2);
+insert into domains (domain,subject_id) values ('Reading Standards for Literature',2);
+insert into domains (domain,subject_id) values ('Reading for Informational Text',2);
+insert into domains (domain,subject_id) values ('Reading Standards: Foundational Skills',2);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Writing',2);
+insert into domains (domain,subject_id) values ('Writing Standards',2);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Speaking and Listening',2);
+insert into domains (domain,subject_id) values ('Speaking and Listening Standards',2);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Language',2);
+insert into domains (domain,subject_id) values ('Language Standards',2);
+insert into domains (domain,subject_id) values ('Language Progressive Skills, by Grade',2);
+insert into domains (domain,subject_id) values ('Standard 10: Range, Quality, and Complexity of Student Reading',2);
+insert into domains (domain,subject_id) values ('Staying on Topic Within a Grade and Across Grades',2);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Reading',3);
+insert into domains (domain,subject_id) values ('Reading Standards for Literacy in History/Social Studies',3);
+insert into domains (domain,subject_id) values ('Reading Standards for Literacy in Science and Technical Subjects',3);
+insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Writing',3);
+insert into domains (domain,subject_id) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects',3);
 
 --CLUSTERS
 insert into clusters (cluster,domain_id,grade_level_id) values ('Know number names and the count sequence.',1,1);
@@ -1076,18 +1104,18 @@ insert into permissions(permission) values ('INSERT');
 --==================================================================
 
 --LEVELS
-insert into levels(standard_id,level,skill) values (1,1,'Count from 0 to 10');       
-insert into levels(standard_id,level,skill) values (1,2,'Count from 10 to 20');       
-insert into levels(standard_id,level,skill) values (1,3,'Count from 20 to 30');       
-insert into levels(standard_id,level,skill) values (1,4,'Count from 30 to 40');       
-insert into levels(standard_id,level,skill) values (1,5,'Count from 40 to 50');       
-insert into levels(standard_id,level,skill) values (1,6,'Count from 50 to 60');       
-insert into levels(standard_id,level,skill) values (1,7,'Count from 60 to 70');       
-insert into levels(standard_id,level,skill) values (1,8,'Count from 70 to 80');       
-insert into levels(standard_id,level,skill) values (1,9,'Count from 80 to 90');       
-insert into levels(standard_id,level,skill) values (1,10,'Count from 90 to 100');       
+insert into levels(level,description) values (1,'Count from 0 to 10');       
+insert into levels(level,description) values (2,'Count from 10 to 20');       
+insert into levels(level,description) values (3,'Count from 20 to 30');       
+insert into levels(level,description) values (4,'Count from 30 to 40');       
+insert into levels(level,description) values (5,'Count from 40 to 50');       
+insert into levels(level,description) values (6,'Count from 50 to 60');       
+insert into levels(level,description) values (7,'Count from 60 to 70');       
+insert into levels(level,description) values (8,'Count from 70 to 80');       
+insert into levels(level,description) values (9,'Count from 80 to 90');       
+insert into levels(level,description) values (10,'Count from 90 to 100');       
 
-insert into levels(standard_id,level,skill) values (2,1,'Count Forward from Random num...');       
+insert into levels(level,description) values (1,'Count Forward from Random num...');       
 
 
 --LEVELS_TRANSACTIONS
