@@ -1,34 +1,13 @@
 <?php 
 include("../headers/header.php");
 
-
-/******* get the level... ***************/
-$query = "select LAST(level_id) AS last_level_id from levels_transactions where student_id = ";
-$query .= $_SESSION["student_id"];
-$query .= ";";
-
-//get db result
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-//get numer of rows
-$numberOfRows = pg_num_rows($result);
-
-//$_SESSION["last_level
-
-if ($numberOfRows == 0) {
-	//no transaction yet, they are at defacto level zero so we should send them to first level above zero
-}
-else
-{
-	//let's find out
-}
+//session_start();
+//$conn = db_connect();
 
 
-
-
-/******* get the game_id... ***************/
-$query = "select game_id, url, id from games_levels where level_id = ";
-$query .= "1";
+/******* join games and games_levels  ***************/
+$query = "select games.game, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
+$query .= $_SESSION["level_id"];
 $query .= ";";
 
 //get db result
@@ -39,8 +18,8 @@ $numberOfRows = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
-echo "var a = new Array();";
-echo "var b = new Array();";
+echo "var game_name = new Array();";
+echo "var game_id = new Array();";
 
 echo "</script>";
 
@@ -48,31 +27,13 @@ $counter = 0;
 while ($row = pg_fetch_row($result))
 {
         //fill php vars from db
-	$game_id = $row[0];
-	$b = $row[1];
-
-	//what if right here i did another query to find game name
-	$queryGameName = "select game from games where id = ";
-	$queryGameName .= $game_id;
-	$queryGameName .= ";";  
-
-	//get db result
-	$resultGameName = pg_query($conn,$queryGameName) or die('Could not connect: ' . pg_last_error());
-
-	//get numer of rows
-	$numberOfRowsGameName = pg_num_rows($resultGameName);
-
-	$a = "sevi";	
-	while ($row = pg_fetch_row($resultGameName))
-	{	
-		$a = $row[0];
-	}
-
+	$game_name = $row[0];
+	$game_id = $row[1];
 
 	echo "<script language=\"javascript\">";
 	
-	echo "a[$counter] = \"$a\";";
-	echo "b[$counter] = \"$b\";";
+	echo "game_name[$counter] = \"$game_name\";";
+	echo "game_id[$counter] = \"$game_id\";";
 	echo "</script>";
 	$counter++;
 }
@@ -88,7 +49,6 @@ $username = $_SESSION["username"];
 <script language="javascript">
 
 var username = "<?php echo $username; ?>";
-//var gamelevel = "<?php echo $gameLevel; ?>";
 
 </script>
 
@@ -141,7 +101,7 @@ window.addEvent('domready', function()
 	//create quiz items
  	for (i = 0; i < numberOfRows; i++)
         {
-		var question = new Question(a[i],b[i]);      
+		var question = new Question(game_name[i],game_id[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
                 
