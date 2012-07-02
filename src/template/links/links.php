@@ -19,7 +19,7 @@ include("stats.php");
 
 <p1>GAMES:<p1>
 <br>
-<a href="../subject/chooser.php">Play Game</a>
+<a href="../subject/chooser.php">Play Game...this should take you right to game choice page i.e. DUNGEON, Helicopter</a>
 <br>
 <br>
 
