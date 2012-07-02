@@ -100,46 +100,6 @@ CREATE TABLE passwords (
 );
 
 --==================================================================
---==================== CORE CURRICULUM  ========================
---==================================================================
-
---GRADE_LEVELS
-CREATE TABLE grade_levels (
-    id integer NOT NULL,
-    grade_level text  
-);
-
---SUBJECTS
-CREATE TABLE subjects (
-    id integer NOT NULL,
-    subject text NOT NULL
-);
-
---DOMAINS
-CREATE TABLE domains (
-    id integer NOT NULL,
-    domain text NOT NULL,
-    subject_id integer NOT NULL
-);
-
---CLUSTERS
-CREATE TABLE clusters (
-    id integer NOT NULL,
-    cluster text NOT NULL,
-    domain_id integer NOT NULL,
-    grade_level_id integer NOT NULL
-);
-
---STANDARDS
-CREATE TABLE standards (
-    id integer NOT NULL,
-    standard text NOT NULL,
-    standard_code text NOT NULL,
-    cluster_id integer NOT NULL 
-);
-
-
---==================================================================
 --================= PEOPLE  ====================================
 --==================================================================
 
@@ -192,6 +152,46 @@ CREATE TABLE permissions_users (
     permission_id integer NOT NULL,
     user_id integer NOT NULL  
 );
+
+--==================================================================
+--==================== CORE CURRICULUM  ========================
+--==================================================================
+
+--GRADE_LEVELS
+CREATE TABLE grade_levels (
+    id integer NOT NULL,
+    grade_level text  
+);
+
+--SUBJECTS
+CREATE TABLE subjects (
+    id integer NOT NULL,
+    subject text NOT NULL
+);
+
+--DOMAINS
+CREATE TABLE domains (
+    id integer NOT NULL,
+    domain text NOT NULL,
+    subject_id integer NOT NULL
+);
+
+--CLUSTERS
+CREATE TABLE clusters (
+    id integer NOT NULL,
+    cluster text NOT NULL,
+    domain_id integer NOT NULL,
+    grade_level_id integer NOT NULL
+);
+
+--STANDARDS
+CREATE TABLE standards (
+    id integer NOT NULL,
+    standard text NOT NULL,
+    standard_code text NOT NULL,
+    cluster_id integer NOT NULL 
+);
+
 
 --==================================================================
 --====================== LEVELS  =============================
