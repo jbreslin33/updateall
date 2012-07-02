@@ -21,6 +21,9 @@ echo "var numberOfRows = $numberOfRows;";
 echo "var game_name = new Array();";
 echo "var url = new Array();";
 
+$level_id = $_SESSION["level_id"];
+echo "var level_id = $level_id;";
+
 echo "</script>";
 
 $counter = 0;
