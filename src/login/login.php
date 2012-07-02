@@ -90,7 +90,7 @@ $problem = "";
                 //get the id from user table    
                 $school_id = pg_Result($result, 0, 'id');
                 
-                //set user id, and subject levels to be used later                      
+                //set school_id                       
                 $_SESSION["school_id"] = $school_id;        
         }
         else
@@ -125,7 +125,7 @@ $problem = "";
                 $first_name = pg_Result($result, 0, 'first_name');
                 $last_name = pg_Result($result, 0, 'last_name');
 
-                //set user id, and subject levels to be used later
+                //set user id, and first and last name to be used later
                 $_SESSION["user_id"] = $user_id;
                 $_SESSION["first_name"] = $first_name;
                 $_SESSION["last_name"] = $last_name;
@@ -196,7 +196,7 @@ $problem = "";
                                 //get the id from user table
                                 $student_id = pg_Result($result, 0, 'id');
 
-                                //set user id, and subject levels to be used later
+                                //set user student_id
                                 $_SESSION["student_id"] = $student_id;
                         }
                         else
@@ -205,6 +205,36 @@ $problem = "";
                                 $_SESSION["is_student"] = "FALSE";
                                 $_SESSION["student_id"] = 0;
                         }
+
+//---------------------------------------FIND LEVEL---------------------------
+$query = "select LAST(level_id) AS last_level_id from levels_transactions where student_id = ";
+$query .= $_SESSION["student_id"];
+$query .= ";";
+
+ //get db result
+                        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+                        dbErrorCheck($conn,$result);
+
+                        //get numer of rows
+                        $num = pg_num_rows($result);
+
+                        if ($num > 0)
+                        {
+                                //get the id from user table
+                                $level_id = pg_Result($result, 0, 'last_level_id');
+
+                                //set level_id
+                                $_SESSION["level_id"] = $level_id;
+                        }
+                        else
+                        {
+                                // no transaction in level_transactions so set level_id to 1
+                                $_SESSION["level_id"] = 1;
+                        }
+
+
+
+
 	if ($problem == "")
 	{
                 header("Location: ../template/main/main.php");

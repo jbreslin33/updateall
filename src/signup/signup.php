@@ -208,7 +208,7 @@
                		$_SESSION["Login"] = "YES";
 
                		//set level to 0 since this is new user
-               		$_SESSION["Level"] = 0;
+               		$_SESSION["level_id"] = 1;
                		
 			//set user id, and subject levels to be used later
                		$_SESSION["is_user"] = "TRUE"; 

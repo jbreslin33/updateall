@@ -64,7 +64,7 @@ echo "<br>";
 
 
 echo "Level: ";
-echo $_SESSION["Level"];
+echo $_SESSION["level_id"];
 echo "<br>";
 
 echo "<br>";

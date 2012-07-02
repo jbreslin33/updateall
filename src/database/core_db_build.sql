@@ -200,7 +200,7 @@ CREATE TABLE standards (
 --LEVELS
 CREATE TABLE levels (
     id integer NOT NULL,
-    level double precision NOT NULL, 
+    level double precision NOT NULL UNIQUE, 
     description text NOT NULL
 );
 
@@ -1005,6 +1005,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --LEVELS_TRANSACTIONS
 
 --LEVELS_STANDARDS
+ALTER TABLE levels_standards ADD UNIQUE (level_id,standard_id);
 
 --COUNTING
 
@@ -1174,7 +1175,7 @@ insert into levels(level,description) values (8,'Count from 70 to 80');
 insert into levels(level,description) values (9,'Count from 80 to 90');       
 insert into levels(level,description) values (10,'Count from 90 to 100');       
 
-insert into levels(level,description) values (1,'Count Forward from Random num...');       
+insert into levels(level,description) values (11,'Count Forward from Random num...');       
 
 
 --LEVELS_TRANSACTIONS
