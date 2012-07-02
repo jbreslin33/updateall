@@ -2,7 +2,10 @@
 
 <?php
 
-        //start new session     
+	//db connection
+	$conn = dbConnect();
+        
+	//start new session     
         session_start();
 	
 	//set school_name, username and password
@@ -75,12 +78,10 @@
 		}
 	}
 	
-	//db connection
-	$conn = dbConnect();
-	$taken = false;	
-	//check if this school exists already
 	//----------------check for school existence-----------------------------------
-        //query string
+	$taken = false;	
+        
+	//query string
         $query = "select school_name from schools where school_name = '";
         $query .= $_SESSION["school_name"];
         $query .= "';";
@@ -91,9 +92,6 @@
 
        	//get numer of rows
         $num = pg_num_rows($result);
-	echo "num:";
-	echo $num; 
-	echo "<br>";
 
         // if there is a row then the username and password pair exists
         if ($num == 1)
@@ -186,7 +184,7 @@
  			
 		//----------------USER CHECK----------------------------------------------
        		//query string
-       		$query = "select id, first_name, last_name from users where school_id = ";
+       		$query = "select id from users where school_id = ";
        		$query .= $school_id;
        		$query .= " and ";
        		$query .= "username = 'root';";
@@ -212,14 +210,11 @@
                		//set user id, and subject levels to be used later
                		$_SESSION["is_user"] = "TRUE"; 
                		$_SESSION["user_id"] = $id;
-               		$_SESSION["first_name"] = $first_name;
-               		$_SESSION["last_name"] = $last_name;
        		}
        		else
        		{
                		//set login cookie to no
                		$_SESSION ["Login"] = "NO";
-               		$_SESSION["user_id"] = 0;
        		}
 
                 //--------------------INSERT INTO TEACHERS----------------
