@@ -327,17 +327,18 @@
                		$echo "error no reusults"; 
 		}
 */
+
+
 echo "last_completed_level:";
 echo $_SESSION["last_completed_level_id"];
 
 //open a level account
-/*
 $query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
 $query .= $_SESSION["next_level_id"];
 $query .= "','";
 $query .= $_SESSION["student_id"];
 $query .= "');";
-
+/*
 echo "level_id:";
 echo  $_SESSION["level_id"];
 echo "<br>";
