@@ -301,15 +301,13 @@
                		$_SESSION["is_teacher"] = "FALSE";
                		$_SESSION["teacher_id"] = 0;
        		}
-/*
 //find the first level this will not neccesarly be the first record 
-                //query string
-
-                $query = "select level_id from levels order by levels LIMIT 1;";
+                $query = "select id from levels order by levels LIMIT 1;";
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
                 dbErrorCheck($conn,$result);
+/*
 
                 //get numer of rows
                 $num = pg_num_rows($result);
