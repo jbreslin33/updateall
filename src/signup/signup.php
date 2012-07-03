@@ -301,18 +301,13 @@
                		$_SESSION["is_teacher"] = "FALSE";
                		$_SESSION["teacher_id"] = 0;
        		}
-//find the first level this will not neccesarly be the first record 
+
+		//find the first level this will not neccesarly be the first record 
                 $query = "select id from levels order by level LIMIT 2;";
 
-echo "<br>";
-echo "<br>";
-echo $query;
-echo "<br>";
-echo "<br>";
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
                 dbErrorCheck($conn,$result);
-
 
                 //get numer of rows
                 $num = pg_num_rows($result);
@@ -320,11 +315,11 @@ echo "<br>";
                 if ($num > 1)
                 {
                         //get the id from user table
-                        $last_completed_level_id = pg_Result($result, 0, 'id');
+                        $completed_level_id = pg_Result($result, 0, 'id');
                         $next_level_id = pg_Result($result, 1, 'id');
 
                         //we are a teacher
-                        $_SESSION["last_completed_level_id"] = $last_completed_level_id;
+                        $_SESSION["completed_level_id"] = $completed_level_id;
                         $_SESSION["next_level_id"] = $next_level_id;
                 }
                 else
@@ -332,38 +327,18 @@ echo "<br>";
                		echo "error no reusults"; 
 		}
 
-
-echo "last_completed_level:";
-echo $_SESSION["last_completed_level_id"];
-
 //open a level account
 $query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
-$query .= $_SESSION["last_completed_level_id"];
+$query .= $_SESSION["completed_level_id"];
 $query .= ",";
 $query .= $_SESSION["student_id"];
 $query .= ");";
 
-
-echo "<br>";
-echo "<br>";
-echo "next_level_id:";
-echo  $_SESSION["next_level_id"];
-echo "<br>";
-echo "<br>";
-echo "student_id:";
-echo  $_SESSION["student_id"];
-
-
 //db call to update
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-
-
-
-
-
        		//--------------------------------------------------------------
-//       		header("Location: ../template/main/main.php");
+       		header("Location: ../template/main/main.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();

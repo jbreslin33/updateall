@@ -63,8 +63,12 @@ echo "<br>";
 echo "<br>";
 
 
-echo "Level: ";
-echo $_SESSION["level_id"];
+echo "completed_level_id: ";
+echo $_SESSION["completed_level_id"];
+echo "<br>";
+
+echo "next_level_id: ";
+echo $_SESSION["next_level_id"];
 echo "<br>";
 
 echo "<br>";
