@@ -9,12 +9,11 @@ echo "hello";
 
 
 $query = "insert into levels_transactions (level_id,student_id) values ('";
-/*
+
 $query .= $_SESSION["level_id"];
 $query .= "','";
 $query .= $_SESSION["student_id"];
 $query .= "');";
-*/
 /*
 echo "level_id:";
 echo  $_SESSION["level_id"];
