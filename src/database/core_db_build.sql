@@ -1181,16 +1181,16 @@ insert into levels(level,description) values (11,'Count Forward from Random num.
 --LEVELS_TRANSACTIONS
 
 --COUNTING
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,2);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,20,30,1,3);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,30,40,1,4);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,5);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,6);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,7);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,8);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,80,90,1,9);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,10);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,0,10,1,1);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,10,20,1,2);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,20,30,1,3);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,30,40,1,4);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,40,50,1,5);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,50,60,1,6);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,60,70,1,7);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,70,80,1,8);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,80,90,1,9);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (1,90,100,1,10);
 
 --ADDITION
 

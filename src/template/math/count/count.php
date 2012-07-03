@@ -151,7 +151,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../template/game/chooser.php"),"../../../../images/doors/door_closed.png","","wall");
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_math_level.php"),"../../../../images/doors/door_closed.png","","wall");
 	mGame.addToShapeArray(door);
                
 	//QUESTION SHAPES 
