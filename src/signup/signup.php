@@ -302,7 +302,9 @@
                		$_SESSION["teacher_id"] = 0;
        		}
 //find the first level this will not neccesarly be the first record 
-                $query = "select id from levels order by levels LIMIT 1;";
+                $query = "select id from levels order by level LIMIT 1;";
+
+echo $query;
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
