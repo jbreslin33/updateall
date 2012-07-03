@@ -307,7 +307,7 @@
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
                 dbErrorCheck($conn,$result);
-/*
+
 
                 //get numer of rows
                 $num = pg_num_rows($result);
@@ -315,16 +315,15 @@
                 if ($num > 0)
                 {
                         //get the id from user table
-                        $last_completed_level_id = pg_Result($result, 0, 'level_id');
+                        $last_completed_level_id = pg_Result($result, 0, 'id');
 
                         //we are a teacher
                         $_SESSION["last_completed_level_id"] = $last_completed_level_id;
                 }
                 else
                 {
-               		$echo "error no reusults"; 
+               		echo "error no reusults"; 
 		}
-*/
 
 
 echo "last_completed_level:";
