@@ -304,8 +304,11 @@
 //find the first level this will not neccesarly be the first record 
                 $query = "select id from levels order by level LIMIT 2;";
 
+echo "<br>";
+echo "<br>";
 echo $query;
-
+echo "<br>";
+echo "<br>";
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
                 dbErrorCheck($conn,$result);
@@ -341,8 +344,6 @@ $query .= $_SESSION["student_id"];
 $query .= ");";
 
 
-echo "level_id:";
-echo  $_SESSION["level_id"];
 echo "<br>";
 echo "<br>";
 echo "next_level_id:";
