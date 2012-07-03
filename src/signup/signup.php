@@ -302,7 +302,7 @@
                		$_SESSION["teacher_id"] = 0;
        		}
 //find the first level this will not neccesarly be the first record 
-                $query = "select id from levels order by level LIMIT 1;";
+                $query = "select id from levels order by level LIMIT 2;";
 
 echo $query;
 
@@ -314,13 +314,15 @@ echo $query;
                 //get numer of rows
                 $num = pg_num_rows($result);
 
-                if ($num > 0)
+                if ($num > 1)
                 {
                         //get the id from user table
                         $last_completed_level_id = pg_Result($result, 0, 'id');
+                        $next_level_id = pg_Result($result, 1, 'id');
 
                         //we are a teacher
                         $_SESSION["last_completed_level_id"] = $last_completed_level_id;
+                        $_SESSION["next_level_id"] = $next_level_id;
                 }
                 else
                 {
