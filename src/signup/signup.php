@@ -156,7 +156,7 @@
                		//get the id from user table
                		$school_id = pg_Result($result, 0, 'id');
 
-               		//set user id, and subject levels to be used later
+               		//set school_id
                		$_SESSION["school_id"] = $school_id;
        		}
        		else
@@ -207,10 +207,8 @@
                		//set login var to yes
                		$_SESSION["Login"] = "YES";
 
-               		//set level to 0 since this is new user
-               		$_SESSION["level_id"] = 1;
                		
-			//set user id, and subject levels to be used later
+			//set sessions 
                		$_SESSION["is_user"] = "TRUE"; 
                		$_SESSION["user_id"] = $id;
        		}
@@ -263,10 +261,8 @@
 
                		//get the id from user table
                		$student_id = pg_Result($result, 0, 'id');
-               		$mathLevel = pg_Result($result, 0, 'math_level');
-               		$englishLevel = pg_Result($result, 0, 'english_level');
 
-               		//set user id, and subject levels to be used later
+               		//set sessions vars 
                		$_SESSION["student_id"] = $student_id;
        		}
        		else
@@ -305,9 +301,65 @@
                		$_SESSION["is_teacher"] = "FALSE";
                		$_SESSION["teacher_id"] = 0;
        		}
+/*
+//find the first level this will not neccesarly be the first record 
+                //query string
+
+                $query = "select level_id from levels order by levels LIMIT 1;";
+
+                //get db result
+                $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+                dbErrorCheck($conn,$result);
+
+                //get numer of rows
+                $num = pg_num_rows($result);
+
+                if ($num > 0)
+                {
+                        //get the id from user table
+                        $last_completed_level_id = pg_Result($result, 0, 'level_id');
+
+                        //we are a teacher
+                        $_SESSION["last_completed_level_id"] = $last_completed_level_id;
+                }
+                else
+                {
+               		$echo "error no reusults"; 
+		}
+*/
+echo "last_completed_level:";
+echo $_SESSION["last_completed_level_id"];
+
+//open a level account
+/*
+$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
+$query .= $_SESSION["next_level_id"];
+$query .= "','";
+$query .= $_SESSION["student_id"];
+$query .= "');";
+
+echo "level_id:";
+echo  $_SESSION["level_id"];
+echo "<br>";
+echo "<br>";
+echo "next_level_id:";
+echo  $_SESSION["next_level_id"];
+echo "<br>";
+echo "<br>";
+echo "student_id:";
+echo  $_SESSION["student_id"];
+
+//db call to update
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+*/
+
+
+
+
+
 
        		//--------------------------------------------------------------
-       		header("Location: ../template/main/main.php");
+//       		header("Location: ../template/main/main.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();

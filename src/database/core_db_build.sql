@@ -1165,6 +1165,7 @@ insert into standards (standard,standard_code,cluster_id) values ('With promptin
 
 --LEVELS
 insert into levels(level,description) values (1,'Count from 0 to 10');       
+insert into levels(level,description) values (.5,'Start of Journey');       
 insert into levels(level,description) values (2,'Count from 10 to 20');       
 insert into levels(level,description) values (3,'Count from 20 to 30');       
 insert into levels(level,description) values (4,'Count from 30 to 40');       
