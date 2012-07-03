@@ -302,7 +302,7 @@
                		$_SESSION["teacher_id"] = 0;
        		}
 
-		//find the first level this will not neccesarly be the first record 
+       		//---------------- GET starting level id and next level id ----------------------------------------------
                 $query = "select id from levels order by level LIMIT 2;";
 
                 //get db result
@@ -324,18 +324,18 @@
                 }
                 else
                 {
-               		echo "error no reusults"; 
+               		echo "error no results"; 
 		}
 
-//open a level account
-$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
-$query .= $_SESSION["completed_level_id"];
-$query .= ",";
-$query .= $_SESSION["student_id"];
-$query .= ");";
+       		//---------------- insert that level as your first level_transaction ----------------------------------------------
+		$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
+		$query .= $_SESSION["completed_level_id"];
+		$query .= ",";
+		$query .= $_SESSION["student_id"];
+		$query .= ");";
 
-//db call to update
-$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+		//db call to update
+		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
        		//--------------------------------------------------------------
        		header("Location: ../template/main/main.php");
