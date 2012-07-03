@@ -14,14 +14,14 @@ $query .= $_SESSION["level_id"];
 $query .= "','";
 $query .= $_SESSION["student_id"];
 $query .= "');";
-/*
+
 echo "level_id:";
 echo  $_SESSION["level_id"];
 echo "<br>";
 echo "<br>";
-$echo "student_id:";
+echo "student_id:";
 echo  $_SESSION["student_id"];
-*/
+
 //db call to update
 //$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
