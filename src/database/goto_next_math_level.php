@@ -8,8 +8,7 @@ $conn = dbConnect();
 echo "hello";
 
 
-$query = "insert into levels_transactions (level_id,student_id) values ('";
-
+$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,'";
 $query .= $_SESSION["level_id"];
 $query .= "','";
 $query .= $_SESSION["student_id"];
@@ -23,7 +22,7 @@ echo "student_id:";
 echo  $_SESSION["student_id"];
 
 //db call to update
-//$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //now find out what new level is...
 //---------------------------------------FIND LEVEL---------------------------
