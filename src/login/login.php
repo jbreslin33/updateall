@@ -174,6 +174,7 @@ $problem = "";
                                 $_SESSION["teacher_id"] = 0;
                                 $_SESSION["is_teacher"] = "FALSE";
                         }
+
   //----------------STUDENT CHECK----------------------------------------------
                         //is this user a student? if so let's set some session vars
                         //query string
@@ -226,7 +227,7 @@ $query .= ";";
                                 $last_level_id = pg_Result($result, 0, 'level_id');
 
                                 //set level_id
-                                $_SESSION["last_level_id"] = $level_id;
+                                $_SESSION["last_level_id"] = $last_level_id;
                         }
                         else
                         {
