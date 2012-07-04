@@ -223,7 +223,7 @@ $query .= ";";
                         if ($num > 0)
                         {
                                 //get the id from user table
-                                $level_id = pg_Result($result, 0, 'last_level_id');
+                                $last_level_id = pg_Result($result, 0, 'level_id');
 
                                 //set level_id
                                 $_SESSION["last_level_id"] = $level_id;
