@@ -6,6 +6,7 @@ include("../headers/header.php");
 
 //---------------------------------------FIND LEVEL---------------------------
 //this query could be more efficient maybe
+/*
 $query = "select advancement_time, level_id from levels_transactions where student_id = ";
 $query .= $_SESSION["student_id"];
 $query .= " ORDER BY advancement_time LIMIT 1";
@@ -32,12 +33,12 @@ $query .= ";";
                                 $_SESSION["level_id"] = 1;
                         }
 
-
+*/
 
 
 /******* join games and games_levels  ***************/
 $query = "select games.game, games_levels.url, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
-$query .= $_SESSION["level_id"];
+$query .= $_SESSION["next_level_id"];
 $query .= ";";
 
 //get db result
@@ -51,8 +52,8 @@ echo "var numberOfRows = $numberOfRows;";
 echo "var game_name = new Array();";
 echo "var url = new Array();";
 
-$level_id = $_SESSION["level_id"];
-echo "var level_id = $level_id;";
+//$level_id = $_SESSION["level_id"];
+//echo "var level_id = $level_id;";
 
 echo "</script>";
 

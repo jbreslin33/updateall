@@ -17,7 +17,7 @@ var Hud = new Class(
         northBoundsUser.setText('User : ' + username);
 
         northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
-        northBoundsMathLevel.setText('Level : ' + level_id);
+//        northBoundsMathLevel.setText('Level : ' + level_id);
 
         northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
         northBoundsScore.setText('Score : ');
