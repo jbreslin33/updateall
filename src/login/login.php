@@ -263,11 +263,11 @@ $query .= ";";
 
 
 //*****************************
-  //---------------- GET next level id using last_level_id----------------------------------------------
-/*
-                $query = "select id from levels where level > ";
+  //---------------- GET next level id and level using last_level_id----------------------------------------------
+
+                $query = "select id, level from levels where level > ";
 		$query .= $_SESSION["last_level"];
-		$query .= " order by level LIMIT 1;";
+		$query .= " order by level ASC LIMIT 1;";
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
@@ -276,40 +276,20 @@ $query .= ";";
                 //get numer of rows
                 $num = pg_num_rows($result);
 
-                if ($num > 1)
+                if ($num > 0)
                 {
-                        //get the id from user table
-                        $completed_level_id = pg_Result($result, 0, 'id');
-                        $next_level_id = pg_Result($result, 1, 'id');
-
-                        //we are a teacher
-                        $_SESSION["completed_level_id"] = $completed_level_id;
+                        //get the id and level 
+                        $next_level_id = pg_Result($result, 0, 'id');
+                        $next_level = pg_Result($result, 0, 'level');
+			
+			//set session
                         $_SESSION["next_level_id"] = $next_level_id;
+                        $_SESSION["next_level"] = $next_level;
                 }
                 else
                 {
                         echo "error no results";
                 }
-*/
-                //---------------- insert that level as your first level_transaction ----------------------------------------------
-/* 
-               $query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
-                $query .= $_SESSION["completed_level_id"];
-                $query .= ",";
-                $query .= $_SESSION["student_id"];
-                $query .= ");";
-
-                //db call to update
-                $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-
-                //--------------------------------------------------------------
-                header("Location: ../template/main/main.php");
-
-                //close db connection as we have the only var we needed - the id
-                pg_close();
-*/
-
-
 
 	if ($problem == "")
 	{
