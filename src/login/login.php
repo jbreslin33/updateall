@@ -233,10 +233,16 @@ $query .= ";";
                                 // no transaction in level_transactions so set level_id to 1
 			 	echo "error no transactions";	
                         }
+
+/***get the last_level using last_level_id
+$query = "select level from levels where id = ";
+$query .= $_SESSION["last_level_id"];
+$query .= ";"; 
+
 //*****************************
-  //---------------- GET starting level id and next level id ----------------------------------------------
+  //---------------- GET next level id using last_level_id----------------------------------------------
 /*
-                $query = "select id from levels order by level LIMIT 2;";
+                $query = "select id from levels where level >order by level LIMIT 2;";
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
