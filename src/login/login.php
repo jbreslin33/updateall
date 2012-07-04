@@ -226,12 +226,12 @@ $query .= ";";
                                 $level_id = pg_Result($result, 0, 'last_level_id');
 
                                 //set level_id
-                                $_SESSION["level_id"] = $level_id;
+                                $_SESSION["last_level_id"] = $level_id;
                         }
                         else
                         {
                                 // no transaction in level_transactions so set level_id to 1
-                                $_SESSION["level_id"] = 1;
+			 	echo "error no transactions";	
                         }
 //*****************************
   //---------------- GET starting level id and next level id ----------------------------------------------
