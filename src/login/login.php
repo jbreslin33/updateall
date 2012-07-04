@@ -1,4 +1,5 @@
 <?php include("../database/db_connect.php"); ?>
+<?php include("../database/query_levels.php"); ?>
 
 <?php
 //db connection
@@ -209,6 +210,7 @@ $problem = "";
 
 //---------------------------------------FIND Last LEVEL---------------------------
 //this query could be more efficient maybe
+/*
 $query = "select advancement_time, level_id from levels_transactions where student_id = ";
 $query .= $_SESSION["student_id"];
 $query .= " ORDER BY advancement_time DESC LIMIT 1";
@@ -234,6 +236,8 @@ $query .= ";";
                                 // no transaction in level_transactions so set level_id to 1
 			 	echo "error no transactions";	
                         }
+*/
+setLevelSessionVariables($conn);
 
 /***get the last_level using last_level_id ************/
 $query = "select level from levels where id = ";
