@@ -1207,6 +1207,11 @@ insert into games (game,url) values ('Dungeon','../../games/dungeon.php');
 
 --GAMES_LEVELS
 insert into games_levels (level_id,game_id,url) values  (1,1,'../../template/math/count/count.php');
+insert into games_levels (level_id,game_id,url) values  (3,1,'../../template/math/count/count.php');
+insert into games_levels (level_id,game_id,url) values  (4,1,'../../template/math/count/count.php');
+insert into games_levels (level_id,game_id,url) values  (5,1,'../../template/math/count/count.php');
+insert into games_levels (level_id,game_id,url) values  (6,1,'../../template/math/count/count.php');
+insert into games_levels (level_id,game_id,url) values  (7,1,'../../template/math/count/count.php');
 
 --GAMES_ATTEMPTS
 
