@@ -1,4 +1,5 @@
 <?php include("../database/db_connect.php"); ?>
+<?php include("../database/query_levels.php"); ?>
 
 <?php
 
@@ -314,13 +315,11 @@
 
                 if ($num > 1)
                 {
-                        //get the id from user table
+                        //get the id 
                         $completed_level_id = pg_Result($result, 0, 'id');
-                        $next_level_id = pg_Result($result, 1, 'id');
 
-                        //we are a teacher
+			//set session
                         $_SESSION["completed_level_id"] = $completed_level_id;
-                        $_SESSION["next_level_id"] = $next_level_id;
                 }
                 else
                 {
@@ -336,6 +335,10 @@
 
 		//db call to update
 		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+		//set session levels
+		setLevelSessionVariables($conn);
+
 
        		//--------------------------------------------------------------
        		header("Location: ../template/main/main.php");
