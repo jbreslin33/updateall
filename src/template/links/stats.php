@@ -3,10 +3,6 @@ echo "<p1>STATS:<p1>";
 echo "<br>";
 echo "<br>";
 
-echo "is_school: ";
-echo $_SESSION["is_school"];
-echo "<br>";
-
 echo "school_id: ";
 echo $_SESSION["school_id"];
 echo "<br>";
@@ -16,10 +12,6 @@ echo $_SESSION["school_name"];
 echo "<br>";
 echo "<br>";
 
-
-echo "is_user: ";
-echo $_SESSION["is_user"];
-echo "<br>";
 
 echo "user_id: ";
 echo $_SESSION["user_id"];
@@ -43,19 +35,11 @@ echo "<br>";
 echo "<br>";
 
 
-echo "is_teacher: ";
-echo $_SESSION["is_teacher"];
-echo "<br>";
-
 echo "teacher_id: ";
 echo $_SESSION["teacher_id"];
 echo "<br>";
 echo "<br>";
 
-
-echo "is_student: ";
-echo $_SESSION["is_student"];
-echo "<br>";
 
 echo "student_id: ";
 echo $_SESSION["student_id"];

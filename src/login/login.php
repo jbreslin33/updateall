@@ -167,13 +167,11 @@ $problem = "";
 
                                 //we are a teacher
                                 $_SESSION["teacher_id"] = $teacher_id;
-                                $_SESSION["is_teacher"] = "TRUE";
                         }
                         else
                         {
                                 //we are not a teacher
                                 $_SESSION["teacher_id"] = 0;
-                                $_SESSION["is_teacher"] = "FALSE";
                         }
 
   //----------------STUDENT CHECK----------------------------------------------
@@ -193,7 +191,6 @@ $problem = "";
                         if ($num > 0)
                         {
                                 //we are a student
-                                $_SESSION["is_student"] = "TRUE";
 
                                 //get the id from user table
                                 $student_id = pg_Result($result, 0, 'id');
@@ -204,7 +201,6 @@ $problem = "";
                         else
                         {
                                 //we are not a student
-                                $_SESSION["is_student"] = "FALSE";
                                 $_SESSION["student_id"] = 0;
                         }
 

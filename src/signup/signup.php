@@ -133,12 +133,10 @@
 		$school_id = insertIntoSchools($conn,$_SESSION["school_name"]);
                 if ($school_id)
                 {      
-                        $_SESSION["is_school"] = "TRUE";
                         $_SESSION["school_id"] = $school_id;
                 }
                 else
                 {
-                        $_SESSION["is_school"] = "FALSE";
                         $_SESSION["school_id"] = 0;
                         $_SESSION["school_name"] = "";
                 }
@@ -147,8 +145,6 @@
 		if ($user_id)
 		{	 
                 	//set sessions 
-                	$_SESSION["Login"] = "YES";
-                        $_SESSION["is_user"] = "TRUE";
                         $_SESSION["user_id"] = $user_id;
 		}
 		else
@@ -160,12 +156,10 @@
                 $teacher_id = insertIntoTeachers($conn,$_SESSION["user_id"]);
                 if ($school_id)
                 {
-                        $_SESSION["is_teacher"] = "TRUE";
                         $_SESSION["teacher_id"] = $teacher_id;
                 }
                 else
                 {
-                        $_SESSION["is_teacher"] = "FALSE";
                         $_SESSION["teacher_id"] = 0;
                 }
 
@@ -173,12 +167,10 @@
                 $student_id = insertIntoStudents($conn,$_SESSION["user_id"]);
                 if ($school_id)
                 {
-                        $_SESSION["is_student"] = "TRUE";
                         $_SESSION["student_id"] = $student_id;
                 }
                 else
                 {
-                        $_SESSION["is_student"] = "FALSE";
                         $_SESSION["student_id"] = 0;
                 }
 
@@ -220,6 +212,8 @@
 
 
        		//--------------------------------------------------------------
+                
+		$_SESSION["Login"] = "YES";
        		header("Location: ../template/main/main.php");
        		
 		//close db connection as we have the only var we needed - the id
