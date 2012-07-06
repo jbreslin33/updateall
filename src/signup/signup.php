@@ -1,5 +1,6 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/query_levels.php"); ?>
+<?php include("../database/insert_into_schools.php"); ?>
 
 <?php
 
@@ -125,48 +126,7 @@
 	}
 	else	
 	{
-		//--------------------INSERT INTO SCHOOL----------------
-		//query string 	
-		$query = "INSERT INTO schools (school_name) VALUES ('";
-		$query .= $_SESSION["school_name"];
-		$query .= "'"; 
-		$query .= ");";      	
-
-		// insert into schools......
-		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-       		dbErrorCheck($conn,$result);
- 		
-		//----------------SCHOOL CHECK----------------------------------------------
-       		//query string
-       		$query = "select id from schools where school_name = '";
-       		$query .= $_SESSION["school_name"];
-       		$query .= "';";
-
-       		//get db result
-       		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-       		dbErrorCheck($conn,$result);
-
-       		//get numer of rows
-       		$num = pg_num_rows($result);
-
-       		if ($num > 0)
-       		{
-               		//we are a school
-               		$_SESSION["is_school"] = "TRUE";
-
-               		//get the id from user table
-               		$school_id = pg_Result($result, 0, 'id');
-
-               		//set school_id
-               		$_SESSION["school_id"] = $school_id;
-       		}
-       		else
-       		{
-               		//we are not a school
-               		$_SESSION["is_school"] = "FALSE";
-               		$_SESSION["school_id"] = 0;
-               		$_SESSION["school_name"] = "";
-       		}
+		insertIntoSchools($conn,$_SESSION["school_name"]);
 
 		//--------------------INSERT INTO USERS----------------
                 //query string
@@ -175,7 +135,7 @@
                 $query .= "','";
                 $query .= $_SESSION["password"];
                 $query .= "',";
-		$query .= $school_id;
+		$query .= $_SESSION["school_id"];
                 $query .= ");";
 
                 // insert into users......
@@ -186,7 +146,7 @@
 		//----------------USER CHECK----------------------------------------------
        		//query string
        		$query = "select id from users where school_id = ";
-       		$query .= $school_id;
+       		$query .= $_SESSION["school_id"];
        		$query .= " and ";
        		$query .= "username = 'root';";
 
