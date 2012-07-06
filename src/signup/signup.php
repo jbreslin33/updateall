@@ -1,6 +1,7 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/query_levels.php"); ?>
 <?php include("../database/insert_into_schools.php"); ?>
+<?php include("../database/insert_into_users.php"); ?>
 
 <?php
 
@@ -126,58 +127,32 @@
 	}
 	else	
 	{
-		insertIntoSchools($conn,$_SESSION["school_name"]);
-
-		//--------------------INSERT INTO USERS----------------
-                //query string
-                $query = "INSERT INTO users (username, password, school_id) VALUES ('";
-                $query .= $_SESSION["username"];
-                $query .= "','";
-                $query .= $_SESSION["password"];
-                $query .= "',";
-		$query .= $_SESSION["school_id"];
-                $query .= ");";
-
-                // insert into users......
-                $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-                dbErrorCheck($conn,$result);
-
- 			
-		//----------------USER CHECK----------------------------------------------
-       		//query string
-       		$query = "select id from users where school_id = ";
-       		$query .= $_SESSION["school_id"];
-       		$query .= " and ";
-       		$query .= "username = 'root';";
-
-       		//get db result
-       		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-       		dbErrorCheck($conn,$result);
-
-       		//get numer of rows
-       		$num = pg_num_rows($result);
-
-       		// if there is a row then the username and password pair exists
-       		if ($num > 0)
-       		{
-               		//get the id from user table
-               		$id = pg_Result($result, 0, 'id');
-               		$first_name = pg_Result($result, 0, 'first_name');
-               		$last_name = pg_Result($result, 0, 'last_name');
-
-               		//set login var to yes
-               		$_SESSION["Login"] = "YES";
-
-               		
-			//set sessions 
-               		$_SESSION["is_user"] = "TRUE"; 
-               		$_SESSION["user_id"] = $id;
-       		}
-       		else
-       		{
-               		//set login cookie to no
-               		$_SESSION ["Login"] = "NO";
-       		}
+		//insert school
+		$school_id = insertIntoSchools($conn,$_SESSION["school_name"]);
+                if ($school_id)
+                {      
+                        $_SESSION["is_school"] = "TRUE";
+                        $_SESSION["school_id"] = $school_id;
+                }
+                else
+                {
+                        $_SESSION["is_school"] = "FALSE";
+                        $_SESSION["school_id"] = 0;
+                        $_SESSION["school_name"] = "";
+                }
+		//insert user
+		$user_id = insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
+		if ($user_id)
+		{	 
+                	//set sessions 
+                	$_SESSION["Login"] = "YES";
+                        $_SESSION["is_user"] = "TRUE";
+                        $_SESSION["user_id"] = $user_id;
+		}
+		else
+		{
+                	$_SESSION["Login"] = "NO";
+		}
 
                 //--------------------INSERT INTO TEACHERS----------------
                 //query string
