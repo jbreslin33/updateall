@@ -2,6 +2,8 @@
 <?php include("../database/query_levels.php"); ?>
 <?php include("../database/insert_into_schools.php"); ?>
 <?php include("../database/insert_into_users.php"); ?>
+<?php include("../database/insert_into_teachers.php"); ?>
+<?php include("../database/insert_into_students.php"); ?>
 
 <?php
 
@@ -153,6 +155,33 @@
 		{
                 	$_SESSION["Login"] = "NO";
 		}
+
+ 		//insert teacher 
+                $teacher_id = insertIntoTeachers($conn,$_SESSION["user_id"]);
+                if ($school_id)
+                {
+                        $_SESSION["is_teacher"] = "TRUE";
+                        $_SESSION["teacher_id"] = $teacher_id;
+                }
+                else
+                {
+                        $_SESSION["is_teacher"] = "FALSE";
+                        $_SESSION["teacher_id"] = 0;
+                }
+
+	   	//insert student 
+                $student_id = insertIntoStudents($conn,$_SESSION["user_id"]);
+                if ($school_id)
+                {
+                        $_SESSION["is_student"] = "TRUE";
+                        $_SESSION["student_id"] = $student_id;
+                }
+                else
+                {
+                        $_SESSION["is_student"] = "FALSE";
+                        $_SESSION["student_id"] = 0;
+                }
+
 
                 //--------------------INSERT INTO TEACHERS----------------
                 //query string
