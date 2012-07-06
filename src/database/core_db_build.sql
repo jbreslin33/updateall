@@ -1183,15 +1183,16 @@ insert into levels(level,description) values (11,'Count Forward from Random num.
 
 --COUNTING
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,0,10,1,1);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,10,20,1,2);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,20,30,1,3);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,30,40,1,4);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,40,50,1,5);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,50,60,1,6);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,60,70,1,7);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,70,80,1,8);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,80,90,1,9);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,90,100,1,10);
+-- this is the start value Start of journye
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,10,20,1,3);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,20,30,1,4);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,30,40,1,5);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,40,50,1,6);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,50,60,1,7);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,60,70,1,8);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,70,80,1,9);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,80,90,1,10);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,90,100,1,11);
 
 --ADDITION
 
