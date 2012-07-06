@@ -4,7 +4,7 @@ include("../headers/header_math.php");
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select score_needed, count_by, start_number, end_number from counting where level_id = ";
-$query .= $_SESSION["level_id"];
+$query .= $_SESSION["next_level_id"];
 $query .= ";";
 
 //get db result
@@ -12,7 +12,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //game variables to fill from db
 $username = $_SESSION["username"];
-$level_id = $_SESSION["level_id"];
+$level_id = $_SESSION["next_level_id"];
 $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
