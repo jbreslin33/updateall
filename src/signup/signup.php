@@ -4,6 +4,7 @@
 <?php include("../database/insert_into_users.php"); ?>
 <?php include("../database/insert_into_teachers.php"); ?>
 <?php include("../database/insert_into_students.php"); ?>
+<?php include("../database/insert_first_level_transaction.php"); ?>
 
 <?php
 
@@ -174,38 +175,7 @@
                         $_SESSION["student_id"] = 0;
                 }
 
-       		//---------------- GET starting level id and next level id ----------------------------------------------
-                $query = "select id from levels order by level LIMIT 2;";
-
-                //get db result
-                $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-                dbErrorCheck($conn,$result);
-
-                //get numer of rows
-                $num = pg_num_rows($result);
-
-                if ($num > 1)
-                {
-                        //get the id 
-                        $completed_level_id = pg_Result($result, 0, 'id');
-
-			//set session
-                        $_SESSION["completed_level_id"] = $completed_level_id;
-                }
-                else
-                {
-               		echo "error no results"; 
-		}
-
-       		//---------------- insert that level as your first level_transaction ----------------------------------------------
-		$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
-		$query .= $_SESSION["completed_level_id"];
-		$query .= ",";
-		$query .= $_SESSION["student_id"];
-		$query .= ");";
-
-		//db call to update
-		$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+		insertFirstLevelTransaction($conn,$_SESSION["student_id"]);
 
 		//set session levels
 		setLevelSessionVariables($conn);
