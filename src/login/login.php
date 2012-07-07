@@ -1,5 +1,6 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/set_level_session_variables.php"); ?>
+<?php include("../database/select_school_id.php"); ?>
 
 <?php
 //db connection
@@ -71,35 +72,18 @@ if ($period_count == 2)
 //let's set a var that will be false if there was a problem..
 $problem = "";
 
-//first we need school_id regardless of whether this user is a school or not so we can check if they 
-//exist
-        //query string  
-        $query = "select id from schools where school_name = '";
-        $query .= $_SESSION["school_name"];
-        $query .= "';";          
+$school_id = selectSchoolID($conn,$_SESSION["school_name"]);
+if ($school_id)
+{
+	$_SESSION["school_id"] = $school_id;
+}
+else
+{
+	$_SESSION["school_id"] = 0;
+        $_SESSION["school_name"] = "";
+	$problem = "no_school";	
+}
 
-        //get db result
-        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-        dbErrorCheck($conn,$result);
-
-        //get numer of rows
-        $num = pg_num_rows($result);
-        
-        if ($num > 0)
-        {
-                
-                //get the id from user table    
-                $school_id = pg_Result($result, 0, 'id');
-                
-                //set school_id                       
-                $_SESSION["school_id"] = $school_id;        
-        }
-        else
-        {
-                //no record
-                $_SESSION["school_id"] = 0;        
-		$problem = "no_school";	
-	}
 
 //now we have a valid school_id to query users table to see if they exist and then set sessions
 	//query string
