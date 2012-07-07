@@ -52,8 +52,8 @@ echo "var numberOfRows = $numberOfRows;";
 echo "var game_name = new Array();";
 echo "var url = new Array();";
 
-//$level_id = $_SESSION["level_id"];
-//echo "var level_id = $level_id;";
+$next_level_id = $_SESSION["next_level_id"];
+echo "var next_level_id = $next_level_id;";
 
 echo "</script>";
 
