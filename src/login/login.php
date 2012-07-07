@@ -75,6 +75,7 @@ if ($period_count == 2)
 //let's set a var that will be false if there was a problem..
 $problem = "";
 
+//set school sesssion
 $school_id = selectSchoolID($conn,$_SESSION["school_name"]);
 if ($school_id)
 {
@@ -87,6 +88,7 @@ else
 	$problem = "no_school";	
 }
 
+//set user sessions
 $user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"],$_SESSION["password"]);
 if ($user_id)
 {
@@ -101,6 +103,7 @@ else
        	$_SESSION["user_id"] = 0;
 }
 
+//set teacher sessions
 $teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
 if ($school_id)
 {
@@ -111,6 +114,7 @@ else
         $_SESSION["teacher_id"] = 0;
 }
 
+//set student sessions
 $student_id = selectStudentID($conn,$_SESSION["user_id"]);
 if ($school_id)
 {
