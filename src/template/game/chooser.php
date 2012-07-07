@@ -120,6 +120,7 @@ window.addEvent('domready', function()
 
 	mHud = new Hud();
         northBoundsScoreNeeded.setText('Needed : 1');
+	northBoundsGameName.setText('GAME CHOOSER');
 
 	//the game
         mGame = new LinkChooser("Game Chooser");
