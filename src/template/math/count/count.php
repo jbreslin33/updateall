@@ -12,7 +12,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 
 //game variables to fill from db
 $username = $_SESSION["username"];
-$next_level_id = $_SESSION["next_level_id"];
+$next_level = $_SESSION["next_level"];
 $scoreNeeded = 0;
 $countBy = 0;
 $startNumber = 0;
@@ -39,7 +39,7 @@ if ($num > 0)
 <script language="javascript">
 
 var username = "<?php echo $username; ?>";
-var next_level_id = "<?php echo $next_level_id; ?>";
+var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
