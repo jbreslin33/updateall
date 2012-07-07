@@ -5,6 +5,7 @@
 <?php include("../database/insert_into_teachers.php"); ?>
 <?php include("../database/insert_into_students.php"); ?>
 <?php include("../database/insert_first_level_transaction.php"); ?>
+<?php include("../database/check_for_periods.php"); ?>
 
 <?php
 
@@ -24,6 +25,9 @@
 	$number = false;
 	$period = false;
 	$space =  false;
+
+
+	checkForPeriods($schoolnameString);
 
 	//check for no numbers
 	//let's first convert to arrray
