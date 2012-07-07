@@ -1,5 +1,5 @@
 <?php include("../database/db_connect.php"); ?>
-<?php include("../database/query_levels.php"); ?>
+<?php include("../database/set_level_session_variables.php"); ?>
 
 <?php
 //db connection

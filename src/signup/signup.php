@@ -1,5 +1,5 @@
 <?php include("../database/db_connect.php"); ?>
-<?php include("../database/query_levels.php"); ?>
+<?php include("../database/set_level_session_variables.php"); ?>
 <?php include("../database/insert_into_schools.php"); ?>
 <?php include("../database/insert_into_users.php"); ?>
 <?php include("../database/insert_into_teachers.php"); ?>
@@ -11,7 +11,6 @@
 <?php include("../database/check_for_schools.php"); ?>
 
 <?php
-
 	//db connection
 	$conn = dbConnect();
         
