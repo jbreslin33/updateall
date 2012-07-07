@@ -29,6 +29,7 @@
 
 
 	$period = checkForPeriods($schoolnameString);
+	$space = checkForSpaces($schoolnameString);
 
 	//check for no numbers
 	//let's first convert to arrray
@@ -38,11 +39,6 @@
 
 	for ($i=0; $i < $arraySize; $i++)
 	{
-
-		if ($stringArray[$i] == ' ')
-		{
-			$space = true;
-		}
 		if ($stringArray[$i] == '0')
 		{
 			$number = true; 
