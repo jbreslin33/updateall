@@ -87,51 +87,51 @@ else
 	$problem = "no_school";	
 }
 
-  		$user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"],$_SESSION["password"]);
-                if ($user_id)
-                {
-                        //set sessions
-                        $_SESSION["user_id"] = $user_id;
-                	$_SESSION["Login"] = "YES";
-                }
-                else
-                {
-                        $_SESSION["Login"] = "NO";
-			$problem = "no_user";	
-                	$_SESSION["user_id"] = 0;
-                }
+$user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"],$_SESSION["password"]);
+if ($user_id)
+{
+	//set sessions
+        $_SESSION["user_id"] = $user_id;
+      	$_SESSION["Login"] = "YES";
+}
+else
+{
+        $_SESSION["Login"] = "NO";
+	$problem = "no_user";	
+       	$_SESSION["user_id"] = 0;
+}
 
- 		$teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
-                if ($school_id)
-                {
-                        $_SESSION["teacher_id"] = $teacher_id;
-                }
-                else
-                {
-                        $_SESSION["teacher_id"] = 0;
-                }
+$teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
+if ($school_id)
+{
+        $_SESSION["teacher_id"] = $teacher_id;
+}
+else
+{
+        $_SESSION["teacher_id"] = 0;
+}
 
-                $student_id = selectStudentID($conn,$_SESSION["user_id"]);
-                if ($school_id)
-                {
-                        $_SESSION["student_id"] = $student_id;
-                }
-                else
-                {
-                        $_SESSION["student_id"] = 0;
-                }
+$student_id = selectStudentID($conn,$_SESSION["user_id"]);
+if ($school_id)
+{
+        $_SESSION["student_id"] = $student_id;
+}
+else
+{
+       $_SESSION["student_id"] = 0;
+}
 
-		setLevelSessionVariables($conn);
+setLevelSessionVariables($conn);
 
+if ($problem == "")
+{
+        header("Location: ../template/main/main.php");
+}
+else
+{
+        header("Location: login_form.php?message=$problem");
+}
 
-	if ($problem == "")
-	{
-                header("Location: ../template/main/main.php");
-	}
-	else
-	{
-                header("Location: login_form.php?message=$problem");
-	}
 pg_close();
 ?>
 
