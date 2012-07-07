@@ -23,10 +23,8 @@ var Hud = new Class(
         northBoundsScore.setText('Score : ');
 
         northBoundsScoreNeeded = new Shape    (120, y,480,  0,"","","","cyan","boundary");
-        northBoundsScoreNeeded.setText('Score Needed : ');
 
         northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
-        northBoundsGameName.setText('Choose Subject');
 
         eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
         eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");

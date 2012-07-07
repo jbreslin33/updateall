@@ -85,6 +85,7 @@ window.addEvent('domready', function()
 
        	mHud = new Hud();
 	
+        northBoundsScoreNeeded.setText('Needed : ' + scoreNeeded);
 	
 
 	

@@ -119,6 +119,7 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 
 	mHud = new Hud();
+        northBoundsScoreNeeded.setText('Needed : 1');
 
 	//the game
         mGame = new LinkChooser("Game Chooser");
