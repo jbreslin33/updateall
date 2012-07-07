@@ -31,6 +31,7 @@
 
 	$period = checkForPeriods($schoolnameString);
 	$space = checkForSpaces($schoolnameString);
+	$number = checkForNumbers($schoolnameString);
 
 	//check for no numbers
 	//let's first convert to arrray
@@ -40,46 +41,6 @@
 
 	for ($i=0; $i < $arraySize; $i++)
 	{
-		if ($stringArray[$i] == '0')
-		{
-			$number = true; 
-		}
-		if ($stringArray[$i] == '1')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '2')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '3')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '4')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '5')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '6')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '7')
-		{
-			$number = true;
-		}
-		if ($stringArray[$i] == '8')
-		{
-			$number = true;
-		}	
-		if ($stringArray[$i] == '9')
-		{
-			$number = true;
-		}
 	}
 	
 	//----------------check for school existence-----------------------------------
