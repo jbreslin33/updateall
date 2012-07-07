@@ -6,6 +6,7 @@
 <?php include("../database/insert_into_students.php"); ?>
 <?php include("../database/insert_first_level_transaction.php"); ?>
 <?php include("../database/check_for_periods.php"); ?>
+<?php include("../database/check_for_spaces.php"); ?>
 
 <?php
 
