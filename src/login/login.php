@@ -1,6 +1,9 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/set_level_session_variables.php"); ?>
 <?php include("../database/select_school_id.php"); ?>
+<?php include("../database/select_user_id.php"); ?>
+<?php include("../database/select_teacher_id.php"); ?>
+<?php include("../database/select_student_id.php"); ?>
 
 <?php
 //db connection
