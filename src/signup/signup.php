@@ -1,7 +1,6 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/set_level_session_variables.php"); ?>
 <?php include("../database/insert_into_schools.php"); ?>
-<?php include("../database/select_school_id.php"); ?>
 <?php include("../database/insert_into_users.php"); ?>
 <?php include("../database/insert_into_teachers.php"); ?>
 <?php include("../database/insert_into_students.php"); ?>
@@ -10,6 +9,8 @@
 <?php include("../database/check_for_spaces.php"); ?>
 <?php include("../database/check_for_numbers.php"); ?>
 <?php include("../database/check_for_schools.php"); ?>
+<?php include("../database/select_school_id.php"); ?>
+<?php include("../database/select_user_id.php"); ?>
 
 <?php
 	//db connection
@@ -68,7 +69,8 @@
                         $_SESSION["school_name"] = "";
                 }
 		//insert user
-		$user_id = insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
+		insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
+		$user_id = selectUserID($conn, $_SESSION["school_id"]);
 		if ($user_id)
 		{	 
                 	//set sessions 
