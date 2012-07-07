@@ -11,6 +11,8 @@
 <?php include("../database/check_for_schools.php"); ?>
 <?php include("../database/select_school_id.php"); ?>
 <?php include("../database/select_user_id.php"); ?>
+<?php include("../database/select_teacher_id.php"); ?>
+<?php include("../database/select_student_id.php"); ?>
 
 <?php
 	//db connection
@@ -82,7 +84,8 @@
 		}
 
  		//insert teacher 
-                $teacher_id = insertIntoTeachers($conn,$_SESSION["user_id"]);
+                insertIntoTeachers($conn,$_SESSION["user_id"]);
+                $teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
                 if ($school_id)
                 {
                         $_SESSION["teacher_id"] = $teacher_id;
@@ -93,7 +96,8 @@
                 }
 
 	   	//insert student 
-                $student_id = insertIntoStudents($conn,$_SESSION["user_id"]);
+                insertIntoStudents($conn,$_SESSION["user_id"]);
+                $student_id = selectStudentID($conn,$_SESSION["user_id"]);
                 if ($school_id)
                 {
                         $_SESSION["student_id"] = $student_id;
