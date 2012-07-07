@@ -1,6 +1,7 @@
 <?php include("../database/db_connect.php"); ?>
 <?php include("../database/set_level_session_variables.php"); ?>
 <?php include("../database/insert_into_schools.php"); ?>
+<?php include("../database/select_school_id.php"); ?>
 <?php include("../database/insert_into_users.php"); ?>
 <?php include("../database/insert_into_teachers.php"); ?>
 <?php include("../database/insert_into_students.php"); ?>
@@ -55,7 +56,8 @@
 	else	
 	{
 		//insert school
-		$school_id = insertIntoSchools($conn,$_SESSION["school_name"]);
+		insertIntoSchools($conn,$_SESSION["school_name"]);
+		$school_id = selectSchoolID($conn,$_SESSION["school_name"]);
                 if ($school_id)
                 {      
                         $_SESSION["school_id"] = $school_id;
