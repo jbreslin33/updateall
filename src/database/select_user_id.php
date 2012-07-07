@@ -1,13 +1,17 @@
 <?php
 
-function selectUserID($conn,$school_id)
+function selectUserID($conn,$school_id,$username,$password)
 {
                 //----------------USER CHECK----------------------------------------------
                 //query string
                 $query = "select id from users where school_id = ";
                 $query .= $school_id;
                 $query .= " and ";
-                $query .= "username = 'root';";
+                $query .= "username = '";
+                $query .= $username;
+                $query .= "' and password = '";
+                $query .= $password;
+		$query .= "';";
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());

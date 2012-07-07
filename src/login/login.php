@@ -87,50 +87,23 @@ else
 	$problem = "no_school";	
 }
 
+  $user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"],$_SESSION["password"]);
+                if ($user_id)
+                {
+                        //set sessions
+                        $_SESSION["user_id"] = $user_id;
+                	$_SESSION["Login"] = "YES";
+                }
+                else
+                {
+                        $_SESSION["Login"] = "NO";
+			$problem = "no_user";	
+                	$_SESSION["user_id"] = 0;
+                }
 
-//now we have a valid school_id to query users table to see if they exist and then set sessions
-	//query string
-        $query = "select id, first_name, last_name from users where school_id = ";
-        $query .= $_SESSION["school_id"];
-        $query .= " and username = '";
-        $query .= $_SESSION["username"];
-        $query .= "' and password = '";
-        $query .= $_SESSION["password"];
-        $query .= "';";
 
-        //get db result
-        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-        dbErrorCheck($conn,$result);
 
-        //get numer of rows
-        $num = pg_num_rows($result);
 
-        if ($num > 0)
-        {
-
-                //get the id from user table
-                $user_id = pg_Result($result, 0, 'id');
-                $first_name = pg_Result($result, 0, 'first_name');
-                $last_name = pg_Result($result, 0, 'last_name');
-
-                //set user id, and first and last name to be used later
-                $_SESSION["user_id"] = $user_id;
-                $_SESSION["first_name"] = $first_name;
-                $_SESSION["last_name"] = $last_name;
-		
-		//set login var to yes  
-                $_SESSION["Login"] = "YES";
-
-        }
-        else
-        {
-		//set login var to yes  
-                $_SESSION["Login"] = "NO";
-                $_SESSION["user_id"] = 0;
-
-                //no record
-		$problem = "no_user";	
-        }
 
 //now we need to select the rest of the tables now not we have a legit user so we can properly fill out session vars and thus overwrite old values.
                         //----------------TEACHER CHECK----------------------------------------------

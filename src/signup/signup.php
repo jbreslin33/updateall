@@ -72,7 +72,7 @@
                 }
 		//insert user
 		insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
-		$user_id = selectUserID($conn, $_SESSION["school_id"]);
+		$user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"], $_SESSION["password"]);
 		if ($user_id)
 		{	 
                 	//set sessions 
