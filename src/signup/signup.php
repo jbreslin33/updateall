@@ -24,11 +24,6 @@
 
 	$schoolnameString = $_SESSION["school_name"];
 
-	$number = false;
-	$period = false;
-	$space =  false;
-
-
 	$period = checkForPeriods($schoolnameString);
 	$space = checkForSpaces($schoolnameString);
 	$number = checkForNumbers($schoolnameString);
