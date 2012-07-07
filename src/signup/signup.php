@@ -27,7 +27,6 @@
 	$period = checkForPeriods($schoolnameString);
 	$space = checkForSpaces($schoolnameString);
 	$number = checkForNumbers($schoolnameString);
-
 	$taken = checkForSchools($conn,$_SESSION["school_name"]);
 
 	if ($taken || $number || $period || $space || $_SESSION["school_name"] == '')
