@@ -33,16 +33,6 @@
 	$space = checkForSpaces($schoolnameString);
 	$number = checkForNumbers($schoolnameString);
 
-	//check for no numbers
-	//let's first convert to arrray
-	$stringArray = str_split($schoolnameString);	
-
-	$arraySize = count($stringArray);
-
-	for ($i=0; $i < $arraySize; $i++)
-	{
-	}
-	
 	//----------------check for school existence-----------------------------------
 	$taken = false;	
         
