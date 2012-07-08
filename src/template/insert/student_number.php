@@ -39,7 +39,7 @@ $newUsername = $userExtensionNumber;
 
 
                 //insert student
- //               insertIntoStudents($conn,$new_user_id);
+                insertIntoStudents($conn,$new_user_id);
 
   //              insertFirstLevelTransaction($conn,$new_user_id"]);
 
