@@ -125,7 +125,7 @@ else
        $_SESSION["student_id"] = 0;
 }
 
-setLevelSessionVariables($conn);
+setLevelSessionVariables($conn,$user_id);
 
 if ($problem == "")
 {

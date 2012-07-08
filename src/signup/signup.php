@@ -70,6 +70,7 @@
                         $_SESSION["school_id"] = 0;
                         $_SESSION["school_name"] = "";
                 }
+
 		//insert user
 		insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
 		$user_id = selectUserID($conn, $_SESSION["school_id"],$_SESSION["username"], $_SESSION["password"]);
@@ -85,32 +86,14 @@
 
  		//insert teacher 
                 insertIntoTeachers($conn,$_SESSION["user_id"]);
-                $teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
-                if ($school_id)
-                {
-                        $_SESSION["teacher_id"] = $teacher_id;
-                }
-                else
-                {
-                        $_SESSION["teacher_id"] = 0;
-                }
 
 	   	//insert student 
                 insertIntoStudents($conn,$_SESSION["user_id"]);
-                $student_id = selectStudentID($conn,$_SESSION["user_id"]);
-                if ($school_id)
-                {
-                        $_SESSION["student_id"] = $student_id;
-                }
-                else
-                {
-                        $_SESSION["student_id"] = 0;
-                }
 
-		insertFirstLevelTransaction($conn,$_SESSION["student_id"]);
+		insertFirstLevelTransaction($conn,$_SESSION["user_id"]);
 
 		//set session levels
-		setLevelSessionVariables($conn);
+		setLevelSessionVariables($conn,$user_id);
 
 
        		//--------------------------------------------------------------

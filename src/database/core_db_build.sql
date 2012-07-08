@@ -122,14 +122,12 @@ CREATE TABLE users (
 --TEACHERS
 CREATE TABLE teachers (
     id integer NOT NULL,
-    user_id integer UNIQUE,  
     room_id integer
 );
 
 --STUDENTS
 CREATE TABLE students (
     id integer NOT NULL,
-    user_id integer UNIQUE, 
     teacher_id integer 
 );
 
@@ -330,20 +328,8 @@ CREATE SEQUENCE schools_id_seq
     CACHE 1;
 
 --STUDENTS
-CREATE SEQUENCE students_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 --TEACHERS
-CREATE SEQUENCE teachers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 --ROOMS
 CREATE SEQUENCE rooms_id_seq
@@ -632,14 +618,8 @@ ALTER SEQUENCE schools_id_seq OWNED BY schools.id;
 ALTER TABLE ONLY schools ALTER COLUMN id SET DEFAULT nextval('schools_id_seq'::regclass);
 
 --STUDENTS
-ALTER TABLE public.students_id_seq OWNER TO postgres;
-ALTER SEQUENCE students_id_seq OWNED BY students.id;
-ALTER TABLE ONLY students ALTER COLUMN id SET DEFAULT nextval('students_id_seq'::regclass);
 
 --TEACHERS
-ALTER TABLE public.teachers_id_seq OWNER TO postgres;
-ALTER SEQUENCE teachers_id_seq OWNED BY teachers.id;
-ALTER TABLE ONLY teachers ALTER COLUMN id SET DEFAULT nextval('teachers_id_seq'::regclass);
 
 --ROOMS
 ALTER TABLE public.rooms_id_seq OWNER TO postgres;
@@ -867,12 +847,10 @@ ALTER TABLE users ADD FOREIGN KEY (school_id) REFERENCES schools(id);
 --SCHOOLS
 
 --STUDENTS
-ALTER TABLE students ADD UNIQUE (user_id);
-ALTER TABLE students ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE students ADD FOREIGN KEY (id) REFERENCES users(id);
 
 --TEACHERS
-ALTER TABLE teachers ADD UNIQUE (user_id);
-ALTER TABLE teachers ADD FOREIGN KEY (user_id) REFERENCES users(id);
+ALTER TABLE teachers ADD FOREIGN KEY (id) REFERENCES users(id);
 
 --ROOMS
 ALTER TABLE rooms ADD FOREIGN KEY (school_id) REFERENCES schools(id);

@@ -4,7 +4,7 @@ function insertIntoStudents($conn,$user_id)
 {
  		//--------------------INSERT INTO TEACHERS----------------
                 //query string 
-                $query = "INSERT INTO students (user_id) VALUES (";
+                $query = "INSERT INTO students (id) VALUES (";
                 $query .= $user_id;
                 $query .= ");";
                 

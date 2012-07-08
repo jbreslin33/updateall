@@ -1,11 +1,11 @@
 <?php
 
 
-function setLevelSessionVariables($conn)
+function setLevelSessionVariables($conn,$student_id)
 {
 
 	$query = "select advancement_time, level_id from levels_transactions where student_id = ";
-	$query .= $_SESSION["student_id"];
+	$query .= $student_id;
 	$query .= " ORDER BY advancement_time DESC LIMIT 1";
 	$query .= ";";
 

@@ -35,18 +35,6 @@ echo "<br>";
 echo "<br>";
 
 
-echo "teacher_id: ";
-echo $_SESSION["teacher_id"];
-echo "<br>";
-echo "<br>";
-
-
-echo "student_id: ";
-echo $_SESSION["student_id"];
-echo "<br>";
-echo "<br>";
-
-
 echo "last_level_id: ";
 echo $_SESSION["last_level_id"];
 echo "<br>";
