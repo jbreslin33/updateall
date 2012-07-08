@@ -1,5 +1,9 @@
 <?php 
 include("../headers/header.php");
+include("../../database/insert_into_users.php"); 
+include("../../database/insert_into_students.php"); 
+include("../../database/insert_first_level_transaction.php"); 
+include("../../database/select_user_id.php"); 
 
 session_start();
 
