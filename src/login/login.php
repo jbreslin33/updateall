@@ -103,29 +103,12 @@ else
        	$_SESSION["user_id"] = 0;
 }
 
-//set teacher sessions
-$teacher_id = selectTeacherID($conn,$_SESSION["user_id"]);
-if ($school_id)
-{
-        $_SESSION["teacher_id"] = $teacher_id;
-}
-else
-{
-        $_SESSION["teacher_id"] = 0;
-}
-
 //set student sessions
 $student_id = selectStudentID($conn,$_SESSION["user_id"]);
-if ($school_id)
+if ($student_id)
 {
-        $_SESSION["student_id"] = $student_id;
+	setLevelSessionVariables($conn,$user_id);
 }
-else
-{
-       $_SESSION["student_id"] = 0;
-}
-
-setLevelSessionVariables($conn,$user_id);
 
 if ($problem == "")
 {
