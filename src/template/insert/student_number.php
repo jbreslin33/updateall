@@ -32,19 +32,15 @@ $userExtensionNumber = $numberOfRows;
 $newUsername = $userExtensionNumber;
 
 //let's actually add the user
-  //insert user
+insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 
-                insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
-                $new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
+//get new user id
+$new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
+//insert student
+insertIntoStudents($conn,$new_user_id);
 
-                //insert student
-                insertIntoStudents($conn,$new_user_id);
-
-                insertFirstLevelTransaction($conn,$new_user_id);
-
-
-
+insertFirstLevelTransaction($conn,$new_user_id);
 
 //go to success page
 header("Location: ../select/student.php");
