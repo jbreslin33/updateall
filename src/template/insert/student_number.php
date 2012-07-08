@@ -28,7 +28,19 @@ $userExtensionNumber = $numberOfRows;
 $newUsername = $userExtensionNumber;
 
 //let's actually add the user
+  //insert user
+/*
+                insertIntoUsers($conn,$_SESSION["username"], $_SESSION["password"], $_SESSION["school_id"]);
+                $new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
+                //insert teacher
+                insertIntoTeachers($conn,$new_user_id);
+
+                //insert student
+                insertIntoStudents($conn,$new_user_id);
+
+                insertFirstLevelTransaction($conn,$new_user_id"]);
+*/
 
 
 
