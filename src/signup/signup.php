@@ -93,7 +93,7 @@
 		insertFirstLevelTransaction($conn,$_SESSION["user_id"]);
 
 		//set session levels
-		setLevelSessionVariables($conn,$user_id);
+		setLevelSessionVariables($conn,$_SESSION["user_id"]);
 
 
        		//--------------------------------------------------------------

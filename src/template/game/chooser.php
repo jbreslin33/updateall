@@ -1,40 +1,6 @@
 <?php 
 include("../headers/header.php");
 
-//session_start();
-//$conn = db_connect();
-
-//---------------------------------------FIND LEVEL---------------------------
-//this query could be more efficient maybe
-/*
-$query = "select advancement_time, level_id from levels_transactions where student_id = ";
-$query .= $_SESSION["student_id"];
-$query .= " ORDER BY advancement_time LIMIT 1";
-$query .= ";";
-
- //get db result
-                        $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
-                        dbErrorCheck($conn,$result);
-
-                        //get numer of rows
-                        $num = pg_num_rows($result);
-
-                        if ($num > 0)
-                        {
-                                //get the id from user table
-                                $level_id = pg_Result($result, 0, 'last_level_id');
-
-                                //set level_id
-                                $_SESSION["level_id"] = $level_id;
-                        }
-                        else
-                        {
-                                // no transaction in level_transactions so set level_id to 1
-                                $_SESSION["level_id"] = 1;
-                        }
-
-*/
-
 
 /******* join games and games_levels  ***************/
 $query = "select games.game, games_levels.url, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
