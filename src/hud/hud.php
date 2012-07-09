@@ -10,13 +10,17 @@ var Hud = new Class(
         {
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
-        northBoundsABCANDYOU = new Shape(120, y,  0,  0,"","","","red","boundary");
-        northBoundsABCANDYOU.setText('ABCANDYOU');
+        a = new Shape(120, y,  0,  0,"","","","red","boundary");
+        a.setText('<a href = ""> MAIN</a>');
+	
+	//<a href="../main/main.php">MAIN PAGE</a>
+	//a.href = link; // For browsers that don't support setAttribute
+	//a.setAttribute('href', link); 
 
         northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
         northBoundsUser.setText('User : ' + username);
-
-        northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
+        
+	northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
         northBoundsMathLevel.setText('Level : ' + next_level);
 
         northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
