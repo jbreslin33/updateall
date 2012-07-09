@@ -3,9 +3,6 @@
   session_start();
 ?>
 
-<?php
-include("stats.php");
- ?>
 
 <p1>LINKS:<p1>
 <br>
@@ -34,5 +31,9 @@ if ($_SESSION["username"] == "root")
 include("selects.php");
  ?>
 
+
+<?php
+include("stats.php");
+ ?>
 
 
