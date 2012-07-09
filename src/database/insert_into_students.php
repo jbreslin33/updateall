@@ -1,11 +1,13 @@
 <?php
 
-function insertIntoStudents($conn,$user_id)
+function insertIntoStudents($conn,$user_id,$teacher_id)
 {
- 		//--------------------INSERT INTO TEACHERS----------------
+ 		//--------------------INSERT INTO STUDENTS----------------
                 //query string 
-                $query = "INSERT INTO students (id) VALUES (";
+                $query = "INSERT INTO students (id,teacher_id) VALUES (";
                 $query .= $user_id;
+                $query .= ",";
+                $query .= $teacher_id;
                 $query .= ");";
                 
                 // insert into users......

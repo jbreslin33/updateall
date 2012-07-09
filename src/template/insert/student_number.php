@@ -22,7 +22,7 @@ insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 $new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
 //insert student
-insertIntoStudents($conn,$new_user_id);
+insertIntoStudents($conn,$new_user_id,0);
 
 //insert first transaction for levels to lowest level
 insertFirstLevelTransaction($conn,$new_user_id);

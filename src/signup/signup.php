@@ -88,7 +88,7 @@
                 insertIntoTeachers($conn,$_SESSION["user_id"]);
 
 	   	//insert student 
-                insertIntoStudents($conn,$_SESSION["user_id"]);
+                insertIntoStudents($conn,$_SESSION["user_id"],0);
 
 		insertFirstLevelTransaction($conn,$_SESSION["user_id"]);
 
