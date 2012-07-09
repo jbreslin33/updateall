@@ -84,8 +84,8 @@ window.addEvent('domready', function()
 
 
        	mHud = new Hud();
-        northBoundsScoreNeeded.setText('Needed : ' + scoreNeeded);
-	northBoundsGameName.setText('DUNGEON');	
+        northBoundsScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+	northBoundsGameName.setText('<font size="2">DUNGEON</font>');	
 
 	
 	//GAME

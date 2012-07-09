@@ -10,17 +10,17 @@ var Hud = new Class(
         {
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
-        a = new Shape(120, y,  0,  0,"","","","red","boundary");
-        a.setText('<font size="1"> <a href = "../main/main.php"> MAIN</a> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
-//<font size="6">	
-        northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
+        links = new Shape(120, y,  0,  0,"","","","red","boundary");
+        links.setText('<font size="1"> <a href = "../main/main.php"> MAIN</a> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
+        
+	northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
         northBoundsUser.setText('<font size="2"> User : ' + username + '</font>');
         
 	northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
-        northBoundsMathLevel.setText('Level : ' + next_level);
+        northBoundsMathLevel.setText('<font size="2"> Level : ' + next_level + '</font>');
 
         northBoundsScore = new Shape    (120, y,360,  0,"","","","LawnGreen","boundary");
-        northBoundsScore.setText('Score : ');
+        northBoundsScore.setText('<font size="2"> Score : </font>');
 
         northBoundsScoreNeeded = new Shape    (120, y,480,  0,"","","","cyan","boundary");
 

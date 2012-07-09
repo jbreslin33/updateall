@@ -85,8 +85,8 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 
 	mHud = new Hud();
-        northBoundsScoreNeeded.setText('Needed : 1');
-	northBoundsGameName.setText('GAME CHOOSER');
+        northBoundsScoreNeeded.setText('<font size="2"> Needed : 1 </font>');
+	northBoundsGameName.setText('<font size="2">GAME CHOOSER</font>');
 
 	//the game
         mGame = new LinkChooser("Game Chooser");
