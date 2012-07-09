@@ -258,7 +258,8 @@ CREATE TABLE subtraction (
 CREATE TABLE games (
     id integer NOT NULL,
     game text NOT NULL UNIQUE,
-    url text NOT NULL
+    url text NOT NULL,
+    picture text NOT NULL
 );
 
 --GAMES_LEVELS
@@ -1182,7 +1183,7 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 --==================================================================
 
 --GAMES
-insert into games (game,url) values ('Dungeon','../../games/dungeon.php');
+insert into games (game,url,picture) values ('Dungeon','../../games/dungeon.php','../../../images/doors/door_open.png');
 
 --GAMES_LEVELS
 insert into games_levels (level_id,game_id,url) values  (1,1,'../../template/math/count/count.php');

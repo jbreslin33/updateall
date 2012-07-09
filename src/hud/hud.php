@@ -10,9 +10,12 @@ var Hud = new Class(
         {
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
-        links = new Shape(120, y,  0,  0,"","","","red","boundary");
-        links.setText('<font size="1"> <a href = "../main/main.php"> MAIN</a> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
+        linksMain = new Shape(60, y,  0,  0,"","","","#F8CDF8","boundary");
+        linksMain.setText('<font size="1"> <a href = "../main/main.php"> MAIN</a> </font>');
         
+	linksLogout = new Shape     (60, y,60,  0,"","","","red","boundary");
+        linksLogout.setText('<font size="1"> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
+	
 	northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
         northBoundsUser.setText('<font size="2"> User : ' + username + '</font>');
         
@@ -24,7 +27,7 @@ var Hud = new Class(
 
         northBoundsScoreNeeded = new Shape    (120, y,480,  0,"","","","cyan","boundary");
 
-        northBoundsGameName = new Shape (170, y,600,  0,"","","","#DBCCE6","boundary");
+        northBoundsGameName = new Shape (170, y,600,  0,"","","","#F8CDF8","boundary");
 
         eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
         eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
