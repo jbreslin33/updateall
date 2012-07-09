@@ -4,5 +4,5 @@ include("../headers/header.php");
 include("../navigation/navigation_top_bar.php");
 
 ?>
-
+</body>
 </html>

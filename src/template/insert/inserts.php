@@ -1,7 +1,10 @@
-<?php 
 
-echo "<p1>INSERT:<p1>";
+
+<?php 
+include("../navigation/navigation_top_bar.php");
 ?>
+
+<p1>INSERT:<p1>";
 <br>
 
 <a href="../insert/student_number.php">INSERT STUDENT WITH NUMBER USERNAME</a>

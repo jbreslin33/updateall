@@ -1,8 +1,3 @@
-<?php
-  //start new session
-  session_start();
-?>
-
 <style type="text/css">
 ul
 {
@@ -40,7 +35,7 @@ background-color:#7A991A;
 <li><a href="../main/main.php">Home</a></li>
 <li><a href="../game/chooser.php">Play</a></li>
 <li><a href="../insert/inserts.php">Inserts</a></li>
-<li><a href="../select/selects.php">Selects</a></li>
+<li><a href="../navigation/select.php">Selects</a></li>
 <li><a href="../stats/stats.php">Stats</a></li>
 </ul>
 

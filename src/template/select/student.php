@@ -1,7 +1,8 @@
 <?php 
-include("../headers/header.php");
-include("../links/links.php");
+include("../navigation/select.php");
+?>
 
+<?php
 echo "<b><u>My Students:<u><b><br>";
 
 $query = "select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = ";
