@@ -1,6 +1,5 @@
-<?php 
-include("../headers/header.php");
-include("../links/links.php");
+<?php
+include("../navigation/select.php");
 
 echo "<b><u>My Teachers:<u><b><br>";
 
