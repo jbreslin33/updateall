@@ -16,9 +16,6 @@ echo "<p1>INSERT:<p1>";
 <a href="../insert/class_size.php">INSERT CLASS</a>
 <br>
 
-<a href="../insert/homeroom_size.php">INSERT HOMEROOM</a>
-<br>
-
 <a href="../insert/school_size.php">INSERT SCHOOL</a>
 <br>
 <br>
