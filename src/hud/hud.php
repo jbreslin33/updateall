@@ -11,7 +11,7 @@ var Hud = new Class(
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
         a = new Shape(120, y,  0,  0,"","","","red","boundary");
-        a.setText('<a href = ""> MAIN</a>');
+        a.setText('<a href = "../main/main.php"> MAIN</a>');
 	
 	//<a href="../main/main.php">MAIN PAGE</a>
 	//a.href = link; // For browsers that don't support setAttribute
