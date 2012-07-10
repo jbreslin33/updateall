@@ -1,8 +1,26 @@
-<?php 
-//standard header for most games i hope. it handles some basic html and level db call
-include("../headers/header.php");
-include("../navigation/navigation_top_bar.php");
+<!DOCTYPE html>
 
+<html>
+
+<head>
+
+<?php
+$docRoot = getenv("DOCUMENT_ROOT");
+echo $docRoot;
 ?>
+
+<link rel="stylesheet" type="text/css" href="../../css/green_style.css" />
+</head>
+
+<body>
+
+
+<?php
+include("../navigation/navigation_top_bar_links.php");
+?>
+
+
+
 </body>
 </html>
+
