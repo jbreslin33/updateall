@@ -112,7 +112,7 @@ if ($student_id)
 
 if ($problem == "")
 {
-        header("Location: ../template/main/main.php");
+        header("Location: ../template/home/home.php");
 }
 else
 {

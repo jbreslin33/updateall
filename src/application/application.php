@@ -103,10 +103,6 @@ var Application = new Class(
                 {
                         mApplication.mKey9 = true;
                	} 
-		if (event.key == 'm')
-                {
-                        window.location = "../../template/main/main.php";
-                }
         },
         
         keyUp: function(event)

@@ -99,7 +99,7 @@
        		//--------------------------------------------------------------
                 
 		$_SESSION["Login"] = "YES";
-       		header("Location: ../template/main/main.php");
+       		header("Location: ../template/home/home.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();
