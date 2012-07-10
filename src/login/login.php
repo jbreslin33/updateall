@@ -103,7 +103,7 @@ else
        	$_SESSION["user_id"] = 0;
 }
 
-//set student sessions
+//set level sessions if this is a student
 $student_id = selectStudentID($conn,$_SESSION["user_id"]);
 if ($student_id)
 {
