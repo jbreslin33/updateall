@@ -1,19 +1,19 @@
 <?php
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
-include("../database/set_level_session_variables.php"); 
-include("../database/insert_into_schools.php"); 
-include("../database/insert_into_users.php"); 
-include("../database/insert_into_teachers.php"); 
-include("../database/insert_into_students.php"); 
-include("../database/insert_first_level_transaction.php"); 
-include("../database/check_for_periods.php");
-include("../database/check_for_spaces.php"); 
-include("../database/check_for_numbers.php"); 
-include("../database/check_for_schools.php"); 
-include("../database/select_school_id.php"); 
-include("../database/select_user_id.php"); 
-include("../database/select_teacher_id.php"); 
-include("../database/select_student_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_variables.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_schools.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_students.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_periods.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_spaces.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_numbers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_schools.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_school_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_teacher_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php"); 
 
 	//db connection
 	$conn = dbConnect();
