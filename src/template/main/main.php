@@ -9,17 +9,14 @@ $docRoot = getenv("DOCUMENT_ROOT");
 echo $docRoot;
 ?>
 
-<link rel="stylesheet" type="text/css" href="../../css/green_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php $docRoot?>/updateall/src/css/green_style.css" />
 </head>
 
 <body>
 
-
 <?php
 include("../navigation/navigation_top_bar_links.php");
 ?>
-
-
 
 </body>
 </html>
