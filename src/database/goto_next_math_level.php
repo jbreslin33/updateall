@@ -17,7 +17,8 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 setLevelSessionVariables($conn,$_SESSION["user_id"]);
 
 //send player to the game page where he will be redirected.
-header("Location: ../template/game/chooser.php");
+//header("Location: " . getenv("DOCUMENT_ROOT") . "/updateall/src/template/game/chooser.php");
+header("Location: /updateall/src/template/game/chooser.php");
 
 ?>
 
