@@ -11,8 +11,10 @@
 
 <?php
 //$link = "../navigation/navigation_top_bar_links.php";
+echo getenv("DOCUMENT_ROOT");
+
 $link = "/home/jbreslin/public_html/updateall/src/template/navigation/navigation_top_bar_links.php";
-include("$link");
+include($link);
 ?>
 
 </body>
