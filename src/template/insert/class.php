@@ -60,6 +60,4 @@ for ($i = 0; $i < $number_of_students; $i++)
 header("Location: ../select/student.php");
 
 ?>
-</head>
-</html>
 

@@ -31,6 +31,4 @@ insertFirstLevelTransaction($conn,$new_user_id);
 header("Location: ../select/student.php");
 
 ?>
-</head>
-</html>
 

@@ -68,6 +68,4 @@ for ($c = 0; $c < $number_of_classes; $c++)
 header("Location: ../select/student.php");
 
 ?>
-</head>
-</html>
 
