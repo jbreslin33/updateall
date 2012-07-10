@@ -21,7 +21,7 @@ Extends: Game,
 				mApplication.log('complete');
                         	this.mOn = false;
                                	this.setFeedback("YOU WIN!!!");
-                               	window.location = "../../../database/goto_next_math_level.php"
+                               	window.location = "../../../database/goto_next_level.php"
 			}
                 }
         },
