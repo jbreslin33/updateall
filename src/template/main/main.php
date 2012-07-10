@@ -9,7 +9,7 @@ $docRoot = getenv("DOCUMENT_ROOT");
 echo $docRoot;
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?php $docRoot?>/updateall/src/css/green_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
 </head>
 
 <body>
