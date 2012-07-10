@@ -11,7 +11,7 @@ var Hud = new Class(
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
         linksMain = new Shape(60, y,  0,  0,"","","","#F8CDF8","boundary");
-        linksMain.setText('<font size="1"> <a href = "../home/home.php"> MAIN</a> </font>');
+        linksMain.setText('<font size="1"> <a href = "../home/home.php"> HOME</a> </font>');
         
 	linksLogout = new Shape     (60, y,60,  0,"","","","red","boundary");
         linksLogout.setText('<font size="1"> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
