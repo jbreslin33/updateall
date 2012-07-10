@@ -10,7 +10,8 @@
 <body>
 
 <?php
-$link = "../navigation/navigation_top_bar_links.php";
+//$link = "../navigation/navigation_top_bar_links.php";
+$link = "/home/jbreslin/public_html/updateall/src/template/navigation/navigation_top_bar_links.php";
 include("$link");
 ?>
 
