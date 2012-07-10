@@ -1,5 +1,5 @@
 <?php
-include("../database/db_connect.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
 include("../database/set_level_session_variables.php"); 
 include("../database/insert_into_schools.php"); 
 include("../database/insert_into_users.php"); 
