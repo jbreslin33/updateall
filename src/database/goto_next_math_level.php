@@ -1,8 +1,7 @@
-<?php include("../login/check_login.php"); ?>
-<?php include("../database/db_connect.php"); ?>
-<?php include("../database/set_level_session_variables.php"); ?>
-
 <?php
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/login/check_login.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_variables.php"); 
 
 $conn = dbConnect();
 
