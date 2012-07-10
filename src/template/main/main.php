@@ -10,7 +10,8 @@
 <body>
 
 <?php
-include("../navigation/navigation_top_bar_links.php");
+$link = "../navigation/navigation_top_bar_links.php";
+include("$link");
 ?>
 
 </body>
