@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 
 <html>
@@ -18,10 +14,11 @@ include("../../database/db_connect.php");
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/insert_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/select_links.php");
 
 
-echo "<b><u>My Students:<u><b><br>";
+echo "<br><b><u>My Students:<u><b><br>";
 
 $query = "select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = ";
 $query .= $_SESSION["school_id"];
