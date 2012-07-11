@@ -60,19 +60,19 @@ var endNumber = <?php echo $endNumber; ?>;
 </script>
 
 
-<script type="text/javascript" src="../../../math/point2D.php"></script>
-<script type="text/javascript" src="../../../bounds/bounds.php"></script>
-<script type="text/javascript" src="../../../game/game.php"></script>
-<script type="text/javascript" src="../../../game/dungeon.php"></script>
-<script type="text/javascript" src="../../../application/application.php"></script>
-<script type="text/javascript" src="../../../animation/animation.php"></script>
-<script type="text/javascript" src="../../../animation/animation_advanced.php"></script>
-<script type="text/javascript" src="../../../shape/shape.php"></script>
-<script type="text/javascript" src="../../../shape/shape_ai.php"></script>
-<script type="text/javascript" src="../../../div/div.php"></script>
-<script type="text/javascript" src="../../../question/question.php"></script>
-<script type="text/javascript" src="../../../quiz/quiz.php"></script>
-<script type="text/javascript" src="../../../hud/hud.php"></script>
+<script type="text/javascript" src="/updateall/src/math/point2D.php"></script>
+<script type="text/javascript" src="/updateall/src/bounds/bounds.php"></script>
+<script type="text/javascript" src="/updateall/src/game/game.php"></script>
+<script type="text/javascript" src="/updateall/src/game/dungeon.php"></script>
+<script type="text/javascript" src="/updateall/src/application/application.php"></script>
+<script type="text/javascript" src="/updateall/src/animation/animation.php"></script>
+<script type="text/javascript" src="/updateall/src/animation/animation_advanced.php"></script>
+<script type="text/javascript" src="/updateall/src/shape/shape.php"></script>
+<script type="text/javascript" src="/updateall/src/shape/shape_ai.php"></script>
+<script type="text/javascript" src="/updateall/src/div/div.php"></script>
+<script type="text/javascript" src="/updateall/src/question/question.php"></script>
+<script type="text/javascript" src="/updateall/src/quiz/quiz.php"></script>
+<script type="text/javascript" src="/updateall/src/hud/hud.php"></script>
 
 </head>
 
