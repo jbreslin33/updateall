@@ -109,7 +109,7 @@ window.addEvent('domready', function()
         mGame = new LinkChooser("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","../../../updateall/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","/updateall/images/characters/wizard.png","","controlObject");
 
  	//set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
