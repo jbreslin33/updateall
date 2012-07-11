@@ -7,7 +7,7 @@
 <script type="text/javascript" src="/updateall/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/login/check_login.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/web/login/check_login.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
 
 //db connection

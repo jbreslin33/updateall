@@ -1,5 +1,5 @@
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/login/check_login.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/web/login/check_login.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_variables.php"); 
 
