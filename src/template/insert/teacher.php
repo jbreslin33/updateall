@@ -1,14 +1,18 @@
 <?php 
-include("../headers/header.php");
-include("../../database/get_random_password.php"); 
-include("../../database/get_next_usernumber.php"); 
-include("../../database/insert_into_users.php"); 
-include("../../database/select_user_id.php"); 
-include("../../database/insert_into_teachers.php"); 
-include("../../database/insert_into_students.php"); 
-include("../../database/insert_first_level_transaction.php"); 
 
+//start session
 session_start();
+
+//db connection
+include("../../database/db_connect.php");
+$conn = dbConnect();
+
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_next_usernumber.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
 
 //get a password
 $password = getRandomPassword($conn);
@@ -22,14 +26,8 @@ insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 //get new user id
 $new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
-//insert teacher 
-insertIntoTeachers($conn,$new_user_id);
-
-//insert student
-insertIntoStudents($conn,$new_user_id,0);
-
-//insert first transaction for levels to lowest level
-insertFirstLevelTransaction($conn,$new_user_id);
+//insert teacher
+insertIntoTeachers($conn,$new_user_id,0);
 
 //go to success page
 header("Location: ../select/teacher.php");
