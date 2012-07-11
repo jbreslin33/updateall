@@ -17,7 +17,7 @@ var Hud = new Class(
         linksLogout.setText('<font size="1"> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
 	
 	northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
-        northBoundsUser.setText('<font size="2"> User : ' + username + '</font>');
+        northBoundsUser.setText('<font size="2"> loser : ' + username + '</font>');
         
 	northBoundsMathLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
         northBoundsMathLevel.setText('<font size="2"> Level : ' + next_level + '</font>');
