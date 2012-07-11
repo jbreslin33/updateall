@@ -100,7 +100,7 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php
        		//--------------------------------------------------------------
                 
 		$_SESSION["Login"] = "YES";
-       		header("Location: ../template/home/home.php");
+       		header("Location: /updateall/web/home/home.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();
