@@ -5,7 +5,7 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_var
 
 $conn = dbConnect();
 
-$query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,'";
+$query = "insert into levels_transactions (advancement_time, level_id, user_id) values (current_timestamp,'";
 $query .= $_SESSION["next_level_id"];
 $query .= "','";
 $query .= $_SESSION["user_id"];
