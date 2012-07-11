@@ -1,5 +1,12 @@
 <?php 
-include("../headers/header.php");
+
+session_start();
+//db connection
+include("../../database/db_connect.php");
+$conn = dbConnect();
+
+
+
 include("../../database/get_random_password.php"); 
 include("../../database/get_next_usernumber.php"); 
 include("../../database/insert_into_users.php"); 
