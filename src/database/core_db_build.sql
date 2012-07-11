@@ -146,7 +146,6 @@ CREATE TABLE permissions (
 
 --PERMISSIONS_USERS
 CREATE TABLE permissions_users (
-    id integer NOT NULL,
     permission_id integer NOT NULL,
     user_id integer NOT NULL  
 );
@@ -207,12 +206,11 @@ CREATE TABLE levels_transactions (
     id integer NOT NULL,
     advancement_time timestamp,
     level_id integer NOT NULL,
-    student_id integer NOT NULL
+    user_id integer NOT NULL
 );
 
 --LEVELS_STANDARDS
 CREATE TABLE levels_standards (
-    id integer NOT NULL,
     level_id integer NOT NULL,
     standard_id integer NOT NULL
 );
@@ -276,7 +274,7 @@ CREATE TABLE games_attempts (
     game_attempt_time_start timestamp,
     game_attempt_time_end timestamp,
     game_id integer NOT NULL,
-    student_id integer NOT NULL,
+    user_id integer NOT NULL,
     level_id integer NOT NULL --should this be standard_id?
 );
 
@@ -349,12 +347,6 @@ CREATE SEQUENCE permissions_id_seq
     CACHE 1;
 
 --PERMISSIONS_USERS
-CREATE SEQUENCE permissions_users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 --==================================================================
 --================= CORE CURRICULUM  ====================================
@@ -422,12 +414,6 @@ CREATE SEQUENCE levels_transactions_id_seq
     CACHE 1;
 
 --LEVELS_STANDARDS
-CREATE SEQUENCE levels_standards_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 --COUNTING
 CREATE SEQUENCE counting_id_seq
@@ -517,13 +503,13 @@ ALTER TABLE public.students OWNER TO postgres;
 ALTER TABLE public.teachers OWNER TO postgres;
 
 --ROOMS
---ALTER TABLE public.rooms OWNER TO postgres;
+ALTER TABLE public.rooms OWNER TO postgres;
 
 --PERMISSIONS
---ALTER TABLE public.permissions OWNER TO postgres;
+ALTER TABLE public.permissions OWNER TO postgres;
 
 --PERMISSIONS_USERS
---ALTER TABLE public.permissions_users OWNER TO postgres;
+ALTER TABLE public.permissions_users OWNER TO postgres;
 
 
 --==================================================================
@@ -633,9 +619,6 @@ ALTER SEQUENCE permissions_id_seq OWNED BY permissions.id;
 ALTER TABLE ONLY permissions ALTER COLUMN id SET DEFAULT nextval('permissions_id_seq'::regclass);
 
 --PERMISSIONS_USERS
-ALTER TABLE public.permissions_users_id_seq OWNER TO postgres;
-ALTER SEQUENCE permissions_users_id_seq OWNED BY permissions_users.id;
-ALTER TABLE ONLY permissions_users ALTER COLUMN id SET DEFAULT nextval('permissions_users_id_seq'::regclass);
 
 
 --==================================================================
@@ -683,9 +666,6 @@ ALTER SEQUENCE levels_transactions_id_seq OWNED BY levels_transactions.id;
 ALTER TABLE ONLY levels_transactions ALTER COLUMN id SET DEFAULT nextval('levels_transactions_id_seq'::regclass);
 
 --LEVELS_STANDARDS
-ALTER TABLE public.levels_standards_id_seq OWNER TO postgres;
-ALTER SEQUENCE levels_standards_id_seq OWNED BY levels_standards.id;
-ALTER TABLE ONLY levels_standards ALTER COLUMN id SET DEFAULT nextval('levels_standards_id_seq'::regclass);
 
 --COUNTING
 ALTER TABLE public.counting_id_seq OWNER TO postgres;
@@ -762,7 +742,7 @@ ALTER TABLE rooms ADD PRIMARY KEY (id);
 ALTER TABLE permissions ADD PRIMARY KEY (id);
 
 --PERMISSIONS_USERS
-ALTER TABLE permissions_users ADD PRIMARY KEY (id);
+ALTER TABLE permissions_users ADD PRIMARY KEY (permission_id,user_id);
 
 
 --==================================================================
@@ -796,7 +776,7 @@ ALTER TABLE levels ADD PRIMARY KEY (id);
 ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
 
 --LEVELS_STANDARDS
-ALTER TABLE levels_standards ADD PRIMARY KEY (id);
+ALTER TABLE levels_standards ADD PRIMARY KEY (level_id,standard_id);
 
 --COUNTING
 ALTER TABLE counting ADD PRIMARY KEY (id);
@@ -891,7 +871,7 @@ ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 --ALTER TABLE levels ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 
 --LEVELS_TRANSACTIONS
-ALTER TABLE levels_transactions ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE levels_transactions ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --LEVELS_STANDARDS
@@ -920,7 +900,7 @@ ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --GAMES_ATTEMPTS
 ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
-ALTER TABLE games_attempts ADD FOREIGN KEY (student_id) REFERENCES students(id);
+ALTER TABLE games_attempts ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE games_attempts ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 
@@ -984,7 +964,6 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --LEVELS_TRANSACTIONS
 
 --LEVELS_STANDARDS
-ALTER TABLE levels_standards ADD UNIQUE (level_id,standard_id);
 
 --COUNTING
 
@@ -1157,6 +1136,7 @@ insert into levels(level,description) values (10,'Count from 90 to 100');
 
 insert into levels(level,description) values (11,'Count Forward from Random num...');       
 
+--LEVELS_STANDARDS
 
 --LEVELS_TRANSACTIONS
 
