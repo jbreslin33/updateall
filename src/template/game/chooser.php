@@ -62,6 +62,8 @@ var username = "<?php echo $username; ?>";
 <script type="text/javascript" src="../../game/link_chooser.php"></script>
 <script type="text/javascript" src="../../application/application.php"></script>
 <script type="text/javascript" src="../../shape/shape.php"></script>
+<script type="text/javascript" src="../../animation/animation.php"></script>
+<script type="text/javascript" src="../../animation/animation_advanced.php"></script>
 <script type="text/javascript" src="../../div/div.php"></script>
 <script type="text/javascript" src="../../question/question.php"></script>
 <script type="text/javascript" src="../../quiz/quiz.php"></script>
@@ -69,7 +71,7 @@ var username = "<?php echo $username; ?>";
 
 </head>
 
-<body>
+<body bgcolor="grey">
 
 <script language="javascript">
 var mGame;
@@ -95,7 +97,35 @@ window.addEvent('domready', function()
         mGame = new LinkChooser("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","","blue","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","../../../updateall/images/characters/wizard.png","","controlObject");
+
+ 	//set animation instance
+        mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+
+        mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
+        mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
+
+        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "../../../../updateall/images/characters/wizard_north.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "../../../../updateall/images/characters/wizard_north.png";
+//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "../../../../updateall/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "../../../../updateall/images/characters/wizard_north_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "../../../../updateall/images/characters/wizard_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "../../../../updateall/images/characters/wizard_south_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "../../../../updateall/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "../../../../updateall/images/characters/wizard_south_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "../../../../updateall/images/characters/wizard_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "../../../../updateall/images/characters/wizard_north_west.png";
+
+
+
+
         mGame.addToShapeArray(mGame.mControlObject);
 	
 	mQuiz = new Quiz(1);
