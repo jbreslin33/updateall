@@ -95,19 +95,13 @@ if ($user_id)
 	//set sessions
         $_SESSION["user_id"] = $user_id;
       	$_SESSION["Login"] = "YES";
+	setLevelSessionVariables($conn,$user_id);
 }
 else
 {
         $_SESSION["Login"] = "NO";
 	$problem = "no_user";	
        	$_SESSION["user_id"] = 0;
-}
-
-//set level sessions if this is a student
-$student_id = selectStudentID($conn,$_SESSION["user_id"]);
-if ($student_id)
-{
-	setLevelSessionVariables($conn,$user_id);
 }
 
 if ($problem == "")

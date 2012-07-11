@@ -83,17 +83,18 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php
 		{
                 	$_SESSION["Login"] = "NO";
 		}
+	
+		//prime the level_transaction table	
+		insertFirstLevelTransaction($conn,$_SESSION["user_id"]);
+		
+		//set session levels
+		setLevelSessionVariables($conn,$_SESSION["user_id"]);
 
  		//insert teacher 
                 insertIntoTeachers($conn,$_SESSION["user_id"]);
 
 	   	//insert student 
                 insertIntoStudents($conn,$_SESSION["user_id"],0);
-
-		insertFirstLevelTransaction($conn,$_SESSION["user_id"]);
-
-		//set session levels
-		setLevelSessionVariables($conn,$_SESSION["user_id"]);
 
 
        		//--------------------------------------------------------------

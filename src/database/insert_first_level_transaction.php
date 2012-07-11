@@ -1,6 +1,6 @@
 <?php
 
-function insertFirstLevelTransaction($conn,$student_id)
+function insertFirstLevelTransaction($conn,$user_id)
 {
   //---------------- GET starting level id and next level id ----------------------------------------------
                 $query = "select id from levels order by level LIMIT 2;";
@@ -24,10 +24,10 @@ function insertFirstLevelTransaction($conn,$student_id)
                 }
 
                 //---------------- insert that level as your first level_transaction ----------------------------------------------
-                $query = "insert into levels_transactions (advancement_time, level_id,student_id) values (current_timestamp,";
+                $query = "insert into levels_transactions (advancement_time, level_id,user_id) values (current_timestamp,";
                 $query .= $completed_level_id;
                 $query .= ",";
-                $query .= $student_id;
+                $query .= $user_id;
                 $query .= ");";
 
                 //db call to update
