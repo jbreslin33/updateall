@@ -41,8 +41,11 @@ DROP TABLE schools cascade;
 
 DROP TABLE standards cascade;
 DROP TABLE clusters cascade;
+DROP TABLE domains_subjects_grades cascade;
+DROP TABLE domains_grades cascade;
+DROP TABLE domains_subjects cascade;
 DROP TABLE domains cascade;
-DROP TABLE grade_levels cascade;
+DROP TABLE grades cascade;
 DROP TABLE subjects cascade;
 
 --==================================================================
@@ -154,10 +157,10 @@ CREATE TABLE permissions_users (
 --==================== CORE CURRICULUM  ========================
 --==================================================================
 
---GRADE_LEVELS
-CREATE TABLE grade_levels (
+--GRADE
+CREATE TABLE grades (
     id integer NOT NULL,
-    grade_level text  
+    grade text  
 );
 
 --SUBJECTS
@@ -169,16 +172,37 @@ CREATE TABLE subjects (
 --DOMAINS
 CREATE TABLE domains (
     id integer NOT NULL,
-    domain text NOT NULL,
-    subject_id integer NOT NULL
+    domain text NOT NULL
 );
+
+--DOMAINS_SUBJECTS
+CREATE TABLE domains_subjects (
+    domain_id integer,
+    subject_id integer
+);
+
+--DOMAINS_GRADES
+CREATE TABLE domains_grades (
+    domain_id integer,
+    grade_id integer 
+);
+
+--DOMAINS_SUBJECTS_GRADES
+CREATE TABLE domains_subjects_grades (
+    domain_id integer,
+    subject_id integer,
+    grade_id integer 
+);
+
+
 
 --CLUSTERS
 CREATE TABLE clusters (
     id integer NOT NULL,
     cluster text NOT NULL,
     domain_id integer NOT NULL,
-    grade_level_id integer NOT NULL
+    subject_id integer NOT NULL,
+    grade_id integer NOT NULL
 );
 
 --STANDARDS
@@ -384,8 +408,8 @@ CREATE SEQUENCE standards_id_seq
     NO MAXVALUE
     CACHE 1;
 
---GRADE_LEVELS
-CREATE SEQUENCE grade_levels_id_seq
+--GRADES
+CREATE SEQUENCE grades_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -519,8 +543,8 @@ ALTER TABLE public.permissions_users OWNER TO postgres;
 --SUBJECTS
 ALTER TABLE public.subjects OWNER TO postgres;
 
---GRADE_LEVELS
-ALTER TABLE public.grade_levels OWNER TO postgres;
+--GRADES
+ALTER TABLE public.grades OWNER TO postgres;
 
 --DOMAINS
 ALTER TABLE public.domains OWNER TO postgres;
@@ -625,10 +649,10 @@ ALTER TABLE ONLY permissions ALTER COLUMN id SET DEFAULT nextval('permissions_id
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---GRADE_LEVELS
-ALTER TABLE public.grade_levels_id_seq OWNER TO postgres;
-ALTER SEQUENCE grade_levels_id_seq OWNED BY grade_levels.id;
-ALTER TABLE ONLY grade_levels ALTER COLUMN id SET DEFAULT nextval('grade_levels_id_seq'::regclass);
+--GRADES
+ALTER TABLE public.grades_id_seq OWNER TO postgres;
+ALTER SEQUENCE grades_id_seq OWNED BY grades.id;
+ALTER TABLE ONLY grades ALTER COLUMN id SET DEFAULT nextval('grades_id_seq'::regclass);
 
 --SUBJECTS
 ALTER TABLE public.subjects_id_seq OWNER TO postgres;
@@ -752,11 +776,20 @@ ALTER TABLE permissions_users ADD PRIMARY KEY (permission_id,user_id);
 --SUBJECTS
 ALTER TABLE subjects ADD PRIMARY KEY (id);
 
---GRADE_LEVELS
-ALTER TABLE grade_levels ADD PRIMARY KEY (id);
+--GRADES
+ALTER TABLE grades ADD PRIMARY KEY (id);
 
 --DOMAINS
 ALTER TABLE domains ADD PRIMARY KEY (id);
+
+--DOMAINS_SUBJECTS
+ALTER TABLE domains_subjects ADD PRIMARY KEY (domain_id, subject_id);
+
+--DOMAINS_GRADES
+ALTER TABLE domains_grades ADD PRIMARY KEY (domain_id, grade_id);
+
+--DOMAINS_SUBJECTS_GRADES
+ALTER TABLE domains_subjects_grades ADD PRIMARY KEY (domain_id, subject_id, grade_id);
 
 --CLUSTERS
 ALTER TABLE clusters ADD PRIMARY KEY (id);
@@ -848,16 +881,26 @@ ALTER TABLE permissions_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---GRADE_LEVELS
+--GRADES
 
 --SUBJECTS
 
 --DOMAINS
-ALTER TABLE domains ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--DOMAINS_SUBJECTS
+ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
+
+--DOMAINS_GRADES
+ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
+
+--DOMAINS_SUBJECTS_GRADES
+--is the first contraint superfulous?
+ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id, subject_id) REFERENCES domains_subjects(domain_id, subject_id);
+ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id, grade_id) REFERENCES domains_grades(domain_id, grade_id);
 
 --CLUSTERS
-ALTER TABLE clusters ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
-ALTER TABLE clusters ADD FOREIGN KEY (grade_level_id) REFERENCES grade_levels(id);
+ALTER TABLE clusters ADD FOREIGN KEY (domain_id, subject_id, grade_id) REFERENCES domains_subjects_grades(domain_id, subject_id, grade_id);
 
 --STANDARDS
 ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
@@ -944,7 +987,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---GRADE_LEVELS
+--GRADES
 
 --SUBJECTS
 
@@ -1018,20 +1061,20 @@ insert into permissions(permission) values ('INSERT');
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---GRADE_LEVEL
-insert into grade_levels (grade_level) values ('K');
-insert into grade_levels (grade_level) values ('1');
-insert into grade_levels (grade_level) values ('2');
-insert into grade_levels (grade_level) values ('3');
-insert into grade_levels (grade_level) values ('4');
-insert into grade_levels (grade_level) values ('5');
-insert into grade_levels (grade_level) values ('6');
-insert into grade_levels (grade_level) values ('7');
-insert into grade_levels (grade_level) values ('8');
-insert into grade_levels (grade_level) values ('9');
-insert into grade_levels (grade_level) values ('10');
-insert into grade_levels (grade_level) values ('11');
-insert into grade_levels (grade_level) values ('12');
+--GRADE
+insert into grades (grade) values ('K');
+insert into grades (grade) values ('1');
+insert into grades (grade) values ('2');
+insert into grades (grade) values ('3');
+insert into grades (grade) values ('4');
+insert into grades (grade) values ('5');
+insert into grades (grade) values ('6');
+insert into grades (grade) values ('7');
+insert into grades (grade) values ('8');
+insert into grades (grade) values ('9');
+insert into grades (grade) values ('10');
+insert into grades (grade) values ('11');
+insert into grades (grade) values ('12');
 
 --SUBJECTS
 insert into subjects (subject) values ('Math');
@@ -1041,6 +1084,7 @@ insert into subjects (subject) values ('Science');
 insert into subjects (subject) values ('Technical');
 
 --DOMAINS
+/*
 insert into domains (domain,subject_id) values ('Counting and Cardinality',1); --1
 insert into domains (domain,subject_id) values ('Operations and Algebraic Thinking',1); --2
 insert into domains (domain,subject_id) values ('Number and Operations in Base Ten',1); --3
@@ -1098,14 +1142,16 @@ insert into domains (domain,subject_id) values ('Reading Standards for Literacy 
 insert into domains (domain,subject_id) values ('Reading Standards for Literacy in Science and Technical Subjects',3); --53
 insert into domains (domain,subject_id) values ('College and Career Readiness Anchor Standards for Writing',3); --54
 insert into domains (domain,subject_id) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects',3); --55
-
+*/
 --CLUSTERS
-insert into clusters (cluster,domain_id,grade_level_id) values ('Know number names and the count sequence.',1,1);
-insert into clusters (cluster,domain_id,grade_level_id) values ('Count to tell the number of objects.',1,1);
+/*
+insert into clusters (cluster,domain_id,grade_id) values ('Know number names and the count sequence.',1,1);
+insert into clusters (cluster,domain_id,grade_id) values ('Count to tell the number of objects.',1,1);
 
-insert into clusters (cluster,domain_id,grade_level_id) values ('Key Ideas and Details.',39,1);
-
+insert into clusters (cluster,domain_id,grade_id) values ('Key Ideas and Details.',39,1);
+*/
 --STANDARDS
+/*
 insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1);
 insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2',1);
@@ -1115,7 +1161,7 @@ insert into standards (standard,standard_code,cluster_id) values ('Understand th
 insert into standards (standard,standard_code,cluster_id) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a',2);
 
 insert into standards (standard,standard_code,cluster_id) values ('With prompting and support, ask and answer questions about key details in a text.','1',3);
-
+*/
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -1211,7 +1257,7 @@ insert into passwords (password) values ('awe');
 insert into passwords (password) values ('axe'); 
 insert into passwords (password) values ('aye'); 
 insert into passwords (password) values ('ays'); 
-
+/*
 insert into passwords (password) values ('baa'); 
 insert into passwords (password) values ('bad'); 
 insert into passwords (password) values ('bag'); 
@@ -1966,6 +2012,7 @@ insert into passwords (password) values ('zip');
 insert into passwords (password) values ('zoa'); 
 insert into passwords (password) values ('zuz'); 
 insert into passwords (password) values ('zzz'); 
+*/
 --------------------REVOKE AND GRANT---------------------------------------
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
