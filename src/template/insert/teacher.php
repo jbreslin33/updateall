@@ -11,6 +11,7 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.p
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_next_usernumber.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_students.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
 
@@ -25,6 +26,12 @@ insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 
 //get new user id
 $new_user_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
+
+//insert teacher
+insertIntoStudents($conn,$new_user_id,0);
+
+//transaction
+insertFirstLevelTransaction($conn,$new_user_id);
 
 //insert teacher
 insertIntoTeachers($conn,$new_user_id,0);
