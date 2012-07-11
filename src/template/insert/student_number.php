@@ -5,9 +5,7 @@ session_start();
 include("../../database/db_connect.php");
 $conn = dbConnect();
 
-
-
-include("../../database/get_random_password.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
 include("../../database/get_next_usernumber.php"); 
 include("../../database/insert_into_users.php"); 
 include("../../database/select_user_id.php"); 
