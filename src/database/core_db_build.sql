@@ -911,7 +911,6 @@ ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 --==================================================================
 
 --LEVELS
---ALTER TABLE levels ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 
 --LEVELS_TRANSACTIONS
 ALTER TABLE levels_transactions ADD FOREIGN KEY (user_id) REFERENCES users(id);
@@ -1194,6 +1193,15 @@ insert into levels(level,description) values (10,'Count from 90 to 100');
 insert into levels(level,description) values (11,'Count Forward from Random num...');       
 
 --LEVELS_STANDARDS
+insert into levels_standards(level_id, standard_id) values (1,1);       
+--insert into levels_standards(level_id, standard_id) values (2,1); this is the start of journey level_id      
+insert into levels_standards(level_id, standard_id) values (3,1);       
+insert into levels_standards(level_id, standard_id) values (4,1);       
+insert into levels_standards(level_id, standard_id) values (5,1);       
+insert into levels_standards(level_id, standard_id) values (6,1);       
+insert into levels_standards(level_id, standard_id) values (7,1);       
+insert into levels_standards(level_id, standard_id) values (8,1);       
+insert into levels_standards(level_id, standard_id) values (9,1);       
 
 --LEVELS_TRANSACTIONS
 
