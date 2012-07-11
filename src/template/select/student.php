@@ -1,9 +1,19 @@
 <?php 
-include("../navigation/select.php");
+session_start();
+
 
 //db connection
 include("../../database/db_connect.php");
 $conn = dbConnect();
+
+
+
+
+
+
+
+
+
 
 echo "<b><u>My Students:<u><b><br>";
 

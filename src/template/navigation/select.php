@@ -1,26 +1,19 @@
+<!DOCTYPE html>
+
 <html>
+
 <head>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+</head>
 
-<title>ABC AND YOU</title>
-
-<!-- mootools -->
-<script type="text/javascript" src="../../mootools/mootools-core-1.4.5-full-compat.js"></script>
-
+<body>
 <?php
-include("../../login/check_login.php");
-include("../navigation/navigation_top_bar.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/insert_links.php");
 ?>
+</body>
 
-<br>
-
-<ul>
-<li><a href="../select/student.php">Select Students</a></li>
-<li><a href="../select/teacher.php">Select Teachers</a></li>
-<li><a href="../select/class.php">Select Classes</a></li>
-<li><a href="../select/school.php">Select Schools</a></li>
-</ul>
-
-<br>
-
+</html>
 
 
