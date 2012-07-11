@@ -3,7 +3,7 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/css/green_block.css" />
 </head>
 
 <body>
