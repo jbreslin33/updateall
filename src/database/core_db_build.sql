@@ -1142,13 +1142,27 @@ insert into domains (domain) values ('Reading Standards for Literacy in Science 
 insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --54
 insert into domains (domain) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects'); --55
 
---CLUSTERS
-/*
-insert into clusters (cluster,domain_id,grade_id) values ('Know number names and the count sequence.',1,1);
-insert into clusters (cluster,domain_id,grade_id) values ('Count to tell the number of objects.',1,1);
+--DOMAINS_SUBJECTS
+insert into domains_subjects (domain_id, subject_id) values (1,1); 
 
-insert into clusters (cluster,domain_id,grade_id) values ('Key Ideas and Details.',39,1);
-*/
+insert into domains_subjects (domain_id, subject_id) values (39,2); 
+
+--DOMAINS_GRADES
+insert into domains_grades (domain_id, grade_id) values (1,1); 
+
+insert into domains_grades (domain_id, grade_id) values (39,1); 
+
+--DOMAINS_SUBJECTS_GRADES
+insert into domains_subjects_grades (domain_id, subject_id, grade_id) values (1,1,1); 
+
+insert into domains_subjects_grades (domain_id, subject_id, grade_id) values (39,2,1); 
+
+--CLUSTERS
+insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Know number names and the count sequence.',1,1,1);
+insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Count to tell the number of objects.',1,1,1);
+
+insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Key Ideas and Details.',39,2,1);
+
 --STANDARDS
 /*
 insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1);
