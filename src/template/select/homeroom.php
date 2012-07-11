@@ -1,42 +1,63 @@
-<?php 
-include("../headers/header.php");
-include("../links/links.php");
+<!DOCTYPE html>
 
-echo "My Homerooms";
+<html>
 
-//we first need some info, we need to know the username of admin 
-$admin = $_SESSION["username"]; 
+<head>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+</head>
 
-//first we need all the passwords then we can pick one at random
-$admin = $_SESSION["username"];
-$query = "select homeroom, teacher from homerooms where admin = '$admin';";
+<body>
+<?php
+session_start();
+//db connection
+include("../../database/db_connect.php");
+$conn = dbConnect();
+
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/select_links.php");
+
+
+echo "<br><b><u>My Students:<u><b><br>";
+
+$query = "select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = ";
+$query .= $_SESSION["school_id"];
+$query .= ";";
+
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
-
 ?>
 
 <table border="1">
   <tr>
-   <th>Home Room</th>
-   <th>Teacher</th>
+   <th>ID</th>
+   <th>USERNAME</th>
+   <th>PASSWORD</th>
+   <th>FIRST NAME</th>
+   <th>LAST NAME</th>
   </tr>
 
-<?
+<?php
    // Loop on rows in the result set.
 
    for($ri = 0; $ri < $numrows; $ri++) {
     echo "<tr>\n";
     $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["homeroom"], "</td>
-   <td>", $row["teacher"], "</td>
+    echo " <td>", $row["id"], "</td>
+   <td>", $row["username"], "</td>
+   <td>", $row["password"], "</td>
+   <td>", $row["first_name"], "</td>
+   <td>", $row["last_name"], "</td>
   </tr>
   ";
    }
    pg_close($conn);
   ?>
+
   </table>
 
-</head>
+</body>
+
 </html>
 

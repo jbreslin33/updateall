@@ -1,7 +1,24 @@
-<?php
-include("../navigation/select.php");
+<!DOCTYPE html>
 
-echo "<b><u>My Teachers:<u><b><br>";
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+</head>
+
+<body>
+<?php
+session_start();
+//db connection
+include("../../database/db_connect.php");
+$conn = dbConnect();
+
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/select_links.php");
+
+
+echo "<br><b><u>My Teachers:<u><b><br>";
 
 $query = "select teachers.id,  users.username, users.password, users.first_name, users.last_name from teachers join users on teachers.id = users.id where users.school_id = ";
 $query .= $_SESSION["school_id"];
@@ -10,7 +27,6 @@ $query .= ";";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
-
 ?>
 
 <table border="1">
@@ -22,7 +38,7 @@ $numrows = pg_numrows($result);
    <th>LAST NAME</th>
   </tr>
 
-<?
+<?php
    // Loop on rows in the result set.
 
    for($ri = 0; $ri < $numrows; $ri++) {
@@ -38,8 +54,10 @@ $numrows = pg_numrows($result);
    }
    pg_close($conn);
   ?>
+
   </table>
 
-</head>
+</body>
+
 </html>
 
