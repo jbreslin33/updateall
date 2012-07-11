@@ -115,7 +115,7 @@ window.addEvent('domready', function()
         }
  	
 	//CONTROL OBJECT
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"../../../../images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/updateall/images/characters/wizard.png","","controlObject");
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -163,7 +163,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","../../../database/goto_next_level.php"),"../../../../images/doors/door_closed.png","","wall");
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/updateall/src/database/goto_next_level.php"),"/updateall/images/doors/door_closed.png","","wall");
 	mGame.addToShapeArray(door);
                
 	//QUESTION SHAPES 
@@ -172,7 +172,7 @@ window.addEvent('domready', function()
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"../../../../images/treasure/gold_coin_head.png","","question"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/updateall/images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
@@ -201,7 +201,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","../../../../images/monster/red_monster.png","","chaser");
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/updateall/images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
         }
 
