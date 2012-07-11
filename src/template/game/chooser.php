@@ -4,7 +4,7 @@
 <title>ABC AND YOU</title>
 
 <!-- mootools -->
-<script type="text/javascript" src="../../mootools/mootools-core-1.4.5-full-compat.js"></script>
+<script type="text/javascript" src="/updateall/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/login/check_login.php"); 
