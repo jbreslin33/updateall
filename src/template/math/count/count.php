@@ -1,6 +1,18 @@
-<?php 
-//standard header for most games i hope. it handles some basic html and level db call
-include("../headers/header_math.php");
+<html>
+<head>
+
+<title>ABC AND YOU</title>
+
+<!-- mootools -->
+<script type="text/javascript" src="/updateall/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
+
+<?php
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/login/check_login.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php");
+
+//db connection
+$conn = dbConnect();
+
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select score_needed, count_by, start_number, end_number from counting where level_id = ";
