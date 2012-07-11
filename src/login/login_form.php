@@ -7,7 +7,13 @@
 
 <body>
 <?php
-      $mess = $_GET["message"];
+	//start session
+	session_start();
+
+	//and set Login to NO
+	$_SESSION["Login"] = "NO";
+
+      	$mess = $_GET["message"];
 	
 	if ($mess == "no_periods")
 	{
