@@ -124,16 +124,16 @@ window.addEvent('domready', function()
         mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
         mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
 
-        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "../../../../updateall/images/characters/wizard_north.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "../../../../updateall/images/characters/wizard_north.png";
-//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "../../../../updateall/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "../../../../updateall/images/characters/wizard_north_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "../../../../updateall/images/characters/wizard_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "../../../../updateall/images/characters/wizard_south_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "../../../../updateall/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "../../../../updateall/images/characters/wizard_south_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "../../../../updateall/images/characters/wizard_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "../../../../updateall/images/characters/wizard_north_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/updateall/images/characters/wizard_north.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/updateall/images/characters/wizard_north.png";
+//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/updateall/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/updateall/images/characters/wizard_north_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/updateall/images/characters/wizard_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/updateall/images/characters/wizard_south_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/updateall/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/updateall/images/characters/wizard_south_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "/updateall/images/characters/wizard_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "/updateall/images/characters/wizard_north_west.png";
 
 
 
