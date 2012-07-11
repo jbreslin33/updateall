@@ -11,8 +11,10 @@ var Hud = new Class(
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
         linksMain = new Shape(60, y,  0,  0,"","","","#F8CDF8","boundary");
-        linksMain.setText('<font size="1"> <a href = "../../template/home/home.php"> HOME</a> </font>');
-        
+        linksMain.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/template/home/home.php"> HOME</a> </font>');
+
+//       <link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" /> 
+
 	linksLogout = new Shape     (60, y,60,  0,"","","","red","boundary");
         linksLogout.setText('<font size="1"> <a href = "../../login/login_form.php"> LOGOUT</a> </font>');
 	
