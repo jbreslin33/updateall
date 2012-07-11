@@ -4,7 +4,7 @@
         mHudTitle.setText('ABCANDYOU');
 
         mHudUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
-        mHudUser.setText('User : ' + username);
+        mHudUser.setText('Loser : ' + username);
 
         mHudLevel = new Shape(120, y,240,  0,"","","","yellow","boundary");
         mHudLevel.setText('Level : ');
