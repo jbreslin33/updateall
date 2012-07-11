@@ -8,7 +8,7 @@
 
 <body>
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/web/navigation/top_links.php");
 ?>
 </body>
 
