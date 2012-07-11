@@ -1,18 +1,24 @@
-<?php 
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+</head>
+
+<body>
+<?php
 session_start();
-
-
 //db connection
 include("../../database/db_connect.php");
 $conn = dbConnect();
 
-
-
-
-
-
-
-
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/insert_links.php");
 
 
 echo "<b><u>My Students:<u><b><br>";
@@ -24,7 +30,6 @@ $query .= ";";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
-
 ?>
 
 <table border="1">
@@ -36,7 +41,7 @@ $numrows = pg_numrows($result);
    <th>LAST NAME</th>
   </tr>
 
-<?
+<?php
    // Loop on rows in the result set.
 
    for($ri = 0; $ri < $numrows; $ri++) {
@@ -52,8 +57,10 @@ $numrows = pg_numrows($result);
    }
    pg_close($conn);
   ?>
+
   </table>
 
-</head>
+</body>
+
 </html>
 
