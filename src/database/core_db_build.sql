@@ -1164,7 +1164,6 @@ insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Count t
 insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Key Ideas and Details.',39,2,1);
 
 --STANDARDS
-/*
 insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1);
 insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2',1);
@@ -1174,7 +1173,6 @@ insert into standards (standard,standard_code,cluster_id) values ('Understand th
 insert into standards (standard,standard_code,cluster_id) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a',2);
 
 insert into standards (standard,standard_code,cluster_id) values ('With prompting and support, ask and answer questions about key details in a text.','1',3);
-*/
 
 --==================================================================
 --================= LEVELS  ====================================
