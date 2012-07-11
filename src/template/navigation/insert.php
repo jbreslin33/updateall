@@ -1,19 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+</head>
+
+<body>
 <?php
-include("../headers/header.php");
-include("../navigation/navigation_top_bar.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/insert_links.php");
 ?>
+</body>
 
-<br>
-
-<ul>
-<li><a href="../insert/student_number.php">Insert Students with Number Username</a></li>
-<li><a href="../insert/student_word.php">Insert Students with Word Username</a></li>
-<li><a href="../insert/teacher.php">Insert Teachers</a></li>
-<li><a href="../insert/class_size.php">Insert Classes</a></li>
-<li><a href="../insert/school_size.php">Insert Schools</a></li>
-</ul>
-
-<br>
-
+</html>
 
 
