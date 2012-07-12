@@ -3,19 +3,19 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/css/green_block.css" />
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/css/green_block.css" />
 </head>
 
 <body>
 <?php
 session_start();
 //db connection
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 $conn = dbConnect();
 
-include(getenv("DOCUMENT_ROOT") . "/updateall/web/navigation/top_links.php");
+include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links.php");
 echo "<br>";
-include(getenv("DOCUMENT_ROOT") . "/updateall/web/select/links.php");
+include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 
 
 echo "<br><b><u>My Teachers:<u><b><br>";

@@ -4,11 +4,11 @@
 <title>ABC AND YOU</title>
 
 <!-- mootools -->
-<script type="text/javascript" src="/updateall/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
+<script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/web/login/check_login.php");
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 
 //db connection
 $conn = dbConnect();
@@ -60,19 +60,19 @@ var endNumber = <?php echo $endNumber; ?>;
 </script>
 
 
-<script type="text/javascript" src="/updateall/src/math/point2D.php"></script>
-<script type="text/javascript" src="/updateall/src/bounds/bounds.php"></script>
-<script type="text/javascript" src="/updateall/src/game/game.php"></script>
-<script type="text/javascript" src="/updateall/src/game/dungeon.php"></script>
-<script type="text/javascript" src="/updateall/src/application/application.php"></script>
-<script type="text/javascript" src="/updateall/src/animation/animation.php"></script>
-<script type="text/javascript" src="/updateall/src/animation/animation_advanced.php"></script>
-<script type="text/javascript" src="/updateall/src/shape/shape.php"></script>
-<script type="text/javascript" src="/updateall/src/shape/shape_ai.php"></script>
-<script type="text/javascript" src="/updateall/src/div/div.php"></script>
-<script type="text/javascript" src="/updateall/src/question/question.php"></script>
-<script type="text/javascript" src="/updateall/src/quiz/quiz.php"></script>
-<script type="text/javascript" src="/updateall/src/hud/hud.php"></script>
+<script type="text/javascript" src="/src/math/point2D.php"></script>
+<script type="text/javascript" src="/src/bounds/bounds.php"></script>
+<script type="text/javascript" src="/src/game/game.php"></script>
+<script type="text/javascript" src="/src/game/dungeon.php"></script>
+<script type="text/javascript" src="/src/application/application.php"></script>
+<script type="text/javascript" src="/src/animation/animation.php"></script>
+<script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
+<script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/shape_ai.php"></script>
+<script type="text/javascript" src="/src/div/div.php"></script>
+<script type="text/javascript" src="/src/question/question.php"></script>
+<script type="text/javascript" src="/src/quiz/quiz.php"></script>
+<script type="text/javascript" src="/src/hud/hud.php"></script>
 
 </head>
 
@@ -115,7 +115,7 @@ window.addEvent('domready', function()
         }
  	
 	//CONTROL OBJECT
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/updateall/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -130,16 +130,16 @@ window.addEvent('domready', function()
         mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
         mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
 
-        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/updateall/images/characters/wizard_north.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/updateall/images/characters/wizard_north.png";
-//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/updateall/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/updateall/images/characters/wizard_north_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/updateall/images/characters/wizard_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/updateall/images/characters/wizard_south_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/updateall/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/updateall/images/characters/wizard_south_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "/updateall/images/characters/wizard_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "/updateall/images/characters/wizard_north_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/images/characters/wizard_north.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/images/characters/wizard_north.png";
+//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/images/characters/wizard_north_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/images/characters/wizard_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/images/characters/wizard_south_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/images/characters/wizard_south.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/images/characters/wizard_south_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "/images/characters/wizard_west.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "/images/characters/wizard_north_west.png";
 
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
@@ -163,7 +163,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/updateall/src/database/goto_next_level.php"),"/updateall/images/doors/door_closed.png","","wall");
+	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","wall");
 	mGame.addToShapeArray(door);
                
 	//QUESTION SHAPES 
@@ -172,7 +172,7 @@ window.addEvent('domready', function()
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/updateall/images/treasure/gold_coin_head.png","","question"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
@@ -201,7 +201,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/updateall/images/monster/red_monster.png","","chaser");
+                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
         }
 

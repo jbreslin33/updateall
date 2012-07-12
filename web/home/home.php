@@ -3,12 +3,12 @@
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/css/green_block.css" />
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/css/green_block.css" />
 </head>
 
 <body>
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/web/navigation/top_links.php");
+include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links.php");
 ?>
 </body>
 

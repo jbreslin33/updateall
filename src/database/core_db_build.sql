@@ -1241,15 +1241,15 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 --==================================================================
 
 --GAMES
-insert into games (game,url,picture) values ('Dungeon','/updateall/src/games/dungeon.php','/updateall/images/doors/door_open.png');
+insert into games (game,url,picture) values ('Dungeon','/src/games/dungeon.php','/images/doors/door_open.png');
 
 --GAMES_LEVELS
-insert into games_levels (level_id,game_id,url) values  (1,1,'/updateall/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (3,1,'/updateall/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (4,1,'/updateall/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (5,1,'/updateall/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (6,1,'/updateall/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (7,1,'/updateall/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (7,1,'/web/game/count.php');
 
 --GAMES_ATTEMPTS
 

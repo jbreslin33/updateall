@@ -1,7 +1,7 @@
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/web/login/check_login.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_variables.php"); 
+include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/set_level_session_variables.php"); 
 
 $conn = dbConnect();
 
@@ -17,7 +17,7 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 setLevelSessionVariables($conn,$_SESSION["user_id"]);
 
 //send player to the game page where he will be redirected.
-header("Location: /updateall/web/game/chooser.php");
+header("Location: /web/game/chooser.php");
 
 ?>
 

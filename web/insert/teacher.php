@@ -4,16 +4,16 @@
 session_start();
 
 //db connection
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php"); 
 $conn = dbConnect();
 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_next_usernumber.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_students.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/get_random_password.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/get_next_usernumber.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_users.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_students.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_teachers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_first_level_transaction.php"); 
 
 //get a password
 $password = getRandomPassword($conn);
@@ -37,7 +37,7 @@ insertFirstLevelTransaction($conn,$new_user_id);
 insertIntoTeachers($conn,$new_user_id,0);
 
 //go to success page
-header("Location: /updateall/web/select/teacher.php");
+header("Location: /web/select/teacher.php");
 
 ?>
 
