@@ -11,7 +11,7 @@
 --====================== ENVIRONMENT  =============================
 --==================================================================
 
---DROP TABLE os cascade; --win98,win2000,winxp,win7,vista,win8,debian,ubuntu,redhat,fedora,android,mac,etc
+--DROP TABLE os cascade; --win98,win2000,winxp,win7,vista,win8,debian3,ubuntu,redhat,fedora,android,mac,etc
 --DROP TABLE browser cascade; --ie6,ie7,ie8,ie9,ie10,opera9,opera10,firefox8,firefox9
 --DROP TABLE engine cascade; --ogre,torque,javascript,2d_brengine,jmonkey
 --i am thinking to show all?
