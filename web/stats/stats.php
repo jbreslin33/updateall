@@ -1,9 +1,12 @@
+
+
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/css/green_style.css" />
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/updateall/css/green_block.css" />
 </head>
 
 <body>
@@ -11,7 +14,7 @@
 <?php
 session_start();
 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/top_bar_links.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/web/navigation/top_links.php");
 echo "<br>";
 
 echo "<p1>STATS:<p1>";

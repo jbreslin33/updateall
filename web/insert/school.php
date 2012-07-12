@@ -1,14 +1,18 @@
 <?php 
-include("../headers/header.php");
-include("../../database/get_random_password.php"); 
-include("../../database/get_next_usernumber.php"); 
-include("../../database/insert_into_users.php"); 
-include("../../database/select_user_id.php"); 
-include("../../database/insert_into_teachers.php"); 
-include("../../database/insert_into_students.php"); 
-include("../../database/insert_first_level_transaction.php"); 
-
+//start session
 session_start();
+
+//db connection
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
+$conn = dbConnect();
+
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_next_usernumber.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_students.php"); 
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
 
 //loop thru classes
 $number_of_classes = $_POST["number_of_classes"];
@@ -65,7 +69,7 @@ for ($c = 0; $c < $number_of_classes; $c++)
 }
 
 //go to success page
-header("Location: ../select/student.php");
+header("Location: /updateall/web/select/student.php");
 
 ?>
 
