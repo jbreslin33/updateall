@@ -4,7 +4,7 @@
 session_start();
 
 //db connection
-include("../../database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
@@ -37,7 +37,7 @@ insertFirstLevelTransaction($conn,$new_user_id);
 insertIntoTeachers($conn,$new_user_id,0);
 
 //go to success page
-header("Location: ../select/teacher.php");
+header("Location: /updateall/web/select/teacher.php");
 
 ?>
 
