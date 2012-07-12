@@ -1,19 +1,19 @@
 <?php
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/set_level_session_variables.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_schools.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_users.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_teachers.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_into_students.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/insert_first_level_transaction.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_periods.php");
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_spaces.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_numbers.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/check_for_schools.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_school_id.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_user_id.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_teacher_id.php"); 
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/set_level_session_variables.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_schools.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_users.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_teachers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_students.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_first_level_transaction.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/check_for_periods.php");
+include(getenv("DOCUMENT_ROOT") . "/src/database/check_for_spaces.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/check_for_numbers.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/check_for_schools.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/select_school_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/select_user_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/select_teacher_id.php"); 
+include(getenv("DOCUMENT_ROOT") . "/src/database/select_student_id.php"); 
 
 	//db connection
 	$conn = dbConnect();
@@ -37,23 +37,23 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php
 	{
 		if ($taken)
 		{
-        		header("Location: ../signup/signup_form.php?message=name_taken");
+        		header("Location: /web/signup/signup_form.php?message=name_taken");
 		}
 		if ($space)
 		{
-        		header("Location: ../signup/signup_form.php?message=no_spaces");
+        		header("Location: /web/signup/signup_form.php?message=no_spaces");
 		}
 		if ($number)
 		{
-        		header("Location: ../signup/signup_form.php?message=no_numbers");
+        		header("Location: /web/signup/signup_form.php?message=no_numbers");
 		}
 		if ($period)
 		{
-        		header("Location: ../signup/signup_form.php?message=no_periods");
+        		header("Location: /web/signup/signup_form.php?message=no_periods");
 		}
 		if ($_SESSION["school_name"] == '')
 		{
-        		header("Location: ../signup/signup_form.php?message=no_name");
+        		header("Location: /web/signup/signup_form.php?message=no_name");
 		}
 	}
 	else	
@@ -100,7 +100,7 @@ include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/select_student_id.php
        		//--------------------------------------------------------------
                 
 		$_SESSION["Login"] = "YES";
-       		header("Location: /updateall/web/home/home.php");
+       		header("Location: /web/home/home.php");
        		
 		//close db connection as we have the only var we needed - the id
        		pg_close();
