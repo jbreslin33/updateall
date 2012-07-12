@@ -10,7 +10,7 @@
 <?php
 include(getenv("DOCUMENT_ROOT") . "/updateall/web/navigation/top_links.php");
 echo "<br>";
-include(getenv("DOCUMENT_ROOT") . "/updateall/src/template/navigation/insert_links.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/web/insert/links.php");
 ?>
 </body>
 
