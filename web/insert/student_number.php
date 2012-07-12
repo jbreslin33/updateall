@@ -1,10 +1,9 @@
 <?php 
-
 //start session
 session_start();
 
 //db connection
-include("../../database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/db_connect.php"); 
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/updateall/src/database/get_random_password.php"); 
@@ -33,7 +32,7 @@ insertIntoStudents($conn,$new_user_id,0);
 insertFirstLevelTransaction($conn,$new_user_id);
 
 //go to success page
-header("Location: ../select/student.php");
+header("Location: /updateall/web/select/student.php");
 
 ?>
 
