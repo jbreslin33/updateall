@@ -106,7 +106,7 @@ else
 
 if ($problem == "")
 {
-        header("Location: ../template/home/home.php");
+        header("Location: /web/home/home.php");
 }
 else
 {
