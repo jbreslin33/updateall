@@ -11,10 +11,10 @@ var Hud = new Class(
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var y = 35;
         linksMain = new Shape(60, y,  0,  0,"","","","#F8CDF8","boundary");
-        linksMain.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/template/home/home.php"> HOME</a> </font>');
+        linksMain.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/updateall/web/home/home.php"> HOME</a> </font>');
 
 	linksLogout = new Shape     (60, y,60,  0,"","","","red","boundary");
-        linksLogout.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/updateall/src/login/login_form.php"> LOGOUT</a> </font>');
+        linksLogout.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/updateall/web/login/login_form.php"> LOGOUT</a> </font>');
 	
 	northBoundsUser = new Shape     (120, y,120,  0,"","","","orange","boundary");
         northBoundsUser.setText('<font size="2"> loser : ' + username + '</font>');
