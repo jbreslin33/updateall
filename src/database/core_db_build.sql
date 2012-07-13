@@ -309,10 +309,10 @@ CREATE TABLE games_attempts (
 --==================================================================
 
 --BROWSERS
-CREATE TABLE browsers (
-    id integer NOT NULL,
-    browser text NOT NULL UNIQUE
-);
+--CREATE TABLE browsers (
+ --   id integer NOT NULL,
+  --  browser text NOT NULL UNIQUE
+--);
 
 --Modenizr should help make stuff compatible but we still need webistie to hide certain games.
 -- Lets go step by step
@@ -1218,6 +1218,7 @@ insert into levels(level,description) values (10,'Count from 90 to 100');
 insert into levels(level,description) values (11,'Count Forward from Random num...');       
 
 --LEVELS_STANDARDS
+--count by 1's to 100
 insert into levels_standards(level_id, standard_id) values (1,1);       
 --insert into levels_standards(level_id, standard_id) values (2,1); this is the start of journey level_id      
 insert into levels_standards(level_id, standard_id) values (3,1);       
@@ -1227,12 +1228,17 @@ insert into levels_standards(level_id, standard_id) values (6,1);
 insert into levels_standards(level_id, standard_id) values (7,1);       
 insert into levels_standards(level_id, standard_id) values (8,1);       
 insert into levels_standards(level_id, standard_id) values (9,1);       
+insert into levels_standards(level_id, standard_id) values (10,1);       
+insert into levels_standards(level_id, standard_id) values (11,1);       
+--count by 10's to 100
+insert into levels_standards(level_id, standard_id) values (12,1);       
 
 --LEVELS_TRANSACTIONS
 
 --COUNTING
+--count by 1's to 100
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,0,10,1,1);
--- this is the start value Start of journye
+-- this is the start value Start of journey
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,10,20,1,3);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,20,30,1,4);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,30,40,1,5);
@@ -1242,6 +1248,10 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,70,80,1,9);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,80,90,1,10);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,90,100,1,11);
+--count by 10's to 100
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,0,100,10,12);
+
+
 
 --ADDITION
 
@@ -1256,12 +1266,19 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into games (game,url,picture) values ('Dungeon','/src/games/dungeon.php','/images/doors/door_open.png');
 
 --GAMES_LEVELS
+--count by 1's to 100
 insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (7,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (8,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
+---count by 10's to 100
+insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
 
 --GAMES_ATTEMPTS
 
