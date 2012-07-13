@@ -1203,19 +1203,19 @@ insert into standards (standard,standard_code,cluster_id) values ('With promptin
 --==================================================================
 
 --LEVELS
-insert into levels(level,description) values (1,'Count from 0 to 10');       
-insert into levels(level,description) values (.5,'Start of Journey');       
-insert into levels(level,description) values (2,'Count from 10 to 20');       
-insert into levels(level,description) values (3,'Count from 20 to 30');       
-insert into levels(level,description) values (4,'Count from 30 to 40');       
-insert into levels(level,description) values (5,'Count from 40 to 50');       
-insert into levels(level,description) values (6,'Count from 50 to 60');       
-insert into levels(level,description) values (7,'Count from 60 to 70');       
-insert into levels(level,description) values (8,'Count from 70 to 80');       
-insert into levels(level,description) values (9,'Count from 80 to 90');       
-insert into levels(level,description) values (10,'Count from 90 to 100');       
+insert into levels(level,description) values (1,'Count from 0 to 10'); --1       
+insert into levels(level,description) values (.5,'Start of Journey'); --2      
+insert into levels(level,description) values (2,'Count from 10 to 20'); --3      
+insert into levels(level,description) values (3,'Count from 20 to 30');   --4    
+insert into levels(level,description) values (4,'Count from 30 to 40');     --5  
+insert into levels(level,description) values (5,'Count from 40 to 50');    --6   
+insert into levels(level,description) values (6,'Count from 50 to 60');   --7    
+insert into levels(level,description) values (7,'Count from 60 to 70');  --8     
+insert into levels(level,description) values (8,'Count from 70 to 80');    --9   
+insert into levels(level,description) values (9,'Count from 80 to 90');      --10 
+insert into levels(level,description) values (10,'Count from 90 to 100');      --11 
 
-insert into levels(level,description) values (11,'Count Forward from Random num...');       
+insert into levels(level,description) values (11,'Count to 100 by tens');      --12 
 
 --LEVELS_STANDARDS
 --count by 1's to 100
@@ -1278,7 +1278,7 @@ insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/count.ph
 insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
 ---count by 10's to 100
-insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (12,1,'/web/game/count.php');
 
 --GAMES_ATTEMPTS
 
