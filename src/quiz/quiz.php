@@ -46,7 +46,7 @@ var Quiz = new Class(
 	{
         	this.incrementScore();
 		this.mMarker++;
-		southBoundsQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
+		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
 	},
 	
 	getScore: function()
@@ -74,19 +74,19 @@ var Quiz = new Class(
 	setScore: function(score)
 	{
 		this.mScore = score;
-		northBoundsScore.setText('<font size="2">Score: ' + this.mScore + '</font>');
+		mHud.mScore.setText('<font size="2">Score: ' + this.mScore + '</font>');
 	},
 
 	setScoreNeeded: function(scoreNeeded)
 	{
 		this.mScoreNeeded = scoreNeeded;
-		northBoundsScoreNeeded.setText('<font size="2"> Needed: ' + this.mScoreNeeded + '</font>');
+		mHud.mScoreNeeded.setText('<font size="2"> Needed: ' + this.mScoreNeeded + '</font>');
 	},
 
 	incrementScore: function()
 	{
 		this.mScore++;
-		northBoundsScore.setText('<font size="2"> Score : ' + this.mScore + '</font>');
+		mHud.mScore.setText('<font size="2"> Score : ' + this.mScore + '</font>');
 	},
 
 	reset: function()
@@ -98,7 +98,7 @@ var Quiz = new Class(
 		this.mMarker = 0;
                 
 		//update question 
-		southBoundsQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
+		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
 	}
 
 });

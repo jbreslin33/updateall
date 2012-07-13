@@ -96,8 +96,8 @@ window.addEvent('domready', function()
 
 
        	mHud = new Hud();
-        northBoundsScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
-	northBoundsGameName.setText('<font size="2">DUNGEON</font>');	
+        mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 
 	
 	//GAME
