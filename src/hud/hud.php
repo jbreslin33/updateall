@@ -10,25 +10,25 @@ var Hud = new Class(
         {
 	/******************* BOUNDARY WALLS AND HUD COMBO ***********/
         var ySize = 35;
-        var yCoord = 35;
-        this.mHome = new Shape(60, ySize,  0,  0,"","","","#F8CDF8","boundary");
+        var yCoord = 0;
+        this.mHome = new Shape(60, ySize,  0,  yCoord,"","","","#F8CDF8","boundary");
         this.mHome.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/web/home/home.php"> HOME</a> </font>');
 
-	this.mLogout = new Shape     (60, ySize,60,  0,"","","","red","boundary");
+	this.mLogout = new Shape     (60, ySize,60,  yCoord,"","","","red","boundary");
         this.mLogout.setText('<font size="1"> <a href="<?php getenv("DOCUMENT_ROOT")?>/web/login/login_form.php"> LOGOUT</a> </font>');
 	
-	this.mUsername = new Shape     (120, ySize,120,  0,"","","","orange","boundary");
+	this.mUsername = new Shape     (120, ySize,120,  yCoord,"","","","orange","boundary");
         this.mUsername.setText('<font size="2"> user : ' + username + '</font>');
         
-	this.mLevel = new Shape(120, ySize,240,  0,"","","","yellow","boundary");
+	this.mLevel = new Shape(120, ySize,240,  yCoord,"","","","yellow","boundary");
         this.mLevel.setText('<font size="2"> Level : ' + next_level + '</font>');
 
-        this.mScore = new Shape    (120, ySize,360,  0,"","","","LawnGreen","boundary");
+        this.mScore = new Shape    (120, ySize,360,  yCoord,"","","","LawnGreen","boundary");
         this.mScore.setText('<font size="2"> Score : </font>');
 
-        this.mScoreNeeded = new Shape    (120, ySize, 480,  0,"","","","cyan","boundary");
+        this.mScoreNeeded = new Shape    (120, ySize, 480,  yCoord,"","","","cyan","boundary");
 
-        this.mGameName = new Shape (170, ySize,600,  0,"","","","#F8CDF8","boundary");
+        this.mGameName = new Shape (170, ySize,600,  yCoord,"","","","#F8CDF8","boundary");
 
         eastBounds  = new Shape         ( 10, 50,760, 35,"","","","#F8CDF8","boundary");
         eastBounds  = new Shape         ( 10, 50,760, 85,"","","","#F6C0F6","boundary");
