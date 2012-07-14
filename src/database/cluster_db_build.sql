@@ -44,7 +44,6 @@ DROP TABLE schools cascade;
 
 DROP TABLE standards cascade;
 DROP TABLE clusters cascade;
-DROP TABLE domains_subjects_grades cascade;
 DROP TABLE domains_grades cascade;
 DROP TABLE domains_subjects cascade;
 DROP TABLE domains cascade;
@@ -187,13 +186,6 @@ CREATE TABLE domains_subjects (
 --DOMAINS_GRADES
 CREATE TABLE domains_grades (
     domain_id integer,
-    grade_id integer 
-);
-
---DOMAINS_SUBJECTS_GRADES
-CREATE TABLE domains_subjects_grades (
-    domain_id integer,
-    subject_id integer,
     grade_id integer 
 );
 
@@ -813,8 +805,6 @@ ALTER TABLE domains_subjects ADD PRIMARY KEY (domain_id, subject_id);
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD PRIMARY KEY (domain_id, grade_id);
 
---DOMAINS_SUBJECTS_GRADES
-ALTER TABLE domains_subjects_grades ADD PRIMARY KEY (domain_id, subject_id, grade_id);
 
 --CLUSTERS
 ALTER TABLE clusters ADD PRIMARY KEY (id);
@@ -918,14 +908,8 @@ ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
---DOMAINS_SUBJECTS_GRADES
---is the first contraint superfulous?
-ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
-ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id, subject_id) REFERENCES domains_subjects(domain_id, subject_id);
-ALTER TABLE domains_subjects_grades ADD FOREIGN KEY (domain_id, grade_id) REFERENCES domains_grades(domain_id, grade_id);
-
 --CLUSTERS
-ALTER TABLE clusters ADD FOREIGN KEY (domain_id, subject_id, grade_id) REFERENCES domains_subjects_grades(domain_id, subject_id, grade_id);
+--ALTER TABLE clusters ADD FOREIGN KEY (domain_id, subject_id, grade_id) REFERENCES domains_subjects_grades(domain_id, subject_id, grade_id);
 
 --STANDARDS
 ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
@@ -1175,11 +1159,6 @@ insert into domains_subjects (domain_id, subject_id) values (39,2);
 insert into domains_grades (domain_id, grade_id) values (1,1); 
 
 insert into domains_grades (domain_id, grade_id) values (39,1); 
-
---DOMAINS_SUBJECTS_GRADES
-insert into domains_subjects_grades (domain_id, subject_id, grade_id) values (1,1,1); 
-
-insert into domains_subjects_grades (domain_id, subject_id, grade_id) values (39,2,1); 
 
 --CLUSTERS
 insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Know number names and the count sequence.',1,1,1);
