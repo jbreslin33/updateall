@@ -1386,14 +1386,25 @@ insert into clusters_grades (cluster_id, grade_id) values (3,1); --Compare numbe
 
 
 --STANDARDS
+--subject: math
+--grade: kindergarten
+--domain: Counting and Cardinality
+--cluster: Know number names and the count sequence.
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2'); --2
-insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','1'); --3
+insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); --3
 
-insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','1');
+--cluster: Count to tell the number of objects.
+insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
+--etc..
 
+
+--english
+--grade: kindergarten
+--domain: .....
+--cluster: ......
 insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
 
 --==================================================================
