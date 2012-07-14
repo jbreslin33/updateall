@@ -1188,10 +1188,10 @@ insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Count t
 insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Key Ideas and Details.',39,2,1);
 
 --STANDARDS
-insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1);
+insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1); --1
 insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
-sequence (instead of having to begin at 1).','2',1);
-insert into standards (standard,standard_code,cluster_id) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','1',1);
+sequence (instead of having to begin at 1).','2',1); --2
+insert into standards (standard,standard_code,cluster_id) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','1',1); --3
 
 insert into standards (standard,standard_code,cluster_id) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','1',2);
 insert into standards (standard,standard_code,cluster_id) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a',2);
@@ -1217,7 +1217,7 @@ insert into levels(level,description) values (10,'Count from 90 to 100');      -
 
 insert into levels(level,description) values (11,'Count to 100 by tens');      --12 
 
-
+--count from random known sequence
 insert into levels(level,description) values (12,'Count from 87 to 97'); --13
 insert into levels(level,description) values (13,'Count from 23 to 33'); --14
 insert into levels(level,description) values (14,'Count from 55 to 65'); --15
@@ -1228,6 +1228,10 @@ insert into levels(level,description) values (18,'Count from 67 to 77'); --19
 insert into levels(level,description) values (19,'Count from 13 to 23'); --20
 insert into levels(level,description) values (20,'Count from 52 to 62'); --21
 insert into levels(level,description) values (21,'Count from 38 to 48'); --22
+
+--write numbers from 0 to 20
+insert into levels(level,description) values (22,'Write numbers from 0 to 20'); --23
+
 
 --LEVELS_STANDARDS
 --count by 1's to 100
@@ -1256,6 +1260,10 @@ insert into levels_standards(level_id, standard_id) values (19,2);
 insert into levels_standards(level_id, standard_id) values (20,2);       
 insert into levels_standards(level_id, standard_id) values (21,2);       
 insert into levels_standards(level_id, standard_id) values (22,2);       
+
+--write numbers from 0 to 20
+insert into levels_standards(level_id, standard_id) values (23,3);       
+
 
 --LEVELS_TRANSACTIONS
 
@@ -1327,6 +1335,9 @@ insert into games_levels (level_id,game_id,url) values  (19,1,'/web/game/count.p
 insert into games_levels (level_id,game_id,url) values  (20,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php');
+
+--write from 0 to 20
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_20.php');
 
 --GAMES_ATTEMPTS
 
