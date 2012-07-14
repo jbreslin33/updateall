@@ -192,20 +192,15 @@ CREATE TABLE domains_grades (
 --CLUSTERS
 CREATE TABLE clusters (
     id integer NOT NULL,
-    cluster text NOT NULL,
-    domain_id integer NOT NULL,
-    subject_id integer NOT NULL,
-    grade_id integer NOT NULL
+    cluster text NOT NULL
 );
 
 --STANDARDS
 CREATE TABLE standards (
     id integer NOT NULL,
     standard text NOT NULL,
-    standard_code text NOT NULL,
-    cluster_id integer NOT NULL 
+    standard_code text NOT NULL
 );
-
 
 --==================================================================
 --====================== LEVELS  =============================
@@ -909,10 +904,8 @@ ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 --CLUSTERS
---ALTER TABLE clusters ADD FOREIGN KEY (domain_id, subject_id, grade_id) REFERENCES domains_subjects_grades(domain_id, subject_id, grade_id);
 
 --STANDARDS
-ALTER TABLE standards ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 
 
 --==================================================================
@@ -1161,21 +1154,21 @@ insert into domains_grades (domain_id, grade_id) values (1,1);
 insert into domains_grades (domain_id, grade_id) values (39,1); 
 
 --CLUSTERS
-insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Know number names and the count sequence.',1,1,1);
-insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Count to tell the number of objects.',1,1,1);
+insert into clusters (cluster) values ('Know number names and the count sequence.');
+insert into clusters (cluster) values ('Count to tell the number of objects.');
 
-insert into clusters (cluster, domain_id, subject_id, grade_id) values ('Key Ideas and Details.',39,2,1);
+insert into clusters (cluster) values ('Key Ideas and Details.');
 
 --STANDARDS
-insert into standards (standard,standard_code,cluster_id) values ('Count to 100 by ones and by tens.','1',1); --1
-insert into standards (standard,standard_code,cluster_id) values ('Count forward beginning from a given number within the known
-sequence (instead of having to begin at 1).','2',1); --2
-insert into standards (standard,standard_code,cluster_id) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','1',1); --3
+insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
+insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
+sequence (instead of having to begin at 1).','2'); --2
+insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','1'); --3
 
-insert into standards (standard,standard_code,cluster_id) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','1',2);
-insert into standards (standard,standard_code,cluster_id) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a',2);
+insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','1');
+insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
 
-insert into standards (standard,standard_code,cluster_id) values ('With prompting and support, ask and answer questions about key details in a text.','1',3);
+insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
 
 --==================================================================
 --================= LEVELS  ====================================
