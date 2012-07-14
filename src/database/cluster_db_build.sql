@@ -1208,8 +1208,61 @@ insert into domains (domain) values ('Writing Standards for Literacy in History/
 
 --DOMAINS_SUBJECTS
 insert into domains_subjects (domain_id, subject_id) values (1,1); 
+insert into domains_subjects (domain_id, subject_id) values (2,1); 
+insert into domains_subjects (domain_id, subject_id) values (3,1); 
+insert into domains_subjects (domain_id, subject_id) values (4,1); 
+insert into domains_subjects (domain_id, subject_id) values (5,1); 
+insert into domains_subjects (domain_id, subject_id) values (6,1); 
+insert into domains_subjects (domain_id, subject_id) values (7,1); 
+insert into domains_subjects (domain_id, subject_id) values (8,1); 
+insert into domains_subjects (domain_id, subject_id) values (9,1); 
+insert into domains_subjects (domain_id, subject_id) values (10,1); 
+insert into domains_subjects (domain_id, subject_id) values (11,1); 
+insert into domains_subjects (domain_id, subject_id) values (12,1); 
+insert into domains_subjects (domain_id, subject_id) values (13,1); 
+insert into domains_subjects (domain_id, subject_id) values (14,1); 
+insert into domains_subjects (domain_id, subject_id) values (15,1); 
+insert into domains_subjects (domain_id, subject_id) values (16,1); 
+insert into domains_subjects (domain_id, subject_id) values (17,1); 
+insert into domains_subjects (domain_id, subject_id) values (18,1); 
+insert into domains_subjects (domain_id, subject_id) values (19,1); 
+insert into domains_subjects (domain_id, subject_id) values (20,1); 
+insert into domains_subjects (domain_id, subject_id) values (21,1); 
+insert into domains_subjects (domain_id, subject_id) values (22,1); 
+insert into domains_subjects (domain_id, subject_id) values (23,1); 
+insert into domains_subjects (domain_id, subject_id) values (24,1); 
+insert into domains_subjects (domain_id, subject_id) values (25,1); 
+insert into domains_subjects (domain_id, subject_id) values (26,1); 
+insert into domains_subjects (domain_id, subject_id) values (27,1); 
+insert into domains_subjects (domain_id, subject_id) values (28,1); 
+insert into domains_subjects (domain_id, subject_id) values (29,1); 
+insert into domains_subjects (domain_id, subject_id) values (30,1); 
+insert into domains_subjects (domain_id, subject_id) values (31,1); 
+insert into domains_subjects (domain_id, subject_id) values (32,1); 
+insert into domains_subjects (domain_id, subject_id) values (33,1); 
+insert into domains_subjects (domain_id, subject_id) values (34,1); 
+insert into domains_subjects (domain_id, subject_id) values (35,1); 
+insert into domains_subjects (domain_id, subject_id) values (36,1); 
+insert into domains_subjects (domain_id, subject_id) values (37,1); 
+insert into domains_subjects (domain_id, subject_id) values (38,1); 
 
 insert into domains_subjects (domain_id, subject_id) values (39,2); 
+insert into domains_subjects (domain_id, subject_id) values (40,2); 
+insert into domains_subjects (domain_id, subject_id) values (41,2); 
+insert into domains_subjects (domain_id, subject_id) values (42,2); 
+insert into domains_subjects (domain_id, subject_id) values (43,2); 
+insert into domains_subjects (domain_id, subject_id) values (44,2); 
+insert into domains_subjects (domain_id, subject_id) values (45,2); 
+insert into domains_subjects (domain_id, subject_id) values (46,2); 
+insert into domains_subjects (domain_id, subject_id) values (47,2); 
+insert into domains_subjects (domain_id, subject_id) values (48,2); 
+insert into domains_subjects (domain_id, subject_id) values (49,2); 
+insert into domains_subjects (domain_id, subject_id) values (50,2); 
+insert into domains_subjects (domain_id, subject_id) values (51,2); 
+insert into domains_subjects (domain_id, subject_id) values (52,2); 
+insert into domains_subjects (domain_id, subject_id) values (53,2); 
+insert into domains_subjects (domain_id, subject_id) values (54,2); 
+insert into domains_subjects (domain_id, subject_id) values (55,2); 
 
 --DOMAINS_GRADES
 insert into domains_grades (domain_id, grade_id) values (1,1); 
