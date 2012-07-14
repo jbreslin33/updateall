@@ -1152,59 +1152,59 @@ insert into domains (domain) values ('Counting and Cardinality'); --1
 insert into domains (domain) values ('Operations and Algebraic Thinking'); --2
 insert into domains (domain) values ('Number and Operations in Base Ten'); --3
 insert into domains (domain) values ('Measurement and Data'); --4
-insert into domains (domain) values ('Geometry'); --4
-insert into domains (domain) values ('Number and Operations-Fractions'); --5
-insert into domains (domain) values ('Ratios and Proportional Relationships'); --6
-insert into domains (domain) values ('The Number System'); --7
-insert into domains (domain) values ('Expressions and Equations'); --8
-insert into domains (domain) values ('Statistics and Probability'); --9
-insert into domains (domain) values ('Functions'); --10
-insert into domains (domain) values ('The Real Number System'); --11
-insert into domains (domain) values ('Quantities'); --12
-insert into domains (domain) values ('The Complex Number System'); --13
-insert into domains (domain) values ('Vector and Matrix Quantities'); --14
-insert into domains (domain) values ('Seeing Structure in Expressions'); --15
-insert into domains (domain) values ('Arithmetic with Polynomials and Rational Expressions'); --16
-insert into domains (domain) values ('Creating Equations'); --17
-insert into domains (domain) values ('Reasoning with Equations and Inequalities'); --18
-insert into domains (domain) values ('Connections to Expressions, Equations, Modeling, and Coordinates'); --19
-insert into domains (domain) values ('Interpreting Functions'); --20
-insert into domains (domain) values ('Building Functions'); --21
-insert into domains (domain) values ('Linear, Quadratic, and Exponential Models'); --22
-insert into domains (domain) values ('Trigonometric Functions'); --23
-insert into domains (domain) values ('Modeling'); --24
-insert into domains (domain) values ('Modeling Standards'); --25
-insert into domains (domain) values ('Connections to Equations'); --26
-insert into domains (domain) values ('Congruence'); --27
-insert into domains (domain) values ('Similiarity, Right Triangles, and Trigonometry'); --28
-insert into domains (domain) values ('Circles'); --29
-insert into domains (domain) values ('Expressing Geometric Properties with Equations'); --30
-insert into domains (domain) values ('Geometric Measurement and Dimension'); --31
-insert into domains (domain) values ('Modeling and Geometry'); --32
-insert into domains (domain) values ('Connections to Functions and Modeling'); --33
-insert into domains (domain) values ('Interpreting Categorical and Quantitative Data'); --34
-insert into domains (domain) values ('Making Inferences and Justifying Conclusions'); --35
-insert into domains (domain) values ('Conditional Probability and the Rules of Probability'); --36
-insert into domains (domain) values ('Using Probability to Make Decisions'); --37
+insert into domains (domain) values ('Geometry'); --5
+insert into domains (domain) values ('Number and Operations-Fractions'); --6
+insert into domains (domain) values ('Ratios and Proportional Relationships'); --7
+insert into domains (domain) values ('The Number System'); --8
+insert into domains (domain) values ('Expressions and Equations'); --9
+insert into domains (domain) values ('Statistics and Probability'); --10
+insert into domains (domain) values ('Functions'); --11
+insert into domains (domain) values ('The Real Number System'); --12
+insert into domains (domain) values ('Quantities'); --13
+insert into domains (domain) values ('The Complex Number System'); --14
+insert into domains (domain) values ('Vector and Matrix Quantities'); --15
+insert into domains (domain) values ('Seeing Structure in Expressions'); --16
+insert into domains (domain) values ('Arithmetic with Polynomials and Rational Expressions'); --17
+insert into domains (domain) values ('Creating Equations'); --18
+insert into domains (domain) values ('Reasoning with Equations and Inequalities'); --19
+insert into domains (domain) values ('Connections to Expressions, Equations, Modeling, and Coordinates'); --20
+insert into domains (domain) values ('Interpreting Functions'); --21
+insert into domains (domain) values ('Building Functions'); --22
+insert into domains (domain) values ('Linear, Quadratic, and Exponential Models'); --23
+insert into domains (domain) values ('Trigonometric Functions'); --24
+insert into domains (domain) values ('Modeling'); --25
+insert into domains (domain) values ('Modeling Standards'); --26
+insert into domains (domain) values ('Connections to Equations'); --27
+insert into domains (domain) values ('Congruence'); --28
+insert into domains (domain) values ('Similiarity, Right Triangles, and Trigonometry'); --29
+insert into domains (domain) values ('Circles'); --30
+insert into domains (domain) values ('Expressing Geometric Properties with Equations'); --31
+insert into domains (domain) values ('Geometric Measurement and Dimension'); --32
+insert into domains (domain) values ('Modeling and Geometry'); --33
+insert into domains (domain) values ('Connections to Functions and Modeling'); --34
+insert into domains (domain) values ('Interpreting Categorical and Quantitative Data'); --35
+insert into domains (domain) values ('Making Inferences and Justifying Conclusions'); --36
+insert into domains (domain) values ('Conditional Probability and the Rules of Probability'); --37
+insert into domains (domain) values ('Using Probability to Make Decisions'); --38
 
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --38
-insert into domains (domain) values ('Reading Standards for Literature'); --39
-insert into domains (domain) values ('Reading for Informational Text'); --40
-insert into domains (domain) values ('Reading Standards: Foundational Skills'); --41
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --42
-insert into domains (domain) values ('Writing Standards'); --43
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Speaking and Listening'); --44
-insert into domains (domain) values ('Speaking and Listening Standards'); --45
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Language'); --46
-insert into domains (domain) values ('Language Standards'); --47
-insert into domains (domain) values ('Language Progressive Skills, by Grade'); --48
-insert into domains (domain) values ('Standard 10: Range, Quality, and Complexity of Student Reading'); --49
-insert into domains (domain) values ('Staying on Topic Within a Grade and Across Grades'); --50
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --51
-insert into domains (domain) values ('Reading Standards for Literacy in History/Social Studies'); --52
-insert into domains (domain) values ('Reading Standards for Literacy in Science and Technical Subjects'); --53
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --54
-insert into domains (domain) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects'); --55
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --39
+insert into domains (domain) values ('Reading Standards for Literature'); --40
+insert into domains (domain) values ('Reading for Informational Text'); --41
+insert into domains (domain) values ('Reading Standards: Foundational Skills'); --42
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --43
+insert into domains (domain) values ('Writing Standards'); --44
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Speaking and Listening'); --45
+insert into domains (domain) values ('Speaking and Listening Standards'); --46
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Language'); --47
+insert into domains (domain) values ('Language Standards'); --48
+insert into domains (domain) values ('Language Progressive Skills, by Grade'); --49
+insert into domains (domain) values ('Standard 10: Range, Quality, and Complexity of Student Reading'); --50
+insert into domains (domain) values ('Staying on Topic Within a Grade and Across Grades'); --51
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --52
+insert into domains (domain) values ('Reading Standards for Literacy in History/Social Studies'); --53
+insert into domains (domain) values ('Reading Standards for Literacy in Science and Technical Subjects'); --54
+insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --55
+insert into domains (domain) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects'); --56
 
 --DOMAINS_SUBJECTS
 insert into domains_subjects (domain_id, subject_id) values (1,1); 
@@ -1263,11 +1263,35 @@ insert into domains_subjects (domain_id, subject_id) values (52,2);
 insert into domains_subjects (domain_id, subject_id) values (53,2); 
 insert into domains_subjects (domain_id, subject_id) values (54,2); 
 insert into domains_subjects (domain_id, subject_id) values (55,2); 
+insert into domains_subjects (domain_id, subject_id) values (56,2); 
 
 --DOMAINS_GRADES
+--kindergarten
 insert into domains_grades (domain_id, grade_id) values (1,1); 
+insert into domains_grades (domain_id, grade_id) values (2,1); 
+insert into domains_grades (domain_id, grade_id) values (3,1); 
+insert into domains_grades (domain_id, grade_id) values (4,1); 
+insert into domains_grades (domain_id, grade_id) values (5,1); 
+--1st grade
+insert into domains_grades (domain_id, grade_id) values (2,2); 
+insert into domains_grades (domain_id, grade_id) values (3,2); 
+insert into domains_grades (domain_id, grade_id) values (4,2); 
+insert into domains_grades (domain_id, grade_id) values (5,2); 
+
 
 insert into domains_grades (domain_id, grade_id) values (39,1); 
+insert into domains_grades (domain_id, grade_id) values (40,1); 
+insert into domains_grades (domain_id, grade_id) values (41,1); 
+insert into domains_grades (domain_id, grade_id) values (42,1); 
+insert into domains_grades (domain_id, grade_id) values (43,1); 
+insert into domains_grades (domain_id, grade_id) values (44,1); 
+insert into domains_grades (domain_id, grade_id) values (45,1); 
+insert into domains_grades (domain_id, grade_id) values (46,1); 
+insert into domains_grades (domain_id, grade_id) values (47,1); 
+insert into domains_grades (domain_id, grade_id) values (48,1); 
+insert into domains_grades (domain_id, grade_id) values (49,1); 
+insert into domains_grades (domain_id, grade_id) values (50,1); 
+insert into domains_grades (domain_id, grade_id) values (51,1); 
 
 --CLUSTERS
 insert into clusters (cluster) values ('Know number names and the count sequence.');
