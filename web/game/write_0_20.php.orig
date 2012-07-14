@@ -7,14 +7,33 @@
 <script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
-
-
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
+
 
 //game variables to fill from db
 $username = $_SESSION["username"];
 $next_level = $_SESSION["next_level"];
+$scoreNeeded = 0;
+$countBy = 0;
+$startNumber = 0;
+$endNumber = 0;
+
+//get numer of rows
+$num = pg_num_rows($result);
+
+// if there is a row then id exists it better be unique!
+if ($num > 0)
+{
+        //get row
+        $row = pg_fetch_row($result);
+
+        //fill php vars from db
+        $scoreNeeded = $row[0];
+        $countBy = $row[1];
+        $startNumber = $row[2];
+        $endNumber = $row[3];
+}
 
 ?>
 
@@ -22,7 +41,10 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 33;
+var scoreNeeded = <?php echo $scoreNeeded; ?>;
+var countBy = <?php echo $countBy; ?>;
+var startNumber = <?php echo $startNumber; ?>;
+var endNumber = <?php echo $endNumber; ?>;
 
 </script>
 
@@ -61,9 +83,11 @@ window.addEvent('domready', function()
 	//BOUNDS AND HUD COMBO
         mBounds = new Bounds(60,735,380,35);
 
+
        	mHud = new Hud();
         mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
+
 	
 	//GAME
         mGame = new Dungeon("hardcode");
@@ -73,40 +97,12 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 _', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 _', '7'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 _', '8'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 _', '9'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 1_', '0'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 1_', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 1_', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 1_', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 1_', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 1_', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1_', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 1_', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 1_', '7'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 1_', '8'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 1_', '9'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 19 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 19 2_', '0'));      
-
+	for (i = startNumber; i <= endNumber; i = i + countBy)
+        {
+        	var question = new Question('What number comes after ' + i + '?', i + countBy);      
+                mQuiz.mQuestionArray.push(question);
+        }
+ 	
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 
@@ -126,7 +122,8 @@ window.addEvent('domready', function()
         mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/images/characters/wizard_north.png";
         mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/images/characters/wizard_north.png";
 //      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/images/characters/wizard_north_east.png"; mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/images/characters/wizard_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/images/characters/wizard_north_east.png";
+        mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/images/characters/wizard_east.png";
         mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/images/characters/wizard_south_east.png";
         mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/images/characters/wizard_south.png";
         mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/images/characters/wizard_south_west.png";
@@ -159,15 +156,16 @@ window.addEvent('domready', function()
 	mGame.addToShapeArray(door);
                
 	//QUESTION SHAPES 
-        for (i = 0; i < scoreNeeded; i++)
+        count = 0;
+        for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","question"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
                 
@@ -183,6 +181,8 @@ window.addEvent('domready', function()
               	} 
 
 		numberMountee.setBackgroundColor("transparent");
+
+                count++;
         }
 	
 	//CHASERS
