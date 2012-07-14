@@ -1377,6 +1377,14 @@ insert into clusters_domains (cluster_id, domain_id) values (2,1); --Count to te
 insert into clusters_domains (cluster_id, domain_id) values (3,1); --Compare numbers
 
 
+--CLUSTERS_GRADES
+--grade: kindergarten 
+insert into clusters_grades (cluster_id, grade_id) values (1,1); --Know number names and the count sequence
+insert into clusters_grades (cluster_id, grade_id) values (2,1); --Count to tell the number objects
+insert into clusters_grades (cluster_id, grade_id) values (3,1); --Compare numbers
+
+
+
 --STANDARDS
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
