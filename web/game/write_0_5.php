@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 33;
+var scoreNeeded = 5;
 
 </script>
 
@@ -78,34 +78,6 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 _', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 _', '7'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 _', '8'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 _', '9'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 1_', '0'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 1_', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 1_', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 1_', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 1_', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 1_', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 1_', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 1_', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 1_', '7'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 1_', '8'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 1_', '9'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 19 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 15 16 17 18 19 2_', '0'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
