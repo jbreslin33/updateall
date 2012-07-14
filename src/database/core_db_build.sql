@@ -1203,6 +1203,7 @@ insert into standards (standard,standard_code,cluster_id) values ('With promptin
 --==================================================================
 
 --LEVELS
+--count to 100
 insert into levels(level,description) values (1,'Count from 0 to 10'); --1       
 insert into levels(level,description) values (.5,'Start of Journey'); --2      
 insert into levels(level,description) values (2,'Count from 10 to 20'); --3      
@@ -1215,6 +1216,7 @@ insert into levels(level,description) values (8,'Count from 70 to 80');    --9
 insert into levels(level,description) values (9,'Count from 80 to 90');      --10 
 insert into levels(level,description) values (10,'Count from 90 to 100');      --11 
 
+--count by 10's to 100
 insert into levels(level,description) values (11,'Count to 100 by tens');      --12 
 
 --count from random known sequence
@@ -1230,7 +1232,10 @@ insert into levels(level,description) values (20,'Count from 52 to 62'); --21
 insert into levels(level,description) values (21,'Count from 38 to 48'); --22
 
 --write numbers from 0 to 20
-insert into levels(level,description) values (22,'Write numbers from 0 to 20'); --23
+insert into levels(level,description) values (22,'Write numbers from 0 to 5'); --23
+insert into levels(level,description) values (23,'Write numbers from 5 to 10'); --24
+insert into levels(level,description) values (24,'Write numbers from 10 to 15'); --25
+insert into levels(level,description) values (25,'Write numbers from 15 to 20'); --26
 
 
 --LEVELS_STANDARDS
@@ -1263,6 +1268,9 @@ insert into levels_standards(level_id, standard_id) values (22,2);
 
 --write numbers from 0 to 20
 insert into levels_standards(level_id, standard_id) values (23,3);       
+insert into levels_standards(level_id, standard_id) values (24,3);       
+insert into levels_standards(level_id, standard_id) values (25,3);       
+insert into levels_standards(level_id, standard_id) values (26,3);       
 
 
 --LEVELS_TRANSACTIONS
@@ -1321,6 +1329,7 @@ insert into games_levels (level_id,game_id,url) values  (8,1,'/web/game/count.ph
 insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
+
 ---count by 10's to 100
 insert into games_levels (level_id,game_id,url) values  (12,1,'/web/game/count.php');
 
@@ -1337,7 +1346,11 @@ insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/count.p
 insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php');
 
 --write from 0 to 20
-insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_20.php');
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_5.php');
+insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_5_10.php');
+insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_10_15.php');
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php');
+
 
 --GAMES_ATTEMPTS
 
