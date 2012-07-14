@@ -1407,6 +1407,21 @@ insert into standards (standard,standard_code) values ('When counting objects, s
 --cluster: ......
 insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
 
+
+--STANDARDS_CLUSTERS
+--cluster: Know number names and the count sequence.
+insert into standards_clusters (standard_id, cluster_id) values (1,1); --Count to 100 by ones and by tens.
+insert into standards_clusters (standard_id, cluster_id) values (2,1); --Count forward beginning from a given number within the known sequence......
+insert into standards_clusters (standard_id, cluster_id) values (3,1); --Write numbers from 0 to 20........
+
+--cluster: Count to tell the number of objects. 
+insert into standards_clusters (standard_id, cluster_id) values (4,2); --Understand the relat.........
+insert into standards_clusters (standard_id, cluster_id) values (5,2); --When counting objects, say.........
+
+--select * from clusters;
+--select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = 
+--select standards.standard_id,  clusters.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = 
+
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
