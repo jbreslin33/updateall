@@ -1370,7 +1370,11 @@ insert into clusters (cluster) values ('Knowlege of Language');
 insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
 
-
+--CLUSTER_DOMAINS
+--domain: counting and cardinality
+insert into clusters_domains (cluster_id, domain_id) values (1,1); --Know number names and the count sequence
+insert into clusters_domains (cluster_id, domain_id) values (2,1); --Count to tell the number objects
+insert into clusters_domains (cluster_id, domain_id) values (3,1); --Compare numbers
 
 
 --STANDARDS
