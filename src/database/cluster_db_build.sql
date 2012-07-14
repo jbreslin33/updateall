@@ -1420,7 +1420,7 @@ insert into standards_clusters (standard_id, cluster_id) values (5,2); --When co
 
 --select * from clusters;
 --select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = 
---select standards.standard_id,  clusters.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = 
+select clusters_domains.cluster_id from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_domains.domain_id = 1; 
 
 --==================================================================
 --================= LEVELS  ====================================
