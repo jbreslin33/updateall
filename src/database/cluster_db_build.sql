@@ -211,7 +211,7 @@ CREATE TABLE clusters_domains (
 --CLUSTERS_GRADES
 CREATE TABLE clusters_grades (
     cluster_id integer NOT NULL, --count to 100 by 10's and 1's
-    grades_id integer NOT NULL   --k 
+    grade_id integer NOT NULL   --k 
 );
 
 --select domain_id and grades_id join  clusters_domains.cluster_id = clusters_grades.cluster_id 
@@ -593,8 +593,20 @@ ALTER TABLE public.grades OWNER TO postgres;
 --DOMAINS
 ALTER TABLE public.domains OWNER TO postgres;
 
+--DOMAINS_SUBJECTS
+ALTER TABLE public.domains_subjects OWNER TO postgres;
+
+--DOMAINS_GRADES
+ALTER TABLE public.domains_grades OWNER TO postgres;
+
 --CLUSTERS
 ALTER TABLE public.clusters OWNER TO postgres;
+
+--CLUSTERS_DOMAINS
+ALTER TABLE public.clusters_domains OWNER TO postgres;
+
+--CLUSTERS_GRADES
+ALTER TABLE public.clusters_grades OWNER TO postgres;
 
 --STANDARDS
 ALTER TABLE public.standards OWNER TO postgres;
@@ -836,9 +848,18 @@ ALTER TABLE domains_grades ADD PRIMARY KEY (domain_id, grade_id);
 --CLUSTERS
 ALTER TABLE clusters ADD PRIMARY KEY (id);
 
+--CLUSTERS_GRADES
+ALTER TABLE clusters_grades ADD PRIMARY KEY (cluster_id, grade_id);
+
+--CLUSTERS_DOMAINS
+ALTER TABLE clusters_domains ADD PRIMARY KEY (cluster_id, domain_id);
+
+
 --STANDARDS
 ALTER TABLE standards ADD PRIMARY KEY (id);
 
+--STANDARDS_CLUSTERS
+ALTER TABLE standards_clusters ADD PRIMARY KEY (standard_id, cluster_id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -935,9 +956,18 @@ ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
---CLUSTERS
+--CLUSTERS_GRADES
+ALTER TABLE clusters_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
+ALTER TABLE clusters_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 
---STANDARDS
+--CLUSTERS_DOMAINS
+ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+ALTER TABLE clusters_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+
+
+--STANDARDS_CLUSTERS
+ALTER TABLE standards_clusters ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+ALTER TABLE standards_clusters ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 
 
 --==================================================================
@@ -1029,6 +1059,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --CLUSTERS
 
 --STANDARDS
+
 
 
 --==================================================================
