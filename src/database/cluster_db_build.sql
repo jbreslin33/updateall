@@ -1294,10 +1294,81 @@ insert into domains_grades (domain_id, grade_id) values (50,1);
 insert into domains_grades (domain_id, grade_id) values (51,1); 
 
 --CLUSTERS
+--kindergarten/Counting and Cardinality
 insert into clusters (cluster) values ('Know number names and the count sequence.');
 insert into clusters (cluster) values ('Count to tell the number of objects.');
+insert into clusters (cluster) values ('Compare numbers.');
 
-insert into clusters (cluster) values ('Key Ideas and Details.');
+--kindergarten/Operations and Algebraic Thinking
+insert into clusters (cluster) values ('Understand addition as putting together and adding to, and understand subtraction as taking aprart and taking from.');
+
+--kindergarten/Number Operations in Base Ten 
+insert into clusters (cluster) values ('Work with numbers 11-19 to gain foundations for place value');
+
+--kindergarten/Measurement and Data
+insert into clusters (cluster) values ('Describe and compare measurable attributes');
+insert into clusters (cluster) values ('Classify objects and count the number of objects in categories');
+
+--kindergarten/Geometry
+insert into clusters (cluster) values ('Identify and describe shapes');
+insert into clusters (cluster) values ('Analyze, compare, create, and compose shapes.');
+
+
+--kindergraten/College and Career Readiness Anchor Standars for Reading
+insert into clusters (cluster) values ('Key Ideas and Details');
+insert into clusters (cluster) values ('Craft and Structure');
+insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
+insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
+
+--kindergraten/Reading Standards for Literature
+insert into clusters (cluster) values ('Key Ideas and Details');
+insert into clusters (cluster) values ('Craft and Structure');
+insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
+insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
+
+--kindergraten/Reading Standards for Informational Text 
+insert into clusters (cluster) values ('Key Ideas and Details');
+insert into clusters (cluster) values ('Craft and Structure');
+insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
+insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
+
+--kindergraten/Reading Standards: Foundational Skills 
+insert into clusters (cluster) values ('Print Concepts');
+insert into clusters (cluster) values ('Phonological Awareness');
+insert into clusters (cluster) values ('Phonics and Word Recognition');
+insert into clusters (cluster) values ('Fluency');
+
+--kindergraten/College and Career Readines Anchor Standards for Writing 
+insert into clusters (cluster) values ('Text Types and Purposes');
+insert into clusters (cluster) values ('Production and Distribution of Writing');
+insert into clusters (cluster) values ('Research to Build and Present Knowledge');
+insert into clusters (cluster) values ('Range of Writing');
+
+--kindergraten/Writing Standards 
+insert into clusters (cluster) values ('Text Types and Purposes');
+insert into clusters (cluster) values ('Production and Distribution of Writing');
+insert into clusters (cluster) values ('Research to Build and Present Knowledge');
+insert into clusters (cluster) values ('Range of Writing');
+insert into clusters (cluster) values ('Fluency');
+
+--kindergraten/College and Career Readiness Anchor Standards for Speaking and Listening
+insert into clusters (cluster) values ('Comprehension and Collaboration');
+insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
+
+--kindergraten/Speaking and Listening Standards
+insert into clusters (cluster) values ('Comprehension and Collaboration');
+insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
+
+--kindergraten/College and Carreer Readiness Anchor Standards for Language
+insert into clusters (cluster) values ('Conventions of Standard English');
+insert into clusters (cluster) values ('Knowlege of Language');
+insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
+
+--kindergraten/Language Standards
+insert into clusters (cluster) values ('Conventions of Standard English');
+insert into clusters (cluster) values ('Knowlege of Language');
+insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
+
 
 --STANDARDS
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
