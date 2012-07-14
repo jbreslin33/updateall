@@ -217,15 +217,7 @@ CREATE TABLE clusters_grades (
 --select domain_id and grades_id join  clusters_domains.cluster_id = clusters_grades.cluster_id 
 --select cluster_id  where  grades_id = k and domain_id = math; join  clusters_domains.cluster_id = clusters_grades.cluster_id 
 --select grade_id, domain_id where cluster_id = 2; join cluster_id (cluster_domains and clusters_grades)
-/*
---CLUSTERS_DOMAINS_GRADES
-CREATE TABLE clusters_domains_grades (
-    id integer NOT NULL,
-    cluster_id integer NOT NULL,
-    domain_id integer NOT NULL,
-    grade_id integer NOT NULL
-);
-*/
+
 --*************************
 --STANDARDS
 CREATE TABLE standards (
