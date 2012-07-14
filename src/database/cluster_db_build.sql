@@ -1370,6 +1370,9 @@ insert into clusters (cluster) values ('Knowlege of Language');
 insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
 
+
+
+
 --STANDARDS
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
