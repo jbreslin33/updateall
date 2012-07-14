@@ -42,7 +42,10 @@ DROP TABLE schools cascade;
 --=========================== CORE CURRICULUM  ========================
 --==================================================================
 
+DROP TABLE standards_clusters cascade;
 DROP TABLE standards cascade;
+DROP TABLE clusters_grades cascade;
+DROP TABLE clusters_domains cascade;
 DROP TABLE clusters cascade;
 DROP TABLE domains_grades cascade;
 DROP TABLE domains_subjects cascade;
@@ -159,18 +162,21 @@ CREATE TABLE permissions_users (
 --==================== CORE CURRICULUM  ========================
 --==================================================================
 
+--*************************
 --GRADE
 CREATE TABLE grades (
     id integer NOT NULL,
     grade text  
 );
 
+--*************************
 --SUBJECTS
 CREATE TABLE subjects (
     id integer NOT NULL,
     subject text NOT NULL
 );
 
+--*************************
 --DOMAINS
 CREATE TABLE domains (
     id integer NOT NULL,
@@ -189,18 +195,52 @@ CREATE TABLE domains_grades (
     grade_id integer 
 );
 
+--*************************
 --CLUSTERS
 CREATE TABLE clusters (
     id integer NOT NULL,
-    cluster text NOT NULL
+    cluster text NOT NULL -- Know number names and the count sequence. | Key ideas and details 
 );
 
+--CLUSTERS_DOMAINS
+CREATE TABLE clusters_domains (
+    cluster_id integer NOT NULL, --count to 100 by 10's and 1's
+    domain_id integer NOT NULL   --counting and cardinaility
+);
+
+--CLUSTERS_GRADES
+CREATE TABLE clusters_grades (
+    cluster_id integer NOT NULL, --count to 100 by 10's and 1's
+    grades_id integer NOT NULL   --k 
+);
+
+--select domain_id and grades_id join  clusters_domains.cluster_id = clusters_grades.cluster_id 
+--select cluster_id  where  grades_id = k and domain_id = math; join  clusters_domains.cluster_id = clusters_grades.cluster_id 
+--select grade_id, domain_id where cluster_id = 2; join cluster_id (cluster_domains and clusters_grades)
+/*
+--CLUSTERS_DOMAINS_GRADES
+CREATE TABLE clusters_domains_grades (
+    id integer NOT NULL,
+    cluster_id integer NOT NULL,
+    domain_id integer NOT NULL,
+    grade_id integer NOT NULL
+);
+*/
+--*************************
 --STANDARDS
 CREATE TABLE standards (
     id integer NOT NULL,
     standard text NOT NULL,
     standard_code text NOT NULL
 );
+
+--STANDARDS_CLUSTERS
+CREATE TABLE standards_clusters (
+    standard_id integer NOT NULL, --count to 100 by 10's and 1's
+    cluster_id integer NOT NULL -- Know number names and the count sequence.
+);
+
+
 
 --==================================================================
 --====================== LEVELS  =============================
