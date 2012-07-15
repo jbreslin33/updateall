@@ -2381,7 +2381,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --select students.id,  users.username, users.password, users.first_name, users.last_name from students join users on students.id = users.id where users.school_id = 
 select clusters_domains.cluster_id from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_domains.domain_id = 1; 
 select clusters_domains.cluster_id from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_domains.domain_id = 2; 
-select standards_clusters.standard_id, standards_clusters.cluster_id from standards_clusters, clusters_grades where standards_clusters.cluster_id = clusters_grades.cluster_id and clusters_grades.grade_id = 1; 
+select standards_clusters.standard_id, standards_clusters.cluster_id from standards_clusters, clusters_grades, clusters_domains where standards_clusters.cluster_id = clusters_grades.cluster_id and clusters_grades.cluster_id = clusters_domains.cluster_id  and clusters_grades.grade_id = 1; 
 
 
 --select standards.standard from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_grades.grade_id = 1; 
