@@ -23,6 +23,9 @@ DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
 DROP TABLE levels_standards cascade;
+DROP TABLE levels_clusters cascade;
+DROP TABLE levels_domains cascade;
+DROP TABLE levels_grades cascade;
 DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
 
@@ -43,6 +46,8 @@ DROP TABLE schools cascade;
 --==================================================================
 
 DROP TABLE standards_clusters cascade;
+DROP TABLE standards_grades cascade;
+DROP TABLE standards_domains cascade;
 DROP TABLE standards cascade;
 DROP TABLE clusters_grades cascade;
 DROP TABLE clusters_domains cascade;
@@ -214,9 +219,6 @@ CREATE TABLE clusters_grades (
     grade_id integer NOT NULL   --k 
 );
 
---select domain_id and grades_id join  clusters_domains.cluster_id = clusters_grades.cluster_id 
---select cluster_id  where  grades_id = k and domain_id = math; join  clusters_domains.cluster_id = clusters_grades.cluster_id 
---select grade_id, domain_id where cluster_id = 2; join cluster_id (cluster_domains and clusters_grades)
 
 --*************************
 --STANDARDS
@@ -228,10 +230,21 @@ CREATE TABLE standards (
 
 --STANDARDS_CLUSTERS
 CREATE TABLE standards_clusters (
-    standard_id integer NOT NULL, --count to 100 by 10's and 1's
-    cluster_id integer NOT NULL -- Know number names and the count sequence.
+    standard_id integer NOT NULL,
+    cluster_id integer NOT NULL
 );
 
+--STANDARDS_DOMAINS
+CREATE TABLE standards_domains (
+    standard_id integer NOT NULL,
+    domain_id integer NOT NULL 
+);
+
+--STANDARDS_GRADES
+CREATE TABLE standards_grades (
+    standard_id integer NOT NULL, 
+    grade_id integer NOT NULL  
+);
 
 
 --==================================================================
@@ -258,6 +271,25 @@ CREATE TABLE levels_standards (
     level_id integer NOT NULL,
     standard_id integer NOT NULL
 );
+
+--LEVELS_CLUSTERS
+CREATE TABLE levels_clusters (
+    level_id integer NOT NULL,
+    cluster_id integer NOT NULL
+);
+
+--LEVELS_DOMAINS
+CREATE TABLE levels_domains (
+    level_id integer NOT NULL,
+    domain_id integer NOT NULL
+);
+
+--LEVELS_GRADES
+CREATE TABLE levels_grades (
+    level_id integer NOT NULL,
+    grade_id integer NOT NULL
+);
+
 
 --COUNTING
 CREATE TABLE counting (
@@ -2383,6 +2415,9 @@ select clusters_domains.cluster_id from clusters_domains join clusters_grades on
 select clusters_domains.cluster_id from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_domains.domain_id = 2; 
 select standards_clusters.standard_id, standards_clusters.cluster_id  from standards_clusters, clusters_grades, clusters_domains where standards_clusters.cluster_id = clusters_grades.cluster_id and clusters_grades.cluster_id = clusters_domains.cluster_id  and clusters_grades.grade_id = 1 and clusters_domains.domain_id = 1; 
 
+
+select standards_clusters.standard_id, standards_clusters.cluster_id  from standards_clusters, clusters_grades, clusters_domains where standards_clusters.cluster_id = clusters_grades.cluster_id and clusters_grades.cluster_id = clusters_domains.cluster_id  and clusters_grades.grade_id = 1 and clusters_domains.domain_id = 1; 
+--add standards_grades standards_domains.
 
 --select standards.standard from clusters_domains join clusters_grades on clusters_domains.cluster_id = clusters_grades.cluster_id where clusters_grades.grade_id = 1; 
 
