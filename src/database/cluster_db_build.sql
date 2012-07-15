@@ -643,6 +643,15 @@ ALTER TABLE public.clusters_grades OWNER TO postgres;
 --STANDARDS
 ALTER TABLE public.standards OWNER TO postgres;
 
+--STANDARDS_CLUSTERS
+ALTER TABLE public.standards_clusters OWNER TO postgres;
+
+--STANDARDS_DOMAINS
+ALTER TABLE public.standards_domains OWNER TO postgres;
+
+--STANDARDS_GRADES
+ALTER TABLE public.standards_grades OWNER TO postgres;
+
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -656,6 +665,15 @@ ALTER TABLE public.levels_transactions OWNER TO postgres;
 
 --LEVELS_STANDARDS
 ALTER TABLE public.levels_standards OWNER TO postgres;
+
+--LEVELS_CLUSTERS
+ALTER TABLE public.levels_clusters OWNER TO postgres;
+
+--LEVELS_DOMAINS
+ALTER TABLE public.levels_domains OWNER TO postgres;
+
+--LEVELS_GRADES
+ALTER TABLE public.levels_grades OWNER TO postgres;
 
 --COUNTING
 ALTER TABLE public.counting OWNER TO postgres;
@@ -893,6 +911,12 @@ ALTER TABLE standards ADD PRIMARY KEY (id);
 --STANDARDS_CLUSTERS
 ALTER TABLE standards_clusters ADD PRIMARY KEY (standard_id, cluster_id);
 
+--STANDARDS_DOMAINS
+ALTER TABLE standards_domains ADD PRIMARY KEY (standard_id, domain_id);
+
+--STANDARDS_GRADES
+ALTER TABLE standards_grades ADD PRIMARY KEY (standard_id, grade_id);
+
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
@@ -903,8 +927,19 @@ ALTER TABLE levels ADD PRIMARY KEY (id);
 --LEVELS_TRANSACTIONS
 ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
 
+
 --LEVELS_STANDARDS
-ALTER TABLE levels_standards ADD PRIMARY KEY (level_id,standard_id);
+ALTER TABLE levels_standards ADD PRIMARY KEY (level_id, standard_id);
+
+--LEVELS_CLUSTERS
+ALTER TABLE levels_clusters ADD PRIMARY KEY (level_id, cluster_id);
+
+--LEVELS_DOMAINS
+ALTER TABLE levels_domains ADD PRIMARY KEY (level_id, domain_id);
+
+--LEVELS_GRADES
+ALTER TABLE levels_grades ADD PRIMARY KEY (level_id, grade_id);
+
 
 --COUNTING
 ALTER TABLE counting ADD PRIMARY KEY (id);
@@ -989,17 +1024,25 @@ ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 --CLUSTERS_GRADES
-ALTER TABLE clusters_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 ALTER TABLE clusters_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+ALTER TABLE clusters_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 --CLUSTERS_DOMAINS
-ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 ALTER TABLE clusters_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 
 
 --STANDARDS_CLUSTERS
-ALTER TABLE standards_clusters ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 ALTER TABLE standards_clusters ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+ALTER TABLE standards_clusters ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+
+--STANDARDS_DOMAINS
+ALTER TABLE standards_domains ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+ALTER TABLE standards_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+
+--STANDARDS_GRADES
+ALTER TABLE standards_grades ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+ALTER TABLE standards_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 
 --==================================================================
@@ -1015,6 +1058,18 @@ ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id)
 --LEVELS_STANDARDS
 ALTER TABLE levels_standards ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 ALTER TABLE levels_standards ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+
+--LEVELS_CLUSTERS
+ALTER TABLE levels_clusters ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels_clusters ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+
+--LEVELS_DOMAINS
+ALTER TABLE levels_domains ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
+
+--LEVELS_GRADES
+ALTER TABLE levels_grades ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 --COUNTING
 ALTER TABLE counting ADD FOREIGN KEY (level_id) REFERENCES levels(id);
