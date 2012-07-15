@@ -1505,6 +1505,14 @@ insert into standards_clusters (standard_id, cluster_id) values (3,1); --Write n
 insert into standards_clusters (standard_id, cluster_id) values (4,2); --Understand the relat.........
 insert into standards_clusters (standard_id, cluster_id) values (5,2); --When counting objects, say.........
 
+--STANDARDS_DOMAINS
+insert into standards_domains (standard_id, domain_id) values (1,1);
+insert into standards_domains (standard_id, domain_id) values (2,1);
+insert into standards_domains (standard_id, domain_id) values (3,1);
+insert into standards_domains (standard_id, domain_id) values (4,1);
+insert into standards_domains (standard_id, domain_id) values (5,1);
+
+--STANDARDS_GRADES
 
 --==================================================================
 --================= LEVELS  ====================================
