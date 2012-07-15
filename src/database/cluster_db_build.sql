@@ -1511,8 +1511,17 @@ insert into standards_domains (standard_id, domain_id) values (2,1);
 insert into standards_domains (standard_id, domain_id) values (3,1);
 insert into standards_domains (standard_id, domain_id) values (4,1);
 insert into standards_domains (standard_id, domain_id) values (5,1);
+--english
+insert into standards_domains (standard_id, domain_id) values (6,2);
 
 --STANDARDS_GRADES
+insert into standards_grades (standard_id, grade_id) values (1,1);
+insert into standards_grades (standard_id, grade_id) values (2,1);
+insert into standards_grades (standard_id, grade_id) values (3,1);
+insert into standards_grades (standard_id, grade_id) values (4,1);
+insert into standards_grades (standard_id, grade_id) values (5,1);
+--english
+insert into standards_grades (standard_id, grade_id) values (6,1);
 
 --==================================================================
 --================= LEVELS  ====================================
