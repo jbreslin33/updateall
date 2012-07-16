@@ -958,6 +958,8 @@ ALTER TABLE clusters_grades ADD PRIMARY KEY (cluster_id, grade_id);
 --CLUSTERS_DOMAINS
 ALTER TABLE clusters_domains ADD PRIMARY KEY (cluster_id, domain_id);
 
+--CLUSTERS_DOMAINS_GRADES
+ALTER TABLE clusters_domains_grades ADD PRIMARY KEY (id);
 
 --STANDARDS
 ALTER TABLE standards ADD PRIMARY KEY (id);
