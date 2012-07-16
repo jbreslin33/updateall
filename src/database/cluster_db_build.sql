@@ -824,6 +824,11 @@ ALTER TABLE public.clusters_id_seq OWNER TO postgres;
 ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
 ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
 
+--CLUSTERS_DOMAINS_GRADES
+ALTER TABLE public.clusters_domains_grades_id_seq OWNER TO postgres;
+ALTER SEQUENCE clusters_domains_grades_id_seq OWNED BY clusters_domains_grades.id;
+ALTER TABLE ONLY clusters_domains_grades ALTER COLUMN id SET DEFAULT nextval('clusters_domains_grades_id_seq'::regclass);
+
 --STANDARDS
 ALTER TABLE public.standards_id_seq OWNER TO postgres;
 ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
