@@ -225,8 +225,9 @@ CREATE TABLE clusters_grades (
 
 --CLUSTERS_DOMAINS_GRADES
 CREATE TABLE clusters_domains_grades (
+    id integer NOT NULL,
     cluster_id integer NOT NULL, 
-    domain_id integer NOT NULL  
+    domain_grade_id integer NOT NULL  
 );
 
 
