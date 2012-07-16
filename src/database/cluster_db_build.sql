@@ -49,6 +49,7 @@ DROP TABLE standards_clusters cascade;
 DROP TABLE standards_grades cascade;
 DROP TABLE standards_domains cascade;
 DROP TABLE standards cascade;
+DROP TABLE clusters_domains_grades cascade;
 DROP TABLE clusters_grades cascade;
 DROP TABLE clusters_domains cascade;
 DROP TABLE clusters cascade;
@@ -220,6 +221,14 @@ CREATE TABLE clusters_grades (
     cluster_id integer NOT NULL, --count to 100 by 10's and 1's
     grade_id integer NOT NULL   --k 
 );
+
+
+--CLUSTERS_DOMAINS_GRADES
+CREATE TABLE clusters_domains_grades (
+    cluster_id integer NOT NULL, 
+    domain_id integer NOT NULL  
+);
+
 
 
 --*************************
