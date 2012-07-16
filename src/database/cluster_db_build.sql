@@ -190,12 +190,14 @@ CREATE TABLE domains (
 
 --DOMAINS_SUBJECTS
 CREATE TABLE domains_subjects (
+    id integer NOT NULL,
     domain_id integer,
     subject_id integer
 );
 
 --DOMAINS_GRADES
 CREATE TABLE domains_grades (
+    id integer NOT NULL,
     domain_id integer,
     grade_id integer 
 );
@@ -454,6 +456,22 @@ CREATE SEQUENCE permissions_id_seq
 
 --SUBJECTS
 CREATE SEQUENCE subjects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--DOMAINS_SUBJECTS
+CREATE SEQUENCE domains_subjects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--DOMAINS_GRADES
+CREATE SEQUENCE domains_grades_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -765,6 +783,16 @@ ALTER TABLE public.subjects_id_seq OWNER TO postgres;
 ALTER SEQUENCE subjects_id_seq OWNED BY subjects.id;
 ALTER TABLE ONLY subjects ALTER COLUMN id SET DEFAULT nextval('subjects_id_seq'::regclass);
 
+--DOMAINS_GRADES
+ALTER TABLE public.domains_grades_id_seq OWNER TO postgres;
+ALTER SEQUENCE domains_grades_id_seq OWNED BY domains_grades.id;
+ALTER TABLE ONLY domains_grades ALTER COLUMN id SET DEFAULT nextval('domains_grades_id_seq'::regclass);
+
+--DOMAINS_SUBJECTS
+ALTER TABLE public.domains_subjects_id_seq OWNER TO postgres;
+ALTER SEQUENCE domains_subjects_id_seq OWNED BY domains_subjects.id;
+ALTER TABLE ONLY domains_subjects ALTER COLUMN id SET DEFAULT nextval('domains_subjects_id_seq'::regclass);
+
 --DOMAINS
 ALTER TABLE public.domains_id_seq OWNER TO postgres;
 ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
@@ -889,10 +917,10 @@ ALTER TABLE grades ADD PRIMARY KEY (id);
 ALTER TABLE domains ADD PRIMARY KEY (id);
 
 --DOMAINS_SUBJECTS
-ALTER TABLE domains_subjects ADD PRIMARY KEY (domain_id, subject_id);
+ALTER TABLE domains_subjects ADD PRIMARY KEY (id);
 
 --DOMAINS_GRADES
-ALTER TABLE domains_grades ADD PRIMARY KEY (domain_id, grade_id);
+ALTER TABLE domains_grades ADD PRIMARY KEY (id);
 
 
 --CLUSTERS
@@ -1018,9 +1046,11 @@ ALTER TABLE permissions_users ADD FOREIGN KEY (user_id) REFERENCES users(id);
 --DOMAINS
 
 --DOMAINS_SUBJECTS
+ALTER TABLE domains_subjects ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id);
 
 --DOMAINS_GRADES
+ALTER TABLE domains_grades ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
 --CLUSTERS_GRADES
@@ -1138,10 +1168,20 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --==================================================================
 
 --GRADES
+ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --SUBJECTS
 
 --DOMAINS
+
+--DOMAINS_SUBJECTS
+ALTER TABLE domains_subjects ADD UNIQUE (domain_id, subject_id);
+
+--DOMAINS_GRADES
+ALTER TABLE domains_grades ADD UNIQUE (domain_id, grade_id);
+
+--ROOMS
+ALTER TABLE rooms ADD UNIQUE (school_id,room);
 
 --CLUSTERS
 
