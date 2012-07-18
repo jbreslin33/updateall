@@ -853,6 +853,10 @@ ALTER TABLE public.standards_id_seq OWNER TO postgres;
 ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
 ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
 
+--STANDARDS_CLUSTERS_DOMAINS
+ALTER TABLE public.standards_clusters_donmains_id_seq OWNER TO postgres;
+ALTER SEQUENCE standards_clusters_domains_id_seq OWNED BY standards_clusters_domains.id;
+ALTER TABLE ONLY standards_clusters_domains ALTER COLUMN id SET DEFAULT nextval('standards_clusters_domains_id_seq'::regclass);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -992,6 +996,9 @@ ALTER TABLE standards_domains ADD PRIMARY KEY (standard_id, domain_id);
 --STANDARDS_GRADES
 ALTER TABLE standards_grades ADD PRIMARY KEY (standard_id, grade_id);
 
+--STANDARDS_CLUSTERS_DOMAINS
+ALTER TABLE standards_clusters_domains ADD PRIMARY KEY (standard_id, cluster_domain_id);
+
 --==================================================================
 --================= LEVELS  ====================================
 --==================================================================
@@ -1124,6 +1131,9 @@ ALTER TABLE standards_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id)
 ALTER TABLE standards_grades ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 ALTER TABLE standards_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
+--STANDARDS_CLUSTERS_DOMAINS
+ALTER TABLE standards_clusters_domains ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+ALTER TABLE standards_clusters_domains ADD FOREIGN KEY (cluster_domain_id) REFERENCES clusters_domains(id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -1236,7 +1246,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --CLUSTERS
 
 --STANDARDS
-
+ALTER TABLE standards_clusters_domains ADD UNIQUE (standard_id, cluster_domain_id);
 
 
 --==================================================================
