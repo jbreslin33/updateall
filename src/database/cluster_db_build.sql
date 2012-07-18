@@ -45,7 +45,7 @@ DROP TABLE schools cascade;
 --=========================== CORE CURRICULUM  ========================
 --==================================================================
 
-DROP TABLE standards_clusters_domains cascade;
+DROP TABLE standards_clusters_domains_grades cascade;
 DROP TABLE standards_clusters cascade;
 DROP TABLE standards_grades cascade;
 DROP TABLE standards_domains cascade;
@@ -259,11 +259,11 @@ CREATE TABLE standards_grades (
     grade_id integer NOT NULL  
 );
 
---STANDARDS_CLUSTERS_DOMAINS
-CREATE TABLE standards_clusters_domains (
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+CREATE TABLE standards_clusters_domains_grades (
     id integer NOT NULL,
     standard_id integer NOT NULL,
-    domain_cluster_id integer NOT NULL
+    cluster_domain_grade_id integer NOT NULL
 );
 
 
@@ -528,8 +528,8 @@ CREATE SEQUENCE standards_id_seq
     NO MAXVALUE
     CACHE 1;
 
---STANDARDS_CLUSTERS_DOMAINS
-CREATE SEQUENCE standards_clusters_domains_id_seq
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+CREATE SEQUENCE standards_clusters_domains_grades_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -701,8 +701,8 @@ ALTER TABLE public.standards OWNER TO postgres;
 --STANDARDS_CLUSTERS
 ALTER TABLE public.standards_clusters OWNER TO postgres;
 
---STANDARDS_CLUSTERS_DOMAINS
-ALTER TABLE public.standards_clusters_domains OWNER TO postgres;
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE public.standards_clusters_domains_grades OWNER TO postgres;
 
 --STANDARDS_DOMAINS
 ALTER TABLE public.standards_domains OWNER TO postgres;
@@ -853,10 +853,10 @@ ALTER TABLE public.standards_id_seq OWNER TO postgres;
 ALTER SEQUENCE standards_id_seq OWNED BY standards.id;
 ALTER TABLE ONLY standards ALTER COLUMN id SET DEFAULT nextval('standards_id_seq'::regclass);
 
---STANDARDS_CLUSTERS_DOMAINS
-ALTER TABLE public.standards_clusters_donmains_id_seq OWNER TO postgres;
-ALTER SEQUENCE standards_clusters_domains_id_seq OWNED BY standards_clusters_domains.id;
-ALTER TABLE ONLY standards_clusters_domains ALTER COLUMN id SET DEFAULT nextval('standards_clusters_domains_id_seq'::regclass);
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE public.standards_clusters_domains_grades_id_seq OWNER TO postgres;
+ALTER SEQUENCE standards_clusters_domains_grades_id_seq OWNED BY standards_clusters_domains_grades.id;
+ALTER TABLE ONLY standards_clusters_domains_grades ALTER COLUMN id SET DEFAULT nextval('standards_clusters_domains_grades_id_seq'::regclass);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -996,8 +996,8 @@ ALTER TABLE standards_domains ADD PRIMARY KEY (standard_id, domain_id);
 --STANDARDS_GRADES
 ALTER TABLE standards_grades ADD PRIMARY KEY (standard_id, grade_id);
 
---STANDARDS_CLUSTERS_DOMAINS
-ALTER TABLE standards_clusters_domains ADD PRIMARY KEY (standard_id, cluster_domain_id);
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE standards_clusters_domains_grades ADD PRIMARY KEY (standard_id, cluster_domain_grade_id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -1117,7 +1117,7 @@ ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 
 --CLUSTERS_DOMAINS_GRADES
 ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
-ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (domain_grades_id) REFERENCES domains_grades(id);
+ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (domain_grade_id) REFERENCES domains_grades(id);
 
 --STANDARDS_CLUSTERS
 ALTER TABLE standards_clusters ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
@@ -1131,9 +1131,9 @@ ALTER TABLE standards_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id)
 ALTER TABLE standards_grades ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
 ALTER TABLE standards_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 
---STANDARDS_CLUSTERS_DOMAINS
-ALTER TABLE standards_clusters_domains ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
-ALTER TABLE standards_clusters_domains ADD FOREIGN KEY (cluster_domain_id) REFERENCES clusters_domains(id);
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE standards_clusters_domains_grades ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+ALTER TABLE standards_clusters_domains_grades ADD FOREIGN KEY (cluster_domain_grade_id) REFERENCES clusters_domains_grades(id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -1246,7 +1246,7 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --CLUSTERS
 
 --STANDARDS
-ALTER TABLE standards_clusters_domains ADD UNIQUE (standard_id, cluster_domain_id);
+ALTER TABLE standards_clusters_domains ADD UNIQUE (standard_id, cluster_domain_grade_id);
 
 
 --==================================================================
@@ -1631,15 +1631,15 @@ insert into standards_grades (standard_id, grade_id) values (5,1);
 --english
 insert into standards_grades (standard_id, grade_id) values (6,1);
 
---STANDARDS_CLUSTERS_DOMAINS
+--STANDARDS_CLUSTERS_DOMAINS_GRADES
 --cluster: Know number names and the count sequence.
-insert into standards_clusters_domains (standard_id, cluster_domain_id) values (1,1); --Count to 100 by ones and by tens.
-insert into standards_clusters_domains (standard_id, cluster_domain_id) values (2,1); --Count forward beginning from a given number within the known sequence......
-insert into standards_clusters_domains (standard_id, cluster_domain_id) values (3,1); --Write numbers from 0 to 20........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (1,1); --Count to 100 by ones and by tens.
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (2,1); --Count forward beginning from a given number within the known sequence......
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (3,1); --Write numbers from 0 to 20........
 
 --cluster: Count to tell the number of objects. 
-insert into standards_clusters_domains (standard_id, cluster_domain_id) values (4,2); --Understand the relat.........
-insert into standards_clusters_domains (standard_id, cluster_domain_id) values (5,2); --When counting objects, say.........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (4,2); --Understand the relat.........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (5,2); --When counting objects, say.........
 
 --==================================================================
 --================= LEVELS  ====================================
