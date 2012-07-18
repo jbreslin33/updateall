@@ -44,12 +44,16 @@ DROP TABLE schools cascade;
 
 DROP TABLE standards_clusters_domains_grades cascade;
 DROP TABLE standards cascade;
+
 DROP TABLE clusters_domains_grades cascade;
 DROP TABLE clusters cascade;
+
 DROP TABLE domains_grades cascade;
 DROP TABLE domains_subjects cascade;
 DROP TABLE domains cascade;
+
 DROP TABLE grades cascade;
+
 DROP TABLE subjects cascade;
 
 --==================================================================
@@ -210,8 +214,6 @@ CREATE TABLE clusters_domains_grades (
     domain_grade_id integer NOT NULL  
 );
 
-
-
 --*************************
 --STANDARDS
 CREATE TABLE standards (
@@ -224,7 +226,8 @@ CREATE TABLE standards (
 CREATE TABLE standards_clusters_domains_grades (
     id integer NOT NULL,
     standard_id integer NOT NULL,
-    cluster_domain_grade_id integer NOT NULL
+    cluster_domain_grade_id integer NOT NULL,
+    dewey double precision NOT NULL
 );
 
 
@@ -1447,13 +1450,13 @@ insert into standards (standard,standard_code) values ('With prompting and suppo
 
 --STANDARDS_CLUSTERS_DOMAINS_GRADES
 --cluster: Know number names and the count sequence.
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (1,1); --Count to 100 by ones and by tens.
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (2,1); --Count forward beginning from a given number within the known sequence......
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (3,1); --Write numbers from 0 to 20........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); --Count to 100 by ones and by tens.
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); --Count forward beginning from a given number within the known sequence......
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); --Write numbers from 0 to 20........
 
 --cluster: Count to tell the number of objects. 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (4,2); --Understand the relat.........
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (5,2); --When counting objects, say.........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); --Understand the relat.........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); --When counting objects, say.........
 
 --==================================================================
 --================= LEVELS  ====================================
