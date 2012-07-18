@@ -22,7 +22,7 @@ DROP TABLE games cascade;
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
-DROP TABLE levels_standards cascade;
+DROP TABLE levels_standards_clusters_domains_grades cascade;
 DROP TABLE levels_clusters cascade;
 DROP TABLE levels_domains cascade;
 DROP TABLE levels_grades cascade;
@@ -286,10 +286,10 @@ CREATE TABLE levels_transactions (
     user_id integer NOT NULL
 );
 
---LEVELS_STANDARDS
-CREATE TABLE levels_standards (
+--LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
+CREATE TABLE levels_standards_clusters_domains_grades (
     level_id integer NOT NULL,
-    standard_id integer NOT NULL
+    standard_cluster_domain_grade_id integer NOT NULL
 );
 
 --LEVELS_CLUSTERS
@@ -721,8 +721,8 @@ ALTER TABLE public.levels OWNER TO postgres;
 --LEVELS_TRANSACTIONS
 ALTER TABLE public.levels_transactions OWNER TO postgres;
 
---LEVELS_STANDARDS
-ALTER TABLE public.levels_standards OWNER TO postgres;
+--LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE public.levels_standards_clusters_domains_grades OWNER TO postgres;
 
 --LEVELS_CLUSTERS
 ALTER TABLE public.levels_clusters OWNER TO postgres;
@@ -997,7 +997,7 @@ ALTER TABLE standards_domains ADD PRIMARY KEY (standard_id, domain_id);
 ALTER TABLE standards_grades ADD PRIMARY KEY (standard_id, grade_id);
 
 --STANDARDS_CLUSTERS_DOMAINS_GRADES
-ALTER TABLE standards_clusters_domains_grades ADD PRIMARY KEY (standard_id, cluster_domain_grade_id);
+ALTER TABLE standards_clusters_domains_grades ADD PRIMARY KEY (id);
 
 --==================================================================
 --================= LEVELS  ====================================
@@ -1010,8 +1010,8 @@ ALTER TABLE levels ADD PRIMARY KEY (id);
 ALTER TABLE levels_transactions ADD PRIMARY KEY (id);
 
 
---LEVELS_STANDARDS
-ALTER TABLE levels_standards ADD PRIMARY KEY (level_id, standard_id);
+--LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE levels_standards_clusters_domains_grades ADD PRIMARY KEY (level_id, standard_cluster_domain_grade_id);
 
 --LEVELS_CLUSTERS
 ALTER TABLE levels_clusters ADD PRIMARY KEY (level_id, cluster_id);
@@ -1145,9 +1145,9 @@ ALTER TABLE standards_clusters_domains_grades ADD FOREIGN KEY (cluster_domain_gr
 ALTER TABLE levels_transactions ADD FOREIGN KEY (user_id) REFERENCES users(id);
 ALTER TABLE levels_transactions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
---LEVELS_STANDARDS
-ALTER TABLE levels_standards ADD FOREIGN KEY (level_id) REFERENCES levels(id);
-ALTER TABLE levels_standards ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
+--LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
+ALTER TABLE levels_standards_clusters_domains_grades ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+ALTER TABLE levels_standards_clusters_domains_grades ADD FOREIGN KEY (standard_cluster_domain_grade_id) REFERENCES standards_clusters_domains_grades(id);
 
 --LEVELS_CLUSTERS
 ALTER TABLE levels_clusters ADD FOREIGN KEY (level_id) REFERENCES levels(id);
@@ -1681,39 +1681,39 @@ insert into levels(level,description) values (24,'Write numbers from 10 to 15');
 insert into levels(level,description) values (25,'Write numbers from 15 to 20'); --26
 
 
---LEVELS_STANDARDS
+--LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
-insert into levels_standards(level_id, standard_id) values (1,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (1,1);       
 --insert into levels_standards(level_id, standard_id) values (2,1); this is the start of journey level_id      
-insert into levels_standards(level_id, standard_id) values (3,1);       
-insert into levels_standards(level_id, standard_id) values (4,1);       
-insert into levels_standards(level_id, standard_id) values (5,1);       
-insert into levels_standards(level_id, standard_id) values (6,1);       
-insert into levels_standards(level_id, standard_id) values (7,1);       
-insert into levels_standards(level_id, standard_id) values (8,1);       
-insert into levels_standards(level_id, standard_id) values (9,1);       
-insert into levels_standards(level_id, standard_id) values (10,1);       
-insert into levels_standards(level_id, standard_id) values (11,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (6,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (7,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (8,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (9,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (10,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (11,1);       
 --count by 10's to 100
-insert into levels_standards(level_id, standard_id) values (12,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (12,1);       
 
 --count from random known sequence
-insert into levels_standards(level_id, standard_id) values (13,2);       
-insert into levels_standards(level_id, standard_id) values (14,2);       
-insert into levels_standards(level_id, standard_id) values (15,2);       
-insert into levels_standards(level_id, standard_id) values (16,2);       
-insert into levels_standards(level_id, standard_id) values (17,2);       
-insert into levels_standards(level_id, standard_id) values (18,2);       
-insert into levels_standards(level_id, standard_id) values (19,2);       
-insert into levels_standards(level_id, standard_id) values (20,2);       
-insert into levels_standards(level_id, standard_id) values (21,2);       
-insert into levels_standards(level_id, standard_id) values (22,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (13,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (14,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (15,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (16,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (17,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (18,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (19,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (20,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (21,2);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (22,2);       
 
 --write numbers from 0 to 20
-insert into levels_standards(level_id, standard_id) values (23,3);       
-insert into levels_standards(level_id, standard_id) values (24,3);       
-insert into levels_standards(level_id, standard_id) values (25,3);       
-insert into levels_standards(level_id, standard_id) values (26,3);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (23,3);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (24,3);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (25,3);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (26,3);       
 
 --LEVELS_CLUSTERS
 --count by 1's to 100
