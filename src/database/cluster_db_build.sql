@@ -1570,6 +1570,14 @@ insert into clusters_grades (cluster_id, grade_id) values (1,1); --Know number n
 insert into clusters_grades (cluster_id, grade_id) values (2,1); --Count to tell the number objects
 insert into clusters_grades (cluster_id, grade_id) values (3,1); --Compare numbers
 
+--CLUSTER_DOMAINS_GRADES
+--domain: counting and cardinality
+--grade: kindergarten 
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); --Know number names and the count sequence
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); --Count to tell the number objects
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); --Compare numbers
+
+
 
 
 --STANDARDS
@@ -1622,6 +1630,16 @@ insert into standards_grades (standard_id, grade_id) values (4,1);
 insert into standards_grades (standard_id, grade_id) values (5,1);
 --english
 insert into standards_grades (standard_id, grade_id) values (6,1);
+
+--STANDARDS_CLUSTERS_DOMAINS
+--cluster: Know number names and the count sequence.
+insert into standards_clusters_domains (standard_id, cluster_domain_id) values (1,1); --Count to 100 by ones and by tens.
+insert into standards_clusters_domains (standard_id, cluster_domain_id) values (2,1); --Count forward beginning from a given number within the known sequence......
+insert into standards_clusters_domains (standard_id, cluster_domain_id) values (3,1); --Write numbers from 0 to 20........
+
+--cluster: Count to tell the number of objects. 
+insert into standards_clusters_domains (standard_id, cluster_domain_id) values (4,2); --Understand the relat.........
+insert into standards_clusters_domains (standard_id, cluster_domain_id) values (5,2); --When counting objects, say.........
 
 --==================================================================
 --================= LEVELS  ====================================
