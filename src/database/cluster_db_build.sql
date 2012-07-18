@@ -48,8 +48,6 @@ DROP TABLE standards_grades cascade;
 DROP TABLE standards_domains cascade;
 DROP TABLE standards cascade;
 DROP TABLE clusters_domains_grades cascade;
-DROP TABLE clusters_grades cascade;
-DROP TABLE clusters_domains cascade;
 DROP TABLE clusters cascade;
 DROP TABLE domains_grades cascade;
 DROP TABLE domains_subjects cascade;
@@ -207,19 +205,6 @@ CREATE TABLE clusters (
     id integer NOT NULL,
     cluster text NOT NULL -- Know number names and the count sequence. | Key ideas and details 
 );
-
---CLUSTERS_DOMAINS
-CREATE TABLE clusters_domains (
-    cluster_id integer NOT NULL, --count to 100 by 10's and 1's
-    domain_id integer NOT NULL   --counting and cardinaility
-);
-
---CLUSTERS_GRADES
-CREATE TABLE clusters_grades (
-    cluster_id integer NOT NULL, --count to 100 by 10's and 1's
-    grade_id integer NOT NULL   --k 
-);
-
 
 --CLUSTERS_DOMAINS_GRADES
 CREATE TABLE clusters_domains_grades (
@@ -664,12 +649,6 @@ ALTER TABLE public.domains_grades OWNER TO postgres;
 --CLUSTERS
 ALTER TABLE public.clusters OWNER TO postgres;
 
---CLUSTERS_DOMAINS
-ALTER TABLE public.clusters_domains OWNER TO postgres;
-
---CLUSTERS_GRADES
-ALTER TABLE public.clusters_grades OWNER TO postgres;
-
 --CLUSTERS_DOMAINS_GRADES
 ALTER TABLE public.clusters_domains_grades OWNER TO postgres;
 
@@ -944,12 +923,6 @@ ALTER TABLE domains_grades ADD PRIMARY KEY (id);
 --CLUSTERS
 ALTER TABLE clusters ADD PRIMARY KEY (id);
 
---CLUSTERS_GRADES
-ALTER TABLE clusters_grades ADD PRIMARY KEY (cluster_id, grade_id);
-
---CLUSTERS_DOMAINS
-ALTER TABLE clusters_domains ADD PRIMARY KEY (cluster_id, domain_id);
-
 --CLUSTERS_DOMAINS_GRADES
 ALTER TABLE clusters_domains_grades ADD PRIMARY KEY (id);
 
@@ -1065,14 +1038,6 @@ ALTER TABLE domains_subjects ADD FOREIGN KEY (subject_id) REFERENCES subjects(id
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 ALTER TABLE domains_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
-
---CLUSTERS_GRADES
-ALTER TABLE clusters_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
-ALTER TABLE clusters_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
-
---CLUSTERS_DOMAINS
-ALTER TABLE clusters_domains ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
-ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 
 --CLUSTERS_DOMAINS_GRADES
 ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
@@ -1503,29 +1468,12 @@ insert into clusters (cluster) values ('Conventions of Standard English');
 insert into clusters (cluster) values ('Knowlege of Language');
 insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
-
---CLUSTER_DOMAINS
---domain: counting and cardinality
-insert into clusters_domains (cluster_id, domain_id) values (1,1); --Know number names and the count sequence
-insert into clusters_domains (cluster_id, domain_id) values (2,1); --Count to tell the number objects
-insert into clusters_domains (cluster_id, domain_id) values (3,1); --Compare numbers
-
-
---CLUSTERS_GRADES
---grade: kindergarten 
-insert into clusters_grades (cluster_id, grade_id) values (1,1); --Know number names and the count sequence
-insert into clusters_grades (cluster_id, grade_id) values (2,1); --Count to tell the number objects
-insert into clusters_grades (cluster_id, grade_id) values (3,1); --Compare numbers
-
 --CLUSTER_DOMAINS_GRADES
 --domain: counting and cardinality
 --grade: kindergarten 
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); --Know number names and the count sequence
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); --Count to tell the number objects
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); --Compare numbers
-
-
-
 
 --STANDARDS
 --subject: math
