@@ -528,6 +528,14 @@ CREATE SEQUENCE standards_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--STANDARDS_CLUSTERS_DOMAINS
+CREATE SEQUENCE standards_clusters_domains_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --GRADES
 CREATE SEQUENCE grades_id_seq
     START WITH 1
@@ -692,6 +700,9 @@ ALTER TABLE public.standards OWNER TO postgres;
 
 --STANDARDS_CLUSTERS
 ALTER TABLE public.standards_clusters OWNER TO postgres;
+
+--STANDARDS_CLUSTERS_DOMAINS
+ALTER TABLE public.standards_clusters_domains OWNER TO postgres;
 
 --STANDARDS_DOMAINS
 ALTER TABLE public.standards_domains OWNER TO postgres;
