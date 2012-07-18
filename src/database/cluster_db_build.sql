@@ -22,6 +22,7 @@ DROP TABLE games cascade;
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
+
 DROP TABLE levels_standards_clusters_domains_grades cascade;
 DROP TABLE levels_transactions cascade;
 DROP TABLE levels cascade;
