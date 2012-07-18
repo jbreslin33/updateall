@@ -45,6 +45,7 @@ DROP TABLE schools cascade;
 --=========================== CORE CURRICULUM  ========================
 --==================================================================
 
+DROP TABLE standards_clusters_domains cascade;
 DROP TABLE standards_clusters cascade;
 DROP TABLE standards_grades cascade;
 DROP TABLE standards_domains cascade;
@@ -256,6 +257,13 @@ CREATE TABLE standards_domains (
 CREATE TABLE standards_grades (
     standard_id integer NOT NULL, 
     grade_id integer NOT NULL  
+);
+
+--STANDARDS_CLUSTERS_DOMAINS
+CREATE TABLE standards_clusters_domains (
+    id integer NOT NULL,
+    standard_id integer NOT NULL,
+    domain_cluster_id integer NOT NULL
 );
 
 
