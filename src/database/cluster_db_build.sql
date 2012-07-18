@@ -1089,6 +1089,9 @@ ALTER TABLE clusters_grades ADD FOREIGN KEY (grade_id) REFERENCES grades(id);
 ALTER TABLE clusters_domains ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
 ALTER TABLE clusters_domains ADD FOREIGN KEY (domain_id) REFERENCES domains(id);
 
+--CLUSTERS_DOMAINS_GRADES
+ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (cluster_id) REFERENCES clusters(id);
+ALTER TABLE clusters_domains_grades ADD FOREIGN KEY (domain_grades_id) REFERENCES domains_grades(id);
 
 --STANDARDS_CLUSTERS
 ALTER TABLE standards_clusters ADD FOREIGN KEY (standard_id) REFERENCES standards(id);
