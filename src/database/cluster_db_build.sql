@@ -1483,6 +1483,8 @@ insert into levels(level,description) values (23,'Write numbers from 5 to 10'); 
 insert into levels(level,description) values (24,'Write numbers from 10 to 15'); --25
 insert into levels(level,description) values (25,'Write numbers from 15 to 20'); --26
 
+insert into levels(level,description) values (26,'Count objects from 0 to 20'); --27
+
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
@@ -1517,6 +1519,8 @@ insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (24,3);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (25,3);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (26,3);       
+
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (27,3);       
 
 --LEVELS_TRANSACTIONS
 
@@ -1595,6 +1599,8 @@ insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0
 insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_5_10.php');
 insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_10_15.php');
 insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php');
+
+insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php');
 
 
 --GAMES_ATTEMPTS
