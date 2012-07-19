@@ -174,7 +174,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < monsters; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
+                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","countee");
 		mGame.addToShapeArray(shape);
         }
 
