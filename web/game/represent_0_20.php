@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 5;
+var scoreNeeded = 3;
 
 </script>
 
@@ -73,12 +73,11 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '3'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '6'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '4'));      
+       	
+	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
