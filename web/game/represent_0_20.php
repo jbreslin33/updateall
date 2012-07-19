@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 3;
+var scoreNeeded = 10;
 
 </script>
 
@@ -76,7 +76,14 @@ window.addEvent('domready', function()
 	//QUESTIONS FOR QUIZ
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '3'));      
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '4'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '0'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '16'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '7'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '20'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '13'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '18'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '5'));      
+       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '8'));      
        	
 	mQuiz.mQuestionArray.push(new Question('Door is Open!', '0'));      
 
