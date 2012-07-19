@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 5;
+var scoreNeeded = 6;
 
 </script>
 
@@ -73,12 +73,13 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 _', '6'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 6 _', '7'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 6 7 _', '8'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 6 7 8 _', '9'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 6 7 8 9 _', '1'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 5 6 7 8 9 1_', '0'));      
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', 'Door is Open'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
