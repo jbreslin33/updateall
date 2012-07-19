@@ -78,7 +78,7 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '6'));      
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '4'));      
        	
-	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
+	mQuiz.mQuestionArray.push(new Question('Door is Open!', '0'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
