@@ -71,7 +71,7 @@ Extends: Game,
 			       		}	
 					col2.mCollisionOn = false;
                                 	col2.setVisibility(false);
-
+					mApplication.log('setvis');
                                 	//set text of control object
                         		if (this.mQuiz)
 					{ 

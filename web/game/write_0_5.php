@@ -78,6 +78,7 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
