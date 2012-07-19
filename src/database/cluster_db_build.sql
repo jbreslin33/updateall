@@ -189,7 +189,6 @@ CREATE TABLE domains (
 
 --DOMAINS_SUBJECTS
 CREATE TABLE domains_subjects (
-    id integer NOT NULL,
     domain_id integer,
     subject_id integer
 );
@@ -420,14 +419,6 @@ CREATE SEQUENCE permissions_id_seq
 
 --SUBJECTS
 CREATE SEQUENCE subjects_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
---DOMAINS_SUBJECTS
-CREATE SEQUENCE domains_subjects_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -749,11 +740,6 @@ ALTER TABLE public.domains_grades_id_seq OWNER TO postgres;
 ALTER SEQUENCE domains_grades_id_seq OWNED BY domains_grades.id;
 ALTER TABLE ONLY domains_grades ALTER COLUMN id SET DEFAULT nextval('domains_grades_id_seq'::regclass);
 
---DOMAINS_SUBJECTS
-ALTER TABLE public.domains_subjects_id_seq OWNER TO postgres;
-ALTER SEQUENCE domains_subjects_id_seq OWNED BY domains_subjects.id;
-ALTER TABLE ONLY domains_subjects ALTER COLUMN id SET DEFAULT nextval('domains_subjects_id_seq'::regclass);
-
 --DOMAINS
 ALTER TABLE public.domains_id_seq OWNER TO postgres;
 ALTER SEQUENCE domains_id_seq OWNED BY domains.id;
@@ -887,7 +873,7 @@ ALTER TABLE grades ADD PRIMARY KEY (id);
 ALTER TABLE domains ADD PRIMARY KEY (id);
 
 --DOMAINS_SUBJECTS
-ALTER TABLE domains_subjects ADD PRIMARY KEY (id);
+ALTER TABLE domains_subjects ADD PRIMARY KEY (domain_id, subject_id);
 
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD PRIMARY KEY (id);
@@ -1098,7 +1084,6 @@ ALTER TABLE rooms ADD UNIQUE (school_id,room);
 --DOMAINS
 
 --DOMAINS_SUBJECTS
-ALTER TABLE domains_subjects ADD UNIQUE (domain_id, subject_id);
 
 --DOMAINS_GRADES
 ALTER TABLE domains_grades ADD UNIQUE (domain_id, grade_id);
