@@ -1,7 +1,7 @@
-var Dungeon = new Class(
+var DungeonHowMany = new Class(
 {
 
-Extends: Game,
+Extends: Dungeon,
 
         initialize: function(skill)
         {
@@ -12,7 +12,7 @@ Extends: Game,
 	update: function()
 	{
 		this.parent();
-
+/*
 		if (this.mQuiz)
 		{
 			if (this.mQuiz.isQuizComplete())
@@ -27,12 +27,13 @@ Extends: Game,
 				}
                         }
                 }
+*/
         },
 
 	resetGame: function()
 	{
 		this.parent();
-
+/*
 		//let's reset all quiz stuff right here.
                 if (this.mQuiz)
 		{ 
@@ -45,12 +46,13 @@ Extends: Game,
 				this.mControlObject.mMountee.setQuestion(this.mQuiz.getQuestion());
 			}
 		}
+*/
 	},
 
 	evaluateCollision: (function(col1,col2)
         {
 	        this.parent(col1,col2);
-
+/*
 		//if you get hit with a chaser then reset game or maybe lose a life 
                 if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
@@ -106,6 +108,7 @@ Extends: Game,
 				}
 			}
 		}
+*/
  	}).protect()
 
 });
