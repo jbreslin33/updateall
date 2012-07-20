@@ -44,7 +44,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 10;
+var scoreNeeded = 5;
 
 </script>
 
@@ -98,18 +98,12 @@ window.addEvent('domready', function()
 	//QUESTIONS FOR QUIZ
  	//Math.floor(Math.random()*ySize)
 
+       	mQuiz.mQuestionArray.push(new Question('Count', '1'));      
+       	
 
 
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
+
+	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
        	
 	mQuiz.mQuestionArray.push(new Question('Door is Open!', '0'));      
 
