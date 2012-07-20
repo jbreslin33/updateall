@@ -111,11 +111,11 @@ Extends: Game,
                 	}
 		}
 
-		//a dropbox recieving a pickup from a control object 
-		if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox")
+		//a dropbox_question recieving a pickup from a control object 
+		if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
 		{
 			//check for correct answer
-			
+			//if (			
 
 			pickup = 0;	
 			if (col1.mMountee.mMessage == "pickup")
@@ -125,7 +125,7 @@ Extends: Game,
 				//have controlObject unMount pickup
 				col1.unMount();					
 				
-				//have drop box mount pickup
+				//have dropbox_question mount pickup
                 		//ie is showing this too high
                 		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
                 		{

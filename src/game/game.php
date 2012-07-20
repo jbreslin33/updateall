@@ -47,7 +47,7 @@ var Game = new Class(
                 //reset collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
-			if (this.mShapeArray[i].mMessage == "dropbox")
+			if (this.mShapeArray[i].mMessage == "dropbox_question")
 			{
 				if (this.mShapeArray[i].mMountee)
 				{
