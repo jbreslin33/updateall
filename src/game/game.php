@@ -51,6 +51,7 @@ var Game = new Class(
 			{
 				if (this.mShapeArray[i].mMountee)
 				{
+					this.mShapeArray[i].mMountee.mCollidable = true;
 					this.mShapeArray[i].mMountee.mMounter = 0;
 					this.mShapeArray[i].mMountee = 0;
 				}
