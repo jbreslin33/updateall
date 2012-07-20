@@ -91,7 +91,7 @@ Extends: Game,
 			}
                 }
 
-		//pickup an item
+		//control object pickup an item
 		if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
 		{
 			if (col1.mMountee.mMessage == "pickup")
@@ -110,6 +110,29 @@ Extends: Game,
                         	col1.mount(col2,-5,-58);
                 	}
 		}
+
+		//a picker picking up an item
+		if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox")
+		{
+			if (col1.mMountee.mMessage == "pickup")
+			{
+				//have drop box mount pickup
+                		//ie is showing this too high
+                		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+                		{
+                        		col2.mount(col1.mMountee,-5,-41);
+                		}
+                		else
+                		{
+                        		col2.mount(col1.mMountee,-5,-58);
+                		}
+				//have controlObject unMount pickup
+				col1.unMount();					
+
+					
+				
+			}
+		}	
 
 		//exit room to next level when you complete quiz		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
