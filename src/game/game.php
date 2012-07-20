@@ -49,9 +49,11 @@ var Game = new Class(
                 {
 			if (this.mShapeArray[i].mMessage == "dropbox")
 			{
-			//	this.mShapeArray[i].mMountee.mMounter = 0;
-			//	this.mShapeArray[i].mMountee = 0;
-				
+				if (this.mShapeArray[i].mMountee)
+				{
+					this.mShapeArray[i].mMountee.mMounter = 0;
+					this.mShapeArray[i].mMountee = 0;
+				}
 			}
                         //set every shape to spawn position
                         this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
