@@ -1,25 +1,3 @@
-<!--
-Count to tell the number of objects. 	
-4.	 Understand the relationship between numbers and quantities; connect
-counting to cardinality.
-a.	 When counting objects, say the number names in the standard
-order, pairing each object with one and only one number name
-and each number name with one and only one object.
-
-: to do this without involving number pad yet?
-or do we use number pad
-if we use number pad we can just lineup coins with no question and no answer. 
-then you set urself to one. and hit one of them. that coin becomes 1. so your question array is in order
-but the coins get the questions as you collide.
-
-we could also do a hybrid where there is a number pad on the screen at bottom that you can collide with to set your player answer.
-
-
-we need to be able to pick up numbers and drop them off... 
-using current question system. all "question" shapes would start with question 0 and answer 1.
-then when that is answered correctly then all question shapes are given question 1,2. etc. 
--->
-
 <html>
 <head>
 
@@ -53,7 +31,6 @@ var scoreNeeded = 5;
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
 <script type="text/javascript" src="/src/game/game.php"></script>
 <script type="text/javascript" src="/src/game/dungeon.php"></script>
-<script type="text/javascript" src="/src/game/dungeon_how_many.php"></script>
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
@@ -89,23 +66,19 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
-        mGame = new DungeonHowMany("hardcode");
+        mGame = new Dungeon("hardcode");
 
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
- 	//Math.floor(Math.random()*ySize)
-
-       	mQuiz.mQuestionArray.push(new Question('Count', '1'));      
-       	
-
-
-
-	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
-       	
-	mQuiz.mQuestionArray.push(new Question('Door is Open!', '0'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 _', '1'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 _', '2'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
+       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -186,23 +159,12 @@ window.addEvent('domready', function()
         }
 	
 	//CHASERS
-	/*
 	chasers = 3;
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
-        }
-	*/
-	
-	//RED MONSTERS TO COUNT
-	monsters = 20;
-	for (i = 0; i < monsters; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","countee");
-		mGame.addToShapeArray(shape);
         }
 
 	//RESET GAME TO START
