@@ -322,7 +322,7 @@ var Game = new Class(
   		//control object pickup an item
                 if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
                 {
-			pickup(col1,col2);	
+			this.pickup(col1,col2);	
                 }
 
 

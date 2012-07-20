@@ -9,16 +9,6 @@ Extends: Game,
                 this.parent(skill);
         },
 
-	update: function()
-	{
-		this.parent();
-        },
-
-	resetGame: function()
-	{
-		this.parent();
-	},
-
 	quizComplete: function()
 	{
         	//open the doors
@@ -29,7 +19,6 @@ Extends: Game,
                       		this.mShapeArray[i].setSrc("/images/doors/door_open.png");
 			}
 		}
-
 	},
 
 	evaluateCollision: (function(col1,col2)
