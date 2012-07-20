@@ -111,23 +111,27 @@ Extends: Game,
                 	}
 		}
 
-		//a picker picking up an item
+		//a dropbox recieving a pickup from a control object 
 		if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox")
 		{
+			pickup = 0;	
 			if (col1.mMountee.mMessage == "pickup")
 			{
+				pickup = col1.mMountee;
+
+				//have controlObject unMount pickup
+				col1.unMount();					
+				
 				//have drop box mount pickup
                 		//ie is showing this too high
                 		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
                 		{
-                        		col2.mount(col1.mMountee,-5,-41);
+                        		col2.mount(pickup,-5,-41);
                 		}
                 		else
                 		{
-                        		col2.mount(col1.mMountee,-5,-58);
+                        		col2.mount(pickup,-5,-58);
                 		}
-				//have controlObject unMount pickup
-				col1.unMount();					
 
 					
 				
