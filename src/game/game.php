@@ -47,14 +47,12 @@ var Game = new Class(
                 //reset collidable to true
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
-/*
 			if (this.mShapeArray[i].mMessage == "dropbox")
 			{
-				this.mShapeArray[i].mMountee.mMounter = 0;
-				this.mShapeArray[i].mMountee = 0;
+			//	this.mShapeArray[i].mMountee.mMounter = 0;
+			//	this.mShapeArray[i].mMountee = 0;
 				
 			}
-*/
                         //set every shape to spawn position
                         this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
                         this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPositionSpawn.mY;
