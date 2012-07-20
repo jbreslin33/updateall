@@ -94,6 +94,11 @@ Extends: Game,
 		//pickup an item
 		if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
 		{
+			if (col1.mMountee.mMessage == "pickup")
+			{
+				col1.unMount();				
+			}
+
 			//do the mount
                 	//ie is showing this too high
                 	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
