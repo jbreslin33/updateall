@@ -42,6 +42,38 @@ var Game = new Class(
                 this.mShapeArray = new Array();
         },
 
+	quizComplete: function()
+	{
+
+	},
+
+        correctAnswer: function(col1,col2)
+        {
+		if (this.mQuiz)
+                {
+                	this.mQuiz.correctAnswer();
+                }
+
+                col2.mCollisionOn = false;
+                col2.setVisibility(false);
+
+                //set text of control object
+                if (this.mQuiz)
+                {
+                	//set the control objects question object
+                        col1.setQuestion(this.mQuiz.getQuestion());
+                        if (col1.mMountee)
+                        {
+                        	col1.mMountee.setQuestion(this.mQuiz.getQuestion());
+                        }
+                }
+        },
+
+        incorrectAnswer: function(col1,col2)
+        {
+		this.resetGame();
+        },
+
  	resetGame: function()
         {
                 //reset collidable to true
@@ -125,7 +157,16 @@ var Game = new Class(
                 	//save old positions
                 	this.saveOldPositions();
 			//var t=setTimeout("mGame.update()",32)
-                }
+
+			//check for quiz complete
+                	if (this.mQuiz)
+               		{
+                        	if (this.mQuiz.isQuizComplete())
+                        	{
+					this.quizComplete();
+                        	}
+                	}
+		}
         },
 
 	/****************************** PROTECTED ***************************************/
@@ -254,8 +295,62 @@ var Game = new Class(
 
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
+ 		
+		//if you get hit with a chaser then reset game or maybe lose a life
+                if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
+                {
+                        //this deletes and then recreates everthing.
+                        this.hitByChaser();
+                }
+
+	 	//you ran into a question shape lets resolve it
+                if (col1.mMessage == "controlObject" && col2.mMessage == "question")
+                {
+                        if (col1.mMountee)
+                        {
+                                if (col1.mMountee.mQuestion.getAnswer() == col2.mQuestion.getAnswer())
+                                {
+                                        this.correctAnswer(col1,col2);
+                                }
+                                else
+                                {
+                                        this.incorrectAnswer(col1,col2);
+                                }
+                        }
+                }
+
+  		//control object pickup an item
+                if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
+                {
+			pickup(col1,col2);	
+                }
+
 
 	}).protect(),
+
+	pickup: function(col1,col2)
+	{
+        	if (col1.mMountee.mMessage == "pickup")
+        	{
+                	col1.unMount();
+                }
+
+               	//do the mount
+                //ie is showing this too high
+                if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+                {
+                        col1.mount(col2,-5,-41);
+                }
+                else
+                {
+                        col1.mount(col2,-5,-58);
+               	}
+	},
+
+	hitByChaser: function()
+	{
+		this.resetGame();
+	},
 
 	checkForOutOfBounds: function(shape)
 	{
