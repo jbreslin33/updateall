@@ -91,6 +91,21 @@ Extends: Game,
 			}
                 }
 
+		//pickup an item
+		if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
+		{
+			//do the mount
+                	//ie is showing this too high
+                	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+                	{
+                        	col1.mount(col2,-5,-41);
+                	}
+                	else
+                	{
+                        	col1.mount(col2,-5,-58);
+                	}
+		}
+
 		//exit room to next level when you complete quiz		
 		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
 		{

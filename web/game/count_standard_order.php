@@ -134,7 +134,7 @@ window.addEvent('domready', function()
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","question"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","pickup"));
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
@@ -170,7 +170,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < dropbox; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/treasure/chest.png","","dropbox");
+                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/treasure/chest.png","","question");
 		mGame.addToShapeArray(shape);
         }
 
