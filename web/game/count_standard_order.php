@@ -13,7 +13,11 @@ then you set urself to one. and hit one of them. that coin becomes 1. so your qu
 but the coins get the questions as you collide.
 
 we could also do a hybrid where there is a number pad on the screen at bottom that you can collide with to set your player answer.
- 
+
+
+we need to be able to pick up numbers and drop them off... 
+using current question system. all "question" shapes would start with question 0 and answer 1.
+then when that is answered correctly then all question shapes are given question 1,2. etc. 
 -->
 
 <html>
