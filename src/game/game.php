@@ -325,6 +325,51 @@ var Game = new Class(
 			this.pickup(col1,col2);	
                 }
 
+ 		//a dropbox_question recieving a pickup from a control object
+                if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
+                {
+                        //check for correct answer
+                        if (col1.mMountee)
+                        {
+				if (col1.mMountee.mQuestion && col2.mQuestion)
+				{
+                                	if (col1.mMountee.mQuestion.getAnswer() == col2.mQuestion.getAnswer())
+                                	{
+						this.correctAnswer(col1,col2);
+                                	}
+                                	else
+                                	{
+                                        	//this deletes and then recreates everthing.
+                                        	this.incorrectAnswer(col1,col2);
+                                	}
+				}
+                        }
+  		
+			//have the dropbox_question pick up the pickup from controlobject	
+			pickup = 0;
+			if (col1.mMountee)
+			{
+                        	if (col1.mMountee.mMessage == "pickup")
+                        	{
+                                	pickup = col1.mMountee;
+
+                                	//have controlObject unMount pickup
+                                	col1.unMount();
+
+                                	//have dropbox_question mount pickup
+					//ie is showing this too high
+                                	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+                                	{
+                                        	col2.mount(pickup,-5,-41);
+                                	}
+                                	else
+                                	{
+                                        	col2.mount(pickup,-5,-58);
+                                	}
+                        	}
+			}
+		}
+
 
 	}).protect(),
 
