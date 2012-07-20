@@ -73,11 +73,9 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
+       	mQuiz.mQuestionArray.push(new Question('', '1'));      
+       	mQuiz.mQuestionArray.push(new Question('', '2'));      
+
        	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
@@ -165,6 +163,15 @@ window.addEvent('domready', function()
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
 		mGame.addToShapeArray(aishape);
+        }
+
+	//TREASURE TO COUNT
+	dropbox = 5;
+	for (i = 0; i < dropbox; i++)
+        {
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/treasure/chest.png","","dropbox");
+		mGame.addToShapeArray(shape);
         }
 
 	//RESET GAME TO START
