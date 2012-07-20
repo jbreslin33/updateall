@@ -114,6 +114,9 @@ Extends: Game,
 		//a dropbox recieving a pickup from a control object 
 		if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox")
 		{
+			//check for correct answer
+			
+
 			pickup = 0;	
 			if (col1.mMountee.mMessage == "pickup")
 			{
