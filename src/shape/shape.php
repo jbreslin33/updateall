@@ -45,10 +45,26 @@ var Shape = new Class(
 		this.mQuestion = question; // the question object that contains a question and answer.
 		this.mShowQuestionObject = true; //even if we have a valid question object we can shut off showing it.
 		this.mShowQuestion = true; //toggles between question or answer text from question object
-		
-		//mountee
+	
+		//mounting	just one mountpoint for now.
+		this.mMountable = false;
 		this.mMountee;
-		this.mMounter
+		this.mMounter;
+
+		this.mMountPoint = new Array();	
+		
+		this.mMountPoint[0] = new Point2D();
+
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+        	{
+			this.mMountPoint[0].mX = -5;
+			this.mMountPoint[0].mY = -41;
+        	}
+        	else
+       	 	{
+			this.mMountPoint[0].mX = -5;
+			this.mMountPoint[0].mY = -58;
+        	}
 
 		//speed
 		this.mSpeed = .1;
@@ -175,8 +191,8 @@ var Shape = new Class(
 			this.mPosition.mY = this.mMounter.mPosition.mY;
 
 			//offset
-			this.mPosition.mX += this.mMountOffsetX;
-			this.mPosition.mY += this.mMountOffsetY;
+			this.mPosition.mX += this.mMounter.mMountPoint[0].mX;
+			this.mPosition.mY += this.mMounter.mMountPoint[0].mY;
 		} 
 	},
 
@@ -216,20 +232,17 @@ var Shape = new Class(
 		}
 	},
 
-	mount: function(mountee,offsetX,offsetY)
+	mount: function(mountee,mountpoint)
 	{
 		this.mMountee = mountee;
-
-		this.mMountee.mountedBy(this,offsetX,offsetY);
+		this.mMountee.mountedBy(this,mountpoint);
 	},
 
-	mountedBy: function(mounter,offsetX,offsetY)
+	mountedBy: function(mounter,mountpoint)
 	{
 		this.mCollidable = false;
 		this.mCollisionOn = false;
 		this.mMounter = mounter;
-		this.mMountOffsetX = offsetX;
-		this.mMountOffsetY = offsetY;
 	},
 
 	unMount: function()
