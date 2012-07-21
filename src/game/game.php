@@ -307,10 +307,11 @@ var Game = new Class(
 		//mount an item if mountable
                 if (col1.mMessage == "controlObject" && col2.mMountable == true)
 		{
+			mApplication.log("collide with mount");
 			//first unmount  if you have something
 			if (col1.mMountee)
 			{
-				col1.unmount(col1.mMountee,0);
+				col1.unMount(col1.mMountee,0);
 			}
 			//then mount	
 			col1.mount(col2,0);	

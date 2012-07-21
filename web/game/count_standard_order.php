@@ -136,6 +136,7 @@ window.addEvent('domready', function()
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","pickup"));
                 shape.showQuestion(false);
+		shape.mMountable = true;
 
 		//numberMount to go on top let's make it small and draw it on top 
                 var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
