@@ -76,50 +76,17 @@ var Game = new Class(
 
  	resetGame: function()
         {
-                //reset collidable to true
-                for (i=0; i < this.mShapeArray.length; i++)
-                {
-			if (this.mShapeArray[i].mMessage == "dropbox_question")
-			{
-				if (this.mShapeArray[i].mMountee)
-				{
-					this.mShapeArray[i].mMountee.mCollidable = true;
-					this.mShapeArray[i].mMountee.mMounter = 0;
-					this.mShapeArray[i].mMountee = 0;
-				}
-			}
-                        //set every shape to spawn position
-                        this.mShapeArray[i].mPosition.mX = this.mShapeArray[i].mPositionSpawn.mX;
-                        this.mShapeArray[i].mPosition.mY = this.mShapeArray[i].mPositionSpawn.mY;
-                        this.mShapeArray[i].setVisibility(true);
-                }
-
-                for (i=0; i < this.mShapeArray.length; i++)
-                {
-                        if (this.mShapeArray[i].mCollidable == true)
-                        {
-                                this.mShapeArray[i].mCollisionOn = true;
-                        }
-                }
-	
 		if (this.mQuiz)
 		{
 			this.mQuiz.reset();
-			//this.mControlObject.setQuestion(this.mQuiz.mQuestionArray[0]);
-			//mApplication.log('q:' + this.mControlObject.getQuestion().getQuestion());
-			//mApplication.log('a:' + this.mControlObject.getQuestion().getAnswer());
-
-			 //set the control objects question object
-                        this.mControlObject.setQuestion(this.mQuiz.getQuestion());
-                        if (this.mControlObject.mMountee)
-                        {       
-                                this.mControlObject.mMountee.setQuestion(this.mQuiz.getQuestion());
-                        }
-
-
 		}
-		
-
+                
+		//reset collidable to true
+                for (i=0; i < this.mShapeArray.length; i++)
+                {
+			this.mShapeArray[i].reset();
+		}
+	
         },
 
 	/*********************** PUBLIC ***************************/

@@ -116,6 +116,43 @@ var Shape = new Class(
 /******************** PUBLIC METHODS *************/
 
 /****** UTILITY METHODS ******************/
+	reset: function()
+	{
+     		//reset collidable to true
+                if (this.mMessage == "dropbox_question")
+                {
+                	if (this.mMountee)
+                        {
+                        	this.mMountee.mCollidable = true;
+                                this.mMountee.mMounter = 0;
+                                this.mMountee = 0;
+                        }
+                }
+                //set every shape to spawn position
+                this.mPosition.mX = this.mPositionSpawn.mX;
+                this.mPosition.mY = this.mPositionSpawn.mY;
+                this.setVisibility(true);
+
+                if (this.mCollidable == true)
+                {
+                	this.mCollisionOn = true;
+                }
+
+                if (this.mGame.mQuiz)
+                {
+                        //set the control objects question object
+			if (this.mGame.mControlObject == this)
+			{
+                        	this.setQuestion(this.mGame.mQuiz.getQuestion());
+                        	if (this.mMountee)
+                       		{
+                                	this.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
+                        	}
+			}
+                }
+
+	},
+
 
 	updateVelocity: function(delta)
 	{
