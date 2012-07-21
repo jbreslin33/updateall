@@ -105,7 +105,18 @@ var Game = new Class(
 		if (this.mQuiz)
 		{
 			this.mQuiz.reset();
-			this.mControlObject.setQuestion(mQuiz.mQuestionArray[0]);
+			//this.mControlObject.setQuestion(this.mQuiz.mQuestionArray[0]);
+			//mApplication.log('q:' + this.mControlObject.getQuestion().getQuestion());
+			//mApplication.log('a:' + this.mControlObject.getQuestion().getAnswer());
+
+			 //set the control objects question object
+                        this.mControlObject.setQuestion(this.mQuiz.getQuestion());
+                        if (this.mControlObject.mMountee)
+                        {       
+                                this.mControlObject.mMountee.setQuestion(this.mQuiz.getQuestion());
+                        }
+
+
 		}
 		
 

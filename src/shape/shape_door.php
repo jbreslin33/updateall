@@ -7,6 +7,9 @@ Extends: Shape,
         {
         	this.parent(game,drawType,question,src,width,height,spawnX,spawnY,innerHTML,backgroundColor,onClick,message);
 		this.mOpen = false;	
+		this.mSrcClosed = src;
+		this.mSrcOpen = "/images/doors/door_open.png";
+		//mApplication.log('con:' + this.mSrcOpen);
         },
 
  	updateVelocity: function(delta)
@@ -15,26 +18,29 @@ Extends: Shape,
 		this.parent(delta);		
         },
 
-        update: function(delta)
+        update: function()
         {
                 //run ai
 		if (this.mGame.mQuiz.isQuizComplete())
 		{
 			if (this.mOpen == false)
 			{
+				this.setSrc(this.mSrcOpen);
+				mApplication.log('change pic:' + this.mSrcOpen);
 				this.mOpen = true;
-				this.setSrc("/images/doors/door_open.png");
 			}
 		}
+/*
 		else
 		{
 			if (this.mOpen)
 			{
 				this.mOpen = false;
-				this.setSrc("/images/doors/door_closed.png");
+				this.setSrc(this.mSrcClosed);
 			}
 
 		}
+*/
         }
 
 });
