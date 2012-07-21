@@ -121,15 +121,7 @@ window.addEvent('domready', function()
 
         //do the mount
         //ie is showing this too high
-        if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-        {
-                mGame.mControlObject.mount(numberMountee,-5,-41);
-        }
-        else
-        {
-                mGame.mControlObject.mount(numberMountee,-5,-58);
-        }
-
+        mGame.mControlObject.mount(numberMountee,0);
         numberMountee.setBackgroundColor("transparent");
 
 	//DOOR
@@ -152,15 +144,7 @@ window.addEvent('domready', function()
                 
 		//do the mount  
 		//ie is showing this too high	
-		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-		{
-			shape.mount(numberMountee,-5,-41);
-		}	
-		else
-		{
-			shape.mount(numberMountee,-5,-58);
-              	} 
-
+		shape.mount(numberMountee,0);
 		numberMountee.setBackgroundColor("transparent");
         }
 	
