@@ -247,6 +247,8 @@ var Shape = new Class(
 
 	unMount: function(mountee,mountpoint)
 	{
+		mountee.mCollidable = true;	
+		mountee.mCollisionOn = true;	
 		mountee.mMounter = 0;
 		this.mMountee = 0;
 	},
