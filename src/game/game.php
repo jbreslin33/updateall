@@ -44,7 +44,7 @@ var Game = new Class(
 
 	quizComplete: function()
 	{
-
+	
 	},
 
         correctAnswer: function(col1,col2)
@@ -377,8 +377,29 @@ var Game = new Class(
 			}
 		}
 
+		//exit room to next level when you complete quiz
+                if (col1.mMessage == "controlObject" && col2.mMessage == "door")
+                {
+			if (col2.mOpen)
+			{
+                                if (this.mQuiz)
+                                {
+                                        if (this.mQuiz.isQuizComplete())
+                                        {
+						this.enterDoor(col2);
+                                        }
+				}	
+			}
+                }
+
 
 	}).protect(),
+   
+	enterDoor: function(door)
+        {
+                this.mOn = false;
+                window.location = door.getQuestion().getAnswer(); 
+        },
 
 	pickup: function(col1,col2)
 	{
