@@ -101,6 +101,13 @@ var Game = new Class(
                                 this.mShapeArray[i].mCollisionOn = true;
                         }
                 }
+	
+		if (this.mQuiz)
+		{
+			this.mQuiz.reset();
+			this.mControlObject.setQuestion(mQuiz.mQuestionArray[0]);
+		}
+		
 
         },
 
