@@ -265,6 +265,8 @@ var Game = new Class(
                                 			if (distSQ < collisionDistance) 
                                 			{
                                 				this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
+								mApplication.log('col1:' + this.mShapeArray[s].mMessage);	
+								mApplication.log('col2:' + this.mShapeArray[c].mMessage);	
                                 			}
 						}
 					}
