@@ -27,6 +27,14 @@ Extends: Shape,
 				this.mOpen = true;
 			}
 		}
+		else
+		{
+			if (this.mOpen)
+			{
+				this.setSrc(this.mSrcClosed);
+				this.mOpen = false;
+			}
+		}
         }
 
 });
