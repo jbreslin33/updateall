@@ -1,7 +1,7 @@
-var DungeonHowMany = new Class(
+var HowMany = new Class(
 {
 
-Extends: Dungeon,
+Extends: Game,
 
         initialize: function(skill)
         {

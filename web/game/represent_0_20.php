@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 10;
+var scoreNeeded = 1;
 
 </script>
 
@@ -30,12 +30,12 @@ var scoreNeeded = 10;
 <script type="text/javascript" src="/src/math/point2D.php"></script>
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
 <script type="text/javascript" src="/src/game/game.php"></script>
-<script type="text/javascript" src="/src/game/dungeon.php"></script>
-<script type="text/javascript" src="/src/game/dungeon_how_many.php"></script>
+<script type="text/javascript" src="/src/game/how_many.php"></script>
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
@@ -67,7 +67,7 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
-        mGame = new DungeonHowMany("hardcode");
+        mGame = new HowMany("hardcode");
 
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
@@ -139,7 +139,7 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door");
+	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
 	mGame.addToShapeArray(door);
                
 	//QUESTION SHAPES 
