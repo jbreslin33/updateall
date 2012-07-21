@@ -245,9 +245,9 @@ var Shape = new Class(
 		this.mMounter = mounter;
 	},
 
-	unMount: function()
+	unMount: function(mountee,mountpoint)
 	{
-		this.mMountee.mMounter = 0;
+		mountee.mMounter = 0;
 		this.mMountee = 0;
 	},
 

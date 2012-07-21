@@ -304,11 +304,17 @@ var Game = new Class(
                         }
                 }
 
-  		//control object pickup an item
-                if (col1.mMessage == "controlObject" && col2.mMessage == "pickup")
-                {
-			this.pickup(col1,col2);	
-                }
+		//mount an item if mountable
+                if (col1.mMessage == "controlObject" && col2.mMountable == true)
+		{
+			//first unmount  if you have something
+			if (col1.mMountee)
+			{
+				col1.unmount(col1.mMountee,0);
+			}
+			//then mount	
+			col1.mount(col2,0);	
+		}
 
  		//a dropbox_question recieving a pickup from a control object
                 if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
