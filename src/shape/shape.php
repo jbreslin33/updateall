@@ -65,6 +65,10 @@ var Shape = new Class(
 			this.mMountPoint[0].mX = -5;
 			this.mMountPoint[0].mY = -58;
         	}
+		
+		this.mTimeoutShape;
+		this.mTimeoutCounter = 0;
+		this.mTimeout = false;
 
 		//speed
 		this.mSpeed = .1;
@@ -169,6 +173,12 @@ var Shape = new Class(
 
 	},
 
+	update: function(delta)
+	{
+		this.updateVelocity(delta);
+		this.updatePosition();
+		this.updateAnimation();
+	},
 
 	updateVelocity: function(delta)
 	{

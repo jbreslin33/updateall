@@ -119,9 +119,7 @@ var Game = new Class(
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
-                        	this.mShapeArray[i].updateVelocity(this.mDeltaTime);
-                        	this.mShapeArray[i].updatePosition();
-                        	this.mShapeArray[i].updateAnimation();
+				this.mShapeArray[i].update(this.mDeltaTime);
 				if (this.mShapeArray[i].mMounter)
 				{
 				}	
@@ -265,8 +263,6 @@ var Game = new Class(
                                 			if (distSQ < collisionDistance) 
                                 			{
                                 				this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
-								mApplication.log('col1:' + this.mShapeArray[s].mMessage);	
-								mApplication.log('col2:' + this.mShapeArray[c].mMessage);	
                                 			}
 						}
 					}
