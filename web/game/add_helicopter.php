@@ -86,7 +86,7 @@ window.addEvent('domready', function()
                 mGame.addToShapeArray(new ShapeAI(mGame,"relative","","../../../../images/monster/red_monster.png",50,50,openPoint.mX,openPoint.mY,"","","","chaser"));
         }
 
-	//create walls
+	//create doors
 	//left
 	mGame.createWall(50,50,"black",-400,300);
 	mGame.createWall(50,50,"black",-400,250);

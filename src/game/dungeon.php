@@ -26,7 +26,7 @@ Extends: Game,
 	        this.parent(col1,col2);
 
 		//exit room to next level when you complete quiz		
-		if (col1.mMessage == "controlObject" && col2.mMessage == "wall")
+		if (col1.mMessage == "controlObject" && col2.mMessage == "door")
 		{
 			if (col2.mSrc == "/images/doors/door_open.png")
 			{
