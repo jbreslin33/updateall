@@ -305,13 +305,16 @@ var Game = new Class(
 		//mount an item if mountable
                 if (col1.mMessage == "controlObject" && col2.mMountable == true)
 		{
-			//first unmount  if you have something
-			if (col1.mMountee)
+			if (col1 != col2.mTimeoutShape)
 			{
-				col1.unMount(col1.mMountee,0);
+				//first unmount  if you have something
+				if (col1.mMountee)
+				{
+					col1.unMount(col1.mMountee,0);
+				}
+				//then mount	
+				col1.mount(col2,0);	
 			}
-			//then mount	
-			col1.mount(col2,0);	
 		}
 
  		//a dropbox_question recieving a pickup from a control object

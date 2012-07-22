@@ -174,19 +174,20 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
-		this.updateVelocity(delta);
-		this.updatePosition();
-		this.updateAnimation();
 		
 		if (this.mTimeoutShape)
 		{
 			this.mTimeoutCounter++;
-			if (this.mTimeoutCounter > 50)
+			if (this.mTimeoutCounter > 500)
 			{
+				mApplication.log('mTimeoutCounter:' + this.mTimeoutCounter);
 				this.mTimeoutShape = 0;
 				this.mTimeoutCounter = 0;	
 			}
 		}
+		this.updateVelocity(delta);
+		this.updatePosition();
+		this.updateAnimation();
 	},
 
 	updateVelocity: function(delta)
