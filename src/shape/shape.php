@@ -68,7 +68,6 @@ var Shape = new Class(
 		
 		this.mTimeoutShape;
 		this.mTimeoutCounter = 0;
-		this.mTimeout = false;
 
 		//speed
 		this.mSpeed = .1;
@@ -178,6 +177,16 @@ var Shape = new Class(
 		this.updateVelocity(delta);
 		this.updatePosition();
 		this.updateAnimation();
+		
+		if (this.mTimeoutShape)
+		{
+			this.mTimeoutCounter++;
+			if (this.mTimeoutCounter > 50)
+			{
+				this.mTimeoutShape = 0;
+				this.mTimeoutCounter = 0;	
+			}
+		}
 	},
 
 	updateVelocity: function(delta)
@@ -257,10 +266,16 @@ var Shape = new Class(
 
 	unMount: function(mountee,mountpoint)
 	{
+		mountee.setTimeoutShape(this);
 		mountee.mCollidable = true;	
 		mountee.mCollisionOn = true;	
 		mountee.mMounter = 0;
 		this.mMountee = 0;
+	},
+
+	setTimeoutShape: function(shape)
+	{
+		this.mTimeoutShape = shape;		
 	},
 
 /************** SET METHODS ************************/
