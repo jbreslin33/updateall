@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 1;
+var scoreNeeded = 10;
 
 </script>
 
@@ -35,6 +35,7 @@ var scoreNeeded = 1;
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/shape_countee.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
@@ -67,7 +68,7 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
-        mGame = new HowMany("hardcode");
+        mGame = new Game("hardcode");
 
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
@@ -167,7 +168,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < monsters; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","countee");
+                var shape = new ShapeCountee(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","countee",i + 1);
 		mGame.addToShapeArray(shape);
         }
 

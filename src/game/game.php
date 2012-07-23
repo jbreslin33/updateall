@@ -265,6 +265,7 @@ var Game = new Class(
                                 			{
 								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
 								{
+									mApplication.log('col:' ); 
                                 					this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
 								}
                                 			}

@@ -174,7 +174,6 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
-		
 		if (this.mTimeoutShape)
 		{
 			this.mTimeoutCounter++;

@@ -1,41 +1,32 @@
-var ShapeDoor = new Class(
+var ShapeCountee = new Class(
 {
 
 Extends: Shape,
-	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen)
+	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,number)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
-		this.mOpen = false;	
-		this.mSrcClosed = src;
-		this.mSrcOpen = srcOpen;
+		this.mNumber = number;	
         },
 
- 	updateVelocity: function(delta)
-        {
-                this.update();
-		this.parent(delta);		
-        },
+        update: function(delta)
+	{
+		this.parent(delta);
 
-        update: function()
-        {
-                //run ai
-		if (this.mGame.mQuiz.isQuizComplete())
+		numberToCount = this.mGame.mQuiz.getQuestion().getAnswer();
+		//mApplication.log('numberToCount:' + numberToCount);	
+		//	mApplication.log('mNumber:' + this.mNumber);	
+		if (numberToCount >= this.mNumber)
 		{
-			if (this.mOpen == false)
-			{
-				this.setSrc(this.mSrcOpen);
-				this.mOpen = true;
-			}
+			//mApplication.log('mNumber:' + this.mNumber);	
+                	this.mCollisionOn = true;
+                        this.setVisibility(true);
+			
 		}
 		else
 		{
-			if (this.mOpen)
-			{
-				this.setSrc(this.mSrcClosed);
-				this.mOpen = false;
-			}
+                        this.CollisionOn = false;
+                	this.setVisibility(false);
 		}
         }
-
 });
 
