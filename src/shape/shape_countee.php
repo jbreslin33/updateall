@@ -19,12 +19,14 @@ Extends: Shape,
 		{
 			//mApplication.log('mNumber:' + this.mNumber);	
                 	this.mCollisionOn = true;
+                	this.mCollidable = true;
                         this.setVisibility(true);
 			
 		}
 		else
 		{
                         this.CollisionOn = false;
+                	this.mCollidable = false;
                 	this.setVisibility(false);
 		}
         }
