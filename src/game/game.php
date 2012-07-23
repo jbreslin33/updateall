@@ -305,7 +305,7 @@ var Game = new Class(
 		//mount an item if mountable
                 if (col1.mMessage == "controlObject" && col2.mMountable == true)
 		{
-			if (col1 != col2.mTimeoutShape)
+			if (col1 != col2.getTimeoutShape())
 			{
 				//first unmount  if you have something
 				if (col1.mMountee)

@@ -279,6 +279,11 @@ var Shape = new Class(
 		this.mTimeoutShape = shape;		
 	},
 
+	getTimeoutShape: function()
+	{
+		return this.mTimeoutShape;		
+	},
+
 /************** SET METHODS ************************/
 	setQuestion: function(question)
 	{
