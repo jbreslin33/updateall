@@ -178,7 +178,7 @@ var Shape = new Class(
 		if (this.mTimeoutShape)
 		{
 			this.mTimeoutCounter++;
-			if (this.mTimeoutCounter > 500)
+			if (this.mTimeoutCounter > 50)
 			{
 				mApplication.log('mTimeoutCounter:' + this.mTimeoutCounter);
 				this.mTimeoutShape = 0;
