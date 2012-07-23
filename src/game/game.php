@@ -127,6 +127,7 @@ var Game = new Class(
 				{	
 					this.checkForOutOfBounds(this.mShapeArray[i]);
 				}
+				//this.checkForOutOfBounds(this.mShapeArray[i]);
                 	}
 			
 			//collision Detection
@@ -262,7 +263,10 @@ var Game = new Class(
                                 			var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[c].mCollisionDistance;
                                 			if (distSQ < collisionDistance) 
                                 			{
-                                				this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
+								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
+								{
+                                					this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
+								}
                                 			}
 						}
 					}
@@ -278,7 +282,23 @@ var Game = new Class(
 
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
- 		
+
+		//mount an item if mountable
+                if (col1.mMessage == "controlObject" && col2.mMountable == true)
+		{
+			if (col1 != col2.getTimeoutShape())
+			{
+				//first unmount  if you have something
+				if (col1.mMountee)
+				{
+					col1.unMount(col1.mMountee,0);
+				}
+				//then mount	
+				col1.mount(col2,0);	
+			}
+		}
+
+
 		//if you get hit with a chaser then reset game or maybe lose a life
                 if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
@@ -301,21 +321,6 @@ var Game = new Class(
                                 }
                         }
                 }
-
-		//mount an item if mountable
-                if (col1.mMessage == "controlObject" && col2.mMountable == true)
-		{
-			if (col1 != col2.getTimeoutShape())
-			{
-				//first unmount  if you have something
-				if (col1.mMountee)
-				{
-					col1.unMount(col1.mMountee,0);
-				}
-				//then mount	
-				col1.mount(col2,0);	
-			}
-		}
 
  		//a dropbox_question recieving a pickup from a control object
                 if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
