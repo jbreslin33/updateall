@@ -3,17 +3,6 @@ var HowMany = new Class(
 
 Extends: Game,
 
-        initialize: function(skill)
-        {
-                //application
-                this.parent(skill);
-        },
-
-	update: function()
-	{
-		this.parent();
-        },
-
 	resetGame: function()
 	{
 		this.parent();
@@ -72,7 +61,6 @@ Extends: Game,
 		}
 
  	}).protect()
-
 });
 
 
