@@ -302,8 +302,9 @@ var Game = new Class(
 		//if you get hit with a chaser then reset game or maybe lose a life
                 if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
                 {
+			col2.onCollision(col1);
                         //this deletes and then recreates everthing.
-                        this.hitByChaser();
+                        //this.hitByChaser();
                 }
 
 	 	//you ran into a question shape lets resolve it
