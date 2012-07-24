@@ -172,6 +172,11 @@ var Shape = new Class(
 
 	},
 
+	onCollision: function(col)
+	{
+
+	},
+
 	update: function(delta)
 	{
 		if (this.mTimeoutShape)

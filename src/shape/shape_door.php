@@ -35,7 +35,30 @@ Extends: Shape,
 				this.mOpen = false;
 			}
 		}
-        }
+        },
+	
+	onCollision: function(col)
+	{
+		if (col == this.mGame.mControlObject)
+		{
+        		if (this.mOpen)
+                	{
+                		if (this.mGame.mQuiz)
+                        	{
+                        		if (this.mGame.mQuiz.isQuizComplete())
+                                	{
+                                		this.enterDoor();
+                                	}
+                        	}
+                	}
+		}
+	},
+   	
+	enterDoor: function()
+        {
+                this.mGame.mOn = false;
+                window.location = this.getQuestion().getAnswer();
+        },
 
 });
 

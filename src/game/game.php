@@ -265,7 +265,6 @@ var Game = new Class(
                                 			{
 								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
 								{
-									mApplication.log('col:' ); 
                                 					this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
 								}
                                 			}
@@ -371,6 +370,9 @@ var Game = new Class(
 		//exit room to next level when you complete quiz
                 if (col1.mMessage == "controlObject" && col2.mMessage == "door")
                 {
+			//col1.onCollision(col2);
+			col2.onCollision(col1);
+/*	
 			if (col2.mOpen)
 			{
                                 if (this.mQuiz)
@@ -381,6 +383,7 @@ var Game = new Class(
                                         }
 				}	
 			}
+*/
                 }
 
 
