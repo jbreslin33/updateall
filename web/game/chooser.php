@@ -71,9 +71,9 @@ var username = "<?php echo $username; ?>";
 <script type="text/javascript" src="/src/math/point2D.php"></script>
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
 <script type="text/javascript" src="/src/game/game.php"></script>
-<script type="text/javascript" src="/src/game/link_chooser.php"></script>
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
@@ -106,7 +106,7 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">GAME CHOOSER</font>');
 
 	//the game
-        mGame = new LinkChooser("Game Chooser");
+        mGame = new Game("Game Chooser");
 
 	//control object
         mGame.mControlObject = new Shape(50,50,400,300,mGame,"","/images/characters/wizard.png","","controlObject");
@@ -152,13 +152,16 @@ window.addEvent('domready', function()
 		var question = new Question(game_name[i],url[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
+
+	mQuiz.mScoreNeeded = 0;
                 
         count = 1;
         for (i = 1; i < numberOfRows + 1; i++ )
         {
                 var shape;
 		x = i * 50 + 400;
-                mGame.addToShapeArray(shape = new Shape(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture[i-1],"","question"));
+                mGame.addToShapeArray(shape = new ShapeDoor(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture[i-1],"","door",""));
+		shape.mOpen = true;	
                	count++;
         }
 

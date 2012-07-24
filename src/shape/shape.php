@@ -174,6 +174,7 @@ var Shape = new Class(
 
 	onCollision: function(col)
 	{
+		mApplication.log('col:' + col.mMessage);
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
