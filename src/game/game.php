@@ -283,6 +283,24 @@ var Game = new Class(
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
 
+		//exit room to next level when you complete quiz
+                if (col1.mMessage == "controlObject" && col2.mMessage == "door")
+                {
+			col2.onCollision(col1);
+                }
+
+		//if you get hit with a chaser then reset game or maybe lose a life
+                if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
+                {
+			col2.onCollision(col1);
+                }
+
+	 	//you ran into a question shape lets resolve it
+                if (col1.mMessage == "controlObject" && col2.mMessage == "question")
+                {
+			col2.onCollision(col1);
+                }
+
 		//mount an item if mountable
 /*
                 if (col1.mMessage == "controlObject" && col2.mMountable == true)
@@ -300,32 +318,6 @@ var Game = new Class(
 		}
 
 */
-		//if you get hit with a chaser then reset game or maybe lose a life
-                if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
-                {
-			col2.onCollision(col1);
-                        //this deletes and then recreates everthing.
-                        //this.hitByChaser();
-                }
-
-	 	//you ran into a question shape lets resolve it
-                if (col1.mMessage == "controlObject" && col2.mMessage == "question")
-                {
-			col2.onCollision(col1);
-			/*
-                        if (col1.mMountee)
-                        {
-                                if (col1.mMountee.mQuestion.getAnswer() == col2.mQuestion.getAnswer())
-                                {
-                                        this.correctAnswer(col1,col2);
-                                }
-                                else
-                                {
-                                        this.incorrectAnswer(col1,col2);
-                                }
-                        }
-*/
-                }
 /*
  		//a dropbox_question recieving a pickup from a control object
                 if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
@@ -372,24 +364,6 @@ var Game = new Class(
 			}
 		}
 */
-		//exit room to next level when you complete quiz
-                if (col1.mMessage == "controlObject" && col2.mMessage == "door")
-                {
-			//col1.onCollision(col2);
-			col2.onCollision(col1);
-/*	
-			if (col2.mOpen)
-			{
-                                if (this.mQuiz)
-                                {
-                                        if (this.mQuiz.isQuizComplete())
-                                        {
-						this.enterDoor(col2);
-                                        }
-				}	
-			}
-*/
-                }
 
 
 	}).protect(),
@@ -417,11 +391,6 @@ var Game = new Class(
                 {
                         col1.mount(col2,-5,-58);
                	}
-	},
-
-	hitByChaser: function()
-	{
-		this.resetGame();
 	},
 
 	checkForOutOfBounds: function(shape)
