@@ -174,6 +174,9 @@ var Shape = new Class(
 
 	onCollision: function(col)
 	{
+		this.mPosition.mX = this.mPositionOld.mX;
+                this.mPosition.mY = this.mPositionOld.mY;
+
 		if (this.mMessage == "question")
 		{
 			if (col.mMountee)

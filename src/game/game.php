@@ -277,12 +277,13 @@ var Game = new Class(
 
 	evaluateCollision: (function(col1,col2)
         {
+/*
 		col1.mPosition.mX = col1.mPositionOld.mX;
 		col1.mPosition.mY = col1.mPositionOld.mY;
 
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
-
+*/
 		col2.onCollision(col1);
 
 
