@@ -13,15 +13,11 @@ Extends: Shape,
 		this.parent(delta);
 
 		numberToCount = this.mGame.mQuiz.getQuestion().getAnswer();
-		//mApplication.log('numberToCount:' + numberToCount);	
-		//	mApplication.log('mNumber:' + this.mNumber);	
 		if (numberToCount >= this.mNumber)
 		{
-			//mApplication.log('mNumber:' + this.mNumber);	
                 	this.mCollisionOn = true;
                 	this.mCollidable = true;
                         this.setVisibility(true);
-			
 		}
 		else
 		{
