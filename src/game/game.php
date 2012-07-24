@@ -265,9 +265,8 @@ var Game = new Class(
                                 			{
 								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
 								{
-                                					//this.evaluateCollision(this.mShapeArray[s],this.mShapeArray[c])
-										this.mShapeArray[c].onCollision(this.mShapeArray[s]);	
-										this.mShapeArray[s].onCollision(this.mShapeArray[c]);	
+									this.mShapeArray[c].onCollision(this.mShapeArray[s]);	
+									this.mShapeArray[s].onCollision(this.mShapeArray[c]);	
 								}
                                 			}
 						}
@@ -276,14 +275,12 @@ var Game = new Class(
 			}
                 }
 	}).protect(),
-
+/*
 	evaluateCollision: (function(col1,col2)
         {
 		col2.onCollision(col1);
 
-
 		//mount an item if mountable
-/*
                 if (col1.mMessage == "controlObject" && col2.mMountable == true)
 		{
 			if (col1 != col2.getTimeoutShape())
@@ -298,8 +295,6 @@ var Game = new Class(
 			}
 		}
 
-*/
-/*
  		//a dropbox_question recieving a pickup from a control object
                 if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
                 {
@@ -344,11 +339,8 @@ var Game = new Class(
                         	}
 			}
 		}
-*/
-
-
 	}).protect(),
-   
+*/
 	enterDoor: function(door)
         {
                 this.mOn = false;

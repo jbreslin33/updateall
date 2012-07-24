@@ -161,7 +161,6 @@ window.addEvent('domready', function()
                 var shape;
 		x = i * 50 + 400;
                 mGame.addToShapeArray(shape = new ShapeDoor(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture[i-1],"","door",""));
-		shape.mOpen = true;	
                	count++;
         }
 
