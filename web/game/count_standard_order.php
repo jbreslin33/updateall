@@ -8,7 +8,6 @@
 
 <?php
 
-
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 
@@ -25,7 +24,6 @@ var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 5;
 
 </script>
-
 
 <script type="text/javascript" src="/src/math/point2D.php"></script>
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
