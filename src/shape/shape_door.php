@@ -58,7 +58,7 @@ Extends: Shape,
         {
                 this.mGame.mOn = false;
                 window.location = this.getQuestion().getAnswer();
-        },
+        }
 
 });
 

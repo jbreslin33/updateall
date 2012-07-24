@@ -174,7 +174,20 @@ var Shape = new Class(
 
 	onCollision: function(col)
 	{
-
+		if (this.mMessage == "question")
+		{
+			if (col.mMountee)
+                 	{
+                                if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
+                                {
+                                        this.mGame.correctAnswer(col,this);
+                                }
+                                else
+                                {
+                                        this.mGame.incorrectAnswer(col,this);
+                                }
+                        }
+		}
 	},
 
 	update: function(delta)
@@ -184,7 +197,6 @@ var Shape = new Class(
 			this.mTimeoutCounter++;
 			if (this.mTimeoutCounter > 50)
 			{
-				mApplication.log('mTimeoutCounter:' + this.mTimeoutCounter);
 				this.mTimeoutShape = 0;
 				this.mTimeoutCounter = 0;	
 			}
