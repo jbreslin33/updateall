@@ -15,7 +15,7 @@ $conn = dbConnect();
 
 
 /******* join games and games_levels  ***************/
-$query = "select games.game, games_levels.url, games.picture, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
+$query = "select games.game, games_levels.url, games.picture_open, games.picture_closed, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
 $query .= $_SESSION["next_level_id"];
 $query .= ";";
 
@@ -28,7 +28,8 @@ $numberOfRows = pg_num_rows($result);
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
 echo "var game_name = new Array();";
-echo "var picture = new Array();";
+echo "var picture_open = new Array();";
+echo "var picture_closed = new Array();";
 echo "var url = new Array();";
 
 $next_level = $_SESSION["next_level"];
@@ -42,14 +43,16 @@ while ($row = pg_fetch_row($result))
         //fill php vars from db
 	$game_name = $row[0];
 	$url = $row[1];
-	$picture = $row[2];
-	$game_id = $row[3];
+	$picture_open = $row[2];
+	$picture_closed = $row[3];
+	$game_id = $row[4];
 
 	echo "<script language=\"javascript\">";
 	
 	echo "game_name[$counter] = \"$game_name\";";
 	echo "url[$counter] = \"$url?game_id=$row[3]\";";
-	echo "picture[$counter] = \"$picture\";";
+	echo "picture_open[$counter] = \"$picture_open\";";
+	echo "picture_closed[$counter] = \"$picture_closed\";";
 	echo "</script>";
 	$counter++;
 }
@@ -160,7 +163,7 @@ window.addEvent('domready', function()
         {
                 var shape;
 		x = i * 50 + 400;
-                mGame.addToShapeArray(shape = new ShapeDoor(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture[i-1],"","door",""));
+                mGame.addToShapeArray(shape = new ShapeDoor(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture_closed[i-1],"","door",picture_open[i-1]));
                	count++;
         }
 
