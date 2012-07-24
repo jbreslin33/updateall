@@ -283,23 +283,8 @@ var Game = new Class(
 		col2.mPosition.mX = col2.mPositionOld.mX;
 		col2.mPosition.mY = col2.mPositionOld.mY;
 
-		//exit room to next level when you complete quiz
-                if (col1.mMessage == "controlObject" && col2.mMessage == "door")
-                {
-			col2.onCollision(col1);
-                }
+		col2.onCollision(col1);
 
-		//if you get hit with a chaser then reset game or maybe lose a life
-                if (col1.mMessage == "controlObject" && col2.mMessage == "chaser")
-                {
-			col2.onCollision(col1);
-                }
-
-	 	//you ran into a question shape lets resolve it
-                if (col1.mMessage == "controlObject" && col2.mMessage == "question")
-                {
-			col2.onCollision(col1);
-                }
 
 		//mount an item if mountable
 /*
