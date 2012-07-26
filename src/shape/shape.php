@@ -187,7 +187,7 @@ var Shape = new Class(
                                 }
                                 else
                                 {
-                                        this.mGame.incorrectAnswer(col,this);
+                                        this.incorrectAnswer();
                                 }
                         }
 		}
@@ -207,6 +207,35 @@ var Shape = new Class(
                         }
                 }
 	},
+
+	correctAnswer: function(col1,col2)
+        {
+                if (this.mQuiz)
+                {
+                        this.mQuiz.correctAnswer();
+                }
+
+                col2.mCollisionOn = false;
+                col2.setVisibility(false);
+
+                //set text of control object
+                if (this.mQuiz)
+                {
+                        //set the control objects question object
+                        col1.setQuestion(this.mQuiz.getQuestion());
+                        if (col1.mMountee)
+                        {
+                                col1.mMountee.setQuestion(this.mQuiz.getQuestion());
+                        }
+                }
+        },
+
+        incorrectAnswer: function()
+        {
+                this.mGame.resetGame();
+        },
+
+	
 
 	update: function(delta)
 	{

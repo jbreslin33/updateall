@@ -69,11 +69,6 @@ var Game = new Class(
                 }
         },
 
-        incorrectAnswer: function(col1,col2)
-        {
-		this.resetGame();
-        },
-
  	resetGame: function()
         {
 		if (this.mQuiz)
@@ -275,97 +270,7 @@ var Game = new Class(
 			}
                 }
 	}).protect(),
-/*
-	evaluateCollision: (function(col1,col2)
-        {
-		col2.onCollision(col1);
-
-		//mount an item if mountable
-                if (col1.mMessage == "controlObject" && col2.mMountable == true)
-		{
-			if (col1 != col2.getTimeoutShape())
-			{
-				//first unmount  if you have something
-				if (col1.mMountee)
-				{
-					col1.unMount(col1.mMountee,0);
-				}
-				//then mount	
-				col1.mount(col2,0);	
-			}
-		}
-
- 		//a dropbox_question recieving a pickup from a control object
-                if (col1.mMessage == "controlObject" && col2.mMessage == "dropbox_question")
-                {
-                        //check for correct answer
-                        if (col1.mMountee)
-                        {
-				if (col1.mMountee.mQuestion && col2.mQuestion)
-				{
-                                	if (col1.mMountee.mQuestion.getAnswer() == col2.mQuestion.getAnswer())
-                                	{
-						this.correctAnswer(col1,col2);
-                                	}
-                                	else
-                                	{
-                                        	//this deletes and then recreates everthing.
-                                        	this.incorrectAnswer(col1,col2);
-                                	}
-				}
-                        }
-  		
-			//have the dropbox_question pick up the pickup from controlobject	
-			pickup = 0;
-			if (col1.mMountee)
-			{
-                        	if (col1.mMountee.mMessage == "pickup")
-                        	{
-                                	pickup = col1.mMountee;
-
-                                	//have controlObject unMount pickup
-                                	col1.unMount();
-
-                                	//have dropbox_question mount pickup
-					//ie is showing this too high
-                                	if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-                                	{
-                                        	col2.mount(pickup,-5,-41);
-                                	}
-                                	else
-                                	{
-                                        	col2.mount(pickup,-5,-58);
-                                	}
-                        	}
-			}
-		}
-	}).protect(),
-*/
-	enterDoor: function(door)
-        {
-                this.mOn = false;
-                window.location = door.getQuestion().getAnswer(); 
-        },
-
-	pickup: function(col1,col2)
-	{
-        	if (col1.mMountee.mMessage == "pickup")
-        	{
-                	col1.unMount();
-                }
-
-               	//do the mount
-                //ie is showing this too high
-                if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-                {
-                        col1.mount(col2,-5,-41);
-                }
-                else
-                {
-                        col1.mount(col2,-5,-58);
-               	}
-	},
-
+	
 	checkForOutOfBounds: function(shape)
 	{
 		if (shape.mPosition.mY < mBounds.mNorth)
