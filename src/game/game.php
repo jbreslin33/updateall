@@ -53,7 +53,7 @@ var Game = new Class(
                 {
                 	this.mQuiz.correctAnswer();
                 }
-
+/*
                 col2.mCollisionOn = false;
                 col2.setVisibility(false);
 
@@ -67,6 +67,7 @@ var Game = new Class(
                         	col1.mMountee.setQuestion(this.mQuiz.getQuestion());
                         }
                 }
+*/
         },
 
  	resetGame: function()

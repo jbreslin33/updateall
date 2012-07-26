@@ -177,21 +177,29 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
-		if (this.mMessage == "question")
+		if (this == this.mGame.mControlObject)
 		{
-			if (col.mMountee)
-                 	{
-                                if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
-                                {
-                                        this.mGame.correctAnswer(col,this);
-                                }
-                                else
-                                {
-                                        this.incorrectAnswer();
-                                }
+			if (col.mMessage == "question")
+			{
+				if (this.mMountee)
+                 		{
+                                	if (this.mMountee.mQuestion.getAnswer() == col.mQuestion.getAnswer())
+                                	{
+                                        	this.correctAnswer();
+                                	}
+                                	else
+                                	{
+                                        	this.incorrectAnswer();
+                                	}
+				}
                         }
 		}
- 
+		else
+		{
+   			this.mCollisionOn = false;
+                	this.setVisibility(false);
+		}		 
+		
 		//mount an item if mountable
                 if (col == this.mGame.mControlObject && this.mMountable == true)
                 {
@@ -208,26 +216,27 @@ var Shape = new Class(
                 }
 	},
 
-	correctAnswer: function(col1,col2)
+	correctAnswer: function()
         {
-                if (this.mQuiz)
-                {
-                        this.mQuiz.correctAnswer();
-                }
-
-                col2.mCollisionOn = false;
-                col2.setVisibility(false);
-
-                //set text of control object
-                if (this.mQuiz)
-                {
-                        //set the control objects question object
-                        col1.setQuestion(this.mQuiz.getQuestion());
-                        if (col1.mMountee)
-                        {
-                                col1.mMountee.setQuestion(this.mQuiz.getQuestion());
-                        }
-                }
+		if (this == this.mGame.mControlObject)
+		{
+			mApplication.log('correctAnswer:' + this.mMessage);
+			this.mGame.correctAnswer();
+                
+			//set text of control object
+                	if (this.mGame.mQuiz)
+                	{
+                        	//set the control objects question object
+                        	this.setQuestion(this.mGame.mQuiz.getQuestion());
+                        	if (this.mMountee)
+                        	{
+                                	this.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
+                        	}
+                	}
+		}
+		else
+		{
+		}
         },
 
         incorrectAnswer: function()
