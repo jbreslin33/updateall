@@ -191,6 +191,21 @@ var Shape = new Class(
                                 }
                         }
 		}
+ 
+		//mount an item if mountable
+                if (col == this.mGame.mControlObject && this.mMountable == true)
+                {
+                        if (col != this.getTimeoutShape())
+                        {
+                                //first unmount  if you have something
+                                if (col.mMountee)
+                                {
+                                        col.unMount(col.mMountee,0);
+                                }
+                                //then mount
+                                col.mount(this,0);
+                        }
+                }
 	},
 
 	update: function(delta)

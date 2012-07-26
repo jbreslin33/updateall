@@ -1,30 +1,49 @@
-var ShapeCountee = new Class(
+var ShapeDropbox = new Class(
 {
 
 Extends: Shape,
-	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,number)
+	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
-		this.mNumber = number;	
         },
 
-        update: function(delta)
+	onCollision: function(col)
 	{
-		this.parent(delta);
+		this.parent(col);	
+ 		//a dropbox_question recieving a pickup from a control object
+                if (col == this.mGame.mControlObject)
+                {
+                        //check for correct answer
+                        if (col.mMountee)
+                        {
+                                if (col.mMountee.mQuestion && this.mQuestion)
+                                {
+                                        if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
+                                        {
+                                                this.mGame.correctAnswer(col,this);
+                                        }
+                                        else
+                                        {
+                                                //this deletes and then recreates everthing.
+                                                this.mGame.incorrectAnswer(col,this);
+                                        }
+                                }
+                        }
 
-		numberToCount = this.mGame.mQuiz.getQuestion().getAnswer();
-		if (numberToCount >= this.mNumber)
-		{
-                	this.mCollisionOn = true;
-                	this.mCollidable = true;
-                        this.setVisibility(true);
-		}
-		else
-		{
-                        this.CollisionOn = false;
-                	this.mCollidable = false;
-                	this.setVisibility(false);
-		}
-        }
+                        //have the dropbox_question pick up the pickup from controlobject
+                        pickup = 0;
+                        if (col.mMountee)
+                        {
+                                if (col.mMountee.mMessage == "pickup")
+                                {
+                                        pickup = col.mMountee;
+
+                                        //have controlObject unMount pickup
+                                        col.unMount(pickup);
+                                        this.mount(pickup,0);
+                                }
+                        }
+                }
+	}
 });
 
