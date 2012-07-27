@@ -10,38 +10,31 @@ Extends: Shape,
 	onCollision: function(col)
 	{
  		//a dropbox_question recieving a pickup from a control object
-                if (col == this.mGame.mControlObject)
+		pickup = 0;
+                if (col == this.mGame.mControlObject && col.mMountee && col.mMountee.mMessage == "pickup")
                 {
-                        //check for correct answer
-                        if (col.mMountee)
-                        {
-                                if (col.mMountee.mQuestion && this.mQuestion)
-                                {
-                                        if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
-                                        {
-                                                this.mGame.correctAnswer(col,this);
-                                        }
-                                        else
-                                        {
-                                                //this deletes and then recreates everthing.
-                                                this.mGame.incorrectAnswer(col,this);
-                                        }
-                                }
-                        }
+                	pickup = col.mMountee;
 
-                        //have the dropbox_question pick up the pickup from controlobject
-                        pickup = 0;
-                        if (col.mMountee)
-                        {
-                                if (col.mMountee.mMessage == "pickup")
-                                {
-                                        pickup = col.mMountee;
-
-                                        //have controlObject unMount pickup
-                                        col.unMount(pickup);
-                                        this.mount(pickup,0);
-                                }
-                        }
+                        //have controlObject unMount pickup
+                        col.unMount(pickup);
+                        this.mount(pickup,0);
+                       	
+			if (this.mMountee.mQuestion && this.mQuestion)
+                       	{
+				mApplication.log('a:' + this.mMountee.mQuestion.getAnswer());
+				mApplication.log('b:' + this.mQuestion.getAnswer());
+                             	if (this.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
+                              	{
+					mApplication.log('correct');
+                                      	this.mGame.correctAnswer(col,this);
+                              	}
+                              	else
+                              	{
+					mApplication.log('incorrect');
+                                       	//this deletes and then recreates everthing.
+                                      	this.mGame.incorrectAnswer(col,this);
+                              	}
+			}
                 }
 	}
 });

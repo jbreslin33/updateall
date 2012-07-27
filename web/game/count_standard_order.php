@@ -153,10 +153,10 @@ window.addEvent('domready', function()
 
 	//TREASURE TO COUNT
 	dropbox_question = 5;
-	for (i = 0; i < dropbox_question; i++)
+	for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape = new ShapeDropbox(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/treasure/chest.png","","dropbox_question");
+                var shape = new ShapeDropbox(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
 		mGame.addToShapeArray(shape);
         }
 
