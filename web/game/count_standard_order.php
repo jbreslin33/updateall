@@ -74,6 +74,9 @@ window.addEvent('domready', function()
 	//QUESTIONS FOR QUIZ
        	mQuiz.mQuestionArray.push(new Question('', '1'));      
        	mQuiz.mQuestionArray.push(new Question('', '2'));      
+       	mQuiz.mQuestionArray.push(new Question('', '3'));      
+       	mQuiz.mQuestionArray.push(new Question('', '4'));      
+       	mQuiz.mQuestionArray.push(new Question('', '5'));      
 
        	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
