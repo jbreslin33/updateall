@@ -194,14 +194,7 @@ var Shape = new Class(
 				}
                         }
 		}
-		else
-		{
-   			this.mCollisionOn = false;
-                	this.setVisibility(false);
-		}		 
-		
-		//mount an item if mountable
-                if (col == this.mGame.mControlObject && this.mMountable == true)
+                else if (this.mMountable == true)
                 {
                         if (col != this.getTimeoutShape())
                         {
@@ -214,6 +207,14 @@ var Shape = new Class(
                                 col.mount(this,0);
                         }
                 }
+		else
+		{
+			if (col == this.mGame.mControlObject)
+			{
+   				this.mCollisionOn = false;
+                		this.setVisibility(false);
+			}
+		}
 	},
 
 	correctAnswer: function()
