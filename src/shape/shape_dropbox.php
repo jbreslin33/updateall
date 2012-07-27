@@ -9,7 +9,6 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
-		this.parent(col);	
  		//a dropbox_question recieving a pickup from a control object
                 if (col == this.mGame.mControlObject)
                 {

@@ -221,7 +221,6 @@ var Shape = new Class(
         {
 		if (this == this.mGame.mControlObject)
 		{
-			mApplication.log('correctAnswer:' + this.mMessage);
 			this.mGame.correctAnswer();
                 
 			//set text of control object

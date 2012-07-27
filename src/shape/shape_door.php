@@ -39,8 +39,6 @@ Extends: Shape,
 	
 	onCollision: function(col)
 	{
-		this.parent(col);	
-
 		if (col == this.mGame.mControlObject)
 		{
         		if (this.mOpen)
