@@ -238,6 +238,10 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
+		if (this.mMounter)
+		{
+			this.mCollisionOn = false;
+		}
 		if (this.mTimeoutShape)
 		{
 			this.mTimeoutCounter++;
