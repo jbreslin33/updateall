@@ -15,14 +15,10 @@ Extends: Shape,
 		numberToCount = this.mGame.mQuiz.getQuestion().getAnswer();
 		if (numberToCount >= this.mNumber)
 		{
-                	this.mCollisionOn = true;
-                	this.mCollidable = true;
                         this.setVisibility(true);
 		}
 		else
 		{
-                        this.CollisionOn = false;
-                	this.mCollidable = false;
                 	this.setVisibility(false);
 		}
         }
