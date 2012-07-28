@@ -12,6 +12,7 @@ Extends: Shape,
 
 		if (this.mMountee)
                 {
+			mApplication.log('col true');
                 	this.mMountee.mCollidable = true;
                         this.mMountee.mMounter = 0;
                         this.mMountee = 0;
@@ -19,7 +20,17 @@ Extends: Shape,
 
 		this.parent();
 	},
+/*
+          //set every shape to spawn position
+                this.mPosition.mX = this.mPositionSpawn.mX;
+                this.mPosition.mY = this.mPositionSpawn.mY;
+                this.setVisibility(true);
 
+                if (this.mCollidable == true)
+                {
+                        this.mCollisionOn = true;
+                }
+*/
 	onCollision: function(col)
 	{
  		//a dropbox_question recieving a pickup from a control object
