@@ -297,7 +297,7 @@ var Game = new Class(
                         var isCollision = false;
                         for (s = 0; s < this.mShapeArray.length; s++)
                         {
-                                if (this.mShapeArray[s].mCollidable ==  true)
+                                if (this.mShapeArray[s].mCollidable == true)
                                 {
  					var x1 = this.mShapeArray[s].mPosition.mX;
                                         var y1 = this.mShapeArray[s].mPosition.mY;

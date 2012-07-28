@@ -137,18 +137,6 @@ var Shape = new Class(
 /****** UTILITY METHODS ******************/
 	reset: function()
 	{
-     		//reset collidable to true
-		/*
-                if (this.mMessage == "dropbox_question")
-                {
-                	if (this.mMountee)
-                        {
-                        	this.mMountee.mCollidable = true;
-                                this.mMountee.mMounter = 0;
-                                this.mMountee = 0;
-                        }
-                }
-		*/
                 //set every shape to spawn position
                 this.mPosition.mX = this.mPositionSpawn.mX;
                 this.mPosition.mY = this.mPositionSpawn.mY;
@@ -334,7 +322,6 @@ var Shape = new Class(
 
 	mountedBy: function(mounter,mountpoint)
 	{
-		this.mCollidable = false;
 		this.mCollisionOn = false;
 		this.mMounter = mounter;
 	},
@@ -342,7 +329,6 @@ var Shape = new Class(
 	unMount: function(mountee,mountpoint)
 	{
 		mountee.setTimeoutShape(this);
-		mountee.mCollidable = true;	
 		mountee.mCollisionOn = true;	
 		mountee.mMounter = 0;
 		this.mMountee = 0;
