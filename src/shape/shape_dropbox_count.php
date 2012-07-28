@@ -1,7 +1,7 @@
-var ShapeDropbox = new Class(
+var ShapeDropboxCount = new Class(
 {
 
-Extends: Shape,
+Extends: ShapeDropbox,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
@@ -11,9 +11,9 @@ Extends: Shape,
 	{
 		this.mQuestion = this.mGame.mQuiz.getQuestion();
 		this.parent(delta);
-
 	},	
 
+/*
 	onCollision: function(col)
 	{
  		//a dropbox_question recieving a pickup from a control object
@@ -42,5 +42,6 @@ Extends: Shape,
 			}
                 }
 	}
+*/
 });
 

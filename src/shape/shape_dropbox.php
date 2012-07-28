@@ -7,13 +7,6 @@ Extends: Shape,
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         },
 
-	update: function(delta)
-	{
-		this.mQuestion = this.mGame.mQuiz.getQuestion();
-		this.parent(delta);
-
-	},	
-
 	onCollision: function(col)
 	{
  		//a dropbox_question recieving a pickup from a control object
@@ -33,7 +26,6 @@ Extends: Shape,
                              	if (this.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
                               	{
 					this.mGame.mQuiz.correctAnswer();
-//					this.mQuestion = this.mGame.mQuiz.getQuestion();   
                               	}
                               	else
                               	{
