@@ -213,7 +213,7 @@ var Game = new Class(
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
                 {
-			if (this.mShapeArray[s].mCollidable ==  true && this.mShapeArray[s].mCollisionOn == true)
+			if (this.mShapeArray[s].mCollisionOn == true)
 			{
 			   	//this should now only loop the first for loop thru objects that have moved. which i think will improve efficiency 
 			    	if (this.mShapeArray[s].mPosition.mX != this.mShapeArray[s].mPositionOld.mX ||
@@ -225,7 +225,7 @@ var Game = new Class(
 						{
 							continue;
 						}
-						if (this.mShapeArray[c].mCollidable ==  true && this.mShapeArray[c].mCollisionOn == true)
+						if (this.mShapeArray[c].mCollisionOn == true)
 						{
                         				var x1 = this.mShapeArray[s].mPosition.mX;
                         				var y1 = this.mShapeArray[s].mPosition.mY;
