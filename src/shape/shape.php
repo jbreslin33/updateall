@@ -138,6 +138,7 @@ var Shape = new Class(
 	reset: function()
 	{
      		//reset collidable to true
+		/*
                 if (this.mMessage == "dropbox_question")
                 {
                 	if (this.mMountee)
@@ -147,6 +148,7 @@ var Shape = new Class(
                                 this.mMountee = 0;
                         }
                 }
+		*/
                 //set every shape to spawn position
                 this.mPosition.mX = this.mPositionSpawn.mX;
                 this.mPosition.mY = this.mPositionSpawn.mY;

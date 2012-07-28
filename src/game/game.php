@@ -62,7 +62,7 @@ var Game = new Class(
 			this.mQuiz.reset();
 		}
                 
-		//reset collidable to true
+		//call reset on all shapes
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
 			this.mShapeArray[i].reset();

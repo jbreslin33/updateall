@@ -7,6 +7,19 @@ Extends: Shape,
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         },
 
+	reset: function()
+	{
+
+		if (this.mMountee)
+                {
+                	this.mMountee.mCollidable = true;
+                        this.mMountee.mMounter = 0;
+                        this.mMountee = 0;
+                }
+
+		this.parent();
+	},
+
 	onCollision: function(col)
 	{
  		//a dropbox_question recieving a pickup from a control object
@@ -21,8 +34,6 @@ Extends: Shape,
                        	
 			if (this.mMountee.mQuestion && this.mQuestion && this.mGame.mQuiz)
                        	{
-				mApplication.log('a:' + this.mMountee.mQuestion.getAnswer());
-				mApplication.log('b:' + this.mQuestion.getAnswer());
                              	if (this.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
                               	{
 					this.mGame.mQuiz.correctAnswer();
