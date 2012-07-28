@@ -53,21 +53,6 @@ var Game = new Class(
                 {
                 	this.mQuiz.correctAnswer();
                 }
-/*
-                col2.mCollisionOn = false;
-                col2.setVisibility(false);
-
-                //set text of control object
-                if (this.mQuiz)
-                {
-                	//set the control objects question object
-                        col1.setQuestion(this.mQuiz.getQuestion());
-                        if (col1.mMountee)
-                        {
-                        	col1.mMountee.setQuestion(this.mQuiz.getQuestion());
-                        }
-                }
-*/
         },
 
  	resetGame: function()
