@@ -95,7 +95,7 @@ window.addEvent('domready', function()
         mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
         mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
 		
-        for (i = 0; i < 8; i++)
+        for (i = 0; i < 9; i++)
 	{
         	mGame.mControlObject.mAnimation.mAnimationArray[i][0] = '/images/characters/wizard_' + i + '.png'; 
 	}
