@@ -1606,7 +1606,14 @@ insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_1
 
 insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php');
 insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/count_standard_order.php');
 
+insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/count_standard_order.php');
 
 --GAMES_ATTEMPTS
 
