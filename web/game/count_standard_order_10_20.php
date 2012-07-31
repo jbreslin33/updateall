@@ -75,7 +75,7 @@ window.addEvent('domready', function()
         for (i = 0; i < scoreNeeded; i++)
 	{
 		//QUESTIONS FOR QUIZ
-       		mQuiz.mQuestionArray.push(new Question('',i + 1));      
+       		mQuiz.mQuestionArray.push(new Question('',i + 11));      
 	}
 	mQuiz.mQuestionArray.push(new Question('Door is Open!', '21'));      
 
