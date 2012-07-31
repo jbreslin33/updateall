@@ -21,7 +21,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 5;
+var scoreNeeded = 10;
 
 </script>
 
@@ -73,13 +73,13 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('', '3'));      
-       	mQuiz.mQuestionArray.push(new Question('', '4'));      
-       	mQuiz.mQuestionArray.push(new Question('', '5'));      
+	for (i = 0; i < scoreNeeded; i++)
+        {
+                //QUESTIONS FOR QUIZ
+                mQuiz.mQuestionArray.push(new Question('',i + 11));
+        }
 
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '99'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -87,25 +87,7 @@ window.addEvent('domready', function()
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
 
-        mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
-
-        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/images/characters/wizard_north.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/images/characters/wizard_north.png";
-//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/images/characters/wizard_north_east.png"; mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/images/characters/wizard_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/images/characters/wizard_south_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/images/characters/wizard_south_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "/images/characters/wizard_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "/images/characters/wizard_north_west.png";
+ 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
 
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
