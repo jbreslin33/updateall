@@ -1486,6 +1486,8 @@ insert into levels(level,description) values (25,'Write numbers from 15 to 20');
 
 insert into levels(level,description) values (26,'Count objects from 0 to 20'); --27
 insert into levels(level,description) values (27,'Count objects in standard order using names.'); --28
+insert into levels(level,description) values (28,'Understand that last counted object tells number of objects for numbers 1-10'); --29
+insert into levels(level,description) values (29,'Understand that last counted object tells number of objects for numbers 11-20'); --30
 
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
@@ -1605,15 +1607,10 @@ insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_1
 insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php');
 
 insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php');
-insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/count_standard_order.php');
-
-insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/count_standard_order.php');
-insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/count_standard_order.php');
+insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order_0_10.php');
+insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order_10_20.php');
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number_0_10.php');
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number_10_20.php');
 
 --GAMES_ATTEMPTS
 
