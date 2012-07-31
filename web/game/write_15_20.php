@@ -93,27 +93,9 @@ window.addEvent('domready', function()
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
 
-        mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
-
-        mGame.mControlObject.mAnimation.mAnimationArray[0][0] = "/images/characters/wizard_north.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[1][0] = "/images/characters/wizard_north.png";
-//      mGame.mControlObject.mAnimation.mAnimationArray[1][1] = "/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[2][0] = "/images/characters/wizard_north_east.png"; mGame.mControlObject.mAnimation.mAnimationArray[3][0] = "/images/characters/wizard_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[4][0] = "/images/characters/wizard_south_east.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[5][0] = "/images/characters/wizard_south.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[6][0] = "/images/characters/wizard_south_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[7][0] = "/images/characters/wizard_west.png";
-        mGame.mControlObject.mAnimation.mAnimationArray[8][0] = "/images/characters/wizard_north_west.png";
-
- 	mGame.addToShapeArray(mGame.mControlObject);
+ 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+ 	
+	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
 
         //numberMount to go on top let's make it small and draw it on top
