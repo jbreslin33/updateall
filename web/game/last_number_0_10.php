@@ -21,7 +21,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 1;
+var scoreNeeded = 2;
 
 </script>
 

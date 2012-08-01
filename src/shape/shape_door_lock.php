@@ -12,7 +12,8 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
-		if (col.mMountee.mMessage == 'key' && col.mQuestion.getAnswer() == this.mQuestion.getAnswer()) 
+		//is it a key? and if so does the key have answer to locked door?
+		if (col.mMountee.mMessage == 'key' && col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer()) 
 		{
 			this.mOpen = true;	
 			this.setSrc(this.mSrcOpen);
