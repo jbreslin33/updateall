@@ -1,63 +1,38 @@
-var ShapeDoor = new Class(
+var ShapeKey = new Class(
 {
 
 Extends: Shape,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
-		this.mOpen = false;	
-		this.mSrcClosed = src;
-		this.mSrcOpen = srcOpen;
         },
 
- 	updateVelocity: function(delta)
+        update: function(delta)
         {
-                this.update();
-		this.parent(delta);		
-        },
 
-        update: function()
-        {
                 //run ai
 		if (this.mGame.mQuiz.isQuizComplete())
 		{
-			if (this.mOpen == false)
+			if (this.mCollisionOn == false)
 			{
-				this.setSrc(this.mSrcOpen);
-				this.mOpen = true;
+				this.mCollisionOn = true;
+				this.setVisibility(true);
+				this.mMountable = true;
+				mApplication.log('true');
 			}
 		}
 		else
 		{
-			if (this.mOpen)
+			if (this.mCollisionOn == true)
 			{
-				this.setSrc(this.mSrcClosed);
-				this.mOpen = false;
+				this.mCollisionOn = false;
+				this.setVisibility(false);
+				this.mMountable = false;
+				mApplication.log('false');
 			}
 		}
-        },
-	
-	onCollision: function(col)
-	{
-		if (col == this.mGame.mControlObject)
-		{
-        		if (this.mOpen)
-                	{
-                		if (this.mGame.mQuiz)
-                        	{
-                        		if (this.mGame.mQuiz.isQuizComplete())
-                                	{
-                                		this.enterDoor();
-                                	}
-                        	}
-                	}
-		}
-	},
-   	
-	enterDoor: function()
-        {
-                this.mGame.mOn = false;
-                window.location = this.getQuestion().getAnswer();
+		
+		this.parent(delta);
         }
 
 });

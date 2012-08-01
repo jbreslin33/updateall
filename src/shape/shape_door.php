@@ -10,12 +10,6 @@ Extends: Shape,
 		this.mSrcOpen = srcOpen;
         },
 
- 	updateVelocity: function(delta)
-        {
-                this.update();
-		this.parent(delta);		
-        },
-
         update: function()
         {
                 //run ai
