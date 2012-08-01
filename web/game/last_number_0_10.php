@@ -103,10 +103,23 @@ window.addEvent('domready', function()
         numberMountee.setBackgroundColor("transparent");
 
 	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(scoreNeeded - 1),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	mGame.addToShapeArray(door);
-               
+	for (i = 0; i < scoreNeeded; i++)
+	{
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+		var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+		mGame.addToShapeArray(door);
+
+		//numberMount to go on top let's make it small and draw it on top 
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
+                mGame.addToShapeArray(numberMountee); 
+                numberMountee.showQuestion(false);
+                
+		//do the mount  
+		door.mount(numberMountee,0);
+
+		numberMountee.setBackgroundColor("transparent");
+	}               
+
 	//QUESTION SHAPES (GOLD COINS)
         for (i = 0; i < scoreNeeded; i++)
         {
