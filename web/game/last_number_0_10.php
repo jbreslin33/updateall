@@ -105,7 +105,7 @@ window.addEvent('domready', function()
 	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
 	mGame.addToShapeArray(door);
                
-	//QUESTION SHAPES 
+	//QUESTION SHAPES (GOLD COINS)
         for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
@@ -124,18 +124,7 @@ window.addEvent('domready', function()
 
 		numberMountee.setBackgroundColor("transparent");
         }
-
-
 	
-	//CHASERS
-	chasers = 0;
-	for (i = 0; i < chasers; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeAI(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
-		mGame.addToShapeArray(aishape);
-        }
-
 	//TREASURE TO COUNT
 	dropbox_question = 5;
 	for (i = 0; i < scoreNeeded; i++)
@@ -148,6 +137,7 @@ window.addEvent('domready', function()
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
         key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/key/key_dungeon.gif","","key");
+	key.mMountable = true;
 	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
