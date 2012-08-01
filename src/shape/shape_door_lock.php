@@ -1,4 +1,4 @@
-var ShapeDoor = new Class(
+var ShapeDoorLock = new Class(
 {
 
 Extends: Shape,
@@ -10,40 +10,20 @@ Extends: Shape,
 		this.mSrcOpen = srcOpen;
         },
 
-        update: function()
-        {
-                //run ai
-		if (this.mGame.mQuiz.isQuizComplete())
-		{
-			if (this.mOpen == false)
-			{
-				this.setSrc(this.mSrcOpen);
-				this.mOpen = true;
-			}
-		}
-		else
-		{
-			if (this.mOpen)
-			{
-				this.setSrc(this.mSrcClosed);
-				this.mOpen = false;
-			}
-		}
-        },
-	
 	onCollision: function(col)
 	{
+		if (col.mMountee.mMessage == 'key' && col.mQuestion.getAnswer() == this.mQuestion.getAnswer()) 
+		{
+			this.mOpen = true;	
+			this.setSrc(this.mSrcOpen);
+		}
+		
+
 		if (col == this.mGame.mControlObject)
 		{
         		if (this.mOpen)
                 	{
-                		if (this.mGame.mQuiz)
-                        	{
-                        		if (this.mGame.mQuiz.isQuizComplete())
-                                	{
-                                		this.enterDoor();
-                                	}
-                        	}
+                        	this.enterDoor();
                 	}
 		}
 	},
@@ -51,7 +31,7 @@ Extends: Shape,
 	enterDoor: function()
         {
                 this.mGame.mOn = false;
-                window.location = this.getQuestion().getAnswer();
+                window.location = "/src/database/goto_next_level.php";
         }
 
 });
