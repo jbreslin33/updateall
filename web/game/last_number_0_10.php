@@ -124,6 +124,8 @@ window.addEvent('domready', function()
 
 		numberMountee.setBackgroundColor("transparent");
         }
+
+
 	
 	//CHASERS
 	chasers = 0;
@@ -142,6 +144,11 @@ window.addEvent('domready', function()
                 var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
 		mGame.addToShapeArray(shape);
         }
+
+	//KEY
+      	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/key/key_dungeon.gif","","key");
+	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
 	mGame.resetGame();
