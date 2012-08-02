@@ -12,6 +12,11 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
+		if (col.mMountee.mMesssage == 'key')
+		{
+			parent.onCollision(col);		
+		}		
+/*	
 		//is it a key? and if so does the key have answer to locked door?
 		if (col.mMountee.mMessage == 'key' && col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer()) 
 		{
@@ -27,13 +32,23 @@ Extends: Shape,
                         	this.enterDoor();
                 	}
 		}
+*/
 	},
-   	
+  
+	correctAnswer: function()
+	{
+		this.mOpen = true;	
+		this.setSrc(this.mSrcOpen);
+
+                this.mGame.mOn = false;
+                window.location = "/src/database/goto_next_level.php";
+	}	 
+/*	
 	enterDoor: function()
         {
                 this.mGame.mOn = false;
                 window.location = "/src/database/goto_next_level.php";
         }
-
+*/
 });
 

@@ -18,7 +18,6 @@ Extends: Shape,
 				this.mCollisionOn = true;
 				this.setVisibility(true);
 				this.mMountable = true;
-				mApplication.log('true');
 			}
 		}
 		else
@@ -28,7 +27,6 @@ Extends: Shape,
 				this.mCollisionOn = false;
 				this.setVisibility(false);
 				this.mMountable = false;
-				mApplication.log('false');
 			}
 		}
 		
