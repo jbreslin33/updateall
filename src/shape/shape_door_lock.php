@@ -32,8 +32,28 @@ Extends: Shape,
                 this.parent(delta);
         },
 
+	onCollision: function(col)
+	{
+ 		if (col == this.mGame.mControlObject)
+                {
+                	if (col.mMountee)
+                        {
+                        	if (this.mMountee.mQuestion.getAnswer() == col.mMountee.mQuestion.getAnswer())
+                                {
+                               		this.correctAnswer();
+                                }
+                                else
+                                {
+                                        this.incorrectAnswer();
+                                }
+                        }
+                }
+		
+	},
+
 	correctAnswer: function()
 	{
+		mApplication.log("correct in lock");
 		this.mOpen = true;	
 		this.setSrc(this.mSrcOpen);
 
