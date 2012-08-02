@@ -130,7 +130,6 @@ var Shape = new Class(
                         	}
 			}
                 }
-
 	},
 
 	onCollision: function(col)
@@ -159,7 +158,7 @@ var Shape = new Class(
 
                 else if (this.mMountable == true)
                 {
-			mApplication.log('mountable');
+			mApplication.log("mounting someting");
                         if (col != this.getTimeoutShape())
                         {
                                 //first unmount  if you have something

@@ -18,10 +18,6 @@ Extends: Shape,
                         {
                                 this.mCollisionOn = true;
                                 this.setVisibility(true);
-                                this.mMountable = true;
-			
-				//mountee
-				this.mMountee.setVisibility(true);
                         }
                 }
                 else
@@ -30,24 +26,12 @@ Extends: Shape,
                         {
                                 this.mCollisionOn = false;
                                 this.setVisibility(false);
-                                this.mMountable = false;
-		
-				//mountee
-				this.mMountee.setVisibility(false);
                         }
                 }
 
                 this.parent(delta);
         },
 
-	onCollision: function(col)
-	{
-		if (col.mMountee.mMesssage == 'key')
-		{
-			parent.onCollision(col);		
-		}		
-	},
-  
 	correctAnswer: function()
 	{
 		this.mOpen = true;	
