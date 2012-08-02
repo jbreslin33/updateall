@@ -138,15 +138,20 @@ var Shape = new Class(
                 this.mPosition.mY = this.mPositionOld.mY;
 
 		//do i need this???? yes what i'll do is other shapes should not have questions until neccesary if we don't want them gumming up the works.
-		if (this == this.mGame.mControlObject)
+		if (col == this.mGame.mControlObject)
 		{
-			if (col.mMessage == "question")
+			if (this.mMountee)
 			{
-				if (this.mMountee)
+				if (col.mMountee && col.mMountee.mQuestion)
                  		{
-                                	if (this.mMountee.mQuestion.getAnswer() == col.mQuestion.getAnswer())
+                                	if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
                                 	{
+						//mark as correct
                                         	this.correctAnswer();
+						
+						//now get me off the screen
+   						this.mCollisionOn = false;
+                				this.setVisibility(false);
                                 	}
                                 	else
                                 	{
@@ -156,9 +161,14 @@ var Shape = new Class(
                         }
 		}
 
-                else if (this.mMountable == true)
+		else if (this.mMountee)
+		{
+
+		}
+
+		//if your mountable let's mount something
+                if (this.mMountable == true)
                 {
-			mApplication.log("mounting someting");
                         if (col != this.getTimeoutShape())
                         {
                                 //first unmount  if you have something
@@ -170,6 +180,7 @@ var Shape = new Class(
                                 col.mount(this,0);
                         }
                 }
+/*
 		else
 		{
 			if (col == this.mGame.mControlObject)
@@ -178,11 +189,13 @@ var Shape = new Class(
                 		this.setVisibility(false);
 			}
 		}
+*/
 	},
 
 	correctAnswer: function()
         {
-		if (this == this.mGame.mControlObject)
+		mApplication.log("coorrrrrrr");
+		if (this != this.mGame.mControlObject)
 		{
 			this.mGame.correctAnswer();
                 
@@ -190,16 +203,16 @@ var Shape = new Class(
                 	if (this.mGame.mQuiz)
                 	{
                         	//set the control objects question object
-                        	this.setQuestion(this.mGame.mQuiz.getQuestion());
-                        	if (this.mMountee)
+                        	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                        	if (this.mGame.mControlObject.mMountee)
                         	{
-                                	this.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
+                                	this.mGame.mControlObject.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
                         	}
                 	}
 		}
-		else
-		{
-		}
+	//	else
+	//	{
+	//	}
         },
 
         incorrectAnswer: function()
