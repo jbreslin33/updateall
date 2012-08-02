@@ -138,6 +138,7 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
+		//do i need this???? yes what i'll do is other shapes should not have questions until neccesary if we don't want them gumming up the works.
 		if (this == this.mGame.mControlObject)
 		{
 			if (col.mMessage == "question")
@@ -155,6 +156,7 @@ var Shape = new Class(
 				}
                         }
 		}
+
                 else if (this.mMountable == true)
                 {
 			mApplication.log('mountable');

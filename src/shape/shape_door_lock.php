@@ -10,29 +10,42 @@ Extends: Shape,
 		this.mSrcOpen = srcOpen;
         },
 
+	update: function(delta)
+        {
+                if (this.mGame.mQuiz.isQuizComplete())
+                {
+                        if (this.mCollisionOn == false)
+                        {
+                                this.mCollisionOn = true;
+                                this.setVisibility(true);
+                                this.mMountable = true;
+			
+				//mountee
+				this.mMountee.setVisibility(true);
+                        }
+                }
+                else
+                {
+                        if (this.mCollisionOn == true)
+                        {
+                                this.mCollisionOn = false;
+                                this.setVisibility(false);
+                                this.mMountable = false;
+		
+				//mountee
+				this.mMountee.setVisibility(false);
+                        }
+                }
+
+                this.parent(delta);
+        },
+
 	onCollision: function(col)
 	{
 		if (col.mMountee.mMesssage == 'key')
 		{
 			parent.onCollision(col);		
 		}		
-/*	
-		//is it a key? and if so does the key have answer to locked door?
-		if (col.mMountee.mMessage == 'key' && col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer()) 
-		{
-			this.mOpen = true;	
-			this.setSrc(this.mSrcOpen);
-		}
-		
-
-		if (col == this.mGame.mControlObject)
-		{
-        		if (this.mOpen)
-                	{
-                        	this.enterDoor();
-                	}
-		}
-*/
 	},
   
 	correctAnswer: function()
@@ -43,12 +56,5 @@ Extends: Shape,
                 this.mGame.mOn = false;
                 window.location = "/src/database/goto_next_level.php";
 	}	 
-/*	
-	enterDoor: function()
-        {
-                this.mGame.mOn = false;
-                window.location = "/src/database/goto_next_level.php";
-        }
-*/
 });
 
