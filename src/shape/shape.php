@@ -164,6 +164,9 @@ var Shape = new Class(
 		//if your mountable let's mount something
                 if (this.mMountable == true)
                 {
+		
+			col.mount(this,0);
+/*
                         if (col != this.getTimeoutShape())
                         {
                                 //first unmount  if you have something
@@ -174,6 +177,7 @@ var Shape = new Class(
                                 //then mount
                                 col.mount(this,0);
                         }
+*/
                 }
 	},
 
@@ -291,9 +295,18 @@ var Shape = new Class(
 
 	mount: function(mountee,mountpoint)
 	{
-
-		this.mMountee = mountee;
-		this.mMountee.mountedBy(this,mountpoint);
+        	if (mountee != this.getTimeoutShape())
+                {
+                	//first unmount  if you have something
+                        if (this.mMountee)
+                        {
+                        	this.unMount(this.mMountee,0);
+                        }
+                        
+			//then mount
+			this.mMountee = mountee;
+			this.mMountee.mountedBy(this,mountpoint);
+                }
 	},
 
 	mountedBy: function(mounter,mountpoint)
