@@ -161,11 +161,6 @@ var Shape = new Class(
                         }
 		}
 
-		else if (this.mMountee)
-		{
-
-		}
-
 		//if your mountable let's mount something
                 if (this.mMountable == true)
                 {
@@ -180,16 +175,6 @@ var Shape = new Class(
                                 col.mount(this,0);
                         }
                 }
-/*
-		else
-		{
-			if (col == this.mGame.mControlObject)
-			{
-   				this.mCollisionOn = false;
-                		this.setVisibility(false);
-			}
-		}
-*/
 	},
 
 	correctAnswer: function()
@@ -306,6 +291,7 @@ var Shape = new Class(
 
 	mount: function(mountee,mountpoint)
 	{
+
 		this.mMountee = mountee;
 		this.mMountee.mountedBy(this,mountpoint);
 	},
