@@ -137,8 +137,13 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
-		//do i need this???? yes what i'll do is other shapes should not have questions until neccesary if we don't want them gumming up the works.
-		if (col == this.mGame.mControlObject)
+		//if your mountable let's get mounted 
+                if (this.mMountable == true)
+                {
+			col.mount(this,0);
+                }
+		//if you collided with control object lets do scoring stuff if we are not getting mounted we are also going to have to dispear  
+		else if (col == this.mGame.mControlObject)
 		{
 			if (this.mMountee)
 			{
@@ -161,24 +166,6 @@ var Shape = new Class(
                         }
 		}
 
-		//if your mountable let's mount something
-                if (this.mMountable == true)
-                {
-		
-			col.mount(this,0);
-/*
-                        if (col != this.getTimeoutShape())
-                        {
-                                //first unmount  if you have something
-                                if (col.mMountee)
-                                {
-                                        col.unMount(col.mMountee,0);
-                                }
-                                //then mount
-                                col.mount(this,0);
-                        }
-*/
-                }
 	},
 
 	correctAnswer: function()
