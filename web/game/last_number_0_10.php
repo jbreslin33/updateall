@@ -1,3 +1,4 @@
+
 <html>
 <head>
 
@@ -93,14 +94,6 @@ window.addEvent('domready', function()
 
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
-
-        //numberMount to go on top let's make it small and draw it on top
-        var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
-        mGame.addToShapeArray(numberMountee);
-
-        //do the mount
-        mGame.mControlObject.mount(numberMountee,0);
-        numberMountee.setBackgroundColor("transparent");
 
 	//DOOR
 	for (i = 0; i < scoreNeeded; i++)
