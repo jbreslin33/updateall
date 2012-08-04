@@ -24,19 +24,6 @@ var Shape = new Class(
 
 		this.mMountPoint = new Array();	
 		
-		this.mMountPoint[0] = new Point2D();
-
-		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-        	{
-			this.mMountPoint[0].mX = -5;
-			this.mMountPoint[0].mY = -41;
-        	}
-        	else
-       	 	{
-			this.mMountPoint[0].mX = -5;
-			this.mMountPoint[0].mY = -58;
-        	}
-		
 		this.mTimeoutShape;
 		this.mTimeoutCounter = 0;
 
@@ -104,6 +91,22 @@ var Shape = new Class(
         },
 
 /******************** PUBLIC METHODS *************/
+
+	createMountPoint: function(slot,x,y)
+	{
+		this.mMountPoint[slot] = new Point2D();
+
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+        	{
+			this.mMountPoint[slot].mX = x;
+			this.mMountPoint[slot].mY = y;
+        	}
+        	else
+       	 	{
+			this.mMountPoint[slot].mX = x;
+			this.mMountPoint[slot].mY = y - 17;
+        	}
+	},	
 
 /****** UTILITY METHODS ******************/
 	reset: function()

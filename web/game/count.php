@@ -115,6 +115,7 @@ window.addEvent('domready', function()
  	
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+	mGame.mControlObject.createMountPoint(0,-5,-41);
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -145,6 +146,7 @@ window.addEvent('domready', function()
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+		shape.createMountPoint(0,-5,-41);
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
