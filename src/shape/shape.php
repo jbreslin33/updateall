@@ -17,13 +17,16 @@ var Shape = new Class(
 		this.mShowQuestionObject = true; //even if we have a valid question object we can shut off showing it.
 		this.mShowQuestion = true; //toggles between question or answer text from question object
 	
-		//mounting	just one mountpoint for now.
-		this.mMountable = false;
-		this.mMountee;
-		this.mMounter;
+		//for the mounter
+		this.mMounteeArray = new Array();
+		this.mMountPointArray = new Array();	
 
-		this.mMountPoint = new Array();	
-		
+		//for the mountee
+		this.mMountable = false;
+		this.mMounter;
+		this.mMountPoint = 0;
+	
+		//timeouts	
 		this.mTimeoutShape;
 		this.mTimeoutCounter = 0;
 
@@ -94,17 +97,17 @@ var Shape = new Class(
 
 	createMountPoint: function(slot,x,y)
 	{
-		this.mMountPoint[slot] = new Point2D();
+		this.mMountPointArray[slot] = new Point2D();
 
 		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
         	{
-			this.mMountPoint[slot].mX = x;
-			this.mMountPoint[slot].mY = y;
+			this.mMountPointArray[slot].mX = x;
+			this.mMountPointArray[slot].mY = y;
         	}
         	else
        	 	{
-			this.mMountPoint[slot].mX = x;
-			this.mMountPoint[slot].mY = y - 17;
+			this.mMountPointArray[slot].mX = x;
+			this.mMountPointArray[slot].mY = y - 17;
         	}
 	},	
 
@@ -127,9 +130,9 @@ var Shape = new Class(
 			if (this.mGame.mControlObject == this)
 			{
                         	this.setQuestion(this.mGame.mQuiz.getQuestion());
-                        	if (this.mMountee)
+                        	if (this.mMounteeArray[0])
                        		{
-                                	this.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
+                                	this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
                         	}
 			}
                 }
@@ -148,11 +151,11 @@ var Shape = new Class(
 		//if you collided with control object lets do scoring stuff if we are not getting mounted we are also going to have to dispear  
 		else if (col == this.mGame.mControlObject)
 		{
-			if (this.mMountee)
+			if (this.mMounteeArray[0])
 			{
-				if (col.mMountee && col.mMountee.mQuestion)
+				if (col.mMounteeArray[0] && col.mMounteeArray[0].mQuestion)
                  		{
-                                	if (col.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
+                                	if (col.mMounteeArray[0].mQuestion.getAnswer() == this.mQuestion.getAnswer())
                                 	{
 						//mark as correct
                                         	this.correctAnswer();
@@ -183,9 +186,9 @@ var Shape = new Class(
                 	{
                         	//set the control objects question object
                         	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                        	if (this.mGame.mControlObject.mMountee)
+                        	if (this.mGame.mControlObject.mMounteeArray[0])
                         	{
-                                	this.mGame.mControlObject.mMountee.setQuestion(this.mGame.mQuiz.getQuestion());
+                                	this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
                         	}
                 	}
 		}
@@ -242,8 +245,8 @@ var Shape = new Class(
 			this.mPosition.mY = this.mMounter.mPosition.mY;
 
 			//offset
-			this.mPosition.mX += this.mMounter.mMountPoint[0].mX;
-			this.mPosition.mY += this.mMounter.mMountPoint[0].mY;
+			this.mPosition.mX += this.mMounter.mMountPointArray[this.mMountPoint].mX;
+			this.mPosition.mY += this.mMounter.mMountPointArray[this.mMountPoint].mY;
 		} 
 	},
 
@@ -283,34 +286,42 @@ var Shape = new Class(
 		}
 	},
 
-	mount: function(mountee,mountpoint)
+	mount: function(mountee,slot)
 	{
         	if (mountee != this.getTimeoutShape())
                 {
                 	//first unmount  if you have something
-                        if (this.mMountee)
+                        if (this.mMounteeArray[slot])
                         {
-                        	this.unMount(this.mMountee,0);
+                        	this.unMount(0);
                         }
                         
 			//then mount
-			this.mMountee = mountee;
-			this.mMountee.mountedBy(this,mountpoint);
+			this.mMounteeArray[slot] = mountee;
+			this.mMounteeArray[slot].mountedBy(this,slot);
                 }
 	},
 
-	mountedBy: function(mounter,mountpoint)
+	mountedBy: function(mounter,slot)
 	{
 		this.mCollisionOn = false;
 		this.mMounter = mounter;
+		this.mMountPoint = slot;
 	},
 
-	unMount: function(mountee,mountpoint)
+	unMount: function(slot)
 	{
+		this.mMounteeArray[slot].setTimeoutShape(this);
+		this.mMounteeArray[slot].mCollisionOn = true;
+		this.mMounteeArray[slot].mMounter = 0;
+		this.mMounteeArray[slot] = 0;	
+
+/*
 		mountee.setTimeoutShape(this);
 		mountee.mCollisionOn = true;	
 		mountee.mMounter = 0;
 		this.mMountee = 0;
+*/
 	},
 
 	setTimeoutShape: function(shape)
@@ -353,9 +364,9 @@ var Shape = new Class(
 		}
 	
 		//how about your mounted shapes	
-		if (this.mMountee)
+		if (this.mMounteeArray[0])
 		{
-			this.mMountee.setVisibility(b);
+			this.mMounteeArray[0].setVisibility(b);
 		}
 
 	},		
