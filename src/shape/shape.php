@@ -148,31 +148,6 @@ var Shape = new Class(
                 {
 			col.mount(this,0);
                 }
-/*	
-		//if you collided with control object lets do scoring stuff if we are not getting mounted we are also going to have to dispear  
-		else if (col == this.mGame.mControlObject)
-		{
-			if (this.mMounteeArray[0])
-			{
-				if (col.mMounteeArray[0] && col.mMounteeArray[0].mQuestion)
-                 		{
-                                	if (col.mMounteeArray[0].mQuestion.getAnswer() == this.mQuestion.getAnswer())
-                                	{
-						//mark as correct
-                                        	this.correctAnswer();
-						
-						//now get me off the screen
-   						this.mCollisionOn = false;
-                				this.setVisibility(false);
-                                	}
-                                	else
-                                	{
-                                        	this.incorrectAnswer();
-                                	}
-				}
-                        }
-		}
-*/
 	},
 
 	correctAnswer: function()
