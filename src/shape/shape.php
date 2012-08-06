@@ -148,6 +148,7 @@ var Shape = new Class(
                 {
 			col.mount(this,0);
                 }
+/*	
 		//if you collided with control object lets do scoring stuff if we are not getting mounted we are also going to have to dispear  
 		else if (col == this.mGame.mControlObject)
 		{
@@ -171,7 +172,7 @@ var Shape = new Class(
 				}
                         }
 		}
-
+*/
 	},
 
 	correctAnswer: function()
