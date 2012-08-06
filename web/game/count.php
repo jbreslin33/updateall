@@ -9,6 +9,7 @@
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_games_attempts.php");
 
 //db connection
 $conn = dbConnect();
@@ -46,16 +47,32 @@ if ($num > 0)
         $endNumber = $row[3];
 }
 
+//brian - get current date
+$curDate = date('Y-m-d H:i:s');
+
+//brian - attempt a game - still hardcoding game_id = 1
+insertIntoGamesAttempts($conn,$curDate,1,$_SESSION["user_id"],$_SESSION["next_level"]);
+
 ?>
 
 <script language="javascript">
 
+var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = <?php echo $scoreNeeded; ?>;
 var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
+
+//brian - update score in games_attempts table
+function updateScore()
+{
+
+<?php insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate); ?>
+   
+
+}
 
 </script>
 
@@ -176,6 +193,9 @@ window.addEvent('domready', function()
 
         //START UPDATING
         var t=setInterval("mGame.update()",32)
+		
+		//brian - update score for teacher to see
+		var k = setInterval("updateScore()",500)
 
 }
 );
