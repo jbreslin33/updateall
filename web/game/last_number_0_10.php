@@ -86,6 +86,8 @@ window.addEvent('domready', function()
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Shape(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject.createMountPoint(0,-5,-41);
+
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -100,6 +102,8 @@ window.addEvent('domready', function()
 	{
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
 		var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+                door.createMountPoint(0,-5,-41);
+
 		mGame.addToShapeArray(door);
 
 		//numberMount to go on top let's make it small and draw it on top 
@@ -119,6 +123,7 @@ window.addEvent('domready', function()
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","pickup"));
+                shape.createMountPoint(0,-5,-41);
                 shape.showQuestion(false);
 		shape.mMountable = true;
 
@@ -133,12 +138,13 @@ window.addEvent('domready', function()
 		numberMountee.setBackgroundColor("transparent");
         }
 	
-	//TREASURE TO COUNT
+	//TREASURE CHESTS TO COUNT
 	dropbox_question = 5;
 	for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
+                shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
 
