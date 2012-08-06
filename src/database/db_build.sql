@@ -318,7 +318,7 @@ CREATE TABLE games_attempts (
     game_id integer NOT NULL,
     user_id integer NOT NULL,
     level_id integer NOT NULL, --should this be standard_id?
-	score integer DEFAULT 10 NOT NULL
+	score integer DEFAULT 0 NOT NULL
 );
 
 
