@@ -48,10 +48,10 @@ if ($num > 0)
 }
 
 //brian - get current date
-$curDate = date('Y-m-d H:i:s');
+$_SESSION["game_start_time"] = date('Y-m-d H:i:s');
 
 //brian - attempt a game - still hardcoding game_id = 1
-insertIntoGamesAttempts($conn,$curDate,1,$_SESSION["user_id"],$_SESSION["next_level"]);
+insertIntoGamesAttempts($conn,$_SESSION["game_start_time"],1,$_SESSION["user_id"],$_SESSION["next_level"]);
 
 ?>
 
@@ -66,13 +66,31 @@ var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
 
 //brian - update score in games_attempts table
+/*
 function updateScore()
 {
 
-<?php insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate); ?>
-   
+var str = String.valueOf(mQuiz.getScore());
 
+var xmlhttp;    
+
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  
+  }
+xmlhttp.open("GET","getcustomer.asp?q="+str,true);
+xmlhttp.send();
+   
 }
+*/
 
 </script>
 
@@ -195,7 +213,7 @@ window.addEvent('domready', function()
         var t=setInterval("mGame.update()",32)
 		
 		//brian - update score for teacher to see
-		var k = setInterval("updateScore()",500)
+		//var k = setInterval("updateScore()",500)
 
 }
 );
