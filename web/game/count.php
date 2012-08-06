@@ -69,7 +69,9 @@ var endNumber = <?php echo $endNumber; ?>;
 function updateScore()
 {
 
-<?php insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate); ?>
+<?php 
+//insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate);
+ ?>
    
 
 }
@@ -195,7 +197,7 @@ window.addEvent('domready', function()
         var t=setInterval("mGame.update()",32)
 		
 		//brian - update score for teacher to see
-		var k = setInterval("updateScore()",500)
+		//var k = setInterval("updateScore()",500)
 
 }
 );
