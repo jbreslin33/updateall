@@ -10,10 +10,10 @@ Extends: Shape,
 	reset: function()
 	{
 
-		if (this.mMountee)
+		if (this.mMounteeArray[0])
                 {
-                        this.mMountee.mMounter = 0;
-                        this.mMountee = 0;
+                        this.mMounteeArray[0].mMounter = 0;
+                        this.mMounteeArray[0] = 0;
                 }
 
 		this.parent();
