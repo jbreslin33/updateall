@@ -12,8 +12,9 @@ Extends: Shape,
 
 		if (this.mMounteeArray[0])
                 {
-                        this.mMounteeArray[0].mMounter = 0;
-                        this.mMounteeArray[0] = 0;
+			this.unMount(0);
+                        //this.mMounteeArray[0].mMounter = 0;
+                        //this.mMounteeArray[0] = 0;
                 }
 
 		this.parent();
