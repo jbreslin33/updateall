@@ -142,12 +142,6 @@ var Shape = new Class(
 	{
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
-
-		//if your mountable let's get mounted 
-                if (this.mMountable == true)
-                {
-			col.mount(this,0);
-                }
 	},
 
 	correctAnswer: function()

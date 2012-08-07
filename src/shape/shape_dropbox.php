@@ -23,24 +23,28 @@ Extends: Shape,
 	{
  		//a dropbox_question recieving a pickup from a control object
 		pickup = 0;
-                if (col == this.mGame.mControlObject && col.mMountee && col.mMountee.mMessage == "pickup")
+                if (col == this.mGame.mControlObject && col.mMounteeArray[0])
                 {
-                	pickup = col.mMountee;
+			mApplication.log("here");
+                	pickup = col.mMounteeArray[0];
 
                         //have controlObject unMount pickup
-                        col.unMount(pickup);
+                        col.unMount(0);
                         this.mount(pickup,0);
                        	
-			if (this.mMountee.mQuestion && this.mQuestion && this.mGame.mQuiz)
-                       	{
-                             	if (this.mMountee.mQuestion.getAnswer() == this.mQuestion.getAnswer())
-                              	{
-					this.mGame.mQuiz.correctAnswer();
-                              	}
-                              	else
-                              	{
-					this.mGame.resetGame();
-                              	}
+			if (this.mMounteeArray[0])
+			{
+				if (this.mMounteeArray[0].mQuestion && this.mQuestion && this.mGame.mQuiz)
+                       		{
+                             		if (this.mMounteeArray[0].mQuestion.getAnswer() == this.mQuestion.getAnswer())
+                              		{
+						this.mGame.mQuiz.correctAnswer();
+                              		}
+                              		else
+                              		{
+						this.mGame.resetGame();
+                              		}
+				}
 			}
                 }
 	}
