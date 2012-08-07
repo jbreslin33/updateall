@@ -36,9 +36,9 @@ Extends: Shape,
 	{
  		if (col == this.mGame.mControlObject)
                 {
-                	if (col.mMountee)
+                	if (col.mMounteeArray[0])
                         {
-                        	if (this.mMountee.mQuestion.getAnswer() == col.mMountee.mQuestion.getAnswer())
+                        	if (this.mMounteeArray[0].mQuestion.getAnswer() == col.mMounteeArray[0].mQuestion.getAnswer())
                                 {
                                		this.correctAnswer();
                                 }
