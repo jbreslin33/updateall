@@ -282,16 +282,14 @@ var Shape = new Class(
 	unMount: function(slot)
 	{
 		this.mMounteeArray[slot].setTimeoutShape(this);
-		this.mMounteeArray[slot].mCollisionOn = true;
+
+		if (this.mMounteeArray[slot].mCollidable)
+		{
+			this.mMounteeArray[slot].mCollisionOn = true;
+		}
+
 		this.mMounteeArray[slot].mMounter = 0;
 		this.mMounteeArray[slot] = 0;	
-
-/*
-		mountee.setTimeoutShape(this);
-		mountee.mCollisionOn = true;	
-		mountee.mMounter = 0;
-		this.mMountee = 0;
-*/
 	},
 
 	setTimeoutShape: function(shape)
