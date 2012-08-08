@@ -32,6 +32,8 @@ function insertIntoGamesAttempts($conn,$curDate,$game_id,$user_id,$level_id)
 
 //brian - update current score in games_attempts
 
+//$q=$_GET["q"];
+
 function insertScoreIntoGamesAttempts($conn,$user_id,$score,$curDate)
 {
  		//--------------------INSERT INTO STUDENTS----------------
