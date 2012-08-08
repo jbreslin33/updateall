@@ -317,7 +317,8 @@ CREATE TABLE games_attempts (
     game_attempt_time_end timestamp,
     game_id integer NOT NULL,
     user_id integer NOT NULL,
-    level_id integer NOT NULL --should this be standard_id?
+    level_id integer NOT NULL, --should this be standard_id?
+	score integer DEFAULT 0 NOT NULL
 );
 
 
