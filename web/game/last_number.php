@@ -22,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 2;
+var scoreNeeded = Math.floor(Math.random()*10);
 
 </script>
 
@@ -141,7 +141,6 @@ window.addEvent('domready', function()
         }
 	
 	//TREASURE CHESTS TO COUNT
-	dropbox_question = 5;
 	for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
