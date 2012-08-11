@@ -1628,8 +1628,8 @@ insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_nu
 
 --Understand that each successive number name refers to a quantity
 --that is one larger.
-insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/count_name.php'); --31
-insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/count_name.php'); --32
+insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/name_plus_one.php'); --31
+insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_plus_one.php'); --32
 
 --GAMES_ATTEMPTS
 
