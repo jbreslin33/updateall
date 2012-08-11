@@ -1602,21 +1602,21 @@ insert into games_levels (level_id,game_id,url) values  (18,1,'/web/game/count.p
 insert into games_levels (level_id,game_id,url) values  (19,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (20,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php'); --21
 
 --write from 0 to 20
-insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_5.php');
-insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_5_10.php');
-insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_10_15.php');
-insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php');
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_5.php'); --22
+insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_5_10.php'); --23
+insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_10_15.php'); --24
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php'); --25
 
-insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php');
+insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php'); --26
 insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order_0_10.php');
 insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order_10_20.php');
-insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number.php');
-insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number.php');
-insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/count_name.php');
-insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/count_name.php');
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number.php'); --29
+insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number.php'); --30
+insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/count_name.php'); --31
+insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/count_name.php'); --32
 
 --GAMES_ATTEMPTS
 
