@@ -18,7 +18,6 @@ Extends: Game,
 			
         		if (this.mQuiz.isQuizComplete())
                 	{
-				mApplication.log('complete');
                         	this.mOn = false;
                                	this.setFeedback("YOU WIN!!!");
                                	window.location = "../../../database/goto_next_level.php"

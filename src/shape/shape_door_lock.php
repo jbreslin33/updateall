@@ -53,7 +53,6 @@ Extends: Shape,
 
 	correctAnswer: function()
 	{
-		mApplication.log("correct in lock");
 		this.mOpen = true;	
 		this.setSrc(this.mSrcOpen);
 

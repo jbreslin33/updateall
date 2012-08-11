@@ -146,7 +146,6 @@ var Shape = new Class(
 
 	correctAnswer: function()
         {
-		mApplication.log("coorrrrrrr");
 		if (this != this.mGame.mControlObject)
 		{
 			this.mGame.correctAnswer();

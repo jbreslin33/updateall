@@ -15,9 +15,16 @@ Extends: Shape,
 		{
 			if (this.mCollisionOn == false)
 			{
-				this.mCollisionOn = true;
-				this.setVisibility(true);
-				this.mMountable = true;
+				if (this.mMounter)
+				{
+					//do nothing
+				}
+				else
+				{
+					this.mCollisionOn = true;
+					this.setVisibility(true);
+					this.mMountable = true;
+				}
 			}
 		}
 		else

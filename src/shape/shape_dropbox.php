@@ -26,7 +26,6 @@ Extends: Shape,
 		pickup = 0;
                 if (col == this.mGame.mControlObject && col.mMounteeArray[0])
                 {
-			mApplication.log("here");
                 	pickup = col.mMounteeArray[0];
 
                         //have controlObject unMount pickup
