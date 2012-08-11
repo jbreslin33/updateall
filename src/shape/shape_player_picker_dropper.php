@@ -9,7 +9,6 @@ Extends: Player,
 
 	onCollision: function(col)
 	{
-		mApplication.log("onCol");
 		if (col.mMountable)
 		{
 			if (this.mMountPointArray[0])
