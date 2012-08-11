@@ -56,8 +56,10 @@ function updateScore()
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
+<script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
 <script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
+<script type="text/javascript" src="/src/shape/shape_key.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
@@ -139,11 +141,29 @@ window.addEvent('domready', function()
 
         numberMountee.setBackgroundColor("transparent");
 
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	mGame.addToShapeArray(door);
-               
+ 	//DOOR
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+        door.createMountPoint(0,-5,-41);
+
+        mGame.addToShapeArray(door);
+
+        //numberMount to go on top let's make it small and draw it on top
+        var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(20),"","orange","numberMountee");
+        mGame.addToShapeArray(numberMountee);
+        numberMountee.showQuestion(false);
+
+        //do the mount
+        door.mount(numberMountee,0);
+
+        numberMountee.setBackgroundColor("transparent");
+
+	 //KEY
+        openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
+        mGame.addToShapeArray(key);
+
+     
 	//QUESTION SHAPES 
         for (i = 0; i < scoreNeeded; i++)
         {
