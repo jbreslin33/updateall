@@ -78,13 +78,28 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-	for (i = 0; i < scoreNeeded; i++)
-        {
-                //QUESTIONS FOR QUIZ
-                mQuiz.mQuestionArray.push(new Question('',i + 1));
-        }
+        mQuiz.mQuestionArray.push(new Question('','One'));
+        mQuiz.mQuestionArray.push(new Question('','Two'));
+        mQuiz.mQuestionArray.push(new Question('','Three'));
+        mQuiz.mQuestionArray.push(new Question('','Four'));
+        mQuiz.mQuestionArray.push(new Question('','Five'));
+        mQuiz.mQuestionArray.push(new Question('','Six'));
+        mQuiz.mQuestionArray.push(new Question('','Seven'));
+        mQuiz.mQuestionArray.push(new Question('','Eight'));
+        mQuiz.mQuestionArray.push(new Question('','Nine'));
+        mQuiz.mQuestionArray.push(new Question('','Ten'));
+        mQuiz.mQuestionArray.push(new Question('','Eleven'));
+        mQuiz.mQuestionArray.push(new Question('','Twelve'));
+        mQuiz.mQuestionArray.push(new Question('','Thirteen'));
+        mQuiz.mQuestionArray.push(new Question('','Fourteen'));
+        mQuiz.mQuestionArray.push(new Question('','Fifteen'));
+        mQuiz.mQuestionArray.push(new Question('','Sixteen'));
+        mQuiz.mQuestionArray.push(new Question('','Seventeen'));
+        mQuiz.mQuestionArray.push(new Question('','Eighteen'));
+        mQuiz.mQuestionArray.push(new Question('','Nineteen'));
+        mQuiz.mQuestionArray.push(new Question('','Twenty'));
 
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '99'));      
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', ''));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new PlayerPickerDropper(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
