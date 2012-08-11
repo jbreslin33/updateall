@@ -31,7 +31,7 @@ insertIntoGamesAttempts($conn,$curDate,1,$_SESSION["user_id"],$_SESSION["next_le
 var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 10;
+var scoreNeeded = 1;
 
 //brian - update score in games_attempts table
 function updateScore()
@@ -40,8 +40,6 @@ function updateScore()
 <?php 
 //insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate);
  ?>
-   
-
 }
 
 </script>
@@ -143,7 +141,7 @@ window.addEvent('domready', function()
 
  	//DOOR
         var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+        var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
         door.createMountPoint(0,-5,-41);
 
         mGame.addToShapeArray(door);
