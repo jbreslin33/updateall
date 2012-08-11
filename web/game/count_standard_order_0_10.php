@@ -1,3 +1,4 @@
+
 <html>
 <head>
 
@@ -21,7 +22,7 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 10;
+var scoreNeeded = Math.floor(Math.random()*10);
 
 </script>
 
@@ -33,11 +34,13 @@ var scoreNeeded = 10;
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
+<script type="text/javascript" src="/src/shape/shape_player_picker_dropper.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
+<script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox_count.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
-<script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
+<script type="text/javascript" src="/src/shape/shape_key.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
@@ -74,45 +77,66 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-        for (i = 0; i < scoreNeeded; i++)
-	{
-		//QUESTIONS FOR QUIZ
-       		mQuiz.mQuestionArray.push(new Question('',i + 1));      
-	}
-	mQuiz.mQuestionArray.push(new Question('Door is Open!', '21'));      
+	//QUESTIONS FOR QUIZ
+        mQuiz.mQuestionArray.push(new Question('','One'));
+        mQuiz.mQuestionArray.push(new Question('','Two'));
+        mQuiz.mQuestionArray.push(new Question('','Three'));
+        mQuiz.mQuestionArray.push(new Question('','Four'));
+        mQuiz.mQuestionArray.push(new Question('','Five'));
+        mQuiz.mQuestionArray.push(new Question('','Six'));
+        mQuiz.mQuestionArray.push(new Question('','Seven'));
+        mQuiz.mQuestionArray.push(new Question('','Eight'));
+        mQuiz.mQuestionArray.push(new Question('','Nine'));
+        mQuiz.mQuestionArray.push(new Question('','Ten'));
+        mQuiz.mQuestionArray.push(new Question('','Eleven'));
+        mQuiz.mQuestionArray.push(new Question('','Twelve'));
+        mQuiz.mQuestionArray.push(new Question('','Thirteen'));
+        mQuiz.mQuestionArray.push(new Question('','Fourteen'));
+        mQuiz.mQuestionArray.push(new Question('','Fifteen'));
+        mQuiz.mQuestionArray.push(new Question('','Sixteen'));
+        mQuiz.mQuestionArray.push(new Question('','Seventeen'));
+        mQuiz.mQuestionArray.push(new Question('','Eighteen'));
+        mQuiz.mQuestionArray.push(new Question('','Nineteen'));
+        mQuiz.mQuestionArray.push(new Question('','Twenty'));
+
+       	mQuiz.mQuestionArray.push(new Question('Door is Open!', ''));      
 
 	//CONTROL OBJECT
-        mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new PlayerPickerDropper(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
+
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
 
-	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+ 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
 
-	mGame.addToShapeArray(mGame.mControlObject);
+ 	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
 
-        //numberMount to go on top let's make it small and draw it on top
-        var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
-        mGame.addToShapeArray(numberMountee);
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+		var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+                door.createMountPoint(0,-5,-41);
 
-        //do the mount
-        mGame.mControlObject.mount(numberMountee,0);
-        numberMountee.setBackgroundColor("transparent");
+		mGame.addToShapeArray(door);
 
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	mGame.addToShapeArray(door);
-               
-	//QUESTION SHAPES 
+		//numberMount to go on top let's make it small and draw it on top 
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");       
+                mGame.addToShapeArray(numberMountee); 
+                numberMountee.showQuestion(false);
+                
+		//do the mount  
+		door.mount(numberMountee,0);
+
+		numberMountee.setBackgroundColor("transparent");
+
+	//QUESTION SHAPES (GOLD COINS)
         for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","pickup"));
-		shape.createMountPoint(0,-5,-41);
+                shape.createMountPoint(0,-5,-41);
                 shape.showQuestion(false);
 		shape.mMountable = true;
 
@@ -127,23 +151,19 @@ window.addEvent('domready', function()
 		numberMountee.setBackgroundColor("transparent");
         }
 	
-	//CHASERS
-	chasers = 0;
-	for (i = 0; i < chasers; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var aishape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
-		mGame.addToShapeArray(aishape);
-        }
-
-	//TREASURE TO COUNT
-	dropbox_question = 5;
+	//TREASURE CHESTS TO COUNT
 	for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
+                shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
+
+	//KEY
+      	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(scoreNeeded - 1),"/images/key/key_dungeon.gif","","key");
+	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
 	mGame.resetGame();
