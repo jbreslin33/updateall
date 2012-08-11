@@ -1623,8 +1623,8 @@ insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_s
 --Understand that the last number name said tells the number of
 --objects counted. The number of objects is the same regardless of
 --their arrangement or the order in which they were counted.
-insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number.php'); --29
-insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number.php'); --30
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number_name.php'); --29
+insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number_name.php'); --30
 
 --Understand that each successive number name refers to a quantity
 --that is one larger.

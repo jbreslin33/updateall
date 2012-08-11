@@ -99,7 +99,7 @@ window.addEvent('domready', function()
         mQuiz.mQuestionArray.push(new Question('','Nineteen'));
         mQuiz.mQuestionArray.push(new Question('','Twenty'));
 
-       	mQuiz.mQuestionArray.push(new Question('', 'DoorKey'));      
+       	mQuiz.mQuestionArray.push(new Question('', 'Open door with key.'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new PlayerPickerDropper(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
