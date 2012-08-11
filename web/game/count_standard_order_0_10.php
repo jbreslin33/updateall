@@ -99,7 +99,7 @@ window.addEvent('domready', function()
         mQuiz.mQuestionArray.push(new Question('','Nineteen'));
         mQuiz.mQuestionArray.push(new Question('','Twenty'));
 
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', ''));      
+       	mQuiz.mQuestionArray.push(new Question('', 'DoorKey'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new PlayerPickerDropper(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -121,7 +121,7 @@ window.addEvent('domready', function()
 		mGame.addToShapeArray(door);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");       
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(20),"","orange","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
                 
@@ -162,7 +162,7 @@ window.addEvent('domready', function()
 
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(scoreNeeded - 1),"/images/key/key_dungeon.gif","","key");
+        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
 	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
