@@ -154,9 +154,7 @@ window.addEvent('domready', function()
 	//TREASURE CHESTS TO COUNT
 	for (i = 0; i < scoreNeeded; i++)
         {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                //var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
-                var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus_segment.png","","dropbox_question");
+                var shape = new ShapeDropboxCount(50,50,i * 50,100,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus_segment.png","","dropbox_question");
                 shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
