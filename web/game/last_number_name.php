@@ -22,7 +22,8 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = Math.floor(Math.random()*10);
+//var scoreNeeded = Math.floor(Math.random()*10);
+var scoreNeeded = 1;
 
 </script>
 
