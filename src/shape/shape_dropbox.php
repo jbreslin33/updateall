@@ -34,7 +34,7 @@ Extends: Shape,
 			//and you the dropbox pick it up
                         this.mount(pickup,0);
                        
-			//now that you the dropbox have picked up something from control object let's check if it's correct or incorrect	
+			//now that you the dropbox have picked up something from control object let's check if it's correct or incorrect IF IT HAS A QUESTION	
 			if (this.mMounteeArray[0])
 			{
 				if (this.mMounteeArray[0].mQuestion && this.mQuestion && this.mGame.mQuiz)
