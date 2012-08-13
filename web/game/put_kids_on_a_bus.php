@@ -99,6 +99,14 @@ window.addEvent('domready', function()
         mQuiz.mQuestionArray.push(new Question('','Twenty'));
 
        	mQuiz.mQuestionArray.push(new Question('', 'Open door with key.'));      
+	
+	//BUS 
+	for (i = 0; i < 14; i++)
+        {
+                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus_segment.png","","dropbox_question");
+                shape.createMountPoint(0,-5,-41);
+		mGame.addToShapeArray(shape);
+        }
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -151,13 +159,6 @@ window.addEvent('domready', function()
 		numberMountee.setBackgroundColor("transparent");
         }
 	
-	//TREASURE CHESTS TO COUNT
-	for (i = 0; i < scoreNeeded; i++)
-        {
-                var shape = new ShapeDropboxCount(50,50,i * 50,100,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus_segment.png","","dropbox_question");
-                shape.createMountPoint(0,-5,-41);
-		mGame.addToShapeArray(shape);
-        }
 
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
