@@ -34,6 +34,7 @@ var scoreNeeded = Math.floor(Math.random()*10);
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
+<script type="text/javascript" src="/src/shape/shape_busdriver.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
@@ -109,7 +110,7 @@ window.addEvent('domready', function()
         }
 
 	//CONTROL OBJECT
-        mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new BusDriver(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
 
@@ -143,22 +144,10 @@ window.addEvent('domready', function()
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","pickup"));
-                shape.createMountPoint(0,-5,-41);
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,'',"/images/treasure/gold_coin_head.png","","pickup"));
                 shape.showQuestion(false);
 		shape.mMountable = true;
-
-		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
-                mGame.addToShapeArray(numberMountee); 
-                numberMountee.showQuestion(false);
-                
-		//do the mount  
-		shape.mount(numberMountee,0);
-
-		numberMountee.setBackgroundColor("transparent");
         }
-	
 
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
