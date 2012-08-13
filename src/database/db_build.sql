@@ -1493,6 +1493,13 @@ insert into levels(level,description) values (30,'Understand that last counted o
 insert into levels(level,description) values (31,'Understand that each successive number name refers to a quantity that is one larger');
 insert into levels(level,description) values (32,'Understand that each successive number name refers to a quantity that is one larger');
 
+--Count to answer “how many?” questions about as many as 20 things
+--arranged in a line, a rectangular array, or a circle, or as many as 10
+--things in a scattered configuration; given a number from 1–20, count
+--out that many objects.
+
+insert into levels(level,description) values (33,'Given a number from 1-20, count out that many objects.');
+
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
@@ -1630,6 +1637,13 @@ insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_nu
 --that is one larger.
 insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/name_plus_one.php'); --31
 insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_plus_one.php'); --32
+
+--Count to answer “how many?” questions about as many as 20 things
+--arranged in a line, a rectangular array, or a circle, or as many as 10
+--things in a scattered configuration; given a number from 1–20, count
+--out that many objects.
+--I am only doing the part about count out that many objects for this section
+insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/put_kids_on_a_bus.php'); --33
 
 --GAMES_ATTEMPTS
 
