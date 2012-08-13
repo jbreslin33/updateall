@@ -9,8 +9,23 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
+		mApplication.log('here');	
+		//can i mount this thing? 
+ 		if (col.mMountable)
+               	{
+                       	if (this.mMountPointArray[0])
+                       	{
+                               	if (this.mMounteeArray[0])
+                               	{
+                                       	this.unMount(0);
+                               	}
+                               	this.mount(col,0);
+                       	}
+               	}
+
         	if (col.mMounteeArray[0])
                 {
+
                 	if (this.mMounteeArray[0] && this.mMounteeArray[0].mQuestion)
                         {
                         	if (this.mMounteeArray[0].mQuestion.getAnswer() == col.mQuestion.getAnswer())

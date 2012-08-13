@@ -21,9 +21,13 @@ Extends: Shape,
 				}
 				else
 				{
-					this.mCollisionOn = true;
-					this.setVisibility(true);
-					this.mMountable = true;
+					if (this.mCollisionOn == false)
+					{ 
+						mApplication.log('key com');
+						this.mCollisionOn = true;
+						this.setVisibility(true);
+						this.mMountable = true;
+					}
 				}
 			}
 		}
