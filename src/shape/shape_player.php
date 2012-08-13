@@ -23,7 +23,7 @@ Extends: Shape,
                        	}
                	}
 
-        	if (col.mMounteeArray[0])
+        	else if (col.mMounteeArray[0])
                 {
 
                 	if (this.mMounteeArray[0] && this.mMounteeArray[0].mQuestion)

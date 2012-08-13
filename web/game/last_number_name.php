@@ -35,7 +35,6 @@ var scoreNeeded = 1;
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
-<script type="text/javascript" src="/src/shape/shape_player_picker_dropper.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
@@ -103,7 +102,7 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('Door is Open!', ''));      
 
 	//CONTROL OBJECT
-        mGame.mControlObject = new PlayerPickerDropper(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
 
