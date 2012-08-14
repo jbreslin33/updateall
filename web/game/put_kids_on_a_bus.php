@@ -22,7 +22,8 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = Math.floor(Math.random()*10);
+var scoreNeeded = 0;
+var kids = Math.floor(Math.random()*10);
 
 </script>
 
@@ -139,8 +140,8 @@ window.addEvent('domready', function()
 
 	numberMountee.setBackgroundColor("transparent");
 
-	//QUESTION SHAPES (GOLD COINS)
-        for (i = 0; i < scoreNeeded; i++)
+	//KIDS
+        for (i = 0; i < kids; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
