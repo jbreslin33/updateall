@@ -31,6 +31,7 @@ var numberOfKidsToPutOnBus = Math.floor(Math.random()*10);
 <script type="text/javascript" src="/src/math/point2D.php"></script>
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
 <script type="text/javascript" src="/src/game/game.php"></script>
+<script type="text/javascript" src="/src/game/put_kids_on_the_bus.php"></script>
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
@@ -72,7 +73,7 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
-        mGame = new Game("hardcode");
+        mGame = new PutKidsOnTheBus("hardcode");
 
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);

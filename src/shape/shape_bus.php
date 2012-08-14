@@ -9,7 +9,12 @@ Extends: Shape,
 
         update: function(delta)
         {
+//		for (i = 0; i < this.mGame.mShapeArray.length; i++)
+//		{
+
+//		}
        		this.parent(delta); 
+
 /*
 			if (this.mGame.mShapeArray)
 			{
