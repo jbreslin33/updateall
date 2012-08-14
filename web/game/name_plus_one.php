@@ -58,6 +58,7 @@ function updateScore()
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
 <script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
 <script type="text/javascript" src="/src/shape/shape_key.php"></script>
+<script type="text/javascript" src="/src/shape/shape_key_quiz_complete.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
@@ -158,7 +159,7 @@ window.addEvent('domready', function()
 
 	 //KEY
         openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
+        key = new ShapeKeyQuizComplete(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
         mGame.addToShapeArray(key);
 
      
