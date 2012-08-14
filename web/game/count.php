@@ -48,10 +48,11 @@ if ($num > 0)
 }
 
 //brian - get current date
-$curDate = date('Y-m-d H:i:s');
+$_SESSION["game_start_time"] = date('Y-m-d H:i:s');
+$_SESSION["game_over"] = "false";
 
 //brian - attempt a game - still hardcoding game_id = 1
-insertIntoGamesAttempts($conn,$curDate,1,$_SESSION["user_id"],$_SESSION["next_level"]);
+insertIntoGamesAttempts($conn,$_SESSION["game_start_time"],1,$_SESSION["user_id"],$_SESSION["next_level"]);
 
 ?>
 
@@ -65,16 +66,6 @@ var countBy = <?php echo $countBy; ?>;
 var startNumber = <?php echo $startNumber; ?>;
 var endNumber = <?php echo $endNumber; ?>;
 
-//brian - update score in games_attempts table
-function updateScore()
-{
-
-<?php 
-//insertScoreIntoGamesAttempts($conn,$_SESSION["user_id"],6,$curDate);
- ?>
-   
-
-}
 
 </script>
 
@@ -197,8 +188,8 @@ window.addEvent('domready', function()
         //START UPDATING
         var t=setInterval("mGame.update()",32)
 		
-		//brian - update score for teacher to see
-		//var k = setInterval("updateScore()",500)
+		//brian - update score in database
+		var t=setInterval("mGame.updateScore()",1000)
 
 }
 );
