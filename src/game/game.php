@@ -18,16 +18,24 @@ void          addToShapeArray          (shape);
 void 	      setFeedback(feedback);
 
 ***************************************/
+<?php
+session_start();
+?>
 
 var Game = new Class(
 {
+
         initialize: function(skill)
         {
 		/************ NAME *******/
 		this.mSkill = skill;
+		this.score  = 0;
 
 		/************** On_Off **********/
                 this.mOn = true;
+				
+				// may get rid of later and just use mOn
+				this.gameOver = false;
                 
 		/**************** TIME ************/
                 this.mTimeSinceEpoch = 0;
@@ -40,11 +48,72 @@ var Game = new Class(
                 
 		//shape Array
                 this.mShapeArray = new Array();
+				
+				
         },
+				
+		//brian - update score in games_attempts table		
+		updateScore: function()
+		{
+		
+		if(this.gameOver == false)
+		{
+			
+			//var str = String.valueOf(mQuiz.getScore());
+			
+			var str = this.mQuiz.getScore();
+			
+			if (str == this.score)
+			{
+				return;
+			}
+			
+			var xmlhttp;    
+			
+			if (window.XMLHttpRequest)
+			  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+			  }
+			else
+			  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			xmlhttp.onreadystatechange=function()
+			  {
+			  
+			  }
+			xmlhttp.open("GET","../../src/database/update_score.php?q="+str,true);
+			xmlhttp.send();
+			
+			this.score = str;
+		
+		}
+		   
+		},
+
 
 	quizComplete: function()
-	{
+	{	
 	
+	  if(this.gameOver == false)
+		{
+		var xmlhttp;    
+		
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		xmlhttp.onreadystatechange=function()
+		  {
+		  
+		  }
+		xmlhttp.open("GET","../../src/database/set_game_end_time.php",true);
+		xmlhttp.send();
+		}
 	},
 
         correctAnswer: function(col1,col2)
@@ -127,10 +196,16 @@ var Game = new Class(
                 	if (this.mQuiz)
                		{
                         	if (this.mQuiz.isQuizComplete())
-                        	{
-					this.quizComplete();
-                        	}
+					        {
+								// update score one last time
+								mGame.updateScore();
+								// set game end time
+								mGame.quizComplete();
+								// putting this in for now we may not need it
+								mGame.gameOver = true;
+					        }
                 	}
+					
 		}
         },
 
