@@ -23,7 +23,7 @@ var Shape = new Class(
 
 		//for the mountee
 		this.mMountable = false;
-		this.mMounter;
+		this.mMounter = 0;
 		this.mMountPoint = 0;
 	
 		//timeouts	

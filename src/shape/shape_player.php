@@ -9,7 +9,6 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
-		mApplication.log('here');	
 		//can i mount this thing? 
  		if (col.mMountable)
                	{

@@ -104,13 +104,13 @@ window.addEvent('domready', function()
 	//BUS 
 	for (i = 0; i < 14; i++)
         {
-                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus_segment.png","","dropbox_question");
+                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","dropbox_question");
                 shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
 
 	//CONTROL OBJECT
-        mGame.mControlObject = new BusDriver(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new BusDriver(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
 
