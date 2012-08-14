@@ -23,7 +23,6 @@ Extends: Shape,
 				{
 					if (this.mCollisionOn == false)
 					{ 
-						mApplication.log('key com');
 						this.mCollisionOn = true;
 						this.setVisibility(true);
 						this.mMountable = true;
