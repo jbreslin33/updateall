@@ -37,8 +37,7 @@ var numberOfKidsToPutOnBus = Math.floor(Math.random()*10);
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_busdriver.php"></script>
-<script type="text/javascript" src="/src/shape/shape_door.php"></script>
-<script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
+<script type="text/javascript" src="/src/shape/shape_bus.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox_count.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
@@ -82,7 +81,13 @@ window.addEvent('domready', function()
        	//QUESIONS	
 	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' on Bus.', numberOfKidsToPutOnBus));      
 	
-	//BUS 
+	//BUS
+       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+	var bus = new ShapeBus(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+        bus.createMountPoint(0,-5,-41);
+	mGame.addToShapeArray(bus);
+
+	//BUS SEGMENT SEAT
 	for (i = 0; i < 14; i++)
         {
                 var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","dropbox_question");
@@ -101,23 +106,6 @@ window.addEvent('domready', function()
 
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
-
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
-        door.createMountPoint(0,-5,-41);
-
-	mGame.addToShapeArray(door);
-
-	//numberMount to go on top let's make it small and draw it on top 
-        var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");       
-        mGame.addToShapeArray(numberMountee); 
-        numberMountee.showQuestion(false);
-                
-	//do the mount  
-	door.mount(numberMountee,0);
-
-	numberMountee.setBackgroundColor("transparent");
 
 	//KIDS
         for (i = 0; i < kids; i++)

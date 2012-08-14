@@ -10,7 +10,7 @@ Extends: Shape,
 		this.mSrcOpen = srcOpen;
         },
 
-        update: function()
+        update: function(delta)
         {
                 //run ai
 		if (this.mGame.mQuiz.isQuizComplete())

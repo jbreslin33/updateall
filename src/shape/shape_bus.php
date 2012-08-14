@@ -1,58 +1,22 @@
-var ShapeDoor = new Class(
+var ShapeBus = new Class(
 {
 
 Extends: Shape,
-	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen)
+	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
-		this.mOpen = false;	
-		this.mSrcClosed = src;
-		this.mSrcOpen = srcOpen;
         },
 
-        update: function()
+        update: function(delta)
         {
-                //run ai
-		if (this.mGame.mQuiz.isQuizComplete())
-		{
-			if (this.mOpen == false)
-			{
-				this.setSrc(this.mSrcOpen);
-				this.mOpen = true;
-			}
-		}
-		else
-		{
-			if (this.mOpen)
-			{
-				this.setSrc(this.mSrcClosed);
-				this.mOpen = false;
-			}
-		}
-        },
+       		this.parent(delta); 
+	},
 	
 	onCollision: function(col)
 	{
 		if (col == this.mGame.mControlObject)
 		{
-        		if (this.mOpen)
-                	{
-                		if (this.mGame.mQuiz)
-                        	{
-                        		if (this.mGame.mQuiz.isQuizComplete())
-                                	{
-                                		this.enterDoor();
-                                	}
-                        	}
-                	}
+			mApplication.log('player');	
 		}
-	},
-   	
-	enterDoor: function()
-        {
-                this.mGame.mOn = false;
-                window.location = this.getQuestion().getAnswer();
-        }
-
+	}
 });
-
