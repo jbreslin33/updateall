@@ -114,7 +114,6 @@ window.addEvent('domready', function()
         mGame.mControlObject = new BusDriver(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
-
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
 
@@ -160,7 +159,6 @@ window.addEvent('domready', function()
 
         //START UPDATING
         var t=setInterval("mGame.update()",32)
-
 }
 );
 
