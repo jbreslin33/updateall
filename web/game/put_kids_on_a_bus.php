@@ -152,6 +152,7 @@ window.addEvent('domready', function()
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
         key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
+	key.mMountable = true;
 	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
