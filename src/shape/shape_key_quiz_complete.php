@@ -1,7 +1,7 @@
-var ShapeKey = new Class(
+var ShapeKeyQuizComplete = new Class(
 {
 
-Extends: Shape,
+Extends: ShapeKey,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
