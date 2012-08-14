@@ -90,7 +90,7 @@ window.addEvent('domready', function()
 	//BUS SEGMENT SEAT
 	for (i = 0; i < 14; i++)
         {
-                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","dropbox_question");
+                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
                 shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
