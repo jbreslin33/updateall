@@ -324,26 +324,6 @@ var Game = new Class(
                 }
 	}).protect(),
 	
-	checkForOutOfBounds: function(shape)
-	{
-		if (shape.mPosition.mY < mBounds.mNorth)
-		{
-			shape.mPosition.mY = mBounds.mNorth;
-		}	
-		if (shape.mPosition.mX > mBounds.mEast)
-		{
-			shape.mPosition.mX = mBounds.mEast;
-		}	
-		if (shape.mPosition.mY > mBounds.mSouth)
-		{
-			shape.mPosition.mY = mBounds.mSouth;
-		}	
-		if (shape.mPosition.mX < mBounds.mWest)
-		{
-			shape.mPosition.mX = mBounds.mWest;
-		}	
-	},
-
 	getOpenPoint2D: function(xMin,xMax,yMin,yMax,newShapeWidth,spreadFactor)
         {
                 while (true)

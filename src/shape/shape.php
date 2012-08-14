@@ -191,20 +191,31 @@ var Shape = new Class(
 		this.updateVelocity(delta);
 		this.updatePosition();
 		this.updateAnimation();
-		this.checkForOutOfBounds();
+		if (this.mMounter == 0)
+		{	
+			this.checkForOutOfBounds();
+		}
 	},
  
 	checkForOutOfBounds: function()
 	{
-		if (this.mMounter)
-		{
-
-		}
-		else
-		{
-			this.mGame.checkForOutOfBounds(this);
-		}
-	},	
+                if (this.mPosition.mY < mBounds.mNorth)
+                {
+                        this.mPosition.mY = mBounds.mNorth;
+                }
+                if (this.mPosition.mX > mBounds.mEast)
+                {
+                        this.mPosition.mX = mBounds.mEast;
+                }
+                if (this.mPosition.mY > mBounds.mSouth)
+                {
+                        this.mPosition.mY = mBounds.mSouth;
+                }
+                if (this.mPosition.mX < mBounds.mWest)
+                {
+                        this.mPosition.mX = mBounds.mWest;
+                }
+        },
 
 	updateVelocity: function(delta)
 	{
