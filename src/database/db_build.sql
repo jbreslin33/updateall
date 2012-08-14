@@ -1497,8 +1497,8 @@ insert into levels(level,description) values (32,'Understand that each successiv
 --arranged in a line, a rectangular array, or a circle, or as many as 10
 --things in a scattered configuration; given a number from 1–20, count
 --out that many objects.
-
 insert into levels(level,description) values (33,'Given a number from 1-20, count out that many objects.');
+insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
 
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
@@ -1644,6 +1644,7 @@ insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_pl
 --out that many objects.
 --I am only doing the part about count out that many objects for this section
 insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/put_kids_on_a_bus.php'); --33
+insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/put_kids_on_a_bus.php'); --34
 
 --GAMES_ATTEMPTS
 
