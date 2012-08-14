@@ -16,5 +16,10 @@ Extends: Shape,
 	onCollision: function(col)
 	{
 		this.parent(col);	
+		
+		if (col == this.mGame.mControlObject)
+		{
+			mApplication.log('co hit me');
+		}
 	}
 });
