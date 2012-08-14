@@ -191,7 +191,20 @@ var Shape = new Class(
 		this.updateVelocity(delta);
 		this.updatePosition();
 		this.updateAnimation();
+		this.checkForOutOfBounds();
 	},
+ 
+	checkForOutOfBounds: function()
+	{
+		if (this.mMounter)
+		{
+
+		}
+		else
+		{
+			this.mGame.checkForOutOfBounds(this);
+		}
+	},	
 
 	updateVelocity: function(delta)
 	{

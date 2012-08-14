@@ -10,13 +10,27 @@ Extends: Shape,
         update: function(delta)
         {
        		this.parent(delta); 
+/*
+			if (this.mGame.mShapeArray)
+			{
+				for (i = 0; i < this.mGame.mShapeArray.length; i++)
+				{
+	
+				}
+			
+			}
+			//for (i = 0; i < this.mGame.mShapeArray.length; i++)
+			//{
+	//			if (this.mGame.mShapeArray[i].mMessage == 'bus_seat')			
+//				{
+//					mApplication.log('bus seat indhoue');	
+	//			}
+			//}
+*/
 	},
 	
 	onCollision: function(col)
 	{
-		if (col == this.mGame.mControlObject)
-		{
-			mApplication.log('player');	
-		}
+		this.parent(col);	
 	}
 });

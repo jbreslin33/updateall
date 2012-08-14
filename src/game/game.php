@@ -170,14 +170,6 @@ var Game = new Class(
                 	for (i = 0; i < this.mShapeArray.length; i++)
                 	{
 				this.mShapeArray[i].update(this.mDeltaTime);
-				if (this.mShapeArray[i].mMounter)
-				{
-				}	
-				else
-				{	
-					this.checkForOutOfBounds(this.mShapeArray[i]);
-				}
-				//this.checkForOutOfBounds(this.mShapeArray[i]);
                 	}
 			
 			//collision Detection
