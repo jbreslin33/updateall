@@ -22,8 +22,9 @@ $next_level = $_SESSION["next_level"];
 
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 0;
-var kids = Math.floor(Math.random()*10);
+var scoreNeeded = 1;
+var kids = 10;
+var numberOfKidsToPutOnBus = Math.floor(Math.random()*10);
 
 </script>
 
@@ -78,29 +79,8 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-	//QUESTIONS FOR QUIZ
-        mQuiz.mQuestionArray.push(new Question('','One'));
-        mQuiz.mQuestionArray.push(new Question('','Two'));
-        mQuiz.mQuestionArray.push(new Question('','Three'));
-        mQuiz.mQuestionArray.push(new Question('','Four'));
-        mQuiz.mQuestionArray.push(new Question('','Five'));
-        mQuiz.mQuestionArray.push(new Question('','Six'));
-        mQuiz.mQuestionArray.push(new Question('','Seven'));
-        mQuiz.mQuestionArray.push(new Question('','Eight'));
-        mQuiz.mQuestionArray.push(new Question('','Nine'));
-        mQuiz.mQuestionArray.push(new Question('','Ten'));
-        mQuiz.mQuestionArray.push(new Question('','Eleven'));
-        mQuiz.mQuestionArray.push(new Question('','Twelve'));
-        mQuiz.mQuestionArray.push(new Question('','Thirteen'));
-        mQuiz.mQuestionArray.push(new Question('','Fourteen'));
-        mQuiz.mQuestionArray.push(new Question('','Fifteen'));
-        mQuiz.mQuestionArray.push(new Question('','Sixteen'));
-        mQuiz.mQuestionArray.push(new Question('','Seventeen'));
-        mQuiz.mQuestionArray.push(new Question('','Eighteen'));
-        mQuiz.mQuestionArray.push(new Question('','Nineteen'));
-        mQuiz.mQuestionArray.push(new Question('','Twenty'));
-
-       	mQuiz.mQuestionArray.push(new Question('', 'Open door with key.'));      
+       	//QUESIONS	
+	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' on Bus.', numberOfKidsToPutOnBus));      
 	
 	//BUS 
 	for (i = 0; i < 14; i++)
@@ -130,7 +110,7 @@ window.addEvent('domready', function()
 	mGame.addToShapeArray(door);
 
 	//numberMount to go on top let's make it small and draw it on top 
-        var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(20),"","orange","numberMountee");       
+        var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");       
         mGame.addToShapeArray(numberMountee); 
         numberMountee.showQuestion(false);
                 
@@ -151,7 +131,7 @@ window.addEvent('domready', function()
 
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(20),"/images/key/key_dungeon.gif","","key");
+        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/key/key_dungeon.gif","","key");
 	key.mMountable = true;
 	mGame.addToShapeArray(key);
 
