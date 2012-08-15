@@ -2,27 +2,35 @@ var PutKidsOnTheBus = new Class(
 {
 
 Extends: Game,
-        initialize: function(skill)
+        initialize: function(skill,kidsToPutOnBus)
         {
                 this.parent(skill)
 		this.mKidsOnBus = 0;
+		this.mKidsToPutOnBus = kidsToPutOnBus;
         },
 	
-        update: function()
+        update: function(delta)
         {
-		this.parent();
+//		mApplication.log('b:' + this.mKidsToPutOnBus + 'b:' + this.mKidsOnBus);
+		this.parent(delta);
        		if (this.mOn)
 		{
 			//do someting
-			kidsOnBus = 0;
+			var kidsOnBus = 0;
 			for (i = 0; i < this.mShapeArray.length; i++)
 			{
-				if (this.mShapeArray.mMessage == 'kid')
+				if (this.mShapeArray[i].mMessage == 'bus_seat')
 				{
-					kidsOnBus++;	
+					if (this.mShapeArray[i].mMounteeArray[0])
+					{ 	
+						if (this.mShapeArray[i].mMounteeArray[0].mMessage == 'kid')
+						{
+							kidsOnBus++;	
+						}	
+					}
 				}				
 			}
-			this.mKidsOnTheBus = kidsOnBus;
+			this.mKidsOnBus = kidsOnBus;
 		}
 	}
 

@@ -17,9 +17,17 @@ Extends: Shape,
 	{
 		this.parent(col);	
 		
-		if (col == this.mGame.mControlObject)
+//		mApplication.log('k:' + this.mGame.mKidsToPutOnBus + 'k:' + this.mGame.mKidsOnBus);
+		if (col == this.mGame.mControlObject && col.mMounteeArray[0].mMessage == 'key')
 		{
-			mApplication.log('co hit me');
+			if (this.mGame.mKidsToPutOnBus == this.mGame.mKidsOnBus)
+			{
+				mApplication.log('bus is started');
+			}
+			else
+			{
+				mApplication.log('bus wont start');
+			}
 		}
 	}
 });
