@@ -83,18 +83,24 @@ window.addEvent('domready', function()
 	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' on Bus.', numberOfKidsToPutOnBus));      
 	
 	//BUS
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var bus = new ShapeBus(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+	var bus = new ShapeBus(50,50,30,350,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus.png","","question","/images/bus/bus.png");
         bus.createMountPoint(0,-5,-41);
 	mGame.addToShapeArray(bus);
 
-	//BUS SEGMENT SEAT
+	//BUS SEAT
 	for (i = 0; i < 14; i++)
         {
-                var shape = new ShapeDropboxCount(50,50,50 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
+                var shape = new ShapeDropboxCount(50,50,80 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
                 shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
         }
+
+	//BUS WHEELS
+	var front_wheel = new Shape(50,50,30,400,mGame,'',"/images/bus/wheel.png","","wheel");
+	mGame.addToShapeArray(front_wheel);
+
+	var back_wheel = new Shape(50,50,750,400,mGame,'',"/images/bus/wheel.png","","wheel");
+	mGame.addToShapeArray(back_wheel);
 
 	//CONTROL OBJECT
         mGame.mControlObject = new BusDriver(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
