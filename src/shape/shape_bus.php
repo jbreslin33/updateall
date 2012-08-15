@@ -28,7 +28,7 @@ Extends: Shape,
 			else
 			{
 				mApplication.log('bus wont start');
-				this.resetGame();
+				this.mGame.resetGame();
 			}
 		}
 	},
