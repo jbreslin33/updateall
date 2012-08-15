@@ -23,11 +23,20 @@ Extends: Shape,
 			if (this.mGame.mKidsToPutOnBus == this.mGame.mKidsOnBus)
 			{
 				mApplication.log('bus is started');
+				this.correctAnswer();
 			}
 			else
 			{
 				mApplication.log('bus wont start');
+				this.resetGame();
 			}
 		}
-	}
+	},
+	
+	correctAnswer: function()
+        {
+                this.mGame.mOn = false;
+                window.location = "/src/database/goto_next_level.php";
+        }
+
 });
