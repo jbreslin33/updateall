@@ -17,7 +17,6 @@ Extends: Shape,
 	{
 		this.parent(col);	
 		
-//		mApplication.log('k:' + this.mGame.mKidsToPutOnBus + 'k:' + this.mGame.mKidsOnBus);
 		if (col == this.mGame.mControlObject && col.mMounteeArray[0].mMessage == 'key')
 		{
 			if (this.mGame.mKidsToPutOnBus == this.mGame.mKidsOnBus)
