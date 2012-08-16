@@ -36,6 +36,7 @@ var numberOfKidsToPutOnBus = Math.floor(Math.random()*10);
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/bus_seat.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_busdriver.php"></script>
 <script type="text/javascript" src="/src/shape/shape_bus.php"></script>
@@ -118,7 +119,7 @@ window.addEvent('domready', function()
 	//BUS SEAT
 	for (i = 0; i < 14; i++)
         {
-                var shape = new ShapeDropboxCount(50,50,80 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
+                var shape = new BusSeat(50,50,80 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
                 shape.createMountPoint(0,-5,20);
 		mGame.addToShapeArray(shape);
         }
