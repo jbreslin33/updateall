@@ -80,17 +80,35 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
        	//QUESIONS	
-	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' on Bus.', numberOfKidsToPutOnBus));      
+	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' kids on the bus. Then put the key in the front of the bus.', numberOfKidsToPutOnBus));      
 	
+	//CONTROL OBJECT
+        mGame.mControlObject = new BusDriver(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
+	mGame.mControlObject.createMountPoint(0,-5,-41);
+
+        //set animation instance
+        mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+
+ 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+
+ 	mGame.addToShapeArray(mGame.mControlObject);
+        mGame.mControlObject.showQuestionObject(false);
+
 	//KIDS
         for (i = 0; i < kids; i++)
         {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,275,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,'',"/images/bus/kid.png","","kid"));
                 shape.showQuestion(false);
 		shape.mMountable = true;
         }
+
+	//KEY
+      	openPoint = mGame.getOpenPoint2D(40,735,75,275,50,7);
+        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/key/key_dungeon.gif","","key");
+	key.mMountable = true;
+	mGame.addToShapeArray(key);
 
 	//BUS
 	var bus = new ShapeBus(50,50,30,350,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus.png","","question","/images/bus/bus.png");
@@ -111,24 +129,6 @@ window.addEvent('domready', function()
 
 	var back_wheel = new Shape(50,50,750,400,mGame,'',"/images/bus/wheel.png","","wheel");
 	mGame.addToShapeArray(back_wheel);
-
-	//CONTROL OBJECT
-        mGame.mControlObject = new BusDriver(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
-	mGame.mControlObject.createMountPoint(0,-5,-41);
-
-        //set animation instance
-        mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-
- 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
-
- 	mGame.addToShapeArray(mGame.mControlObject);
-        mGame.mControlObject.showQuestionObject(false);
-
-	//KEY
-      	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        key = new ShapeKey(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/key/key_dungeon.gif","","key");
-	key.mMountable = true;
-	mGame.addToShapeArray(key);
 
 	//RESET GAME TO START
 	mGame.resetGame();
