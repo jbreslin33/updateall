@@ -82,6 +82,16 @@ window.addEvent('domready', function()
        	//QUESIONS	
 	mQuiz.mQuestionArray.push(new Question('Put ' + numberOfKidsToPutOnBus + ' on Bus.', numberOfKidsToPutOnBus));      
 	
+	//KIDS
+        for (i = 0; i < kids; i++)
+        {
+       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var shape;
+               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,'',"/images/bus/kid.png","","kid"));
+                shape.showQuestion(false);
+		shape.mMountable = true;
+        }
+
 	//BUS
 	var bus = new ShapeBus(50,50,30,350,mGame,mQuiz.getSpecificQuestion(0),"/images/bus/bus.png","","question","/images/bus/bus.png");
         bus.createMountPoint(0,-5,-41);
@@ -91,7 +101,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < 14; i++)
         {
                 var shape = new ShapeDropboxCount(50,50,80 + (i * 50),350,mGame,'',"/images/bus/bus_segment.png","","bus_seat");
-                shape.createMountPoint(0,-5,-41);
+                shape.createMountPoint(0,-5,20);
 		mGame.addToShapeArray(shape);
         }
 
@@ -113,16 +123,6 @@ window.addEvent('domready', function()
 
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
-
-	//KIDS
-        for (i = 0; i < kids; i++)
-        {
-       		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,'',"/images/treasure/gold_coin_head.png","","kid"));
-                shape.showQuestion(false);
-		shape.mMountable = true;
-        }
 
 	//KEY
       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
