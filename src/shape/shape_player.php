@@ -27,19 +27,22 @@ Extends: Shape,
 
                 	if (this.mMounteeArray[0] && this.mMounteeArray[0].mQuestion)
                         {
-                        	if (this.mMounteeArray[0].mQuestion.getAnswer() == col.mQuestion.getAnswer())
-                                {
-                                	//mark as correct
-                                        col.correctAnswer();
+				if (col.mQuestion)
+				{
+                        		if (this.mMounteeArray[0].mQuestion.getAnswer() == col.mQuestion.getAnswer())
+                                	{
+                                		//mark as correct
+                                        	col.correctAnswer();
 
-                                        //now get me off the screen
-                                        col.mCollisionOn = false;
-                                        col.setVisibility(false);
-                                }
-                                else
-                                {
-                                        col.incorrectAnswer();
-                                }
+                                        	//now get me off the screen
+                                        	col.mCollisionOn = false;
+                                        	col.setVisibility(false);
+                                	}
+                                	else
+                                	{
+                                        	col.incorrectAnswer();
+                                	}
+				}
                         }
                 }
 	}
