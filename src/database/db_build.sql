@@ -1500,6 +1500,50 @@ insert into levels(level,description) values (32,'Understand that each successiv
 insert into levels(level,description) values (33,'Given a number from 1-20, count out that many objects.');
 insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
 
+-- Identify whether the number of objects in one group is greater than,
+--less than, or equal to the number of objects in another group, e.g., by
+--using matching and counting strategies.1
+insert into levels(level,description) values (35,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+insert into levels(level,description) values (36,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+
+--Compare two numbers between 1 and 10 presented as written
+--numerals.
+insert into levels(level,description) values (37,'Compare two numbers etc');
+insert into levels(level,description) values (38,'Compare two numbers etc');
+
+--Represent addition and subtraction with objects fingers mental images drawings sounds claps acting out situations verbal explanations expressions.
+insert into levels(level,description) values (39,'Represent addition etc');
+insert into levels(level,description) values (40,'Represent addition etc');
+
+--Solve addition and subtraction word problems, and add and subtract within 10., by using objects or drawings to represent the problem.
+insert into levels(level,description) values (41,'Solve addition');
+insert into levels(level,description) values (42,'Solve addition');
+
+--Decompose numbers less than or equal to 10 into pairs in more
+--than one way, e.g., by using objects or drawings, and record each
+--decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
+insert into levels(level,description) values (43,'Decompose');
+insert into levels(level,description) values (44,'Decompose');
+
+--For any number from 1 to 9, find the number that makes 10 when
+--added to the given number, e.g., by using objects or drawings, and
+--record the answer with a drawing or equation.
+insert into levels(level,description) values (45,'For any number');
+insert into levels(level,description) values (46,'For any number');
+
+--Fluently add and subtract within 5.
+insert into levels(level,description) values (47,'fluently ');
+insert into levels(level,description) values (48,'fluently ');
+
+--Compose and decompose numbers from 11 to 19 into ten ones and
+--some further ones, e.g., by using objects or drawings, and record each
+--composition or decomposition by a drawing or equation (e.g., 18 = 10 +
+--8); understand that these numbers are composed of ten ones and one,
+--two, three, four, five, six, seven, eight, or nine ones.
+insert into levels(level,description) values (49,'compose and decompose ');
+insert into levels(level,description) values (50,'compose and decompose ');
+
+
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
@@ -1646,9 +1690,39 @@ insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_pl
 insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/put_kids_on_a_bus.php'); --33
 insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/put_kids_on_a_bus.php'); --34
 
+-- Identify whether the number of objects in one group is greater than,
+--less than, or equal to the number of objects in another group, e.g., by
+--using matching and counting strategies.1
+insert into games_levels (level_id,game_id,url) values  (36,1,'/web/game/greater_less_equal.php'); --35
+insert into games_levels (level_id,game_id,url) values  (37,1,'/web/game/greater_less_equal.php'); --36
+
+--Compare two numbers between 1 and 10 presented as written
+--numerals.
+
+--Represent addition and subtraction with objects fingers mental images drawings sounds claps acting out situations verbal explanations expressions.
+
+--Solve addition and subtraction word problems, and add and subtract within 10., by using objects or drawings to represent the problem.
+
+--Decompose numbers less than or equal to 10 into pairs in more
+--than one way, e.g., by using objects or drawings, and record each
+--decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
+
+--For any number from 1 to 9, find the number that makes 10 when
+--added to the given number, e.g., by using objects or drawings, and
+--record the answer with a drawing or equation.
+
+--Fluently add and subtract within 5.
+
+--Compose and decompose numbers from 11 to 19 into ten ones and
+--some further ones, e.g., by using objects or drawings, and record each
+--composition or decomposition by a drawing or equation (e.g., 18 = 10 +
+--8); understand that these numbers are composed of ten ones and one,
+--two, three, four, five, six, seven, eight, or nine ones.
+
+
+
+
 --GAMES_ATTEMPTS
-
-
 
 
 
