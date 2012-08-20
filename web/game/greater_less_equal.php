@@ -23,8 +23,8 @@ $next_level = $_SESSION["next_level"];
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 10;
-var kidsRedShirt = Math.floor(Math.random()*10);
-var kidsGreenShirt = Math.floor(Math.random()*10);
+var kidsRedShirt = Math.floor(Math.random()*6);
+var kidsGreenShirt = Math.floor(Math.random()*6);
 
 </script>
 
@@ -90,7 +90,7 @@ window.addEvent('domready', function()
         for (i = 0; i < kidsRedShirt; i++)
         {
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,200,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","","kid"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,75,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","","kid"));
                 shape.showQuestion(false);
         }
 
@@ -98,7 +98,7 @@ window.addEvent('domready', function()
         for (i = 0; i < kidsGreenShirt; i++)
         {
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,250,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","","kid"));
+               	mGame.addToShapeArray(shape = new Shape(50,50,650,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","","kid"));
                 shape.showQuestion(false);
         }
 
