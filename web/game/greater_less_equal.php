@@ -38,6 +38,7 @@ var kidsGreenShirt = Math.floor(Math.random()*6);
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
+<script type="text/javascript" src="/src/question/question_compare.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
 <script type="text/javascript" src="/src/hud/hud.php"></script>
 
@@ -73,7 +74,7 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
        	//QUESIONS	
-	mQuiz.mQuestionArray.push(new Question('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater'));      
+	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',3,5));      
 	
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
