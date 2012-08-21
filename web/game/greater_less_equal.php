@@ -23,8 +23,8 @@ $next_level = $_SESSION["next_level"];
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 10;
-var kidsRedShirt = Math.floor(Math.random()*6);
-var kidsGreenShirt = Math.floor(Math.random()*6);
+var kidsRedShirt = 6;
+var kidsGreenShirt = 6;
 
 </script>
 
@@ -74,7 +74,14 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
        	//QUESIONS	
-	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',3,5));      
+//	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',3,5));      
+
+	for (i = 0; i < scoreNeeded; i++)
+	{
+		var a = Math.floor(Math.random()*6);
+		var b = Math.floor(Math.random()*6);
+		mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',a,b));      
+	}
 	
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
