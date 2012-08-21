@@ -103,9 +103,9 @@ window.addEvent('domready', function()
         }
 
 	//SYMBOLS
-        var greaterThan = mGame.addToShapeArray(shape = new Shape(50,50,300,200,mGame,'',"/images/symbols/greater_than.png","","greater_than"));
-        var lessThan    = mGame.addToShapeArray(shape = new Shape(50,50,400,200,mGame,'',"/images/symbols/less_than.png","","less_than"));
-        var equalTo     = mGame.addToShapeArray(shape = new Shape(50,50,500,200,mGame,'',"/images/symbols/equal.png","","equal_to"));
+        var greaterThan = mGame.addToShapeArray(shape = new Shape(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than"));
+        var lessThan    = mGame.addToShapeArray(shape = new Shape(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than"));
+        var equalTo     = mGame.addToShapeArray(shape = new Shape(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to"));
 
 	//RESET GAME TO START
 	mGame.resetGame();
