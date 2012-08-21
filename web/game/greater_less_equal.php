@@ -102,6 +102,9 @@ window.addEvent('domready', function()
                 shape.showQuestion(false);
         }
 
+	//SYMBOLS
+        var greaterThan = mGame.addToShapeArray(shape = new Shape(50,50,400,200,mGame,'',"/images/symbols/greater_than.png","","greater_than"));
+
 	//RESET GAME TO START
 	mGame.resetGame();
 
