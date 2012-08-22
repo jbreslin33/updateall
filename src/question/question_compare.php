@@ -23,12 +23,12 @@ Extends: Question,
 
 	getVariableA: function()
 	{
-		return mA;
+		return this.mA;
 	},
 	
 	getVariableB: function()
 	{
-		return mB;
+		return this.mB;
 	}
 
 });
