@@ -23,8 +23,8 @@ $next_level = $_SESSION["next_level"];
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 10;
-var kidsRedShirt = 6;
-var kidsGreenShirt = 6;
+var kidsRedShirt = 7;
+var kidsGreenShirt = 7;
 
 </script>
 
@@ -36,6 +36,7 @@ var kidsGreenShirt = 6;
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
+<script type="text/javascript" src="/src/shape/shape_compare.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/question/question_compare.php"></script>
@@ -74,12 +75,10 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
        	//QUESIONS	
-//	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',3,5));      
-
 	for (i = 0; i < scoreNeeded; i++)
 	{
-		var a = Math.floor(Math.random()*6);
-		var b = Math.floor(Math.random()*6);
+		var a = Math.floor(Math.random()*kidsRedShirt);
+		var b = Math.floor(Math.random()*kidsGreenShirt);
 		mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',a,b));      
 	}
 	
@@ -98,7 +97,7 @@ window.addEvent('domready', function()
         for (i = 0; i < kidsRedShirt; i++)
         {
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,75,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","","kid"));
+               	mGame.addToShapeArray(shape = new ShapeCompare(50,50,75,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","",'a',i));
                 shape.showQuestion(false);
         }
 
@@ -106,7 +105,7 @@ window.addEvent('domready', function()
         for (i = 0; i < kidsGreenShirt; i++)
         {
                 var shape;
-               	mGame.addToShapeArray(shape = new Shape(50,50,650,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","","kid"));
+               	mGame.addToShapeArray(shape = new ShapeCompare(50,50,650,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","",'b',i));
                 shape.showQuestion(false);
         }
 
