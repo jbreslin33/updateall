@@ -32,6 +32,7 @@ var kidsGreenShirt = 7;
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
+<script type="text/javascript" src="/src/shape/shape_player_no_gobble.php"></script>
 <script type="text/javascript" src="/src/shape/shape_compare.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
@@ -91,7 +92,7 @@ window.addEvent('domready', function()
 	}
 	
 	//CONTROL OBJECT
-        mGame.mControlObject = new Player(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new PlayerNoGobble(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);

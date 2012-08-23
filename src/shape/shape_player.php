@@ -46,14 +46,6 @@ Extends: Shape,
 				}
                         }
                 }
-		//no mounts just old school question on question.
-		else if (col.mQuestion && this.mQuestion)
-		{
-			if (this.mQuestion.getAnswer() == col.mQuestion.getAnswer())
-			{
-				
-			}
-		}
 	}
 });
 
