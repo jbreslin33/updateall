@@ -24,7 +24,6 @@ Extends: Shape,
 			{
                 		this.setVisibility(false);
 			}
-			mApplication.log('a:' + numberToCount + 'i:' + this.mNumber);
 		}
 
 		if (this.mMessage == 'b')
@@ -39,7 +38,6 @@ Extends: Shape,
 			{
                 		this.setVisibility(false);
 			}
-//			mApplication.log('b:' + numberToCount + 'i:' + this.mNumber);
 		}
         }
 });
