@@ -8,24 +8,20 @@
 <script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
-
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 
 //game variables to fill from db
 $username = $_SESSION["username"];
 $next_level = $_SESSION["next_level"];
-
 ?>
 
 <script language="javascript">
-
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 10;
 var kidsRedShirt = 7;
 var kidsGreenShirt = 7;
-
 </script>
 
 <script type="text/javascript" src="/src/math/point2D.php"></script>
@@ -77,9 +73,21 @@ window.addEvent('domready', function()
        	//QUESIONS	
 	for (i = 0; i < scoreNeeded; i++)
 	{
-		var a = Math.floor(Math.random()*kidsRedShirt);
-		var b = Math.floor(Math.random()*kidsGreenShirt);
-		mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater',a,b));      
+		var a = 1 + Math.floor(Math.random()*kidsRedShirt);
+		var b = 1 + Math.floor(Math.random()*kidsGreenShirt);
+
+		if (a > b)
+		{
+			mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater_than',a,b));      
+		}
+		if (a < b)
+		{
+			mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'less_than',a,b));      
+		}
+		if (a == b)
+		{
+			mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'equal_to',a,b));      
+		}
 	}
 	
 	//CONTROL OBJECT
