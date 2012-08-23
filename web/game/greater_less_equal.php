@@ -19,7 +19,7 @@ $next_level = $_SESSION["next_level"];
 <script language="javascript">
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = 10;
+var scoreNeeded = 2;
 var kidsRedShirt = 7;
 var kidsGreenShirt = 7;
 </script>
@@ -27,6 +27,7 @@ var kidsGreenShirt = 7;
 <script type="text/javascript" src="/src/math/point2D.php"></script>
 <script type="text/javascript" src="/src/bounds/bounds.php"></script>
 <script type="text/javascript" src="/src/game/game.php"></script>
+<script type="text/javascript" src="/src/game/advance_on_quiz_complete.php"></script>
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
@@ -65,7 +66,7 @@ window.addEvent('domready', function()
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
-        mGame = new Game("hardcode");
+        mGame = new AdvanceOnQuizComplete("hardcode");
 
 	//QUIZ 
 	mQuiz = new Quiz(scoreNeeded);
