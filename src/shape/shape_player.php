@@ -9,6 +9,8 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
+		this.parent(col);
+
 		//can i mount this thing? 
  		if (col.mMountable)
                	{
@@ -24,7 +26,6 @@ Extends: Shape,
 
         	else if (col.mMounteeArray[0])
                 {
-
                 	if (this.mMounteeArray[0] && this.mMounteeArray[0].mQuestion)
                         {
 				if (col.mQuestion)
