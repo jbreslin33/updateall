@@ -1,7 +1,7 @@
-var Player = new Class(
+var PlayerNoGobble = new Class(
 {
 
-Extends: Shape,
+Extends: Player,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
@@ -10,49 +10,21 @@ Extends: Shape,
 	onCollision: function(col)
 	{
 		this.parent(col);
-
-		//can i mount this thing? 
- 		if (col.mMountable)
-               	{
-                       	if (this.mMountPointArray[0])
-                       	{
-                               	if (this.mMounteeArray[0])
-                               	{
-                                       	this.unMount(0);
-                               	}
-                               	this.mount(col,0);
-                       	}
-               	}
-
-        	else if (col.mMounteeArray[0])
-                {
-                	if (this.mMounteeArray[0] && this.mMounteeArray[0].mQuestion)
-                        {
-				if (col.mQuestion)
-				{
-                        		if (this.mMounteeArray[0].mQuestion.getAnswer() == col.mQuestion.getAnswer())
-                                	{
-                                		//mark as correct
-                                        	col.correctAnswer();
-
-                                        	//now get me off the screen
-                                        	col.mCollisionOn = false;
-                                        	col.setVisibility(false);
-                                	}
-                                	else
-                                	{
-                                        	col.incorrectAnswer();
-                                	}
-				}
-                        }
-                }
+	
 		//no mounts just old school question on question.
-		else if (col.mQuestion && this.mQuestion)
+		if (col.mQuestion && this.mQuestion)
 		{
 			if (this.mQuestion.getAnswer() == col.mQuestion.getAnswer())
 			{
-				
-			}
+  				//mark as correct
+                                col.correctAnswer();
+                        }
+                        else
+        		{
+                                col.incorrectAnswer();
+                        }
+			this.mPosition.mX = this.mPositionSpawn.mX;
+			this.mPosition.mY = this.mPositionSpawn.mY;
 		}
 	}
 });
