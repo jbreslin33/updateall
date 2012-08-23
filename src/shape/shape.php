@@ -161,17 +161,12 @@ var Shape = new Class(
                         	}
                 	}
 		}
-	//	else
-	//	{
-	//	}
         },
 
         incorrectAnswer: function()
         {
                 this.mGame.resetGame();
         },
-
-	
 
 	update: function(delta)
 	{
