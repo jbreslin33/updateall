@@ -20,8 +20,8 @@ $next_level = $_SESSION["next_level"];
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
 var scoreNeeded = 2;
-var kidsRedShirt = 7;
-var kidsGreenShirt = 7;
+var kidsRedShirt = 6;
+var kidsGreenShirt = 6;
 </script>
 
 <script type="text/javascript" src="/src/math/point2D.php"></script>
@@ -107,7 +107,7 @@ window.addEvent('domready', function()
         mGame.mControlObject.showQuestionObject(false);
 
 	//KIDS RED SHIRT
-        for (i = 0; i < kidsRedShirt; i++)
+        for (i = 0; i < kidsRedShirt + 1; i++)
         {
                 var shape;
                	mGame.addToShapeArray(shape = new ShapeCompare(50,50,75,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","",'a',i));
@@ -115,7 +115,7 @@ window.addEvent('domready', function()
         }
 
 	//KIDS GREEN SHIRT
-        for (i = 0; i < kidsGreenShirt; i++)
+        for (i = 0; i < kidsGreenShirt + 1; i++)
         {
                 var shape;
                	mGame.addToShapeArray(shape = new ShapeCompare(50,50,650,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","",'b',i));
