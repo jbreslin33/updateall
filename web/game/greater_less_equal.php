@@ -33,7 +33,6 @@ var kidsGreenShirt = 6;
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
-<script type="text/javascript" src="/src/shape/shape_hide_on_quiz_complete.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player_no_gobble.php"></script>
 <script type="text/javascript" src="/src/shape/shape_compare.php"></script>
@@ -124,9 +123,17 @@ window.addEvent('domready', function()
         }
 
 	//SYMBOLS
-        var greaterThan = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than"));
-        var lessThan    = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than"));
-        var equalTo     = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to"));
+        var greaterThan = new Shape(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than");
+	mGame.addToShapeArray(greaterThan);
+	greaterThan.setHideOnQuizComplete(true);
+
+        var lessThan = new Shape(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than");
+	mGame.addToShapeArray(lessThan);
+	lessThan.setHideOnQuizComplete(true);
+
+        var equalTo = new Shape(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to");
+	mGame.addToShapeArray(equalTo);
+	equalTo.setHideOnQuizComplete(true);
 
 	//DOOR
 	doorQuestion = new QuestionCompare('Go in open door.',"/src/database/goto_next_level.php",-1,-1);
