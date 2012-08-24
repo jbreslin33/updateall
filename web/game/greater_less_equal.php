@@ -32,6 +32,8 @@ var kidsGreenShirt = 7;
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
+<script type="text/javascript" src="/src/shape/shape_door.php"></script>
+<script type="text/javascript" src="/src/shape/shape_hide_on_quiz_complete.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player_no_gobble.php"></script>
 <script type="text/javascript" src="/src/shape/shape_compare.php"></script>
@@ -91,6 +93,7 @@ window.addEvent('domready', function()
 			mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'equal_to',a,b));      
 		}
 	}
+	mQuiz.mQuestionArray.push(new QuestionCompare('q','a','a','b'));
 	
 	//CONTROL OBJECT
         mGame.mControlObject = new PlayerNoGobble(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
@@ -120,9 +123,16 @@ window.addEvent('domready', function()
         }
 
 	//SYMBOLS
-        var greaterThan = mGame.addToShapeArray(shape = new Shape(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than"));
-        var lessThan    = mGame.addToShapeArray(shape = new Shape(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than"));
-        var equalTo     = mGame.addToShapeArray(shape = new Shape(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to"));
+        var greaterThan = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than"));
+        var lessThan    = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than"));
+        var equalTo     = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to"));
+
+
+	//DOOR
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+        mGame.addToShapeArray(door);
+
 
 	//RESET GAME TO START
 	mGame.resetGame();
