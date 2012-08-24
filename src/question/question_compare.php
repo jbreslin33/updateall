@@ -30,7 +30,4 @@ Extends: Question,
 	{
 		return this.mB;
 	}
-
 });
-
-
