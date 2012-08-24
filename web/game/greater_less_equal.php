@@ -94,12 +94,6 @@ window.addEvent('domready', function()
 		}
 	}
 
-	//DOOR
-	doorQuestion = new QuestionCompare('Go in open door.',"/src/database/goto_next_level.php",0,0);
-	mQuiz.mQuestionArray.push(doorQuestion);
-        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-        mGame.addToShapeArray(door);
 
 	
 	//CONTROL OBJECT
@@ -134,7 +128,12 @@ window.addEvent('domready', function()
         var lessThan    = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than"));
         var equalTo     = mGame.addToShapeArray(shape = new ShapeHideOnQuizComplete(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to"));
 
-
+	//DOOR
+	doorQuestion = new QuestionCompare('Go in open door.',"/src/database/goto_next_level.php",0,0);
+	mQuiz.mQuestionArray.push(doorQuestion);
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+        mGame.addToShapeArray(door);
 
 	//RESET GAME TO START
 	mGame.resetGame();
