@@ -91,6 +91,9 @@ var Shape = new Class(
        
 		//message ..this can be used for collisions or whatever
 		this.mMessage = message;
+
+		//hide on quiz complete??
+		this.mHideOnQuizComplete = false;
         },
 
 /******************** PUBLIC METHODS *************/
@@ -170,6 +173,33 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
+		if (this.mGame.mQuiz.isQuizComplete() && this.mHideOnQuizComplete == true)
+                {
+                        if (this.mMounter)
+                        {
+                                //do nothing
+                        }
+                        else
+                        {
+                                if (this.mCollisionOn == true)
+                                {
+                                        this.mCollisionOn = false;
+                                        this.setVisibility(false);
+                                }
+                        }
+                }
+                else
+                {
+                        if (this.mCollisionOn == false)
+                        {
+                                this.mCollisionOn = true;
+                                this.setVisibility(true);
+                        }
+                }
+
+
+
+
 		if (this.mMounter)
 		{
 			this.mCollisionOn = false;
@@ -356,6 +386,23 @@ var Shape = new Class(
 		}
 
 	},		
+
+	setHideOnQuizComplete: function(b)
+	{
+		if (b)
+		{
+			this.mHideOnQuizComplete = true; 
+		}
+		else 
+		{
+			this.mHideOnQuizComplete = false; 
+		}
+	},
+
+	getHideOnQuizComplete: function()
+	{
+		return this.mHideOnQuizComplete;
+	},
 
 	setText: function(t)
 	{
