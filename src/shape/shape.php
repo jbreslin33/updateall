@@ -456,6 +456,23 @@ var Shape = new Class(
 		return this.mHideOnQuizComplete;
 	},
 
+	setHideOnQuestionSolved: function(b)
+	{
+		if (b)
+		{
+			this.mHideOnQuestionSolved = true; 
+		}
+		else 
+		{
+			this.mHideOnQuestionSolved = false; 
+		}
+	},
+
+	getHideOnQuestionSolved: function()
+	{
+		return this.mHideOnQuestionSolved;
+	},
+
 	setText: function(t)
 	{
 		if (this.mMesh.innerHTML != t)

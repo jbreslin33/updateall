@@ -130,14 +130,17 @@ window.addEvent('domready', function()
         var greaterThan = new Shape(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than");
 	mGame.addToShapeArray(greaterThan);
 	greaterThan.setHideOnQuizComplete(true);
+	greaterThan.setHideOnQuestionSolved(false);
 
         var lessThan = new Shape(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than");
 	mGame.addToShapeArray(lessThan);
 	lessThan.setHideOnQuizComplete(true);
+	lessThan.setHideOnQuestionSolved(false);
 
         var equalTo = new Shape(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to");
 	mGame.addToShapeArray(equalTo);
 	equalTo.setHideOnQuizComplete(true);
+	equalTo.setHideOnQuestionSolved(false);
 
 	//DOOR
 	doorQuestion = new QuestionCompare('Go in open door.',"/src/database/goto_next_level.php",-1,-1);
