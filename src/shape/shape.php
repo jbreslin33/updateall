@@ -94,6 +94,9 @@ var Shape = new Class(
 
 		//hide on quiz complete??
 		this.mHideOnQuizComplete = false;
+	
+		//hide on question solved
+		this.mHideOnQuestionSolved = true;
         },
 
 /******************** PUBLIC METHODS *************/
@@ -145,25 +148,76 @@ var Shape = new Class(
 	{
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
+
+		var answer = 0;
+		var answerCol = 0;
+
+  		//can i mount this thing?
+                if (col.mMountable)
+                {
+                        if (this.mMountPointArray[0])
+                        {
+                                if (this.mMounteeArray[0])
+                                {
+                                        this.unMount(0);
+                                }
+                                this.mount(col,0);
+                        }
+                }
+
+		//get answer for this
+		if (this.mQuestion)
+		{
+			answer = this.mQuestion.getAnswer();	
+		}
+		
+		//get answer for col 
+		if (col.mQuestion)
+		{
+			answerCol = col.mQuestion.getAnswer();	
+		}
+		
+		//compare answers
+		if (this.mQuestion.getSolved() == false)
+		{
+			if (answer == answerCol)
+			{
+                        	this.correctAnswer();
+			}
+			else
+			{
+                		this.incorrectAnswer();
+			}
+		}
+
+                //send player back to spawn point so he does not collide again. todo:
+                //put in a timeout so that once you stop colliding with object it becomes untimed out.
+                //this.mPosition.mX = this.mPositionSpawn.mX;
+                //this.mPosition.mY = this.mPositionSpawn.mY;
 	},
 
 	correctAnswer: function()
         {
-		if (this != this.mGame.mControlObject)
-		{
-			this.mGame.correctAnswer();
+		this.mQuestion.setSolved(true);
+		if (this.mHideOnQuestionSolved)
+        	{
+                	this.mCollisionOn = false;
+                        this.setVisibility(false);
+                }
+		
+		this.mGame.correctAnswer();
                 
-			//set text of control object
-                	if (this.mGame.mQuiz)
-                	{
-                        	//set the control objects question object
-                        	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                        	if (this.mGame.mControlObject.mMounteeArray[0])
-                        	{
-                                	this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                        	}
-                	}
+		//set text of control object
+                if (this.mGame.mQuiz)
+                {
+                       	//set the control objects question object
+                       	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                       	if (this.mGame.mControlObject.mMounteeArray[0])
+                       	{
+                               	this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
+                       	}
 		}
+		
         },
 
         incorrectAnswer: function()
@@ -173,37 +227,29 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
-		if (this.mGame.mQuiz.isQuizComplete() && this.mHideOnQuizComplete == true)
-                {
-                        if (this.mMounter)
-                        {
-                                //do nothing
-                        }
-                        else
-                        {
+		//HIDE ON QUIZ COMPLETE
+		if (this.mGame.mQuiz)
+		{
+			if (this.mGame.mQuiz.isQuizComplete() && this.mHideOnQuizComplete == true)
+                	{
                                 if (this.mCollisionOn == true)
                                 {
-                                        this.mCollisionOn = false;
-                                        this.setVisibility(false);
-                                }
-                        }
-                }
-                else
-                {
-                        if (this.mCollisionOn == false)
-                        {
-                                this.mCollisionOn = true;
-                                this.setVisibility(true);
-                        }
-                }
+					if (this.mMounter == 0)
+					{
+                                       		this.mCollisionOn = false;
+                                       		this.setVisibility(false);
+					}
+                        	}
+                	}
+		}
 
-
-
-
+		//IF YOU ARE MOUNTED TURN OFF COLLISION
 		if (this.mMounter)
 		{
 			this.mCollisionOn = false;
 		}
+
+		//IF YOU HAVE TIMED OUT ANOTHER SHAPE.... 
 		if (this.mTimeoutShape)
 		{
 			this.mTimeoutCounter++;
@@ -213,13 +259,19 @@ var Shape = new Class(
 				this.mTimeoutCounter = 0;	
 			}
 		}
+
+
 		this.updateVelocity(delta);
 		this.updatePosition();
 		this.updateAnimation();
+
+		//IF YOU ARE NOT MOUNTED BY SOMETHING THEN CHECK FOR OUT OF BOUNDS
 		if (this.mMounter == 0)
 		{	
 			this.checkForOutOfBounds();
 		}
+
+
 	},
  
 	checkForOutOfBounds: function()

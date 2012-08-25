@@ -10,12 +10,18 @@ Extends: ShapeAI,
 
 	onCollision: function(col)
         {
-		this.parent(col);
-
                 if (col == this.mGame.mControlObject)
                 {
 			this.mGame.resetGame();
                 }
-        }
+        },
+	
+	correctAnswer: function()
+	{
+	},
+	
+	incorrectAnswer: function()
+	{
+	}
 });
 

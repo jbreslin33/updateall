@@ -45,6 +45,7 @@ var Quiz = new Class(
 	correctAnswer: function()
 	{
         	this.incrementScore();
+	//	this.mQuestionArray[this.mMarker].getQuestion().setSolved(true);
 		this.mMarker++;
 		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
 	},
@@ -99,6 +100,11 @@ var Quiz = new Class(
                 
 		//update question 
 		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
+
+		for (i = 0; i < this.mQuestionArray.length; i++)
+		{
+			this.mQuestionArray[i].setSolved(false);	
+		}
 	}
 
 });
