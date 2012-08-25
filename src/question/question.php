@@ -1,17 +1,3 @@
-/***************************************
-public methods
-----------------
-
-//get methods
-answer      getAnswer(); returns current answer
-question    getQuestion(); //returns current score
-
-//set methods
-void setAnswer(answer);
-void setQuestion(question);
-
-****************************************/
-
 var Question = new Class(
 {
         initialize: function(question,answer)
@@ -21,23 +7,37 @@ var Question = new Class(
 
 		//answer
 		this.mAnswer = answer;
+
+		//is solved
+		this.mSolved = false;
         },
 	
 	set: function(question,answer)
 	{
 		this.mQuestion = question;
 		this.mAnswer = answer;
+		this.mSolved = false;
 	},
 
 	setQuestion: function(question)
 	{
-		mQuestion = question;
+		this.mQuestion = question;
 	},
 
 	setAnswer: function(answer)
 	{
-		mAnswer = answer;
+		this.mAnswer = answer;
 	},	
+
+	setSolved: function(b)
+	{
+		this.mSolved = b;
+	},
+	
+	getSolved: function()
+	{
+		return this.mSolved;
+	},
 	
 	getQuestion: function()
 	{

@@ -126,6 +126,7 @@ window.addEvent('domready', function()
  	
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+	mGame.mControlObject.mHideOnQuestionSolved = false;
 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
         //set animation instance
@@ -174,7 +175,7 @@ window.addEvent('domready', function()
         }
 	
 	//CHASERS
-	chasers = 3;
+	chasers = 0;
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
