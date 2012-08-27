@@ -149,9 +149,6 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
-		var answer = 0;
-		var answerCol = 0;
-
   		//can i mount this thing?
                 if (col.mMountable)
                 {
@@ -165,28 +162,26 @@ var Shape = new Class(
                         }
                 }
 
+		var answer = 0;
+		var answerCol = 0;
+
 		//get answer for this
-		if (this.mQuestion)
+		if (this.mQuestion && col.mQuestion)
 		{
 			answer = this.mQuestion.getAnswer();	
-		}
-		
-		//get answer for col 
-		if (col.mQuestion)
-		{
 			answerCol = col.mQuestion.getAnswer();	
-		}
 		
-		//compare answers
-		if (this.mQuestion.getSolved() == false)
-		{
-			if (answer == answerCol)
+			//compare answers
+			if (this.mQuestion.getSolved() == false)
 			{
-                        	this.correctAnswer();
-			}
-			else
-			{
-                		this.incorrectAnswer();
+				if (answer == answerCol)
+				{
+                        		this.correctAnswer();
+				}
+				else
+				{
+                			this.incorrectAnswer();
+				}
 			}
 		}
 
