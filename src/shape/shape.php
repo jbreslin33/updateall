@@ -149,7 +149,7 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
-  		//can i mount this thing?
+  		//can i mount this thing? if so mount it.
                 if (col.mMountable)
                 {
                         if (this.mMountPointArray[0])
@@ -162,10 +162,10 @@ var Shape = new Class(
                         }
                 }
 
+		//evaluate answers to questions provided both shapes have questions.
 		var answer = 0;
 		var answerCol = 0;
 
-		//get answer for this
 		if (this.mQuestion && col.mQuestion)
 		{
 			answer = this.mQuestion.getAnswer();	
