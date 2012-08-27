@@ -10,9 +10,9 @@ Extends: ShapeAI,
 
 	onCollision: function(col)
         {
+		this.parent(col);
                 if (col == this.mGame.mControlObject)
                 {
-			mApplication.log('resetting');
 			this.mGame.resetGame();
                 }
         },
