@@ -12,6 +12,7 @@ Extends: ShapeAI,
         {
                 if (col == this.mGame.mControlObject)
                 {
+			mApplication.log('resetting');
 			this.mGame.resetGame();
                 }
         },
