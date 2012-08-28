@@ -1625,7 +1625,7 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 --==================================================================
 
 --GAMES
-insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src/games/game.php','/images/doors/door_open.png','images/doors/door_closed.png');
+insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src/games/game.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
 --GAMES_LEVELS
 --count by 1's to 100
