@@ -36,7 +36,6 @@ var scoreNeeded = 1;
 <script type="text/javascript" src="/src/shape/shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
-<script type="text/javascript" src="/src/shape/shape_door_lock.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox_count.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
@@ -119,7 +118,7 @@ window.addEvent('domready', function()
 	for (i = 0; i < scoreNeeded; i++)
 	{
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-		var door = new ShapeDoorLock(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
+		var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/doors/door_closed.png","","question","/images/doors/door_open.png");
                 door.createMountPoint(0,-5,-41);
 
 		mGame.addToShapeArray(door);

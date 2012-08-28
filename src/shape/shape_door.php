@@ -9,42 +9,86 @@ Extends: Shape,
 		this.mSrcClosed = src;
 		this.mSrcOpen = srcOpen;
         },
-
+//door should if no question just open when quiz is complete.
+//if it has a question then it simply should open if answers match
+//
         update: function(delta)
         {
-                //run ai
-		if (this.mGame.mQuiz.isQuizComplete())
+		if (this.mQuestion)
 		{
-			if (this.mOpen == false)
-			{
-				this.setSrc(this.mSrcOpen);
-				this.mOpen = true;
+	                if (this.mGame.mQuiz.isQuizComplete())
+                	{
+                        	if (this.mCollisionOn == false)
+                        	{
+                                	this.mCollisionOn = true;
+                                	this.setVisibility(true);
+                        	}
+                	}
+                	else
+                	{
+                        	if (this.mCollisionOn == true)
+                        	{
+                                	this.mCollisionOn = false;
+                                	this.setVisibility(false);
+                        	}
 			}
 		}
 		else
 		{
-			if (this.mOpen)
+			//run ai
+			if (this.mGame.mQuiz.isQuizComplete())
 			{
-				this.setSrc(this.mSrcClosed);
-				this.mOpen = false;
+				if (this.mOpen == false)
+				{
+					this.setSrc(this.mSrcOpen);
+					this.mOpen = true;
+				}
+			}
+			else
+			{
+				if (this.mOpen)
+				{
+					this.setSrc(this.mSrcClosed);
+					this.mOpen = false;
+				}
 			}
 		}
         },
 	
 	onCollision: function(col)
 	{
-		if (col == this.mGame.mControlObject)
+		if (this.mQuestion)
 		{
-        		if (this.mOpen)
+ 			if (col == this.mGame.mControlObject)
                 	{
-                		if (this.mGame.mQuiz)
+                        	if (col.mQuestion)
                         	{
-                        		if (this.mGame.mQuiz.isQuizComplete())
+                                	if (this.mQuestion.getAnswer() == col.mQuestion.getAnswer())
                                 	{
-                                		this.enterDoor();
+                                        	this.correctAnswer();
+                                	}
+                                	else
+                                	{
+                                        	this.incorrectAnswer();
                                 	}
                         	}
-                	}
+			}
+		}
+		else
+		{
+			if (col == this.mGame.mControlObject)
+			{
+        			if (this.mOpen)
+                		{
+                			if (this.mGame.mQuiz)
+                        		{
+                        			if (this.mGame.mQuiz.isQuizComplete())
+                                		{
+                                			this.enterDoor();
+                                		}
+                        		}
+                		}
+			}
 		}
 	},
    	
