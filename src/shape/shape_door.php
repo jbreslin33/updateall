@@ -2,100 +2,88 @@ var ShapeDoor = new Class(
 {
 
 Extends: Shape,
-	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen)
+	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message,srcOpen,url)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
 		this.mOpen = false;	
 		this.mSrcClosed = src;
 		this.mSrcOpen = srcOpen;
+
+                //open on quiz complete??
+                this.mOpenOnQuizComplete = false;
+
+                //open on question solved
+                this.mOpenOnQuestionSolved = true;
+		
+		this.mUrl = url; 
+
         },
-//door should if no question just open when quiz is complete.
-//if it has a question then it simply should open if answers match
-//
+
         update: function(delta)
-        {
-		if (this.mQuestion)
+	{
+		if (this.mOpenOnQuizComplete)
 		{
-	                if (this.mGame.mQuiz.isQuizComplete())
-                	{
-                        	if (this.mCollisionOn == false)
-                        	{
-                                	this.mCollisionOn = true;
-                                	this.setVisibility(true);
-                        	}
-                	}
-                	else
-                	{
-                        	if (this.mCollisionOn == true)
-                        	{
-                                	this.mCollisionOn = false;
-                                	this.setVisibility(false);
-                        	}
+	               	if (this.mGame.mQuiz.isQuizComplete())
+			{
+				this.mOpen = true;
 			}
 		}
-		else
+
+		//open on question solved?
+		if (this.mQuestion)
 		{
-			//run ai
-			if (this.mGame.mQuiz.isQuizComplete())
+	               	if (this.mQuestion.mSolved)
 			{
-				if (this.mOpen == false)
-				{
-					this.setSrc(this.mSrcOpen);
-					this.mOpen = true;
-				}
+				this.mOpen = true;
 			}
-			else
-			{
-				if (this.mOpen)
-				{
-					this.setSrc(this.mSrcClosed);
-					this.mOpen = false;
-				}
-			}
+		}
+        },
+
+        onCollision: function(col)
+        {
+		this.parent(col);		
+		
+		if (this.mQuestion == '' && col.mQuestion == '')
+		{
+			this.enterDoor();
 		}
         },
 	
-	onCollision: function(col)
+	draw: function()
 	{
-		if (this.mQuestion)
+		this.parent();
+
+		//draw door
+		if (this.mOpen)
 		{
- 			if (col == this.mGame.mControlObject)
-                	{
-                        	if (col.mQuestion)
-                        	{
-                                	if (this.mQuestion.getAnswer() == col.mQuestion.getAnswer())
-                                	{
-                                        	this.correctAnswer();
-                                	}
-                                	else
-                                	{
-                                        	this.incorrectAnswer();
-                                	}
-                        	}
-			}
+			this.setSrc(this.mSrcOpen);
 		}
 		else
-		{
-			if (col == this.mGame.mControlObject)
-			{
-        			if (this.mOpen)
-                		{
-                			if (this.mGame.mQuiz)
-                        		{
-                        			if (this.mGame.mQuiz.isQuizComplete())
-                                		{
-                                			this.enterDoor();
-                                		}
-                        		}
-                		}
-			}
+		{	
+			this.setSrc(this.mSrcClosed);
 		}
 	},
-   	
+
+	correctAnswer: function()
+	{
+		this.enterDoor();
+	},
+	
+	setOpenDoor: function(b)
+	{
+		mApplication.log('setOpendoor');
+		this.mOpen = b;	
+	},
+
+	getOpenDoor: function()
+	{
+		return this.mOpen;
+	},
+	
 	enterDoor: function()
         {
                 this.mGame.mOn = false;
-                window.location = this.getQuestion().getAnswer();
+                window.location = this.mUrl;
         }
 
 });
