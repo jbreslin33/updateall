@@ -184,11 +184,6 @@ var Shape = new Class(
 				}
 			}
 		}
-
-                //send player back to spawn point so he does not collide again. todo:
-                //put in a timeout so that once you stop colliding with object it becomes untimed out.
-                //this.mPosition.mX = this.mPositionSpawn.mX;
-                //this.mPosition.mY = this.mPositionSpawn.mY;
 	},
 
 	correctAnswer: function()
@@ -227,15 +222,22 @@ var Shape = new Class(
 		{
 			if (this.mGame.mQuiz.isQuizComplete() && this.mHideOnQuizComplete == true)
                 	{
-                                if (this.mCollisionOn == true)
-                                {
-					if (this.mMounter == 0)
-					{
-                                       		this.mCollisionOn = false;
-                                       		this.setVisibility(false);
-					}
+				if (this.mMounter == 0)
+				{
+                                	this.mCollisionOn = false;
+                                       	this.setVisibility(false);
                         	}
                 	}
+			/*
+			else if (this.mGame.mQuiz.isQuizComplete() == false && this.mHideOnQuizComplete == false)
+			{
+				if (this.mMounter == 0)
+				{
+                                	this.mCollisionOn = true;
+                                       	this.setVisibility(true);
+                        	}
+			}
+			*/
 		}
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION

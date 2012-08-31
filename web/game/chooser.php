@@ -112,7 +112,7 @@ window.addEvent('domready', function()
         mGame = new Game("Game Chooser");
 
 	//control object
-        mGame.mControlObject = new Shape(50,50,400,300,mGame,"","/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject = new Shape(50,50,400,300,mGame,'',"/images/characters/wizard.png","","controlObject");
 
  	//set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
@@ -121,28 +121,14 @@ window.addEvent('domready', function()
         
 	mGame.addToShapeArray(mGame.mControlObject);
 	
-	mQuiz = new Quiz(1);
-	mGame.mQuiz = mQuiz;
-
-	var dummyQuestion = new Question("Run over one the games.");
-        mQuiz.mQuestionArray.push(dummyQuestion);
-
-	//create quiz items
- 	for (i = 0; i < numberOfRows; i++)
-        {
-		var question = new Question(game_name[i],url[i]);      
-                mQuiz.mQuestionArray.push(question);
-        }
-
-	mQuiz.mScoreNeeded = 0;
-                
-        count = 1;
         for (i = 1; i < numberOfRows + 1; i++ )
         {
                 var shape;
 		x = i * 50 + 400;
-                mGame.addToShapeArray(shape = new ShapeDoor(50,50,x,350,mGame,mQuiz.getSpecificQuestion(count),picture_closed[i-1],"","door",picture_open[i-1]));
-               	count++;
+                shape = new ShapeDoor(50,50,x,350,mGame,'',picture_closed[i-1],"","door",picture_open[i-1]);
+		shape.setOpenDoor(true);
+		shape.mUrl = url[i]; 
+                mGame.addToShapeArray(shape);
         }
 
 	//end create quiz items
