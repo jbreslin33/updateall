@@ -57,9 +57,6 @@ while ($row = pg_fetch_row($result))
 	$counter++;
 }
 
-
-
-
 //game variables to fill from db
 $username = $_SESSION["username"];
 
@@ -127,7 +124,8 @@ window.addEvent('domready', function()
 		x = i * 50 + 400;
                 shape = new ShapeDoor(50,50,x,350,mGame,'',picture_closed[i-1],"","door",picture_open[i-1]);
 		shape.setOpenDoor(true);
-		shape.mUrl = url[i]; 
+		shape.mUrl = url[i-1]; 
+		mApplication.log('mUrl:' + shape.mUrl);
                 mGame.addToShapeArray(shape);
         }
 
