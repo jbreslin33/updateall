@@ -129,19 +129,11 @@ var Shape = new Class(
                 //set every shape to spawn position
                 this.mPosition.mX = this.mPositionSpawn.mX;
                 this.mPosition.mY = this.mPositionSpawn.mY;
-               /* 
-		if (this.mShowOnlyOnQuizComplete)
-		{	
-			this.setVisibility(false);
-		}
-		else
-		{
-			this.setVisibility(false);
-		}
-*/
-                if (this.mCollidable == true)
+                
+		if (this.mCollidable == true)
                 {
                 	this.mCollisionOn = true;
+			this.setVisibility(true);
                 }
 
                 if (this.mGame.mQuiz)
