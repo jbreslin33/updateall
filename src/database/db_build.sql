@@ -1587,7 +1587,7 @@ insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_
 
 --COUNTING
 --count by 1's to 100
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (2,0,10,1,1);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (2,0,2,1,1);
 -- this is the start value Start of journey
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (2,10,20,1,3);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,20,30,1,4);
