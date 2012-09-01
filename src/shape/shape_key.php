@@ -10,8 +10,34 @@ Extends: Shape,
 
         update: function(delta)
         {
-		this.parent(delta);
-        }
+        	if (this.mGame.mQuiz.isQuizComplete())
+                {
+                        if (this.mMounter)
+                        {       
+                                //do nothing 
+                        }       
+                        else    
+                        {       
+                                if (this.mCollisionOn == false)
+                                {       
+                                        this.mCollisionOn = true; 
+                                        this.setVisibility(true);
+                                        this.mMountable = true; 
+                                }       
+                        }       
+                }
+                else
+                {
+                        if (this.mCollisionOn == true)
+                        {
+                                this.mCollisionOn = false;
+                                this.setVisibility(false);
+                                this.mMountable = false;
+                        }
+                }
+
+                this.parent(delta);
+	}
 
 });
 
