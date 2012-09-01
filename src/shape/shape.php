@@ -392,7 +392,7 @@ var Shape = new Class(
 			this.mMounteeArray[slot].mountedBy(this,slot);
 		
 			//copy question from mountee to mounter
-			this.mQuestion = mountee.mQuestion;
+			//this.mQuestion = mountee.mQuestion;
 
                 }
 	},
@@ -423,7 +423,7 @@ var Shape = new Class(
 		this.mMounteeArray[slot] = 0;	
 	
 		//unset mounters question
-		this.mQuestion == '';
+		//this.mQuestion == '';
 	
 		  
 
