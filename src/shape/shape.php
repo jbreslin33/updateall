@@ -207,7 +207,6 @@ var Shape = new Class(
 		//set text of control object
                 if (this.mGame.mQuiz)
                 {
-			mApplication.log('corr');
                        	//set the control objects question object
                        	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
                        	if (this.mGame.mControlObject.mMounteeArray[0])
