@@ -118,11 +118,12 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-	for (i = startNumber; i <= endNumber; i = i + countBy)
+	for (i = startNumber; i < endNumber; i = i + countBy)
         {
         	var question = new Question('What number comes after ' + i + '?', i + countBy);      
                 mQuiz.mQuestionArray.push(question);
         }
+
  	
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -154,9 +155,14 @@ window.addEvent('domready', function()
 	mGame.addToShapeArray(door);
              
 
+
 	//KEY
+	//question for key
+	var question = new Question('Pick up key.',"key");
+	mQuiz.mQuestionArray.push(question);
+
        	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
- 	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question('',"key"),"/images/key/key_dungeon.gif","","key");
+ 	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,question,"/images/key/key_dungeon.gif","","key");
 	key.setVisibility(false);
 	key.mShowOnlyOnQuizComplete = true;
 	key.mMountable = true;
@@ -186,7 +192,7 @@ window.addEvent('domready', function()
         }
 	
 	//CHASERS
-	chasers = 3;
+	chasers = 0;
 	for (i = 0; i < chasers; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);

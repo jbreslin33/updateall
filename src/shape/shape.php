@@ -172,29 +172,28 @@ var Shape = new Class(
                                 this.mount(col,0);
                         }
                 }
+			//evaluate answers to questions provided both shapes have questions.
+			var answer = 0;
+			var answerCol = 0;
 
-		//evaluate answers to questions provided both shapes have questions.
-		var answer = 0;
-		var answerCol = 0;
-
-		if (this.mQuestion && col.mQuestion)
-		{
-			answer = this.mQuestion.getAnswer();	
-			answerCol = col.mQuestion.getAnswer();	
-		
-			//compare answers
-			if (this.mQuestion.getSolved() == false)
+			if (this.mQuestion && col.mQuestion)
 			{
-				if (answer == answerCol)
+				answer = this.mQuestion.getAnswer();	
+				answerCol = col.mQuestion.getAnswer();	
+		
+				//compare answers
+				if (this.mQuestion.getSolved() == false)
 				{
-                        		this.correctAnswer();
-				}
-				else
-				{
-                			this.incorrectAnswer();
+					if (answer == answerCol)
+					{
+                        			this.correctAnswer();
+					}
+					else
+					{
+                				this.incorrectAnswer();
+					}
 				}
 			}
-		}
 	},
 
 	correctAnswer: function()
@@ -211,12 +210,28 @@ var Shape = new Class(
 		//set text of control object
                 if (this.mGame.mQuiz)
                 {
-                       	//set the control objects question object
-                       	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                       	if (this.mGame.mControlObject.mMounteeArray[0])
-                       	{
-                               	this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                       	}
+			mApplication.log('corr');
+			/*
+			if (this.mGame.mQuiz.isQuizComplete())
+			{
+                       		//set the control objects question object
+                       		this.mGame.mControlObject.setQuestion(0);
+                       		if (this.mGame.mControlObject.mMounteeArray[0])
+                       		{
+					mApplication.log('set m q');
+                               		this.mGame.mControlObject.mMounteeArray[0].setQuestion(0);
+                       		}
+			}
+			else
+			{
+*/
+                       		//set the control objects question object
+                       		this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                       		if (this.mGame.mControlObject.mMounteeArray[0])
+                       		{
+                               		this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
+                       		}
+//			}
 		}
 		
         },
@@ -385,6 +400,10 @@ var Shape = new Class(
 			//then mount
 			this.mMounteeArray[slot] = mountee;
 			this.mMounteeArray[slot].mountedBy(this,slot);
+		
+			//copy question from mountee to mounter
+			this.mQuestion = mountee.mQuestion;
+
                 }
 	},
 
@@ -406,6 +425,10 @@ var Shape = new Class(
 
 		this.mMounteeArray[slot].mMounter = 0;
 		this.mMounteeArray[slot] = 0;	
+	
+		//unset mounters question
+		this.mQuestion == '';
+
 	},
 
 	setTimeoutShape: function(shape)
