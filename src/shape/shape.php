@@ -100,6 +100,9 @@ var Shape = new Class(
 	
 		//hide on question solved
 		this.mHideOnQuestionSolved = true;
+
+		//hide on drop
+		this.mHideOnDrop = false; 
         },
 
 /******************** PUBLIC METHODS *************/
@@ -410,11 +413,19 @@ var Shape = new Class(
 			this.mMounteeArray[slot].mCollisionOn = true;
 		}
 
+		if (this.mMounteeArray[slot].getHideOnDrop())
+		{
+			this.mMounteeArray[slot].mCollision = false;
+			this.mMounteeArray[slot].setVisibility(false);
+		}
+
 		this.mMounteeArray[slot].mMounter = 0;
 		this.mMounteeArray[slot] = 0;	
 	
 		//unset mounters question
 		this.mQuestion == '';
+	
+		  
 
 	},
 
@@ -497,6 +508,16 @@ var Shape = new Class(
 	getHideOnQuestionSolved: function()
 	{
 		return this.mHideOnQuestionSolved;
+	},
+
+	setHideOnDrop: function(b)
+	{
+		this.mHideOnDrop = b;
+	},
+
+	getHideOnDrop: function()
+	{
+		return this.mHideOnDrop;
 	},
 
 	setText: function(t)

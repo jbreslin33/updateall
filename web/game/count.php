@@ -138,8 +138,9 @@ window.addEvent('domready', function()
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
 
-        //numberMount to go on top let's make it small and draw it on top
+        //text question mountee
         var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+	numberMountee.setHideOnDrop(true);
         mGame.addToShapeArray(numberMountee);
 
         //do the mount
