@@ -159,6 +159,7 @@ window.addEvent('domready', function()
  	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question('',"key"),"/images/key/key_dungeon.gif","","key");
 	key.setVisibility(false);
 	key.mShowOnlyOnQuizComplete = true;
+	key.mMountable = true;
 	mGame.addToShapeArray(key);
 
 	//QUESTION SHAPES 
