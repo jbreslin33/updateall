@@ -94,6 +94,9 @@ var Shape = new Class(
 
 		//hide on quiz complete??
 		this.mHideOnQuizComplete = false;
+
+		//show on quiz complete??
+		this.mShowOnlyOnQuizComplete = false;
 	
 		//hide on question solved
 		this.mHideOnQuestionSolved = true;
@@ -123,8 +126,16 @@ var Shape = new Class(
                 //set every shape to spawn position
                 this.mPosition.mX = this.mPositionSpawn.mX;
                 this.mPosition.mY = this.mPositionSpawn.mY;
-                this.setVisibility(true);
-
+               /* 
+		if (this.mShowOnlyOnQuizComplete)
+		{	
+			this.setVisibility(false);
+		}
+		else
+		{
+			this.setVisibility(false);
+		}
+*/
                 if (this.mCollidable == true)
                 {
                 	this.mCollisionOn = true;
@@ -228,16 +239,24 @@ var Shape = new Class(
                                        	this.setVisibility(false);
                         	}
                 	}
-			/*
-			else if (this.mGame.mQuiz.isQuizComplete() == false && this.mHideOnQuizComplete == false)
+		}
+		
+		//SHOW ON QUIZ COMPLETE
+		if (this.mGame.mQuiz && this.mMounter == 0)
+		{
+			if (this.mShowOnlyOnQuizComplete)
 			{
-				if (this.mMounter == 0)
+				if (this.mGame.mQuiz.isQuizComplete())
 				{
                                 	this.mCollisionOn = true;
                                        	this.setVisibility(true);
-                        	}
+				}
+				else 
+				{
+                                	this.mCollisionOn = false;
+                                       	this.setVisibility(false);
+				}			
 			}
-			*/
 		}
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION

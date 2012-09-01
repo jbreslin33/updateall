@@ -148,11 +148,19 @@ window.addEvent('domready', function()
 
 	//DOOR
        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	door.setOpenDoor(true);	
-	
+	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("Open door with Key.","key"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+	door.mUrl = '/src/database/goto_next_level.php';
+	door.mOpenOnQuestionSolved = true;
 	mGame.addToShapeArray(door);
-               
+             
+
+	//KEY
+       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+ 	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,new Question('',"key"),"/images/key/key_dungeon.gif","","key");
+	key.setVisibility(false);
+	key.mShowOnlyOnQuizComplete = true;
+	mGame.addToShapeArray(key);
+
 	//QUESTION SHAPES 
         count = 0;
         for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
