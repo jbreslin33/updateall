@@ -74,53 +74,71 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-	//QUESTIONS FOR QUIZ
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 1_', '6'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 1_', '7'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 1_', '8'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 _', '1'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 1_', '9'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 19 _', '2'));      
-       	mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 19 2_', '0'));      
+ 	//QUESTIONS FOR QUIZ
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 _', '1'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 1_', '6'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 _', '1'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 1_', '7'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 _', '1'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 1_', '8'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 _', '1'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 1_', '9'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 19 _', '2'));
+        mQuiz.mQuestionArray.push(new Question('What comes next after 15 16 17 18 19 2_', '0'));
 
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
-	mGame.mControlObject.createMountPoint(0,-5,-41);
+ 	mGame.mControlObject.createMountPoint(0,-5,-41);
 
         //set animation instance
         mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
 
- 	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
- 	
-	mGame.addToShapeArray(mGame.mControlObject);
+	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+
+ 	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
 
         //numberMount to go on top let's make it small and draw it on top
         var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+ 	numberMountee.setHideOnDrop(true);
         mGame.addToShapeArray(numberMountee);
 
         //do the mount
-        //ie is showing this too high
         mGame.mControlObject.mount(numberMountee,0);
         numberMountee.setBackgroundColor("transparent");
 
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	mGame.addToShapeArray(door);
-               
+     	//question for key
+        var keyQuestion = new Question('Pick up key.',"key");
+        mQuiz.mQuestionArray.push(keyQuestion);
+
+        //KEY
+        openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
+        key.setVisibility(false);
+        key.mShowOnlyOnQuizComplete = true;
+        key.mMountable = true;
+        key.setHideOnQuestionSolved(false);
+        mGame.addToShapeArray(key);
+
+        //question for door
+        var doorQuestion = new Question('Open door with key.',"door");
+        mQuiz.mQuestionArray.push(doorQuestion);
+
+        //DOOR
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+        door.mUrl = '/src/database/goto_next_level.php';
+        door.mOpenOnQuestionSolved = true;
+        mGame.addToShapeArray(door);
+       
 	//QUESTION SHAPES 
         for (i = 0; i < scoreNeeded; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                 var shape;
                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(i),"/images/treasure/gold_coin_head.png","","question"));
-		shape.createMountPoint(0,-5,-41);
+ 		shape.createMountPoint(0,-5,-41);
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
@@ -129,7 +147,6 @@ window.addEvent('domready', function()
                 numberMountee.showQuestion(false);
                 
 		//do the mount  
-		//ie is showing this too high	
 		shape.mount(numberMountee,0);
 		numberMountee.setBackgroundColor("transparent");
         }
