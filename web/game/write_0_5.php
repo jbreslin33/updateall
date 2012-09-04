@@ -80,7 +80,6 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 _', '3'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 _', '4'));      
        	mQuiz.mQuestionArray.push(new Question('What comes next after 0 1 2 3 4 _', '5'));      
-       	mQuiz.mQuestionArray.push(new Question('Door is Open!', '6'));      
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -96,17 +95,37 @@ window.addEvent('domready', function()
 
         //numberMount to go on top let's make it small and draw it on top
         var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+ 	numberMountee.setHideOnDrop(true);
         mGame.addToShapeArray(numberMountee);
 
         //do the mount
         mGame.mControlObject.mount(numberMountee,0);
         numberMountee.setBackgroundColor("transparent");
 
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,new Question("DOOR","/src/database/goto_next_level.php"),"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	mGame.addToShapeArray(door);
-               
+     	//question for key
+        var keyQuestion = new Question('Pick up key.',"key");
+        mQuiz.mQuestionArray.push(keyQuestion);
+
+        //KEY
+        openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
+        key.setVisibility(false);
+        key.mShowOnlyOnQuizComplete = true;
+        key.mMountable = true;
+        key.setHideOnQuestionSolved(false);
+        mGame.addToShapeArray(key);
+
+        //question for door
+        var doorQuestion = new Question('Open door with key.',"door");
+        mQuiz.mQuestionArray.push(doorQuestion);
+
+        //DOOR
+        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+        door.mUrl = '/src/database/goto_next_level.php';
+        door.mOpenOnQuestionSolved = true;
+        mGame.addToShapeArray(door);
+       
 	//QUESTION SHAPES 
         for (i = 0; i < scoreNeeded; i++)
         {
