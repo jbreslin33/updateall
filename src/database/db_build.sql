@@ -1587,32 +1587,32 @@ insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_
 
 --COUNTING
 --count by 1's to 100
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (2,0,2,1,1);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
 -- this is the start value Start of journey
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (2,10,20,1,3);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,20,30,1,4);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,30,40,1,5);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,40,50,1,6);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,50,60,1,7);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,60,70,1,8);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,70,80,1,9);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,3);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,20,30,1,4);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,30,40,1,5);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,6);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,7);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,8);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,9);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,80,90,1,10);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,90,100,1,11);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,11);
 
 --count by 10's to 100
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,0,100,10,12);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,100,10,12);
 
 --count from random known sequence
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,87,97,1,13);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,23,33,1,14);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,55,65,1,15);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,26,36,1,16);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,49,59,1,17);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,4,14,1,18);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,67,77,1,19);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,13,23,1,20);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,52,62,1,21);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,38,48,1,22);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,87,97,1,13);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,23,33,1,14);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,55,65,1,15);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,26,36,1,16);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,49,59,1,17);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,4,14,1,18);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,67,77,1,19);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,13,23,1,20);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,52,62,1,21);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,38,48,1,22);
 
 
 --ADDITION
