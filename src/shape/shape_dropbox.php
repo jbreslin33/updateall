@@ -39,10 +39,12 @@ Extends: Shape,
                        		{
                              		if (this.mMounteeArray[0].mQuestion.getAnswer() == this.mQuestion.getAnswer())
                               		{
+						mApplication.log('correctamundo');
 						this.mGame.mQuiz.correctAnswer();
                               		}
                               		else
                               		{
+						mApplication.log('incorrectamundo');
 						this.mGame.resetGame();
                               		}
 				}
