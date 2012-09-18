@@ -9,6 +9,7 @@ Extends: ShapeDropbox,
 
 	update: function(delta)
 	{
+//		mApplication.log('s:' + this.mQuestion.getAnswer());
 		this.mQuestion = this.mGame.mQuiz.getQuestion();
 		this.parent(delta);
 	}

@@ -384,6 +384,8 @@ var Shape = new Class(
 		
 			//copy question from mountee to mounter
 			//this.mQuestion = mountee.mQuestion;
+			mApplication.log('mountee:' + mountee.mQuestion.getAnswer());
+			mApplication.log('mounter:' + this.mQuestion.getAnswer());
 
                 }
 	},
