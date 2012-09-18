@@ -155,6 +155,7 @@ window.addEvent('domready', function()
                 shape.createMountPoint(0,-5,-41);
                 shape.showQuestion(false);
 		shape.mMountable = true;
+		shape.setHideOnQuestionSolved(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
                 var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
