@@ -195,24 +195,27 @@ var Shape = new Class(
 
 	correctAnswer: function()
         {
-		this.mQuestion.setSolved(true);
-		if (this.mHideOnQuestionSolved)
-        	{
-                	this.mCollisionOn = false;
-                        this.setVisibility(false);
-                }
+		if (this.mQuestion)
+		{
+			this.mQuestion.setSolved(true);
+			if (this.mHideOnQuestionSolved)
+        		{
+                		this.mCollisionOn = false;
+                        	this.setVisibility(false);
+                	}
 		
-		this.mGame.correctAnswer();
+			this.mGame.correctAnswer();
                 
-		//set text of control object
-                if (this.mGame.mQuiz)
-                {
-                       	//set the control objects question object
-                       	this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                       	if (this.mGame.mControlObject.mMounteeArray[0])
-                       	{
-                        	this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                       	}
+			//set text of control object
+                	if (this.mGame.mQuiz)
+                	{
+                       		//set the control objects question object
+                       		this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                       		if (this.mGame.mControlObject.mMounteeArray[0])
+                       		{
+                        		this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
+                       		}
+			}
 		}
 		
         },
@@ -384,8 +387,8 @@ var Shape = new Class(
 		
 			//copy question from mountee to mounter
 			//this.mQuestion = mountee.mQuestion;
-			mApplication.log('mountee:' + mountee.mQuestion.getAnswer());
-			mApplication.log('mounter:' + this.mQuestion.getAnswer());
+			//mApplication.log('mountee:' + mountee.mQuestion.getAnswer());
+			//mApplication.log('mounter:' + this.mQuestion.getAnswer());
 
                 }
 	},
