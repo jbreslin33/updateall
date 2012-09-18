@@ -44,6 +44,8 @@ Extends: Shape,
                               		}
                               		else
                               		{
+						mApplication.log('a:' + this.mMounteeArray[0].mQuestion.getAnswer());
+						mApplication.log('b:' + this.mQuestion.getAnswer());
 						mApplication.log('incorrectamundo');
 						this.mGame.resetGame();
                               		}

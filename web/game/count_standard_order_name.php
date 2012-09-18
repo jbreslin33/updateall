@@ -175,6 +175,7 @@ window.addEvent('domready', function()
                 var shape = new ShapeDropboxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
                 shape.createMountPoint(0,-5,-41);
 		mGame.addToShapeArray(shape);
+		mApplication.log('chest:' + shape.mQuestion.getAnswer());		
         }
 
 	//RESET GAME TO START
