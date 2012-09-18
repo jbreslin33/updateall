@@ -131,6 +131,7 @@ window.addEvent('domready', function()
 
         var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
         var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
+        door.createMountPoint(0,-5,-41);
         door.mUrl = '/src/database/goto_next_level.php';
         door.mOpenOnQuestionSolved = true;
         mGame.addToShapeArray(door);
@@ -144,6 +145,7 @@ window.addEvent('domready', function()
 	door.mount(numberMountee,0);
 
 	numberMountee.setBackgroundColor("transparent");
+
 	//QUESTION SHAPES (GOLD COINS)
         for (i = 0; i < scoreNeeded; i++)
         {
@@ -164,6 +166,32 @@ window.addEvent('domready', function()
 
 		numberMountee.setBackgroundColor("transparent");
         }
+
+        //QUESTION SHAPES
+/*
+        count = 0;
+        for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
+        {
+                var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                var shape;
+                mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+                shape.createMountPoint(0,-5,-41);
+                shape.showQuestion(false);
+
+                //numberMount to go on top let's make it small and draw it on top
+                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");
+                mGame.addToShapeArray(numberMountee);
+                numberMountee.showQuestion(false);
+
+                //do the mount
+                shape.mount(numberMountee,0);
+
+                numberMountee.setBackgroundColor("transparent");
+
+                count++;
+        }
+*/
+
 	
 	//TREASURE CHESTS TO COUNT
 	for (i = 0; i < scoreNeeded; i++)
