@@ -10,6 +10,10 @@ Extends: ShapeDropbox,
 	update: function(delta)
 	{
 //		mApplication.log('s:' + this.mQuestion.getAnswer());
+		if (this.mQuestion.getAnswer() == 'Two')
+		{
+			mApplication.log('somebody is two');
+		}	
 		this.mQuestion = this.mGame.mQuiz.getQuestion();
 		this.parent(delta);
 	}
