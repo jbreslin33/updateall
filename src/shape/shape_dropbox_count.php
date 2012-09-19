@@ -1,7 +1,7 @@
-var ShapeDropboxCount = new Class(
+var ShapeDropBoxCount = new Class(
 {
 
-Extends: ShapeDropbox,
+Extends: ShapeDropBox,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
@@ -9,11 +9,6 @@ Extends: ShapeDropbox,
 
 	update: function(delta)
 	{
-//		mApplication.log('s:' + this.mQuestion.getAnswer());
-		if (this.mQuestion.getAnswer() == 'Two')
-		{
-			mApplication.log('somebody is two');
-		}	
 		this.mQuestion = this.mGame.mQuiz.getQuestion();
 		this.parent(delta);
 	}
