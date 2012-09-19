@@ -151,6 +151,7 @@ window.addEvent('domready', function()
                 var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(i),"","orange","numberMountee");       
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
+		numberMountee.setMountable(true);
                 
 		//do the mount  
 		shape.mount(numberMountee,0);
