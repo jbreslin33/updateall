@@ -140,6 +140,7 @@ window.addEvent('domready', function()
 
         //text question mountee
         var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+	numberMountee.setMountable(true);
 	numberMountee.setHideOnDrop(true);
         mGame.addToShapeArray(numberMountee);
 
@@ -184,6 +185,7 @@ window.addEvent('domready', function()
 
 		//numberMount to go on top let's make it small and draw it on top 
                 var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
+		numberMountee.setMountable(true);
                 mGame.addToShapeArray(numberMountee); 
                 numberMountee.showQuestion(false);
                 

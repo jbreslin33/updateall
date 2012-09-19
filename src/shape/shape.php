@@ -178,6 +178,8 @@ var Shape = new Class(
 			}
 		}
 
+		this.mount(col,0);
+/*
   		//can i mount this thing? if so mount it.
                 if (col.mMountable)
                 {
@@ -190,6 +192,40 @@ var Shape = new Class(
                                 this.mount(col,0);
                         }
                 }
+*/
+	},
+
+	mount: function(mountee,slot)
+	{
+		//how bout an attempted mount before the real deal?
+                //can i mount this thing? if so mount it.
+                if (mountee.mMountable)
+                {
+                        if (this.mMountPointArray[0])
+                        {
+                                if (this.mMounteeArray[0])
+                                {
+                                        this.unMount(0);
+                                }
+
+        			if (mountee != this.getTimeoutShape())
+                		{
+                			//first unmount  if you have something
+                        		if (this.mMounteeArray[slot])
+                        		{
+                        			this.unMount(0);
+                        		}
+                        
+					//then mount
+					this.mMounteeArray[slot] = mountee;
+					this.mMounteeArray[slot].mountedBy(this,slot);
+		
+					//copy question from mountee to mounter
+					//this.mQuestion = mountee.mQuestion;
+
+                		}
+			}
+		}
 	},
 
 	correctAnswer: function()
@@ -370,28 +406,6 @@ var Shape = new Class(
 		}
 	},
 
-	mount: function(mountee,slot)
-	{
-        	if (mountee != this.getTimeoutShape())
-                {
-                	//first unmount  if you have something
-                        if (this.mMounteeArray[slot])
-                        {
-                        	this.unMount(0);
-                        }
-                        
-			//then mount
-			this.mMounteeArray[slot] = mountee;
-			this.mMounteeArray[slot].mountedBy(this,slot);
-		
-			//copy question from mountee to mounter
-			//this.mQuestion = mountee.mQuestion;
-			//mApplication.log('mountee:' + mountee.mQuestion.getAnswer());
-			//mApplication.log('mounter:' + this.mQuestion.getAnswer());
-
-                }
-	},
-
 	mountedBy: function(mounter,slot)
 	{
 		this.mCollisionOn = false;
@@ -535,6 +549,11 @@ var Shape = new Class(
 	setMessage: function(message)
 	{
 		this.mMessage = message;
+	},
+
+	setMountable: function(b)
+	{
+		this.mMountable = b;
 	},
 	
 	showQuestionObject: function(toggle)
