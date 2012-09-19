@@ -111,11 +111,11 @@ window.addEvent('domready', function()
  	mGame.addToShapeArray(mGame.mControlObject);
         mGame.mControlObject.showQuestionObject(false);
 
-     	//KEY
         //question for key
         var keyQuestion = new Question('Pick up key.',"key");
         mQuiz.mQuestionArray.push(keyQuestion);
 
+        //KEY
         openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
         var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
         key.setVisibility(false);
@@ -124,27 +124,16 @@ window.addEvent('domready', function()
         key.setHideOnQuestionSolved(false);
         mGame.addToShapeArray(key);
 
-        //DOOR
         //question for door
         var doorQuestion = new Question('Open door with key.',"door");
         mQuiz.mQuestionArray.push(doorQuestion);
 
+        //DOOR
         var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
         var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-        door.createMountPoint(0,-5,-41);
         door.mUrl = '/src/database/goto_next_level.php';
         door.mOpenOnQuestionSolved = true;
         mGame.addToShapeArray(door);
-
-	//numberMount to go on top let's make it small and draw it on top 
-        var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(20),"","orange","numberMountee");       
-        mGame.addToShapeArray(numberMountee); 
-        numberMountee.showQuestion(false);
-                
-	//do the mount  
-	door.mount(numberMountee,0);
-
-	numberMountee.setBackgroundColor("transparent");
 
 	//QUESTION SHAPES (GOLD COINS)
         for (i = 0; i < scoreNeeded; i++)
