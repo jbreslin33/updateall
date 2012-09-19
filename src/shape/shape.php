@@ -103,6 +103,7 @@ var Shape = new Class(
 
 		//hide on drop
 		this.mHideOnDrop = false; 
+
         },
 
 /******************** PUBLIC METHODS *************/
@@ -181,6 +182,39 @@ var Shape = new Class(
 		this.mount(col,0);
 	},
 
+	correctAnswer: function()
+        {
+		if (this.mQuestion)
+		{
+			this.mQuestion.setSolved(true);
+			if (this.mHideOnQuestionSolved)
+        		{
+                		this.mCollisionOn = false;
+                        	this.setVisibility(false);
+                	}
+		
+			this.mGame.correctAnswer();
+               /* 
+			//set text of control object
+                	if (this.mGame.mQuiz)
+                	{
+                       		//set the control objects question object
+                       		this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                       		if (this.mGame.mControlObject.mMounteeArray[0])
+                       		{
+                        		this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
+                       		}
+			}
+*/
+		}
+		
+        },
+
+        incorrectAnswer: function()
+        {
+                this.mGame.resetGame();
+        },
+	
 	mount: function(mountee,slot)
 	{
 		//how bout an attempted mount before the real deal?
@@ -214,37 +248,6 @@ var Shape = new Class(
 		}
 	},
 
-	correctAnswer: function()
-        {
-		if (this.mQuestion)
-		{
-			this.mQuestion.setSolved(true);
-			if (this.mHideOnQuestionSolved)
-        		{
-                		this.mCollisionOn = false;
-                        	this.setVisibility(false);
-                	}
-		
-			this.mGame.correctAnswer();
-                
-			//set text of control object
-                	if (this.mGame.mQuiz)
-                	{
-                       		//set the control objects question object
-                       		this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                       		if (this.mGame.mControlObject.mMounteeArray[0])
-                       		{
-                        		this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                       		}
-			}
-		}
-		
-        },
-
-        incorrectAnswer: function()
-        {
-                this.mGame.resetGame();
-        },
 
 	update: function(delta)
 	{
