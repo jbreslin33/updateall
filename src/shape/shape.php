@@ -179,20 +179,6 @@ var Shape = new Class(
 		}
 
 		this.mount(col,0);
-/*
-  		//can i mount this thing? if so mount it.
-                if (col.mMountable)
-                {
-                        if (this.mMountPointArray[0])
-                        {
-                                if (this.mMounteeArray[0])
-                                {
-                                        this.unMount(0);
-                                }
-                                this.mount(col,0);
-                        }
-                }
-*/
 	},
 
 	mount: function(mountee,slot)
