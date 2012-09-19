@@ -169,10 +169,12 @@ var Shape = new Class(
 			{
 				if (answer == answerCol)
 				{
+					mApplication.log('c' + this.mMessage);
                        			this.correctAnswer();
 				}
 				else
 				{
+					mApplication.log('i' + this.mMessage);
                				this.incorrectAnswer();
 				}
 			}

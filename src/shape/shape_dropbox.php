@@ -20,10 +20,12 @@ Extends: Shape,
 	
 	onCollision: function(col)
 	{
+		mApplication.log('shapedropbox oncol');	
  		//a dropbox_question recieving a pickup from a control object
 		pickup = 0;
                 if (col == this.mGame.mControlObject && col.mMounteeArray[0])
                 {
+			mApplication.log('here');
                 	pickup = col.mMounteeArray[0];
 
                         //have controlObject unMount pickup
@@ -39,14 +41,11 @@ Extends: Shape,
                        		{
                              		if (this.mMounteeArray[0].mQuestion.getAnswer() == this.mQuestion.getAnswer())
                               		{
+						this.correctAnswer();
 						mApplication.log('correctamundo');
-						this.mGame.mQuiz.correctAnswer();
                               		}
                               		else
                               		{
-						mApplication.log('a:' + this.mMounteeArray[0].mQuestion.getAnswer());
-						mApplication.log('b:' + this.mQuestion.getAnswer());
-						mApplication.log('incorrectamundo');
 						this.mGame.resetGame();
                               		}
 				}
