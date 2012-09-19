@@ -169,12 +169,10 @@ var Shape = new Class(
 			{
 				if (answer == answerCol)
 				{
-					mApplication.log('c' + this.mMessage);
                        			this.correctAnswer();
 				}
 				else
 				{
-					mApplication.log('i' + this.mMessage);
                				this.incorrectAnswer();
 				}
 			}
@@ -190,7 +188,6 @@ var Shape = new Class(
                                         this.unMount(0);
                                 }
                                 this.mount(col,0);
-				mApplication.log('mounting key');
                         }
                 }
 	},
