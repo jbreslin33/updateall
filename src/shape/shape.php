@@ -162,12 +162,14 @@ var Shape = new Class(
 
 		if (this.mQuestion && col.mQuestion)
 		{
+			mApplication.log('q');
 			answer = this.mQuestion.getAnswer();	
 			answerCol = col.mQuestion.getAnswer();	
 	
 			//compare answers
 			if (this.mQuestion.getSolved() == false)
 			{
+				mApplication.log('f');
 				if (answer == answerCol)
 				{
                        			this.correctAnswer();
@@ -192,22 +194,8 @@ var Shape = new Class(
                 		this.mCollisionOn = false;
                         	this.setVisibility(false);
                 	}
-		
 			this.mGame.correctAnswer();
-               /* 
-			//set text of control object
-                	if (this.mGame.mQuiz)
-                	{
-                       		//set the control objects question object
-                       		this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
-                       		if (this.mGame.mControlObject.mMounteeArray[0])
-                       		{
-                        		this.mGame.mControlObject.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                       		}
-			}
-*/
 		}
-		
         },
 
         incorrectAnswer: function()
@@ -247,7 +235,6 @@ var Shape = new Class(
 			}
 		}
 	},
-
 
 	update: function(delta)
 	{
@@ -299,7 +286,6 @@ var Shape = new Class(
 			}
 		}
 
-
 		this.updateVelocity(delta);
 		this.updatePosition();
 		this.updateAnimation();
@@ -309,8 +295,6 @@ var Shape = new Class(
 		{	
 			this.checkForOutOfBounds();
 		}
-
-
 	},
  
 	checkForOutOfBounds: function()
