@@ -12,6 +12,10 @@ Extends: Shape,
 		this.parent(delta);
 
                 this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+                if (this.mMounteeArray[0])
+                {
+                        this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
+                }
 	},	
 	
 	correctAnswer: function()
