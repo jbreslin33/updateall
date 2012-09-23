@@ -107,7 +107,6 @@ var Shape = new Class(
         },
 
 /******************** PUBLIC METHODS *************/
-
 	createMountPoint: function(slot,x,y)
 	{
 		this.mMountPointArray[slot] = new Point2D();
@@ -162,14 +161,12 @@ var Shape = new Class(
 
 		if (this.mQuestion && col.mQuestion)
 		{
-			mApplication.log('q');
 			answer = this.mQuestion.getAnswer();	
 			answerCol = col.mQuestion.getAnswer();	
 	
 			//compare answers
 			if (this.mQuestion.getSolved() == false)
 			{
-				mApplication.log('f');
 				if (answer == answerCol)
 				{
                        			this.correctAnswer();
