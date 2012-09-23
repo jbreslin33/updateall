@@ -7,6 +7,18 @@ Extends: Shape,
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         },
 
+	update: function(delta)
+	{
+		this.parent(delta);
+
+                this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+	},	
+	
+	correctAnswer: function()
+	{
+
+	},
+/*
 	correctAnswer: function()
 	{
         	//set text of control object
@@ -20,7 +32,7 @@ Extends: Shape,
                         }
                 }
 	},
-	
+*/	
 	incorrectAnswer: function()
 	{
 	}
