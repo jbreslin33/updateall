@@ -227,7 +227,6 @@ var Shape = new Class(
 		
 					//copy question from mountee to mounter
 					//this.mQuestion = mountee.mQuestion;
-
                 		}
 			}
 		}
