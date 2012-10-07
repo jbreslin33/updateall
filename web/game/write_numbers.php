@@ -16,9 +16,9 @@ $conn = dbConnect();
 
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
-$query = "select score_needed, count_by, start_number, end_number from counting where level_id = ";
+$query = "select question, answer, question_order from questions where level_id = ";
 $query .= $_SESSION["next_level_id"];
-$query .= ";";
+$query .= " ORDER BY question_order;";
 
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
@@ -26,25 +26,32 @@ $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error())
 //game variables to fill from db
 $username = $_SESSION["username"];
 $next_level = $_SESSION["next_level"];
-$scoreNeeded = 0;
-$countBy = 0;
-$startNumber = 0;
-$endNumber = 0;
 
-//get numer of rows
-$num = pg_num_rows($result);
+//get numer of rows which will also be score needed
+$numberOfRows = pg_num_rows($result);
+$scoreNeeded = pg_num_rows($result);
 
-// if there is a row then id exists it better be unique!
-if ($num > 0)
+echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
+echo "var scoreNeeded = $numberOfRows;";
+echo "var questions = new Array();";
+echo "var answers = new Array();";
+
+echo "</script>";
+
+$counter = 0;
+while ($row = pg_fetch_row($result))
 {
-        //get row
-        $row = pg_fetch_row($result);
+  	//fill php vars from db
+        $answers = $row[0];
+        $questions = $row[1];
 
-        //fill php vars from db
-        $scoreNeeded = $row[0];
-        $countBy = $row[1];
-        $startNumber = $row[2];
-        $endNumber = $row[3];
+        echo "<script language=\"javascript\">";
+
+        echo "questions[$counter] = \"$questions\";";
+        echo "answers[$counter] = \"$answers\";";
+        echo "</script>";
+        $counter++;
 }
 
 //brian - get current date
@@ -61,11 +68,6 @@ insertIntoGamesAttempts($conn,$_SESSION["game_start_time"],1,$_SESSION["user_id"
 var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = <?php echo $scoreNeeded; ?>;
-var countBy = <?php echo $countBy; ?>;
-var startNumber = <?php echo $startNumber; ?>;
-var endNumber = <?php echo $endNumber; ?>;
-
 
 </script>
 
@@ -118,9 +120,9 @@ window.addEvent('domready', function()
 	mGame.mQuiz = mQuiz;
 
 	//QUESTIONS FOR QUIZ
-	for (i = startNumber; i < endNumber; i = i + countBy)
+	for (i = 0; i < scoreNeeded; i++)
         {
-        	var question = new Question('What number comes after ' + i + '?', i + countBy);      
+        	var question = new Question(questions[i],answers[i]);      
                 mQuiz.mQuestionArray.push(question);
         }
 
