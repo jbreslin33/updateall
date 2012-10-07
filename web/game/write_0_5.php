@@ -83,6 +83,7 @@ window.addEvent('domready', function()
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
+        mGame.mControlObject.mHideOnQuestionSolved = false;
  	mGame.mControlObject.createMountPoint(0,-5,-41);
 
         //set animation instance
@@ -95,6 +96,7 @@ window.addEvent('domready', function()
 
         //numberMount to go on top let's make it small and draw it on top
         var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
+        numberMountee.setMountable(true);
  	numberMountee.setHideOnDrop(true);
         mGame.addToShapeArray(numberMountee);
 
@@ -126,34 +128,6 @@ window.addEvent('domready', function()
         door.mOpenOnQuestionSolved = true;
         mGame.addToShapeArray(door);
       
-/*
- //QUESTION SHAPES
-        count = 0;
-        for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
-        {
-                var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var shape;
-                mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
-                shape.createMountPoint(0,-5,-41);
-                shape.showQuestion(false);
-
-                //numberMount to go on top let's make it small and draw it on top
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");
-                numberMountee.setMountable(true);
-                mGame.addToShapeArray(numberMountee);
-                numberMountee.showQuestion(false);
-
-                //do the mount
-                shape.mount(numberMountee,0);
-
-                numberMountee.setBackgroundColor("transparent");
-
-                count++;
-        }
-
-*/
-
- 
 	//QUESTION SHAPES 
         for (i = 0; i < scoreNeeded; i++)
         {
