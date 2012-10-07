@@ -22,6 +22,7 @@ DROP TABLE games cascade;
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
+DROP TABLE questions cascade;
 
 DROP TABLE levels_standards_clusters_domains_grades cascade;
 DROP TABLE levels_transactions cascade;
@@ -289,6 +290,16 @@ CREATE TABLE subtraction (
     level_id integer NOT NULL
 );
 
+--QUESTIONS
+CREATE TABLE questions (
+    id integer NOT NULL,
+    question text NOT NULL,
+    answer text NOT NULL,
+    level_id integer NOT NULL,
+    question_order double precision NOT NULL UNIQUE
+);
+
+
 --==================================================================
 --===================== GAMES =====================================
 --==================================================================
@@ -530,6 +541,13 @@ CREATE SEQUENCE subtraction_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--QUESTIONS
+CREATE SEQUENCE questions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 --==================================================================
 --================= GAMES  ====================================
@@ -656,6 +674,8 @@ ALTER TABLE public.addition OWNER TO postgres;
 --SUBTRACTION
 ALTER TABLE public.subtraction OWNER TO postgres;
 
+--QUESTIONS
+ALTER TABLE public.questions OWNER TO postgres;
 
 --==================================================================
 --================= GAMES  ====================================
@@ -798,6 +818,10 @@ ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
 ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 
+--QUESTIONS
+ALTER TABLE public.questions_id_seq OWNER TO postgres;
+ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
+ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
 
 --==================================================================
 --================= GAMES  ====================================
@@ -915,6 +939,9 @@ ALTER TABLE addition ADD PRIMARY KEY (id);
 --SUBTRACTION
 ALTER TABLE subtraction ADD PRIMARY KEY (id);
 
+--QUESTIONS
+ALTER TABLE questions ADD PRIMARY KEY (id);
+
 --==================================================================
 --================= GAMES  ====================================
 --==================================================================
@@ -1021,6 +1048,8 @@ ALTER TABLE addition ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 --SUBTRACTION
 ALTER TABLE subtraction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
+--QUESTIONS
+ALTER TABLE questions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --==================================================================
 --================= GAMES  ====================================
@@ -1618,7 +1647,20 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 --ADDITION
 
 --SUBTRACTION
+/*
+-QUESTIONS
+CREATE TABLE questions (
+    id integer NOT NULL,
+    question text NOT NULL,
+    answer text NOT NULL,
+    level_id integer NOT NULL,
+    question_order double precision NOT NULL UNIQUE
+);
+*/
 
+--QUESTIONS
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',22,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 _','2',22,2);
 
 --==================================================================
 --================= GAMES ====================================
