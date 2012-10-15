@@ -1698,10 +1698,10 @@ insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/count.p
 insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php'); --21
 
 --Write numbers from 0 to 20. 
-insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_0_5.php'); --22
-insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_5_10.php'); --23
-insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_10_15.php'); --24
-insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_15_20.php'); --25
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_numbers.php'); --22
+insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_numbers.php'); --23
+insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_numbers.php'); --24
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_numbers.php'); --25
 
 --Represent a number of objects with a
 --written numeral 0-20 (with 0 representing a count of no objects).
