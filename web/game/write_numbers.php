@@ -54,6 +54,7 @@ while ($row = pg_fetch_row($result))
         $counter++;
 }
 
+
 //brian - get current date
 $_SESSION["game_start_time"] = date('Y-m-d H:i:s');
 $_SESSION["game_over"] = "false";
@@ -177,7 +178,7 @@ window.addEvent('domready', function()
 
 	//QUESTION SHAPES 
         count = 0;
-        for (i = startNumber + countBy; i <= endNumber; i = i + countBy)
+        for (i = 0; i < numberOfRows; i++)
         {
        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                	var shape;
