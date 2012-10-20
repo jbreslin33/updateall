@@ -1659,6 +1659,7 @@ CREATE TABLE questions (
 */
 
 --QUESTIONS
+--level 22
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',22,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 _','2',22,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 _','3',22,3);
@@ -1670,6 +1671,23 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 _','9',22,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 _','1',22,10);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 1_','0',22,11);
+
+--level 23
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 _','1',23,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 1_','1',23,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 _','1',23,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 1_','2',23,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 _','1',23,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 1_','3',23,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 _','1',23,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 1_','4',23,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 _','1',23,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 1_','5',23,10);
+
+
+--level 24
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 1_','5',23,10);
+
 
 --==================================================================
 --================= GAMES ====================================
