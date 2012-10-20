@@ -46,8 +46,8 @@ $counter = 0;
 while ($row = pg_fetch_row($result))
 {
   	//fill php vars from db
-        $answers = $row[0];
-        $questions = $row[1];
+        $questions = $row[0];
+        $answers = $row[1];
 
         echo "<script language=\"javascript\">";
 
@@ -129,8 +129,6 @@ window.addEvent('domready', function()
 	for (i = 0; i < scoreNeeded; i++)
         {
         	var question = new Question(questions[i],answers[i]);      
-		mApplication.log("question:" + questions[i]);	
-		mApplication.log("answer:" + answers[i]);	
                 mQuiz.mQuestionArray.push(question);
         }
 
@@ -158,7 +156,7 @@ window.addEvent('domready', function()
         mGame.mControlObject.mount(numberMountee,0);
 
         numberMountee.setBackgroundColor("transparent");
-	numberMountee.showQuestion(false);
+	numberMountee.showQuestion(true);
 
 	//question for key 
 	var keyQuestion = new Question('Pick up key.',"key");
