@@ -129,6 +129,8 @@ window.addEvent('domready', function()
 	for (i = 0; i < scoreNeeded; i++)
         {
         	var question = new Question(questions[i],answers[i]);      
+		mApplication.log("question:" + questions[i]);	
+		mApplication.log("answer:" + answers[i]);	
                 mQuiz.mQuestionArray.push(question);
         }
 
