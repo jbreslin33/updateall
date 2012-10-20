@@ -1686,7 +1686,16 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 
 
 --level 24
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 1_','5',23,10);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 _','1',24,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 1_','6',24,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 _','1',24,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 1_','7',24,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 _','1',24,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 1_','8',24,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 _','1',24,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 1_','9',24,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 _','2',24,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 2_','0',24,10);
 
 
 --==================================================================
