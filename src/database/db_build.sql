@@ -296,7 +296,7 @@ CREATE TABLE questions (
     question text NOT NULL,
     answer text NOT NULL,
     level_id integer NOT NULL,
-    question_order double precision NOT NULL UNIQUE
+    question_order double precision NOT NULL 
 );
 
 
