@@ -156,6 +156,7 @@ window.addEvent('domready', function()
         mGame.mControlObject.mount(numberMountee,0);
 
         numberMountee.setBackgroundColor("transparent");
+	numberMountee.showQuestion(false);
 
 	//question for key 
 	var keyQuestion = new Question('Pick up key.',"key");
