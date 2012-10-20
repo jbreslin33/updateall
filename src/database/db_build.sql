@@ -1661,6 +1661,15 @@ CREATE TABLE questions (
 --QUESTIONS
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',22,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 _','2',22,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 _','3',22,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 _','4',22,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 _','5',22,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 _','6',22,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 _','7',22,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 _','8',22,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 _','9',22,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 _','1',22,10);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 1_','0',22,11);
 
 --==================================================================
 --================= GAMES ====================================
