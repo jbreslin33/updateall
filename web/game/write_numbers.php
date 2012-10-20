@@ -17,8 +17,10 @@ $conn = dbConnect();
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select question, answer, question_order from questions where level_id = ";
-$query .= $_SESSION["next_level_id"];
+$query .= $_SESSION["last_level_id"];
 $query .= " ORDER BY question_order;";
+
+$lastLevelID = $_SESSION["last_level_id"];
 
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
@@ -32,6 +34,7 @@ $numberOfRows = pg_num_rows($result);
 $scoreNeeded = pg_num_rows($result);
 
 echo "<script language=\"javascript\">";
+echo "var lastLevelID = $lastLevelID;";
 echo "var numberOfRows = $numberOfRows;";
 echo "var scoreNeeded = $numberOfRows;";
 echo "var questions = new Array();";
@@ -101,6 +104,8 @@ window.addEvent('domready', function()
 {
 	//APPLICATION
         mApplication = new Application();
+
+	mApplication.log("lastLevelID:" + lastLevelID);
  
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
