@@ -1697,6 +1697,19 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 _','2',24,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 2_','0',24,10);
 
+--level 25
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 _','2',25,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 2_','1',25,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 _','2',25,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 2_','2',25,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 _','2',25,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 2_','3',25,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 _','2',25,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 2_','4',25,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 _','2',25,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 2_','5',25,10);
+
+
 
 --==================================================================
 --================= GAMES ====================================
