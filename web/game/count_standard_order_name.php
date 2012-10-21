@@ -11,18 +11,67 @@
 
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
+include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_games_attempts.php");
+
+//db connection
+$conn = dbConnect();
+
+//query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
+$query = "select question, answer, question_order from questions where level_id = ";
+$query .= $_SESSION["last_level_id"];
+$query .= " ORDER BY question_order;";
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
 //game variables to fill from db
 $username = $_SESSION["username"];
 $next_level = $_SESSION["next_level"];
 
+//get numer of rows which will also be score needed
+$numberOfRows = pg_num_rows($result);
+$scoreNeeded = pg_num_rows($result);
+
+echo "<script language=\"javascript\">";
+echo "var numberOfRows = $numberOfRows;";
+echo "var scoreNeeded = $numberOfRows;";
+echo "var questions = new Array();";
+echo "var answers = new Array();";
+
+echo "</script>";
+
+$counter = 0;
+while ($row = pg_fetch_row($result))
+{
+        //fill php vars from db
+        $questions = $row[0];
+        $answers = $row[1];
+
+        echo "<script language=\"javascript\">";
+
+        echo "questions[$counter] = \"$questions\";";
+        echo "answers[$counter] = \"$answers\";";
+        echo "</script>";
+        $counter++;
+}
+
+
+//brian - get current date
+$_SESSION["game_start_time"] = date('Y-m-d H:i:s');
+$_SESSION["game_over"] = "false";
+
+//brian - attempt a game - still hardcoding game_id = 1
+insertIntoGamesAttempts($conn,$_SESSION["game_start_time"],1,$_SESSION["user_id"],$_SESSION["next_level"]);
+
 ?>
 
 <script language="javascript">
 
+var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-var scoreNeeded = Math.floor(Math.random()*10);
+
+
 
 </script>
 
@@ -64,7 +113,7 @@ window.addEvent('domready', function()
         mBounds = new Bounds(60,735,380,35);
 
        	mHud = new Hud();
-        mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+        mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>')e
 	mHud.mGameName.setText('<font size="2">DUNGEON</font>');	
 	
 	//GAME
@@ -74,29 +123,13 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-	//QUESTIONS FOR QUIZ
-        mQuiz.mQuestionArray.push(new Question('','One'));
-        mQuiz.mQuestionArray.push(new Question('','Two'));
-        mQuiz.mQuestionArray.push(new Question('','Three'));
-        mQuiz.mQuestionArray.push(new Question('','Four'));
-        mQuiz.mQuestionArray.push(new Question('','Five'));
-        mQuiz.mQuestionArray.push(new Question('','Six'));
-        mQuiz.mQuestionArray.push(new Question('','Seven'));
-        mQuiz.mQuestionArray.push(new Question('','Eight'));
-        mQuiz.mQuestionArray.push(new Question('','Nine'));
-        mQuiz.mQuestionArray.push(new Question('','Ten'));
-        mQuiz.mQuestionArray.push(new Question('','Eleven'));
-        mQuiz.mQuestionArray.push(new Question('','Twelve'));
-        mQuiz.mQuestionArray.push(new Question('','Thirteen'));
-        mQuiz.mQuestionArray.push(new Question('','Fourteen'));
-        mQuiz.mQuestionArray.push(new Question('','Fifteen'));
-        mQuiz.mQuestionArray.push(new Question('','Sixteen'));
-        mQuiz.mQuestionArray.push(new Question('','Seventeen'));
-        mQuiz.mQuestionArray.push(new Question('','Eighteen'));
-        mQuiz.mQuestionArray.push(new Question('','Nineteen'));
-        mQuiz.mQuestionArray.push(new Question('','Twenty'));
 
-       	mQuiz.mQuestionArray.push(new Question('', 'Open door with key.'));      
+        //QUESTIONS FOR QUIZ
+        for (i = 0; i < scoreNeeded; i++)
+        {
+                var question = new Question(questions[i],answers[i]);
+                mQuiz.mQuestionArray.push(question);
+        }
 
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
