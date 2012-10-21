@@ -1709,6 +1709,29 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 _','2',25,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 2_','5',25,10);
 
+--level 27
+insert into questions (question,answer,level_id,question_order) values ('','one',27,1);
+insert into questions (question,answer,level_id,question_order) values ('','two',27,2);
+insert into questions (question,answer,level_id,question_order) values ('','three',27,3);
+insert into questions (question,answer,level_id,question_order) values ('','four',27,4);
+insert into questions (question,answer,level_id,question_order) values ('','five',27,5);
+insert into questions (question,answer,level_id,question_order) values ('','six',27,6);
+insert into questions (question,answer,level_id,question_order) values ('','seven',27,7);
+insert into questions (question,answer,level_id,question_order) values ('','eight',27,8);
+insert into questions (question,answer,level_id,question_order) values ('','nine',27,9);
+insert into questions (question,answer,level_id,question_order) values ('','ten',27,10);
+
+--level 28
+insert into questions (question,answer,level_id,question_order) values ('','eleven',28,1);
+insert into questions (question,answer,level_id,question_order) values ('','twelve',28,2);
+insert into questions (question,answer,level_id,question_order) values ('','thirteen',28,3);
+insert into questions (question,answer,level_id,question_order) values ('','fourteen',28,4);
+insert into questions (question,answer,level_id,question_order) values ('','fifteen',28,5);
+insert into questions (question,answer,level_id,question_order) values ('','sixteen',28,6);
+insert into questions (question,answer,level_id,question_order) values ('','seventeen',28,7);
+insert into questions (question,answer,level_id,question_order) values ('','eighteen',28,8);
+insert into questions (question,answer,level_id,question_order) values ('','nineteen',28,9);
+insert into questions (question,answer,level_id,question_order) values ('','twenty',28,10);
 
 
 --==================================================================
