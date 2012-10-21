@@ -75,11 +75,6 @@ window.addEvent('domready', function()
 	mQuiz = new Quiz(scoreNeeded);
 	mGame.mQuiz = mQuiz;
 
-	//QUESTIONS FOR QUIZ
- 	//Math.floor(Math.random()*ySize)
-
-
-
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
@@ -91,8 +86,6 @@ window.addEvent('domready', function()
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
        	mQuiz.mQuestionArray.push(new Question('How many Frozen Red Monsters?', '' + Math.floor(Math.random()*20)));      
        	
-	mQuiz.mQuestionArray.push(new Question('Door is Open!', '0'));      
-
 	//CONTROL OBJECT
         mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 	mGame.mControlObject.createMountPoint(0,-5,-41);
