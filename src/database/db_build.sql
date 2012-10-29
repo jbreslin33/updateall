@@ -1672,7 +1672,6 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',1,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',1,10);
 
-
 --level_id 3  
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',3,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 11?','12',3,2);
@@ -1758,31 +1757,88 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 79?','80',9,10);
 
 --level_id 10  
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 80?','81',9,1);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 81?','82',9,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 82?','83',9,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 83?','85',9,4);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 84?','85',9,5);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 85?','86',9,6);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 86?','87',9,7);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 87?','88',9,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 88?','89',9,9);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 89?','90',9,10);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 80?','81',10,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 81?','82',10,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 82?','83',10,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 83?','85',10,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 84?','85',10,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 85?','86',10,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 86?','87',10,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 87?','88',10,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 88?','89',10,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 89?','90',10,10);
 
 --level_id 11  
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 90?','91',10,1);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 91?','92',10,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 92?','93',10,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 93?','95',10,4);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 94?','95',10,5);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 95?','96',10,6);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 96?','97',10,7);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 97?','98',10,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 98?','99',10,9);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 99?','100',10,10);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 90?','91',11,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 91?','92',11,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 92?','93',11,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 93?','95',11,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 94?','95',11,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 95?','96',11,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 96?','97',11,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 97?','98',11,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 98?','99',11,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 99?','100',11,10);
 
+--level_id 12
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 55?','56',12,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 56?','57',12,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 57?','58',12,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 58?','59',12,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 59?','60',12,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 60?','61',12,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 61?','62',12,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 62?','63',12,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 63?','65',12,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 64?','65',12,10);
 
+--level_id 13
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 12?','13',13,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 13?','14',13,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 14?','15',13,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15?','16',13,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 16?','17',13,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 17?','18',13,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 18?','19',13,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 19?','20',13,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20?','21',13,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 21?','22',13,10);
 
+--level_id 14
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',14,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',14,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',14,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',14,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',14,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',14,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',14,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',14,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',14,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 11?','12',14,10);
+
+--level_id 15
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 36?','37',15,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 37?','38',15,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 38?','39',15,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 39?','40',15,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 40?','41',15,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 41?','42',15,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 42?','43',15,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','45',15,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 44?','45',15,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 45?','46',15,10);
+
+--level_id 16
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 77?','78',16,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 78?','79',16,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 79?','80',16,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 80?','81',16,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 81?','82',16,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 82?','83',16,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 83?','85',16,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 84?','85',16,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 85?','86',16,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 86?','87',16,10);
 
 
 
