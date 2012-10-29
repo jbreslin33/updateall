@@ -234,36 +234,46 @@ var Shape = new Class(
 
 	update: function(delta)
 	{
-		//HIDE ON QUIZ COMPLETE
 		if (this.mGame.mQuiz)
 		{
-			if (this.mGame.mQuiz.isQuizComplete() && this.mHideOnQuizComplete == true)
+			//HIDE ON QUIZ COMPLETE
+ 			if (this.mHideOnQuizComplete)
                 	{
-				if (this.mMounter == 0)
+				if (this.mGame.mQuiz.isQuizComplete())
 				{
+					if (this.mMounter)
+					{
+						this.mMounter.unMount(0);
+					}
                                 	this.mCollisionOn = false;
                                        	this.setVisibility(false);
-                        	}
-                	}
-		}
-		
-		//SHOW ON QUIZ COMPLETE
-		if (this.mGame.mQuiz && this.mMounter == 0)
-		{
+				}
+				else
+				{
+                               		this.mCollisionOn = true;
+                               		this.setVisibility(true);
+				}
+			}
+				
+			//SHOW ON QUIZ COMPLETE
 			if (this.mShowOnlyOnQuizComplete)
 			{
 				if (this.mGame.mQuiz.isQuizComplete())
 				{
-                                	this.mCollisionOn = true;
-                                       	this.setVisibility(true);
+                               		this.mCollisionOn = true;
+                               		this.setVisibility(true);
 				}
-				else 
+				else
 				{
+	 				if (this.mMounter)
+					{
+						this.mMounter.unMount(0);
+					}			
                                 	this.mCollisionOn = false;
                                        	this.setVisibility(false);
-				}			
+				}
 			}
-		}
+		}	
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
 		if (this.mMounter)
