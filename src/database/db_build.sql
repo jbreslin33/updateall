@@ -1673,7 +1673,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',0,10);
 */
 
---level 1  
+--level_id 1  
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',1,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',1,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',1,3);
@@ -1686,7 +1686,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',1,10);
 
 
---level 3  
+--level_id 3  
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',3,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 11?','12',3,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 12?','13',3,3);
@@ -1697,6 +1697,43 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 17?','18',3,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 18?','19',3,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 19?','20',3,10);
+
+--level_id 4  
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 20?','21',4,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 21?','22',4,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 22?','23',4,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 23?','24',4,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 24?','25',4,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 25?','26',4,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 26?','27',4,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 27?','28',4,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 28?','29',4,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 29?','30',4,10);
+
+--level_id 5  
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 30?','31',5,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 31?','32',5,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 32?','33',5,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 33?','34',5,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 34?','35',5,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 35?','36',5,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 36?','37',5,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 37?','38',5,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 38?','39',5,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 39?','40',5,10);
+
+
+--level_id 6  
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 40?','41',6,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 41?','42',6,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 42?','43',6,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','45',6,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 44?','45',6,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 45?','46',6,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 46?','47',6,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 47?','48',6,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 48?','49',6,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 49?','50',6,10);
 
 --level 22
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',22,1);
@@ -1784,29 +1821,29 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src
 --count by 1's to 100
 insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
-insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (7,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (8,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/dundeon.php');
+insert into games_levels (level_id,game_id,url) values  (7,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (8,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/dungeon.php');
 
 ---count by 10's to 100
-insert into games_levels (level_id,game_id,url) values  (12,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (12,1,'/web/game/dungeon.php');
 
 --count from random known sequence
-insert into games_levels (level_id,game_id,url) values  (13,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (14,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (15,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (16,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (17,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (18,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (19,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (20,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/count.php'); --21
+insert into games_levels (level_id,game_id,url) values  (13,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (14,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (15,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (16,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (17,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (18,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (19,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (20,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/dungeon.php'); --21
 
 --Write numbers from 0 to 20. 
 insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_numbers.php'); --22
