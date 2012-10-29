@@ -17,7 +17,7 @@ $conn = dbConnect();
 
 //query the game table, eventually maybe there will be more than one result here which would be a choice of game for that level.
 $query = "select question, answer, question_order from questions where level_id = ";
-$query .= $_SESSION["last_level_id"];
+$query .= $_SESSION["next_level_id"];
 $query .= " ORDER BY question_order;";
 
 
