@@ -144,16 +144,17 @@ window.addEvent('domready', function()
         mGame.mControlObject.showQuestionObject(false);
 
         //text question mountee
-        var numberMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","numberMountee");
-	numberMountee.setMountable(true);
-	numberMountee.setHideOnDrop(true);
-        mGame.addToShapeArray(numberMountee);
+        var questionMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
+	questionMountee.setMountable(true);
+	questionMountee.setHideOnDrop(true);
+        mGame.addToShapeArray(questionMountee);
+	mGame.mControlObject.setStartingMountee(questionMountee);
 
         //do the mount
-        mGame.mControlObject.mount(numberMountee,0);
+        mGame.mControlObject.mount(questionMountee,0);
 
-        numberMountee.setBackgroundColor("transparent");
-	numberMountee.showQuestion(true);
+        questionMountee.setBackgroundColor("transparent");
+	questionMountee.showQuestion(true);
 
 	//question for key 
 	var keyQuestion = new Question('Pick up key.',"key");
@@ -190,15 +191,15 @@ window.addEvent('domready', function()
                 shape.showQuestion(false);
 
 		//numberMount to go on top let's make it small and draw it on top 
-                var numberMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","numberMountee");       
-		numberMountee.setMountable(true);
-                mGame.addToShapeArray(numberMountee); 
-                numberMountee.showQuestion(false);
+                var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");       
+		questionMountee.setMountable(true);
+                mGame.addToShapeArray(questionMountee); 
+                questionMountee.showQuestion(false);
                 
 		//do the mount  
-		shape.mount(numberMountee,0);
+		shape.mount(questionMountee,0);
 
-		numberMountee.setBackgroundColor("transparent");
+		questionMountee.setBackgroundColor("transparent");
 
                 count++;
         }

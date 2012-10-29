@@ -1659,6 +1659,45 @@ CREATE TABLE questions (
 */
 
 --QUESTIONS
+--level 0  
+/*
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',0,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',0,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',0,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',0,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',0,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',0,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',0,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',0,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',0,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',0,10);
+*/
+
+--level 1  
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',1,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',1,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',1,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',1,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',1,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',1,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',1,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',1,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',1,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',1,10);
+
+
+--level 3  
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',3,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 11?','12',3,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 12?','13',3,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 13?','14',3,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 14?','15',3,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 15?','16',3,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 16?','17',3,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 17?','18',3,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 18?','19',3,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 19?','20',3,10);
+
 --level 22
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',22,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 _','2',22,2);
@@ -1743,8 +1782,8 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src
 
 --GAMES_LEVELS
 --count by 1's to 100
-insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/count.php');
-insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/count.php');
+insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/count.php');
 insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/count.php');
