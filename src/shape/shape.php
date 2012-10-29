@@ -146,6 +146,12 @@ var Shape = new Class(
                        		{
                                 	this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
                         	}
+			
+				//mount your starting mountee
+				if (this.mStartingMountee)
+				{
+					this.mount(this.mStartingMountee,0);
+				}
 			}
                 }
 	},
@@ -199,6 +205,11 @@ var Shape = new Class(
         {
                 this.mGame.resetGame();
         },
+
+	setStartingMountee: function(mountee)
+	{
+		this.mStartingMountee = mountee;
+	},
 	
 	mount: function(mountee,slot)
 	{
