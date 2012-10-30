@@ -1840,7 +1840,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 85?','86',16,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 86?','87',16,10);
 
-level_id 17
+--level_id 17
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 68?','69',17,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 69?','70',17,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 70?','71',17,3);
