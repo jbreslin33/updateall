@@ -1,4 +1,5 @@
 <?php
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_title_mootools.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_top.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_control_object.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_key.php");
