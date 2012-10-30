@@ -1,4 +1,6 @@
 <?php
+<script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
+
 $number_of_chasers = $_GET['chasers'];
 echo "var chasers = $number_of_chasers;"; 
 ?>
