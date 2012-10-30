@@ -1996,7 +1996,7 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src
 
 --GAMES_LEVELS
 --count by 1's to 100
-insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.php?chasers=3');
 insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/dungeon.php');

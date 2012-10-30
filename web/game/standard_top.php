@@ -77,7 +77,6 @@ var next_level = "<?php echo $next_level; ?>";
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
-<script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
