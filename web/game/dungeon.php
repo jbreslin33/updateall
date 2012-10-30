@@ -1,30 +1,9 @@
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_top.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_control_object.php");
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_key.php");
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_door.php");
 ?>
-	//question for key 
-	var keyQuestion = new Question('Pick up key.',"key");
-	mQuiz.mQuestionArray.push(keyQuestion);
-
-	//KEY
-       	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
- 	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
-	key.setVisibility(false);
-	key.mShowOnlyOnQuizComplete = true;
-	key.mMountable = true;
-	key.setHideOnQuestionSolved(false);
-	mGame.addToShapeArray(key);
-
-	//question for door 
-	var doorQuestion = new Question('Open door with key.',"door");
-	mQuiz.mQuestionArray.push(doorQuestion);
-
-	//DOOR
-       	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-	door.mUrl = '/src/database/goto_next_level.php';
-	door.mOpenOnQuestionSolved = true;
-	mGame.addToShapeArray(door);
 
 	//QUESTION SHAPES 
         count = 0;
