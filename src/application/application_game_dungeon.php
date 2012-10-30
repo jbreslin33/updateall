@@ -33,7 +33,7 @@ Extends: ApplicationGame,
         	mGame.addToShapeArray(door);
 
 		//create question shapes
-		this.createQuestionShapes();
+		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
 
 		//************************CHASERS	
 		for (i = 0; i < 0; i++)
@@ -73,14 +73,14 @@ Extends: ApplicationGame,
         	questionMountee.showQuestion(true);
 	},
 
-	createQuestionShapes: function()
+	createQuestionShapes: function(image_source)
 	{
                 count = 0;
                 for (i = 0; i < numberOfRows; i++)
                 {
                         var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),image_source,"","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
