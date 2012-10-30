@@ -2000,7 +2000,7 @@ insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.
 insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/dungeon.php');
-insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/dundeon.php');
+insert into games_levels (level_id,game_id,url) values  (6,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (7,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (8,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/dungeon.php');

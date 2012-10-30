@@ -50,7 +50,7 @@ while ($row = pg_fetch_row($result))
 	echo "<script language=\"javascript\">";
 	
 	echo "game_name[$counter] = \"$game_name\";";
-	echo "url[$counter] = \"$url?game_id=$row[3]\";";
+	echo "url[$counter] = \"$url?game_id=$game_id\";";
 	echo "picture_open[$counter] = \"$picture_open\";";
 	echo "picture_closed[$counter] = \"$picture_closed\";";
 	echo "</script>";
