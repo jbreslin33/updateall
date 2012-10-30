@@ -1,9 +1,3 @@
-
-<?php
-include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
-?>
-
-
 <?php
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_games_attempts.php");
