@@ -17,7 +17,7 @@ window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new Application();
+        mApplication = new ApplicationGame();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
