@@ -1949,6 +1949,19 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 _','2',25,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 2_','5',25,10);
 
+--level_id 26
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','2',26,1);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','7',26,2);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','3',26,3);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','10',26,4);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','12',26,5);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','5',26,6);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','13',26,7);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','17',26,8);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','14',26,9);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','4',26,10);
+
+
 --level_id 27
 insert into questions (question,answer,level_id,question_order) values ('','one',27,1);
 insert into questions (question,answer,level_id,question_order) values ('','two',27,2);
