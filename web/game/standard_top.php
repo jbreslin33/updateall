@@ -15,6 +15,7 @@ var mApplication;
 
 window.addEvent('domready', function()
 {
+
         //APPLICATION
         mApplication = new Application();
 
@@ -42,3 +43,4 @@ window.addEvent('domready', function()
                 var question = new Question(questions[i],answers[i]);
                 mQuiz.mQuestionArray.push(question);
         }
+
