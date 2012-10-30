@@ -1,9 +1,3 @@
-<html>
-<head>
-<title>ABC AND YOU</title>
-
-<!-- mootools -->
-<script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
@@ -29,6 +23,19 @@ $next_level = $_SESSION["next_level"];
 //get numer of rows which will also be score needed
 $numberOfRows = pg_num_rows($result);
 $scoreNeeded = pg_num_rows($result);
+
+?>
+
+
+<html>
+<head>
+<title>ABC AND YOU</title>
+
+<!-- mootools -->
+<script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
+
+
+<?php
 
 echo "<script language=\"javascript\">";
 echo "var numberOfRows = $numberOfRows;";
