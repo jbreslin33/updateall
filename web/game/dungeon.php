@@ -10,6 +10,7 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
+<!-- HUD VARIABLES    -->
 <script language="javascript">
 var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
@@ -21,6 +22,8 @@ var next_level = "<?php echo $next_level; ?>";
 <body bgcolor="grey">
 
 <script language="javascript">
+
+
 var mGame;
 var mApplication;
 
