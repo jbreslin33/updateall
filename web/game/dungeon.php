@@ -9,6 +9,7 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_question_query.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_top.php");
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_constructors.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_control_object.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_key.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_door.php");

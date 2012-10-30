@@ -12,4 +12,3 @@
 <script type="text/javascript" src="/src/question/question.php"></script>
 <script type="text/javascript" src="/src/quiz/quiz.php"></script>
 <script type="text/javascript" src="/src/hud/hud.php"></script>
-
