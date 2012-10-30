@@ -11,6 +11,7 @@
 --====================== GAMES  =============================
 --==================================================================
 
+DROP TABLE games_levels_dungeon cascade;
 DROP TABLE games_levels cascade;
 DROP TABLE games_attempts cascade;
 DROP TABLE games cascade;
@@ -332,6 +333,13 @@ CREATE TABLE games_attempts (
 	score integer DEFAULT 0 NOT NULL
 );
 
+--GAMES_LEVELS_DUNGEON
+CREATE TABLE games_levels_dungeon (
+    id integer NOT NULL,
+    chasers integer NOT NULL,
+    games_levels_id integer NOT NULL
+);
+
 
 --==================================================================
 --================= ENVIRONMENT  ====================================
@@ -569,6 +577,14 @@ CREATE SEQUENCE games_levels_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--GAMES_LEVELS_DUNGEON
+CREATE SEQUENCE games_levels_dungeon_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --GAMES_ATTEMPTS
 CREATE SEQUENCE games_attempts_id_seq
     START WITH 1
@@ -686,6 +702,9 @@ ALTER TABLE public.games OWNER TO postgres;
 
 --GAMES_LEVELS
 ALTER TABLE public.games_levels OWNER TO postgres;
+
+--GAMES_LEVELS_DUNGEON
+ALTER TABLE public.games_levels_dungeon OWNER TO postgres;
 
 --GAMES_ATTEMPTS
 ALTER TABLE public.games_attempts OWNER TO postgres;
@@ -837,6 +856,11 @@ ALTER TABLE public.games_levels_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_levels_id_seq OWNED BY games_levels.id;
 ALTER TABLE ONLY games_levels ALTER COLUMN id SET DEFAULT nextval('games_levels_id_seq'::regclass);
 
+--GAMES_LEVELS_DUNGEON
+ALTER TABLE public.games_levels_dungeon_id_seq OWNER TO postgres;
+ALTER SEQUENCE games_levels_dungeon_id_seq OWNED BY games_levels_dungeon.id;
+ALTER TABLE ONLY games_levels_dungeon ALTER COLUMN id SET DEFAULT nextval('games_levels_dungeon_id_seq'::regclass);
+
 --GAMES_ATTEMPTS
 ALTER TABLE public.games_attempts_id_seq OWNER TO postgres;
 ALTER SEQUENCE games_attempts_id_seq OWNED BY games_attempts.id;
@@ -952,6 +976,9 @@ ALTER TABLE games ADD PRIMARY KEY (id);
 --GAMES_LEVELS
 ALTER TABLE games_levels ADD PRIMARY KEY (id);
 
+--GAMES_LEVELS_DUNGEON
+ALTER TABLE games_levels_dungeon ADD PRIMARY KEY (id);
+
 --GAMES_ATTEMPTS
 ALTER TABLE games_attempts ADD PRIMARY KEY (id);
 
@@ -1060,6 +1087,9 @@ ALTER TABLE questions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 --GAMES_LEVELS
 ALTER TABLE games_levels ADD FOREIGN KEY (game_id) REFERENCES games(id);
 ALTER TABLE games_levels ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--GAMES_LEVELS_DUNGEON
+ALTER TABLE games_levels_dungeon ADD FOREIGN KEY (games_levels_id) REFERENCES games_levels(id);
 
 --GAMES_ATTEMPTS
 ALTER TABLE games_attempts ADD FOREIGN KEY (game_id) REFERENCES games(id);
@@ -2007,6 +2037,7 @@ insert into games_levels (level_id,game_id,url) values  (9,1,'/web/game/dungeon.
 insert into games_levels (level_id,game_id,url) values  (10,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (11,1,'/web/game/dungeon.php');
 
+
 ---count by 10's to 100
 insert into games_levels (level_id,game_id,url) values  (12,1,'/web/game/dungeon.php');
 
@@ -2087,6 +2118,8 @@ insert into games_levels (level_id,game_id,url) values  (37,1,'/web/game/greater
 --two, three, four, five, six, seven, eight, or nine ones.
 
 
+--GAMES_LEVELS_DUNGEON
+insert into games_levels_dungeon (chasers,games_levels_id) values  (3,1);
 
 
 --GAMES_ATTEMPTS
