@@ -30,10 +30,14 @@ Extends: Application,
         	}
         },
 
-        createControlObject: function()
+        createControlObject: function(image_source)
+        {
+        
+	},
+
+        createQuestionShapes: function()
         {
         
 	}
-
 });
 
