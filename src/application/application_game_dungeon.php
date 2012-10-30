@@ -1,27 +1,16 @@
-
-<script language="javascript">
-var curDate = "<?php echo $curDate; ?>";
-var username = "<?php echo $username; ?>";
-var next_level = "<?php echo $next_level; ?>";
-
-</script>
-</head>
-
-<body bgcolor="grey">
-
-<script language="javascript">
-var mGame;
-var mApplication;
-
-window.addEvent('domready', function()
+var ApplicationGame = new Class(
 {
 
-        //APPLICATION
-        mApplication = new ApplicationGame();
-        //KEYS
+Extends: Application,
+
+        initialize: function()
+        {
+                this.parent();
+	
+	//KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
-/*
+
         //BOUNDS AND HUD COMBO
         mBounds = new Bounds(60,735,380,35);
 
@@ -42,4 +31,15 @@ window.addEvent('domready', function()
                 var question = new Question(questions[i],answers[i]);
                 mQuiz.mQuestionArray.push(question);
         }
-*/
+
+
+
+        },
+
+        update: function()
+        {
+        
+	}
+
+});
+
