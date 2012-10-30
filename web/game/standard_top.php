@@ -1,6 +1,10 @@
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
+?>
+
+
+<?php
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_games_attempts.php");
 
@@ -27,12 +31,6 @@ $scoreNeeded = pg_num_rows($result);
 ?>
 
 
-<html>
-<head>
-<title>ABC AND YOU</title>
-
-<!-- mootools -->
-<script type="text/javascript" src="/src/mootools/mootools-core-1.4.5-full-compat.js"></script>
 
 
 <?php
@@ -59,6 +57,10 @@ while ($row = pg_fetch_row($result))
         echo "</script>";
         $counter++;
 }
+
+
+
+
 
 //brian - get current date
 $_SESSION["game_start_time"] = date('Y-m-d H:i:s');
