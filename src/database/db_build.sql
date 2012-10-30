@@ -1891,7 +1891,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 --level_id 21
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 41?','42',21,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 42?','43',21,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','45',21,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','44',21,3);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 44?','45',21,4);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 45?','46',21,5);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 46?','47',21,6);
@@ -2010,10 +2010,10 @@ insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/dungeon
 insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/dungeon.php'); --21
 
 --Write numbers from 0 to 20. 
-insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/write_numbers.php'); --22
-insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/write_numbers.php'); --23
-insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/write_numbers.php'); --24
-insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/write_numbers.php'); --25
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/dungeon.php'); --22
+insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/dungeon.php'); --23
+insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/dungeon.php'); --24
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/dungeon.php'); --25
 
 --Represent a number of objects with a
 --written numeral 0-20 (with 0 representing a count of no objects).
