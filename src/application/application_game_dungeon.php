@@ -7,6 +7,7 @@ Extends: ApplicationGame,
 	{
        		this.parent();
 
+		//create control object
 		this.createControlObject("/images/characters/wizard.png");
 
         	//*****************KEY
@@ -31,37 +32,17 @@ Extends: ApplicationGame,
         	door.mOpenOnQuestionSolved = true;
         	mGame.addToShapeArray(door);
 
- 		//*******************QUESTION SHAPES
-        	count = 0;
-        	for (i = 0; i < numberOfRows; i++)
-        	{
-                	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                	var shape;
-                	mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
-                	shape.createMountPoint(0,-5,-41);
-                	shape.showQuestion(false);
+		//create question shapes
+		this.createQuestionShapes();
 
-                	//numberMount to go on top let's make it small and draw it on top
-                	var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
-                	questionMountee.setMountable(true);
-                	mGame.addToShapeArray(questionMountee);
-                	questionMountee.showQuestion(false);
-
-                	//do the mount
-                	shape.mount(questionMountee,0);
-
-                	questionMountee.setBackgroundColor("transparent");
-
-                	count++;
-	}
-	
-	for (i = 0; i < 0; i++)
-	{
-		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-       		var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
-        	mGame.addToShapeArray(shape);
-	}	 
-},
+		//************************CHASERS	
+		for (i = 0; i < 0; i++)
+		{
+			var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+       			var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
+        		mGame.addToShapeArray(shape);
+		}	 
+	},
 
 	createControlObject: function(image_source)
 	{
@@ -90,6 +71,34 @@ Extends: ApplicationGame,
 
         	questionMountee.setBackgroundColor("transparent");
         	questionMountee.showQuestion(true);
+	},
+
+	createQuestionShapes: function()
+	{
+                count = 0;
+                for (i = 0; i < numberOfRows; i++)
+                {
+                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape;
+                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+                        shape.createMountPoint(0,-5,-41);
+                        shape.showQuestion(false);
+
+                        //numberMount to go on top let's make it small and draw it on top
+                        var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        questionMountee.setMountable(true);
+                        mGame.addToShapeArray(questionMountee);
+                        questionMountee.showQuestion(false);
+
+                        //do the mount
+                        shape.mount(questionMountee,0);
+
+                        questionMountee.setBackgroundColor("transparent");
+
+                        count++;
+                }
 	}
+
+	
 });
 
