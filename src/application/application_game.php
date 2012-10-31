@@ -10,16 +10,14 @@ Extends: Application,
 		//create bounds
 		this.createBounds(60,735,380,35);
 
-        	mHud = new Hud();
-        	mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
-        	mHud.mGameName.setText('<font size="2">DUNGEON</font>');
+		//create hud
+		this.createHud();
 
-        	//GAME
-        	mGame = new Game("hardcode");
+		//create game
+		this.createGame("Game");
 
-        	//QUIZ
-        	mQuiz = new Quiz(scoreNeeded);
-        	mGame.mQuiz = mQuiz;
+		//create quiz
+		this.createQuiz(scoreNeeded);
 
         	//QUESTIONS FOR QUIZ
         	for (i = 0; i < scoreNeeded; i++)
@@ -32,6 +30,24 @@ Extends: Application,
 	createBounds: function(north,east,south,west)
 	{
         	mBounds = new Bounds(north,east,south,west);
+	},
+
+	createHud: function()
+	{
+        	mHud = new Hud();
+        	mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+        	mHud.mGameName.setText('<font size="2">DUNGEON</font>');
+	},
+
+	createGame: function()
+	{
+        	mGame = new Game("Game");
+	},
+
+	createQuiz: function(score_needed)
+	{
+        	mQuiz = new Quiz(score_needed);
+        	mGame.mQuiz = mQuiz;
 	},
 
         createControlObject: function(image_source)
