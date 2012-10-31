@@ -10,33 +10,11 @@ Extends: ApplicationGame,
 		//create control object
 		this.createControlObject("/images/characters/wizard.png");
 
-        	//*****************KEY
-        	var keyQuestion = new Question('Pick up key.',"key");
-        	mQuiz.mQuestionArray.push(keyQuestion);
-
-        	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
-        	key.setVisibility(false);
-        	key.mShowOnlyOnQuizComplete = true;
-       	 	key.mMountable = true;
-        	key.setHideOnQuestionSolved(false);
-        	mGame.addToShapeArray(key);
+		//create key
+		this.createKey("/images/key/key_dungeon.gif");
 	
-        	//*****************DOOR
-        	var doorQuestion = new Question('Open door with key.',"door");
-        	mQuiz.mQuestionArray.push(doorQuestion);
-
-        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,"/images/doors/door_closed.png","","door","/images/doors/door_open.png");
-        	door.mUrl = '/src/database/goto_next_level.php';
-        	door.mOpenOnQuestionSolved = true;
-        	mGame.addToShapeArray(door);
-
-		//create question shapes
-		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
-
-		//create chasers
-		this.createChasers("/images/monster/red_monster.png");
+		//create door	
+		this.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
 	},
 
 	createControlObject: function(image_source)
@@ -103,8 +81,39 @@ Extends: ApplicationGame,
                         mGame.addToShapeArray(shape);
                 }
 
-	}
+	},
 
-	
+	createKey: function(image_source)
+	{
+        	var keyQuestion = new Question('Pick up key.',"key");
+        	mQuiz.mQuestionArray.push(keyQuestion);
+
+        	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
+        	key.setVisibility(false);
+        	key.mShowOnlyOnQuizComplete = true;
+       	 	key.mMountable = true;
+        	key.setHideOnQuestionSolved(false);
+        	mGame.addToShapeArray(key);
+	},
+
+	createDoor: function(image_source_closed,image_source_open)
+	{
+        	var doorQuestion = new Question('Open door with key.',"door");
+        	mQuiz.mQuestionArray.push(doorQuestion);
+
+        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,image_source_closed,"","door",image_source_open);
+        	door.mUrl = '/src/database/goto_next_level.php';
+        	door.mOpenOnQuestionSolved = true;
+        	mGame.addToShapeArray(door);
+
+		//create question shapes
+		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
+
+		//create chasers
+		this.createChasers("/images/monster/red_monster.png");
+	}
+		
 });
 
