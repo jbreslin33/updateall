@@ -35,13 +35,8 @@ Extends: ApplicationGame,
 		//create question shapes
 		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
 
-		//************************CHASERS	
-		for (i = 0; i < 0; i++)
-		{
-			var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-       			var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","chaser");
-        		mGame.addToShapeArray(shape);
-		}	 
+		//create chasers
+		this.createChasers("/images/monster/red_monster.png");
 	},
 
 	createControlObject: function(image_source)
@@ -97,6 +92,17 @@ Extends: ApplicationGame,
 
                         count++;
                 }
+	},
+
+	createChasers: function(image_source)
+	{
+                for (i = 0; i < 0; i++)
+                {
+                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"",image_source,"","chaser");
+                        mGame.addToShapeArray(shape);
+                }
+
 	}
 
 	
