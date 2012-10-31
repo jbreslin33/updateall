@@ -19,12 +19,8 @@ Extends: Application,
 		//create quiz
 		this.createQuiz(scoreNeeded);
 
-        	//QUESTIONS FOR QUIZ
-        	for (i = 0; i < scoreNeeded; i++)
-        	{
-                	var question = new Question(questions[i],answers[i]);
-                	mQuiz.mQuestionArray.push(question);
-        	}
+		//create questions
+		this.createQuestions();
         },
 
 	createBounds: function(north,east,south,west)
@@ -48,6 +44,15 @@ Extends: Application,
 	{
         	mQuiz = new Quiz(score_needed);
         	mGame.mQuiz = mQuiz;
+	},
+
+	createQuestions: function()
+	{
+        	for (i = 0; i < scoreNeeded; i++)
+        	{
+                	var question = new Question(questions[i],answers[i]);
+                	mQuiz.mQuestionArray.push(question);
+        	}
 	},
 
         createControlObject: function(image_source)
