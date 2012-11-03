@@ -17,7 +17,7 @@ Extends: Application,
 		this.createGame("Game");
 
 		//create quiz
-		this.createQuiz(scoreNeeded);
+		this.createQuiz();
 
 		//create questions
 		this.createQuestions();
@@ -40,9 +40,9 @@ Extends: Application,
         	mGame = new Game("Game");
 	},
 
-	createQuiz: function(score_needed)
+	createQuiz: function()
 	{
-        	mQuiz = new Quiz(score_needed);
+        	mQuiz = new Quiz(scoreNeeded);
         	mGame.mQuiz = mQuiz;
 	},
 

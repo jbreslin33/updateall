@@ -4,6 +4,7 @@
 <script type="text/javascript" src="/src/application/application.php"></script>
 <script type="text/javascript" src="/src/application/application_game.php"></script>
 <script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
+<script type="text/javascript" src="/src/application/application_game_chooser.php"></script>
 <script type="text/javascript" src="/src/animation/animation.php"></script>
 <script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
 <script type="text/javascript" src="/src/shape/shape.php"></script>
