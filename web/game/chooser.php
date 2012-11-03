@@ -6,16 +6,16 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
-?>
-
-<?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_sessions.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
+
 ?>
 
 <!-- HUD VARIABLES    -->
 <script language="javascript">
+var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
+var next_level = "<?php echo $next_level; ?>";
 </script>
 
 </head>
