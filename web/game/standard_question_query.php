@@ -8,10 +8,6 @@ $query .= " ORDER BY question_order;";
 //get db result
 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
 
-//game variables to fill from db
-$username = $_SESSION["username"];
-$next_level = $_SESSION["next_level"];
-
 //get numer of rows which will also be score needed
 $numberOfRows = pg_num_rows($result);
 $scoreNeeded = pg_num_rows($result);

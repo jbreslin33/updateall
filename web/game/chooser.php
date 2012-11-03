@@ -6,12 +6,10 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
-
-//game variables to fill from db
-$username = $_SESSION["username"];
 ?>
 
 <?php
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_sessions.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
