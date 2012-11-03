@@ -6,6 +6,7 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_sessions.php");
+//don't need games_query
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_question_query.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
