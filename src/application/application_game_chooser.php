@@ -13,12 +13,8 @@ Extends: ApplicationGame,
 		//create key
 		//this.createKey("/images/key/key_dungeon.gif");
 	
-		//create door	
-//		var numberOfRows = 1;
-//		for (i = 1; i < numberOfRows + 1; i++)
-//		{ 
-			this.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
-//		}
+		//create doors	
+		this.createDoors();
 	},
 
 	createControlObject: function(image_source)
@@ -49,25 +45,20 @@ Extends: ApplicationGame,
                 }
 
 	},
-
-	createDoor: function(image_source_closed,image_source_open)
+	
+	createDoors: function()
 	{
-        	var doorQuestion = new Question('Open door with key.',"door");
-        	mQuiz.mQuestionArray.push(doorQuestion);
+		for (i = 0; i < numberOfRows; i++)
+		{
+        		var doorQuestion = new Question('Open door with key.',"door");
+        		mQuiz.mQuestionArray.push(doorQuestion);
 
-        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,image_source_closed,"","door",image_source_open);
-        	//door.mUrl = '/src/database/goto_next_level.php';
-		//door.mUrl = url[i-1];
-		door.mUrl = url[0];
-        	door.mOpenOnQuestionSolved = true;
-        	mGame.addToShapeArray(door);
-
-		//create question shapes
-		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
-
-		//create chasers
-		this.createChasers("/images/monster/red_monster.png");
+        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+        		var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,picture_closed[i],"","door",picture_open[i]);
+			door.mUrl = url[0];
+        		door.mOpenOnQuestionSolved = true;
+        		mGame.addToShapeArray(door);
+		}
 	},
 
         createHud: function()
