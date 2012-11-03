@@ -15,14 +15,13 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 var curDate = "<?php echo $curDate; ?>";
 var username = "<?php echo $username; ?>";
 var next_level = "<?php echo $next_level; ?>";
-
 </script>
+
 </head>
 
 <body bgcolor="grey">
 
 <script language="javascript">
-
 
 var mGame;
 var mApplication;
