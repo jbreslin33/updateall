@@ -5,10 +5,11 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 //db connection
 $conn = dbConnect();
 
-include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_sessions.php");
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
+//question_query????
+//don't need games_attempts...
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
-
 ?>
 
 <!-- HUD VARIABLES    -->
