@@ -7,36 +7,25 @@ $conn = dbConnect();
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
 
-
 //game variables to fill from db
 $username = $_SESSION["username"];
-
 ?>
 
+<?php
+include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
+?>
+
+<!-- HUD VARIABLES    -->
 <script language="javascript">
-
 var username = "<?php echo $username; ?>";
-
 </script>
-
-<script type="text/javascript" src="/src/math/point2D.php"></script>
-<script type="text/javascript" src="/src/bounds/bounds.php"></script>
-<script type="text/javascript" src="/src/game/game.php"></script>
-<script type="text/javascript" src="/src/application/application.php"></script>
-<script type="text/javascript" src="/src/shape/shape.php"></script>
-<script type="text/javascript" src="/src/shape/shape_door.php"></script>
-<script type="text/javascript" src="/src/animation/animation.php"></script>
-<script type="text/javascript" src="/src/animation/animation_advanced.php"></script>
-<script type="text/javascript" src="/src/div/div.php"></script>
-<script type="text/javascript" src="/src/question/question.php"></script>
-<script type="text/javascript" src="/src/quiz/quiz.php"></script>
-<script type="text/javascript" src="/src/hud/hud.php"></script>
 
 </head>
 
 <body bgcolor="grey">
 
 <script language="javascript">
+
 var mGame;
 var mApplication;
 
