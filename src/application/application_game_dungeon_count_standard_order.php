@@ -1,4 +1,4 @@
-var ApplicationGameDungeonRepresent = new Class(
+var ApplicationGameDungeonCountStandardOrder = new Class(
 {
 
 Extends: ApplicationGameDungeon,
