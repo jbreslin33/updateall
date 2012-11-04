@@ -1742,7 +1742,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 40?','41',6,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 41?','42',6,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 42?','43',6,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','45',6,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 43?','44',6,4);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 44?','45',6,5);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 45?','46',6,6);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 46?','47',6,7);
