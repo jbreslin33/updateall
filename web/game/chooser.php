@@ -1,9 +1,13 @@
 <?php
+//------------standard top of file
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_title_mootools.php");
+
+//-----------------database
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 
 //db connection
 $conn = dbConnect();
+
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_sessions.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
@@ -13,13 +17,7 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
 <script type="text/javascript" src="/src/application/application_game_chooser.php"></script>
-
-<!-- HUD VARIABLES    -->
-<script language="javascript">
-var curDate = "<?php echo $curDate; ?>";
-var username = "<?php echo $username; ?>";
-var next_level = "<?php echo $next_level; ?>";
-</script>
+<script type="text/javascript" src="/web/game/standard_game_hud.php"></script>
 
 </head>
 
