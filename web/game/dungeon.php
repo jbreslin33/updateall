@@ -13,7 +13,13 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
 <script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
-<script type="text/javascript" src="/web/game/standard_game_hud.php"></script>
+
+<!-- HUD VARIABLES    -->
+<script language="javascript">
+var curDate = "<?php echo $curDate; ?>";
+var username = "<?php echo $username; ?>";
+var next_level = "<?php echo $next_level; ?>";
+</script>
 
 </head>
 
