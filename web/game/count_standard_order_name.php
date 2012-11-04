@@ -14,7 +14,9 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 
 <script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
 <script type="text/javascript" src="/src/application/application_game_dungeon_count_standard_order.php"></script>
-<script type="text/javascript" src="/src/shape/shape_countee.php"></script>
+<script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
+<script type="text/javascript" src="/src/shape/shape_dropbox_count.php"></script>
+
 
 <!-- HUD VARIABLES    -->
 <script language="javascript">
