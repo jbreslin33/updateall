@@ -13,13 +13,7 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
 <script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
-
-<!-- HUD VARIABLES    -->
-<script language="javascript">
-var curDate = "<?php echo $curDate; ?>";
-var username = "<?php echo $username; ?>";
-var next_level = "<?php echo $next_level; ?>";
-</script>
+<script type="text/javascript" src="/web/game/standard_game_hud.php"></script>
 
 </head>
 
@@ -32,15 +26,13 @@ var mApplication;
 
 window.addEvent('domready', function()
 {
-
         //APPLICATION
         mApplication = new ApplicationGameDungeon();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
-
 <?php
+
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");
 ?>
-
