@@ -1,6 +1,3 @@
-:wq
-
-
 </head>
 
 <body bgcolor="grey">

@@ -2057,10 +2057,10 @@ insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/dungeon
 insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/dungeon.php'); --22
 insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/dungeon.php'); --23
 insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/dungeon.php'); --24
-insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/dungeon.php'); --25
 
 --Represent a number of objects with a
 --written numeral 0-20 (with 0 representing a count of no objects).
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/represent_0_20.php'); --25
 insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php'); --26
 
 --When counting objects, say the number names in the standard
