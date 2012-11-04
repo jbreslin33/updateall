@@ -191,13 +191,16 @@ var Shape = new Class(
         {
 		if (this.mQuestion)
 		{
-			this.mQuestion.setSolved(true);
-			if (this.mHideOnQuestionSolved)
-        		{
-                		this.mCollisionOn = false;
-                        	this.setVisibility(false);
-                	}
-			this.mGame.correctAnswer();
+			if (this.mQuestion.getSolved() == false)
+			{
+				this.mQuestion.setSolved(true);
+				if (this.mHideOnQuestionSolved)
+        			{
+                			this.mCollisionOn = false;
+                        		this.setVisibility(false);
+                		}
+				this.mGame.correctAnswer();
+			}
 		}
         },
 
