@@ -12,6 +12,8 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
+<script type="text/javascript" src="/src/application/application_game_dungeon_represent.php"></script>
+
 <!-- HUD VARIABLES    -->
 <script language="javascript">
 var curDate = "<?php echo $curDate; ?>";
@@ -32,7 +34,7 @@ window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new ApplicationGameDungeon();
+        mApplication = new ApplicationGameDungeonRepresent();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
