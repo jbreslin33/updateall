@@ -12,6 +12,8 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_query.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
+<script type="text/javascript" src="/src/application/application_game_chooser.php"></script>
+
 <!-- HUD VARIABLES    -->
 <script language="javascript">
 var curDate = "<?php echo $curDate; ?>";
