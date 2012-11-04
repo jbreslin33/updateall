@@ -1991,30 +1991,41 @@ insert into questions (question,answer,level_id,question_order) values ('How man
 insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','14',26,9);
 insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','4',26,10);
 
-
 --level_id 27
-insert into questions (question,answer,level_id,question_order) values ('','one',27,1);
-insert into questions (question,answer,level_id,question_order) values ('','two',27,2);
-insert into questions (question,answer,level_id,question_order) values ('','three',27,3);
-insert into questions (question,answer,level_id,question_order) values ('','four',27,4);
-insert into questions (question,answer,level_id,question_order) values ('','five',27,5);
-insert into questions (question,answer,level_id,question_order) values ('','six',27,6);
-insert into questions (question,answer,level_id,question_order) values ('','seven',27,7);
-insert into questions (question,answer,level_id,question_order) values ('','eight',27,8);
-insert into questions (question,answer,level_id,question_order) values ('','nine',27,9);
-insert into questions (question,answer,level_id,question_order) values ('','ten',27,10);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','6',27,1);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','2',27,2);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','8',27,3);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','1',27,4);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','8',27,5);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','10',27,6);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','17',27,7);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','15',27,8);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','4',27,9);
+insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','9',27,10);
 
 --level_id 28
-insert into questions (question,answer,level_id,question_order) values ('','eleven',28,1);
-insert into questions (question,answer,level_id,question_order) values ('','twelve',28,2);
-insert into questions (question,answer,level_id,question_order) values ('','thirteen',28,3);
-insert into questions (question,answer,level_id,question_order) values ('','fourteen',28,4);
-insert into questions (question,answer,level_id,question_order) values ('','fifteen',28,5);
-insert into questions (question,answer,level_id,question_order) values ('','sixteen',28,6);
-insert into questions (question,answer,level_id,question_order) values ('','seventeen',28,7);
-insert into questions (question,answer,level_id,question_order) values ('','eighteen',28,8);
-insert into questions (question,answer,level_id,question_order) values ('','nineteen',28,9);
-insert into questions (question,answer,level_id,question_order) values ('','twenty',28,10);
+insert into questions (question,answer,level_id,question_order) values ('','one',28,1);
+insert into questions (question,answer,level_id,question_order) values ('','two',28,2);
+insert into questions (question,answer,level_id,question_order) values ('','three',28,3);
+insert into questions (question,answer,level_id,question_order) values ('','four',28,4);
+insert into questions (question,answer,level_id,question_order) values ('','five',28,5);
+insert into questions (question,answer,level_id,question_order) values ('','six',28,6);
+insert into questions (question,answer,level_id,question_order) values ('','seven',28,7);
+insert into questions (question,answer,level_id,question_order) values ('','eight',28,8);
+insert into questions (question,answer,level_id,question_order) values ('','nine',28,9);
+insert into questions (question,answer,level_id,question_order) values ('','ten',28,10);
+
+--level_id 29
+insert into questions (question,answer,level_id,question_order) values ('','eleven',29,1);
+insert into questions (question,answer,level_id,question_order) values ('','twelve',29,2);
+insert into questions (question,answer,level_id,question_order) values ('','thirteen',29,3);
+insert into questions (question,answer,level_id,question_order) values ('','fourteen',29,4);
+insert into questions (question,answer,level_id,question_order) values ('','fifteen',29,5);
+insert into questions (question,answer,level_id,question_order) values ('','sixteen',29,6);
+insert into questions (question,answer,level_id,question_order) values ('','seventeen',29,7);
+insert into questions (question,answer,level_id,question_order) values ('','eighteen',29,8);
+insert into questions (question,answer,level_id,question_order) values ('','nineteen',29,9);
+insert into questions (question,answer,level_id,question_order) values ('','twenty',29,10);
 
 
 --==================================================================
