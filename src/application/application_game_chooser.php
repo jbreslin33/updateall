@@ -10,9 +10,6 @@ Extends: ApplicationGame,
 		//create control object
 		this.createControlObject("/images/characters/wizard.png");
 
-		//create key
-		//this.createKey("/images/key/key_dungeon.gif");
-	
 		//create doors	
 		this.createDoors();
 	},
@@ -32,7 +29,6 @@ Extends: ApplicationGame,
 
 	createQuestionShapes: function(image_source)
 	{
-	
 	},
 
 	createChasers: function(image_source)
@@ -80,6 +76,4 @@ Extends: ApplicationGame,
 	{
 	
 	}
-
-		
 });
