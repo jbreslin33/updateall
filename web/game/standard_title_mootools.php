@@ -7,8 +7,4 @@
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/login/check_login.php");
-
-
 ?>
-
-
