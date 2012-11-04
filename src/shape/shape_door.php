@@ -71,7 +71,6 @@ Extends: Shape,
 	
 	setOpenDoor: function(b)
 	{
-		mApplication.log('setOpendoor');
 		this.mOpen = b;	
 	},
 

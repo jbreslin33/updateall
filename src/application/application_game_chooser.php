@@ -52,11 +52,13 @@ Extends: ApplicationGame,
 		{
         		var doorQuestion = new Question('Open door with key.',"door");
         		mQuiz.mQuestionArray.push(doorQuestion);
+		
+			x = i * 50 + 400;
 
-        		var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        		var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,picture_closed[i],"","door",picture_open[i]);
+        		var door = new ShapeDoor(50,50,x,350,mGame,doorQuestion,picture_closed[i],"","door",picture_open[i]);
 			door.mUrl = url[0];
-        		door.mOpenOnQuestionSolved = true;
+        		//door.mOpenOnQuestionSolved = true;
+			door.setOpenDoor(true);
         		mGame.addToShapeArray(door);
 		}
 	},
