@@ -214,8 +214,8 @@ var Shape = new Class(
         {
 		if (this.mQuestion)
 		{
-			if (this.mQuestion.getSolved() == false)
-			{
+	//		if (this.mQuestion.getSolved() == false)
+	//		{
 				this.mQuestion.setSolved(true);
 				if (this.mHideOnQuestionSolved)
         			{
@@ -223,7 +223,7 @@ var Shape = new Class(
                         		this.setVisibility(false);
                 		}
 				this.mGame.correctAnswer();
-			}
+	//		}
 		}
         },
 
