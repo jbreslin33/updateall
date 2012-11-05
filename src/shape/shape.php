@@ -126,16 +126,6 @@ var Shape = new Class(
 /****** UTILITY METHODS ******************/
 	reset: function()
 	{
-                //set every shape to spawn position
-                this.mPosition.mX = this.mPositionSpawn.mX;
-                this.mPosition.mY = this.mPositionSpawn.mY;
-                
-		if (this.mCollidable == true)
-                {
-                	this.mCollisionOn = true;
-			this.setVisibility(true);
-                }
-
                 if (this.mGame.mQuiz)
                 {
                         //set the control objects question object
@@ -152,7 +142,27 @@ var Shape = new Class(
 				{
 					this.mount(this.mStartingMountee,0);
 				}
+				else
+				{
+					for (i = 0; i < this.mMounteeArray.length; i++)
+					{
+						if (this.mMounteeArray[i])
+						{
+							this.unMount(0);
+						}
+					}		
+				}
 			}
+                }
+                
+		//set every shape to spawn position
+                this.mPosition.mX = this.mPositionSpawn.mX;
+                this.mPosition.mY = this.mPositionSpawn.mY;
+                
+		if (this.mCollidable == true)
+                {
+                	this.mCollisionOn = true;
+			this.setVisibility(true);
                 }
 	},
 
