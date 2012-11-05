@@ -81,7 +81,6 @@ Extends: Shape,
 	
 	enterDoor: function()
         {
-		mApplication.log('enterDoor');
                 this.mGame.mOn = false;
                 window.location = this.mUrl;
         }
