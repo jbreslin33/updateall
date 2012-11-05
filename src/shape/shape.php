@@ -104,6 +104,9 @@ var Shape = new Class(
 		//hide on drop
 		this.mHideOnDrop = false; 
 
+		//evaluate questions?
+		this.mEvaluateQuestions = true;
+
         },
 
 /******************** PUBLIC METHODS *************/
@@ -175,26 +178,36 @@ var Shape = new Class(
 		var answer = 0;
 		var answerCol = 0;
 
-		if (this.mQuestion && col.mQuestion)
+		//try to evaluate questions of collided objects
+		this.evaluateQuestions(col)
+
+		//try to mount
+		this.mount(col,0);
+	},
+
+	evaluateQuestions: function(col)
+	{
+		if (this.getEvaluateQuestions())
 		{
-			answer = this.mQuestion.getAnswer();	
-			answerCol = col.mQuestion.getAnswer();	
-	
-			//compare answers
-			if (this.mQuestion.getSolved() == false)
+			if (this.mQuestion && col.mQuestion)
 			{
-				if (answer == answerCol)
+				answer = this.mQuestion.getAnswer();	
+				answerCol = col.mQuestion.getAnswer();	
+	
+				//compare answers
+				if (this.mQuestion.getSolved() == false)
 				{
-                       			this.correctAnswer(); //overidden by player to do nothing
-				}
-				else
-				{
-               				this.incorrectAnswer(); //overridden by player to do nothing
+					if (answer == answerCol)
+					{
+                       				this.correctAnswer(); //overidden by player to do nothing
+					}
+					else
+					{
+               					this.incorrectAnswer(); //overridden by player to do nothing
+					}
 				}
 			}
 		}
-
-		this.mount(col,0);
 	},
 
 	correctAnswer: function()
@@ -530,6 +543,16 @@ var Shape = new Class(
 	getHideOnDrop: function()
 	{
 		return this.mHideOnDrop;
+	},
+
+	setEvaluateQuestions: function(b)
+	{
+		this.mEvaluateQuestions = b;	
+	},
+	
+	getEvaluateQuestions: function()
+	{
+		return this.mEvaluateQuestions;	
 	},
 
 	setText: function(t)
