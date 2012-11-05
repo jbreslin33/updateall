@@ -11,7 +11,11 @@ Extends: Shape,
 	{
 		this.parent(delta);
 
-                this.mGame.mControlObject.setQuestion(this.mGame.mQuiz.getQuestion());
+		//set players question to current question
+                this.setQuestion(this.mGame.mQuiz.getQuestion());
+
+
+		//if there is a mountee also set their question
                 if (this.mMounteeArray[0])
                 {
                         this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
