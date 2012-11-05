@@ -31,6 +31,7 @@ Extends: Shape,
                 {
                         answer = this.mQuestion.getAnswer();
                         answerCol = col.mQuestion.getAnswer();
+			mApplication.log('a = ' + answer + '   b = ' + answerCol);
 
                         //compare answers
                         if (this.mQuestion.getSolved() == false)
