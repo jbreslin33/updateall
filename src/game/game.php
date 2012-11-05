@@ -126,7 +126,6 @@ var Game = new Class(
 
  	resetGame: function()
         {
-		mApplication.log('resetting');
 		if (this.mQuiz)
 		{
 			this.mQuiz.reset();
