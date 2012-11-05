@@ -30,13 +30,17 @@ Extends: Shape,
                 if (this.mQuestion && col.mQuestion)
                 {
                         answer = this.mQuestion.getAnswer();
+		        mApplication.log('answer:' + answer);	
                         answerCol = col.mQuestion.getAnswer();
+		        mApplication.log('answerCol:' + answerCol);	
 
                         //compare answers
                         if (this.mQuestion.getSolved() == false)
                         {
+		        	mApplication.log('not solved');	
                                 if (answer == answerCol)
                                 {
+					mApplication.log('correct in shape_box');
 					this.mQuestion.setSolved(true);
                                         this.correctAnswer();
                                 }
