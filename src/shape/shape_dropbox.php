@@ -30,22 +30,20 @@ Extends: Shape,
                 if (this.mQuestion && col.mQuestion)
                 {
                         answer = this.mQuestion.getAnswer();
-		        mApplication.log('answer:' + answer);	
                         answerCol = col.mQuestion.getAnswer();
-		        mApplication.log('answerCol:' + answerCol);	
 
                         //compare answers
                         if (this.mQuestion.getSolved() == false)
                         {
-		        	mApplication.log('not solved');	
                                 if (answer == answerCol)
                                 {
-					mApplication.log('correct in shape_box');
+					mApplication.log('c');
 					this.mQuestion.setSolved(true);
                                         this.correctAnswer();
                                 }
                                 else
                                 {
+					mApplication.log('l');
                                         this.incorrectAnswer();
                                 }
                         }
@@ -55,7 +53,6 @@ Extends: Shape,
 		pickup = 0;
                 if (col == this.mGame.mControlObject && col.mMounteeArray[0])
                 {
-			mApplication.log('here');
                 	pickup = col.mMounteeArray[0];
 
                         //have controlObject unMount pickup

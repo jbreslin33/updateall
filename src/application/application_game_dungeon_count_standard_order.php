@@ -71,6 +71,5 @@ Extends: ApplicationGameDungeon,
                         count++;
                 }
         }
-
 });
 
