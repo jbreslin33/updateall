@@ -54,7 +54,6 @@ Extends: ApplicationGameDungeon,
 			shape.mMountable = true;
 			shape.setHideOnQuestionSolved(false);
 
-
                         //numberMount to go on top let's make it small and draw it on top
                         var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
                         questionMountee.setMountable(true);
@@ -65,6 +64,9 @@ Extends: ApplicationGameDungeon,
                         shape.mount(questionMountee,0);
 
                         questionMountee.setBackgroundColor("transparent");
+
+			//make it so they are never evaluated on collision but can still be picked up
+			shape.setEvaluateQuestions(false);
 
                         count++;
                 }
