@@ -185,11 +185,11 @@ var Shape = new Class(
 			{
 				if (answer == answerCol)
 				{
-                       			this.correctAnswer();
+                       			this.correctAnswer(); //overidden by player to do nothing
 				}
 				else
 				{
-               				this.incorrectAnswer();
+               				this.incorrectAnswer(); //overridden by player to do nothing
 				}
 			}
 		}
