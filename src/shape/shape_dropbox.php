@@ -20,31 +20,6 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
-/*
-    		this.mPosition.mX = this.mPositionOld.mX;
-                this.mPosition.mY = this.mPositionOld.mY;
-
-                //evaluate answers to questions provided both shapes have questions.
-                var answer = 0;
-                var answerCol = 0;
-
-                if (this.mQuestion && col.mQuestion)
-                {
-                        answer = this.mQuestion.getAnswer();
-                        answerCol = col.mQuestion.getAnswer();
-
-                        //compare answers
-                        if (answer == answerCol)
-                        {
-                               	this.correctAnswer();
-                        }
-                        else
-                        {
-                                this.incorrectAnswer();
-                        }
-                }
-*/
-
  		//a dropbox_question recieving a pickup from a control object
 		pickup = 0;
                 if (col == this.mGame.mControlObject && col.mMounteeArray[0])
@@ -61,7 +36,6 @@ Extends: Shape,
 
         mount: function(mountee,slot)
         {
-		//this.parent(mountee,slot);
                 //how bout an attempted mount before the real deal?
                 //can i mount this thing? if so mount it.
                 if (mountee.mMountable)
@@ -84,11 +58,12 @@ Extends: Shape,
                                         //then mount
                                         this.mMounteeArray[slot] = mountee;
                                         this.mMounteeArray[slot].mountedBy(this,slot);
-				
+			
+					//evaluate questions of dropbox and dropee	
 					if (this.mQuestion && this.mMounteeArray[slot].mQuestion)
 					{
                         			answer = this.mQuestion.getAnswer();
-                        			answerCol = col.mQuestion.getAnswer();
+                        			answerCol = this.mMounteeArray[slot].mQuestion.getAnswer();
 
                         			//compare answers
                         			if (answer == answerCol)
