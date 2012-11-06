@@ -20,6 +20,7 @@ Extends: Shape,
 
 	onCollision: function(col)
 	{
+/*
     		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
@@ -35,7 +36,6 @@ Extends: Shape,
                         //compare answers
                         if (answer == answerCol)
                         {
-				this.mQuestion.setSolved(true);
                                	this.correctAnswer();
                         }
                         else
@@ -43,6 +43,7 @@ Extends: Shape,
                                 this.incorrectAnswer();
                         }
                 }
+*/
 
  		//a dropbox_question recieving a pickup from a control object
 		pickup = 0;
@@ -55,9 +56,55 @@ Extends: Shape,
 			
 			//and you the dropbox pick it up
                         this.mount(pickup,0);
-	
-			//set timeout so we don't collide again...
                 }
-	}
+	},
+
+        mount: function(mountee,slot)
+        {
+		//this.parent(mountee,slot);
+                //how bout an attempted mount before the real deal?
+                //can i mount this thing? if so mount it.
+                if (mountee.mMountable)
+                {
+                        if (this.mMountPointArray[0])
+                        {
+                                if (this.mMounteeArray[0])
+                                {
+                                        this.unMount(0);
+                                }
+
+                                if (mountee != this.getTimeoutShape())
+                                {
+                                        //first unmount  if you have something
+                                        if (this.mMounteeArray[slot])
+                                        {
+                                                this.unMount(0);
+                                        }
+
+                                        //then mount
+                                        this.mMounteeArray[slot] = mountee;
+                                        this.mMounteeArray[slot].mountedBy(this,slot);
+				
+					if (this.mQuestion && this.mMounteeArray[slot].mQuestion)
+					{
+                        			answer = this.mQuestion.getAnswer();
+                        			answerCol = col.mQuestion.getAnswer();
+
+                        			//compare answers
+                        			if (answer == answerCol)
+                        			{
+                               				this.correctAnswer();
+                        			}
+                        			else
+                        			{
+                                			this.incorrectAnswer();
+                        			}
+					}
+                                }
+                        }
+                }
+        },
+
+
 });
 
