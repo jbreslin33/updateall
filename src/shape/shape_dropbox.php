@@ -57,7 +57,6 @@ Extends: Shape,
                         this.mount(pickup,0);
 	
 			//set timeout so we don't collide again...
-		//	this.setTimeoutShape(col);
                 }
 	}
 });
