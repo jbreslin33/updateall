@@ -31,22 +31,16 @@ Extends: Shape,
                 {
                         answer = this.mQuestion.getAnswer();
                         answerCol = col.mQuestion.getAnswer();
-			mApplication.log('a = ' + answer + '   b = ' + answerCol);
 
                         //compare answers
-                        if (this.mQuestion.getSolved() == false)
+                        if (answer == answerCol)
                         {
-                                if (answer == answerCol)
-                                {
-					mApplication.log('c');
-					this.mQuestion.setSolved(true);
-                                        this.correctAnswer();
-                                }
-                                else
-                                {
-					mApplication.log('l');
-                                        this.incorrectAnswer();
-                                }
+				this.mQuestion.setSolved(true);
+                               	this.correctAnswer();
+                        }
+                        else
+                        {
+                                this.incorrectAnswer();
                         }
                 }
 
