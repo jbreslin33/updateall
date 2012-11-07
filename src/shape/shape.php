@@ -112,6 +112,15 @@ var Shape = new Class(
 
         },
 
+        log: function(msg)
+        {
+                setTimeout(function()
+                {
+                        throw new Error(msg);
+                }, 0);
+        },
+
+
 /******************** PUBLIC METHODS *************/
 	createMountPoint: function(slot,x,y)
 	{
@@ -186,6 +195,9 @@ var Shape = new Class(
 
 		//try to mount
 		this.mount(col,0);
+
+
+
 	},
 
 	evaluateQuestions: function(col)
@@ -242,6 +254,7 @@ var Shape = new Class(
 	
 	mount: function(mountee,slot)
 	{
+ 		//throw new Error('hhhh');
                 if (mountee.mMountable)
                 {
                         if (this.mMountPointArray[0])
@@ -263,14 +276,6 @@ var Shape = new Class(
 					this.mMounteeArray[slot] = mountee;
 					this.mMounteeArray[slot].mountedBy(this,slot);
 
-					//COPY QUESTION FROM MOUNTER		
-					if (this.getCopyQuestionFromMounter())
-					{
-	                			if (this.mMounter)
-						{	
-                        				this.setQuestion(this.mMounter.getQuestion());
-						}
-					}
                 		}
 			}
 		}
@@ -317,7 +322,15 @@ var Shape = new Class(
                                        	this.setVisibility(false);
 				}
 			}
-	
+  			
+			//COPY QUESTION FROM MOUNTER
+                        if (this.getCopyQuestionFromMounter())
+                        {
+                                if (this.mMounter)
+                                {
+                                        this.setQuestion(this.mMounter.getQuestion());
+                               	} 
+			}	
 		}	
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
