@@ -13,13 +13,6 @@ Extends: Shape,
 
 		//set players question to current question
                 this.setQuestion(this.mGame.mQuiz.getQuestion());
-
-
-		//if there is a mountee also set their question
-                //if (this.mMounteeArray[0] && getChangeMounteeQuestionOnMount())
-              //  {
-                        //this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-               // }
 	},	
 	
 	correctAnswer: function()

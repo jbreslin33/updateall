@@ -195,9 +195,6 @@ var Shape = new Class(
 
 		//try to mount
 		this.mount(col,0);
-
-
-
 	},
 
 	evaluateQuestions: function(col)
@@ -254,7 +251,6 @@ var Shape = new Class(
 	
 	mount: function(mountee,slot)
 	{
- 		//throw new Error('hhhh');
                 if (mountee.mMountable)
                 {
                         if (this.mMountPointArray[0])
@@ -275,7 +271,6 @@ var Shape = new Class(
 					//then mount
 					this.mMounteeArray[slot] = mountee;
 					this.mMounteeArray[slot].mountedBy(this,slot);
-
                 		}
 			}
 		}
