@@ -59,7 +59,7 @@ Extends: Shape,
                                         this.mMounteeArray[slot] = mountee;
                                         this.mMounteeArray[slot].mountedBy(this,slot);
 			
-					//evaluate questions of dropbox and dropee	
+					//evaluate questions of this dropbox and the coin that is now the this.mMounteeArray[0].	
 					if (this.mQuestion && this.mMounteeArray[slot].mQuestion)
 					{
                         			answer = this.mQuestion.getAnswer();
@@ -68,6 +68,7 @@ Extends: Shape,
                         			//compare answers
                         			if (answer == answerCol)
                         			{
+							mApplication.log('cx');	
                                				this.correctAnswer();
                         			}
                         			else

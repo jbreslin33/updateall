@@ -107,6 +107,9 @@ var Shape = new Class(
 		//evaluate questions?
 		this.mEvaluateQuestions = true;
 
+		//copy question from mounter
+		this.mCopyQuestionFromMounter = false;
+
         },
 
 /******************** PUBLIC METHODS *************/
@@ -239,8 +242,6 @@ var Shape = new Class(
 	
 	mount: function(mountee,slot)
 	{
-		//how bout an attempted mount before the real deal?
-                //can i mount this thing? if so mount it.
                 if (mountee.mMountable)
                 {
                         if (this.mMountPointArray[0])
@@ -261,9 +262,6 @@ var Shape = new Class(
 					//then mount
 					this.mMounteeArray[slot] = mountee;
 					this.mMounteeArray[slot].mountedBy(this,slot);
-		
-					//copy question from mountee to mounter
-					//this.mQuestion = mountee.mQuestion;
                 		}
 			}
 		}
@@ -310,6 +308,9 @@ var Shape = new Class(
                                        	this.setVisibility(false);
 				}
 			}
+
+
+
 		}	
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
@@ -553,6 +554,16 @@ var Shape = new Class(
 	getEvaluateQuestions: function()
 	{
 		return this.mEvaluateQuestions;	
+	},
+
+	setCopyQuestionFromMounter: function(b)
+	{
+		this.mCopyQuestionFromMounter = b;
+	},
+
+	getCopyQuestionFromMounter: function()
+	{
+		return this.mCopyQuestionFromMounter;
 	},
 
 	setText: function(t)
