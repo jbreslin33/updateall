@@ -68,7 +68,6 @@ Extends: Shape,
                         			//compare answers
                         			if (answer == answerCol)
                         			{
-							mApplication.log('cx');	
                                				this.correctAnswer();
                         			}
                         			else
