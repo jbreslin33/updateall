@@ -56,6 +56,7 @@ Extends: ApplicationGame,
                         mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),image_source,"","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
+			shape.setCopyQuestionFromMounter(true);
 
                         //numberMount to go on top let's make it small and draw it on top
                         var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");

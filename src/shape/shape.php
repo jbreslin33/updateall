@@ -262,6 +262,15 @@ var Shape = new Class(
 					//then mount
 					this.mMounteeArray[slot] = mountee;
 					this.mMounteeArray[slot].mountedBy(this,slot);
+
+					//COPY QUESTION FROM MOUNTER		
+					if (this.getCopyQuestionFromMounter())
+					{
+	                			if (this.mMounter)
+						{	
+                        				this.setQuestion(this.mMounter.getQuestion());
+						}
+					}
                 		}
 			}
 		}
@@ -308,9 +317,7 @@ var Shape = new Class(
                                        	this.setVisibility(false);
 				}
 			}
-
-
-
+	
 		}	
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
