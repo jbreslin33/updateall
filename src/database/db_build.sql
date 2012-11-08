@@ -1511,102 +1511,102 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 
 --LEVELS
 --count to 100
-insert into levels(level,description) values (1,'Count from 0 to 10'); --1       
-insert into levels(level,description) values (.5,'Start of Journey'); --2      
-insert into levels(level,description) values (2,'Count from 10 to 20'); --3      
-insert into levels(level,description) values (3,'Count from 20 to 30');   --4    
-insert into levels(level,description) values (4,'Count from 30 to 40');     --5  
-insert into levels(level,description) values (5,'Count from 40 to 50');    --6   
-insert into levels(level,description) values (6,'Count from 50 to 60');   --7    
-insert into levels(level,description) values (7,'Count from 60 to 70');  --8     
-insert into levels(level,description) values (8,'Count from 70 to 80');    --9   
-insert into levels(level,description) values (9,'Count from 80 to 90');      --10 
-insert into levels(level,description) values (10,'Count from 90 to 100');      --11 
+insert into levels(level,description) values (1,'Start of Journey'); --1      
+insert into levels(level,description) values (2,'Count from 0 to 10'); --2       
+insert into levels(level,description) values (3,'Count from 10 to 20'); --3      
+insert into levels(level,description) values (4,'Count from 20 to 30');   --4    
+insert into levels(level,description) values (5,'Count from 30 to 40');     --5  
+insert into levels(level,description) values (6,'Count from 40 to 50');    --6   
+insert into levels(level,description) values (7,'Count from 50 to 60');   --7    
+insert into levels(level,description) values (8,'Count from 60 to 70');  --8     
+insert into levels(level,description) values (9,'Count from 70 to 80');    --9   
+insert into levels(level,description) values (10,'Count from 80 to 90');      --10 
+insert into levels(level,description) values (11,'Count from 90 to 100');      --11 
 
 --count by 10's to 100
-insert into levels(level,description) values (11,'Count to 100 by tens');      --12 
+insert into levels(level,description) values (12,'Count to 100 by tens');      --12 
 
 --count from random known sequence
-insert into levels(level,description) values (12,'Count from 87 to 97'); --13
-insert into levels(level,description) values (13,'Count from 23 to 33'); --14
-insert into levels(level,description) values (14,'Count from 55 to 65'); --15
-insert into levels(level,description) values (15,'Count from 26 to 36'); --16
-insert into levels(level,description) values (16,'Count from 49 to 59'); --17
-insert into levels(level,description) values (17,'Count from 4 to 14'); --18
-insert into levels(level,description) values (18,'Count from 67 to 77'); --19
-insert into levels(level,description) values (19,'Count from 13 to 23'); --20
-insert into levels(level,description) values (20,'Count from 52 to 62'); --21
-insert into levels(level,description) values (21,'Count from 38 to 48'); --22
+insert into levels(level,description) values (13,'Count from 87 to 97'); --13
+insert into levels(level,description) values (14,'Count from 23 to 33'); --14
+insert into levels(level,description) values (15,'Count from 55 to 65'); --15
+insert into levels(level,description) values (16,'Count from 26 to 36'); --16
+insert into levels(level,description) values (17,'Count from 49 to 59'); --17
+insert into levels(level,description) values (18,'Count from 4 to 14'); --18
+insert into levels(level,description) values (19,'Count from 67 to 77'); --19
+insert into levels(level,description) values (20,'Count from 13 to 23'); --20
+insert into levels(level,description) values (21,'Count from 52 to 62'); --21
+insert into levels(level,description) values (22,'Count from 38 to 48'); --22
 
 --write numbers from 0 to 20
-insert into levels(level,description) values (22,'Write numbers from 0 to 5'); --23
-insert into levels(level,description) values (23,'Write numbers from 5 to 10'); --24
-insert into levels(level,description) values (24,'Write numbers from 10 to 15'); --25
-insert into levels(level,description) values (25,'Write numbers from 15 to 20'); --26
+insert into levels(level,description) values (23,'Write numbers from 0 to 5'); --23
+insert into levels(level,description) values (24,'Write numbers from 5 to 10'); --24
+insert into levels(level,description) values (25,'Write numbers from 10 to 15'); --25
+insert into levels(level,description) values (26,'Write numbers from 15 to 20'); --26
 
-insert into levels(level,description) values (26,'Count objects from 0 to 20'); --27
-insert into levels(level,description) values (27,'Count objects in standard order using names. 0-10'); --28
-insert into levels(level,description) values (28,'Count objects in standard order using names. 10-20'); --29
-insert into levels(level,description) values (29,'Understand that last counted object tells number of objects for numbers random 1'); 
-insert into levels(level,description) values (30,'Understand that last counted object tells number of objects for numbers random 2'); 
-insert into levels(level,description) values (31,'Understand that each successive number name refers to a quantity that is one larger');
+insert into levels(level,description) values (27,'Count objects from 0 to 20'); --27
+insert into levels(level,description) values (28,'Count objects in standard order using names. 0-10'); --28
+insert into levels(level,description) values (29,'Count objects in standard order using names. 10-20'); --29
+insert into levels(level,description) values (30,'Understand that last counted object tells number of objects for numbers random 1'); 
+insert into levels(level,description) values (31,'Understand that last counted object tells number of objects for numbers random 2'); 
 insert into levels(level,description) values (32,'Understand that each successive number name refers to a quantity that is one larger');
+insert into levels(level,description) values (33,'Understand that each successive number name refers to a quantity that is one larger');
 
 --Count to answer “how many?” questions about as many as 20 things
 --arranged in a line, a rectangular array, or a circle, or as many as 10
 --things in a scattered configuration; given a number from 1–20, count
 --out that many objects.
-insert into levels(level,description) values (33,'Given a number from 1-20, count out that many objects.');
 insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
+insert into levels(level,description) values (35,'Given a number from 1-20, count out that many objects.');
 
 -- Identify whether the number of objects in one group is greater than,
 --less than, or equal to the number of objects in another group, e.g., by
 --using matching and counting strategies.1
-insert into levels(level,description) values (35,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
 insert into levels(level,description) values (36,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+insert into levels(level,description) values (37,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
 
 --Compare two numbers between 1 and 10 presented as written
 --numerals.
-insert into levels(level,description) values (37,'Compare two numbers etc');
 insert into levels(level,description) values (38,'Compare two numbers etc');
+insert into levels(level,description) values (39,'Compare two numbers etc');
 
 --Represent addition and subtraction with objects fingers mental images drawings sounds claps acting out situations verbal explanations expressions.
-insert into levels(level,description) values (39,'Represent addition etc');
 insert into levels(level,description) values (40,'Represent addition etc');
+insert into levels(level,description) values (41,'Represent addition etc');
 
 --Solve addition and subtraction word problems, and add and subtract within 10., by using objects or drawings to represent the problem.
-insert into levels(level,description) values (41,'Solve addition');
 insert into levels(level,description) values (42,'Solve addition');
+insert into levels(level,description) values (43,'Solve addition');
 
 --Decompose numbers less than or equal to 10 into pairs in more
 --than one way, e.g., by using objects or drawings, and record each
 --decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
-insert into levels(level,description) values (43,'Decompose');
 insert into levels(level,description) values (44,'Decompose');
+insert into levels(level,description) values (45,'Decompose');
 
 --For any number from 1 to 9, find the number that makes 10 when
 --added to the given number, e.g., by using objects or drawings, and
 --record the answer with a drawing or equation.
-insert into levels(level,description) values (45,'For any number');
 insert into levels(level,description) values (46,'For any number');
+insert into levels(level,description) values (47,'For any number');
 
 --Fluently add and subtract within 5.
-insert into levels(level,description) values (47,'fluently ');
 insert into levels(level,description) values (48,'fluently ');
+insert into levels(level,description) values (49,'fluently ');
 
 --Compose and decompose numbers from 11 to 19 into ten ones and
 --some further ones, e.g., by using objects or drawings, and record each
 --composition or decomposition by a drawing or equation (e.g., 18 = 10 +
 --8); understand that these numbers are composed of ten ones and one,
 --two, three, four, five, six, seven, eight, or nine ones.
-insert into levels(level,description) values (49,'compose and decompose ');
 insert into levels(level,description) values (50,'compose and decompose ');
+insert into levels(level,description) values (51,'compose and decompose ');
 
 
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (1,1);       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
 --insert into levels_standards(level_id, standard_id) values (2,1); this is the start of journey level_id      
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
@@ -1640,7 +1640,7 @@ insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_
 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (27,3);       
 
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (28,5); --stanard_order      
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (28,5); --standard_order      
 
 --LEVELS_TRANSACTIONS
 
@@ -1691,16 +1691,16 @@ CREATE TABLE questions (
 --QUESTIONS
 
 --level_id 1  
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',1,1);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',1,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',1,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',1,4);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',1,5);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',1,6);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',1,7);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',1,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',1,9);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',1,10);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',2,1);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',2,2);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',2,3);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',2,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',2,5);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',2,6);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',2,7);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',2,8);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',2,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',2,10);
 
 --level_id 3  
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',3,1);
@@ -2037,7 +2037,7 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src
 
 --GAMES_LEVELS
 --count by 1's to 100
-insert into games_levels (level_id,game_id,url) values  (1,1,'/web/game/dungeon.php?chasers=3');
+insert into games_levels (level_id,game_id,url) values  (2,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/dungeon.php');
@@ -2062,48 +2062,48 @@ insert into games_levels (level_id,game_id,url) values  (18,1,'/web/game/dungeon
 insert into games_levels (level_id,game_id,url) values  (19,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (20,1,'/web/game/dungeon.php');
 insert into games_levels (level_id,game_id,url) values  (21,1,'/web/game/dungeon.php');
-insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/dungeon.php'); --21
+insert into games_levels (level_id,game_id,url) values  (22,1,'/web/game/dungeon.php'); 
 
 --Write numbers from 0 to 20. 
-insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/dungeon.php'); --22
-insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/dungeon.php'); --23
-insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/dungeon.php'); --24
+insert into games_levels (level_id,game_id,url) values  (23,1,'/web/game/dungeon.php'); 
+insert into games_levels (level_id,game_id,url) values  (24,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id,url) values  (25,1,'/web/game/dungeon.php');
 
 --Represent a number of objects with a
 --written numeral 0-20 (with 0 representing a count of no objects).
-insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/represent_0_20.php'); --25
-insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php'); --26
+insert into games_levels (level_id,game_id,url) values  (26,1,'/web/game/represent_0_20.php'); 
+insert into games_levels (level_id,game_id,url) values  (27,1,'/web/game/represent_0_20.php');
 
 --When counting objects, say the number names in the standard
 --order, pairing each object with one and only one number name
 --and each number name with one and only one object.
-insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order_name.php'); --27
-insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order_name.php'); --28
+insert into games_levels (level_id,game_id,url) values  (28,1,'/web/game/count_standard_order_name.php'); 
+insert into games_levels (level_id,game_id,url) values  (29,1,'/web/game/count_standard_order_name.php'); 
 
 --Understand that the last number name said tells the number of
 --objects counted. The number of objects is the same regardless of
 --their arrangement or the order in which they were counted.
-insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number_name.php'); --29
-insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number_name.php'); --30
+insert into games_levels (level_id,game_id,url) values  (30,1,'/web/game/last_number_name.php'); 
+insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/last_number_name.php'); 
 
 --Understand that each successive number name refers to a quantity
 --that is one larger.
-insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/name_plus_one.php'); --31
-insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_plus_one.php'); --32
+insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/name_plus_one.php'); 
+insert into games_levels (level_id,game_id,url) values  (33,1,'/web/game/name_plus_one.php'); 
 
 --Count to answer “how many?” questions about as many as 20 things
 --arranged in a line, a rectangular array, or a circle, or as many as 10
 --things in a scattered configuration; given a number from 1–20, count
 --out that many objects.
 --I am only doing the part about count out that many objects for this section
-insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/put_kids_on_a_bus.php'); --33
-insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/put_kids_on_a_bus.php'); --34
+insert into games_levels (level_id,game_id,url) values  (34,1,'/web/game/put_kids_on_a_bus.php'); 
+insert into games_levels (level_id,game_id,url) values  (35,1,'/web/game/put_kids_on_a_bus.php'); 
 
 -- Identify whether the number of objects in one group is greater than,
 --less than, or equal to the number of objects in another group, e.g., by
 --using matching and counting strategies.1
-insert into games_levels (level_id,game_id,url) values  (36,1,'/web/game/greater_less_equal.php'); --35
-insert into games_levels (level_id,game_id,url) values  (37,1,'/web/game/greater_less_equal.php'); --36
+insert into games_levels (level_id,game_id,url) values  (36,1,'/web/game/greater_less_equal.php'); 
+insert into games_levels (level_id,game_id,url) values  (37,1,'/web/game/greater_less_equal.php');
 
 --Compare two numbers between 1 and 10 presented as written
 --numerals.
