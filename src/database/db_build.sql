@@ -1754,7 +1754,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 50?','51',7,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 51?','52',7,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 52?','53',7,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 53?','55',7,4);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 53?','54',7,4);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 54?','55',7,5);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 55?','56',7,6);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 56?','57',7,7);
@@ -1819,7 +1819,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 60?','61',12,6);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 61?','62',12,7);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 62?','63',12,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 63?','65',12,9);
+insert into questions (question,answer,level_id,question_order) values ('What comes next after 63?','64',12,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 64?','65',12,10);
 
 --level_id 13
