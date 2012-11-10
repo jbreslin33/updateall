@@ -1,3 +1,4 @@
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
 <head>
 <title>ABC AND YOU</title>
