@@ -52,10 +52,9 @@ var Game = new Class(
 				
         },
 				
-		//brian - update score in games_attempts table		
-		updateScore: function()
-		{
-		
+	//brian - update score in games_attempts table		
+	updateScore: function()
+	{
 		if(this.gameOver == false)
 		{
 			
@@ -71,48 +70,48 @@ var Game = new Class(
 			var xmlhttp;    
 			
 			if (window.XMLHttpRequest)
-			  {// code for IE7+, Firefox, Chrome, Opera, Safari
-			  xmlhttp=new XMLHttpRequest();
-			  }
+			{
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+			  	xmlhttp=new XMLHttpRequest();
+			}
 			else
-			  {// code for IE6, IE5
-			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			  }
+			{
+				// code for IE6, IE5
+			  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
 			xmlhttp.onreadystatechange=function()
-			  {
+		  	{
 			  
-			  }
+			}
 			xmlhttp.open("GET","../../src/database/update_score.php?q="+str,true);
 			xmlhttp.send();
 			
 			this.score = str;
-		
 		}
-		   
-		},
-
+	},
 
 	quizComplete: function()
 	{	
-	
-	  if(this.gameOver == false)
+	  	if(this.gameOver == false)
 		{
-		var xmlhttp;    
+			var xmlhttp;    
 		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  xmlhttp=new XMLHttpRequest();
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-		xmlhttp.onreadystatechange=function()
-		  {
+			if (window.XMLHttpRequest)
+			{
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+		  		xmlhttp=new XMLHttpRequest();
+			}
+			else
+			{
+				// code for IE6, IE5
+		  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()
+			{
 		  
-		  }
-		xmlhttp.open("GET","../../src/database/set_game_end_time.php",true);
-		xmlhttp.send();
+			}
+			xmlhttp.open("GET","../../src/database/set_game_end_time.php",true);
+			xmlhttp.send();
 		}
 	},
 
