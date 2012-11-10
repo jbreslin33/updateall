@@ -2235,7 +2235,7 @@ local.setDocument = function(document){
 	features.getAttribute = (features.isHTMLDocument && brokenFormAttributeGetter) ? function(node, name){
 		var method = this.attributeGetters[name];
 		if (method) return method.call(node);
-		var attributeNode = node.getAttributeNode(name);
+		var attributeNode = node.getAttribute(name);
 		return (attributeNode) ? attributeNode.nodeValue : null;
 	} : function(node, name){
 		var method = this.attributeGetters[name];
@@ -2247,7 +2247,7 @@ local.setDocument = function(document){
 	features.hasAttribute = (root && this.isNativeCode(root.hasAttribute)) ? function(node, attribute) {
 		return node.hasAttribute(attribute);
 	} : function(node, attribute) {
-		node = node.getAttributeNode(attribute);
+		node = node.getAttribute(attribute);
 		return !!(node && (node.specified || node.nodeValue));
 	};
 
@@ -2348,7 +2348,7 @@ local.search = function(context, expression, append, first){
 				if (!this.isHTMLDocument || !contextIsDocument) break simpleSelectors;
 				node = context.getElementById(name);
 				if (!node) return found;
-				if (this.idGetsName && node.getAttributeNode('id').nodeValue != name) break simpleSelectors;
+				if (this.idGetsName && node.getAttribute('id').nodeValue != name) break simpleSelectors;
 				if (first) return node || null;
 				if (!(hasOthers && uniques[this.getUID(node)])) found.push(node);
 
@@ -2678,14 +2678,14 @@ var combinators = {
 		if (this.isHTMLDocument){
 			getById: if (id){
 				item = this.document.getElementById(id);
-				if ((!item && node.all) || (this.idGetsName && item && item.getAttributeNode('id').nodeValue != id)){
+				if ((!item && node.all) || (this.idGetsName && item && item.getAttribute('id').nodeValue != id)){
 					// all[id] returns all the elements with that name or id inside node
 					// if theres just one it will return the element, else it will be a collection
 					children = node.all[id];
 					if (!children) return;
 					if (!children[0]) children = [children];
 					for (i = 0; item = children[i++];){
-						var idNode = item.getAttributeNode('id');
+						var idNode = item.getAttribute('id');
 						if (idNode && idNode.nodeValue == id){
 							this.push(item, tag, null, classes, attributes, pseudos);
 							break;
@@ -2926,7 +2926,7 @@ var attributeGetters = local.attributeGetters = {
 	},
 
 	'tabindex': function(){
-		var attributeNode = this.getAttributeNode('tabindex');
+		var attributeNode = this.getAttribute('tabindex');
 		return (attributeNode && attributeNode.specified) ? attributeNode.nodeValue : null;
 	},
 
@@ -2935,7 +2935,7 @@ var attributeGetters = local.attributeGetters = {
 	},
 
 	'maxlength': function(){
-		var attributeNode = this.getAttributeNode('maxLength');
+		var attributeNode = this.getAttribute('maxLength');
 		return (attributeNode && attributeNode.specified) ? attributeNode.nodeValue : null;
 	}
 
@@ -3685,7 +3685,7 @@ Element.implement({
 		if (getter) return getter(this);
 		/* <ltIE9> */
 		if (pollutesGetAttribute){
-			var attr = this.getAttributeNode(name), attributeWhiteList = this.retrieve('$attributeWhiteList', {});
+			var attr = this.getAttribute(name), attributeWhiteList = this.retrieve('$attributeWhiteList', {});
 			if (!attr) return null;
 			if (attr.expando && !attributeWhiteList[name]){
 				var outer = this.outerHTML;
@@ -4055,7 +4055,7 @@ if (testForm.firstChild.value != 's') Element.Properties.value = {
 		var options = this.getElements('option');
 		for (var i = 0; i < options.length; i++){
 			var option = options[i],
-				attr = option.getAttributeNode('value'),
+				attr = option.getAttribute('value'),
 				optionValue = (attr && attr.specified) ? option.value : option.get('text');
 			if (optionValue == value) return option.selected = true;
 		}
@@ -4068,7 +4068,7 @@ if (testForm.firstChild.value != 's') Element.Properties.value = {
 
 		if (tag == 'select' && !(option = option.getSelected()[0])) return '';
 
-		var attr = option.getAttributeNode('value');
+		var attr = option.getAttribute('value');
 		return (attr && attr.specified) ? option.value : option.get('text');
 	}
 
@@ -4077,15 +4077,15 @@ testForm = null;
 /*</ltIE9>*/
 
 /*<IE>*/
-if (document.createElement('div').getAttributeNode('id')) Element.Properties.id = {
+if (document.createElement('div').getAttribute('id')) Element.Properties.id = {
 	set: function(id){
-		this.id = this.getAttributeNode('id').value = id;
+		this.id = this.getAttribute('id').value = id;
 	},
 	get: function(){
 		return this.id || null;
 	},
 	erase: function(){
-		this.id = this.getAttributeNode('id').value = '';
+		this.id = this.getAttribute('id').value = '';
 	}
 };
 /*</IE>*/
