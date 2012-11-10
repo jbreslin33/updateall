@@ -7,9 +7,6 @@ Extends: ApplicationGame,
 	{
        		this.parent();
 
-		//create control object
-		this.createControlObject("/images/characters/wizard.png");
-
 		//create key
 		this.createKey("/images/key/key_dungeon.gif");
 	
@@ -19,20 +16,15 @@ Extends: ApplicationGame,
 
 	createControlObject: function(image_source)
 	{
-		//*******************CONTROL OBJECT
-        	mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+		this.parent(image_source);
+
         	mGame.mControlObject.mHideOnQuestionSolved = false;
         	mGame.mControlObject.createMountPoint(0,-5,-41);
 
-        	//set animation instance
-        	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-
-        	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
-
-        	mGame.addToShapeArray(mGame.mControlObject);
         	mGame.mControlObject.showQuestionObject(false);
 
-        	//text question mountee
+        	
+		//text question mountee
         	var questionMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
         	questionMountee.setMountable(true);
         	questionMountee.setHideOnDrop(true);

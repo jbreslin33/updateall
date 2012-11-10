@@ -7,24 +7,8 @@ Extends: ApplicationGame,
 	{
        		this.parent();
 
-		//create control object
-		this.createControlObject("/images/characters/wizard.png");
-
 		//create doors	
 		this.createDoors();
-	},
-
-	createControlObject: function(image_source)
-	{
-		//*******************CONTROL OBJECT
-        	mGame.mControlObject = new Player(50,50,400,300,mGame,'',image_source,"","controlObject");
-
-        	//set animation instance
-        	mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-
-        	mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
-
-        	mGame.addToShapeArray(mGame.mControlObject);
 	},
 
 	createQuestionShapes: function(image_source)
