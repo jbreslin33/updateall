@@ -2032,6 +2032,19 @@ insert into questions (question,answer,level_id,question_order) values ('','twen
 --insert into questions (question,answer,level_id,question_order) values ('','eleven',29,1);
 
 
+--level_id 32 
+insert into questions (question,answer,level_id,question_order) values ('0 + 0 =','0',32,1);
+insert into questions (question,answer,level_id,question_order) values ('0 + 1 =','1',32,2);
+insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,3);
+insert into questions (question,answer,level_id,question_order) values ('0 + 0 =','0',32,4);
+insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,5);
+insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,6);
+insert into questions (question,answer,level_id,question_order) values ('0 + 0 =','0',32,7);
+insert into questions (question,answer,level_id,question_order) values ('0 + 1 =','1',32,8);
+insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,9);
+insert into questions (question,answer,level_id,question_order) values ('0 + 0 =','0',32,10);
+
+
 --==================================================================
 --================= GAMES ====================================
 --==================================================================
@@ -2131,6 +2144,10 @@ insert into games_levels (level_id,game_id,url) values  (31,1,'/web/game/greater
 --composition or decomposition by a drawing or equation (e.g., 18 = 10 +
 --8); understand that these numbers are composed of ten ones and one,
 --two, three, four, five, six, seven, eight, or nine ones.
+
+
+--ADDITION....yes i am skipping ahead in core...
+insert into games_levels (level_id,game_id,url) values  (32,1,'/web/game/dungeon.php');
 
 
 --GAMES_LEVELS_DUNGEON
