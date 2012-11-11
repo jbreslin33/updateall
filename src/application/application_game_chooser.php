@@ -1,7 +1,7 @@
 var ApplicationGameChooser = new Class(
 {
 
-Extends: ApplicationGame,
+Extends: Game,
 
 	initialize: function()
 	{
