@@ -33,7 +33,10 @@ var mApplication;
 window.addEvent('domready', function()
 {
         //APPLICATION
-        mApplication = new ApplicationGameDungeon();
+        mApplication = new Application();
+        
+	//GAME
+	mGame = new ApplicationGameDungeon();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

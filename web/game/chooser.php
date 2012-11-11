@@ -32,7 +32,9 @@ window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new ApplicationGameChooser();
+        mApplication = new Application();
+
+	mGame = new ApplicationGameChooser("Chooser");
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
