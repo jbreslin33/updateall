@@ -58,12 +58,12 @@ Extends: Dungeon,
                 }
 	},
 
-        createQuestionShapes: function(image_source)
+        createQuestionShapes: function()
         {
         
 	},
 
-        createChasers: function(image_source)
+        createChasers: function()
         {
         
 	},
