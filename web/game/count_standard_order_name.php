@@ -12,8 +12,8 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
-<script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
-<script type="text/javascript" src="/src/application/application_game_dungeon_count_standard_order.php"></script>
+<script type="text/javascript" src="/src/game/dungeon.php"></script>
+<script type="text/javascript" src="/src/game/count.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox.php"></script>
 <script type="text/javascript" src="/src/shape/shape_dropbox_count.php"></script>
 
@@ -41,7 +41,7 @@ window.addEvent('domready', function()
         mApplication = new Application();
 
 	//GAME
-        mGame = new ApplicationGameDungeonCountStandardOrder();
+        mGame = new Count();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

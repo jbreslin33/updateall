@@ -1,7 +1,7 @@
-var ApplicationGameDungeonRepresent = new Class(
+var Represent = new Class(
 {
 
-Extends: ApplicationGameDungeon,
+Extends: Dungeon,
 
 	initialize: function()
 	{
