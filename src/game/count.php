@@ -1,7 +1,7 @@
-var ApplicationGameDungeonCountStandardOrder = new Class(
+var Count = new Class(
 {
 
-Extends: ApplicationGameDungeon,
+Extends: Dungeon,
 
 	initialize: function()
 	{
