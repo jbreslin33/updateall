@@ -36,7 +36,10 @@ window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new ApplicationGameDungeonRepresent();
+        mApplication = new Application();
+        
+	//GAME
+	mGame = new ApplicationGameDungeonRepresent();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

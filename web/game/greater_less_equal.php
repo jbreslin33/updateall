@@ -40,7 +40,10 @@ var mApplication;
 window.addEvent('domready', function()
 {
 	//APPLICATION
-        mApplication = new ApplicationGameDungeonGreaterLessEqual();
+        mApplication = new Application();
+       
+	//GAME
+	mGame = new ApplicationGameDungeonGreaterLessEqual();
  
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

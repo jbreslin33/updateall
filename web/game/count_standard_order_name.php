@@ -38,7 +38,10 @@ window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new ApplicationGameDungeonCountStandardOrder();
+        mApplication = new Application();
+
+	//GAME
+        mGame = new ApplicationGameDungeonCountStandardOrder();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
