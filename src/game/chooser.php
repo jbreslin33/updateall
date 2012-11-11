@@ -1,4 +1,4 @@
-var ApplicationGameChooser = new Class(
+var Chooser = new Class(
 {
 
 Extends: Game,
