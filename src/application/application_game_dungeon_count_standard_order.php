@@ -16,28 +16,28 @@ Extends: ApplicationGameDungeon,
  		//TREASURE CHESTS TO COUNT
         	for (i = 0; i < scoreNeeded; i++)
         	{
-                	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                	var shape = new ShapeDropBoxCount(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
+                	var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                	var shape = new ShapeDropBoxCount(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(0),"/images/treasure/chest.png","","dropbox_question");
                 	shape.createMountPoint(0,-5,-41);
                 	shape.setHideOnQuestionSolved(false);
-                	mGame.addToShapeArray(shape);
+                	this.addToShapeArray(shape);
         	}
 	},
 
         createControlObject: function(image_source)
         {
                 //*******************CONTROL OBJECT
-                mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
-                mGame.mControlObject.mHideOnQuestionSolved = false;
-                mGame.mControlObject.createMountPoint(0,-5,-41);
+                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject.mHideOnQuestionSolved = false;
+                this.mControlObject.createMountPoint(0,-5,-41);
 
                 //set animation instance
-                mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+                this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
 
-                mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+                this.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
 
-                mGame.addToShapeArray(mGame.mControlObject);
-                mGame.mControlObject.showQuestionObject(false);
+                this.addToShapeArray(this.mControlObject);
+                this.mControlObject.showQuestionObject(false);
         },
 
         createQuestionShapes: function(image_source)
@@ -45,9 +45,9 @@ Extends: ApplicationGameDungeon,
                 count = 0;
                 for (i = 0; i < numberOfRows; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),image_source,"","question"));
+                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),image_source,"","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
@@ -55,9 +55,9 @@ Extends: ApplicationGameDungeon,
 			shape.setHideOnQuestionSolved(false);
 
                         //numberMount to go on top let's make it small and draw it on top
-                        var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
                         questionMountee.setMountable(true);
-                        mGame.addToShapeArray(questionMountee);
+                        this.addToShapeArray(questionMountee);
                         questionMountee.showQuestion(false);
 
                         //do the mount

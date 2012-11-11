@@ -22,9 +22,9 @@ Extends: ApplicationGameDungeon,
         	tempArray = new Array();
         	for (i = 0; i < monsters; i++)
         	{
-                	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                	var shape = new ShapeCountee(50,50,openPoint.mX,openPoint.mY,mGame,"","/images/monster/red_monster.png","","countee",i + 1);
-                	mGame.addToShapeArray(shape);
+                	var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                	var shape = new ShapeCountee(50,50,openPoint.mX,openPoint.mY,this,"","/images/monster/red_monster.png","","countee",i + 1);
+                	this.addToShapeArray(shape);
                 	tempArray.push(shape);
         	}
 
@@ -39,17 +39,17 @@ Extends: ApplicationGameDungeon,
  createControlObject: function(image_source)
         {
                 //*******************CONTROL OBJECT
-                mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
-                mGame.mControlObject.mHideOnQuestionSolved = false;
-                mGame.mControlObject.createMountPoint(0,-5,-41);
+                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject.mHideOnQuestionSolved = false;
+                this.mControlObject.createMountPoint(0,-5,-41);
 
                 //set animation instance
-                mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
+                this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
 
-                mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+                this.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
 
-                mGame.addToShapeArray(mGame.mControlObject);
-                mGame.mControlObject.showQuestionObject(false);
+                this.addToShapeArray(this.mControlObject);
+                this.mControlObject.showQuestionObject(false);
 
         },
 
@@ -79,16 +79,16 @@ Extends: ApplicationGameDungeon,
                 count = 0;
                 for (i = 0; i < numberOfRows; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),image_source,"","question"));
+                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),image_source,"","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
                         //numberMount to go on top let's make it small and draw it on top
-                        var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
                         questionMountee.setMountable(true);
-                        mGame.addToShapeArray(questionMountee);
+                        this.addToShapeArray(questionMountee);
                         questionMountee.showQuestion(false);
 
                         //do the mount
@@ -105,9 +105,9 @@ Extends: ApplicationGameDungeon,
         {
                 for (i = 0; i < 0; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"",image_source,"","chaser");
-                        mGame.addToShapeArray(shape);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"",image_source,"","chaser");
+                        this.addToShapeArray(shape);
                 }
 
         },
@@ -117,13 +117,13 @@ Extends: ApplicationGameDungeon,
                 var keyQuestion = new Question('Pick up key.',"key");
                 mQuiz.mQuestionArray.push(keyQuestion);
 
-                openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
+                openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                var key = new Shape(50,50,openPoint.mX,openPoint.mY,this,keyQuestion,"/images/key/key_dungeon.gif","","key");
                 key.setVisibility(false);
                 key.mShowOnlyOnQuizComplete = true;
                 key.mMountable = true;
                 key.setHideOnQuestionSolved(false);
-                mGame.addToShapeArray(key);
+                this.addToShapeArray(key);
         },
 
         createDoor: function(image_source_closed,image_source_open)
@@ -131,11 +131,11 @@ Extends: ApplicationGameDungeon,
                 var doorQuestion = new Question('Open door with key.',"door");
                 mQuiz.mQuestionArray.push(doorQuestion);
 
-                var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,image_source_closed,"","door",image_source_open);
+                var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,this,doorQuestion,image_source_closed,"","door",image_source_open);
                 door.mUrl = '/src/database/goto_next_level.php';
                 door.mOpenOnQuestionSolved = true;
-                mGame.addToShapeArray(door);
+                this.addToShapeArray(door);
 
                 //create question shapes
                 this.createQuestionShapes("/images/treasure/gold_coin_head.png");
@@ -147,18 +147,18 @@ Extends: ApplicationGameDungeon,
 	createSymbols: function()
 	{
 		//SYMBOLS
-        	var greaterThan = new Shape(50,50,300,200,mGame,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than");
-        	mGame.addToShapeArray(greaterThan);
+        	var greaterThan = new Shape(50,50,300,200,this,new Question('','greater_than'),"/images/symbols/greater_than.png","","greater_than");
+        	this.addToShapeArray(greaterThan);
         	greaterThan.setHideOnQuizComplete(true);
         	greaterThan.setHideOnQuestionSolved(false);
 
-        	var lessThan = new Shape(50,50,400,200,mGame,new Question('','less_than'),"/images/symbols/less_than.png","","less_than");
-        	mGame.addToShapeArray(lessThan);
+        	var lessThan = new Shape(50,50,400,200,this,new Question('','less_than'),"/images/symbols/less_than.png","","less_than");
+        	this.addToShapeArray(lessThan);
         	lessThan.setHideOnQuizComplete(true);
         	lessThan.setHideOnQuestionSolved(false);
 
-        	var equalTo = new Shape(50,50,500,200,mGame,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to");
-        	mGame.addToShapeArray(equalTo);
+        	var equalTo = new Shape(50,50,500,200,this,new Question('','equal_to'),"/images/symbols/equal.png","","equal_to");
+        	this.addToShapeArray(equalTo);
         	equalTo.setHideOnQuizComplete(true);
         	equalTo.setHideOnQuestionSolved(false);
 	},
@@ -169,7 +169,7 @@ Extends: ApplicationGameDungeon,
         	for (i = 0; i < kidsRedShirt + 1; i++)
         	{
                 	var shape;
-                	mGame.addToShapeArray(shape = new ShapeCompare(50,50,75,50 + (i * 50),mGame,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","",'a',i));
+                	this.addToShapeArray(shape = new ShapeCompare(50,50,75,50 + (i * 50),this,'',"/images/characters/kid_red_shirt/kid_red_shirt.png","",'a',i));
                 	shape.showQuestion(false);
         	}
 
@@ -177,7 +177,7 @@ Extends: ApplicationGameDungeon,
         	for (i = 0; i < kidsGreenShirt + 1; i++)
         	{
                 	var shape;
-                	mGame.addToShapeArray(shape = new ShapeCompare(50,50,650,50 + (i * 50),mGame,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","",'b',i));
+                	this.addToShapeArray(shape = new ShapeCompare(50,50,650,50 + (i * 50),this,'',"/images/characters/kid_green_shirt/kid_green_shirt.png","",'b',i));
                 	shape.showQuestion(false);
         	}
 	}
