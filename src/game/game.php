@@ -67,6 +67,8 @@ var Game = new Class(
                 //create control object
                 this.createControlObject("/images/characters/wizard.png");
 
+		//create question shapes
+		this.createQuestionShapes();
 
         },
 				

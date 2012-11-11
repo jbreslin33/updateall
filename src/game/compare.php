@@ -16,25 +16,7 @@ Extends: Dungeon,
 
 	createMonstersToCount: function()
 	{
-/*
-        	//RED MONSTERS TO COUNT
-        	monsters = 20;
-        	tempArray = new Array();
-        	for (i = 0; i < monsters; i++)
-        	{
-                	var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-                	var shape = new ShapeCountee(50,50,openPoint.mX,openPoint.mY,this,"","/images/monster/red_monster.png","","countee",i + 1);
-                	this.addToShapeArray(shape);
-                	tempArray.push(shape);
-        	}
-
-        	//now that you have done getOpenPoint2D which uses mCollidable set these countees to not collidable
-        	for (i = 0; i < monsters; i++)
-        	{
-                	tempArray[i].mCollidable = false;
-                	tempArray[i].mCollisionOn = false;
-        	}
-*/
+	
 	},
  createControlObject: function(image_source)
         {
@@ -53,64 +35,38 @@ Extends: Dungeon,
 
         },
 
+	createQuestions: function()
+	{
+    		//QUESIONS
+                for (i = 0; i < scoreNeeded; i++)
+                {
+                        var a = 1 + Math.floor(Math.random()*kidsRedShirt);
+                        var b = 1 + Math.floor(Math.random()*kidsGreenShirt);
+
+                        if (a > b)
+                        {
+                                mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater_than',a,b));
+                        }
+                        if (a < b)
+                        {
+                                mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'less_than',a,b));
+                        }
+                        if (a == b)
+                        {
+                                mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'equal_to',a,b));
+                        }
+                }
+	},
+
         createQuestionShapes: function(image_source)
         {
-  		//QUESIONS
-        	for (i = 0; i < scoreNeeded; i++)
-        	{
-                	var a = 1 + Math.floor(Math.random()*kidsRedShirt);
-                	var b = 1 + Math.floor(Math.random()*kidsGreenShirt);
-
-                	if (a > b)
-                	{
-                        	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'greater_than',a,b));
-                	}
-                	if (a < b)
-                	{
-                        	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'less_than',a,b));
-                	}
-                	if (a == b)
-                	{
-                        	mQuiz.mQuestionArray.push(new QuestionCompare('The red shirt kids are greater, less than or equal to the green shirt kids?', 'equal_to',a,b));
-                	}
-        	}
-
-/*
-                count = 0;
-                for (i = 0; i < numberOfRows; i++)
-                {
-                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape;
-                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),image_source,"","question"));
-                        shape.createMountPoint(0,-5,-41);
-                        shape.showQuestion(false);
-
-                        //numberMount to go on top let's make it small and draw it on top
-                        var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
-                        questionMountee.setMountable(true);
-                        this.addToShapeArray(questionMountee);
-                        questionMountee.showQuestion(false);
-
-                        //do the mount
-                        shape.mount(questionMountee,0);
-
-                        questionMountee.setBackgroundColor("transparent");
-
-                        count++;
-                }
-*/
-        },
+        
+	},
 
         createChasers: function(image_source)
         {
-                for (i = 0; i < 0; i++)
-                {
-                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"",image_source,"","chaser");
-                        this.addToShapeArray(shape);
-                }
-
-        },
+        
+	},
 
         createKey: function(image_source)
         {
@@ -137,11 +93,6 @@ Extends: Dungeon,
                 door.mOpenOnQuestionSolved = true;
                 this.addToShapeArray(door);
 
-                //create question shapes
-                this.createQuestionShapes("/images/treasure/gold_coin_head.png");
-
-                //create chasers
-                this.createChasers("/images/monster/red_monster.png");
         },
 
 	createSymbols: function()

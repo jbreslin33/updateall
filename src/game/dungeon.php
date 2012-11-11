@@ -41,14 +41,14 @@ Extends: Game,
 		questionMountee.setCopyQuestionFromMounter(true);
 	},
 
-	createQuestionShapes: function(image_source)
+	createQuestionShapes: function()
 	{
                 count = 0;
                 for (i = 0; i < numberOfRows; i++)
                 {
                         var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),image_source,"","question"));
+                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
@@ -103,11 +103,6 @@ Extends: Game,
         	door.mOpenOnQuestionSolved = true;
         	this.addToShapeArray(door);
 
-		//create question shapes
-		this.createQuestionShapes("/images/treasure/gold_coin_head.png");
-
-		//create chasers
-		this.createChasers("/images/monster/red_monster.png");
 	}
 		
 });
