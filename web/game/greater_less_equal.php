@@ -12,8 +12,8 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
-<script type="text/javascript" src="/src/application/application_game_dungeon.php"></script>
-<script type="text/javascript" src="/src/application/application_game_dungeon_greater_less_equal.php"></script>
+<script type="text/javascript" src="/src/game/dungeon.php"></script>
+<script type="text/javascript" src="/src/game/compare.php"></script>
 <script type="text/javascript" src="/src/question/question_compare.php"></script>
 <script type="text/javascript" src="/src/shape/shape_compare.php"></script>
 
@@ -43,7 +43,7 @@ window.addEvent('domready', function()
         mApplication = new Application();
        
 	//GAME
-	mGame = new ApplicationGameDungeonGreaterLessEqual();
+	mGame = new Compare();
  
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

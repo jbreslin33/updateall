@@ -1,7 +1,7 @@
-var ApplicationGameDungeonGreaterLessEqual = new Class(
+var Compare = new Class(
 {
 
-Extends: ApplicationGameDungeon,
+Extends: Dungeon,
 
 	initialize: function()
 	{
