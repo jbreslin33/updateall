@@ -37,8 +37,10 @@ Extends: Dungeon,
 
 	createQuestions: function()
 	{
+			mApplication.log('q');
     		//QUESIONS
-                for (i = 0; i < scoreNeeded; i++)
+                //for (i = 0; i < this.mQuiz.getScoreNeeded(); i++)
+                for (i = 0; i < 10; i++)
                 {
                         var a = 1 + Math.floor(Math.random()*kidsRedShirt);
                         var b = 1 + Math.floor(Math.random()*kidsGreenShirt);
