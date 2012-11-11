@@ -34,8 +34,8 @@ var Game = new Class(
 		/************** On_Off **********/
                 this.mOn = true;
 				
-				// may get rid of later and just use mOn
-				this.gameOver = false;
+		// may get rid of later and just use mOn
+		this.gameOver = false;
                 
 		/**************** TIME ************/
                 this.mTimeSinceEpoch = 0;
@@ -48,8 +48,6 @@ var Game = new Class(
                 
 		//shape Array
                 this.mShapeArray = new Array();
-				
-				
         },
 				
 	//brian - update score in games_attempts table		
@@ -57,9 +55,6 @@ var Game = new Class(
 	{
 		if(this.gameOver == false)
 		{
-			
-			//var str = String.valueOf(mQuiz.getScore());
-			
 			var str = this.mQuiz.getScore();
 			
 			if (str == this.score)

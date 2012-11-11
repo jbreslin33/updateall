@@ -18,21 +18,21 @@ Extends: ApplicationGame,
 	{
 		this.parent(image_source);
 
-        	mGame.mControlObject.mHideOnQuestionSolved = false;
-        	mGame.mControlObject.createMountPoint(0,-5,-41);
+        	this.mControlObject.mHideOnQuestionSolved = false;
+        	this.mControlObject.createMountPoint(0,-5,-41);
 
-        	mGame.mControlObject.showQuestionObject(false);
+        	this.mControlObject.showQuestionObject(false);
 
         	
 		//text question mountee
-        	var questionMountee = new Shape(100,50,300,300,mGame,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
+        	var questionMountee = new Shape(100,50,300,300,this,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
         	questionMountee.setMountable(true);
         	questionMountee.setHideOnDrop(true);
-        	mGame.addToShapeArray(questionMountee);
-        	mGame.mControlObject.setStartingMountee(questionMountee);
+        	this.addToShapeArray(questionMountee);
+        	this.mControlObject.setStartingMountee(questionMountee);
 
         	//do the mount
-        	mGame.mControlObject.mount(questionMountee,0);
+        	this.mControlObject.mount(questionMountee,0);
 
         	questionMountee.setBackgroundColor("transparent");
         	questionMountee.showQuestion(true);
@@ -46,16 +46,16 @@ Extends: ApplicationGame,
                 count = 0;
                 for (i = 0; i < numberOfRows; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        mGame.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,mQuiz.getSpecificQuestion(count),image_source,"","question"));
+                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),image_source,"","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
                         //numberMount to go on top let's make it small and draw it on top
-                        var questionMountee = new Shape(1,1,100,100,mGame,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
                         questionMountee.setMountable(true);
-                        mGame.addToShapeArray(questionMountee);
+                        this.addToShapeArray(questionMountee);
                         questionMountee.showQuestion(false);
 
                         //do the mount
@@ -71,9 +71,9 @@ Extends: ApplicationGame,
 	{
                 for (i = 0; i < 0; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"",image_source,"","chaser");
-                        mGame.addToShapeArray(shape);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"",image_source,"","chaser");
+                        this.addToShapeArray(shape);
                 }
 
 	},
@@ -83,13 +83,13 @@ Extends: ApplicationGame,
         	var keyQuestion = new Question('Pick up key.',"key");
         	mQuiz.mQuestionArray.push(keyQuestion);
 
-        	openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        	var key = new Shape(50,50,openPoint.mX,openPoint.mY,mGame,keyQuestion,"/images/key/key_dungeon.gif","","key");
+        	openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+        	var key = new Shape(50,50,openPoint.mX,openPoint.mY,this,keyQuestion,"/images/key/key_dungeon.gif","","key");
         	key.setVisibility(false);
         	key.mShowOnlyOnQuizComplete = true;
        	 	key.mMountable = true;
         	key.setHideOnQuestionSolved(false);
-        	mGame.addToShapeArray(key);
+        	this.addToShapeArray(key);
 	},
 
 	createDoor: function(image_source_closed,image_source_open)
@@ -97,11 +97,11 @@ Extends: ApplicationGame,
         	var doorQuestion = new Question('Open door with key.',"door");
         	mQuiz.mQuestionArray.push(doorQuestion);
 
-        	var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-        	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,mGame,doorQuestion,image_source_closed,"","door",image_source_open);
+        	var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+        	var door = new ShapeDoor(50,50,openPoint.mX,openPoint.mY,this,doorQuestion,image_source_closed,"","door",image_source_open);
         	door.mUrl = '/src/database/goto_next_level.php';
         	door.mOpenOnQuestionSolved = true;
-        	mGame.addToShapeArray(door);
+        	this.addToShapeArray(door);
 
 		//create question shapes
 		this.createQuestionShapes("/images/treasure/gold_coin_head.png");

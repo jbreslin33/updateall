@@ -1,7 +1,7 @@
 var ApplicationGame = new Class(
 {
 
-Extends: Application,
+Extends: Game,
 
         initialize: function()
         {
@@ -12,9 +12,6 @@ Extends: Application,
 
 		//create hud
 		this.createHud();
-
-		//create game
-		this.createGame("Game");
 
 		//create quiz
 		this.createQuiz();
@@ -38,15 +35,10 @@ Extends: Application,
         	mHud.mGameName.setText('<font size="2">DUNGEON</font>');
 	},
 
-	createGame: function()
-	{
-        	mGame = new Game("Game");
-	},
-
 	createQuiz: function()
 	{
         	mQuiz = new Quiz(scoreNeeded);
-        	mGame.mQuiz = mQuiz;
+        	this.mQuiz = mQuiz;
 	},
 
 	createQuestions: function()
@@ -61,15 +53,15 @@ Extends: Application,
         createControlObject: function(image_source)
         {
                 //*******************CONTROL OBJECT
-                mGame.mControlObject = new Player(50,50,400,300,mGame,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
 
                 //set animation instance
-                mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-                mGame.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
-                mGame.addToShapeArray(mGame.mControlObject);
+                this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
+                this.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+                this.addToShapeArray(this.mControlObject);
                 
-		mGame.mControlObject.mHideOnQuestionSolved = false;
-                mGame.mControlObject.createMountPoint(0,-5,-41);
+		this.mControlObject.mHideOnQuestionSolved = false;
+                this.mControlObject.createMountPoint(0,-5,-41);
 	},
 
         createQuestionShapes: function()

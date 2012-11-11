@@ -19,9 +19,9 @@ Extends: ApplicationGame,
 	{
                 for (i = 0; i < 0; i++)
                 {
-                        var openPoint = mGame.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,mGame,"",image_source,"","chaser");
-                        mGame.addToShapeArray(shape);
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"",image_source,"","chaser");
+                        this.addToShapeArray(shape);
                 }
 
 	},
@@ -35,11 +35,11 @@ Extends: ApplicationGame,
 		
 			x = i * 50 + 400;
 
-        		var door = new ShapeDoor(50,50,x,350,mGame,doorQuestion,picture_closed[i],"","door",picture_open[i]);
+        		var door = new ShapeDoor(50,50,x,350,this,doorQuestion,picture_closed[i],"","door",picture_open[i]);
 			door.mUrl = url[0];
         		//door.mOpenOnQuestionSolved = true;
 			door.setOpenDoor(true);
-        		mGame.addToShapeArray(door);
+        		this.addToShapeArray(door);
 		}
 	},
 
@@ -53,7 +53,7 @@ Extends: ApplicationGame,
 	createQuiz: function()
 	{
                 mQuiz = new Quiz(1);
-                mGame.mQuiz = mQuiz;
+                this.mQuiz = mQuiz;
 	},
 
 	createQuestions: function()
