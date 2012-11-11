@@ -1,7 +1,7 @@
 var ApplicationGameDungeon = new Class(
 {
 
-Extends: ApplicationGame,
+Extends: Game,
 
 	initialize: function()
 	{
