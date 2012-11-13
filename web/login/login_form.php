@@ -54,7 +54,7 @@
 	}
 
 ?>
-	<p><b> PLEASE LOGIN: </p></b>
+	<p><b> PLEASE GOOB LOGIN: </p></b>
 	<form method="post" action="/web/login/login.php">
 
 	<p>Username: <input type="text" name="username" /></p>
