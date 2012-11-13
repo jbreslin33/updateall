@@ -27,7 +27,7 @@ Extends: Game,
 		//text question mountee
         	var questionMountee = new Shape(100,50,300,300,this,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
         	questionMountee.setMountable(true);
-        	questionMountee.setHideOnDrop(true);
+        	//questionMountee.setHideOnDrop(true);
         	this.addToShapeArray(questionMountee);
         	this.mControlObject.setStartingMountee(questionMountee);
 
@@ -69,13 +69,6 @@ Extends: Game,
 
 	createChasers: function()
 	{
-                for (i = 0; i < 0; i++)
-                {
-                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"","images/monsters/red_monster.png","","chaser");
-                        this.addToShapeArray(shape);
-                }
-
 	},
 
 	createKey: function(image_source)
