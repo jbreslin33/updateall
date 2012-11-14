@@ -107,24 +107,5 @@ var Animation = new Class(
         		this.mShape.mAnimation.mAnimationArray[i] = new Array();
                 	this.mShape.mAnimation.mAnimationArray[i][0] = pic + i + extension;
 		}	
-	},
-/*
-//set animation instance
-        mGame.mControlObject.mAnimation = new AnimationAdvanced(mGame.mControlObject);
-
-        mGame.mControlObject.mAnimation.mAnimationArray[0] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[1] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[2] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[3] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[4] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[5] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[6] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[7] = new Array();
-        mGame.mControlObject.mAnimation.mAnimationArray[8] = new Array();
-
-        for (i = 0; i < 9; i++)
-        {
-                mGame.mControlObject.mAnimation.mAnimationArray[i][0] = '/images/characters/wizard_' + i + '.png';
-        }
-*/
+	}
 });
