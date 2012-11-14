@@ -6,6 +6,9 @@ var Shape = new Class(
 		//game so you can know of your world
 		this.mGame = game;
 
+		//outOfViewPort
+		this.mOutOfViewPort = true;
+
 		//animation 
 		this.mAnimation;
 
@@ -19,9 +22,14 @@ var Shape = new Class(
 		this.mMountPointArray = new Array();	
 
 		//for the mountee
+		this.mMountable = false;
 		this.mMounter = 0;
 		this.mMountPoint = 0;
 	
+		//timeouts	
+		this.mTimeoutShape;
+		this.mTimeoutCounter = 0;
+
 		//speed
 		this.mSpeed = .1;
 		
@@ -84,8 +92,24 @@ var Shape = new Class(
 		//message ..this can be used for collisions or whatever
 		this.mMessage = message;
 
+		//hide on quiz complete??
+		this.mHideOnQuizComplete = false;
+
 		//show on quiz complete??
 		this.mShowOnlyOnQuizComplete = false;
+	
+		//hide on question solved
+		this.mHideOnQuestionSolved = true;
+
+		//hide on drop
+		this.mHideOnDrop = false; 
+
+		//evaluate questions?
+		this.mEvaluateQuestions = true;
+
+		//copy question from mounter
+		this.mCopyQuestionFromMounter = false;
+
         },
 
         log: function(msg)
@@ -127,6 +151,22 @@ var Shape = new Class(
                        		{
                                 	this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
                         	}
+			
+				//mount your starting mountee
+				if (this.mStartingMountee)
+				{
+					this.mount(this.mStartingMountee,0);
+				}
+				else
+				{
+					for (i = 0; i < this.mMounteeArray.length; i++)
+					{
+						if (this.mMounteeArray[i])
+						{
+							this.unMount(0);
+						}
+					}		
+				}
 			}
                 }
                 
@@ -152,22 +192,32 @@ var Shape = new Class(
 
 		//try to evaluate questions of collided objects
 		this.evaluateQuestions(col)
+
+		//try to mount
+		this.mount(col,0);
 	},
 
 	evaluateQuestions: function(col)
 	{
-		if (this.mQuestion && col.mQuestion)
+		if (this.getEvaluateQuestions())
 		{
-			answer = this.mQuestion.getAnswer();	
-			answerCol = col.mQuestion.getAnswer();	
-
-			if (answer == answerCol)
+			if (this.mQuestion && col.mQuestion)
 			{
-              			this.correctAnswer(); //overidden by player to do nothing
-			}
-			else
-			{
-       				this.incorrectAnswer(); //overridden by player to do nothing
+				answer = this.mQuestion.getAnswer();	
+				answerCol = col.mQuestion.getAnswer();	
+	
+				//compare answers
+				if (this.mQuestion.getSolved() == false)
+				{
+					if (answer == answerCol)
+					{
+                       				this.correctAnswer(); //overidden by player to do nothing
+					}
+					else
+					{
+               					this.incorrectAnswer(); //overridden by player to do nothing
+					}
+				}
 			}
 		}
 	},
@@ -176,9 +226,16 @@ var Shape = new Class(
         {
 		if (this.mQuestion)
 		{
-                	this.mCollisionOn = false;
-                       	this.setVisibility(false);
-			this.mGame.correctAnswer();
+	//		if (this.mQuestion.getSolved() == false)
+	//		{
+				this.mQuestion.setSolved(true);
+				if (this.mHideOnQuestionSolved)
+        			{
+                			this.mCollisionOn = false;
+                        		this.setVisibility(false);
+                		}
+				this.mGame.correctAnswer();
+	//		}
 		}
         },
 
@@ -187,12 +244,35 @@ var Shape = new Class(
                 this.mGame.resetGame();
         },
 
+	setStartingMountee: function(mountee)
+	{
+		this.mStartingMountee = mountee;
+	},
+	
 	mount: function(mountee,slot)
 	{
-        	if (this.mMountPointArray[0])
+                if (mountee.mMountable)
                 {
-			this.mMounteeArray[slot] = mountee;
-			this.mMounteeArray[slot].mountedBy(this,slot);
+                        if (this.mMountPointArray[0])
+                        {
+                                if (this.mMounteeArray[0])
+                                {
+                                        this.unMount(0);
+                                }
+
+        			if (mountee != this.getTimeoutShape())
+                		{
+                			//first unmount  if you have something
+                        		if (this.mMounteeArray[slot])
+                        		{
+                        			this.unMount(0);
+                        		}
+                        
+					//then mount
+					this.mMounteeArray[slot] = mountee;
+					this.mMounteeArray[slot].mountedBy(this,slot);
+                		}
+			}
 		}
 	},
 
@@ -200,6 +280,25 @@ var Shape = new Class(
 	{
 		if (this.mGame.mQuiz)
 		{
+			//HIDE ON QUIZ COMPLETE
+ 			if (this.mHideOnQuizComplete)
+                	{
+				if (this.mGame.mQuiz.isQuizComplete())
+				{
+					if (this.mMounter)
+					{
+						this.mMounter.unMount(0);
+					}
+                                	this.mCollisionOn = false;
+                                       	this.setVisibility(false);
+				}
+				else
+				{
+                               		this.mCollisionOn = true;
+                               		this.setVisibility(true);
+				}
+			}
+				
 			//SHOW ON QUIZ COMPLETE
 			if (this.mShowOnlyOnQuizComplete)
 			{
@@ -208,13 +307,42 @@ var Shape = new Class(
                                		this.mCollisionOn = true;
                                		this.setVisibility(true);
 				}
+				else
+				{
+	 				if (this.mMounter)
+					{
+						this.mMounter.unMount(0);
+					}			
+                                	this.mCollisionOn = false;
+                                       	this.setVisibility(false);
+				}
 			}
+  			
+			//COPY QUESTION FROM MOUNTER
+                        if (this.getCopyQuestionFromMounter())
+                        {
+                                if (this.mMounter)
+                                {
+                                        this.setQuestion(this.mMounter.getQuestion());
+                               	} 
+			}	
 		}	
 
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
 		if (this.mMounter)
 		{
 			this.mCollisionOn = false;
+		}
+
+		//IF YOU HAVE TIMED OUT ANOTHER SHAPE.... 
+		if (this.mTimeoutShape)
+		{
+			this.mTimeoutCounter++;
+			if (this.mTimeoutCounter > 50)
+			{
+				this.mTimeoutShape = 0;
+				this.mTimeoutCounter = 0;	
+			}
 		}
 
 		this.updateVelocity(delta);
@@ -317,6 +445,42 @@ var Shape = new Class(
 		this.mMountPoint = slot;
 	},
 
+	unMount: function(slot)
+	{
+		this.mMounteeArray[slot].setTimeoutShape(this);
+
+		if (this.mMounteeArray[slot].mCollidable)
+		{
+			this.mMounteeArray[slot].mCollisionOn = true;
+		}
+
+		if (this.mMounteeArray[slot].getHideOnDrop())
+		{
+			this.mMounteeArray[slot].mCollision = false;
+			this.mMounteeArray[slot].setVisibility(false);
+		}
+
+		this.mMounteeArray[slot].mMounter = 0;
+		this.mMounteeArray[slot] = 0;	
+	
+		//unset mounters question
+		//this.mQuestion == '';
+	
+		  
+
+	},
+
+	setTimeoutShape: function(shape)
+	{
+		this.mTimeoutShape = shape;		
+	},
+
+	getTimeoutShape: function()
+	{
+		return this.mTimeoutShape;		
+	},
+
+/************** SET METHODS ************************/
 	setQuestion: function(question)
 	{
 		this.mQuestion = question;
@@ -370,6 +534,53 @@ var Shape = new Class(
 		return this.mHideOnQuizComplete;
 	},
 
+	setHideOnQuestionSolved: function(b)
+	{
+		if (b)
+		{
+			this.mHideOnQuestionSolved = true; 
+		}
+		else 
+		{
+			this.mHideOnQuestionSolved = false; 
+		}
+	},
+
+	getHideOnQuestionSolved: function()
+	{
+		return this.mHideOnQuestionSolved;
+	},
+
+	setHideOnDrop: function(b)
+	{
+		this.mHideOnDrop = b;
+	},
+
+	getHideOnDrop: function()
+	{
+		return this.mHideOnDrop;
+	},
+
+	setEvaluateQuestions: function(b)
+	{
+		this.mEvaluateQuestions = b;	
+	},
+	
+	getEvaluateQuestions: function()
+	{
+		return this.mEvaluateQuestions;	
+	},
+
+	setCopyQuestionFromMounter: function(b)
+	{
+		this.mCopyQuestionFromMounter = b;
+	},
+
+	getCopyQuestionFromMounter: function()
+	{
+		return this.mCopyQuestionFromMounter;
+	},
+
 	setText: function(t)
 	{
 		if (this.mMesh.innerHTML != t)
@@ -392,6 +603,11 @@ var Shape = new Class(
 		this.mMessage = message;
 	},
 
+	setMountable: function(b)
+	{
+		this.mMountable = b;
+	},
+	
 	showQuestionObject: function(toggle)
 	{
 		this.mShowQuestionObject = toggle;
@@ -469,4 +685,14 @@ var Shape = new Class(
 				}
 			}
 		} 
+/*
+		if (this.mMesh.innerHTML != t)
+		{
+			if (this.mSrc == "")
+			{
+				this.mMesh.innerHTML = t;
+			}
+		}
+*/		
+		
   	} }); 
