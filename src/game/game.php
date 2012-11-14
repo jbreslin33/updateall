@@ -65,7 +65,7 @@ var Game = new Class(
                 this.createQuestions();
 
                 //create control object
-                this.createControlObject("/images/characters/wizard.png");
+                this.createControlObject();
 
 		//create question shapes
 		this.createQuestionShapes();
@@ -204,16 +204,15 @@ var Game = new Class(
                 	if (this.mQuiz)
                		{
                         	if (this.mQuiz.isQuizComplete())
-					        {
-								// update score one last time
-								mGame.updateScore();
-								// set game end time
-								mGame.quizComplete();
-								// putting this in for now we may not need it
-								mGame.gameOver = true;
-					        }
+			        {
+					// update score one last time
+					mGame.updateScore();
+					// set game end time
+					mGame.quizComplete();
+					// putting this in for now we may not need it
+					mGame.gameOver = true;
+			        }
                 	}
-					
 		}
         },
 
@@ -412,26 +411,59 @@ var Game = new Class(
                 }
         },
 
-        createControlObject: function(image_source)
+        createControlObject: function()
         {
                 //*******************CONTROL OBJECT
-                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 
                 //set animation instance
                 this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
                 this.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
+
+		//don't show question object as your mountee will do this.
+	       	this.mControlObject.showQuestionObject(false);
+
+		//create mount point
+                this.mControlObject.createMountPoint(0,-5,-41);
+		
+		//add to shape array
                 this.addToShapeArray(this.mControlObject);
 
-                this.mControlObject.mHideOnQuestionSolved = false;
-                this.mControlObject.createMountPoint(0,-5,-41);
+                //text question mountee
+                var questionMountee = new Shape(100,50,300,300,this,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
+                this.addToShapeArray(questionMountee);
+
+                //do the mount
+                this.mControlObject.mount(questionMountee,0);
+
+                questionMountee.setBackgroundColor("transparent");
+                questionMountee.showQuestion(true);
         },
 
         createQuestionShapes: function()
         {
+    		count = 0;
+                for (i = 0; i < numberOfRows; i++)
+                {
+                        var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
+                        var shape;
+                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+                        shape.createMountPoint(0,-5,-41);
+                        shape.showQuestion(false);
 
+                        //numberMount to go on top let's make it small and draw it on top
+                        var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        this.addToShapeArray(questionMountee);
+                        questionMountee.showQuestion(false);
+
+                        //do the mount
+                        shape.mount(questionMountee,0);
+
+                        questionMountee.setBackgroundColor("transparent");
+
+                        count++;
+                }
         }
-
-
 });
 
 
