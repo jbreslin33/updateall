@@ -2033,16 +2033,16 @@ insert into questions (question,answer,level_id,question_order) values ('','twen
 
 
 --level_id 32 
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,1);
-insert into questions (question,answer,level_id,question_order) values ('1 + 1 =','2',32,2);
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,3);
-insert into questions (question,answer,level_id,question_order) values ('2 + 0 =','2',32,4);
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,5);
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,6);
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,7);
-insert into questions (question,answer,level_id,question_order) values ('0 + 1 =','1',32,8);
-insert into questions (question,answer,level_id,question_order) values ('1 + 0 =','1',32,9);
-insert into questions (question,answer,level_id,question_order) values ('0 + 2 =','2',32,10);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,1);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 1 =','2',32,2);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,3);
+insert into questions (question,answer,level_id,question_order) values ('What 2 + 0 =','2',32,4);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,5);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,6);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,7);
+insert into questions (question,answer,level_id,question_order) values ('What 0 + 1 =','1',32,8);
+insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',32,9);
+insert into questions (question,answer,level_id,question_order) values ('What 0 + 2 =','2',32,10);
 
 
 --==================================================================

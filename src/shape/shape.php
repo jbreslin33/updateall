@@ -248,6 +248,11 @@ var Shape = new Class(
 	{
 		this.mStartingMountee = mountee;
 	},
+
+	getStartingMountee: function()
+	{
+		return this.mStartingMountee;
+	},
 	
 	mount: function(mountee,slot)
 	{
