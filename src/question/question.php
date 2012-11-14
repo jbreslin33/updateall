@@ -7,16 +7,12 @@ var Question = new Class(
 
 		//answer
 		this.mAnswer = answer;
-
-		//is solved
-		this.mSolved = false;
         },
 	
 	set: function(question,answer)
 	{
 		this.mQuestion = question;
 		this.mAnswer = answer;
-		this.mSolved = false;
 	},
 
 	setQuestion: function(question)
@@ -29,16 +25,6 @@ var Question = new Class(
 		this.mAnswer = answer;
 	},	
 
-	setSolved: function(b)
-	{
-		this.mSolved = b;
-	},
-	
-	getSolved: function()
-	{
-		return this.mSolved;
-	},
-	
 	getQuestion: function()
 	{
 		return this.mQuestion;

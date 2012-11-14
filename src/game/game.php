@@ -327,11 +327,8 @@ var Game = new Class(
                                 			var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[c].mCollisionDistance;
                                 			if (distSQ < collisionDistance) 
                                 			{
-								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
-								{
-									this.mShapeArray[c].onCollision(this.mShapeArray[s]);	
-									this.mShapeArray[s].onCollision(this.mShapeArray[c]);	
-								}
+								this.mShapeArray[c].onCollision(this.mShapeArray[s]);	
+								this.mShapeArray[s].onCollision(this.mShapeArray[c]);	
                                 			}
 						}
 					}

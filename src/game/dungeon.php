@@ -17,28 +17,18 @@ Extends: Game,
 	createControlObject: function(image_source)
 	{
 		this.parent(image_source);
-
-        	this.mControlObject.mHideOnQuestionSolved = false;
         	this.mControlObject.createMountPoint(0,-5,-41);
-
         	this.mControlObject.showQuestionObject(false);
-
         	
 		//text question mountee
         	var questionMountee = new Shape(100,50,300,300,this,mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
-        	questionMountee.setMountable(true);
-        	//questionMountee.setHideOnDrop(true);
         	this.addToShapeArray(questionMountee);
-        	this.mControlObject.setStartingMountee(questionMountee);
 
         	//do the mount
         	this.mControlObject.mount(questionMountee,0);
 
         	questionMountee.setBackgroundColor("transparent");
         	questionMountee.showQuestion(true);
-
-		//sync with mounter
-		questionMountee.setCopyQuestionFromMounter(true);
 	},
 
 	createQuestionShapes: function()
@@ -54,7 +44,6 @@ Extends: Game,
 
                         //numberMount to go on top let's make it small and draw it on top
                         var questionMountee = new Shape(1,1,100,100,this,mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
-                        questionMountee.setMountable(true);
                         this.addToShapeArray(questionMountee);
                         questionMountee.showQuestion(false);
 
@@ -80,8 +69,6 @@ Extends: Game,
         	var key = new Shape(50,50,openPoint.mX,openPoint.mY,this,keyQuestion,"/images/key/key_dungeon.gif","","key");
         	key.setVisibility(false);
         	key.mShowOnlyOnQuizComplete = true;
-       	 	key.mMountable = true;
-        	key.setHideOnQuestionSolved(false);
         	this.addToShapeArray(key);
 	},
 
