@@ -152,9 +152,6 @@ var Shape = new Class(
 
 		//try to evaluate questions of collided objects
 		this.evaluateQuestions(col)
-
-		//try to mount
-		this.mount(col,0);
 	},
 
 	evaluateQuestions: function(col)
