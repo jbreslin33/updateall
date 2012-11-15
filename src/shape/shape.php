@@ -20,6 +20,7 @@ var Shape = new Class(
 		//for the mounter
 		this.mMounteeArray = new Array();
 		this.mMountPointArray = new Array();	
+		this.mStartingMountee = 0;
 
 		//for the mountee
 		this.mMountable = false;
@@ -141,6 +142,16 @@ var Shape = new Class(
 /****** UTILITY METHODS ******************/
 	reset: function()
 	{
+		//set every shape to spawn position
+                this.mPosition.mX = this.mPositionSpawn.mX;
+                this.mPosition.mY = this.mPositionSpawn.mY;
+
+		if (this.mCollidable == true)
+                {
+                	this.mCollisionOn = true;
+			this.setVisibility(true);
+                }
+/*
                 if (this.mGame.mQuiz)
                 {
                         //set the control objects question object
@@ -169,16 +180,7 @@ var Shape = new Class(
 				}
 			}
                 }
-                
-		//set every shape to spawn position
-                this.mPosition.mX = this.mPositionSpawn.mX;
-                this.mPosition.mY = this.mPositionSpawn.mY;
-                
-		if (this.mCollidable == true)
-                {
-                	this.mCollisionOn = true;
-			this.setVisibility(true);
-                }
+*/
 	},
 
 	onCollision: function(col)

@@ -142,15 +142,16 @@ var Game = new Class(
 
  	resetGame: function()
         {
-		if (this.mQuiz)
-		{
-			this.mQuiz.reset();
-		}
                 
 		//call reset on all shapes
                 for (i=0; i < this.mShapeArray.length; i++)
                 {
 			this.mShapeArray[i].reset();
+		}
+	
+		if (this.mQuiz)
+		{
+			this.mQuiz.reset();
 		}
 	
         },

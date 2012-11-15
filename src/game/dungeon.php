@@ -63,6 +63,9 @@ Extends: Game,
 
                         questionMountee.setBackgroundColor("transparent");
 
+			//evaluate questions
+			questionMountee.setEvaluateQuestions(false);
+
                         count++;
                 }
 	},
