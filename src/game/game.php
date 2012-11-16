@@ -36,11 +36,13 @@ var Game = new Class(
 				
 		// may get rid of later and just use mOn
 		this.gameOver = false;
+		this.timeWarning = false;
                 
 		/**************** TIME ************/
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
                 this.mDeltaTime = 0;
+				this.mGameTime = 0;
 
 		/********* SHAPES *******************/ 
 		//control object
@@ -106,6 +108,35 @@ var Game = new Class(
 			this.score = str;
 		}
 	},
+	
+	checkTime: function()
+		{
+		
+			if (this.mGameTime > 10000 && this.timeWarning == false)
+			{
+			//alert(this.mGameTime);
+		
+				var xmlhttp;    
+				
+				if (window.XMLHttpRequest)
+				  {// code for IE7+, Firefox, Chrome, Opera, Safari
+				  xmlhttp=new XMLHttpRequest();
+				  }
+				else
+				  {// code for IE6, IE5
+				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				  }
+				xmlhttp.onreadystatechange=function()
+				  {
+				  
+				  }
+				xmlhttp.open("GET","../../src/database/time_warning.php",true);
+				xmlhttp.send();
+				
+				this.timeWarning = true;
+			
+			}
+		},
 
 	quizComplete: function()
 	{	
@@ -179,6 +210,12 @@ var Game = new Class(
 
                 	//set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
                 	this.mDeltaTime = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
+					
+					if(this.mDeltaTime < 50000)
+					{
+						this.mGameTime = this.mGameTime + this.mDeltaTime;
+					}
+					
                         
 			//check Keys from application
 			this.checkKeys();

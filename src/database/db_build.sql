@@ -330,7 +330,8 @@ CREATE TABLE games_attempts (
     game_id integer NOT NULL,
     user_id integer NOT NULL,
     level_id integer NOT NULL, --should this be standard_id?
-	score integer DEFAULT 0 NOT NULL
+	score integer DEFAULT 0 NOT NULL,
+	time_warning boolean DEFAULT false NOT NULL
 );
 
 --GAMES_LEVELS_DUNGEON
