@@ -382,15 +382,6 @@ var Game = new Class(
                 mBounds = new Bounds(north,east,south,west);
         },
 
-        createQuestions: function()
-        {
-                for (i = 0; i < scoreNeeded; i++)
-                {
-                        var question = new Question(questions[i],answers[i]);
-                        this.mQuiz.mQuestionArray.push(question);
-                }
-        },
-
         createControlObject: function(image_source)
         {
                 //*******************CONTROL OBJECT
