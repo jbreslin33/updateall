@@ -94,33 +94,28 @@ var Game = new Class(
 	},
 	
 	checkTime: function()
+	{
+		if (this.mGameTime > 10000 && this.timeWarning == false)
 		{
-		
-			if (this.mGameTime > 10000 && this.timeWarning == false)
-			{
-			//alert(this.mGameTime);
-		
-				var xmlhttp;    
-				
-				if (window.XMLHttpRequest)
-				  {// code for IE7+, Firefox, Chrome, Opera, Safari
-				  xmlhttp=new XMLHttpRequest();
-				  }
-				else
-				  {// code for IE6, IE5
-				  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-				  }
-				xmlhttp.onreadystatechange=function()
-				  {
-				  
-				  }
-				xmlhttp.open("GET","../../src/database/time_warning.php",true);
-				xmlhttp.send();
-				
-				this.timeWarning = true;
+			var xmlhttp;    
 			
+			if (window.XMLHttpRequest)
+			{// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
 			}
-		},
+			else
+			{// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function()
+			{
+				  
+			}
+			xmlhttp.open("GET","../../src/database/time_warning.php",true);
+			xmlhttp.send();
+			this.timeWarning = true;
+		}
+	},
 
 	quizComplete: function()
 	{	
@@ -163,7 +158,6 @@ var Game = new Class(
 		{
 			this.mQuiz.reset();
 		}
-	
         },
 
 	/*********************** PUBLIC ***************************/
@@ -215,7 +209,7 @@ var Game = new Class(
         
                 	//save old positions
                 	this.saveOldPositions();
-			//var t=setTimeout("mGame.update()",32)
+			//var t=setTimeout("game.update()",32)
 
 			//check for quiz complete
                 	if (this.mQuiz)
@@ -223,11 +217,11 @@ var Game = new Class(
                         	if (this.mQuiz.isQuizComplete())
 					        {
 								// update score one last time
-								mGame.updateScore();
+								this.updateScore();
 								// set game end time
-								mGame.quizComplete();
+								this.quizComplete();
 								// putting this in for now we may not need it
-								mGame.gameOver = true;
+								this.gameOver = true;
 					        }
                 	}
 					
@@ -415,14 +409,14 @@ var Game = new Class(
                 for (i = 0; i < scoreNeeded; i++)
                 {
                         var question = new Question(questions[i],answers[i]);
-                        mQuiz.mQuestionArray.push(question);
+                        this.mQuiz.mQuestionArray.push(question);
                 }
         },
 
         createControlObject: function(image_source)
         {
                 //*******************CONTROL OBJECT
-                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject = new Player(50,50,400,300,this,this.mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
 
                 //set animation instance
                 this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);

@@ -33,7 +33,7 @@ var Quiz = new Class(
         	this.mGame.incrementScore();
 		this.mMarker++;
 	
-		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
+		this.mGame.mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
 	},
 	
 	getScoreNeeded: function()
@@ -56,7 +56,7 @@ var Quiz = new Class(
 	setScoreNeeded: function(scoreNeeded)
 	{
 		this.mScoreNeeded = scoreNeeded;
-		mHud.mScoreNeeded.setText('<font size="2"> Needed: ' + this.mScoreNeeded + '</font>');
+		this.mGame.mHud.mScoreNeeded.setText('<font size="2"> Needed: ' + this.mScoreNeeded + '</font>');
 	},
 
 	reset: function()
@@ -65,7 +65,7 @@ var Quiz = new Class(
 		this.mMarker = 0;
                 
 		//update question 
-		mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
+		this.mGame.mHud.mQuestion.setText('<font size="2"> Question: ' + this.mQuestionArray[this.mMarker].getQuestion() + '</font>');
 
 		for (i = 0; i < this.mQuestionArray.length; i++)
 		{
