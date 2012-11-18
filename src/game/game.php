@@ -30,6 +30,7 @@ var Game = new Class(
 		/************ NAME *******/
 		this.mSkill = skill;
 		this.score  = 0;
+		this.mScore = 0;
 
 		/************** On_Off **********/
                 this.mOn = true;
@@ -42,7 +43,7 @@ var Game = new Class(
                 this.mTimeSinceEpoch = 0;
                 this.mLastTimeSinceEpoch = 0;
                 this.mDeltaTime = 0;
-				this.mGameTime = 0;
+		this.mGameTime = 0;
 
 		/********* SHAPES *******************/ 
 		//control object
@@ -54,9 +55,7 @@ var Game = new Class(
                 //create bounds
                 this.createBounds(60,735,380,35);
 
-                //create hud
-                this.createHud();
-
+		this.mHud = 0;
         },
 				
 	//brian - update score in games_attempts table		
@@ -64,7 +63,7 @@ var Game = new Class(
 	{
 		if(this.gameOver == false)
 		{
-			var str = this.mQuiz.getScore();
+			var str = this.getScore();
 			
 			if (str == this.score)
 			{
@@ -156,6 +155,9 @@ var Game = new Class(
                 {
 			this.mShapeArray[i].reset();
 		}
+
+		//reset score
+		this.setScore(0);
 	
 		if (this.mQuiz)
 		{
@@ -408,13 +410,6 @@ var Game = new Class(
                 mBounds = new Bounds(north,east,south,west);
         },
 
-        createHud: function()
-        {
-                mHud = new Hud();
-                mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
-                mHud.mGameName.setText('<font size="2">DUNGEON</font>');
-        },
-
         createQuestions: function()
         {
                 for (i = 0; i < scoreNeeded; i++)
@@ -441,7 +436,37 @@ var Game = new Class(
         createQuestionShapes: function()
         {
 
-        }
+        },
+
+//SCORE
+        getScore: function()
+        {
+                return this.mScore;
+        },
+
+        setScore: function(score)
+        {
+                this.mScore = score;
+                this.mHud.mScore.setText('<font size="2">Score: ' + this.mScore + '</font>');
+        },
+
+        incrementScore: function()
+        {
+                this.mScore++;
+                this.mHud.mScore.setText('<font size="2"> Score : ' + this.mScore + '</font>');
+        },
+
+	setHud: function(hud)
+	{
+		this.mHud = hud;
+	},
+
+	getHud: function()
+	{
+		return this.mHud;
+	}
+
+
 
 
 });

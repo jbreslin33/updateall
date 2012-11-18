@@ -34,13 +34,22 @@ window.addEvent('domready', function()
 {
         //APPLICATION
         mApplication = new Application();
+
+        //HUD
+        mHud = new Hud();
+        mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+        mHud.mGameName.setText('<font size="2">DUNGEON</font>');
         
 	//GAME
 	mGame = new Dungeon();
 
+        //set hud
+        mGame.setHud(mHud);
+
 	//QUIZ	
        	mQuiz = new Quiz(scoreNeeded);
        	mGame.mQuiz = mQuiz;
+	mQuiz.mGame = mGame;
 
         //create questions
         mGame.createQuestions();
