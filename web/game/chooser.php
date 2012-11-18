@@ -36,32 +36,29 @@ window.addEvent('domready', function()
         mApplication = new Application();
                
 	//HUD 
-	mHud = new Hud();
-        mHud.mScoreNeeded.setText('<font size="2"> Needed : 1</font>');
-        mHud.mGameName.setText('<font size="2">DUNGEON</font>');
+	hud = new Hud();
+        hud.mScoreNeeded.setText('<font size="2"> Needed : 1</font>');
+        hud.mGameName.setText('<font size="2">DUNGEON</font>');
 
 	//GAME
-	mGame = new Chooser("Chooser");
+	game = new Chooser("Chooser");
 
 	//set hud
-	mGame.setHud(mHud);
+	game.setHud(hud);
 
         //QUIZ
-        mQuiz = new Quiz(1);
-        mGame.mQuiz = mQuiz;
-	mQuiz.mGame = mGame;
+        quiz = new Quiz(1);
+        game.mQuiz = quiz;
+	quiz.mGame = game;
 
         //create questions
-        mGame.createQuestions();
+        game.createQuestions();
 
         //create control object
-        mGame.createControlObject("/images/characters/wizard.png");
-
-        //create question shapes
-        //mGame.createQuestionShapes();
+        game.createControlObject("/images/characters/wizard.png");
 
         //create doors
-        mGame.createDoors();
+        game.createDoors();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

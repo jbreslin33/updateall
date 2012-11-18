@@ -36,35 +36,35 @@ window.addEvent('domready', function()
         mApplication = new Application();
 
         //HUD
-        mHud = new Hud();
-        mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
-        mHud.mGameName.setText('<font size="2">DUNGEON</font>');
+        hud = new Hud();
+        hud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
+        hud.mGameName.setText('<font size="2">DUNGEON</font>');
         
 	//GAME
-	mGame = new Dungeon();
+	game = new Dungeon();
 
         //set hud
-        mGame.setHud(mHud);
+        game.setHud(hud);
 
 	//QUIZ	
-       	mQuiz = new Quiz(scoreNeeded);
-       	mGame.mQuiz = mQuiz;
-	mQuiz.mGame = mGame;
+       	quiz = new Quiz(scoreNeeded);
+       	game.mQuiz = quiz;
+	quiz.mGame = game;
 
         //create questions
-        mGame.createQuestions();
+        game.createQuestions();
 
         //create control object
-        mGame.createControlObject("/images/characters/wizard.png");
+        game.createControlObject("/images/characters/wizard.png");
 
         //create question shapes
-        mGame.createQuestionShapes();
+        game.createQuestionShapes();
 
         //create key
-        mGame.createKey("/images/key/key_dungeon.gif");
+        game.createKey("/images/key/key_dungeon.gif");
 
         //create door
-        mGame.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
+        game.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
 
 
         //KEYS
