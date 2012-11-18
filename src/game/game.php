@@ -32,9 +32,6 @@ var Game = new Class(
 		this.score  = 0;
 		this.mScore = 0;
 
-		/************** QUIZ **********/
-		this.mQuiz = 0;
-
 		/************** On_Off **********/
                 this.mOn = true;
 				
@@ -157,11 +154,6 @@ var Game = new Class(
 
 		//reset score
 		this.setScore(0);
-	
-		if (this.mQuiz)
-		{
-			this.mQuiz.reset();
-		}
         },
 
 	/*********************** PUBLIC ***************************/
