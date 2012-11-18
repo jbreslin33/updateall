@@ -1,7 +1,7 @@
 var Chooser = new Class(
 {
 
-Extends: Game,
+Extends: GameQuiz,
 
 	initialize: function()
 	{
