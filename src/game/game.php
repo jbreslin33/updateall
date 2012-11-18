@@ -32,6 +32,9 @@ var Game = new Class(
 		this.score  = 0;
 		this.mScore = 0;
 
+		/************** QUIZ **********/
+		this.mQuiz = 0;
+
 		/************** On_Off **********/
                 this.mOn = true;
 				
@@ -55,6 +58,7 @@ var Game = new Class(
                 //create bounds
                 this.createBounds(60,735,380,35);
 
+		//HUD
 		this.mHud = 0;
         },
 				
