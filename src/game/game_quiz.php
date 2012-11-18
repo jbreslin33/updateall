@@ -40,5 +40,15 @@ Extends: Game,
                                 }
                         }
                 }
+        },
+
+        createQuestions: function()
+        {
+                for (i = 0; i < scoreNeeded; i++)
+                {
+                        var question = new Question(questions[i],answers[i]);
+                        this.mQuiz.mQuestionArray.push(question);
+                }
         }
+
 });
