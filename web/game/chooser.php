@@ -34,7 +34,24 @@ window.addEvent('domready', function()
         //APPLICATION
         mApplication = new Application();
 
+	//GAME
 	mGame = new Chooser("Chooser");
+
+        //QUIZ
+        mQuiz = new Quiz(1);
+        mGame.mQuiz = mQuiz;
+
+        //create questions
+        mGame.createQuestions();
+
+        //create control object
+        mGame.createControlObject("/images/characters/wizard.png");
+
+        //create question shapes
+        //mGame.createQuestionShapes();
+
+        //create doors
+        mGame.createDoors();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);

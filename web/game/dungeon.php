@@ -38,6 +38,26 @@ window.addEvent('domready', function()
 	//GAME
 	mGame = new Dungeon();
 
+	//QUIZ	
+       	mQuiz = new Quiz(scoreNeeded);
+       	mGame.mQuiz = mQuiz;
+
+        //create questions
+        mGame.createQuestions();
+
+        //create control object
+        mGame.createControlObject("/images/characters/wizard.png");
+
+        //create question shapes
+        mGame.createQuestionShapes();
+
+        //create key
+        mGame.createKey("/images/key/key_dungeon.gif");
+
+        //create door
+        mGame.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
+
+
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);

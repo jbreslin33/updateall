@@ -60,18 +60,6 @@ var Game = new Class(
                 //create hud
                 this.createHud();
 
-                //create quiz
-                this.createQuiz();
-
-                //create questions
-                this.createQuestions();
-
-                //create control object
-                this.createControlObject("/images/characters/wizard.png");
-
-		//create question shapes
-		this.createQuestionShapes();
-
         },
 				
 	//brian - update score in games_attempts table		

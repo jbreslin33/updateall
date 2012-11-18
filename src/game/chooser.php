@@ -6,9 +6,6 @@ Extends: Game,
 	initialize: function()
 	{
        		this.parent();
-
-		//create doors	
-		this.createDoors();
 	},
 
 	createQuestionShapes: function(image_source)
@@ -31,7 +28,7 @@ Extends: Game,
 		for (i = 0; i < numberOfRows; i++)
 		{
         		var doorQuestion = new Question('Open door with key.',"door");
-        		mQuiz.mQuestionArray.push(doorQuestion);
+        		this.mQuiz.mQuestionArray.push(doorQuestion);
 		
 			x = i * 50 + 400;
 
@@ -49,12 +46,6 @@ Extends: Game,
         	mHud.mScoreNeeded.setText('<font size="2"> Needed : 1 </font>');
         	mHud.mGameName.setText('<font size="2">GAME CHOOSER</font>');
         },
-
-	createQuiz: function()
-	{
-                mQuiz = new Quiz(1);
-                this.mQuiz = mQuiz;
-	},
 
 	createQuestions: function()
 	{
