@@ -8,9 +8,9 @@ Extends: GameQuiz,
        		this.parent();
 	},
 
-	createControlObject: function(image_source)
+	createControlObject: function()
 	{
-		this.parent(image_source);
+		this.parent();
 
         	this.mControlObject.mHideOnQuestionSolved = false;
         	this.mControlObject.createMountPoint(0,-5,-41);

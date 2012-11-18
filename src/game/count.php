@@ -24,10 +24,10 @@ Extends: Dungeon,
         	}
 	},
 
-        createControlObject: function(image_source)
+        createControlObject: function()
         {
                 //*******************CONTROL OBJECT
-                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject = new Player(50,50,400,300,this,mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
                 this.mControlObject.mHideOnQuestionSolved = false;
                 this.mControlObject.createMountPoint(0,-5,-41);
 

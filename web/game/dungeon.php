@@ -56,7 +56,7 @@ window.addEvent('domready', function()
         game.createQuestions();
 
         //create control object
-        game.createControlObject("/images/characters/wizard.png");
+        game.createControlObject();
 
         //create question shapes
         game.createQuestionShapes();
