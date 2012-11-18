@@ -1,12 +1,11 @@
 var Dungeon = new Class(
 {
 
-Extends: Game,
+Extends: GameQuiz,
 
 	initialize: function()
 	{
        		this.parent();
-
 	},
 
 	createControlObject: function(image_source)
