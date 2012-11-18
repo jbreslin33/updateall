@@ -204,21 +204,6 @@ var Game = new Class(
         
                 	//save old positions
                 	this.saveOldPositions();
-			//var t=setTimeout("game.update()",32)
-
-			//check for quiz complete
-                	if (this.mQuiz)
-               		{
-                        	if (this.mQuiz.isQuizComplete())
-			        {
-					// update score one last time
-					this.updateScore();
-					// set game end time
-					this.quizComplete();
-					// putting this in for now we may not need it
-					this.gameOver = true;
-			        }
-                	}
 		}
         },
 
