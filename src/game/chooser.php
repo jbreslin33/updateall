@@ -8,7 +8,7 @@ Extends: Game,
        		this.parent();
 	},
 
-	createQuestionShapes: function(image_source)
+	createQuestionShapes: function()
 	{
 	},
 
