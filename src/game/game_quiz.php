@@ -51,10 +51,10 @@ Extends: Game,
                 }
         },
 
-        createControlObject: function(image_source)
+        createControlObject: function()
         {
                 //*******************CONTROL OBJECT
-                this.mControlObject = new Player(50,50,400,300,this,this.mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
+                this.mControlObject = new Player(50,50,400,300,this,this.mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
 
                 //set animation instance
                 this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
