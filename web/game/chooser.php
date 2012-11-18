@@ -27,19 +27,29 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 
 var mGame;
 var mApplication;
+var mHud;
 
 window.addEvent('domready', function()
 {
 
         //APPLICATION
         mApplication = new Application();
+               
+	//HUD 
+	mHud = new Hud();
+        mHud.mScoreNeeded.setText('<font size="2"> Needed : 1</font>');
+        mHud.mGameName.setText('<font size="2">DUNGEON</font>');
 
 	//GAME
 	mGame = new Chooser("Chooser");
 
+	//set hud
+	mGame.setHud(mHud);
+
         //QUIZ
         mQuiz = new Quiz(1);
         mGame.mQuiz = mQuiz;
+	mQuiz.mGame = mGame;
 
         //create questions
         mGame.createQuestions();
