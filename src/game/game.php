@@ -382,20 +382,6 @@ var Game = new Class(
                 mBounds = new Bounds(north,east,south,west);
         },
 
-        createControlObject: function(image_source)
-        {
-                //*******************CONTROL OBJECT
-                this.mControlObject = new Player(50,50,400,300,this,this.mQuiz.getSpecificQuestion(0),image_source,"","controlObject");
-
-                //set animation instance
-                this.mControlObject.mAnimation = new AnimationAdvanced(this.mControlObject);
-                this.mControlObject.mAnimation.addAnimations('/images/characters/wizard_','.png');
-                this.addToShapeArray(this.mControlObject);
-
-                this.mControlObject.mHideOnQuestionSolved = false;
-                this.mControlObject.createMountPoint(0,-5,-41);
-        },
-
         createQuestionShapes: function()
         {
 
