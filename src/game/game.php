@@ -1,23 +1,3 @@
-/******************************************
-public methods
------------------
-
-PUBLIC
----------------------------
-
-//set methods
-
-//get methods
-controlObject getControlObject();
-
-PRIVATE
----------------------------------
-
-//add methods
-void          addToShapeArray          (shape);
-void 	      setFeedback(feedback);
-
-***************************************/
 <?php
 session_start();
 ?>
