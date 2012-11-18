@@ -382,11 +382,6 @@ var Game = new Class(
                 mBounds = new Bounds(north,east,south,west);
         },
 
-        createQuestionShapes: function()
-        {
-
-        },
-
         getScore: function()
         {
                 return this.mScore;
