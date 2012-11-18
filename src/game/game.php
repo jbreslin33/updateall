@@ -51,9 +51,6 @@ var Game = new Class(
 		//shape Array
                 this.mShapeArray = new Array();
 
-
-		//FROM NEW GAME
-
                 //create bounds
                 this.createBounds(60,735,380,35);
 
@@ -150,14 +147,6 @@ var Game = new Class(
 			xmlhttp.send();
 		}
 	},
-
-        correctAnswer: function(col1,col2)
-        {
-		if (this.mQuiz)
-                {
-                	this.mQuiz.correctAnswer();
-                }
-        },
 
  	resetGame: function()
         {
@@ -424,12 +413,6 @@ var Game = new Class(
                 mHud = new Hud();
                 mHud.mScoreNeeded.setText('<font size="2"> Needed : ' + scoreNeeded + '</font>');
                 mHud.mGameName.setText('<font size="2">DUNGEON</font>');
-        },
-
-        createQuiz: function()
-        {
-                mQuiz = new Quiz(scoreNeeded);
-                this.mQuiz = mQuiz;
         },
 
         createQuestions: function()
