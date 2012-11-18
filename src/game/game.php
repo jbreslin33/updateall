@@ -184,11 +184,10 @@ var Game = new Class(
                 	//set deltatime as function of timeSinceEpoch and LastTimeSinceEpoch diff
                 	this.mDeltaTime = this.mTimeSinceEpoch - this.mLastTimeSinceEpoch;
 					
-					if(this.mDeltaTime < 50000)
-					{
-						this.mGameTime = this.mGameTime + this.mDeltaTime;
-					}
-					
+			if(this.mDeltaTime < 50000)
+			{
+				this.mGameTime = this.mGameTime + this.mDeltaTime;
+			}
                         
 			//check Keys from application
 			this.checkKeys();
@@ -215,16 +214,15 @@ var Game = new Class(
                 	if (this.mQuiz)
                		{
                         	if (this.mQuiz.isQuizComplete())
-					        {
-								// update score one last time
-								this.updateScore();
-								// set game end time
-								this.quizComplete();
-								// putting this in for now we may not need it
-								this.gameOver = true;
-					        }
+			        {
+					// update score one last time
+					this.updateScore();
+					// set game end time
+					this.quizComplete();
+					// putting this in for now we may not need it
+					this.gameOver = true;
+			        }
                 	}
-					
 		}
         },
 
@@ -396,7 +394,6 @@ var Game = new Class(
                                 return randomPoint2D;
                         }
                 } 
- 
         },
 
   	createBounds: function(north,east,south,west)
@@ -432,7 +429,6 @@ var Game = new Class(
 
         },
 
-//SCORE
         getScore: function()
         {
                 return this.mScore;
@@ -459,9 +455,6 @@ var Game = new Class(
 	{
 		return this.mHud;
 	}
-
-
-
 
 });
 
