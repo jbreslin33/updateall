@@ -28,6 +28,8 @@ Extends: Shape,
                 this.mShowOnlyOnQuizComplete = false;
         },
 
+	/***** COLLISION **********/
+
        	onCollision: function(col)
         {
 		this.parent(col);
@@ -35,6 +37,9 @@ Extends: Shape,
                 //try to evaluate questions of collided objects
                 this.evaluateQuestions(col)
         },
+
+	/****** EVALUATE QUESTIONS *****/
+
         evaluateQuestions: function(col)
         {
 		//evaluate answers to questions provided both shapes have questions.
@@ -64,6 +69,18 @@ Extends: Shape,
                 }
         },
 
+ 	setEvaluateQuestions: function(b)
+        {
+                this.mEvaluateQuestions = b;
+        },
+
+        getEvaluateQuestions: function()
+        {
+                return this.mEvaluateQuestions;
+        },
+
+	/***** ANSWER  *****/
+
         correctAnswer: function()
         {
                 if (this.mQuestion)
@@ -82,6 +99,8 @@ Extends: Shape,
         {
                 this.mGame.resetGame();
         },
+
+	/****** UPDATE   ****/
 
    	update: function(delta)
         {
@@ -137,6 +156,25 @@ Extends: Shape,
 		this.parent(delta);
         },
 
+	/******** VISIBILITY *********/
+
+        showQuestionObject: function(toggle)
+        {
+                this.mShowQuestionObject = toggle;
+        },
+
+        showQuestion: function(toggle)
+        {
+                if (toggle)
+                {
+                        this.mShowQuestion = true;
+                }
+                else
+                {
+                        this.mShowQuestion = false;
+                }
+        },
+
 	setHideOnQuizComplete: function(b)
         {
                 if (b)
@@ -171,15 +209,7 @@ Extends: Shape,
                 return this.mHideOnQuestionSolved;
         },
 
- 	setEvaluateQuestions: function(b)
-        {
-                this.mEvaluateQuestions = b;
-        },
-
-        getEvaluateQuestions: function()
-        {
-                return this.mEvaluateQuestions;
-        },
+	/********* COPY QUESTION FROM MOUNTER ***/
 
         setCopyQuestionFromMounter: function(b)
         {
@@ -191,22 +221,6 @@ Extends: Shape,
                 return this.mCopyQuestionFromMounter;
         },
 
-        showQuestionObject: function(toggle)
-        {
-                this.mShowQuestionObject = toggle;
-        },
-
-        showQuestion: function(toggle)
-        {
-                if (toggle)
-                {
-                        this.mShowQuestion = true;
-                }
-                else
-                {
-                        this.mShowQuestion = false;
-                }
-        },
 
         getQuestion: function()
         {
