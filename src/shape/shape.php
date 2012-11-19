@@ -101,22 +101,6 @@ var Shape = new Class(
         },
 
 
-/******************** PUBLIC METHODS *************/
-	createMountPoint: function(slot,x,y)
-	{
-		this.mMountPointArray[slot] = new Point2D();
-
-		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
-        	{
-			this.mMountPointArray[slot].mX = x;
-			this.mMountPointArray[slot].mY = y;
-        	}
-        	else
-       	 	{
-			this.mMountPointArray[slot].mX = x;
-			this.mMountPointArray[slot].mY = y - 17;
-        	}
-	},	
 
 /****** UTILITY METHODS ******************/
 	reset: function()
@@ -140,6 +124,24 @@ var Shape = new Class(
 		//try to mount
 		this.mount(col,0);
 	},
+
+	/****** MOUNTING ******************/
+
+	createMountPoint: function(slot,x,y)
+	{
+		this.mMountPointArray[slot] = new Point2D();
+
+		if (navigator.appName == "Microsoft Internet Explorer" || navigator.appName == "Opera")
+        	{
+			this.mMountPointArray[slot].mX = x;
+			this.mMountPointArray[slot].mY = y;
+        	}
+        	else
+       	 	{
+			this.mMountPointArray[slot].mX = x;
+			this.mMountPointArray[slot].mY = y - 17;
+        	}
+	},	
 
 	setStartingMountee: function(mountee)
 	{
