@@ -92,6 +92,8 @@ var Shape = new Class(
 		this.mHideOnDrop = false; 
         },
 
+	/****** LOGGING ******************/
+
         log: function(msg)
         {
                 setTimeout(function()
@@ -100,9 +102,7 @@ var Shape = new Class(
                 }, 0);
         },
 
-
-
-/****** UTILITY METHODS ******************/
+	/****** RESETTING ******************/
 	reset: function()
 	{
 		//set every shape to spawn position
@@ -116,6 +116,8 @@ var Shape = new Class(
                 }
 	},
 
+	/****** COLLISION ******************/
+
 	onCollision: function(col)
 	{
 		this.mPosition.mX = this.mPositionOld.mX;
@@ -124,6 +126,26 @@ var Shape = new Class(
 		//try to mount
 		this.mount(col,0);
 	},
+
+	checkForOutOfBounds: function()
+	{
+                if (this.mPosition.mY < mBounds.mNorth)
+                {
+                        this.mPosition.mY = mBounds.mNorth;
+                }
+                if (this.mPosition.mX > mBounds.mEast)
+                {
+                        this.mPosition.mX = mBounds.mEast;
+                }
+                if (this.mPosition.mY > mBounds.mSouth)
+                {
+                        this.mPosition.mY = mBounds.mSouth;
+                }
+                if (this.mPosition.mX < mBounds.mWest)
+                {
+                        this.mPosition.mX = mBounds.mWest;
+                }
+        },
 
 	/****** MOUNTING ******************/
 
@@ -180,6 +202,34 @@ var Shape = new Class(
 		}
 	},
 
+	mountedBy: function(mounter,slot)
+	{
+		this.mCollisionOn = false;
+		this.mMounter = mounter;
+		this.mMountPoint = slot;
+	},
+
+	unMount: function(slot)
+	{
+		this.mMounteeArray[slot].setTimeoutShape(this);
+
+		if (this.mMounteeArray[slot].mCollidable)
+		{
+			this.mMounteeArray[slot].mCollisionOn = true;
+		}
+
+		if (this.mMounteeArray[slot].getHideOnDrop())
+		{
+			this.mMounteeArray[slot].mCollision = false;
+			this.mMounteeArray[slot].setVisibility(false);
+		}
+
+		this.mMounteeArray[slot].mMounter = 0;
+		this.mMounteeArray[slot] = 0;	
+	},
+
+	/************ UPDATE ****************/
+
 	update: function(delta)
 	{
 		//IF YOU ARE MOUNTED TURN OFF COLLISION
@@ -210,25 +260,7 @@ var Shape = new Class(
 		}
 	},
  
-	checkForOutOfBounds: function()
-	{
-                if (this.mPosition.mY < mBounds.mNorth)
-                {
-                        this.mPosition.mY = mBounds.mNorth;
-                }
-                if (this.mPosition.mX > mBounds.mEast)
-                {
-                        this.mPosition.mX = mBounds.mEast;
-                }
-                if (this.mPosition.mY > mBounds.mSouth)
-                {
-                        this.mPosition.mY = mBounds.mSouth;
-                }
-                if (this.mPosition.mX < mBounds.mWest)
-                {
-                        this.mPosition.mX = mBounds.mWest;
-                }
-        },
+	/********* VELOCITY ******************/
 
 	updateVelocity: function(delta)
 	{
@@ -237,6 +269,8 @@ var Shape = new Class(
                 this.mVelocity.mY = this.mKey.mY * delta * this.mSpeed;
 	},
 	
+	/********* POSITION ******************/
+
 	updatePosition: function()
 	{
                 //update position
@@ -255,6 +289,8 @@ var Shape = new Class(
 			this.mPosition.mY += this.mMounter.mMountPointArray[this.mMountPoint].mY;
 		} 
 	},
+
+	/********* ANIMATION ******************/
 
 	updateAnimation: function()
 	{
@@ -292,31 +328,6 @@ var Shape = new Class(
 		}
 	},
 
-	mountedBy: function(mounter,slot)
-	{
-		this.mCollisionOn = false;
-		this.mMounter = mounter;
-		this.mMountPoint = slot;
-	},
-
-	unMount: function(slot)
-	{
-		this.mMounteeArray[slot].setTimeoutShape(this);
-
-		if (this.mMounteeArray[slot].mCollidable)
-		{
-			this.mMounteeArray[slot].mCollisionOn = true;
-		}
-
-		if (this.mMounteeArray[slot].getHideOnDrop())
-		{
-			this.mMounteeArray[slot].mCollision = false;
-			this.mMounteeArray[slot].setVisibility(false);
-		}
-
-		this.mMounteeArray[slot].mMounter = 0;
-		this.mMounteeArray[slot] = 0;	
-	},
 
 	setTimeoutShape: function(shape)
 	{
