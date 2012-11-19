@@ -103,6 +103,7 @@ var Shape = new Class(
         },
 
 	/****** RESETTING ******************/
+
 	reset: function()
 	{
 		//set every shape to spawn position
@@ -300,10 +301,6 @@ var Shape = new Class(
 		}
 	},
 
-	updateScreen: function()
-	{
-		this.draw();
-	},
 
 	/********* IMAGES ******************/
 
@@ -432,7 +429,7 @@ var Shape = new Class(
 		
 	},
 
-/*********** PROTECTED MEMBER METHODS *************/
+	/*********** RENDER *************/
 	
 	render: function()
 	{
@@ -447,6 +444,11 @@ var Shape = new Class(
 			mody = this.mPositionRender.mY+'px';	
 			this.mDiv.mDiv.style.top = mody;
 		}
+	},
+
+	updateScreen: function()
+	{
+		this.draw();
 	},
  	
 	draw: function()
