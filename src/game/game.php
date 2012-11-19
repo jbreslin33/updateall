@@ -5,10 +5,9 @@ session_start();
 var Game = new Class(
 {
 
-        initialize: function(skill)
+        initialize: function()
         {
-		/************ NAME *******/
-		this.mSkill = skill;
+		/************ SCORE *******/
 		this.score  = 0;
 		this.mScore = 0;
 
@@ -31,10 +30,12 @@ var Game = new Class(
                 
 		//shape Array
                 this.mShapeArray = new Array();
-
+			
+		/********* BOUNDS *******************/ 
                 //create bounds
                 this.createBounds(60,735,380,35);
 
+		/********* HUD *******************/ 
 		//HUD
 		this.mHud = 0;
         },
