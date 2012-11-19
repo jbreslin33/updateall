@@ -312,7 +312,6 @@ var Shape = new Class(
 		}
 	},
 
-
 	/********* IMAGES ******************/
 
 	setSrc: function(src)
@@ -337,7 +336,6 @@ var Shape = new Class(
 
 		}
 	},
-
 
 	/********* TIMEOUT ******************/
 
@@ -376,7 +374,6 @@ var Shape = new Class(
 		{
 			this.mMounteeArray[0].setVisibility(b);
 		}
-
 	},		
 
 	getVisibility: function()
@@ -389,7 +386,6 @@ var Shape = new Class(
 		{
 			return false;
 		}
-		
 	},
 
 	setHideOnDrop: function(b)
