@@ -130,36 +130,6 @@ var Shape = new Class(
                 	this.mCollisionOn = true;
 			this.setVisibility(true);
                 }
-/*
-                if (this.mGame.mQuiz)
-                {
-                        //set the control objects question object
-			if (this.mGame.mControlObject == this)
-			{
-                        	this.setQuestion(this.mGame.mQuiz.getQuestion());
-                        	if (this.mMounteeArray[0])
-                       		{
-                                	this.mMounteeArray[0].setQuestion(this.mGame.mQuiz.getQuestion());
-                        	}
-			
-				//mount your starting mountee
-				if (this.mStartingMountee)
-				{
-					this.mount(this.mStartingMountee,0);
-				}
-				else
-				{
-					for (i = 0; i < this.mMounteeArray.length; i++)
-					{
-						if (this.mMounteeArray[i])
-						{
-							this.unMount(0);
-						}
-					}		
-				}
-			}
-                }
-*/
 	},
 
 	onCollision: function(col)
@@ -170,9 +140,6 @@ var Shape = new Class(
 		//evaluate answers to questions provided both shapes have questions.
 		var answer = 0;
 		var answerCol = 0;
-
-		//try to evaluate questions of collided objects
-		this.evaluateQuestions(col)
 
 		//try to mount
 		this.mount(col,0);
