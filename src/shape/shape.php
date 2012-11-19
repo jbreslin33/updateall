@@ -305,6 +305,8 @@ var Shape = new Class(
 		this.draw();
 	},
 
+	/********* IMAGES ******************/
+
 	setSrc: function(src)
 	{
                 //create clientImage
@@ -329,6 +331,8 @@ var Shape = new Class(
 	},
 
 
+	/********* TIMEOUT ******************/
+
 	setTimeoutShape: function(shape)
 	{
 		this.mTimeoutShape = shape;		
@@ -344,6 +348,8 @@ var Shape = new Class(
 		this.mPosition.mX = x;
 		this.mPosition.mY = y;
 	},
+
+	/********* VISIBILITY ******************/
 
 	setVisibility: function(b)
 	{
@@ -380,6 +386,8 @@ var Shape = new Class(
 		return this.mHideOnDrop;
 	},
 
+	/********* TEXT ******************/
+
 	setText: function(t)
 	{
 		if (this.mMesh.innerHTML != t)
@@ -391,11 +399,15 @@ var Shape = new Class(
 		}
 	},
 
+	/********* COLOR ******************/
+
 	setBackgroundColor: function(c)
 	{
 		this.mBackgroundColor = c;
 		this.mDiv.mDiv.style.backgroundColor = c;
 	},
+
+	/********* MESSAGE ******************/
 
 	setMessage: function(message)
 	{
