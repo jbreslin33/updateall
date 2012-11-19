@@ -19,7 +19,7 @@ Extends: GameQuiz,
 
         	
 		//text question mountee
-        	var questionMountee = new Shape(100,50,300,300,this,this.mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
+        	var questionMountee = new QuestionShape(100,50,300,300,this,this.mQuiz.getSpecificQuestion(0),"","orange","questionMountee");
         	questionMountee.setMountable(true);
         	questionMountee.setHideOnDrop(true);
         	this.addToShapeArray(questionMountee);
@@ -42,12 +42,12 @@ Extends: GameQuiz,
                 {
                         var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
                         var shape;
-                        this.addToShapeArray(shape = new Shape(50,50,openPoint.mX,openPoint.mY,this,this.mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
+                        this.addToShapeArray(shape = new QuestionShape(50,50,openPoint.mX,openPoint.mY,this,this.mQuiz.getSpecificQuestion(count),"/images/treasure/gold_coin_head.png","","question"));
                         shape.createMountPoint(0,-5,-41);
                         shape.showQuestion(false);
 
                         //numberMount to go on top let's make it small and draw it on top
-                        var questionMountee = new Shape(1,1,100,100,this,this.mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
+                        var questionMountee = new QuestionShape(1,1,100,100,this,this.mQuiz.getSpecificQuestion(count),"","orange","questionMountee");
                         questionMountee.setMountable(true);
                         this.addToShapeArray(questionMountee);
                         questionMountee.showQuestion(false);
