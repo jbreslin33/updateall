@@ -411,19 +411,19 @@ var Shape = new Class(
 		}
 	},
 
+	/********* MESSAGE ******************/
+
+	setMessage: function(message)
+	{
+		this.mMessage = message;
+	},
+
 	/********* COLOR ******************/
 
 	setBackgroundColor: function(c)
 	{
 		this.mBackgroundColor = c;
 		this.mDiv.mDiv.style.backgroundColor = c;
-	},
-
-	/********* MESSAGE ******************/
-
-	setMessage: function(message)
-	{
-		this.mMessage = message;
 	},
 
 	/*********** RENDER *************/
