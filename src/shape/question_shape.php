@@ -37,7 +37,11 @@ Extends: Shape,
         },
         evaluateQuestions: function(col)
         {
-                if (this.getEvaluateQuestions())
+		//evaluate answers to questions provided both shapes have questions.
+                var answer = 0;
+                var answerCol = 0;
+                
+		if (this.getEvaluateQuestions())
                 {
                         if (this.mQuestion && col.mQuestion)
                         {

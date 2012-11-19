@@ -137,10 +137,6 @@ var Shape = new Class(
 		this.mPosition.mX = this.mPositionOld.mX;
                 this.mPosition.mY = this.mPositionOld.mY;
 
-		//evaluate answers to questions provided both shapes have questions.
-		var answer = 0;
-		var answerCol = 0;
-
 		//try to mount
 		this.mount(col,0);
 	},
