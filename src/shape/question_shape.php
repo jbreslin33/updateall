@@ -77,6 +77,60 @@ Extends: Shape,
         incorrectAnswer: function()
         {
                 this.mGame.resetGame();
+        },
+
+   	update: function(delta)
+        {
+                if (this.mGame.mQuiz)
+                {
+                        //HIDE ON QUIZ COMPLETE
+                        if (this.mHideOnQuizComplete)
+                        {
+                                if (this.mGame.mQuiz.isQuizComplete())
+                                {
+                                        if (this.mMounter)
+                                        {
+                                                this.mMounter.unMount(0);
+                                        }
+                                        this.mCollisionOn = false;
+                                        this.setVisibility(false);
+                                }
+                                else
+                                {
+                                        this.mCollisionOn = true;
+                                        this.setVisibility(true);
+                                }
+                        }
+
+                        //SHOW ON QUIZ COMPLETE
+                        if (this.mShowOnlyOnQuizComplete)
+                        {
+                                if (this.mGame.mQuiz.isQuizComplete())
+                                {
+                                        this.mCollisionOn = true;
+                                        this.setVisibility(true);
+                                }
+                                else
+                                {
+                                        if (this.mMounter)
+                                        {
+                                                this.mMounter.unMount(0);
+                                        }
+                                        this.mCollisionOn = false;
+                                        this.setVisibility(false);
+                                }
+                        }
+
+                        //COPY QUESTION FROM MOUNTER
+                        if (this.getCopyQuestionFromMounter())
+                        {
+                                if (this.mMounter)
+                                {
+                                        this.setQuestion(this.mMounter.getQuestion());
+                                }
+                        }
+                }
+		this.parent(delta);
         }
 
 });
