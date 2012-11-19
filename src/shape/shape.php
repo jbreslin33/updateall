@@ -229,6 +229,11 @@ var Shape = new Class(
 		this.mMounteeArray[slot] = 0;	
 	},
 
+	setMountable: function(b)
+	{
+		this.mMountable = b;
+	},
+
 	/************ UPDATE ****************/
 
 	update: function(delta)
@@ -291,6 +296,12 @@ var Shape = new Class(
 		} 
 	},
 
+	setPosition: function(x,y)
+	{
+		this.mPosition.mX = x;
+		this.mPosition.mY = y;
+	},
+
 	/********* ANIMATION ******************/
 
 	updateAnimation: function()
@@ -340,11 +351,6 @@ var Shape = new Class(
 		return this.mTimeoutShape;		
 	},
 
-	setPosition: function(x,y)
-	{
-		this.mPosition.mX = x;
-		this.mPosition.mY = y;
-	},
 
 	/********* VISIBILITY ******************/
 
@@ -372,6 +378,19 @@ var Shape = new Class(
 		}
 
 	},		
+
+	getVisibility: function()
+	{
+		if (this.mDiv.mDiv.style.visibility == 'visible')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	},
 
 	setHideOnDrop: function(b)
 	{
@@ -409,24 +428,6 @@ var Shape = new Class(
 	setMessage: function(message)
 	{
 		this.mMessage = message;
-	},
-
-	setMountable: function(b)
-	{
-		this.mMountable = b;
-	},
-	
-	getVisibility: function()
-	{
-		if (this.mDiv.mDiv.style.visibility == 'visible')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
 	},
 
 	/*********** RENDER *************/
