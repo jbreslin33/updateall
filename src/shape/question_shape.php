@@ -4,7 +4,7 @@ var QuestionShape = new Class(
 Extends: Shape,
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
-		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
+		this.parent(width,height,spawnX,spawnY,game,src,backgroundColor,message)
 
                	//QUESTIONS 
 		this.mQuestion = question; // the question object that contains a question and answer.
