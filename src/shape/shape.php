@@ -145,50 +145,6 @@ var Shape = new Class(
 		this.mount(col,0);
 	},
 
-	evaluateQuestions: function(col)
-	{
-		if (this.getEvaluateQuestions())
-		{
-			if (this.mQuestion && col.mQuestion)
-			{
-				answer = this.mQuestion.getAnswer();	
-				answerCol = col.mQuestion.getAnswer();	
-	
-				//compare answers
-				if (this.mQuestion.getSolved() == false)
-				{
-					if (answer == answerCol)
-					{
-                       				this.correctAnswer(); //overidden by player to do nothing
-					}
-					else
-					{
-               					this.incorrectAnswer(); //overridden by player to do nothing
-					}
-				}
-			}
-		}
-	},
-
-	correctAnswer: function()
-        {
-		if (this.mQuestion)
-		{
-			this.mQuestion.setSolved(true);
-			if (this.mHideOnQuestionSolved)
-       			{
-               			this.mCollisionOn = false;
-                       		this.setVisibility(false);
-               		}
-			this.mGame.mQuiz.correctAnswer();
-		}
-        },
-
-        incorrectAnswer: function()
-        {
-                this.mGame.resetGame();
-        },
-
 	setStartingMountee: function(mountee)
 	{
 		this.mStartingMountee = mountee;
