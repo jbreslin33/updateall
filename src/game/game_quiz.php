@@ -22,10 +22,10 @@ Extends: Game,
         },
         update: function()
         {
+		this.parent();
+
                 if (this.mOn)
                 {
-			this.parent();
-
                         //check for quiz complete
                         if (this.mQuiz)
                         {
