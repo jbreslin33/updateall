@@ -26,6 +26,13 @@ Extends: Shape,
 
                 //show on quiz complete??
                 this.mShowOnlyOnQuizComplete = false;
-        }
+        },
 
+       	onCollision: function(col)
+        {
+		this.parent(col);
+
+                //try to evaluate questions of collided objects
+                this.evaluateQuestions(col)
+        }
 });
