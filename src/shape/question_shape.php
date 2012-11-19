@@ -221,6 +221,7 @@ Extends: Shape,
                 return this.mCopyQuestionFromMounter;
         },
 
+	/******* QUESTION *******/
 
         getQuestion: function()
         {
@@ -231,6 +232,8 @@ Extends: Shape,
         {
                 this.mQuestion = question;
         },
+	
+	/************ RENDER ********/
 
         render: function()
         {
