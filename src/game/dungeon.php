@@ -81,7 +81,7 @@ Extends: GameQuiz,
         	this.mQuiz.mQuestionArray.push(keyQuestion);
 
         	openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-        	var key = new Shape(50,50,openPoint.mX,openPoint.mY,this,keyQuestion,"/images/key/key_dungeon.gif","","key");
+        	var key = new QuestionShape(50,50,openPoint.mX,openPoint.mY,this,keyQuestion,"/images/key/key_dungeon.gif","","key");
         	key.setVisibility(false);
         	key.mShowOnlyOnQuizComplete = true;
        	 	key.mMountable = true;
