@@ -369,40 +369,6 @@ var Shape = new Class(
 
 	},		
 
-	setHideOnQuizComplete: function(b)
-	{
-		if (b)
-		{
-			this.mHideOnQuizComplete = true; 
-		}
-		else 
-		{
-			this.mHideOnQuizComplete = false; 
-		}
-	},
-
-	getHideOnQuizComplete: function()
-	{
-		return this.mHideOnQuizComplete;
-	},
-
-	setHideOnQuestionSolved: function(b)
-	{
-		if (b)
-		{
-			this.mHideOnQuestionSolved = true; 
-		}
-		else 
-		{
-			this.mHideOnQuestionSolved = false; 
-		}
-	},
-
-	getHideOnQuestionSolved: function()
-	{
-		return this.mHideOnQuestionSolved;
-	},
-
 	setHideOnDrop: function(b)
 	{
 		this.mHideOnDrop = b;
@@ -411,26 +377,6 @@ var Shape = new Class(
 	getHideOnDrop: function()
 	{
 		return this.mHideOnDrop;
-	},
-
-	setEvaluateQuestions: function(b)
-	{
-		this.mEvaluateQuestions = b;	
-	},
-	
-	getEvaluateQuestions: function()
-	{
-		return this.mEvaluateQuestions;	
-	},
-
-	setCopyQuestionFromMounter: function(b)
-	{
-		this.mCopyQuestionFromMounter = b;
-	},
-
-	getCopyQuestionFromMounter: function()
-	{
-		return this.mCopyQuestionFromMounter;
 	},
 
 	setText: function(t)
@@ -458,30 +404,6 @@ var Shape = new Class(
 	setMountable: function(b)
 	{
 		this.mMountable = b;
-	},
-	
-	showQuestionObject: function(toggle)
-	{
-		this.mShowQuestionObject = toggle;
-	},
-	
-	showQuestion: function(toggle)
-	{
-		if (toggle)
-		{
-			this.mShowQuestion = true;
-		}
-		else
-		{
-			this.mShowQuestion = false;
-		}
-	},
-
-/*********** GET METHODS *************/
-
-	getQuestion: function()
-	{
-		return this.mQuestion;
 	},
 	
 	getVisibility: function()
@@ -537,14 +459,5 @@ var Shape = new Class(
 				}
 			}
 		} 
-/*
-		if (this.mMesh.innerHTML != t)
-		{
-			if (this.mSrc == "")
-			{
-				this.mMesh.innerHTML = t;
-			}
-		}
-*/		
-		
-  	} }); 
+  	}
+ }); 

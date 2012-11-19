@@ -135,6 +135,85 @@ Extends: Shape,
                         }
                 }
 		this.parent(delta);
+        },
+
+	setHideOnQuizComplete: function(b)
+        {
+                if (b)
+                {
+                        this.mHideOnQuizComplete = true;
+                }
+                else
+                {
+                        this.mHideOnQuizComplete = false;
+                }
+        },
+
+        getHideOnQuizComplete: function()
+        {
+                return this.mHideOnQuizComplete;
+        },
+
+        setHideOnQuestionSolved: function(b)
+        {
+                if (b)
+                {
+                        this.mHideOnQuestionSolved = true;
+                }
+                else
+                {
+                        this.mHideOnQuestionSolved = false;
+                }
+        },
+
+        getHideOnQuestionSolved: function()
+        {
+                return this.mHideOnQuestionSolved;
+        },
+
+ 	setEvaluateQuestions: function(b)
+        {
+                this.mEvaluateQuestions = b;
+        },
+
+        getEvaluateQuestions: function()
+        {
+                return this.mEvaluateQuestions;
+        },
+
+        setCopyQuestionFromMounter: function(b)
+        {
+                this.mCopyQuestionFromMounter = b;
+        },
+
+        getCopyQuestionFromMounter: function()
+        {
+                return this.mCopyQuestionFromMounter;
+        },
+
+        showQuestionObject: function(toggle)
+        {
+                this.mShowQuestionObject = toggle;
+        },
+
+        showQuestion: function(toggle)
+        {
+                if (toggle)
+                {
+                        this.mShowQuestion = true;
+                }
+                else
+                {
+                        this.mShowQuestion = false;
+                }
+        },
+
+        getQuestion: function()
+        {
+                return this.mQuestion;
         }
+
+
+
 
 });
