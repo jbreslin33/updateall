@@ -431,21 +431,5 @@ var Shape = new Class(
                	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
 		
 		this.render();
-
-		//do we need to change text this frame?
-		if (this.mQuestion)
-		{
-			if (this.mShowQuestionObject == true)
-			{
-				if (this.mShowQuestion == true)	
-				{
-					this.setText(this.mQuestion.getQuestion());
-				}
-				else
-				{
-					this.setText(this.mQuestion.getAnswer());
-				}
-			}
-		} 
   	}
  }); 

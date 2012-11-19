@@ -216,10 +216,26 @@ Extends: Shape,
         setQuestion: function(question)
         {
                 this.mQuestion = question;
+        },
+
+        draw: function()
+        {
+		this.parent();
+
+                //do we need to change text this frame?
+                if (this.mQuestion)
+                {
+                        if (this.mShowQuestionObject == true)
+                        {
+                                if (this.mShowQuestion == true)
+                                {
+                                        this.setText(this.mQuestion.getQuestion());
+                                }
+                                else
+                                {
+                                        this.setText(this.mQuestion.getAnswer());
+                                }
+                        }
+                }
         }
-
-
-
-
-
 });
