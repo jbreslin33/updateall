@@ -1,7 +1,8 @@
 var Player = new Class(
 {
 
-Extends: Shape,
+Extends: QuestionShape,
+
 	initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
         {
 		this.parent(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
