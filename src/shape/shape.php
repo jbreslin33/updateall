@@ -1,6 +1,6 @@
 var Shape = new Class(
 {
-        initialize: function(width,height,spawnX,spawnY,game,question,src,backgroundColor,message)
+        initialize: function(width,height,spawnX,spawnY,game,src,backgroundColor,message)
         {
                
 		//game so you can know of your world
