@@ -211,7 +211,13 @@ Extends: Shape,
         getQuestion: function()
         {
                 return this.mQuestion;
+        },
+
+        setQuestion: function(question)
+        {
+                this.mQuestion = question;
         }
+
 
 
 

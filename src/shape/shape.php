@@ -314,12 +314,6 @@ var Shape = new Class(
 
 		this.mMounteeArray[slot].mMounter = 0;
 		this.mMounteeArray[slot] = 0;	
-	
-		//unset mounters question
-		//this.mQuestion == '';
-	
-		  
-
 	},
 
 	setTimeoutShape: function(shape)
@@ -331,12 +325,6 @@ var Shape = new Class(
 	{
 		return this.mTimeoutShape;		
 	},
-
-/************** SET METHODS ************************/
-	setQuestion: function(question)
-	{
-		this.mQuestion = question;
-	},	
 
 	setPosition: function(x,y)
 	{
