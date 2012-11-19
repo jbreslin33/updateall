@@ -61,7 +61,7 @@ $numrows = pg_numrows($result);
 		echo "<tr bgcolor=", $bg_color, ">\n";
 	
     echo " <td>", $row["game_attempt_time_start"], "</td>
-   <td>", $row["time_warning"], "</td>
+   <td>", $row["score"], "</td>
    <td>", $row["description"], "</td>
    <td>", $row["first_name"], "</td>
    <td>", $row["last_name"], "</td>
