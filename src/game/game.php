@@ -180,7 +180,7 @@ var Game = new Class(
 
                 	for (i = 0; i < this.mShapeArray.length; i++)
 			{
-                        	this.mShapeArray[i].updateScreen();
+                        	this.mShapeArray[i].render();
 			}	
         
                 	//save old positions

@@ -218,7 +218,7 @@ Extends: Shape,
                 this.mQuestion = question;
         },
 
-        draw: function()
+        render: function()
         {
 		this.parent();
 

@@ -49,7 +49,7 @@ Extends: QuestionShape,
 		}
         },
 	
-	draw: function()
+	render: function()
 	{
 		this.parent();
 

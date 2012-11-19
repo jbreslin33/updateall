@@ -430,6 +430,10 @@ var Shape = new Class(
 	
 	render: function()
 	{
+        	//center image relative to position set it to mPositionRender
+               	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
+               	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
+
 		//check for new values if so change render of div	
 		if (this.mPositionRenderOld.mX != this.mPositionRender.mX)
 		{
@@ -441,19 +445,6 @@ var Shape = new Class(
 			mody = this.mPositionRender.mY+'px';	
 			this.mDiv.mDiv.style.top = mody;
 		}
-	},
+	}
 
-	updateScreen: function()
-	{
-		this.draw();
-	},
- 	
-	draw: function()
-	{
-        	//center image relative to position set it to mPositionRender
-               	this.mPositionRender.mX = this.mPosition.mX - (this.mWidth / 2);
-               	this.mPositionRender.mY = this.mPosition.mY - (this.mHeight / 2);
-		
-		this.render();
-  	}
  }); 
