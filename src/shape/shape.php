@@ -12,11 +12,6 @@ var Shape = new Class(
 		//animation 
 		this.mAnimation;
 
-		//we are all about questions and answers in this program so everyone contains a question pointer whether you use it or not.	
-		this.mQuestion = question; // the question object that contains a question and answer.
-		this.mShowQuestionObject = true; //even if we have a valid question object we can shut off showing it.
-		this.mShowQuestion = true; //toggles between question or answer text from question object
-	
 		//for the mounter
 		this.mMounteeArray = new Array();
 		this.mMountPointArray = new Array();	
@@ -93,24 +88,8 @@ var Shape = new Class(
 		//message ..this can be used for collisions or whatever
 		this.mMessage = message;
 
-		//hide on quiz complete??
-		this.mHideOnQuizComplete = false;
-
-		//show on quiz complete??
-		this.mShowOnlyOnQuizComplete = false;
-	
-		//hide on question solved
-		this.mHideOnQuestionSolved = true;
-
 		//hide on drop
 		this.mHideOnDrop = false; 
-
-		//evaluate questions?
-		this.mEvaluateQuestions = true;
-
-		//copy question from mounter
-		this.mCopyQuestionFromMounter = false;
-
         },
 
         log: function(msg)
