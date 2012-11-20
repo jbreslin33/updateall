@@ -6,6 +6,8 @@ Extends: GameQuiz,
 	initialize: function()
 	{
        		this.parent();
+
+		this.createChasers();
 	},
 
 	createControlObject: function()
@@ -66,13 +68,12 @@ Extends: GameQuiz,
 
 	createChasers: function()
 	{
-                for (i = 0; i < 0; i++)
+                for (i = 0; i < 3; i++)
                 {
                         var openPoint = this.getOpenPoint2D(40,735,75,375,50,7);
-                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"","images/monsters/red_monster.png","","chaser");
+                        var shape = new ShapeChaser(50,50,openPoint.mX,openPoint.mY,this,"images/monsters/red_monster.png","","chaser");
                         this.addToShapeArray(shape);
                 }
-
 	},
 
 	createKey: function(image_source)

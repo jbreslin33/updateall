@@ -12,6 +12,9 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_games_attempts.php");
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 ?>
 
+<script type="text/javascript" src="/src/shape/shape_ai.php"></script>
+<script type="text/javascript" src="/src/shape/shape_chaser.php"></script>
+
 <script type="text/javascript" src="/src/game/game_quiz.php"></script>
 <script type="text/javascript" src="/src/game/dungeon.php"></script>
 

@@ -84,6 +84,8 @@ Extends: QuestionShape,
                 this.mGame.mOn = false;
                 window.location = this.mUrl;
         }
+	
+
 
 });
 
