@@ -1540,10 +1540,21 @@ insert into levels(level,description) values (11,'Count from 90 to 100');      -
 
 insert into levels(level,description) values (12,'Count to 100 by tens');      --12 
 
+
 --------------------------------------------------------------------------------
 --   	2.	 Count forward beginning from a given number within the known
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
+insert into levels(level,description) values (13,'Count from 87 to 97'); --13
+insert into levels(level,description) values (14,'Count from 23 to 33'); --14
+insert into levels(level,description) values (15,'Count from 55 to 65'); --15
+insert into levels(level,description) values (16,'Count from 26 to 36'); --16
+insert into levels(level,description) values (17,'Count from 49 to 59'); --17
+insert into levels(level,description) values (18,'Count from 4 to 14'); --18
+insert into levels(level,description) values (19,'Count from 67 to 77'); --19
+insert into levels(level,description) values (20,'Count from 13 to 23'); --20
+insert into levels(level,description) values (21,'Count from 52 to 62'); --21
+insert into levels(level,description) values (22,'Count from 38 to 48'); --22
 
 
 
@@ -1552,6 +1563,10 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	written numeral 0-20 (with 0 representing a count of no objects).
 --	Count to tell the number of objects. 	
 --------------------------------------------------------------------------------
+insert into levels(level,description) values (23,'Write numbers from 0 to 5'); --23
+insert into levels(level,description) values (24,'Write numbers from 5 to 10'); --24
+insert into levels(level,description) values (25,'Write numbers from 10 to 15'); --25
+insert into levels(level,description) values (26,'Write numbers from 15 to 20'); --26
 
 
 
@@ -1567,7 +1582,9 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	order, pairing each object with one and only one number name
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
-
+insert into levels(level,description) values (27,'Count objects from 0 to 20'); --27
+insert into levels(level,description) values (28,'Count objects in standard order using names. 0-10'); --28
+insert into levels(level,description) values (29,'Count objects in standard order using names. 10-20'); --29
 
 
 --------------------------------------------------------------------------------
@@ -1575,6 +1592,8 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	objects counted. The number of objects is the same regardless of
 --	their arrangement or the order in which they were counted.
 --------------------------------------------------------------------------------
+--insert into levels(level,description) values (30,'Understand that last counted object tells number of objects for numbers random 1'); 
+--insert into levels(level,description) values (31,'Understand that last counted object tells number of objects for numbers random 2'); 
 
 
 
@@ -1582,7 +1601,8 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	c.	 Understand that each successive number name refers to a quantity
 --	that is one larger.
 --------------------------------------------------------------------------------
-
+--insert into levels(level,description) values (32,'Understand that each successive number name refers to a quantity that is one larger');
+--insert into levels(level,description) values (33,'Understand that each successive number name refers to a quantity that is one larger');
 
 
 --------------------------------------------------------------------------------
@@ -1592,6 +1612,8 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	out that many objects.
 --	Compare numbers.
 --------------------------------------------------------------------------------
+--insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
+--insert into levels(level,description) values (35,'Given a number from 1-20, count out that many objects.');
 
 
 
@@ -1601,7 +1623,8 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --	less than, or equal to the number of objects in another group, e.g., by
 --	using matching and counting strategies.1
 --------------------------------------------------------------------------------
-
+insert into levels(level,description) values (30,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+insert into levels(level,description) values (31,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
 
 
 --------------------------------------------------------------------------------
@@ -1706,69 +1729,63 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 -----------------------------------------------------------------------------
 --	3.	 Classify objects into given categories; count the numbers of objects in
 --	each category and sort the categories by count.3
---	Geometry	
 -----------------------------------------------------------------------------
 
 
+--***************************************************************************
+--	Geometry	
 --	K.G
+--***************************************************************************
+
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Identify and describe shapes (squares, circles, triangles, rectangles,
 --	hexagons, cubes, cones, cylinders, and spheres).
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+-----------------------------------------------------------------------------
 --	1.	 Describe objects in the environment using names of shapes, and
 --	describe the relative positions of these objects using terms such as
 --	above, below, beside, in front of, behind, and next to.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	2.	 Correctly name shapes regardless of their orientations or overall size.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	3.	 Identify shapes as two-dimensional (lying in a plane, “flat”) or three-
 --	dimensional (“solid”).
 --	Analyze, compare, create, and compose shapes.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	4.	 Analyze and compare two- and three-dimensional shapes, in
 --	different sizes and orientations, using informal language to describe
 --	their similarities, differences, parts (e.g., number of sides and
 --	vertices/“corners”) and other attributes (e.g., having sides of equal
 --	length).
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	5.	 Model shapes in the world by building shapes from components (e.g.,
 --	sticks and clay balls) and drawing shapes.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	6.	 Compose simple shapes to form larger shapes. For example, “Can you
 --	join these two triangles with full sides touching to make a rectangle?”
+-----------------------------------------------------------------------------
 
 
---count from random known sequence
-insert into levels(level,description) values (13,'Count from 87 to 97'); --13
-insert into levels(level,description) values (14,'Count from 23 to 33'); --14
-insert into levels(level,description) values (15,'Count from 55 to 65'); --15
-insert into levels(level,description) values (16,'Count from 26 to 36'); --16
-insert into levels(level,description) values (17,'Count from 49 to 59'); --17
-insert into levels(level,description) values (18,'Count from 4 to 14'); --18
-insert into levels(level,description) values (19,'Count from 67 to 77'); --19
-insert into levels(level,description) values (20,'Count from 13 to 23'); --20
-insert into levels(level,description) values (21,'Count from 52 to 62'); --21
-insert into levels(level,description) values (22,'Count from 38 to 48'); --22
 
---write numbers from 0 to 20
-insert into levels(level,description) values (23,'Write numbers from 0 to 5'); --23
-insert into levels(level,description) values (24,'Write numbers from 5 to 10'); --24
-insert into levels(level,description) values (25,'Write numbers from 10 to 15'); --25
-insert into levels(level,description) values (26,'Write numbers from 15 to 20'); --26
 
-insert into levels(level,description) values (27,'Count objects from 0 to 20'); --27
-insert into levels(level,description) values (28,'Count objects in standard order using names. 0-10'); --28
-insert into levels(level,description) values (29,'Count objects in standard order using names. 10-20'); --29
---insert into levels(level,description) values (30,'Understand that last counted object tells number of objects for numbers random 1'); 
---insert into levels(level,description) values (31,'Understand that last counted object tells number of objects for numbers random 2'); 
---insert into levels(level,description) values (32,'Understand that each successive number name refers to a quantity that is one larger');
---insert into levels(level,description) values (33,'Understand that each successive number name refers to a quantity that is one larger');
-
---Count to answer “how many?” questions about as many as 20 things
---arranged in a line, a rectangular array, or a circle, or as many as 10
---things in a scattered configuration; given a number from 1–20, count
---out that many objects.
---insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
---insert into levels(level,description) values (35,'Given a number from 1-20, count out that many objects.');
-
--- Identify whether the number of objects in one group is greater than,
---less than, or equal to the number of objects in another group, e.g., by
---using matching and counting strategies.1
-insert into levels(level,description) values (30,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
-insert into levels(level,description) values (31,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
 
 --Compare two numbers between 1 and 10 presented as written
 --numerals.
