@@ -1511,7 +1511,13 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --==================================================================
 
 --LEVELS
---count to 100
+
+--Counting and Cardinality K.CC
+--Know number names and the count sequence.
+
+
+--   	1.	 Count to 100 by ones and by tens.
+----------------------------------------------------------------------------
 insert into levels(level,description) values (1,'Start of Journey'); --1      
 insert into levels(level,description) values (2,'Count from 0 to 10'); --2       
 insert into levels(level,description) values (3,'Count from 10 to 20'); --3      
@@ -1524,8 +1530,48 @@ insert into levels(level,description) values (9,'Count from 70 to 80');    --9
 insert into levels(level,description) values (10,'Count from 80 to 90');      --10 
 insert into levels(level,description) values (11,'Count from 90 to 100');      --11 
 
---count by 10's to 100
 insert into levels(level,description) values (12,'Count to 100 by tens');      --12 
+
+
+--   	2.	 Count forward beginning from a given number within the known
+--   	sequence (instead of having to begin at 1).
+--------------------------------------------------------------------------------
+
+
+
+--   	3.	 Write numbers from 0 to 20. Represent a number of objects with a
+--	written numeral 0-20 (with 0 representing a count of no objects).
+--	Count to tell the number of objects. 	
+
+--	4.	 Understand the relationship between numbers and quantities; connect
+--	counting to cardinality.
+
+--	a.	 When counting objects, say the number names in the standard
+--	order, pairing each object with one and only one number name
+--	and each number name with one and only one object.
+
+--	b.	 Understand that the last number name said tells the number of
+--	objects counted. The number of objects is the same regardless of
+--	their arrangement or the order in which they were counted.
+
+--	c.	 Understand that each successive number name refers to a quantity
+--	that is one larger.
+
+--	5.	 Count to answer “how many?” questions about as many as 20 things
+--	arranged in a line, a rectangular array, or a circle, or as many as 10
+--	things in a scattered configuration; given a number from 1–20, count
+--	out that many objects.
+--	Compare numbers.
+
+--	6.	 Identify whether the number of objects in one group is greater than,
+--	less than, or equal to the number of objects in another group, e.g., by
+--	using matching and counting strategies.1
+
+--	7.	 Compare two numbers between 1 and 10 presented as written
+--	numerals.
+
+
+
 
 --count from random known sequence
 insert into levels(level,description) values (13,'Count from 87 to 97'); --13
