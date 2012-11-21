@@ -1526,19 +1526,19 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 ----------------------------------------------------------------------------
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
-insert into levels(level,description) values (1,'Start of Journey'); --1      
-insert into levels(level,description) values (2,'Count from 0 to 10'); --2       
-insert into levels(level,description) values (3,'Count from 10 to 20'); --3      
-insert into levels(level,description) values (4,'Count from 20 to 30');   --4    
-insert into levels(level,description) values (5,'Count from 30 to 40');     --5  
-insert into levels(level,description) values (6,'Count from 40 to 50');    --6   
-insert into levels(level,description) values (7,'Count from 50 to 60');   --7    
-insert into levels(level,description) values (8,'Count from 60 to 70');  --8     
-insert into levels(level,description) values (9,'Count from 70 to 80');    --9   
-insert into levels(level,description) values (10,'Count from 80 to 90');      --10 
-insert into levels(level,description) values (11,'Count from 90 to 100');      --11 
+insert into levels(level,description) values (1,'Start of Journey');      -- 1 
+insert into levels(level,description) values (2,'Count from 0 to 10');        
+insert into levels(level,description) values (3,'Count from 10 to 20');       
+insert into levels(level,description) values (4,'Count from 20 to 30');       
+insert into levels(level,description) values (5,'Count from 30 to 40');       
+insert into levels(level,description) values (6,'Count from 40 to 50');       
+insert into levels(level,description) values (7,'Count from 50 to 60');       
+insert into levels(level,description) values (8,'Count from 60 to 70');       
+insert into levels(level,description) values (9,'Count from 70 to 80');       
+insert into levels(level,description) values (10,'Count from 80 to 90');       
+insert into levels(level,description) values (11,'Count from 90 to 100');       
 
-insert into levels(level,description) values (12,'Count to 100 by tens');      --12 
+insert into levels(level,description) values (12,'Count to 100 by tens');      -- 12 
 
 
 --------------------------------------------------------------------------------
@@ -1546,14 +1546,14 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
 insert into levels(level,description) values (100,'Count from 87 to 97'); --13
-insert into levels(level,description) values (101,'Count from 23 to 33'); --14
-insert into levels(level,description) values (102,'Count from 55 to 65'); --15
-insert into levels(level,description) values (103,'Count from 26 to 36'); --16
-insert into levels(level,description) values (104,'Count from 49 to 59'); --17
-insert into levels(level,description) values (105,'Count from 4 to 14'); --18
-insert into levels(level,description) values (106,'Count from 67 to 77'); --19
-insert into levels(level,description) values (107,'Count from 13 to 23'); --20
-insert into levels(level,description) values (108,'Count from 52 to 62'); --21
+insert into levels(level,description) values (101,'Count from 23 to 33'); 
+insert into levels(level,description) values (102,'Count from 55 to 65'); 
+insert into levels(level,description) values (103,'Count from 26 to 36'); 
+insert into levels(level,description) values (104,'Count from 49 to 59'); 
+insert into levels(level,description) values (105,'Count from 4 to 14');  
+insert into levels(level,description) values (106,'Count from 67 to 77'); 
+insert into levels(level,description) values (107,'Count from 13 to 23'); 
+insert into levels(level,description) values (108,'Count from 52 to 62'); 
 insert into levels(level,description) values (109,'Count from 38 to 48'); --22
 
 
