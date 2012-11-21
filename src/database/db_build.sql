@@ -1631,6 +1631,8 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	7.	 Compare two numbers between 1 and 10 presented as written
 --	numerals.
 --------------------------------------------------------------------------------
+insert into levels(level,description) values (32,'Compare two numbers etc');
+--insert into levels(level,description) values (33,'Compare two numbers etc');
 
 
 
@@ -1650,12 +1652,16 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	images, drawings2, sounds (e.g., claps), acting out situations, verbal
 --	explanations, expressions, or equations.
 -----------------------------------------------------------------------------
+--insert into levels(level,description) values (34,'Represent addition etc');
+--insert into levels(level,description) values (35,'Represent addition etc');
 
 
 -----------------------------------------------------------------------------
 --	2.	 Solve addition and subtraction word problems, and add and subtract
 --	within 10, e.g., by using objects or drawings to represent the problem.
 -----------------------------------------------------------------------------
+--insert into levels(level,description) values (36,'Solve addition');
+--insert into levels(level,description) values (37,'Solve addition');
 
 
 -----------------------------------------------------------------------------
@@ -1663,6 +1669,8 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	than one way, e.g., by using objects or drawings, and record each
 --	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
 -----------------------------------------------------------------------------
+--insert into levels(level,description) values (38,'Decompose');
+--insert into levels(level,description) values (39,'Decompose');
 
 
 -----------------------------------------------------------------------------
@@ -1670,6 +1678,8 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	added to the given number, e.g., by using objects or drawings, and
 --	record the answer with a drawing or equation.
 -----------------------------------------------------------------------------
+insert into levels(level,description) values (40,'For any number');
+insert into levels(level,description) values (41,'For any number');
 
 
 -----------------------------------------------------------------------------
@@ -1678,6 +1688,8 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	Drawings need not show details, but should show the mathematics in the problem.
 --	(This applies wherever drawings are mentioned in the Standards.)
 -----------------------------------------------------------------------------
+insert into levels(level,description) values (42,'fluently ');
+insert into levels(level,description) values (43,'fluently ');
 
 
 --***************************************************************************
@@ -1698,6 +1710,8 @@ insert into levels(level,description) values (31,'Identify whether the number of
 --	8); understand that these numbers are composed of ten ones and one,
 --	two, three, four, five, six, seven, eight, or nine ones.
 -----------------------------------------------------------------------------
+insert into levels(level,description) values (44,'compose and decompose ');
+insert into levels(level,description) values (45,'compose and decompose ');
 
 
 
@@ -1785,44 +1799,6 @@ insert into levels(level,description) values (31,'Identify whether the number of
 
 
 
-
-
---Compare two numbers between 1 and 10 presented as written
---numerals.
-insert into levels(level,description) values (32,'Compare two numbers etc');
---insert into levels(level,description) values (33,'Compare two numbers etc');
-
---Represent addition and subtraction with objects fingers mental images drawings sounds claps acting out situations verbal explanations expressions.
---insert into levels(level,description) values (34,'Represent addition etc');
---insert into levels(level,description) values (35,'Represent addition etc');
-
---Solve addition and subtraction word problems, and add and subtract within 10., by using objects or drawings to represent the problem.
---insert into levels(level,description) values (36,'Solve addition');
---insert into levels(level,description) values (37,'Solve addition');
-
---Decompose numbers less than or equal to 10 into pairs in more
---than one way, e.g., by using objects or drawings, and record each
---decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
---insert into levels(level,description) values (38,'Decompose');
---insert into levels(level,description) values (39,'Decompose');
-
---For any number from 1 to 9, find the number that makes 10 when
---added to the given number, e.g., by using objects or drawings, and
---record the answer with a drawing or equation.
-insert into levels(level,description) values (40,'For any number');
-insert into levels(level,description) values (41,'For any number');
-
---Fluently add and subtract within 5.
-insert into levels(level,description) values (42,'fluently ');
-insert into levels(level,description) values (43,'fluently ');
-
---Compose and decompose numbers from 11 to 19 into ten ones and
---some further ones, e.g., by using objects or drawings, and record each
---composition or decomposition by a drawing or equation (e.g., 18 = 10 +
---8); understand that these numbers are composed of ten ones and one,
---two, three, four, five, six, seven, eight, or nine ones.
-insert into levels(level,description) values (44,'compose and decompose ');
-insert into levels(level,description) values (45,'compose and decompose ');
 
 
 
