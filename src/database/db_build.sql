@@ -1545,16 +1545,16 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 --   	2.	 Count forward beginning from a given number within the known
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (13,'Count from 87 to 97'); --13
-insert into levels(level,description) values (14,'Count from 23 to 33'); --14
-insert into levels(level,description) values (15,'Count from 55 to 65'); --15
-insert into levels(level,description) values (16,'Count from 26 to 36'); --16
-insert into levels(level,description) values (17,'Count from 49 to 59'); --17
-insert into levels(level,description) values (18,'Count from 4 to 14'); --18
-insert into levels(level,description) values (19,'Count from 67 to 77'); --19
-insert into levels(level,description) values (20,'Count from 13 to 23'); --20
-insert into levels(level,description) values (21,'Count from 52 to 62'); --21
-insert into levels(level,description) values (22,'Count from 38 to 48'); --22
+insert into levels(level,description) values (100,'Count from 87 to 97'); --13
+insert into levels(level,description) values (101,'Count from 23 to 33'); --14
+insert into levels(level,description) values (102,'Count from 55 to 65'); --15
+insert into levels(level,description) values (103,'Count from 26 to 36'); --16
+insert into levels(level,description) values (104,'Count from 49 to 59'); --17
+insert into levels(level,description) values (105,'Count from 4 to 14'); --18
+insert into levels(level,description) values (106,'Count from 67 to 77'); --19
+insert into levels(level,description) values (107,'Count from 13 to 23'); --20
+insert into levels(level,description) values (108,'Count from 52 to 62'); --21
+insert into levels(level,description) values (109,'Count from 38 to 48'); --22
 
 
 
@@ -1563,10 +1563,10 @@ insert into levels(level,description) values (22,'Count from 38 to 48'); --22
 --	written numeral 0-20 (with 0 representing a count of no objects).
 --	Count to tell the number of objects. 	
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (23,'Write numbers from 0 to 5'); --23
-insert into levels(level,description) values (24,'Write numbers from 5 to 10'); --24
-insert into levels(level,description) values (25,'Write numbers from 10 to 15'); --25
-insert into levels(level,description) values (26,'Write numbers from 15 to 20'); --26
+insert into levels(level,description) values (200,'Write numbers from 0 to 5'); --23
+insert into levels(level,description) values (201,'Write numbers from 5 to 10'); --24
+insert into levels(level,description) values (202,'Write numbers from 10 to 15'); --25
+insert into levels(level,description) values (203,'Write numbers from 15 to 20'); --26
 
 
 
@@ -1574,7 +1574,7 @@ insert into levels(level,description) values (26,'Write numbers from 15 to 20');
 --	4.	 Understand the relationship between numbers and quantities; connect
 --	counting to cardinality.
 --------------------------------------------------------------------------------
-
+--300
 
 
 --------------------------------------------------------------------------------
@@ -1582,9 +1582,9 @@ insert into levels(level,description) values (26,'Write numbers from 15 to 20');
 --	order, pairing each object with one and only one number name
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (27,'Count objects from 0 to 20'); --27
-insert into levels(level,description) values (28,'Count objects in standard order using names. 0-10'); --28
-insert into levels(level,description) values (29,'Count objects in standard order using names. 10-20'); --29
+insert into levels(level,description) values (400,'Count objects from 0 to 20'); --27
+insert into levels(level,description) values (401,'Count objects in standard order using names. 0-10'); --28
+insert into levels(level,description) values (402,'Count objects in standard order using names. 10-20'); --29
 
 
 --------------------------------------------------------------------------------
@@ -1592,8 +1592,8 @@ insert into levels(level,description) values (29,'Count objects in standard orde
 --	objects counted. The number of objects is the same regardless of
 --	their arrangement or the order in which they were counted.
 --------------------------------------------------------------------------------
---insert into levels(level,description) values (30,'Understand that last counted object tells number of objects for numbers random 1'); 
---insert into levels(level,description) values (31,'Understand that last counted object tells number of objects for numbers random 2'); 
+--insert into levels(level,description) values (500,'Understand that last counted object tells number of objects for numbers random 1'); 
+--insert into levels(level,description) values (501,'Understand that last counted object tells number of objects for numbers random 2'); 
 
 
 
@@ -1601,8 +1601,8 @@ insert into levels(level,description) values (29,'Count objects in standard orde
 --	c.	 Understand that each successive number name refers to a quantity
 --	that is one larger.
 --------------------------------------------------------------------------------
---insert into levels(level,description) values (32,'Understand that each successive number name refers to a quantity that is one larger');
---insert into levels(level,description) values (33,'Understand that each successive number name refers to a quantity that is one larger');
+--insert into levels(level,description) values (600,'Understand that each successive number name refers to a quantity that is one larger');
+--insert into levels(level,description) values (601,'Understand that each successive number name refers to a quantity that is one larger');
 
 
 --------------------------------------------------------------------------------
@@ -1612,8 +1612,8 @@ insert into levels(level,description) values (29,'Count objects in standard orde
 --	out that many objects.
 --	Compare numbers.
 --------------------------------------------------------------------------------
---insert into levels(level,description) values (34,'Given a number from 1-20, count out that many objects.');
---insert into levels(level,description) values (35,'Given a number from 1-20, count out that many objects.');
+--insert into levels(level,description) values (700,'Given a number from 1-20, count out that many objects.');
+--insert into levels(level,description) values (701,'Given a number from 1-20, count out that many objects.');
 
 
 
@@ -1623,16 +1623,16 @@ insert into levels(level,description) values (29,'Count objects in standard orde
 --	less than, or equal to the number of objects in another group, e.g., by
 --	using matching and counting strategies.1
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (30,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
-insert into levels(level,description) values (31,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+insert into levels(level,description) values (800,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
+insert into levels(level,description) values (801,'Identify whether the number of objects in one group is greater than less than or equal to the number of objects in another group eg by using matching and counting strategies.');
 
 
 --------------------------------------------------------------------------------
 --	7.	 Compare two numbers between 1 and 10 presented as written
 --	numerals.
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (32,'Compare two numbers etc');
---insert into levels(level,description) values (33,'Compare two numbers etc');
+insert into levels(level,description) values (900,'Compare two numbers etc');
+--insert into levels(level,description) values (901,'Compare two numbers etc');
 
 
 
@@ -1652,16 +1652,16 @@ insert into levels(level,description) values (32,'Compare two numbers etc');
 --	images, drawings2, sounds (e.g., claps), acting out situations, verbal
 --	explanations, expressions, or equations.
 -----------------------------------------------------------------------------
---insert into levels(level,description) values (34,'Represent addition etc');
---insert into levels(level,description) values (35,'Represent addition etc');
+--insert into levels(level,description) values (1000,'Represent addition etc');
+--insert into levels(level,description) values (1001,'Represent addition etc');
 
 
 -----------------------------------------------------------------------------
 --	2.	 Solve addition and subtraction word problems, and add and subtract
 --	within 10, e.g., by using objects or drawings to represent the problem.
 -----------------------------------------------------------------------------
---insert into levels(level,description) values (36,'Solve addition');
---insert into levels(level,description) values (37,'Solve addition');
+--insert into levels(level,description) values (1100,'Solve addition');
+--insert into levels(level,description) values (1101,'Solve addition');
 
 
 -----------------------------------------------------------------------------
@@ -1669,8 +1669,8 @@ insert into levels(level,description) values (32,'Compare two numbers etc');
 --	than one way, e.g., by using objects or drawings, and record each
 --	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
 -----------------------------------------------------------------------------
---insert into levels(level,description) values (38,'Decompose');
---insert into levels(level,description) values (39,'Decompose');
+--insert into levels(level,description) values (1200,'Decompose');
+--insert into levels(level,description) values (1201,'Decompose');
 
 
 -----------------------------------------------------------------------------
@@ -1678,8 +1678,8 @@ insert into levels(level,description) values (32,'Compare two numbers etc');
 --	added to the given number, e.g., by using objects or drawings, and
 --	record the answer with a drawing or equation.
 -----------------------------------------------------------------------------
-insert into levels(level,description) values (40,'For any number');
-insert into levels(level,description) values (41,'For any number');
+insert into levels(level,description) values (1300,'For any number');
+insert into levels(level,description) values (1301,'For any number');
 
 
 -----------------------------------------------------------------------------
@@ -1688,15 +1688,14 @@ insert into levels(level,description) values (41,'For any number');
 --	Drawings need not show details, but should show the mathematics in the problem.
 --	(This applies wherever drawings are mentioned in the Standards.)
 -----------------------------------------------------------------------------
-insert into levels(level,description) values (42,'fluently ');
-insert into levels(level,description) values (43,'fluently ');
+insert into levels(level,description) values (1400,'fluently ');
+insert into levels(level,description) values (1401,'fluently ');
 
 
 --***************************************************************************
 --	Number and Operations in Base Ten
 --	K.NBT	
 --***************************************************************************
-
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Work with numbers 11–19 to gain foundations for place value.
@@ -1710,8 +1709,8 @@ insert into levels(level,description) values (43,'fluently ');
 --	8); understand that these numbers are composed of ten ones and one,
 --	two, three, four, five, six, seven, eight, or nine ones.
 -----------------------------------------------------------------------------
-insert into levels(level,description) values (44,'compose and decompose ');
-insert into levels(level,description) values (45,'compose and decompose ');
+insert into levels(level,description) values (1500,'compose and decompose ');
+insert into levels(level,description) values (1500,'compose and decompose ');
 
 
 
@@ -1729,7 +1728,7 @@ insert into levels(level,description) values (45,'compose and decompose ');
 --	1.	 Describe measurable attributes of objects, such as length or weight.
 --	Describe several measurable attributes of a single object.
 -----------------------------------------------------------------------------
-
+--1600
 
 -----------------------------------------------------------------------------
 --	2.	 Directly compare two objects with a measurable attribute in common,
@@ -1738,13 +1737,13 @@ insert into levels(level,description) values (45,'compose and decompose ');
 --	children and describe one child as taller/shorter.
 --	Classify objects and count the number of objects in each category.
 -----------------------------------------------------------------------------
-
+-1700
 
 -----------------------------------------------------------------------------
 --	3.	 Classify objects into given categories; count the numbers of objects in
 --	each category and sort the categories by count.3
 -----------------------------------------------------------------------------
-
+--1800
 
 --***************************************************************************
 --	Geometry	
@@ -1763,19 +1762,19 @@ insert into levels(level,description) values (45,'compose and decompose ');
 --	describe the relative positions of these objects using terms such as
 --	above, below, beside, in front of, behind, and next to.
 -----------------------------------------------------------------------------
-
+--1900
 
 -----------------------------------------------------------------------------
 --	2.	 Correctly name shapes regardless of their orientations or overall size.
 -----------------------------------------------------------------------------
-
+--2000
 
 -----------------------------------------------------------------------------
 --	3.	 Identify shapes as two-dimensional (lying in a plane, “flat”) or three-
 --	dimensional (“solid”).
 --	Analyze, compare, create, and compose shapes.
 -----------------------------------------------------------------------------
-
+--2100
 
 -----------------------------------------------------------------------------
 --	4.	 Analyze and compare two- and three-dimensional shapes, in
@@ -1784,19 +1783,19 @@ insert into levels(level,description) values (45,'compose and decompose ');
 --	vertices/“corners”) and other attributes (e.g., having sides of equal
 --	length).
 -----------------------------------------------------------------------------
-
+--2200
 
 -----------------------------------------------------------------------------
 --	5.	 Model shapes in the world by building shapes from components (e.g.,
 --	sticks and clay balls) and drawing shapes.
 -----------------------------------------------------------------------------
-
+--2300
 
 -----------------------------------------------------------------------------
 --	6.	 Compose simple shapes to form larger shapes. For example, “Can you
 --	join these two triangles with full sides touching to make a rectangle?”
 -----------------------------------------------------------------------------
-
+--2400
 
 
 
