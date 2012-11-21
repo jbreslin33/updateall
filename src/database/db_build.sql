@@ -1512,8 +1512,15 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 
 --LEVELS
 
---Counting and Cardinality K.CC
---Know number names and the count sequence.
+
+--*************************************************************************
+--	Counting and Cardinality
+--	K.CC
+--*************************************************************************
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--	Know number names and the count sequence.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 ----------------------------------------------------------------------------
@@ -1604,52 +1611,105 @@ insert into levels(level,description) values (12,'Count to 100 by tens');      -
 
 
 
----------------------------------------------------------------------------
----------------------------------------------------------------------------
 
+--***************************************************************************
+--	Operations and Algebraic Thinking
+--	K.OA	
+--***************************************************************************
 
-
---	Operations and Algebraic Thinking                      K.OA	
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Understand addition as putting together and adding to, and under-
 --	stand subtraction as taking apart and taking from.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-----------------------------------------------------------------------------
 --	1.	 Represent addition and subtraction with objects, fingers, mental
 --	images, drawings2, sounds (e.g., claps), acting out situations, verbal
 --	explanations, expressions, or equations.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	2.	 Solve addition and subtraction word problems, and add and subtract
 --	within 10, e.g., by using objects or drawings to represent the problem.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	3.	 Decompose numbers less than or equal to 10 into pairs in more
 --	than one way, e.g., by using objects or drawings, and record each
 --	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	4.	 For any number from 1 to 9, find the number that makes 10 when
 --	added to the given number, e.g., by using objects or drawings, and
 --	record the answer with a drawing or equation.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	5.	 Fluently add and subtract within 5.
 --	Include groups with up to ten objects.
 --	Drawings need not show details, but should show the mathematics in the problem.
 --	(This applies wherever drawings are mentioned in the Standards.)
+-----------------------------------------------------------------------------
 
 
+--***************************************************************************
+--	Number and Operations in Base Ten
+--	K.NBT	
+--***************************************************************************
 
---	Number and Operations in Base Ten  K.NBT	
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Work with numbers 11–19 to gain foundations for place value.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+-----------------------------------------------------------------------------
 --	1.	 Compose and decompose numbers from 11 to 19 into ten ones and
 --	some further ones, e.g., by using objects or drawings, and record each
 --	composition or decomposition by a drawing or equation (e.g., 18 = 10 +
 --	8); understand that these numbers are composed of ten ones and one,
 --	two, three, four, five, six, seven, eight, or nine ones.
+-----------------------------------------------------------------------------
+
+
+
+
+--***************************************************************************
 --	Measurement and Data	
 --	K.MD
+--***************************************************************************
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Describe and compare measurable attributes.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+-----------------------------------------------------------------------------
 --	1.	 Describe measurable attributes of objects, such as length or weight.
 --	Describe several measurable attributes of a single object.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	2.	 Directly compare two objects with a measurable attribute in common,
 --	to see which object has “more of”/“less of” the attribute, and describe
 --	the difference. For example, directly compare the heights of two
 --	children and describe one child as taller/shorter.
 --	Classify objects and count the number of objects in each category.
+-----------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------
 --	3.	 Classify objects into given categories; count the numbers of objects in
 --	each category and sort the categories by count.3
 --	Geometry	
+-----------------------------------------------------------------------------
+
+
 --	K.G
 --	Identify and describe shapes (squares, circles, triangles, rectangles,
 --	hexagons, cubes, cones, cylinders, and spheres).
