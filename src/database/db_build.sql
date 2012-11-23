@@ -1567,6 +1567,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 ----------------------------------------------------------------------------
 insert into levels(level,description) values (1,'Start of Journey');      -- 1 
 insert into levels(level,description) values (2,'Count from 0 to 10');        
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
 insert into levels(level,description) values (3,'Count from 10 to 20');       
 insert into levels(level,description) values (4,'Count from 20 to 30');       
 insert into levels(level,description) values (5,'Count from 30 to 40');       
@@ -1842,7 +1843,6 @@ insert into levels(level,description) values (1501,'compose and decompose ');
 
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
