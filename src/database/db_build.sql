@@ -1222,7 +1222,9 @@ insert into permissions(permission) values ('INSERT');
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---GRADE
+--**********************************
+--	GRADES	
+--**********************************
 insert into grades (grade) values ('K');
 insert into grades (grade) values ('1');
 insert into grades (grade) values ('2');
@@ -1237,7 +1239,10 @@ insert into grades (grade) values ('10');
 insert into grades (grade) values ('11');
 insert into grades (grade) values ('12');
 
---SUBJECTS
+--**********************************
+--	SUBJECTS	
+--**********************************
+
 insert into subjects (subject) values ('Math');
 insert into subjects (subject) values ('English');
 insert into subjects (subject) values ('History/Social Studies');
@@ -1248,7 +1253,7 @@ insert into subjects (subject) values ('Technical');
 --	DOMAINS
 --**********************************
 
---	MATH DOMAINS
+--	SUBJECT: math	
 insert into domains (domain) values ('Counting and Cardinality'); --1
 insert into domains (domain) values ('Operations and Algebraic Thinking'); --2
 insert into domains (domain) values ('Number and Operations in Base Ten'); --3
@@ -1288,7 +1293,7 @@ insert into domains (domain) values ('Making Inferences and Justifying Conclusio
 insert into domains (domain) values ('Conditional Probability and the Rules of Probability'); --37
 insert into domains (domain) values ('Using Probability to Make Decisions'); --38
 
---	ENGLISH DOMAINS
+--	SUBJECT: english	
 insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --39
 insert into domains (domain) values ('Reading Standards for Literature'); --40
 insert into domains (domain) values ('Reading for Informational Text'); --41
@@ -1312,7 +1317,7 @@ insert into domains (domain) values ('Writing Standards for Literacy in History/
 --	DOMAINS_SUBJECTS
 --*********************************
 
---	MATH
+--	SUBJECT: math 
 insert into domains_subjects (domain_id, subject_id) values (1,1); 
 insert into domains_subjects (domain_id, subject_id) values (2,1); 
 insert into domains_subjects (domain_id, subject_id) values (3,1); 
@@ -1352,7 +1357,7 @@ insert into domains_subjects (domain_id, subject_id) values (36,1);
 insert into domains_subjects (domain_id, subject_id) values (37,1); 
 insert into domains_subjects (domain_id, subject_id) values (38,1); 
 
---	ENGLISH
+--	SUBJECT: english 
 insert into domains_subjects (domain_id, subject_id) values (39,2); 
 insert into domains_subjects (domain_id, subject_id) values (40,2); 
 insert into domains_subjects (domain_id, subject_id) values (41,2); 
@@ -1375,21 +1380,22 @@ insert into domains_subjects (domain_id, subject_id) values (56,2);
 --**************************************
 --	DOMAINS_GRADES
 --**************************************
-
---	math + kindergarten
+--		SUBJECT: math
+--	GRADE: kindergarten 
 insert into domains_grades (domain_id, grade_id) values (1,1); 
 insert into domains_grades (domain_id, grade_id) values (2,1); 
 insert into domains_grades (domain_id, grade_id) values (3,1); 
 insert into domains_grades (domain_id, grade_id) values (4,1); 
 insert into domains_grades (domain_id, grade_id) values (5,1); 
 
---	math + 1st grade
+--	GRADE: 1st  
 insert into domains_grades (domain_id, grade_id) values (2,2); 
 insert into domains_grades (domain_id, grade_id) values (3,2); 
 insert into domains_grades (domain_id, grade_id) values (4,2); 
 insert into domains_grades (domain_id, grade_id) values (5,2); 
 
---	english + kindergarten
+--		SUBJECT: english 
+--	GRADE: kindergarten 
 insert into domains_grades (domain_id, grade_id) values (39,1); 
 insert into domains_grades (domain_id, grade_id) values (40,1); 
 insert into domains_grades (domain_id, grade_id) values (41,1); 
