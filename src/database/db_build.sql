@@ -1415,7 +1415,7 @@ insert into domains_grades (domain_id, grade_id) values (51,1);
 --	CLUSTERS	
 --**************************************
 
---**************	GRADE: kindergarten
+--		GRADE: kindergarten
 
 --	CLUSTER: Counting and Cardinality
 insert into clusters (cluster) values ('Know number names and the count sequence.');
@@ -1496,7 +1496,7 @@ insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 --	CLUSTER_DOMAINS_GRADES
 --****************************************
 
---		DOMAIN_GRADE: counting and cardinality_kindergarten 
+--	DOMAIN_GRADE: counting and cardinality_kindergarten 
 
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); --Know number names and the count sequence
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); --Count to tell the number objects
