@@ -1244,7 +1244,11 @@ insert into subjects (subject) values ('History/Social Studies');
 insert into subjects (subject) values ('Science');
 insert into subjects (subject) values ('Technical');
 
---DOMAINS
+--**********************************
+--	DOMAINS
+--**********************************
+
+--	MATH DOMAINS
 insert into domains (domain) values ('Counting and Cardinality'); --1
 insert into domains (domain) values ('Operations and Algebraic Thinking'); --2
 insert into domains (domain) values ('Number and Operations in Base Ten'); --3
@@ -1284,6 +1288,7 @@ insert into domains (domain) values ('Making Inferences and Justifying Conclusio
 insert into domains (domain) values ('Conditional Probability and the Rules of Probability'); --37
 insert into domains (domain) values ('Using Probability to Make Decisions'); --38
 
+--	ENGLISH DOMAINS
 insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --39
 insert into domains (domain) values ('Reading Standards for Literature'); --40
 insert into domains (domain) values ('Reading for Informational Text'); --41
@@ -1303,7 +1308,11 @@ insert into domains (domain) values ('Reading Standards for Literacy in Science 
 insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --55
 insert into domains (domain) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects'); --56
 
---DOMAINS_SUBJECTS
+--*********************************
+--	DOMAINS_SUBJECTS
+--*********************************
+
+--	MATH
 insert into domains_subjects (domain_id, subject_id) values (1,1); 
 insert into domains_subjects (domain_id, subject_id) values (2,1); 
 insert into domains_subjects (domain_id, subject_id) values (3,1); 
@@ -1343,6 +1352,7 @@ insert into domains_subjects (domain_id, subject_id) values (36,1);
 insert into domains_subjects (domain_id, subject_id) values (37,1); 
 insert into domains_subjects (domain_id, subject_id) values (38,1); 
 
+--	ENGLISH
 insert into domains_subjects (domain_id, subject_id) values (39,2); 
 insert into domains_subjects (domain_id, subject_id) values (40,2); 
 insert into domains_subjects (domain_id, subject_id) values (41,2); 
@@ -1362,20 +1372,24 @@ insert into domains_subjects (domain_id, subject_id) values (54,2);
 insert into domains_subjects (domain_id, subject_id) values (55,2); 
 insert into domains_subjects (domain_id, subject_id) values (56,2); 
 
---DOMAINS_GRADES
---kindergarten
+--**************************************
+--	DOMAINS_GRADES
+--**************************************
+
+--	math + kindergarten
 insert into domains_grades (domain_id, grade_id) values (1,1); 
 insert into domains_grades (domain_id, grade_id) values (2,1); 
 insert into domains_grades (domain_id, grade_id) values (3,1); 
 insert into domains_grades (domain_id, grade_id) values (4,1); 
 insert into domains_grades (domain_id, grade_id) values (5,1); 
---1st grade
+
+--	math + 1st grade
 insert into domains_grades (domain_id, grade_id) values (2,2); 
 insert into domains_grades (domain_id, grade_id) values (3,2); 
 insert into domains_grades (domain_id, grade_id) values (4,2); 
 insert into domains_grades (domain_id, grade_id) values (5,2); 
 
-
+--	english + kindergarten
 insert into domains_grades (domain_id, grade_id) values (39,1); 
 insert into domains_grades (domain_id, grade_id) values (40,1); 
 insert into domains_grades (domain_id, grade_id) values (41,1); 
@@ -1390,109 +1404,122 @@ insert into domains_grades (domain_id, grade_id) values (49,1);
 insert into domains_grades (domain_id, grade_id) values (50,1); 
 insert into domains_grades (domain_id, grade_id) values (51,1); 
 
---CLUSTERS
---kindergarten/Counting and Cardinality
+
+--**************************************
+--	CLUSTERS	
+--**************************************
+
+--**************	GRADE: kindergarten
+
+--	CLUSTER: Counting and Cardinality
 insert into clusters (cluster) values ('Know number names and the count sequence.');
 insert into clusters (cluster) values ('Count to tell the number of objects.');
 insert into clusters (cluster) values ('Compare numbers.');
 
---kindergarten/Operations and Algebraic Thinking
+--	CLUSTER: Operations and Algebraic Thinking
 insert into clusters (cluster) values ('Understand addition as putting together and adding to, and understand subtraction as taking aprart and taking from.');
 
---kindergarten/Number Operations in Base Ten 
+--	CLUSTER: Number Operations in Base Ten 
 insert into clusters (cluster) values ('Work with numbers 11-19 to gain foundations for place value');
 
---kindergarten/Measurement and Data
+--	CLUSTER: Measurement and Data
 insert into clusters (cluster) values ('Describe and compare measurable attributes');
 insert into clusters (cluster) values ('Classify objects and count the number of objects in categories');
 
---kindergarten/Geometry
+--	CLUSTER: Geometry
 insert into clusters (cluster) values ('Identify and describe shapes');
 insert into clusters (cluster) values ('Analyze, compare, create, and compose shapes.');
 
-
---kindergraten/College and Career Readiness Anchor Standars for Reading
+--	CLUSTER: College and Career Readiness Anchor Standars for Reading
 insert into clusters (cluster) values ('Key Ideas and Details');
 insert into clusters (cluster) values ('Craft and Structure');
 insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
 insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
 
---kindergraten/Reading Standards for Literature
+--	CLUSTER: Reading Standards for Literature
 insert into clusters (cluster) values ('Key Ideas and Details');
 insert into clusters (cluster) values ('Craft and Structure');
 insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
 insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
 
---kindergraten/Reading Standards for Informational Text 
+--	CLUSTER: Reading Standards for Informational Text 
 insert into clusters (cluster) values ('Key Ideas and Details');
 insert into clusters (cluster) values ('Craft and Structure');
 insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
 insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
 
---kindergraten/Reading Standards: Foundational Skills 
+--	CLUSTER: Reading Standards: Foundational Skills 
 insert into clusters (cluster) values ('Print Concepts');
 insert into clusters (cluster) values ('Phonological Awareness');
 insert into clusters (cluster) values ('Phonics and Word Recognition');
 insert into clusters (cluster) values ('Fluency');
 
---kindergraten/College and Career Readines Anchor Standards for Writing 
+--	CLUSTER: College and Career Readines Anchor Standards for Writing 
 insert into clusters (cluster) values ('Text Types and Purposes');
 insert into clusters (cluster) values ('Production and Distribution of Writing');
 insert into clusters (cluster) values ('Research to Build and Present Knowledge');
 insert into clusters (cluster) values ('Range of Writing');
 
---kindergraten/Writing Standards 
+--	CLUSTER: Writing Standards 
 insert into clusters (cluster) values ('Text Types and Purposes');
 insert into clusters (cluster) values ('Production and Distribution of Writing');
 insert into clusters (cluster) values ('Research to Build and Present Knowledge');
 insert into clusters (cluster) values ('Range of Writing');
 insert into clusters (cluster) values ('Fluency');
 
---kindergraten/College and Career Readiness Anchor Standards for Speaking and Listening
+--	CLUSTER: College and Career Readiness Anchor Standards for Speaking and Listening
 insert into clusters (cluster) values ('Comprehension and Collaboration');
 insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
 
---kindergraten/Speaking and Listening Standards
+--	CLUSTER: Speaking and Listening Standards
 insert into clusters (cluster) values ('Comprehension and Collaboration');
 insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
 
---kindergraten/College and Carreer Readiness Anchor Standards for Language
+--	CLUSTER: College and Carreer Readiness Anchor Standards for Language
 insert into clusters (cluster) values ('Conventions of Standard English');
 insert into clusters (cluster) values ('Knowlege of Language');
 insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
---kindergraten/Language Standards
+--	CLUSTER: Language Standards
 insert into clusters (cluster) values ('Conventions of Standard English');
 insert into clusters (cluster) values ('Knowlege of Language');
 insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
---CLUSTER_DOMAINS_GRADES
---domain: counting and cardinality
---grade: kindergarten 
+
+--****************************************
+--	CLUSTER_DOMAINS_GRADES
+--****************************************
+
+--		DOMAIN_GRADE: counting and cardinality_kindergarten 
+
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); --Know number names and the count sequence
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); --Count to tell the number objects
 insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); --Compare numbers
 
+
+
+--****************************************
 --STANDARDS
---subject: math
---grade: kindergarten
---domain: Counting and Cardinality
---cluster: Know number names and the count sequence.
+--****************************************
+--				SUBJECT: math
+--			GRADE: kindergarten
+--		DOMAIN: Counting and Cardinality
+--	CLUSTER: Know number names and the count sequence.
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
 sequence (instead of having to begin at 1).','2'); --2
 insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); --3
 
---cluster: Count to tell the number of objects.
+--	CLUSTER: Count to tell the number of objects.
 insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
 --etc..
 
 
---english
---grade: kindergarten
---domain: .....
---cluster: ......
+--				SUBJECT: english 
+--			GRADE: kindergarten
+--		DOMAIN: Reading Standards for Literature K-5 
+--	CLUSTER: Key Ideas and Details  
 insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
 
 
