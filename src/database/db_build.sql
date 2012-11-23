@@ -1566,35 +1566,74 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
 insert into levels(level,description) values (1,'Start of Journey');      -- 1 
+
 insert into levels(level,description) values (2,'Count from 0 to 10');        
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
-insert into levels(level,description) values (3,'Count from 10 to 20');       
-insert into levels(level,description) values (4,'Count from 20 to 30');       
-insert into levels(level,description) values (5,'Count from 30 to 40');       
-insert into levels(level,description) values (6,'Count from 40 to 50');       
-insert into levels(level,description) values (7,'Count from 50 to 60');       
-insert into levels(level,description) values (8,'Count from 60 to 70');       
-insert into levels(level,description) values (9,'Count from 70 to 80');       
-insert into levels(level,description) values (10,'Count from 80 to 90');       
-insert into levels(level,description) values (11,'Count from 90 to 100');       
 
-insert into levels(level,description) values (12,'Count to 100 by tens');      -- 12 
+insert into levels(level,description) values (3,'Count from 10 to 20');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
+
+insert into levels(level,description) values (4,'Count from 20 to 30');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
+
+insert into levels(level,description) values (5,'Count from 30 to 40');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
+
+insert into levels(level,description) values (6,'Count from 40 to 50');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (6,1);       
+
+insert into levels(level,description) values (7,'Count from 50 to 60');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (7,1);       
+
+insert into levels(level,description) values (8,'Count from 60 to 70');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (8,1);       
+
+insert into levels(level,description) values (9,'Count from 70 to 80');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (9,1);       
+
+insert into levels(level,description) values (10,'Count from 80 to 90');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (10,1);       
+
+insert into levels(level,description) values (11,'Count from 90 to 100');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (11,1);       
+
+insert into levels(level,description) values (12,'Count to 100 by tens');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (12,1);       
 
 
 --------------------------------------------------------------------------------
 --   	2.	 Count forward beginning from a given number within the known
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (100,'Count from 87 to 97'); --13
+insert into levels(level,description) values (100,'Count from 87 to 97'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (13,1);       
+
 insert into levels(level,description) values (101,'Count from 23 to 33'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (14,1);       
+
 insert into levels(level,description) values (102,'Count from 55 to 65'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (15,1);       
+
 insert into levels(level,description) values (103,'Count from 26 to 36'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (16,1);       
+
 insert into levels(level,description) values (104,'Count from 49 to 59'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (17,1);       
+
 insert into levels(level,description) values (105,'Count from 4 to 14');  
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (18,1);       
+
 insert into levels(level,description) values (106,'Count from 67 to 77'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (19,1);       
+
 insert into levels(level,description) values (107,'Count from 13 to 23'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (20,1);       
+
 insert into levels(level,description) values (108,'Count from 52 to 62'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (21,1);       
+
 insert into levels(level,description) values (109,'Count from 38 to 48'); --22
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (22,1);       
 
 
 
@@ -1604,9 +1643,16 @@ insert into levels(level,description) values (109,'Count from 38 to 48'); --22
 --	Count to tell the number of objects. 	
 --------------------------------------------------------------------------------
 insert into levels(level,description) values (200,'Write numbers from 0 to 5'); --23
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (23,1);       
+
 insert into levels(level,description) values (201,'Write numbers from 5 to 10'); --24
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (24,1);       
+
 insert into levels(level,description) values (202,'Write numbers from 10 to 15'); --25
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (25,1);       
+
 insert into levels(level,description) values (203,'Write numbers from 15 to 20'); --26
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (26,1);       
 
 
 
@@ -1622,9 +1668,14 @@ insert into levels(level,description) values (203,'Write numbers from 15 to 20')
 --	order, pairing each object with one and only one number name
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
-insert into levels(level,description) values (400,'Count objects from 0 to 20'); --27
-insert into levels(level,description) values (401,'Count objects in standard order using names. 0-10'); --28
-insert into levels(level,description) values (402,'Count objects in standard order using names. 10-20'); --29
+insert into levels(level,description) values (400,'Count objects from 0 to 20'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (27,1);       
+
+insert into levels(level,description) values (401,'Count objects in standard order using names. 0-10'); 
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (28,1);       
+
+insert into levels(level,description) values (402,'Count objects in standard order using names. 10-20');
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (29,1);       
 
 
 --------------------------------------------------------------------------------
@@ -1839,47 +1890,10 @@ insert into levels(level,description) values (1501,'compose and decompose ');
 
 
 
+--***********************************************
+--		COUNTING
+--***********************************************
 
-
---LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
---count by 1's to 100
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (6,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (7,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (8,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (9,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (10,1);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (11,1);       
---count by 10's to 100
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (12,1);       
-
---count from random known sequence
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (13,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (14,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (15,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (16,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (17,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (18,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (19,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (20,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (21,2);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (22,2);       
-
---write numbers from 0 to 20
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (23,3);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (24,3);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (25,3);       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (26,3);       
-
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (27,3);       
-
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (28,5); --standard_order      
-
---LEVELS_TRANSACTIONS
-
---COUNTING
 --count by 1's to 100
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
 -- this is the start value Start of journey
@@ -1909,21 +1923,9 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,38,48,1,22);
 
 
---ADDITION
-
---SUBTRACTION
-/*
--QUESTIONS
-CREATE TABLE questions (
-    id integer NOT NULL,
-    question text NOT NULL,
-    answer text NOT NULL,
-    level_id integer NOT NULL,
-    question_order double precision NOT NULL UNIQUE
-);
-*/
-
---QUESTIONS
+--***********************************************
+--		QUESTIONS	
+--***********************************************
 
 --level_id 1  
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',2,1);
