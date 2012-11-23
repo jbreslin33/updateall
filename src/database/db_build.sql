@@ -1710,7 +1710,7 @@ insert into levels(level,description) values (1401,'fluently ');
 --	two, three, four, five, six, seven, eight, or nine ones.
 -----------------------------------------------------------------------------
 insert into levels(level,description) values (1500,'compose and decompose ');
-insert into levels(level,description) values (1500,'compose and decompose ');
+insert into levels(level,description) values (1501,'compose and decompose ');
 
 
 
@@ -1737,7 +1737,7 @@ insert into levels(level,description) values (1500,'compose and decompose ');
 --	children and describe one child as taller/shorter.
 --	Classify objects and count the number of objects in each category.
 -----------------------------------------------------------------------------
--1700
+--1700
 
 -----------------------------------------------------------------------------
 --	3.	 Classify objects into given categories; count the numbers of objects in
@@ -1804,7 +1804,6 @@ insert into levels(level,description) values (1500,'compose and decompose ');
 --LEVELS_STANDARDS_CLUSTERS_DOMAINS_GRADES
 --count by 1's to 100
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
---insert into levels_standards(level_id, standard_id) values (2,1); this is the start of journey level_id      
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
