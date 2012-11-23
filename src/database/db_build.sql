@@ -1493,7 +1493,7 @@ insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
 
 
 --****************************************
---	CLUSTER_DOMAINS_GRADES
+--			CLUSTER_DOMAINS_GRADES
 --****************************************
 
 --	DOMAIN_GRADE: counting and cardinality_kindergarten 
@@ -1505,39 +1505,45 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); 
 
 
 --****************************************
---STANDARDS
+--				STANDARDS
 --****************************************
 --				SUBJECT: math
 --			GRADE: kindergarten
 --		DOMAIN: Counting and Cardinality
+
 --	CLUSTER: Know number names and the count sequence.
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
-insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known
-sequence (instead of having to begin at 1).','2'); --2
+insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); --2
 insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); --3
 
 --	CLUSTER: Count to tell the number of objects.
 insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
---etc..
 
 
---				SUBJECT: english 
+--				SUBJECT: english
 --			GRADE: kindergarten
 --		DOMAIN: Reading Standards for Literature K-5 
+
 --	CLUSTER: Key Ideas and Details  
 insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
 
+--************************************************
+--		STANDARDS_CLUSTERS_DOMAINS_GRADES
+--************************************************
 
---STANDARDS_CLUSTERS_DOMAINS_GRADES
---cluster: Know number names and the count sequence.
+--				SUBJECT: math
+--			GRADE: kindergarten
+--		DOMAIN: Counting and Cardinality
+
+--	CLUSTER: Know number names and the count sequence.
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); --Count to 100 by ones and by tens.
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); --Count forward beginning from a given number within the known sequence......
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); --Write numbers from 0 to 20........
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); --Count forward beginning ...
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); --Write numbers from 0 to 20...
 
---cluster: Count to tell the number of objects. 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); --Understand the relat.........
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); --When counting objects, say.........
+--	CLUSTER: Count to tell the number of objects. 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); --Understand the relat...
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); --When counting objects, say...
 
 --==================================================================
 --================= LEVELS  ====================================
