@@ -1217,6 +1217,7 @@ insert into permissions(permission) values ('INSERT');
 --****************************************
 
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web/game/dungeon.php','/images/doors/door_open.png','/images/doors/door_closed.png');
+insert into games (game,url,picture_open,picture_closed) values ('Dungeon Count','/web/game/represent.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
 
 --****************************************
@@ -1554,7 +1555,6 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1);
 --	4.	 Understand the relationship between numbers and quantities; connect
 --	counting to cardinality.
 --------------------------------------------------------------------------------
-
 insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
 
@@ -1587,7 +1587,7 @@ insert into questions (question,answer,level_id,question_order) values ('How man
 insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','4',400,10);
 
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (400,1);
+insert into games_levels (level_id,game_id) values  (400,2);
 
 
 --		LEVEL_ID: 401  
