@@ -1607,7 +1607,7 @@ insert into questions (question,answer,level_id,question_order) values ('How man
 insert into questions (question,answer,level_id,question_order) values ('How many Red Monsters?','9',401,10);
 
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (401,1);
+insert into games_levels (level_id,game_id) values  (401,2);
 
 
 --		LEVEL_ID: 402  
@@ -1615,16 +1615,16 @@ insert into levels(id,description) values (402,'Count objects in standard order 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (402,1);       
 
 --	QUESTIONS:
-insert into questions (question,answer,level_id,question_order) values ('','one',402,1);
-insert into questions (question,answer,level_id,question_order) values ('','two',402,2);
-insert into questions (question,answer,level_id,question_order) values ('','three',402,3);
-insert into questions (question,answer,level_id,question_order) values ('','four',402,4);
-insert into questions (question,answer,level_id,question_order) values ('','five',402,5);
-insert into questions (question,answer,level_id,question_order) values ('','six',402,6);
-insert into questions (question,answer,level_id,question_order) values ('','seven',402,7);
-insert into questions (question,answer,level_id,question_order) values ('','eight',402,8);
-insert into questions (question,answer,level_id,question_order) values ('','nine',402,9);
-insert into questions (question,answer,level_id,question_order) values ('','ten',402,10);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after zero?','one',402,1);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after one?','two',402,2);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after two?','three',402,3);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after three?','four',402,4);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after four?','five',402,5);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after five?','six',402,6);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after six?','seven',402,7);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after seven?','eight',402,8);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after eight?','nine',402,9);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after nine?','ten',402,10);
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (402,1);
@@ -1635,16 +1635,16 @@ insert into levels(id,description) values (403,'Count objects in standard order 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (403,1);       
 
 --	QUESTIONS:
-insert into questions (question,answer,level_id,question_order) values ('','eleven',403,1);
-insert into questions (question,answer,level_id,question_order) values ('','twelve',403,2);
-insert into questions (question,answer,level_id,question_order) values ('','thirteen',403,3);
-insert into questions (question,answer,level_id,question_order) values ('','fourteen',403,4);
-insert into questions (question,answer,level_id,question_order) values ('','fifteen',403,5);
-insert into questions (question,answer,level_id,question_order) values ('','sixteen',403,6);
-insert into questions (question,answer,level_id,question_order) values ('','seventeen',403,7);
-insert into questions (question,answer,level_id,question_order) values ('','eighteen',403,8);
-insert into questions (question,answer,level_id,question_order) values ('','nineteen',403,9);
-insert into questions (question,answer,level_id,question_order) values ('','twenty',403,10);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after ten?','eleven',403,1);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after eleven?','twelve',403,2);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after twelve?','thirteen',403,3);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after thirteen?','fourteen',403,4);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after fourteen?','fifteen',403,5);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after fifteen?','sixteen',403,6);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after sixteen?','seventeen',403,7);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after seventeen?','eighteen',403,8);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after eighteen?','nineteen',403,9);
+insert into questions (question,answer,level_id,question_order) values ('What number comes after nineteen?','twenty',403,10);
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (403,1);
