@@ -3,7 +3,7 @@
 function insertFirstLevelTransaction($conn,$user_id)
 {
   //---------------- GET starting level id and next level id ----------------------------------------------
-                $query = "select id from levels order by level LIMIT 2;";
+                $query = "select id from levels order by id LIMIT 2;";
 
                 //get db result
                 $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
