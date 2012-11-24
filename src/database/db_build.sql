@@ -316,7 +316,6 @@ CREATE TABLE games (
 --GAMES_LEVELS
 CREATE TABLE games_levels (
     id integer NOT NULL,
-    url text NOT NULL,
     game_id integer NOT NULL,
     level_id double precision NOT NULL
 );
@@ -1547,7 +1546,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --		GAMES	
 --****************************************
 
-insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/src/games/game.php','/images/doors/door_open.png','/images/doors/door_closed.png');
+insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web/game/dungeon.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
 
 
@@ -1588,7 +1587,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',2,10);
 
 --	GAMES: dungeon
-insert into games_levels (level_id,game_id,url) values  (2,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id) values  (2,1);
 
 
 				
@@ -1609,7 +1608,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 19?','20',3,10);
 
 --	GAMES: 
-insert into games_levels (level_id,game_id,url) values  (3,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id) values  (3,1);
 
 --		LEVEL_ID: 4 
 insert into levels(id,description) values (4,'Count from 20 to 30');       
@@ -1628,7 +1627,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 29?','30',4,10);
 
 --	GAMES: 
-insert into games_levels (level_id,game_id,url) values  (4,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id) values  (4,1);
 
 --		LEVEL_ID: 5  
 insert into levels(id,description) values (5,'Count from 30 to 40');       
@@ -1647,7 +1646,7 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 39?','40',5,10);
 
 --	GAMES: 
-insert into games_levels (level_id,game_id,url) values  (5,1,'/web/game/dungeon.php');
+insert into games_levels (level_id,game_id) values  (5,1);
 
 --		LEVEL_ID: 6 
 insert into levels(id,description) values (6,'Count from 40 to 50');       
