@@ -1538,18 +1538,11 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); --Understand the relat...
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); --When counting objects, say...
 
-
-
-
-
 --****************************************
 --		GAMES	
 --****************************************
 
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web/game/dungeon.php','/images/doors/door_open.png','/images/doors/door_closed.png');
-
-
-
 
 /*
 --COUNTING
@@ -1580,9 +1573,6 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,13,23,1,20);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,52,62,1,21);
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,38,48,1,22);
-
-
-
 */
 
 --****************************************
@@ -1620,6 +1610,9 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',2,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',2,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',2,10);
+
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
+
 
 --	GAMES: dungeon
 insert into games_levels (level_id,game_id) values  (2,1);
