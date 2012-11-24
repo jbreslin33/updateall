@@ -70,7 +70,7 @@ if ($numberOfRowsInCounting > 0)
 
 		for ($i=0; $i < $scoreNeeded; $i++)
 		{	
-			$q = $count_by * $i;
+			$q = $count_by * $i + $start_number;
 			$a = $q + $count_by;
         		echo "<script language=\"javascript\">";
         		echo "questions[$i] = \"What comes next after $q?\";";
