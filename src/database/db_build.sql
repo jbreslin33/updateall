@@ -1600,6 +1600,7 @@ insert into levels(id,description) values (2,'Count from 0 to 10');
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
 
 --		QUESTIONS:
+/*
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',2,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',2,2);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',2,3);
@@ -1610,8 +1611,9 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',2,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',2,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',2,10);
+*/
 
---insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
 
 
 --	GAMES: dungeon
