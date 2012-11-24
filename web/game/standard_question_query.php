@@ -85,6 +85,44 @@ if ($numberOfRowsInCounting > 0)
         echo "</script>";
 }
 
+//*******************     anything in addition? if so override above ^ **********************************
+$query = "select score_needed, addend_min, addend_max, number_of_addends from addition where level_id = ";
+$query .= $_SESSION["next_level_id"];
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//get numer of rows which will also be score needed
+$numberOfRowsInAddition = pg_num_rows($result);
+
+if ($numberOfRowsInAddition > 0)
+{
+        while ($row = pg_fetch_row($result))
+        {
+                //fill php vars from db
+                $scoreNeeded = $row[0];
+                $addend_min = $row[1];
+                $addend_max = $row[2];
+                $number_of_addends = $row[3];
+
+                for ($i=0; $i < $scoreNeeded; $i++)
+                {
+			$addend1 = rand($addend_min,$addend_max);
+			$addend2 = rand($addend_min,$addend_max);
+
+                        $a = $addend1 + $addend2;
+                        echo "<script language=\"javascript\">";
+                        echo "questions[$i] = \"What is $addend1 + $addend2 ?\";";
+                        echo "answers[$i] = $a";
+                        echo "</script>";
+                }
+        }
+        $numberOfRows = $scoreNeeded;
+        echo "<script language=\"javascript\">";
+        echo "scoreNeeded = $scoreNeeded;";
+        echo "numberOfRows = $numberOfRows;";
+        echo "</script>";
+}
 
 
 ?>
