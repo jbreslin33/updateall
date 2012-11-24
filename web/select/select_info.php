@@ -27,6 +27,26 @@ dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
 $row = pg_fetch_array($result, 0);
 pg_close($conn);
+
+    if (pg_field_is_null($result, 0, "first_name") == 1)
+	{
+	    $first = "''";
+		
+	}
+    else
+	{
+		$first = $row["first_name"];
+	}
+	
+	 if (pg_field_is_null($result, 0, "last_name") == 1)
+	{
+	    $last = "''";
+		
+	}
+    else
+	{
+		$last = $row["last_name"];
+	}
 ?>
 
   
