@@ -31,7 +31,7 @@ function setLevelSessionVariables($conn,$user_id)
         }
 
 	/***get the last_level using last_level_id ************/
-	$query = "select level from levels where id = ";
+	$query = "select id from levels where id = ";
 	$query .= $_SESSION["last_level_id"];
 	$query .= ";";
 
@@ -44,7 +44,7 @@ function setLevelSessionVariables($conn,$user_id)
         if ($num > 0)
         {
       		//get the id from user table
-                $last_level = pg_Result($result, 0, 'level');
+                $last_level = pg_Result($result, 0, 'id');
 
                 //set level_id
                 $_SESSION["last_level"] = $last_level;
@@ -57,9 +57,9 @@ function setLevelSessionVariables($conn,$user_id)
 
   	//---------------- GET next level id and level using last_level_id----------------------------------------------
 
-        $query = "select id, level from levels where level > ";
+        $query = "select id from levels where id > ";
         $query .= $_SESSION["last_level"];
-        $query .= " order by level ASC LIMIT 1;";
+        $query .= " order by id ASC LIMIT 1;";
 
         //get db result
         $result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
@@ -72,7 +72,7 @@ function setLevelSessionVariables($conn,$user_id)
         {
         	//get the id and level
                 $next_level_id = pg_Result($result, 0, 'id');
-                $next_level = pg_Result($result, 0, 'level');
+                $next_level    = pg_Result($result, 0, 'id');
 
                	//set session
                 $_SESSION["next_level_id"] = $next_level_id;
