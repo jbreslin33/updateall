@@ -1595,50 +1595,30 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 insert into levels(id,description) values (1,'Start of Journey');      -- 1 
 
 
---			LEVEL_ID: 2
+
+--		LEVEL_ID: 2
 insert into levels(id,description) values (2,'Count from 0 to 10');        
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
 
---		QUESTIONS:
-/*
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 0?','1',2,1);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 1?','2',2,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 2?','3',2,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 3?','4',2,4);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 4?','5',2,5);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 5?','6',2,6);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 6?','7',2,7);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 7?','8',2,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 8?','9',2,9);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 9?','10',2,10);
-*/
-
+--	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
-
 
 --	GAMES: dungeon
 insert into games_levels (level_id,game_id) values  (2,1);
+			
 
-
-				
+	
 --		LEVEL_ID: 3 
 insert into levels(id,description) values (3,'Count from 10 to 20');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
 
 --	QUESTIONS:
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 10?','11',3,1);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 11?','12',3,2);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 12?','13',3,3);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 13?','14',3,4);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 14?','15',3,5);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 15?','16',3,6);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 16?','17',3,7);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 17?','18',3,8);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 18?','19',3,9);
-insert into questions (question,answer,level_id,question_order) values ('What comes next after 19?','20',3,10);
+insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,3);
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (3,1);
+
+
 
 --		LEVEL_ID: 4 
 insert into levels(id,description) values (4,'Count from 20 to 30');       
@@ -1658,6 +1638,8 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (4,1);
+
+
 
 --		LEVEL_ID: 5  
 insert into levels(id,description) values (5,'Count from 30 to 40');       
