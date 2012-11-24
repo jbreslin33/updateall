@@ -1,6 +1,6 @@
 <?php
 /******* join games and games_levels  ***************/
-$query = "select games.game, games_levels.url, games.picture_open, games.picture_closed, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
+$query = "select games.game, games.url, games.picture_open, games.picture_closed, games.id from games join games_levels on games.id = games_levels.game_id where games_levels.level_id = ";
 $query .= $_SESSION["next_level_id"];
 $query .= ";";
 
