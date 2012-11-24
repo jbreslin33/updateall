@@ -1211,329 +1211,6 @@ insert into permissions(permission) values ('INSERT');
 --================= CORE CURRICULUM  ====================================
 --==================================================================
 
---**********************************
---	GRADES	
---**********************************
-insert into grades (grade) values ('K');
-insert into grades (grade) values ('1');
-insert into grades (grade) values ('2');
-insert into grades (grade) values ('3');
-insert into grades (grade) values ('4');
-insert into grades (grade) values ('5');
-insert into grades (grade) values ('6');
-insert into grades (grade) values ('7');
-insert into grades (grade) values ('8');
-insert into grades (grade) values ('9');
-insert into grades (grade) values ('10');
-insert into grades (grade) values ('11');
-insert into grades (grade) values ('12');
-
---**********************************
---	SUBJECTS	
---**********************************
-
-insert into subjects (subject) values ('Math');
-insert into subjects (subject) values ('English');
-insert into subjects (subject) values ('History/Social Studies');
-insert into subjects (subject) values ('Science');
-insert into subjects (subject) values ('Technical');
-
---**********************************
---	DOMAINS
---**********************************
-
---	SUBJECT: math	
-insert into domains (domain) values ('Counting and Cardinality'); --1
-insert into domains (domain) values ('Operations and Algebraic Thinking'); --2
-insert into domains (domain) values ('Number and Operations in Base Ten'); --3
-insert into domains (domain) values ('Measurement and Data'); --4
-insert into domains (domain) values ('Geometry'); --5
-insert into domains (domain) values ('Number and Operations-Fractions'); --6
-insert into domains (domain) values ('Ratios and Proportional Relationships'); --7
-insert into domains (domain) values ('The Number System'); --8
-insert into domains (domain) values ('Expressions and Equations'); --9
-insert into domains (domain) values ('Statistics and Probability'); --10
-insert into domains (domain) values ('Functions'); --11
-insert into domains (domain) values ('The Real Number System'); --12
-insert into domains (domain) values ('Quantities'); --13
-insert into domains (domain) values ('The Complex Number System'); --14
-insert into domains (domain) values ('Vector and Matrix Quantities'); --15
-insert into domains (domain) values ('Seeing Structure in Expressions'); --16
-insert into domains (domain) values ('Arithmetic with Polynomials and Rational Expressions'); --17
-insert into domains (domain) values ('Creating Equations'); --18
-insert into domains (domain) values ('Reasoning with Equations and Inequalities'); --19
-insert into domains (domain) values ('Connections to Expressions, Equations, Modeling, and Coordinates'); --20
-insert into domains (domain) values ('Interpreting Functions'); --21
-insert into domains (domain) values ('Building Functions'); --22
-insert into domains (domain) values ('Linear, Quadratic, and Exponential Models'); --23
-insert into domains (domain) values ('Trigonometric Functions'); --24
-insert into domains (domain) values ('Modeling'); --25
-insert into domains (domain) values ('Modeling Standards'); --26
-insert into domains (domain) values ('Connections to Equations'); --27
-insert into domains (domain) values ('Congruence'); --28
-insert into domains (domain) values ('Similiarity, Right Triangles, and Trigonometry'); --29
-insert into domains (domain) values ('Circles'); --30
-insert into domains (domain) values ('Expressing Geometric Properties with Equations'); --31
-insert into domains (domain) values ('Geometric Measurement and Dimension'); --32
-insert into domains (domain) values ('Modeling and Geometry'); --33
-insert into domains (domain) values ('Connections to Functions and Modeling'); --34
-insert into domains (domain) values ('Interpreting Categorical and Quantitative Data'); --35
-insert into domains (domain) values ('Making Inferences and Justifying Conclusions'); --36
-insert into domains (domain) values ('Conditional Probability and the Rules of Probability'); --37
-insert into domains (domain) values ('Using Probability to Make Decisions'); --38
-
---	SUBJECT: english	
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --39
-insert into domains (domain) values ('Reading Standards for Literature'); --40
-insert into domains (domain) values ('Reading for Informational Text'); --41
-insert into domains (domain) values ('Reading Standards: Foundational Skills'); --42
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --43
-insert into domains (domain) values ('Writing Standards'); --44
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Speaking and Listening'); --45
-insert into domains (domain) values ('Speaking and Listening Standards'); --46
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Language'); --47
-insert into domains (domain) values ('Language Standards'); --48
-insert into domains (domain) values ('Language Progressive Skills, by Grade'); --49
-insert into domains (domain) values ('Standard 10: Range, Quality, and Complexity of Student Reading'); --50
-insert into domains (domain) values ('Staying on Topic Within a Grade and Across Grades'); --51
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Reading'); --52
-insert into domains (domain) values ('Reading Standards for Literacy in History/Social Studies'); --53
-insert into domains (domain) values ('Reading Standards for Literacy in Science and Technical Subjects'); --54
-insert into domains (domain) values ('College and Career Readiness Anchor Standards for Writing'); --55
-insert into domains (domain) values ('Writing Standards for Literacy in History/Social Studies, Science, and Technical Subjects'); --56
-
---*********************************
---	DOMAINS_SUBJECTS
---*********************************
-
---	SUBJECT: math 
-insert into domains_subjects (domain_id, subject_id) values (1,1); 
-insert into domains_subjects (domain_id, subject_id) values (2,1); 
-insert into domains_subjects (domain_id, subject_id) values (3,1); 
-insert into domains_subjects (domain_id, subject_id) values (4,1); 
-insert into domains_subjects (domain_id, subject_id) values (5,1); 
-insert into domains_subjects (domain_id, subject_id) values (6,1); 
-insert into domains_subjects (domain_id, subject_id) values (7,1); 
-insert into domains_subjects (domain_id, subject_id) values (8,1); 
-insert into domains_subjects (domain_id, subject_id) values (9,1); 
-insert into domains_subjects (domain_id, subject_id) values (10,1); 
-insert into domains_subjects (domain_id, subject_id) values (11,1); 
-insert into domains_subjects (domain_id, subject_id) values (12,1); 
-insert into domains_subjects (domain_id, subject_id) values (13,1); 
-insert into domains_subjects (domain_id, subject_id) values (14,1); 
-insert into domains_subjects (domain_id, subject_id) values (15,1); 
-insert into domains_subjects (domain_id, subject_id) values (16,1); 
-insert into domains_subjects (domain_id, subject_id) values (17,1); 
-insert into domains_subjects (domain_id, subject_id) values (18,1); 
-insert into domains_subjects (domain_id, subject_id) values (19,1); 
-insert into domains_subjects (domain_id, subject_id) values (20,1); 
-insert into domains_subjects (domain_id, subject_id) values (21,1); 
-insert into domains_subjects (domain_id, subject_id) values (22,1); 
-insert into domains_subjects (domain_id, subject_id) values (23,1); 
-insert into domains_subjects (domain_id, subject_id) values (24,1); 
-insert into domains_subjects (domain_id, subject_id) values (25,1); 
-insert into domains_subjects (domain_id, subject_id) values (26,1); 
-insert into domains_subjects (domain_id, subject_id) values (27,1); 
-insert into domains_subjects (domain_id, subject_id) values (28,1); 
-insert into domains_subjects (domain_id, subject_id) values (29,1); 
-insert into domains_subjects (domain_id, subject_id) values (30,1); 
-insert into domains_subjects (domain_id, subject_id) values (31,1); 
-insert into domains_subjects (domain_id, subject_id) values (32,1); 
-insert into domains_subjects (domain_id, subject_id) values (33,1); 
-insert into domains_subjects (domain_id, subject_id) values (34,1); 
-insert into domains_subjects (domain_id, subject_id) values (35,1); 
-insert into domains_subjects (domain_id, subject_id) values (36,1); 
-insert into domains_subjects (domain_id, subject_id) values (37,1); 
-insert into domains_subjects (domain_id, subject_id) values (38,1); 
-
---	SUBJECT: english 
-insert into domains_subjects (domain_id, subject_id) values (39,2); 
-insert into domains_subjects (domain_id, subject_id) values (40,2); 
-insert into domains_subjects (domain_id, subject_id) values (41,2); 
-insert into domains_subjects (domain_id, subject_id) values (42,2); 
-insert into domains_subjects (domain_id, subject_id) values (43,2); 
-insert into domains_subjects (domain_id, subject_id) values (44,2); 
-insert into domains_subjects (domain_id, subject_id) values (45,2); 
-insert into domains_subjects (domain_id, subject_id) values (46,2); 
-insert into domains_subjects (domain_id, subject_id) values (47,2); 
-insert into domains_subjects (domain_id, subject_id) values (48,2); 
-insert into domains_subjects (domain_id, subject_id) values (49,2); 
-insert into domains_subjects (domain_id, subject_id) values (50,2); 
-insert into domains_subjects (domain_id, subject_id) values (51,2); 
-insert into domains_subjects (domain_id, subject_id) values (52,2); 
-insert into domains_subjects (domain_id, subject_id) values (53,2); 
-insert into domains_subjects (domain_id, subject_id) values (54,2); 
-insert into domains_subjects (domain_id, subject_id) values (55,2); 
-insert into domains_subjects (domain_id, subject_id) values (56,2); 
-
---**************************************
---	DOMAINS_GRADES
---**************************************
---		SUBJECT: math
---	GRADE: kindergarten 
-insert into domains_grades (domain_id, grade_id) values (1,1); 
-insert into domains_grades (domain_id, grade_id) values (2,1); 
-insert into domains_grades (domain_id, grade_id) values (3,1); 
-insert into domains_grades (domain_id, grade_id) values (4,1); 
-insert into domains_grades (domain_id, grade_id) values (5,1); 
-
---	GRADE: 1st  
-insert into domains_grades (domain_id, grade_id) values (2,2); 
-insert into domains_grades (domain_id, grade_id) values (3,2); 
-insert into domains_grades (domain_id, grade_id) values (4,2); 
-insert into domains_grades (domain_id, grade_id) values (5,2); 
-
---		SUBJECT: english 
---	GRADE: kindergarten 
-insert into domains_grades (domain_id, grade_id) values (39,1); 
-insert into domains_grades (domain_id, grade_id) values (40,1); 
-insert into domains_grades (domain_id, grade_id) values (41,1); 
-insert into domains_grades (domain_id, grade_id) values (42,1); 
-insert into domains_grades (domain_id, grade_id) values (43,1); 
-insert into domains_grades (domain_id, grade_id) values (44,1); 
-insert into domains_grades (domain_id, grade_id) values (45,1); 
-insert into domains_grades (domain_id, grade_id) values (46,1); 
-insert into domains_grades (domain_id, grade_id) values (47,1); 
-insert into domains_grades (domain_id, grade_id) values (48,1); 
-insert into domains_grades (domain_id, grade_id) values (49,1); 
-insert into domains_grades (domain_id, grade_id) values (50,1); 
-insert into domains_grades (domain_id, grade_id) values (51,1); 
-
-
---**************************************
---	CLUSTERS	
---**************************************
-
---		GRADE: kindergarten
-
---	CLUSTER: Counting and Cardinality
-insert into clusters (cluster) values ('Know number names and the count sequence.');
-insert into clusters (cluster) values ('Count to tell the number of objects.');
-insert into clusters (cluster) values ('Compare numbers.');
-
---	CLUSTER: Operations and Algebraic Thinking
-insert into clusters (cluster) values ('Understand addition as putting together and adding to, and understand subtraction as taking aprart and taking from.');
-
---	CLUSTER: Number Operations in Base Ten 
-insert into clusters (cluster) values ('Work with numbers 11-19 to gain foundations for place value');
-
---	CLUSTER: Measurement and Data
-insert into clusters (cluster) values ('Describe and compare measurable attributes');
-insert into clusters (cluster) values ('Classify objects and count the number of objects in categories');
-
---	CLUSTER: Geometry
-insert into clusters (cluster) values ('Identify and describe shapes');
-insert into clusters (cluster) values ('Analyze, compare, create, and compose shapes.');
-
---	CLUSTER: College and Career Readiness Anchor Standars for Reading
-insert into clusters (cluster) values ('Key Ideas and Details');
-insert into clusters (cluster) values ('Craft and Structure');
-insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
-insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
-
---	CLUSTER: Reading Standards for Literature
-insert into clusters (cluster) values ('Key Ideas and Details');
-insert into clusters (cluster) values ('Craft and Structure');
-insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
-insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
-
---	CLUSTER: Reading Standards for Informational Text 
-insert into clusters (cluster) values ('Key Ideas and Details');
-insert into clusters (cluster) values ('Craft and Structure');
-insert into clusters (cluster) values ('Integration of Knowledge and Ideas');
-insert into clusters (cluster) values ('Range of Reading and Level of Text Complexity');
-
---	CLUSTER: Reading Standards: Foundational Skills 
-insert into clusters (cluster) values ('Print Concepts');
-insert into clusters (cluster) values ('Phonological Awareness');
-insert into clusters (cluster) values ('Phonics and Word Recognition');
-insert into clusters (cluster) values ('Fluency');
-
---	CLUSTER: College and Career Readines Anchor Standards for Writing 
-insert into clusters (cluster) values ('Text Types and Purposes');
-insert into clusters (cluster) values ('Production and Distribution of Writing');
-insert into clusters (cluster) values ('Research to Build and Present Knowledge');
-insert into clusters (cluster) values ('Range of Writing');
-
---	CLUSTER: Writing Standards 
-insert into clusters (cluster) values ('Text Types and Purposes');
-insert into clusters (cluster) values ('Production and Distribution of Writing');
-insert into clusters (cluster) values ('Research to Build and Present Knowledge');
-insert into clusters (cluster) values ('Range of Writing');
-insert into clusters (cluster) values ('Fluency');
-
---	CLUSTER: College and Career Readiness Anchor Standards for Speaking and Listening
-insert into clusters (cluster) values ('Comprehension and Collaboration');
-insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
-
---	CLUSTER: Speaking and Listening Standards
-insert into clusters (cluster) values ('Comprehension and Collaboration');
-insert into clusters (cluster) values ('Presentation of Knowledge and Ideas');
-
---	CLUSTER: College and Carreer Readiness Anchor Standards for Language
-insert into clusters (cluster) values ('Conventions of Standard English');
-insert into clusters (cluster) values ('Knowlege of Language');
-insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
-
---	CLUSTER: Language Standards
-insert into clusters (cluster) values ('Conventions of Standard English');
-insert into clusters (cluster) values ('Knowlege of Language');
-insert into clusters (cluster) values ('Vocabulary Acquisition and Use');
-
-
---****************************************
---			CLUSTER_DOMAINS_GRADES
---****************************************
-
---	DOMAIN_GRADE: counting and cardinality_kindergarten 
-
-insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); --Know number names and the count sequence
-insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); --Count to tell the number objects
-insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); --Compare numbers
-
-
-
---****************************************
---				STANDARDS
---****************************************
---				SUBJECT: math
---			GRADE: kindergarten
---		DOMAIN: Counting and Cardinality
-
---	CLUSTER: Know number names and the count sequence.
-insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); --1
-insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); --2
-insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); --3
-
---	CLUSTER: Count to tell the number of objects.
-insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
-insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
-
-
---				SUBJECT: english
---			GRADE: kindergarten
---		DOMAIN: Reading Standards for Literature K-5 
-
---	CLUSTER: Key Ideas and Details  
-insert into standards (standard,standard_code) values ('With prompting and support, ask and answer questions about key details in a text.','1');
-
-
-
-
-
---************************************************
---		STANDARDS_CLUSTERS_DOMAINS_GRADES
---************************************************
-
---i moved this into levels as it is more readable and updateable that way
-
---				SUBJECT: math
---			GRADE: kindergarten
---		DOMAIN: Counting and Cardinality
-
---	CLUSTER: Know number names and the count sequence.
-
---	CLUSTER: Count to tell the number of objects. 
 
 --****************************************
 --		GAMES	
@@ -1546,19 +1223,36 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web
 --		LEVELS	
 --****************************************
 
+--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+--			KINDERGARTEN             
+--&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+insert into grades (grade) values ('K');
+
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--			MATH	
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+insert into subjects (subject) values ('Math');
+
+
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 --	Counting and Cardinality
 --	K.CC
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+insert into domains (domain) values ('Counting and Cardinality'); 
+insert into domains_subjects (domain_id, subject_id) values (1,1); 
+insert into domains_grades (domain_id, grade_id) values (1,1); 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Know number names and the count sequence.
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Know number names and the count sequence.');
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1); 
 
 
 ----------------------------------------------------------------------------
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
+insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); 
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); 
 
 
@@ -1691,6 +1385,7 @@ insert into games_levels (level_id,game_id) values  (12,1);
 --   	2.	 Count forward beginning from a given number within the known
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
+insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); 
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); 
 
 --		LEVEL_ID: 100  
@@ -1763,8 +1458,8 @@ insert into games_levels (level_id,game_id) values  (105,1);
 --------------------------------------------------------------------------------
 --   	3.	 Write numbers from 0 to 20. Represent a number of objects with a
 --	written numeral 0-20 (with 0 representing a count of no objects).
---	Count to tell the number of objects. 	
 --------------------------------------------------------------------------------
+insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); 
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); 
 
 
@@ -1849,10 +1544,18 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into games_levels (level_id,game_id) values  (203,1);
 
 
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--	Count to tell the number of objects. 	
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Count to tell the number of objects.');
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1); 
+
 --------------------------------------------------------------------------------
 --	4.	 Understand the relationship between numbers and quantities; connect
 --	counting to cardinality.
 --------------------------------------------------------------------------------
+
+insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
 
 
@@ -1864,6 +1567,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --	order, pairing each object with one and only one number name
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
+insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); 
 
 --		LEVEL_ID: 400  
@@ -1967,11 +1671,15 @@ insert into games_levels (level_id,game_id) values  (403,1);
 --	arranged in a line, a rectangular array, or a circle, or as many as 10
 --	things in a scattered configuration; given a number from 1–20, count
 --	out that many objects.
---	Compare numbers.
 --------------------------------------------------------------------------------
 --700
 
 
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--	Compare numbers.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Compare numbers.');
+insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1); 
 
 --------------------------------------------------------------------------------
 --	6.	 Identify whether the number of objects in one group is greater than,
@@ -1992,11 +1700,15 @@ insert into games_levels (level_id,game_id) values  (403,1);
 --	Operations and Algebraic Thinking
 --	K.OA	
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+insert into domains (domain) values ('Operations and Algebraic Thinking'); 
+insert into domains_subjects (domain_id, subject_id) values (2,1); 
+insert into domains_grades (domain_id, grade_id) values (2,1); 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Understand addition as putting together and adding to, and under-
 --	stand subtraction as taking apart and taking from.
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Understand addition as putting together and adding to, and understand subtraction as taking apart and taking from.');
 
 -----------------------------------------------------------------------------
 --	1.	 Represent addition and subtraction with objects, fingers, mental
@@ -2074,10 +1786,14 @@ insert into games_levels (level_id,game_id) values  (1001,1);
 --	Number and Operations in Base Ten
 --	K.NBT	
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+insert into domains (domain) values ('Number and Operations in Base Ten'); 
+insert into domains_subjects (domain_id, subject_id) values (3,1); 
+insert into domains_grades (domain_id, grade_id) values (3,1); 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Work with numbers 11–19 to gain foundations for place value.
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Work with numbers 11-19 to gain foundations for place value');
 
 
 -----------------------------------------------------------------------------
@@ -2095,10 +1811,14 @@ insert into games_levels (level_id,game_id) values  (1001,1);
 --	Measurement and Data	
 --	K.MD
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+insert into domains (domain) values ('Measurement and Data'); 
+insert into domains_subjects (domain_id, subject_id) values (4,1); 
+insert into domains_grades (domain_id, grade_id) values (4,1); 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Describe and compare measurable attributes.
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Describe and compare measurable attributes');
 
 -----------------------------------------------------------------------------
 --	1.	 Describe measurable attributes of objects, such as length or weight.
@@ -2111,8 +1831,13 @@ insert into games_levels (level_id,game_id) values  (1001,1);
 --	to see which object has “more of”/“less of” the attribute, and describe
 --	the difference. For example, directly compare the heights of two
 --	children and describe one child as taller/shorter.
---	Classify objects and count the number of objects in each category.
 -----------------------------------------------------------------------------
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--	Classify objects and count the number of objects in each category.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Classify objects and count the number of objects in each category.');
+
 --1700
 
 -----------------------------------------------------------------------------
@@ -2125,12 +1850,16 @@ insert into games_levels (level_id,game_id) values  (1001,1);
 --	Geometry	
 --	K.G
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+insert into domains (domain) values ('Geometry'); 
+insert into domains_subjects (domain_id, subject_id) values (5,1); 
+insert into domains_grades (domain_id, grade_id) values (5,1); 
 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Identify and describe shapes (squares, circles, triangles, rectangles,
 --	hexagons, cubes, cones, cylinders, and spheres).
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Identify and describe shapes (squares, circles, triangles, rectangles, hexagons, cubes, cones, cylinders, and spheres).'); 
 
 
 -----------------------------------------------------------------------------
@@ -2148,9 +1877,14 @@ insert into games_levels (level_id,game_id) values  (1001,1);
 -----------------------------------------------------------------------------
 --	3.	 Identify shapes as two-dimensional (lying in a plane, “flat”) or three-
 --	dimensional (“solid”).
---	Analyze, compare, create, and compose shapes.
 -----------------------------------------------------------------------------
 --2100
+
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--	Analyze, compare, create, and compose shapes.
+--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+insert into clusters (cluster) values ('Analyze, compare, create, and compose shapes.');
+
 
 -----------------------------------------------------------------------------
 --	4.	 Analyze and compare two- and three-dimensional shapes, in
