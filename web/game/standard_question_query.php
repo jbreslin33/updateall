@@ -113,7 +113,14 @@ if ($numberOfRowsInAddition > 0)
                         $a = $addend1 + $addend2;
                         echo "<script language=\"javascript\">";
                         echo "questions[$i] = \"What is $addend1 + $addend2 ?\";";
-                        echo "answers[$i] = $a";
+			if ($a == 0)
+			{
+                        	echo "answers[$i] = '0'";
+			}
+			else
+			{
+                        	echo "answers[$i] = $a";
+			}
                         echo "</script>";
                 }
         }
