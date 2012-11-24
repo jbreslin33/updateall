@@ -1525,18 +1525,15 @@ insert into standards (standard,standard_code) values ('With prompting and suppo
 --		STANDARDS_CLUSTERS_DOMAINS_GRADES
 --************************************************
 
+--i moved this into levels as it is more readable and updateable that way
+
 --				SUBJECT: math
 --			GRADE: kindergarten
 --		DOMAIN: Counting and Cardinality
 
 --	CLUSTER: Know number names and the count sequence.
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); --Count to 100 by ones and by tens.
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); --Count forward beginning ...
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); --Write numbers from 0 to 20...
 
 --	CLUSTER: Count to tell the number of objects. 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); --Understand the relat...
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); --When counting objects, say...
 
 --****************************************
 --		GAMES	
@@ -1544,36 +1541,6 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web/game/dungeon.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
-/*
---COUNTING
---count by 1's to 100
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,1);
--- this is the start value Start of journey
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,3);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,20,30,1,4);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,30,40,1,5);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,6);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,7);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,8);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,9);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (0,80,90,1,10);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,11);
-
---count by 10's to 100
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,100,10,12);
-
---count from random known sequence
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,87,97,1,13);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,23,33,1,14);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,55,65,1,15);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,26,36,1,16);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,49,59,1,17);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,4,14,1,18);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,67,77,1,19);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,13,23,1,20);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,52,62,1,21);
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,38,48,1,22);
-*/
 
 --****************************************
 --		LEVELS	
@@ -1592,7 +1559,12 @@ insert into counting (score_needed,start_number,end_number,count_by,level_id) va
 ----------------------------------------------------------------------------
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
-insert into levels(id,description) values (1,'Start of Journey');      -- 1 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); 
+
+
+--		LEVEL_ID: 1 
+insert into levels(id,description) values (1,'Start of Journey');       
+
 
 --		LEVEL_ID: 2
 insert into levels(id,description) values (2,'Count from 0 to 10');        
@@ -1719,6 +1691,7 @@ insert into games_levels (level_id,game_id) values  (12,1);
 --   	2.	 Count forward beginning from a given number within the known
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); 
 
 --		LEVEL_ID: 100  
 insert into levels(id,description) values (100,'Count from 87 to 97'); 
@@ -1792,6 +1765,8 @@ insert into games_levels (level_id,game_id) values  (105,1);
 --	written numeral 0-20 (with 0 representing a count of no objects).
 --	Count to tell the number of objects. 	
 --------------------------------------------------------------------------------
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); 
+
 
 --		LEVEL_ID: 200  
 insert into levels(id,description) values (200,'Write numbers from 0 to 5'); --23
@@ -1878,6 +1853,9 @@ insert into games_levels (level_id,game_id) values  (203,1);
 --	4.	 Understand the relationship between numbers and quantities; connect
 --	counting to cardinality.
 --------------------------------------------------------------------------------
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
+
+
 --300
 
 
@@ -1886,6 +1864,7 @@ insert into games_levels (level_id,game_id) values  (203,1);
 --	order, pairing each object with one and only one number name
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,5); 
 
 --		LEVEL_ID: 400  
 insert into levels(id,description) values (400,'Count objects from 0 to 20'); 
