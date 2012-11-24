@@ -1715,21 +1715,24 @@ insert into clusters (cluster) values ('Understand addition as putting together 
 --	images, drawings2, sounds (e.g., claps), acting out situations, verbal
 --	explanations, expressions, or equations.
 -----------------------------------------------------------------------------
+/*
+--ADDITION
+CREATE TABLE addition (
+    id integer NOT NULL,
+    score_needed integer DEFAULT 10 NOT NULL,
+    addend_min integer NOT NULL,
+    addend_max integer NOT NULL,
+    number_of_addends integer DEFAULT 2 NOT NULL,
+    level_id double precision NOT NULL
+);
+*/
 
 --		LEVEL_ID: 1000  
 insert into levels(id,description) values (1000,'Addition addends 0 to 1');
 
 --	QUESTIONS: 
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,1);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 1 =','2',1000,2);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,3);
-insert into questions (question,answer,level_id,question_order) values ('What 2 + 0 =','2',1000,4);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,5);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,6);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,7);
-insert into questions (question,answer,level_id,question_order) values ('What 0 + 1 =','1',1000,8);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1000,9);
-insert into questions (question,answer,level_id,question_order) values ('What 0 + 2 =','2',1000,10);
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000);
+
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1000,1);
