@@ -1298,57 +1298,57 @@ insert into games_levels (level_id,game_id) values  (.0004,1);
 
 
 --		LEVEL_ID: .0005 
-insert into levels(id,description) values (6,'Count from 40 to 50');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (6,1);       
+insert into levels(id,description) values (.0005,'Count from 40 to 50');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0005,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,6);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0005,10,40,50,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (6,1);
+insert into games_levels (level_id,game_id) values  (.0005,1);
 
 
 --		LEVEL_ID: .0006  
-insert into levels(id,description) values (7,'Count from 50 to 60');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (7,1);       
+insert into levels(id,description) values (.0006,'Count from 50 to 60');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0006,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,7);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0006,10,50,60,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (7,1);
+insert into games_levels (level_id,game_id) values  (.0006,1);
 
 
 --		LEVEL_ID: .0007 
-insert into levels(id,description) values (8,'Count from 60 to 70');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (8,1);       
+insert into levels(id,description) values (.0007,'Count from 60 to 70');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0007,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,8);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0007,10,60,70,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (8,1);
+insert into games_levels (level_id,game_id) values  (.0007,1);
 
 
 --		LEVEL_ID: .0008  
-insert into levels(id,description) values (9,'Count from 70 to 80');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (9,1);       
+insert into levels(id,description) values (.0008,'Count from 70 to 80');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0008,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,9);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0008,10,70,80,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (9,1);
+insert into games_levels (level_id,game_id) values  (.0008,1);
 
 
 --		LEVEL_ID: .0009  
-insert into levels(id,description) values (10,'Count from 80 to 90');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (10,1);       
+insert into levels(id,description) values (.0009,'Count from 80 to 90');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0009,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,80,90,1,10);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0009,10,80,90,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (10,1);
+insert into games_levels (level_id,game_id) values  (.0009,1);
 
 
 --		LEVEL_ID: .0010  
-insert into levels(id,description) values (11,'Count from 90 to 100');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (11,1);       
+insert into levels(id,description) values (.0010,'Count from 90 to 100');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.0010,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,11);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.0010,10,90,100,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (11,1);
+insert into games_levels (level_id,game_id) values  (.0010,1);
 
 
 --		LEVEL_ID: .0011  
