@@ -1727,6 +1727,19 @@ insert into addition (score_needed,addend_min,addend_max,number_of_addends,level
 insert into games_levels (level_id,game_id) values  (1000,1);
 
 
+--		LEVEL_ID: 1000.1  
+insert into levels(id,description) values (1000.1,'Addition addends 0 to 1');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,10,2,1000.1);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1000.1,1);
+
+
+
+
+
 --		LEVEL_ID: 1001  
 insert into levels(id,description) values (1001,'Addition addends 1 to 2');
 
