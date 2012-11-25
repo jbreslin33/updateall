@@ -1257,26 +1257,26 @@ insert into standards (standard,standard_code) values ('Count to 100 by ones and
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); 
 
 
---		LEVEL_ID: 1 
-insert into levels(id,description) values (1,'Start of Journey');       
+--		LEVEL_ID: .01 
+insert into levels(id,description) values (.01,'Start of Journey');       
 
 
---		LEVEL_ID: 2
-insert into levels(id,description) values (2,'Count from 0 to 10');        
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
+--		LEVEL_ID: .02
+insert into levels(id,description) values (.02,'Count from 0 to 10');        
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.02,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.02,10,0,10,1);
 --	GAMES: dungeon
-insert into games_levels (level_id,game_id) values  (2,1);
+insert into games_levels (level_id,game_id) values  (.02,1);
 
 	
---		LEVEL_ID: 3 
-insert into levels(id,description) values (3,'Count from 10 to 20');       
-insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
+--		LEVEL_ID: .03 
+insert into levels(id,description) values (.03,'Count from 10 to 20');       
+insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (.03,1);       
 --	QUESTIONS:
-insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,3);
+insert into counting (level_id,score_needed,start_number,end_number,count_by) values (.03,10,10,20,1);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (3,1);
+insert into games_levels (level_id,game_id) values  (.03,1);
 
 
 --		LEVEL_ID: 4 
