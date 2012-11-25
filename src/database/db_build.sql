@@ -1264,10 +1264,8 @@ insert into levels(id,description) values (1,'Start of Journey');
 --		LEVEL_ID: 2
 insert into levels(id,description) values (2,'Count from 0 to 10');        
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (2,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,10,1,2);
-
 --	GAMES: dungeon
 insert into games_levels (level_id,game_id) values  (2,1);
 
@@ -1275,10 +1273,8 @@ insert into games_levels (level_id,game_id) values  (2,1);
 --		LEVEL_ID: 3 
 insert into levels(id,description) values (3,'Count from 10 to 20');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (3,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,10,20,1,3);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (3,1);
 
@@ -1286,10 +1282,8 @@ insert into games_levels (level_id,game_id) values  (3,1);
 --		LEVEL_ID: 4 
 insert into levels(id,description) values (4,'Count from 20 to 30');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (4,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,20,30,1,4);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (4,1);
 
@@ -1297,10 +1291,8 @@ insert into games_levels (level_id,game_id) values  (4,1);
 --		LEVEL_ID: 5  
 insert into levels(id,description) values (5,'Count from 30 to 40');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (5,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,30,40,1,5);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (5,1);
 
@@ -1308,10 +1300,8 @@ insert into games_levels (level_id,game_id) values  (5,1);
 --		LEVEL_ID: 6 
 insert into levels(id,description) values (6,'Count from 40 to 50');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (6,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,40,50,1,6);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (6,1);
 
@@ -1319,10 +1309,8 @@ insert into games_levels (level_id,game_id) values  (6,1);
 --		LEVEL_ID: 7  
 insert into levels(id,description) values (7,'Count from 50 to 60');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (7,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,50,60,1,7);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (7,1);
 
@@ -1330,10 +1318,8 @@ insert into games_levels (level_id,game_id) values  (7,1);
 --		LEVEL_ID: 8  
 insert into levels(id,description) values (8,'Count from 60 to 70');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (8,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,60,70,1,8);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (8,1);
 
@@ -1341,10 +1327,8 @@ insert into games_levels (level_id,game_id) values  (8,1);
 --		LEVEL_ID: 9  
 insert into levels(id,description) values (9,'Count from 70 to 80');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (9,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,70,80,1,9);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (9,1);
 
@@ -1352,10 +1336,8 @@ insert into games_levels (level_id,game_id) values  (9,1);
 --		LEVEL_ID: 10  
 insert into levels(id,description) values (10,'Count from 80 to 90');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (10,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,80,90,1,10);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (10,1);
 
@@ -1363,10 +1345,8 @@ insert into games_levels (level_id,game_id) values  (10,1);
 --		LEVEL_ID: 11  
 insert into levels(id,description) values (11,'Count from 90 to 100');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (11,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,90,100,1,11);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (11,1);
 
@@ -1374,10 +1354,8 @@ insert into games_levels (level_id,game_id) values  (11,1);
 --		LEVEL_ID: 12  
 insert into levels(id,description) values (12,'Count to 100 by tens');       
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (12,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,0,100,10,12);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (12,1);
 
@@ -1389,10 +1367,11 @@ insert into games_levels (level_id,game_id) values  (12,1);
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); 
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); 
 
+
+
 --		LEVEL_ID: 100  
 insert into levels(id,description) values (100,'Count from 87 to 97'); 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (100,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,87,97,1,100);
 
@@ -1403,10 +1382,8 @@ insert into games_levels (level_id,game_id) values  (100,1);
 --		LEVEL_ID: 101  
 insert into levels(id,description) values (101,'Count from 23 to 33'); 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (101,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,23,33,1,101);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (101,1);
 
@@ -1414,10 +1391,8 @@ insert into games_levels (level_id,game_id) values  (101,1);
 --		LEVEL_ID: 102  
 insert into levels(id,description) values (102,'Count from 55 to 65'); 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (102,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,55,65,1,102);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (102,1);
 
@@ -1425,10 +1400,8 @@ insert into games_levels (level_id,game_id) values  (102,1);
 --		LEVEL_ID: 103  
 insert into levels(id,description) values (103,'Count from 26 to 36'); 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (103,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,26,36,1,103);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (103,1);
 
@@ -1436,10 +1409,8 @@ insert into games_levels (level_id,game_id) values  (103,1);
 --		LEVEL_ID: 104  
 insert into levels(id,description) values (104,'Count from 49 to 59'); 
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (104,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,49,59,1,104);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (104,1);
 
@@ -1447,10 +1418,8 @@ insert into games_levels (level_id,game_id) values  (104,1);
 --		LEVEL_ID: 105  
 insert into levels(id,description) values (105,'Count from 4 to 14');  
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (105,1);       
-
 --	QUESTIONS:
 insert into counting (score_needed,start_number,end_number,count_by,level_id) values (10,4,14,1,105);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (105,1);
 
@@ -1467,7 +1436,6 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --		LEVEL_ID: 200  
 insert into levels(id,description) values (200,'Write numbers from 0 to 5'); --23
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (200,1);       
-
 --	QUESTIONS:
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 _','1',200,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 _','2',200,2);
@@ -1480,15 +1448,14 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 _','9',200,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 _','1',200,10);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 0 1 2 3 4 5 6 7 8 9 1_','0',200,11);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (200,1);
+
 
 
 --		LEVEL_ID: 201  
 insert into levels(id,description) values (201,'Write numbers from 5 to 10'); --24
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (201,1);       
-
 --	QUESTIONS:
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 _','1',201,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 1_','1',201,2);
@@ -1500,15 +1467,14 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 1_','4',201,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 _','1',201,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 10 11 12 13 14 1_','5',201,10);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (201,1);
+
 
 
 --		LEVEL_ID: 202  
 insert into levels(id,description) values (202,'Write numbers from 10 to 15'); --25
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (202,1);       
-
 --	QUESTIONS:
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 _','1',202,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 1_','6',202,2);
@@ -1520,15 +1486,14 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 1_','9',202,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 _','2',202,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 15 16 17 18 19 2_','0',202,10);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (202,1);
+
 
 
 --		LEVEL_ID: 203  
 insert into levels(id,description) values (203,'Write numbers from 15 to 20'); --26
 insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_domain_grade_id) values (203,1);       
-
 --	QUESTIONS:
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 _','2',203,1);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 2_','1',203,2);
@@ -1540,9 +1505,9 @@ insert into questions (question,answer,level_id,question_order) values ('What co
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 2_','4',203,8);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 _','2',203,9);
 insert into questions (question,answer,level_id,question_order) values ('What comes next after 20 21 22 23 24 2_','5',203,10);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (203,1);
+
 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1719,123 +1684,203 @@ insert into clusters (cluster) values ('Understand addition as putting together 
 
 --		LEVEL_ID: 1000  
 insert into levels(id,description) values (1000,'Addition addends 0 to 1');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1000,1);
 
 
 --		LEVEL_ID: 1000.1  
 insert into levels(id,description) values (1000.1,'Addition addends 0 to 1');
-
 --	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,10,2,1000.1);
-
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000.1);
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1000.1,1);
 
 
+--		LEVEL_ID: 1000.2  
+insert into levels(id,description) values (1000.2,'Addition addends 0 to 1');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000.2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1000.2,1);
 
 
 
 --		LEVEL_ID: 1001  
 insert into levels(id,description) values (1001,'Addition addends 1 to 2');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1001,1);
 
 
+--		LEVEL_ID: 1001.1  
+insert into levels(id,description) values (1001.1,'Addition addends 1 to 2');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001.1);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1001.1,1);
+
+
+--		LEVEL_ID: 1001.2  
+insert into levels(id,description) values (1001.2,'Addition addends 1 to 2');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001.2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1001.1,2);
+
+
+
+--		LEVEL_ID: 1001.5  
+insert into levels(id,description) values (1001.5,'Addition addends 0 to 2');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.5);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1001.5,2);
+
+
+--		LEVEL_ID: 1001.6  
+insert into levels(id,description) values (1001.6,'Addition addends 0 to 2');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.6);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1001.6,2);
+
+
+--		LEVEL_ID: 1001.7  
+insert into levels(id,description) values (1001.7,'Addition addends 0 to 2');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.7);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1001.7,2);
+
+
 --		LEVEL_ID: 1002  
 insert into levels(id,description) values (1002,'Addition addends 2 to 3');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1002,1);
 
 
+
+--		LEVEL_ID: 1002.1  
+insert into levels(id,description) values (1002.1,'Addition addends 2 to 3');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002.1);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002.1,1);
+
+
+
+--		LEVEL_ID: 1002.2  
+insert into levels(id,description) values (1002.2,'Addition addends 2 to 3');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002.2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002.2,1);
+
+
+
+--		LEVEL_ID: 1002.5  
+insert into levels(id,description) values (1002.5,'Addition addends 0 to 3');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.5);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002.5,1);
+
+
+
+--		LEVEL_ID: 1002.6  
+insert into levels(id,description) values (1002.6,'Addition addends 0 to 3');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.6);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002.6,1);
+
+
+
+--		LEVEL_ID: 1002.7  
+insert into levels(id,description) values (1002.7,'Addition addends 0 to 3');
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.7);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002.7,1);
+
+
+
+
 --		LEVEL_ID: 1003  
 insert into levels(id,description) values (1003,'Addition addends 3 to 4');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,3,4,2,1003);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1003,1);
 
 
+
 --		LEVEL_ID: 1004  
 insert into levels(id,description) values (1004,'Addition addends 4 to 5');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,4,5,2,1004);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1004,1);
 
 
+
 --		LEVEL_ID: 1005  
 insert into levels(id,description) values (1005,'Addition addends 5 to 6');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,5,6,2,1005);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1005,1);
 
 
+
 --		LEVEL_ID: 1006  
 insert into levels(id,description) values (1006,'Addition addends 6 to 7');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,6,7,2,1006);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1006,1);
 
 
+
+
 --		LEVEL_ID: 1007  
 insert into levels(id,description) values (1007,'Addition addends 7 to 8');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,7,8,2,1007);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1007,1);
 
 
+
 --		LEVEL_ID: 1008  
 insert into levels(id,description) values (1008,'Addition addends 8 to 9');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,8,9,2,1008);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1008,1);
 
 
+
+
 --		LEVEL_ID: 1009  
 insert into levels(id,description) values (1009,'Addition addends 9 to 10');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,9,10,2,1009);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1009,1);
 
 
+
+
 --		LEVEL_ID: 1010  
 insert into levels(id,description) values (1010,'Addition addends 11 to 12');
-
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,11,12,2,1010);
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1010,1);
 
