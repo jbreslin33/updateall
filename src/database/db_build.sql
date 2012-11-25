@@ -1557,7 +1557,8 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1);
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
-
+-- I put this one in but I think as far as the core is concerned this is a heading and not a standard.
+-- so we will make it level 300 and skip it.
 
 --300
 
@@ -1715,17 +1716,6 @@ insert into clusters (cluster) values ('Understand addition as putting together 
 --	images, drawings2, sounds (e.g., claps), acting out situations, verbal
 --	explanations, expressions, or equations.
 -----------------------------------------------------------------------------
-/*
---ADDITION
-CREATE TABLE addition (
-    id integer NOT NULL,
-    score_needed integer DEFAULT 10 NOT NULL,
-    addend_min integer NOT NULL,
-    addend_max integer NOT NULL,
-    number_of_addends integer DEFAULT 2 NOT NULL,
-    level_id double precision NOT NULL
-);
-*/
 
 --		LEVEL_ID: 1000  
 insert into levels(id,description) values (1000,'Addition addends 0 to 1');
@@ -1733,28 +1723,108 @@ insert into levels(id,description) values (1000,'Addition addends 0 to 1');
 --	QUESTIONS: 
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000);
 
-
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1000,1);
 
 
 --		LEVEL_ID: 1001  
-insert into levels(id,description) values (1001,'Addition addends 0 to 1');
+insert into levels(id,description) values (1001,'Addition addends 1 to 2');
 
 --	QUESTIONS: 
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,1);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 1 =','2',1001,2);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,3);
-insert into questions (question,answer,level_id,question_order) values ('What 2 + 0 =','2',1001,4);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,5);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,6);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,7);
-insert into questions (question,answer,level_id,question_order) values ('What 0 + 1 =','1',1001,8);
-insert into questions (question,answer,level_id,question_order) values ('What 1 + 0 =','1',1001,9);
-insert into questions (question,answer,level_id,question_order) values ('What 0 + 2 =','2',1001,10);
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001);
 
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1001,1);
+
+
+--		LEVEL_ID: 1002  
+insert into levels(id,description) values (1002,'Addition addends 2 to 3');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1002,1);
+
+
+--		LEVEL_ID: 1003  
+insert into levels(id,description) values (1003,'Addition addends 3 to 4');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,3,4,2,1003);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1003,1);
+
+
+--		LEVEL_ID: 1004  
+insert into levels(id,description) values (1004,'Addition addends 4 to 5');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,4,5,2,1004);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1004,1);
+
+
+--		LEVEL_ID: 1005  
+insert into levels(id,description) values (1005,'Addition addends 5 to 6');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,5,6,2,1005);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1005,1);
+
+
+--		LEVEL_ID: 1006  
+insert into levels(id,description) values (1006,'Addition addends 6 to 7');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,6,7,2,1006);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1006,1);
+
+
+--		LEVEL_ID: 1007  
+insert into levels(id,description) values (1007,'Addition addends 7 to 8');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,7,8,2,1007);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1007,1);
+
+
+--		LEVEL_ID: 1008  
+insert into levels(id,description) values (1008,'Addition addends 8 to 9');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,8,9,2,1008);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1008,1);
+
+
+--		LEVEL_ID: 1009  
+insert into levels(id,description) values (1009,'Addition addends 9 to 10');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,9,10,2,1009);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1009,1);
+
+
+--		LEVEL_ID: 1010  
+insert into levels(id,description) values (1010,'Addition addends 11 to 12');
+
+--	QUESTIONS: 
+insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,11,12,2,1010);
+
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (1010,1);
 
 
 -----------------------------------------------------------------------------
