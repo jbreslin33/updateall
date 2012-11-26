@@ -1254,7 +1254,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1);
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,1); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,.0000); 
 
 
 --		LEVEL_ID: .0 
@@ -1365,7 +1365,7 @@ insert into games_levels (level_id,game_id) values  (.0011,1);
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,2); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,.0100); 
 
 
 
@@ -1430,7 +1430,7 @@ insert into games_levels (level_id,game_id) values  (.0105,1);
 --	written numeral 0-20 (with 0 representing a count of no objects).
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,3); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,.0200); 
 
 
 --		LEVEL_ID: .0200  
@@ -1533,7 +1533,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1);
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,.0300); 
 
 --		LEVEL_ID: .0300  
 insert into levels(id,description) values (.0300,'Count objects from 0 to 20'); 
@@ -1622,14 +1622,16 @@ insert into games_levels (level_id,game_id) values  (.0303,1);
 --	objects counted. The number of objects is the same regardless of
 --	their arrangement or the order in which they were counted.
 --------------------------------------------------------------------------------
---400
+insert into standards (standard,standard_code) values ('Understand that the last number name said tells the number of objects counted. The number of objects is the same regardless of their arrangement or the order in which they were counted.','b'); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0400); 
 
 
 --------------------------------------------------------------------------------
 --	c.	 Understand that each successive number name refers to a quantity
 --	that is one larger.
 --------------------------------------------------------------------------------
---500
+insert into standards (standard,standard_code) values (' Understand that each successive number name refers to a quantity that is one larger.','c'); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0400); 
 
 --------------------------------------------------------------------------------
 --	5.	 Count to answer “how many?” questions about as many as 20 things
