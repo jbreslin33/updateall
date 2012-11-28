@@ -1652,15 +1652,16 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1);
 --------------------------------------------------------------------------------
 --	6.	 Identify whether the number of objects in one group is greater than,
 --	less than, or equal to the number of objects in another group, e.g., by
---	using matching and counting strategies.1
+--	using matching and counting strategies.
 --------------------------------------------------------------------------------
---700
+insert into standards (standard,standard_code) values ('Identify whether the number of objects in one group is greater than, less than, or equal to the number of objects in another group, e.g., by using matching and counting strategies. Includes groups with up to ten objects.','5');
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (8,3,.0700);
+
 
 --------------------------------------------------------------------------------
 --	7.	 Compare two numbers between 1 and 10 presented as written
 --	numerals.
 --------------------------------------------------------------------------------
---800
 
 
 
