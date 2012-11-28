@@ -1623,7 +1623,7 @@ insert into games_levels (level_id,game_id) values  (.0303,1);
 --	their arrangement or the order in which they were counted.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Understand that the last number name said tells the number of objects counted. The number of objects is the same regardless of their arrangement or the order in which they were counted.','b'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0400); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,.0400); 
 
 
 --------------------------------------------------------------------------------
@@ -1631,7 +1631,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --	that is one larger.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values (' Understand that each successive number name refers to a quantity that is one larger.','c'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0400); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0500); 
 
 --------------------------------------------------------------------------------
 --	5.	 Count to answer “how many?” questions about as many as 20 things
@@ -1639,7 +1639,8 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --	things in a scattered configuration; given a number from 1–20, count
 --	out that many objects.
 --------------------------------------------------------------------------------
---600
+insert into standards (standard,standard_code) values ('Count to answer “how many?” questions about as many as 20 things arranged in a line, a rectangular array, or a circle, or as many as 10 things in a scattered configuration; given a number from 1–20, count out that many objects.','5'); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (7,2,.0600); 
 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
