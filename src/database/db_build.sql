@@ -1685,6 +1685,36 @@ insert into clusters (cluster) values ('Understand addition as putting together 
 --	explanations, expressions, or equations.
 -----------------------------------------------------------------------------
 
+
+
+-----------------------------------------------------------------------------
+--	2.	 Solve addition and subtraction word problems, and add and subtract
+--	within 10, e.g., by using objects or drawings to represent the problem.
+-----------------------------------------------------------------------------
+--1100
+
+-----------------------------------------------------------------------------
+--	3.	 Decompose numbers less than or equal to 10 into pairs in more
+--	than one way, e.g., by using objects or drawings, and record each
+--	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
+-----------------------------------------------------------------------------
+--1200
+
+-----------------------------------------------------------------------------
+--	4.	 For any number from 1 to 9, find the number that makes 10 when
+--	added to the given number, e.g., by using objects or drawings, and
+--	record the answer with a drawing or equation.
+-----------------------------------------------------------------------------
+--1300
+
+-----------------------------------------------------------------------------
+--	5.	 Fluently add and subtract within 5.
+--	Include groups with up to ten objects.
+--	Drawings need not show details, but should show the mathematics in the problem.
+--	(This applies wherever drawings are mentioned in the Standards.)
+-----------------------------------------------------------------------------
+--1400
+
 --		LEVEL_ID: .0900  
 insert into levels(id,description) values (.0900,'Addition addends 0 to 1');
 --	QUESTIONS: 
@@ -1886,36 +1916,6 @@ insert into levels(id,description) values (1010,'Addition addends 11 to 12');
 insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,11,12,2,1010);
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (1010,1);
-
-
------------------------------------------------------------------------------
---	2.	 Solve addition and subtraction word problems, and add and subtract
---	within 10, e.g., by using objects or drawings to represent the problem.
------------------------------------------------------------------------------
---1100
-
------------------------------------------------------------------------------
---	3.	 Decompose numbers less than or equal to 10 into pairs in more
---	than one way, e.g., by using objects or drawings, and record each
---	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
------------------------------------------------------------------------------
---1200
-
------------------------------------------------------------------------------
---	4.	 For any number from 1 to 9, find the number that makes 10 when
---	added to the given number, e.g., by using objects or drawings, and
---	record the answer with a drawing or equation.
------------------------------------------------------------------------------
---1300
-
------------------------------------------------------------------------------
---	5.	 Fluently add and subtract within 5.
---	Include groups with up to ten objects.
---	Drawings need not show details, but should show the mathematics in the problem.
---	(This applies wherever drawings are mentioned in the Standards.)
------------------------------------------------------------------------------
---1400
-
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 --	Number and Operations in Base Ten
 --	K.NBT	
