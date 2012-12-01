@@ -228,8 +228,7 @@ CREATE TABLE standards (
 CREATE TABLE standards_clusters_domains_grades (
     id integer NOT NULL,
     standard_id integer NOT NULL,
-    cluster_domain_grade_id integer NOT NULL,
-    dewey double precision NOT NULL
+    cluster_domain_grade_id integer NOT NULL
 );
 
 
@@ -1254,7 +1253,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (1,1);
 --   	1.	 Count to 100 by ones and by tens.
 ----------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Count to 100 by ones and by tens.','1'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (1,1,.0000); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (1,1); 
 
 
 --		LEVEL_ID: .0 
@@ -1365,7 +1364,7 @@ insert into games_levels (level_id,game_id) values  (.0011,1);
 --   	sequence (instead of having to begin at 1).
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Count forward beginning from a given number within the known sequence (instead of having to begin at 1).','2'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (2,1,.0100); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (2,1); 
 
 
 
@@ -1430,7 +1429,7 @@ insert into games_levels (level_id,game_id) values  (.0105,1);
 --	written numeral 0-20 (with 0 representing a count of no objects).
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Write numbers from 0 to 20. Represent a number of objects with a written numeral 0-20 (with 0 representing a count of no objects.','3'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (3,1,.0200); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (3,1); 
 
 
 --		LEVEL_ID: .0200  
@@ -1521,7 +1520,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1);
 --	counting to cardinality.
 --------------------------------------------------------------------------------
 --insert into standards (standard,standard_code) values ('Understand the relationship between numbers and quantities; connect counting to cardinality.','4');
---insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,4); 
+--insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (4,2); 
 -- I put this one in but I think as far as the core is concerned this is a heading and not a standard.
 -- so we will make it level 300 and skip it.
 
@@ -1533,7 +1532,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (2,1);
 --	and each number name with one and only one object.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('When counting objects, say the number names in the standard order, pairing each object with one and only one number name and each number name with one and only one object.','a');
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (4,2,.0300); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (4,2); 
 
 --		LEVEL_ID: .0300  
 insert into levels(id,description) values (.0300,'Count objects from 0 to 20'); 
@@ -1623,7 +1622,7 @@ insert into games_levels (level_id,game_id) values  (.0303,1);
 --	their arrangement or the order in which they were counted.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Understand that the last number name said tells the number of objects counted. The number of objects is the same regardless of their arrangement or the order in which they were counted.','b'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (5,2,.0400); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (5,2); 
 
 
 --------------------------------------------------------------------------------
@@ -1631,7 +1630,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --	that is one larger.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values (' Understand that each successive number name refers to a quantity that is one larger.','c'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (6,2,.0500); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (6,2); 
 
 --------------------------------------------------------------------------------
 --	5.	 Count to answer “how many?” questions about as many as 20 things
@@ -1640,7 +1639,7 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 --	out that many objects.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Count to answer “how many?” questions about as many as 20 things arranged in a line, a rectangular array, or a circle, or as many as 10 things in a scattered configuration; given a number from 1–20, count out that many objects.','5'); 
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (7,2,.0600); 
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (7,2); 
 
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1655,7 +1654,7 @@ insert into clusters_domains_grades (cluster_id, domain_grade_id) values (3,1);
 --	using matching and counting strategies.
 --------------------------------------------------------------------------------
 insert into standards (standard,standard_code) values ('Identify whether the number of objects in one group is greater than, less than, or equal to the number of objects in another group, e.g., by using matching and counting strategies. Includes groups with up to ten objects.','5');
-insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id, dewey) values (8,3,.0700);
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (8,3);
 
 
 --------------------------------------------------------------------------------
