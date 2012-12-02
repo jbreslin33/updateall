@@ -1673,231 +1673,50 @@ insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade
 -----------------------------------------------------------------------------
 insert into standards (standard) values ('Solve addition and subtraction word problems, and add and subtract within 10, e.g., by using objects or drawings to represent the problem.');
 insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (11,4);
---1100
 
 -----------------------------------------------------------------------------
 --	3.	 Decompose numbers less than or equal to 10 into pairs in more
 --	than one way, e.g., by using objects or drawings, and record each
 --	decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1).
 -----------------------------------------------------------------------------
---1200
+insert into standards (standard) values ('Decompose numbers less than or equal to 10 into pairs in more than one way, e.g., by using objects or drawings, and record each  decomposition by a drawing or equation (e.g., 5 = 2 + 3 and 5 = 4 + 1.');
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (12,4);
 
 -----------------------------------------------------------------------------
 --	4.	 For any number from 1 to 9, find the number that makes 10 when
 --	added to the given number, e.g., by using objects or drawings, and
 --	record the answer with a drawing or equation.
 -----------------------------------------------------------------------------
---1300
+insert into standards (standard) values ('For any number from 1 to 9, find the number that makes 10 when added to the given number, e.g., by using objects or drawings, and record the answer with a drawing or equation.');
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (13,4);
+
 
 -----------------------------------------------------------------------------
 --	5.	 Fluently add and subtract within 5.
---	Include groups with up to ten objects.
---	Drawings need not show details, but should show the mathematics in the problem.
---	(This applies wherever drawings are mentioned in the Standards.)
 -----------------------------------------------------------------------------
---1400
 
---		LEVEL_ID: .0900  
-insert into levels(id,description) values (.0900,'Addition addends 0 to 1');
+insert into standards (standard) values ('Fluently add and subtract within 5.');
+insert into standards_clusters_domains_grades (standard_id, cluster_domain_grade_id) values (14,4);
+
+--		LEVEL_ID: 14  
+insert into levels(id,description) values (14,'Addition addends 0 to 1');
 --	QUESTIONS: 
-insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (.0900,10,0,1,2);
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14,10,0,1,2);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (.0900,1);
+insert into games_levels (level_id,game_id) values  (14,1);
 
 
---		LEVEL_ID: 1000.1  
-insert into levels(id,description) values (1000.1,'Addition addends 0 to 1');
+--		LEVEL_ID: 14.1  
+insert into levels(id,description) values (14.1,'Addition addends 0 to 1');
 --	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000.1);
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.1,10,0,1,2);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (1000.1,1);
-
-
---		LEVEL_ID: 1000.2  
-insert into levels(id,description) values (1000.2,'Addition addends 0 to 1');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,1,2,1000.2);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1000.2,1);
-
-
-
---		LEVEL_ID: 1001  
-insert into levels(id,description) values (1001,'Addition addends 1 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001,1);
-
-
---		LEVEL_ID: 1001.1  
-insert into levels(id,description) values (1001.1,'Addition addends 1 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001.1);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001.1,1);
-
-
---		LEVEL_ID: 1001.2  
-insert into levels(id,description) values (1001.2,'Addition addends 1 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,1,2,2,1001.2);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001.1,2);
-
-
-
---		LEVEL_ID: 1001.5  
-insert into levels(id,description) values (1001.5,'Addition addends 0 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.5);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001.5,2);
-
-
---		LEVEL_ID: 1001.6  
-insert into levels(id,description) values (1001.6,'Addition addends 0 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.6);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001.6,2);
-
-
---		LEVEL_ID: 1001.7  
-insert into levels(id,description) values (1001.7,'Addition addends 0 to 2');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,2,2,1001.7);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1001.7,2);
-
-
---		LEVEL_ID: 1002  
-insert into levels(id,description) values (1002,'Addition addends 2 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002,1);
-
-
-
---		LEVEL_ID: 1002.1  
-insert into levels(id,description) values (1002.1,'Addition addends 2 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002.1);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002.1,1);
-
-
-
---		LEVEL_ID: 1002.2  
-insert into levels(id,description) values (1002.2,'Addition addends 2 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,2,3,2,1002.2);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002.2,1);
-
-
-
---		LEVEL_ID: 1002.5  
-insert into levels(id,description) values (1002.5,'Addition addends 0 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.5);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002.5,1);
-
-
-
---		LEVEL_ID: 1002.6  
-insert into levels(id,description) values (1002.6,'Addition addends 0 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.6);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002.6,1);
-
-
-
---		LEVEL_ID: 1002.7  
-insert into levels(id,description) values (1002.7,'Addition addends 0 to 3');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,0,3,2,1002.7);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1002.7,1);
+insert into games_levels (level_id,game_id) values  (14.1,1);
 
 
 
 
---		LEVEL_ID: 1003  
-insert into levels(id,description) values (1003,'Addition addends 3 to 4');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,3,4,2,1003);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1003,1);
 
-
-
---		LEVEL_ID: 1004  
-insert into levels(id,description) values (1004,'Addition addends 4 to 5');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,4,5,2,1004);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1004,1);
-
-
-
---		LEVEL_ID: 1005  
-insert into levels(id,description) values (1005,'Addition addends 5 to 6');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,5,6,2,1005);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1005,1);
-
-
-
---		LEVEL_ID: 1006  
-insert into levels(id,description) values (1006,'Addition addends 6 to 7');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,6,7,2,1006);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1006,1);
-
-
-
-
---		LEVEL_ID: 1007  
-insert into levels(id,description) values (1007,'Addition addends 7 to 8');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,7,8,2,1007);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1007,1);
-
-
-
---		LEVEL_ID: 1008  
-insert into levels(id,description) values (1008,'Addition addends 8 to 9');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,8,9,2,1008);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1008,1);
-
-
-
-
---		LEVEL_ID: 1009  
-insert into levels(id,description) values (1009,'Addition addends 9 to 10');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,9,10,2,1009);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1009,1);
-
-
-
-
---		LEVEL_ID: 1010  
-insert into levels(id,description) values (1010,'Addition addends 11 to 12');
---	QUESTIONS: 
-insert into addition (score_needed,addend_min,addend_max,number_of_addends,level_id) values (10,11,12,2,1010);
---	GAMES: 
-insert into games_levels (level_id,game_id) values  (1010,1);
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 --	Number and Operations in Base Ten
 --	K.NBT	
