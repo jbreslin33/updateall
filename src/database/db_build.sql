@@ -23,6 +23,7 @@ DROP TABLE games cascade;
 DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
+DROP TABLE multiplication cascade;
 DROP TABLE questions cascade;
 
 DROP TABLE levels_standards_clusters_domains_grades cascade;
@@ -288,6 +289,17 @@ CREATE TABLE subtraction (
     level_id double precision NOT NULL
 );
 
+--MULTIPLICATION
+CREATE TABLE multiplication (
+    id integer NOT NULL,
+    score_needed integer DEFAULT 10 NOT NULL,
+    factor_min integer NOT NULL,
+    factor_max integer NOT NULL,
+    number_of_factors integer DEFAULT 2 NOT NULL,
+    level_id double precision NOT NULL
+);
+
+
 
 --QUESTIONS
 CREATE TABLE questions (
@@ -541,6 +553,14 @@ CREATE SEQUENCE subtraction_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--MULTIPLICATION
+CREATE SEQUENCE multiplication_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --QUESTIONS
 CREATE SEQUENCE questions_id_seq
     START WITH 1
@@ -681,6 +701,9 @@ ALTER TABLE public.addition OWNER TO postgres;
 
 --SUBTRACTION
 ALTER TABLE public.subtraction OWNER TO postgres;
+
+--MULTIPLICATION
+ALTER TABLE public.multiplication OWNER TO postgres;
 
 --QUESTIONS
 ALTER TABLE public.questions OWNER TO postgres;
@@ -826,6 +849,11 @@ ALTER TABLE public.subtraction_id_seq OWNER TO postgres;
 ALTER SEQUENCE subtraction_id_seq OWNED BY subtraction.id;
 ALTER TABLE ONLY subtraction ALTER COLUMN id SET DEFAULT nextval('subtraction_id_seq'::regclass);
 
+--MULTIPLICATION
+ALTER TABLE public.multiplication_id_seq OWNER TO postgres;
+ALTER SEQUENCE multiplication_id_seq OWNED BY multiplication.id;
+ALTER TABLE ONLY multiplication ALTER COLUMN id SET DEFAULT nextval('multiplication_id_seq'::regclass);
+
 --QUESTIONS
 ALTER TABLE public.questions_id_seq OWNER TO postgres;
 ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
@@ -952,6 +980,9 @@ ALTER TABLE addition ADD PRIMARY KEY (id);
 --SUBTRACTION
 ALTER TABLE subtraction ADD PRIMARY KEY (id);
 
+--MULTIPLICATION
+ALTER TABLE multiplication ADD PRIMARY KEY (id);
+
 --QUESTIONS
 ALTER TABLE questions ADD PRIMARY KEY (id);
 
@@ -1063,6 +1094,9 @@ ALTER TABLE addition ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --SUBTRACTION
 ALTER TABLE subtraction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--MULTIPLICATION
+ALTER TABLE multiplication ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --QUESTIONS
 ALTER TABLE questions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
