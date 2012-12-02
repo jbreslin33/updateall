@@ -258,10 +258,16 @@ if ($numberOfRowsInDivision > 0)
                 $factor_max = $row[2];
                 $number_of_factors = $row[3];
 
+
                 for ($i=0; $i < $scoreNeeded; $i++)
                 {
 			$factor1 = rand($factor_min,$factor_max);
-			$factor2 = rand($factor_min,$factor_max);
+			$factor2 = 1000; 
+
+			while ($factor2 > $factor1)
+			{
+				$factor2 = rand($factor_min,$factor_max);
+			} 
 
                         $a = $factor1 / $factor2;
                         echo "<script language=\"javascript\">";
