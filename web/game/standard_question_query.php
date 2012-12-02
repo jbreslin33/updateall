@@ -159,7 +159,13 @@ if ($numberOfRowsInSubtraction > 0)
                 for ($i=0; $i < $scoreNeeded; $i++)
                 {
 			$minuend    = rand($minuend_min,$minuend_max);
-			$subtrahend = rand($subtrahend_min,$subtrahend_max);
+				
+			$subtrahend = 1000; 
+
+			while ($subtrahend > $minuend)
+			{
+				$subtrahend = rand($subtrahend_min,$subtrahend_max);
+			} 
 
                         $a = $minuend - $subtrahend;
                         echo "<script language=\"javascript\">";
