@@ -24,6 +24,8 @@ DROP TABLE counting cascade;
 DROP TABLE addition cascade;
 DROP TABLE subtraction cascade;
 DROP TABLE multiplication cascade;
+DROP TABLE division cascade;
+
 DROP TABLE questions cascade;
 
 DROP TABLE levels_standards_clusters_domains_grades cascade;
@@ -300,6 +302,16 @@ CREATE TABLE multiplication (
 );
 
 
+--DIVISION
+CREATE TABLE division (
+    id integer NOT NULL,
+    score_needed integer DEFAULT 10 NOT NULL,
+    factor_min integer NOT NULL,
+    factor_max integer NOT NULL,
+    number_of_factors integer DEFAULT 2 NOT NULL,
+    level_id double precision NOT NULL
+);
+
 
 --QUESTIONS
 CREATE TABLE questions (
@@ -569,6 +581,14 @@ CREATE SEQUENCE questions_id_seq
     NO MAXVALUE
     CACHE 1;
 
+--DIVISION
+CREATE SEQUENCE division_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 --==================================================================
 --================= GAMES  ====================================
 --==================================================================
@@ -704,6 +724,9 @@ ALTER TABLE public.subtraction OWNER TO postgres;
 
 --MULTIPLICATION
 ALTER TABLE public.multiplication OWNER TO postgres;
+
+--DIVISION
+ALTER TABLE public.division OWNER TO postgres;
 
 --QUESTIONS
 ALTER TABLE public.questions OWNER TO postgres;
@@ -854,6 +877,11 @@ ALTER TABLE public.multiplication_id_seq OWNER TO postgres;
 ALTER SEQUENCE multiplication_id_seq OWNED BY multiplication.id;
 ALTER TABLE ONLY multiplication ALTER COLUMN id SET DEFAULT nextval('multiplication_id_seq'::regclass);
 
+--DIVISION
+ALTER TABLE public.division_id_seq OWNER TO postgres;
+ALTER SEQUENCE division_id_seq OWNED BY division.id;
+ALTER TABLE ONLY division ALTER COLUMN id SET DEFAULT nextval('division_id_seq'::regclass);
+
 --QUESTIONS
 ALTER TABLE public.questions_id_seq OWNER TO postgres;
 ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
@@ -983,6 +1011,9 @@ ALTER TABLE subtraction ADD PRIMARY KEY (id);
 --MULTIPLICATION
 ALTER TABLE multiplication ADD PRIMARY KEY (id);
 
+--DIVISION
+ALTER TABLE division ADD PRIMARY KEY (id);
+
 --QUESTIONS
 ALTER TABLE questions ADD PRIMARY KEY (id);
 
@@ -1097,6 +1128,9 @@ ALTER TABLE subtraction ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --MULTIPLICATION
 ALTER TABLE multiplication ADD FOREIGN KEY (level_id) REFERENCES levels(id);
+
+--DIVISION
+ALTER TABLE division ADD FOREIGN KEY (level_id) REFERENCES levels(id);
 
 --QUESTIONS
 ALTER TABLE questions ADD FOREIGN KEY (level_id) REFERENCES levels(id);
@@ -1893,11 +1927,11 @@ insert into games_levels (level_id,game_id) values  (600,1);
 -----////////////////////-DIVISION-///////////////////////////////////////
 
 --		LEVEL_ID: 700 
---insert into levels(id,description) values (14.1,'Addition addends 0 to 1');
+insert into levels(id,description) values (700,'Division factors 0 to 1');
 --	QUESTIONS: 
---insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.1,10,0,1,2);
+--insert into division (level_id,score_needed,factor_min,factor_max,number_of_factors) values (700,10,0,1,2);
 --	GAMES: 
---insert into games_levels (level_id,game_id) values  (14.1,1);
+--insert into games_levels (level_id,game_id) values  (700,1);
 
 
 
