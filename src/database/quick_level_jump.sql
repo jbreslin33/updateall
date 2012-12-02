@@ -1,1 +1,1 @@
-insert into levels_transactions (advancement_time, user_id, level_id) values (current_timestamp,1,1000);
+insert into levels_transactions (advancement_time, user_id, level_id) values (current_timestamp,1,14.1);
