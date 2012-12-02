@@ -265,7 +265,7 @@ if ($numberOfRowsInDivision > 0)
 
                         $a = $factor1 / $factor2;
                         echo "<script language=\"javascript\">";
-                        echo "questions[$i] = \"What is $factor1 * $factor2 ?\";";
+                        echo "questions[$i] = \"What is $factor1 / $factor2 ?\";";
 			if ($a == 0)
 			{
                         	echo "answers[$i] = '0'";
