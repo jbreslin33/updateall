@@ -85,6 +85,7 @@ if ($numberOfRowsInCounting > 0)
         echo "</script>";
 }
 
+
 //*******************     anything in addition? if so override above ^ **********************************
 $query = "select score_needed, addend_min, addend_max, number_of_addends from addition where level_id = ";
 $query .= $_SESSION["next_level_id"];
@@ -130,6 +131,63 @@ if ($numberOfRowsInAddition > 0)
         echo "numberOfRows = $numberOfRows;";
         echo "</script>";
 }
+
+//*******************     anything in subtraction? if so override above ^ **********************************
+$query = "select score_needed, minuend_min, minuend_max, subtrahend_min, subtrahend_max, number_of_subtrahends, negative_difference from subtraction where level_id = ";
+$query .= $_SESSION["next_level_id"];
+
+//get db result
+$result = pg_query($conn,$query) or die('Could not connect: ' . pg_last_error());
+
+//get numer of rows which will also be score needed
+$numberOfRowsInSubtraction = pg_num_rows($result);
+
+if ($numberOfRowsInSubtraction > 0)
+{
+        while ($row = pg_fetch_row($result))
+        {
+                //fill php vars from db
+                $scoreNeeded = $row[0];
+                $minuend_min = $row[1];
+                $minuend_max = $row[2];
+                $subtrahend_min = $row[3];
+                $subtrahend_max = $row[4];
+                $number_of_subtrahends = $row[5];
+                $number_of_subtrahends = $row[6];
+                $negative_difference = $row[7];
+
+                for ($i=0; $i < $scoreNeeded; $i++)
+                {
+			$minuend    = rand($minuend_min,$minuend_max);
+			$subtrahend = rand($subtrahend_min,$subtrahend_max);
+
+                        $a = $minuend - $subtrahend;
+                        echo "<script language=\"javascript\">";
+                        echo "questions[$i] = \"What is $minuend - $subtrahend ?\";";
+			if ($a == 0)
+			{
+                        	echo "answers[$i] = '0'";
+			}
+			else
+			{
+                        	echo "answers[$i] = $a";
+			}
+                        echo "</script>";
+                }
+        }
+        $numberOfRows = $scoreNeeded;
+        echo "<script language=\"javascript\">";
+        echo "scoreNeeded = $scoreNeeded;";
+        echo "numberOfRows = $numberOfRows;";
+        echo "</script>";
+}
+
+
+
+
+
+
+
 
 
 ?>
