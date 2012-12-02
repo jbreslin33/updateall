@@ -263,7 +263,7 @@ if ($numberOfRowsInDivision > 0)
 			$factor1 = rand($factor_min,$factor_max);
 			$factor2 = rand($factor_min,$factor_max);
 
-                        $a = $factor1 * $factor2;
+                        $a = $factor1 / $factor2;
                         echo "<script language=\"javascript\">";
                         echo "questions[$i] = \"What is $factor1 * $factor2 ?\";";
 			if ($a == 0)
