@@ -1874,7 +1874,7 @@ insert into clusters (cluster) values ('Analyze, compare, create, and compose sh
 ------------------------SUBTRACTION----------------------------------------
 
 --		LEVEL_ID: 500  
-insert into levels(id,description) values (500,'Addition addends 0 to 1');
+insert into levels(id,description) values (500,'Subtraction min 0 max 1');
 --	QUESTIONS: 
 insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500,10,0,5,0,5,2,FALSE);
 --	GAMES: 
@@ -1884,11 +1884,11 @@ insert into games_levels (level_id,game_id) values  (500,1);
 ----XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-MULTIPLICATION XXXXXXXXXXXXXXXXX
 
 --		LEVEL_ID: 600  
---insert into levels(id,description) values (600,'Addition addends 0 to 1');
+insert into levels(id,description) values (600,'Multiplication min 0 max 1');
 --	QUESTIONS: 
---insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (600,10,0,1,2);
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600,10,0,5,2);
 --	GAMES: 
---insert into games_levels (level_id,game_id) values  (14.1,1);
+insert into games_levels (level_id,game_id) values  (600,1);
 
 -----////////////////////-DIVISION-///////////////////////////////////////
 
