@@ -288,6 +288,7 @@ CREATE TABLE subtraction (
     level_id double precision NOT NULL
 );
 
+
 --QUESTIONS
 CREATE TABLE questions (
     id integer NOT NULL,
@@ -1738,7 +1739,6 @@ insert into clusters (cluster) values ('Work with numbers 11-19 to gain foundati
 --	8); understand that these numbers are composed of ten ones and one,
 --	two, three, four, five, six, seven, eight, or nine ones.
 -----------------------------------------------------------------------------
---1500
 
 
 
@@ -1759,7 +1759,6 @@ insert into clusters (cluster) values ('Describe and compare measurable attribut
 --	1.	 Describe measurable attributes of objects, such as length or weight.
 --	Describe several measurable attributes of a single object.
 -----------------------------------------------------------------------------
---1600
 
 -----------------------------------------------------------------------------
 --	2.	 Directly compare two objects with a measurable attribute in common,
@@ -1773,13 +1772,11 @@ insert into clusters (cluster) values ('Describe and compare measurable attribut
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 insert into clusters (cluster) values ('Classify objects and count the number of objects in each category.');
 
---1700
 
 -----------------------------------------------------------------------------
 --	3.	 Classify objects into given categories; count the numbers of objects in
 --	each category and sort the categories by count.3
 -----------------------------------------------------------------------------
---1800
 
 --%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 --	Geometry	
@@ -1802,18 +1799,15 @@ insert into clusters (cluster) values ('Identify and describe shapes (squares, c
 --	describe the relative positions of these objects using terms such as
 --	above, below, beside, in front of, behind, and next to.
 -----------------------------------------------------------------------------
---1900
 
 -----------------------------------------------------------------------------
 --	2.	 Correctly name shapes regardless of their orientations or overall size.
 -----------------------------------------------------------------------------
---2000
 
 -----------------------------------------------------------------------------
 --	3.	 Identify shapes as two-dimensional (lying in a plane, “flat”) or three-
 --	dimensional (“solid”).
 -----------------------------------------------------------------------------
---2100
 
 --+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 --	Analyze, compare, create, and compose shapes.
@@ -1828,19 +1822,53 @@ insert into clusters (cluster) values ('Analyze, compare, create, and compose sh
 --	vertices/“corners”) and other attributes (e.g., having sides of equal
 --	length).
 -----------------------------------------------------------------------------
---2200
 
 -----------------------------------------------------------------------------
 --	5.	 Model shapes in the world by building shapes from components (e.g.,
 --	sticks and clay balls) and drawing shapes.
 -----------------------------------------------------------------------------
---2300
 
 -----------------------------------------------------------------------------
 --	6.	 Compose simple shapes to form larger shapes. For example, “Can you
 --	join these two triangles with full sides touching to make a rectangle?”
 -----------------------------------------------------------------------------
---2400
+
+
+
+----*****-----%%%%%%-----&&&&&&------######-------@@@@@ SKIP AHEAD SECTION FOR LEVELS
+
+------------------------SUBTRACTION----------------------------------------
+
+--		LEVEL_ID: 500  
+insert into levels(id,description) values (500,'Addition addends 0 to 1');
+--	QUESTIONS: 
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500,10,0,5,0,5,2,FALSE);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (500,1);
+
+
+----XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-MULTIPLICATION XXXXXXXXXXXXXXXXX
+
+--		LEVEL_ID: 600  
+--insert into levels(id,description) values (600,'Addition addends 0 to 1');
+--	QUESTIONS: 
+--insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (600,10,0,1,2);
+--	GAMES: 
+--insert into games_levels (level_id,game_id) values  (14.1,1);
+
+-----////////////////////-DIVISION-///////////////////////////////////////
+
+--		LEVEL_ID: 700 
+--insert into levels(id,description) values (14.1,'Addition addends 0 to 1');
+--	QUESTIONS: 
+--insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.1,10,0,1,2);
+--	GAMES: 
+--insert into games_levels (level_id,game_id) values  (14.1,1);
+
+
+
+
+
 
 
 
