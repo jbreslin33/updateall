@@ -1929,9 +1929,9 @@ insert into games_levels (level_id,game_id) values  (600,1);
 --		LEVEL_ID: 700 
 insert into levels(id,description) values (700,'Division factors 0 to 1');
 --	QUESTIONS: 
---insert into division (level_id,score_needed,factor_min,factor_max,number_of_factors) values (700,10,0,1,2);
+insert into division (level_id,score_needed,factor_min,factor_max,number_of_factors) values (700,10,0,1,2);
 --	GAMES: 
---insert into games_levels (level_id,game_id) values  (700,1);
+insert into games_levels (level_id,game_id) values  (700,1);
 
 
 
