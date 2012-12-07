@@ -17,6 +17,10 @@ Extends: QuestionShape,
 		
 		this.mUrl = url; 
 
+//document.addEvent("keydown", mApplication.keyDown);
+//		this.addEvent("click", this.enterPortal);
+//object.onclick=function(){SomeJavaScriptCode};
+this.mDiv.onclick=function(){ this.enterPortal();  };
         },
 
         update: function(delta)

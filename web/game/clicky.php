@@ -74,6 +74,12 @@ window.addEvent('domready', function()
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
+
+	//MOUSE
+        //document.addEvent("keydown", mApplication.keyDown);
+        //document.addEvent("keyup", mApplication.keyUp);
+	
+
 <?php
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");

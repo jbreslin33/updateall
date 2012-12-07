@@ -6,6 +6,8 @@ Extends: GameQuiz,
 	initialize: function()
 	{
        		this.parent();
+
+		this.mPortal = 0;
 	},
 
 	createQuestionShapes: function()
@@ -32,10 +34,10 @@ Extends: GameQuiz,
 		
 			x = i * 50 + 400;
 
-        		var portal = new ShapePortal(50,50,x,350,this,portalQuestion,picture_closed[i],"","door",picture_open[i]);
-			portal.mUrl = url[0];
-			portal.setOpenPortal(true);
-        		this.addToShapeArray(portal);
+        		mPortal = new ShapePortal(50,50,x,350,this,portalQuestion,picture_closed[i],"","door",picture_open[i]);
+			mPortal.mUrl = url[0];
+			mPortal.setOpenPortal(true);
+        		this.addToShapeArray(mPortal);
 		}
 	},
 

@@ -43,6 +43,7 @@ var Application = new Class(
         //CONTROLS
         keyDown: function(event)
         {
+		mApplication.log('key down!');
                 if (event.key == 'left')
                 {
                         mApplication.mKeyLeft = true;
