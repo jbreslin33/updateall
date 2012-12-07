@@ -23,20 +23,19 @@ Extends: GameQuiz,
 
 	},
 	
-	createDoors: function()
+	createPortals: function()
 	{
 		for (i = 0; i < numberOfRows; i++)
 		{
-        		var doorQuestion = new Question('Open door with key.',"door");
-        		this.mQuiz.mQuestionArray.push(doorQuestion);
+        		var portalQuestion = new Question('Click on me to play.',"portal");
+        		this.mQuiz.mQuestionArray.push(portalQuestion);
 		
 			x = i * 50 + 400;
 
-        		var door = new ShapeDoor(50,50,x,350,this,doorQuestion,picture_closed[i],"","door",picture_open[i]);
-			door.mUrl = url[0];
-        		//door.mOpenOnQuestionSolved = true;
-			door.setOpenDoor(true);
-        		this.addToShapeArray(door);
+        		var portal = new ShapePortal(50,50,x,350,this,portalQuestion,picture_closed[i],"","door",picture_open[i]);
+			portal.mUrl = url[0];
+			portal.setOpenPortal(true);
+        		this.addToShapeArray(portal);
 		}
 	},
 

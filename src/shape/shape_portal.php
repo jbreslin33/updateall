@@ -1,4 +1,4 @@
-var ShapeDoor = new Class(
+var ShapePortal = new Class(
 {
 
 Extends: QuestionShape,
@@ -38,22 +38,22 @@ Extends: QuestionShape,
 			}
 		}
         },
-
+/*
         onCollision: function(col)
         {
 		this.parent(col);		
 		
 		if (this.mQuestion == '' && col.mQuestion == '')
 		{
-			this.enterDoor();
+			this.enterPortal();
 		}
         },
-	
+*/	
 	render: function()
 	{
 		this.parent();
 
-		//draw door
+		//draw portal 
 		if (this.mOpen)
 		{
 			this.setSrc(this.mSrcOpen);
@@ -66,20 +66,20 @@ Extends: QuestionShape,
 
 	correctAnswer: function()
 	{
-		this.enterDoor();
+		this.enterPortal();
 	},
 	
-	setOpenDoor: function(b)
+	setOpenPortal: function(b)
 	{
 		this.mOpen = b;	
 	},
 
-	getOpenDoor: function()
+	getOpenPortal: function()
 	{
 		return this.mOpen;
 	},
 	
-	enterDoor: function()
+	enterPortal: function()
         {
                 this.mGame.mOn = false;
                 window.location = this.mUrl;

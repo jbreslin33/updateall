@@ -60,7 +60,7 @@ window.addEvent('domready', function()
 	//going to use mouse clicks instead
 
         //create doors
-        game.createDoors();
+        game.createPortals();
 
         //KEYS
         document.addEvent("keydown", mApplication.keyDown);
