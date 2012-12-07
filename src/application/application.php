@@ -30,6 +30,12 @@ var Application = new Class(
 		this.mKey8 = false;
 		this.mKey9 = false;
 
+		//mouse
+		this.mMouseDown = false;
+		this.mMouseUp   = true;
+		this.mMouseX = 0;
+		this.mMouseY = 0;
+
         },
 
         log: function(msg)
@@ -40,10 +46,20 @@ var Application = new Class(
                 }, 0);
         },
 
+
+
         //CONTROLS
-        keyDown: function(event)
+        
+	mouseDown: function(event)
+	{
+		mApplication.log('mouse down!');
+		mApplication.log('page.x:' + event.page.x);
+
+	},	
+
+
+	keyDown: function(event)
         {
-		mApplication.log('key down!');
                 if (event.key == 'left')
                 {
                         mApplication.mKeyLeft = true;
