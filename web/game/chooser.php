@@ -67,7 +67,10 @@ window.addEvent('domready', function()
         document.addEvent("keyup", mApplication.keyUp);
 
         //KEYS
-        document.addEvent("click", mApplication.mouseDown);
+        //document.addEvent("click", mApplication.click);
+        //document.addEvent("mousedown", mApplication.mouseDown);
+        //document.addEvent("mouseup", mApplication.mouseUp);
+        document.addEvent("mousemove", mApplication.mouseMove);
         //document.addEvent("keyup", mApplication.keyUp);
 
 <?php

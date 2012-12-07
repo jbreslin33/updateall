@@ -49,12 +49,29 @@ var Application = new Class(
 
 
         //CONTROLS
+	
+	click: function(event)
+	{
+		mApplication.log('mouse clicked!');
+		mApplication.log('page.x:' + event.page.x);
+	},	
         
+	mouseMove: function(event)
+	{
+		mApplication.log('mouse move!');
+		mApplication.log('page.x:' + event.page.x);
+	},	
+
 	mouseDown: function(event)
 	{
 		mApplication.log('mouse down!');
 		mApplication.log('page.x:' + event.page.x);
-
+	},	
+	
+	mouseUp: function(event)
+	{
+		mApplication.log('mouse up!');
+		mApplication.log('page.x:' + event.page.x);
 	},	
 
 
