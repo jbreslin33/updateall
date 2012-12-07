@@ -1287,7 +1287,7 @@ insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web
 
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon Count','/web/game/represent.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
-insert into games (game,url,picture_open,picture_closed) values ('Click','/web/game/click.php','/images/doors/door_open.png','/images/doors/door_closed.png');
+insert into games (game,url,picture_open,picture_closed) values ('Click','/web/game/clicky.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
 --****************************************
 --		LEVELS	
