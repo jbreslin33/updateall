@@ -1284,8 +1284,10 @@ insert into permissions(permission) values ('INSERT');
 --****************************************
 
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon','/web/game/dungeon.php','/images/doors/door_open.png','/images/doors/door_closed.png');
+
 insert into games (game,url,picture_open,picture_closed) values ('Dungeon Count','/web/game/represent.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
+insert into games (game,url,picture_open,picture_closed) values ('Click','/web/game/click.php','/images/doors/door_open.png','/images/doors/door_closed.png');
 
 --****************************************
 --		LEVELS	
@@ -1333,7 +1335,7 @@ insert into levels_standards_clusters_domains_grades(level_id, standard_cluster_
 --	QUESTIONS:
 insert into counting (level_id,score_needed,start_number,end_number,count_by) values (1,1,0,1,1);
 --	GAMES: dungeon
-insert into games_levels (level_id,game_id) values  (1,1);
+insert into games_levels (level_id,game_id) values  (1,3);
 
 	
 --		LEVEL_ID: 1.01 
