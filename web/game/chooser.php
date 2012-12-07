@@ -66,6 +66,10 @@ window.addEvent('domready', function()
         document.addEvent("keydown", mApplication.keyDown);
         document.addEvent("keyup", mApplication.keyUp);
 
+        //KEYS
+        document.addEvent("click", mApplication.keyDown);
+        //document.addEvent("keyup", mApplication.keyUp);
+
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");
 ?>
