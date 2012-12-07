@@ -9,6 +9,7 @@
 <script type="text/javascript" src="/src/shape/question_shape.php"></script>
 <script type="text/javascript" src="/src/shape/shape_player.php"></script>
 <script type="text/javascript" src="/src/shape/shape_door.php"></script>
+<script type="text/javascript" src="/src/shape/shape_portal.php"></script>
 <script type="text/javascript" src="/src/shape/shape_ai.php"></script>
 <script type="text/javascript" src="/src/div/div.php"></script>
 <script type="text/javascript" src="/src/question/question.php"></script>
