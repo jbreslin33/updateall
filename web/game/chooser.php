@@ -56,7 +56,8 @@ window.addEvent('domready', function()
         game.createQuestions();
 
         //create control object
-        game.createControlObject();
+        //game.createControlObject();
+	//going to use mouse clicks instead
 
         //create doors
         game.createDoors();
