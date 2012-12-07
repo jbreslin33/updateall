@@ -196,56 +196,83 @@ var Game = new Class(
                 //idle
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = 0;
-                        this.mControlObject.mKey.mY = 0;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = 0;
+                        	this.mControlObject.mKey.mY = 0;
+			}
                 }
                 //north
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = 0;
-                        this.mControlObject.mKey.mY = -1;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = 0;
+                        	this.mControlObject.mKey.mY = -1;
+			}
                 }
                 //north_east
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = .5;
-                        this.mControlObject.mKey.mY = -.5;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = .5;
+                        	this.mControlObject.mKey.mY = -.5;
+			}
                 }
                 //east
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = 1;
-                        this.mControlObject.mKey.mY = 0;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = 1;
+                       		this.mControlObject.mKey.mY = 0;
+			}
                 }
                 //south_east
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == true && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKey.mX = .5;
-                        this.mControlObject.mKey.mY = .5;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = .5;
+                        	this.mControlObject.mKey.mY = .5;
+			}
                 }
                 //south
                 if (mApplication.mKeyLeft == false && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKey.mX = 0;
-                        this.mControlObject.mKey.mY = 1;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = 0;
+                        	this.mControlObject.mKey.mY = 1;
+			}
                 }
                 //south_west
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == true)
                 {
-                        this.mControlObject.mKey.mX = -.5;
-                        this.mControlObject.mKey.mY = .5;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = -.5;
+                        	this.mControlObject.mKey.mY = .5;
+			}
                 }
                 //west
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == false && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = -1;
-                        this.mControlObject.mKey.mY = 0;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = -1;
+                        	this.mControlObject.mKey.mY = 0;
+			}
                 }
                 //north_west
                 if (mApplication.mKeyLeft == true && mApplication.mKeyRight == false && mApplication.mKeyUp == true && mApplication.mKeyDown == false)
                 {
-                        this.mControlObject.mKey.mX = -.5;
-                        this.mControlObject.mKey.mY = -.5;
+			if (this.mControlObject)
+			{
+                        	this.mControlObject.mKey.mX = -.5;
+                        	this.mControlObject.mKey.mY = -.5;
+			}
                 }
         }).protect(),
 

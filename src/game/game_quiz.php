@@ -49,8 +49,8 @@ Extends: Game,
                         var question = new Question(questions[i],answers[i]);
                         this.mQuiz.mQuestionArray.push(question);
                 }
-        },
-
+        }
+/*
         createControlObject: function()
         {
                 //*******************CONTROL OBJECT
@@ -64,6 +64,6 @@ Extends: Game,
                 this.mControlObject.mHideOnQuestionSolved = false;
                 this.mControlObject.createMountPoint(0,-5,-41);
         }
-
+*/
 
 });
