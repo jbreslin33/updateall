@@ -26,15 +26,15 @@ include(getenv("DOCUMENT_ROOT") . "/web/game/standard_game_includes.php");
 
 <script language="javascript">
 
-var mGame;
-var mApplication;
+var GAME;
+//var mApplication;
 var mHud;
 
 window.addEvent('domready', function()
 {
 
         //APPLICATION
-        mApplication = new Application();
+        //mApplication = new Application();
                
 	//HUD 
 	hud = new Hud();
@@ -42,29 +42,29 @@ window.addEvent('domready', function()
         hud.mGameName.setText('<font size="2">DUNGEON</font>');
 
 	//GAME
-	game = new Chooser("Chooser");
+	GAME = new Chooser("Chooser");
 
 	//set hud
-	game.setHud(hud);
+	GAME.setHud(hud);
 
         //QUIZ
         quiz = new Quiz(1);
-        game.mQuiz = quiz;
-	quiz.mGame = game;
+        GAME.mQuiz = quiz;
+	quiz.mGame = GAME;
 
         //create questions
-        game.createQuestions();
+        GAME.createQuestions();
 
         //create control object
-        game.createControlObject();
+        GAME.createControlObject();
 	//going to use mouse clicks instead
 
         //create doors
-        game.createPortals();
+        GAME.createPortals();
 
         //KEYS
-        document.addEvent("keydown", mApplication.keyDown);
-        document.addEvent("keyup", mApplication.keyUp);
+        document.addEvent("keydown", GAME.keyDown);
+        document.addEvent("keyup", GAME.keyUp);
 
         //KEYS
         //document.addEvent("click", mApplication.click);
