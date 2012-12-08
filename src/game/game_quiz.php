@@ -49,9 +49,9 @@ Extends: Game,
                         var question = new Question(questions[i],answers[i]);
                         this.mQuiz.mQuestionArray.push(question);
                 }
-        }
-/*
-        createControlObject: function()
+        },
+        
+	createControlObject: function()
         {
                 //*******************CONTROL OBJECT
                 this.mControlObject = new Player(50,50,400,300,this,this.mQuiz.getSpecificQuestion(0),"/images/characters/wizard.png","","controlObject");
@@ -64,6 +64,5 @@ Extends: Game,
                 this.mControlObject.mHideOnQuestionSolved = false;
                 this.mControlObject.createMountPoint(0,-5,-41);
         }
-*/
 
 });
