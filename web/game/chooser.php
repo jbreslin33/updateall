@@ -56,7 +56,7 @@ window.addEvent('domready', function()
         game.createQuestions();
 
         //create control object
-        //game.createControlObject();
+        game.createControlObject();
 	//going to use mouse clicks instead
 
         //create doors
@@ -70,7 +70,7 @@ window.addEvent('domready', function()
         //document.addEvent("click", mApplication.click);
         //document.addEvent("mousedown", mApplication.mouseDown);
         //document.addEvent("mouseup", mApplication.mouseUp);
-        document.addEvent("mousemove", mApplication.mouseMove);
+        //document.addEvent("mousemove", mApplication.mouseMove);
         //document.addEvent("keyup", mApplication.keyUp);
 
 <?php
