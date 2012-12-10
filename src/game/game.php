@@ -61,7 +61,9 @@ var Game = new Class(
                 this.mKey8 = false;
                 this.mKey9 = false;
 
-
+		//mouse clicked
+		this.mLeftMouseDown = false;
+		this.mRightMouseDown = false;
         },
  	
 	log: function(msg)
@@ -312,6 +314,16 @@ var Game = new Class(
 	click: function(event)
 	{
 		GAME.log('x:' + event.page.x);
+	},
+
+	mousedown: function(event)
+	{
+		GAME.log('down');
+	},
+
+	mouseup: function(event)
+	{
+		GAME.log('up');
 	},
 
         saveOldPositions: (function()
