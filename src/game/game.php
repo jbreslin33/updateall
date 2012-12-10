@@ -374,7 +374,7 @@ var Game = new Class(
 					
                        	var collisionDistance = col1.mCollisionDistance + col2.mCollisionDistance;
 
-                       if (distSQ < collisionDistance) 
+                       	if (distSQ < collisionDistance) 
              
 			if (col1.getTimeoutShape() != col2 && col2.getTimeoutShape() != col1)
 			{
