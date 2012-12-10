@@ -68,8 +68,8 @@ window.addEvent('domready', function()
 
         //KEYS
         document.addEvent("click", GAME.click);
-        //document.addEvent("mousedown", GAME.mouseDown);
-        //document.addEvent("mouseup", GAME.mouseUp);
+        document.addEvent("mousedown", GAME.mousedown);
+        document.addEvent("mouseup", GAME.mouseup);
         //document.addEvent("mousemove", GAME.mouseMove);
         //document.addEvent("keyup", GAME.keyUp);
 
