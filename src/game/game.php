@@ -63,6 +63,14 @@ var Game = new Class(
 
 
         },
+ 	
+	log: function(msg)
+        {
+                setTimeout(function()
+                {
+                        throw new Error(msg);
+                }, 0);
+        },
 				
 	//brian - update score in games_attempts table		
 	updateScore: function()
@@ -299,6 +307,12 @@ var Game = new Class(
 			}
                 }
         }).protect(),
+
+
+	click: function(event)
+	{
+		
+	},
 
         saveOldPositions: (function()
         {

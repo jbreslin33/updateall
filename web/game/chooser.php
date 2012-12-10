@@ -67,11 +67,11 @@ window.addEvent('domready', function()
         document.addEvent("keyup", GAME.keyUp);
 
         //KEYS
-        //document.addEvent("click", mApplication.click);
-        //document.addEvent("mousedown", mApplication.mouseDown);
-        //document.addEvent("mouseup", mApplication.mouseUp);
-        //document.addEvent("mousemove", mApplication.mouseMove);
-        //document.addEvent("keyup", mApplication.keyUp);
+        document.addEvent("click", GAME.click);
+        //document.addEvent("mousedown", GAME.mouseDown);
+        //document.addEvent("mouseup", GAME.mouseUp);
+        //document.addEvent("mousemove", GAME.mouseMove);
+        //document.addEvent("keyup", GAME.keyUp);
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");
