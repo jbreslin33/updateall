@@ -311,7 +311,7 @@ var Game = new Class(
 
 	click: function(event)
 	{
-		
+		GAME.log('x:' + event.page.x);
 	},
 
         saveOldPositions: (function()
@@ -332,49 +332,57 @@ var Game = new Class(
         {
                 for (s = 0; s < this.mShapeArray.length; s++)
                 {
+			col1 = this.mShapeArray[s];
+
 			if (this.mShapeArray[s].mCollisionOn == true)
 			{
 			   	//this should now only loop the first for loop thru objects that have moved. which i think will improve efficiency 
-			    	if (this.mShapeArray[s].mPosition.mX != this.mShapeArray[s].mPositionOld.mX ||
-			        this.mShapeArray[s].mPosition.mY != this.mShapeArray[s].mPositionOld.mY)
+			    	if (col1.mPosition.mX != col1.mPositionOld.mX ||
+			        col1.mPosition.mY != col1.mPositionOld.mY)
 			    	{
 					for (c = 0; c < this.mShapeArray.length; c++)
 					{
-						if (this.mShapeArray[c] == this.mShapeArray[s])
+						col2 = this.mShapeArray[c];
+						if (col2 == col1)
 						{
 							continue;
 						}
-						if (this.mShapeArray[c].mCollisionOn == true)
-						{
-                        				var x1 = this.mShapeArray[s].mPosition.mX;
-                        				var y1 = this.mShapeArray[s].mPosition.mY;
-
-                        				var x2 = this.mShapeArray[c].mPosition.mX;
-                        				var y2 = this.mShapeArray[c].mPosition.mY;
-                
-                                			var addend1 = x1 - x2;
-							addend1 = addend1 * addend1;
-
-                                			var addend2 = y1 - y2;
-							addend2 = addend2 * addend2;
-
-                                			var distSQ = addend1 + addend2;
-						
-                                			var collisionDistance = this.mShapeArray[s].mCollisionDistance + this.mShapeArray[c].mCollisionDistance;
-                                			if (distSQ < collisionDistance) 
-                                			{
-								if (this.mShapeArray[s].getTimeoutShape() != this.mShapeArray[c] && this.mShapeArray[c].getTimeoutShape() != this.mShapeArray[s])
-								{
-									this.mShapeArray[c].onCollision(this.mShapeArray[s]);	
-									this.mShapeArray[s].onCollision(this.mShapeArray[c]);	
-								}
-                                			}
-						}
+						this.collisionCheck(col1,col2);
 					}
 			   	}
 			}
                 }
 	}).protect(),
+
+	collisionCheck: function(col1,col2)
+	{
+		if (col2.mCollisionOn == true)
+		{
+                	var x1 = col1.mPosition.mX;
+                       	var y1 = col1.mPosition.mY;
+
+			var x2 = col2.mPosition.mX;
+       			var y2 = col2.mPosition.mY;
+                
+       			var addend1 = x1 - x2;
+			addend1 = addend1 * addend1;
+
+                       	var addend2 = y1 - y2;
+			addend2 = addend2 * addend2;
+
+                       	var distSQ = addend1 + addend2;
+					
+                       	var collisionDistance = col1.mCollisionDistance + col2.mCollisionDistance;
+
+                       if (distSQ < collisionDistance) 
+             
+			if (col1.getTimeoutShape() != col2 && col2.getTimeoutShape() != col1)
+			{
+				col2.onCollision(col1);	
+				col1.onCollision(col2);	
+			}
+              	}
+	},
 	
 	getOpenPoint2D: function(xMin,xMax,yMin,yMax,newShapeWidth,spreadFactor)
         {
