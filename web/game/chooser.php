@@ -63,15 +63,17 @@ window.addEvent('domready', function()
         GAME.createPortals();
 
         //KEYS
+	GAME.mKeysOn = true;
         document.addEvent("keydown", GAME.keyDown);
         document.addEvent("keyup", GAME.keyUp);
 
-        //KEYS
+        //MOUSE
+	GAME.mMouseOn = true;
         document.addEvent("click", GAME.click);
         document.addEvent("mousedown", GAME.mousedown);
         document.addEvent("mouseup", GAME.mouseup);
-        //document.addEvent("mousemove", GAME.mouseMove);
-        //document.addEvent("keyup", GAME.keyUp);
+        document.addEvent("mousemove", GAME.mousemove);
+        //document.addEvent("keyup", GAME.keyup);
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");

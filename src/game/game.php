@@ -62,8 +62,11 @@ var Game = new Class(
                 this.mKey9 = false;
 
 		//mouse clicked
+		this.mMouseOn = false;
 		this.mLeftMouseDown = false;
 		this.mRightMouseDown = false;
+
+		this.mMousePosition = new Point2D(0,0);
         },
  	
 	log: function(msg)
@@ -201,7 +204,15 @@ var Game = new Class(
 			}
                         
 			//check Keys from application
-			this.checkKeys();
+			if (this.mKeysOn)
+			{
+				this.checkKeys();
+			}
+
+			if (this.mMouseOn)
+			{
+				this.checkMouse();
+			}
 
                 	//move shapes   
                 	for (i = 0; i < this.mShapeArray.length; i++)
@@ -310,20 +321,35 @@ var Game = new Class(
                 }
         }).protect(),
 
+	//CHECK MOUSE
+	checkMouse: function()
+	{
+                if (GAME.mLeftMouseDown == true)
+		{
+                       	this.mControlObject.mPosition.mX = this.mMousePosition.mX;
+                       	this.mControlObject.mPosition.mY = this.mMousePosition.mY;
+		}
+	},
 
 	click: function(event)
 	{
-		GAME.log('x:' + event.page.x);
+	
 	},
 
 	mousedown: function(event)
 	{
-		GAME.log('down');
+		this.mLeftMouseDown = true;	
 	},
 
 	mouseup: function(event)
 	{
-		GAME.log('up');
+		this.mLeftMouseDown = false;	
+	},
+	
+	mousemove: function(event)
+	{
+		this.mMousePosition.mX = event.page.x;   	
+		this.mMousePosition.mY = event.page.y; 	
 	},
 
         saveOldPositions: (function()
