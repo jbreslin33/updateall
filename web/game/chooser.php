@@ -57,7 +57,6 @@ window.addEvent('domready', function()
 
         //create control object
         GAME.createControlObject();
-	//going to use mouse clicks instead
 
         //create doors
         GAME.createPortals();
@@ -68,7 +67,8 @@ window.addEvent('domready', function()
         document.addEvent("keyup", GAME.keyUp);
 
         //MOUSE
-	GAME.mMouseOn = true;
+	GAME.mMouseOn     = true;
+	GAME.mMouseMoveOn = true;
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");

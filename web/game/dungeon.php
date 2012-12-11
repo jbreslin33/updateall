@@ -67,8 +67,14 @@ window.addEvent('domready', function()
         GAME.createDoor("/images/doors/door_closed.png","/images/doors/door_open.png");
 
         //KEYS
+        GAME.mKeysOn = true;
         document.addEvent("keydown", GAME.keyDown);
         document.addEvent("keyup", GAME.keyUp);
+
+        //MOUSE
+        GAME.mMouseOn     = true;
+        GAME.mMouseMoveOn = true;
+
 <?php
 
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");
