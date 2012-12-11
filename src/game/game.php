@@ -70,12 +70,12 @@ var Game = new Class(
 		this.mMouseMoveEvent = 0;
 		
 		document.addEvent("mousemove", this.mouseMove);
- 		document.addEvent("click", GAME.click);
-        	document.addEvent("mousedown", GAME.mousedown);
-        	document.addEvent("mouseup", GAME.mouseup);
-        	//document.addEvent("mousemove", GAME.mouseMove);
-        	//document.addEvent("keyup", GAME.keyup);
-
+ 		//document.addEvent("click", this.click);
+        	//document.addEvent("mousedown", this.mousedown);
+        	//document.addEvent("mouseup", this.mouseup);
+        	//document.addEvent("mousemove", this.mouseMove);
+        	//document.addEvent("keyup", this.keyup);
+		document.body.style.cursor = 'crosshair';
         },
  	
 	log: function(msg)
