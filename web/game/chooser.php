@@ -69,11 +69,6 @@ window.addEvent('domready', function()
 
         //MOUSE
 	GAME.mMouseOn = true;
-        document.addEvent("click", GAME.click);
-        document.addEvent("mousedown", GAME.mousedown);
-        document.addEvent("mouseup", GAME.mouseup);
-        document.addEvent("mousemove", GAME.mousemove);
-        //document.addEvent("keyup", GAME.keyup);
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");
