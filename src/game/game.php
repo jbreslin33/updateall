@@ -61,13 +61,21 @@ var Game = new Class(
                 this.mKey8 = false;
                 this.mKey9 = false;
 
-		//mouse clicked
+		//mouse clicked or moved
 		this.mMouseOn = false;
 		this.mLeftMouseDown = false;
 		this.mRightMouseDown = false;
 
 		this.mMousePosition = new Point2D(0,0);
 		this.mMouseMoveEvent = 0;
+		
+		document.addEvent("mousemove", this.mouseMove);
+ 		document.addEvent("click", GAME.click);
+        	document.addEvent("mousedown", GAME.mousedown);
+        	document.addEvent("mouseup", GAME.mouseup);
+        	//document.addEvent("mousemove", GAME.mouseMove);
+        	//document.addEvent("keyup", GAME.keyup);
+
         },
  	
 	log: function(msg)
@@ -325,15 +333,9 @@ var Game = new Class(
 	//CHECK MOUSE
 	checkMouse: function()
 	{
-//		GAME.log('checkMouse');
-                //if (this.mLeftMouseDown == true)
-		//{
-                //       	this.mControlObject.mPosition.mX = this.mMouseMoveEvent.page.x;
-                 //      	this.mControlObject.mPosition.mY = this.mMouseMoveEvent.page.y;
-			//this.mControlObject.mPosition.mX =.;
-			//this.mControlObject.mPosition.mY = 50;
-//			GAME.log('what');
-		//}
+                if (GAME.mLeftMouseDown == true)
+		{
+		}
 	},
 
 	click: function(event)
@@ -342,24 +344,18 @@ var Game = new Class(
 
 	mousedown: function(event)
 	{
-		this.mLeftMouseDown = true;	
-		GAME.log('mousedown');
+		GAME.mLeftMouseDown = true;	
 	},
 
 	mouseup: function(event)
 	{
-		this.mLeftMouseDown = false;	
+		GAME.mLeftMouseDown = false;	
 	},
 	
-	mousemove: function(event)
+	mouseMove: function(event)
 	{
                 GAME.mControlObject.mPosition.mX = event.page.x;
                 GAME.mControlObject.mPosition.mY = event.page.y;
-		//this.mMouseMoveEvent = event;	
-		//this.mMousePosition.mX = event.page.x;   	
-		//this.mMousePosition.mY = event.page.y; 	
-		//GAME.log('x:' + event.page.x + ' y:' + event.page.y);
-		
 	},
 
         saveOldPositions: (function()
