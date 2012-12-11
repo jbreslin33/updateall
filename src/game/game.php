@@ -67,6 +67,7 @@ var Game = new Class(
 		this.mRightMouseDown = false;
 
 		this.mMousePosition = new Point2D(0,0);
+		this.mMouseMoveEvent = 0;
         },
  	
 	log: function(msg)
@@ -324,21 +325,25 @@ var Game = new Class(
 	//CHECK MOUSE
 	checkMouse: function()
 	{
-                if (GAME.mLeftMouseDown == true)
-		{
-                       	this.mControlObject.mPosition.mX = this.mMousePosition.mX;
-                       	this.mControlObject.mPosition.mY = this.mMousePosition.mY;
-		}
+//		GAME.log('checkMouse');
+                //if (this.mLeftMouseDown == true)
+		//{
+                //       	this.mControlObject.mPosition.mX = this.mMouseMoveEvent.page.x;
+                 //      	this.mControlObject.mPosition.mY = this.mMouseMoveEvent.page.y;
+			//this.mControlObject.mPosition.mX =.;
+			//this.mControlObject.mPosition.mY = 50;
+//			GAME.log('what');
+		//}
 	},
 
 	click: function(event)
 	{
-	
 	},
 
 	mousedown: function(event)
 	{
 		this.mLeftMouseDown = true;	
+		GAME.log('mousedown');
 	},
 
 	mouseup: function(event)
@@ -348,8 +353,13 @@ var Game = new Class(
 	
 	mousemove: function(event)
 	{
-		this.mMousePosition.mX = event.page.x;   	
-		this.mMousePosition.mY = event.page.y; 	
+                GAME.mControlObject.mPosition.mX = event.page.x;
+                GAME.mControlObject.mPosition.mY = event.page.y;
+		//this.mMouseMoveEvent = event;	
+		//this.mMousePosition.mX = event.page.x;   	
+		//this.mMousePosition.mY = event.page.y; 	
+		//GAME.log('x:' + event.page.x + ' y:' + event.page.y);
+		
 	},
 
         saveOldPositions: (function()
@@ -375,7 +385,7 @@ var Game = new Class(
 			if (this.mShapeArray[s].mCollisionOn == true)
 			{
 			   	//this should now only loop the first for loop thru objects that have moved. which i think will improve efficiency 
-			    	if (col1.mPosition.mX != col1.mPositionOld.mX ||
+			    	if (col1.mPosition.mX != col1.mPositionOld.mX || 
 			        col1.mPosition.mY != col1.mPositionOld.mY)
 			    	{
 					for (c = 0; c < this.mShapeArray.length; c++)
