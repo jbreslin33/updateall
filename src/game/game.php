@@ -354,8 +354,11 @@ var Game = new Class(
 	
 	mouseMove: function(event)
 	{
-                GAME.mControlObject.mPosition.mX = event.page.x;
-                GAME.mControlObject.mPosition.mY = event.page.y;
+		if (GAME.mMouseMoveOn)
+		{	
+                	GAME.mControlObject.mPosition.mX = event.page.x;
+                	GAME.mControlObject.mPosition.mY = event.page.y;
+		}
 	},
 
         saveOldPositions: (function()
