@@ -69,6 +69,7 @@ window.addEvent('domready', function()
         //MOUSE
 	GAME.mMouseOn     = true;
 	GAME.mMouseMoveOn = true;
+	//GAME.mMouseDownOn = true;
 
 <?php
 include(getenv("DOCUMENT_ROOT") . "/web/game/standard_bottom.php");

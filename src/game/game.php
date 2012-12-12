@@ -71,7 +71,7 @@ var Game = new Class(
 		
 		document.addEvent("mousemove", this.mouseMove);
  		//document.addEvent("click", this.click);
-        	//document.addEvent("mousedown", this.mousedown);
+        	//document.addEvent("mousedown", this.mouseDown);
         	//document.addEvent("mouseup", this.mouseup);
         	//document.addEvent("mousemove", this.mouseMove);
         	//document.addEvent("keyup", this.keyup);
@@ -355,6 +355,15 @@ var Game = new Class(
 	mouseMove: function(event)
 	{
 		if (GAME.mMouseMoveOn)
+		{	
+                	GAME.mControlObject.mPosition.mX = event.page.x;
+                	GAME.mControlObject.mPosition.mY = event.page.y;
+		}
+	},
+
+	mouseDown: function(event)
+	{
+		if (GAME.mMouseDownOn)
 		{	
                 	GAME.mControlObject.mPosition.mX = event.page.x;
                 	GAME.mControlObject.mPosition.mY = event.page.y;

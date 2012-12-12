@@ -74,6 +74,7 @@ window.addEvent('domready', function()
         //MOUSE
         GAME.mMouseOn     = true;
         GAME.mMouseMoveOn = true;
+        //GAME.mMouseDownOn = true;
 
 <?php
 
