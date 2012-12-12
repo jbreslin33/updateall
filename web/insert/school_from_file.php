@@ -30,6 +30,12 @@ $userArray[2][0] = 'v1303';
 $userArray[2][1] = 'ace';
 
 
+$file_handle = fopen("viso.txt", "r");
+while (!feof($file_handle)) {
+   $line = fgets($file_handle);
+   echo $line;
+}
+fclose($file_handle);
 
 	//now loop thru and add a class of students..
 	//$number_of_students = $_POST["number_of_students"]; 
@@ -60,7 +66,7 @@ $userArray[2][1] = 'ace';
 	}
 
 //go to success page
-header("Location: /web/select/student.php");
+//header("Location: /web/select/student.php");
 
 ?>
 
