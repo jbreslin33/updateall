@@ -15,10 +15,10 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_students.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/insert_first_level_transaction.php"); 
 
 //get a password
-$password = getRandomPassword($conn);
+$password = 'ahh';
 
 //get a username
-$newUsername = getNextUsernumber($conn);
+$newusername = 2;
 
 //let's actually add the user
 insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
@@ -37,14 +37,16 @@ insertFirstLevelTransaction($conn,$new_teacher_id);
 
 
 //now loop thru and add a class of students..
-$number_of_students = $_POST["number_of_students"]; 
+$number_of_students = 1; 
+
 for ($i = 0; $i < $number_of_students; $i++)
 {
 	//get a password
-	$password = getRandomPassword($conn);
+	//$password = getRandomPassword($conn);
+	$password = 'ahh';
 
 	//get a username
-	$newUsername = getNextUsernumber($conn);
+	$newUsername = 3;
 
 	//let's actually add the user
 	insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
