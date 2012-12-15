@@ -24,7 +24,7 @@ while (!feof($file_handle))
 	//to protect against end of file for reals
 	if (!feof($file_handle))
  	{
-        	$pieces = explode(",",$line);
+        	$pieces = explode(":",$line);
 
 		$newUsername = $pieces[0];
 		$password    = trim($pieces[1]);
