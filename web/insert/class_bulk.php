@@ -37,7 +37,7 @@ insertFirstLevelTransaction($conn,$new_teacher_id);
 
 
 //now loop thru and add a class of students..
-$number_of_students = 1; 
+$number_of_students = 10; 
 
 for ($i = 0; $i < $number_of_students; $i++)
 {
@@ -46,7 +46,7 @@ for ($i = 0; $i < $number_of_students; $i++)
 	$password = 'ahh';
 
 	//get a username
-	$newUsername = 3;
+	$newUsername = $newUsername + $i + 1;
 
 	//let's actually add the user
 	insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
