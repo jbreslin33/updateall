@@ -14,27 +14,38 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_teachers.php");
 include(getenv("DOCUMENT_ROOT") . "/src/database/insert_into_students.php"); 
 include(getenv("DOCUMENT_ROOT") . "/src/database/insert_first_level_transaction.php"); 
 
-//get a password
-$password = 'ahh';
 
-//get a username
-$newUsername = 2;
+$file_handle = fopen("viso.txt", "r");
 
-//let's actually add the user
-insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
+while (!feof($file_handle))
+{
+        $line = fgets($file_handle);
+        $pieces = explode(",",$line);
 
-//get new user id
-$new_teacher_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
+        echo $pieces[0];
+        echo $pieces[1];
 
-//insert student
-insertIntoTeachers($conn,$new_teacher_id);
+	$newUsername = $pieces[0];
+	$password    = php_strip_whitespace($pieces[1]);
 
-//insert student
-insertIntoStudents($conn,$new_teacher_id,$new_teacher_id);
+        echo $newUsername;
+        echo $password;
 
-//insert first transaction for levels to lowest level
-insertFirstLevelTransaction($conn,$new_teacher_id);
+	//let's actually add the user
+	insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 
+	//get new user id
+	$new_teacher_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
+
+	//insert student
+	insertIntoTeachers($conn,$new_teacher_id);
+
+	//insert student
+	insertIntoStudents($conn,$new_teacher_id,$new_teacher_id);
+
+	//insert first transaction for levels to lowest level
+	insertFirstLevelTransaction($conn,$new_teacher_id);
+}
 
 //now loop thru and add a class of students..
 $number_of_students = 10; 
@@ -63,7 +74,7 @@ for ($i = 0; $i < $number_of_students; $i++)
 }
 
 //go to success page
-header("Location: /web/select/student.php");
+//header("Location: /web/select/student.php");
 
 ?>
 
