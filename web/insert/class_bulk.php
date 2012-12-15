@@ -30,36 +30,12 @@ while (!feof($file_handle))
 		$password    = trim($pieces[1]);
 
 		//let's actually add the user
-		//insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
-
-		//get new user id
-		//$new_teacher_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
-
-		//insert student
-		//insertIntoTeachers($conn,$new_teacher_id);
-
-		//insert student
-		//insertIntoStudents($conn,$new_teacher_id,$new_teacher_id);
-
-		//insert first transaction for levels to lowest level
-		//insertFirstLevelTransaction($conn,$new_teacher_id);
-
-
-		//get a password
-		//$password = getRandomPassword($conn);
-		//$password = 'ahh';
-
-		//get a username
-		//$newUsername = $newUsername + $i + 1;
-
-		//let's actually add the user
 		insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 
 		//get new user id
 		$new_student_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
 		//insert student
-		//insertIntoStudents($conn,$new_student_id,$new_teacher_id);
 		insertIntoStudents($conn,$new_student_id,$_SESSION["school_id"]);
 
 		//insert first transaction for levels to lowest level
