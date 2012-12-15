@@ -20,31 +20,38 @@ $file_handle = fopen("viso.txt", "r");
 while (!feof($file_handle))
 {
         $line = fgets($file_handle);
-        $pieces = explode(",",$line);
 
-        echo $pieces[0];
-        echo $pieces[1];
+	//to protect against end of file for reals
+	if (!feof($file_handle))
+ 	{
+        	$pieces = explode(",",$line);
 
-	$newUsername = $pieces[0];
-	$password    = trim($pieces[1]);
+        	echo $pieces[0];
+        	echo $pieces[1];
 
-        echo $newUsername;
-        echo $password;
+		$newUsername = $pieces[0];
+		$password    = trim($pieces[1]);
 
-	//let's actually add the user
-	insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
+        	echo $newUsername;
+        	echo $password;
 
-	//get new user id
-	$new_teacher_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
+		//let's actually add the user
+		insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
 
-	//insert student
-	insertIntoTeachers($conn,$new_teacher_id);
+		//get new user id
+		$new_teacher_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
 
-	//insert student
-	insertIntoStudents($conn,$new_teacher_id,$new_teacher_id);
+		//insert student
+		insertIntoTeachers($conn,$new_teacher_id);
 
-	//insert first transaction for levels to lowest level
-	insertFirstLevelTransaction($conn,$new_teacher_id);
+		//insert student
+		insertIntoStudents($conn,$new_teacher_id,$new_teacher_id);
+
+		//insert first transaction for levels to lowest level
+		insertFirstLevelTransaction($conn,$new_teacher_id);
+
+		echo 'times';
+	}	
 }
 
 //now loop thru and add a class of students..
