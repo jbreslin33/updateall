@@ -26,7 +26,7 @@ while (!feof($file_handle))
         echo $pieces[1];
 
 	$newUsername = $pieces[0];
-	$password    = php_strip_whitespace($pieces[1]);
+	$password    = trim($pieces[1]);
 
         echo $newUsername;
         echo $password;
