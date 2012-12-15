@@ -30,7 +30,7 @@ while (!feof($file_handle))
 		$password    = trim($pieces[1]);
 
 		//let's actually add the user
-		insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
+		insertIntoUsersWithFullName($conn,$newUsername, $password, $_SESSION["school_id"],'Tony','Danza');
 
 		//get new user id
 		$new_student_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
