@@ -28,10 +28,48 @@ while (!feof($file_handle))
 
 		$newUsername = $pieces[0];
 		$password    = trim($pieces[1]);
-		$first_name = trim($pieces[4]);
+		$full_name = trim($pieces[4]);
+
+        	$full_name_pieces = explode(" ",$full_name);
+		$size = count($full_name_pieces);
+		if ($size == 0)
+		{
+			$first_name = '';
+			$middle_name = '';
+			$last_name = '';
+		}
+		
+		if ($size == 1)
+		{
+			$first_name = '';
+			$middle_name = '';
+			$last_name = $full_name_pieces[0];
+		}
+		
+		if ($size == 2)
+		{
+			$first_name = $full_name_pieces[0];
+			$middle_name = '';
+			$last_name = $full_name_pieces[1];
+		}
+		
+		if ($size == 3)
+		{
+			$first_name = $full_name_pieces[0];
+			$middle_name = $full_name_pieces[1];
+			$last_name = $full_name_pieces[2];
+		}
+		
+		if ($size == 4)
+		{
+			$first_name = $full_name_pieces[0];
+			$middle_name = $full_name_pieces[1];
+			$last_name = $full_name_pieces[3];
+		}
+		
 
 		//let's actually add the user
-		insertIntoUsersWithFullName($conn,$newUsername, $password, $_SESSION["school_id"],$first_name,'Danza');
+		insertIntoUsersWithFullName($conn,$newUsername, $password, $_SESSION["school_id"],$first_name,$middle_name,$last_name);
 
 		//get new user id
 		$new_student_id = selectUserID($conn, $_SESSION["school_id"],$newUsername,$password);
