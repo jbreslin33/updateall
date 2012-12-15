@@ -18,7 +18,7 @@ include(getenv("DOCUMENT_ROOT") . "/src/database/insert_first_level_transaction.
 $password = 'ahh';
 
 //get a username
-$newusername = 2;
+$newUsername = 2;
 
 //let's actually add the user
 insertIntoUsers($conn,$newUsername, $password, $_SESSION["school_id"]);
