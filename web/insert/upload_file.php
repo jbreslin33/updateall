@@ -46,7 +46,10 @@ if ((($_FILES["file"]["type"] == "image/gif")
       			move_uploaded_file($_FILES["file"]["tmp_name"],
       			"upload/" . $_FILES["file"]["name"]);
       			echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-			include(getenv("DOCUMENT_ROOT") . "/web/insert/class_bulk.php");
+//			include(getenv("DOCUMENT_ROOT") . "/web/insert/class_bulk.php?userfile=$_FILES["file"]["name"]");
+			$userfile = $_FILES["file"]["name"];
+			header("Location: class_bulk.php?userfile=$userfile");
+
       		//}
     	}
 }
