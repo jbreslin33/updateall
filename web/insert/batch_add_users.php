@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action="upload_file.php" method="post"
+<form action="batch_add_users_upload.php" method="post"
 enctype="multipart/form-data">
 <label for="file">Filename:</label>
 <input type="file" name="file" id="file"><br>
