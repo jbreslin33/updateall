@@ -63,6 +63,17 @@ include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 
 ?>
 	<p><b> PLEASE LOGIN: </p></b>
+	
+	<p><b> Choose School: </p></b>
+	<select>
+  		<option value="visitationbvm">visitationbvm</option>
+  		<option value="saintanselm">saintanselm</option>
+  		<option value="marthas">marthas</option>
+  		<option value="olpr">olpr</option>
+	</select>
+	
+
+
 	<form method="post" action="/web/login/login.php">
 
 	<p>Username: <input type="text" name="username" /></p>
