@@ -1,16 +1,23 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
 
 <head>
 	<title>Login</title>
-
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/css/green_block.css" />
 </head>
 
 <body>
 <?php
-	//start session
-	session_start();
+session_start();
+//db connection
+include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
+$conn = dbConnect();
+
+include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links.php");
+echo "<br>";
+include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
+
 
 	//and set Login to NO
 	$_SESSION["Login"] = "NO";
