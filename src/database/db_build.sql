@@ -132,7 +132,9 @@ CREATE TABLE users (
     username text, 
     password text,
     first_name text,
-    middle_name text,
+    middle_name1 text,
+    middle_name2 text,
+    middle_name3 text,
     last_name text,
     school_id integer NOT NULL 
 );

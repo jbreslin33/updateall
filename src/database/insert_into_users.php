@@ -17,11 +17,11 @@ function insertIntoUsers($conn,$username,$password,$school_id)
                 dbErrorCheck($conn,$result);
 }
 
-function insertIntoUsersWithFullName($conn,$username,$password,$school_id,$first_name,$middle_name,$last_name)
+function insertIntoUsersWithFullName($conn,$username,$password,$school_id,$first_name,$middle_name1,$middle_name2,$middle_name3,$last_name)
 {
 		//--------------------INSERT INTO USERS----------------
                 //query string
-                $query = "INSERT INTO users (username, password, school_id, first_name, middle_name, last_name) VALUES ('";
+                $query = "INSERT INTO users (username, password, school_id, first_name, middle_name1, middle_name2, middle_name3, last_name) VALUES ('";
                 $query .= $username;
                 $query .= "','";
                 $query .= $password;
@@ -30,7 +30,11 @@ function insertIntoUsersWithFullName($conn,$username,$password,$school_id,$first
                 $query .= ",'";
                 $query .= $first_name;
                 $query .= "','";
-                $query .= $middle_name;
+                $query .= $middle_name1;
+                $query .= "','";
+                $query .= $middle_name2;
+                $query .= "','";
+                $query .= $middle_name3;
                 $query .= "','";
                 $query .= $last_name;
                 $query .= "'";
