@@ -4,5 +4,5 @@
 <li><a href="/web/insert/teacher.php">Insert Teachers</a></li>
 <li><a href="/web/insert/class_size.php">Insert Classes</a></li>
 <li><a href="/web/insert/school_size.php">Insert Schools</a></li>
-<li><a href="/web/insert/school_from_file.php">Insert Schools from file</a></li>
+<li><a href="/web/insert/upload.html">Upload</a></li>
 </ul>
