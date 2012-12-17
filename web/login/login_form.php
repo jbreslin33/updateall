@@ -60,7 +60,6 @@ include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 	{
 		echo "No student try again.";
 	}
-
 ?>
 	<p><b> PLEASE LOGIN: </p></b>
 	
@@ -71,7 +70,6 @@ $query = "select * from schools;";
 $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
-echo $numrows;
 ?>
 <select>
   
@@ -88,7 +86,6 @@ echo $numrows;
 ?>
 
 </select>
-
 
 	<form method="post" action="/web/login/login.php">
 
