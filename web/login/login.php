@@ -12,67 +12,20 @@ $conn = dbConnect();
 //start new session
 session_start();
 
-$usernameString = $_POST["username"];
-$_SESSION["password"] = $_POST["password"];
 $_SESSION["school_name"] = $_POST["school"];
 
-//first let's check amount of periods 
-$stringArray = str_split($usernameString);
-
-$arraySize = count($stringArray);
-
-//let's add up periods
-$period_count = 0;
-for ($i=0; $i < $arraySize; $i++)
+//check to see if it's a school or a regular user logging in
+if ($_POST["username"] == $_POST["school"])  
 {
-	if ($stringArray[$i] == '.')
-        {
-        	$period_count++;
-        }
-}
-
-$before_period = true;
-$before_period_array = "";
-$after_period_array = "";
-
-
-//school attempt
-if ($period_count == 0)
-{
-	$_SESSION["school_name"] = $_POST["username"];
+	//it's a school
 	$_SESSION["username"] = "root";
 }
-
-//non school attempt
-if ($period_count == 1)
+else
 {
-	for ($i=0; $i < $arraySize; $i++)
-	{
-        
-		if ($stringArray[$i] == '.')
-        	{
-                	$before_period = false;
-			continue;
-        	}
-
-        	if ($before_period)
-		{
-			$before_period_array .= $stringArray[$i];		
-		}
-		else
-		{
-			$after_period_array .= $stringArray[$i];		
-		}
-	}
-	$_SESSION["school_name"] = $after_period_array;
-	$_SESSION["username"] = $before_period_array;
+	//it's a regular user
+	$_SESSION["username"] = $_POST["username"];
 }
-
-//invalid attempt
-if ($period_count == 2)
-{
-	header("Location: login_form.php?message=too_many_periods");	
-}
+$_SESSION["password"] = $_POST["password"];
 
 //let's set a var that will be false if there was a problem..
 $problem = "";
