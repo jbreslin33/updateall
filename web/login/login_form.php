@@ -81,7 +81,8 @@ echo $numrows;
    	// Loop on rows in the result set.
    	for($ri = 0; $ri < $numrows; $ri++) 
 	{
-		echo "<option value=\"saab\">Saab</option>";
+		$row = pg_fetch_array($result, $ri);
+		echo "<option value=\"$row[1]\">$row[1]</option>";
    	}
    	pg_close($conn);
 ?>
