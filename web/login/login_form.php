@@ -18,7 +18,6 @@ include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links.php");
 echo "<br>";
 include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 
-
 	//and set Login to NO
 	$_SESSION["Login"] = "NO";
 
@@ -72,8 +71,6 @@ dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
 ?>
 <select>
-  
-
 
 <?php
    	// Loop on rows in the result set.
@@ -95,18 +92,6 @@ $numrows = pg_numrows($result);
 	<p><input type="submit" value="Log In" /></p>
 
 	</form>
-
-	<p><b> OR SIGN UP: </p></b>
-	
-	<form method="post" action="/web/signup/signup.php">
-
-	<p>Username: <input type="text" name="schoolname" /></p>
-	<p>Password: <input type="text" name="password" /></p>
-
-	<p><input type="submit" value="Sign Up" /></p>
-
-	</form>
-	
 </body>
 
 </html>
