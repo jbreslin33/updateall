@@ -65,13 +65,28 @@ include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 	<p><b> PLEASE LOGIN: </p></b>
 	
 	<p><b> Choose School: </p></b>
-	<select>
-  		<option value="visitationbvm">visitationbvm</option>
-  		<option value="saintanselm">saintanselm</option>
-  		<option value="marthas">marthas</option>
-  		<option value="olpr">olpr</option>
-	</select>
-	
+<?php
+$query = "select * from schools;";
+
+$result = pg_query($conn,$query);
+dbErrorCheck($conn,$result);
+$numrows = pg_numrows($result);
+echo $numrows;
+?>
+<select>
+  
+
+
+<?php
+   	// Loop on rows in the result set.
+   	for($ri = 0; $ri < $numrows; $ri++) 
+	{
+		echo "<option value=\"saab\">Saab</option>";
+   	}
+   	pg_close($conn);
+?>
+
+</select>
 
 
 	<form method="post" action="/web/login/login.php">
