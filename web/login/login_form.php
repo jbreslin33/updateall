@@ -69,6 +69,8 @@ $result = pg_query($conn,$query);
 dbErrorCheck($conn,$result);
 $numrows = pg_numrows($result);
 ?>
+
+	<form method="post" action="/web/login/login.php">
 <select>
 
 <?php
@@ -82,8 +84,6 @@ $numrows = pg_numrows($result);
 ?>
 
 </select>
-
-	<form method="post" action="/web/login/login.php">
 
 	<p>Username: <input type="text" name="username" /></p>
 	<p>Password: <input type="text" name="password" /></p>
