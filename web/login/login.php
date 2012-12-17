@@ -14,6 +14,7 @@ session_start();
 
 $usernameString = $_POST["username"];
 $_SESSION["password"] = $_POST["password"];
+$school = $_POST["school"];
 
 //first let's check amount of periods 
 $stringArray = str_split($usernameString);

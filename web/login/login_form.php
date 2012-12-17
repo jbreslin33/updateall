@@ -71,7 +71,7 @@ $numrows = pg_numrows($result);
 ?>
 
 	<form method="post" action="/web/login/login.php">
-<select>
+<select name="school">
 
 <?php
    	// Loop on rows in the result set.
