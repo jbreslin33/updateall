@@ -14,7 +14,7 @@ session_start();
 
 $usernameString = $_POST["username"];
 $_SESSION["password"] = $_POST["password"];
-$school = $_POST["school"];
+$_SESSION["school_name"] = $_POST["school"];
 
 //first let's check amount of periods 
 $stringArray = str_split($usernameString);
@@ -34,6 +34,7 @@ for ($i=0; $i < $arraySize; $i++)
 $before_period = true;
 $before_period_array = "";
 $after_period_array = "";
+
 
 //school attempt
 if ($period_count == 0)
