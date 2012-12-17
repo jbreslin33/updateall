@@ -1963,10 +1963,44 @@ insert into clusters (cluster) values ('Analyze, compare, create, and compose sh
 --		LEVEL_ID: 500  
 insert into levels(id,description) values (500,'Subtraction min 0 max 1');
 --	QUESTIONS: 
-insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500,10,0,5,0,5,2,FALSE);
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500,10,0,1,0,1,2,FALSE);
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (500,1);
 
+--              LEVEL_ID: 500.01
+insert into levels(id,description) values (500.01,'Subtraction min 0 max 2');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.01,10,0,2,0,2,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.01,1);
+
+--              LEVEL_ID: 500.02
+insert into levels(id,description) values (500.02,'Subtraction min 0 max 3');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.02,10,0,3,0,3,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.02,1);
+
+--              LEVEL_ID: 500.03
+insert into levels(id,description) values (500.03,'Subtraction min 0 max 4');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.03,10,0,4,0,4,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.03,1);
+
+--              LEVEL_ID: 500.04
+insert into levels(id,description) values (500.04,'Subtraction min 0 max 5');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.04,10,0,4,0,5,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.04,1);
+
+--              LEVEL_ID: 500.05
+insert into levels(id,description) values (500.05,'Subtraction min 0 max 6');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.05,10,0,4,0,5,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.04,1);
 
 ----XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-MULTIPLICATION XXXXXXXXXXXXXXXXX
 
