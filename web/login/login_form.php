@@ -14,9 +14,8 @@ session_start();
 include(getenv("DOCUMENT_ROOT") . "/src/database/db_connect.php");
 $conn = dbConnect();
 
-include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links.php");
+include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links_for_login_form.php");
 echo "<br>";
-include(getenv("DOCUMENT_ROOT") . "/web/select/links.php");
 
 	//and set Login to NO
 	$_SESSION["Login"] = "NO";

@@ -1,13 +1,18 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html>
 
 <head>
-	<title>Login</title>
-
+        <title>Login</title>
+<link rel="stylesheet" type="text/css" href="<?php getenv("DOCUMENT_ROOT")?>/css/green_block.css" />
 </head>
 
 <body>
 
 <?php
+include(getenv("DOCUMENT_ROOT") . "/web/navigation/top_links_for_signup_form.php");
+echo "<br>";
+
       	$mess = $_GET["message"];
 
 	if ($mess == "name_taken")
