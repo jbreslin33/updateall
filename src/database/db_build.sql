@@ -1827,15 +1827,68 @@ insert into addition (level_id,score_needed,addend_min,addend_max,number_of_adde
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (14,1);
 
-
---		LEVEL_ID: 14.1  
-insert into levels(id,description) values (14.1,'Addition addends 0 to 1');
+--		LEVEL_ID: 14.01  
+insert into levels(id,description) values (14.01,'Addition addends 0 to 2');
 --	QUESTIONS: 
-insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.1,10,0,1,2);
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.01,10,0,2,2);
 --	GAMES: 
-insert into games_levels (level_id,game_id) values  (14.1,1);
+insert into games_levels (level_id,game_id) values  (14.01,1);
 
+--		LEVEL_ID: 14.02  
+insert into levels(id,description) values (14.02,'Addition addends 0 to 3');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.02,10,0,3,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.02,1);
 
+--		LEVEL_ID: 14.03  
+insert into levels(id,description) values (14.03,'Addition addends 0 to 4');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.03,10,0,4,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.03,1);
+
+--		LEVEL_ID: 14.04  
+insert into levels(id,description) values (14.04,'Addition addends 0 to 5');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.04,10,0,5,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.04,1);
+
+--		LEVEL_ID: 14.05  
+insert into levels(id,description) values (14.05,'Addition addends 0 to 6');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.05,10,0,6,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.05,1);
+
+--		LEVEL_ID: 14.06  
+insert into levels(id,description) values (14.06,'Addition addends 0 to 7');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.06,10,0,7,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.06,1);
+
+--		LEVEL_ID: 14.07  
+insert into levels(id,description) values (14.07,'Addition addends 0 to 8');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.07,10,0,8,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.07,1);
+
+--		LEVEL_ID: 14.08  
+insert into levels(id,description) values (14.08,'Addition addends 0 to 9');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.08,10,0,9,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.08,1);
+
+--		LEVEL_ID: 14.09  
+insert into levels(id,description) values (14.09,'Addition addends 0 to 10');
+--	QUESTIONS: 
+insert into addition (level_id,score_needed,addend_min,addend_max,number_of_addends) values (14.09,10,0,10,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (14.09,1);
 
 
 
@@ -1991,25 +2044,130 @@ insert into games_levels (level_id,game_id) values  (500.03,1);
 --              LEVEL_ID: 500.04
 insert into levels(id,description) values (500.04,'Subtraction min 0 max 5');
 --      QUESTIONS:
-insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.04,10,0,4,0,5,2,FALSE);
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.04,10,0,5,0,5,2,FALSE);
 --      GAMES:
 insert into games_levels (level_id,game_id) values  (500.04,1);
 
 --              LEVEL_ID: 500.05
 insert into levels(id,description) values (500.05,'Subtraction min 0 max 6');
 --      QUESTIONS:
-insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.05,10,0,4,0,5,2,FALSE);
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.05,10,0,6,0,6,2,FALSE);
 --      GAMES:
-insert into games_levels (level_id,game_id) values  (500.04,1);
+insert into games_levels (level_id,game_id) values  (500.05,1);
+
+--              LEVEL_ID: 500.06
+insert into levels(id,description) values (500.06,'Subtraction min 0 max 7');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.06,10,0,7,0,7,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.06,1);
+
+--              LEVEL_ID: 500.07
+insert into levels(id,description) values (500.07,'Subtraction min 0 max 8');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.07,10,0,8,0,8,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.07,1);
+
+--              LEVEL_ID: 500.08
+insert into levels(id,description) values (500.08,'Subtraction min 0 max 9');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.08,10,0,9,0,9,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.08,1);
+
+--              LEVEL_ID: 500.09
+insert into levels(id,description) values (500.09,'Subtraction min 0 max 10');
+--      QUESTIONS:
+insert into subtraction (level_id,score_needed,minuend_min,minuend_max,subtrahend_min,subtrahend_max,number_of_subtrahends,negative_difference) values (500.09,10,0,10,0,10,2,FALSE);
+--      GAMES:
+insert into games_levels (level_id,game_id) values  (500.09,1);
 
 ----XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-MULTIPLICATION XXXXXXXXXXXXXXXXX
 
 --		LEVEL_ID: 600  
 insert into levels(id,description) values (600,'Multiplication min 0 max 1');
 --	QUESTIONS: 
-insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600,10,0,5,2);
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600,10,0,1,2);
 --	GAMES: 
 insert into games_levels (level_id,game_id) values  (600,1);
+
+--		LEVEL_ID: 600.01  
+insert into levels(id,description) values (600.01,'Multiplication min 0 max 2');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.01,10,0,2,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.01,1);
+
+--		LEVEL_ID: 600.02  
+insert into levels(id,description) values (600.02,'Multiplication min 0 max 3');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.02,10,0,3,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.02,1);
+
+--		LEVEL_ID: 600.03  
+insert into levels(id,description) values (600.03,'Multiplication min 0 max 4');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.03,10,0,4,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.03,1);
+
+--		LEVEL_ID: 600.04  
+insert into levels(id,description) values (600.04,'Multiplication min 0 max 5');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.04,10,0,5,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.04,1);
+
+--		LEVEL_ID: 600.05  
+insert into levels(id,description) values (600.05,'Multiplication min 0 max 6');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.05,10,0,6,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.05,1);
+
+--		LEVEL_ID: 600.06  
+insert into levels(id,description) values (600.06,'Multiplication min 0 max 7');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.06,10,0,7,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.06,1);
+
+--		LEVEL_ID: 600.07  
+insert into levels(id,description) values (600.07,'Multiplication min 0 max 8');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.07,10,0,8,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.07,1);
+
+--		LEVEL_ID: 600.08  
+insert into levels(id,description) values (600.08,'Multiplication min 0 max 9');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.08,10,0,9,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.08,1);
+
+--		LEVEL_ID: 600.09  
+insert into levels(id,description) values (600.09,'Multiplication min 0 max 10');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.09,10,0,10,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.09,1);
+
+--		LEVEL_ID: 600.10  
+insert into levels(id,description) values (600.10,'Multiplication min 0 max 11');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.10,10,0,11,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.10,1);
+
+--		LEVEL_ID: 600.11  
+insert into levels(id,description) values (600.11,'Multiplication min 0 max 12');
+--	QUESTIONS: 
+insert into multiplication (level_id,score_needed,factor_min,factor_max,number_of_factors) values (600.11,10,0,12,2);
+--	GAMES: 
+insert into games_levels (level_id,game_id) values  (600.11,1);
 
 -----////////////////////-DIVISION-///////////////////////////////////////
 
