@@ -1,0 +1,1 @@
+script to update all projects
